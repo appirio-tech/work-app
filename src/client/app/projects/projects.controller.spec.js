@@ -27,6 +27,10 @@ describe('ProjectController', function () {
       it('should have logged "Activated"', function () {
         expect($log.info.logs).to.match(/Activated/);
       });
+
+      it('should have projects', function() {
+        expect(controller.projects).to.be.defined;
+      });
     });
   });
 });
