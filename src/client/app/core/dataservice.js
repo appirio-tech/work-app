@@ -10,7 +10,8 @@
   function dataservice($q) {
     var service = {
       getPeople: getPeople,
-      getMessageCount: getMessageCount
+      getMessageCount: getMessageCount,
+      getProjects: getProjects
     };
 
     return service;
@@ -30,6 +31,11 @@
         {firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming'}
       ];
       return $q.when(people);
+    }
+
+    function getProjects() {
+      var p = mockData.getMockProjects();
+      return $q.when(p);
     }
   }
 })();

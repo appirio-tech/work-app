@@ -20,7 +20,7 @@ describe('ProjectController', function () {
     });
 
     describe('after activate', function () {
-      it('should have title of Admin', function () {
+      it('should have title of Projects', function () {
         expect(controller.title).to.equal('Projects');
       });
 
