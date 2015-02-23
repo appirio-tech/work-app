@@ -14,7 +14,7 @@ describe('create routes', function () {
     });
 
     it('should map state create to url /create ', function () {
-      expect($state.href('create', {})).to.equal('/projects');
+      expect($state.href('create', {})).to.equal('/create');
     });
 
     it('should map /create route to create template', function () {

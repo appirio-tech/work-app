@@ -38,4 +38,10 @@
       return $q.when(p);
     }
   }
+
+  function createProject(project) {
+    mockData.addMockProject(project);
+    return $q.when(true);
+  }
+
 })();

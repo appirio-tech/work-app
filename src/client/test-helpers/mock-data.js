@@ -3,7 +3,8 @@ var mockData = (function () {
   return {
     getMockPeople: getMockPeople,
     getMockStates: getMockStates,
-    getMockProjects: getMockProjects
+    getMockProjects: getMockProjects,
+    addMockProject: addMockProject
   };
 
   function getMockStates() {
@@ -35,8 +36,7 @@ var mockData = (function () {
     ];
   }
 
-  function getMockProjects() {
-    return [
+  var projects = [
       {
         'id': '30000007',
         'projectName': 'Client 30000001 Billing Account 3 Web API Project 1',
@@ -76,6 +76,14 @@ var mockData = (function () {
         ]
       }
     ];
+
+  function getMockProjects() {
+    return projects;
+  }
+
+  function addMockProject(project) {
+    projects.push(project);
+    return true;
   }
 
 })();
