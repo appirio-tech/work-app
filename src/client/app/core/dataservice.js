@@ -11,7 +11,8 @@
     var service = {
       getPeople: getPeople,
       getMessageCount: getMessageCount,
-      getProjects: getProjects
+      getProjects: getProjects,
+      createProject: createProject
     };
 
     return service;
@@ -37,11 +38,14 @@
       var p = mockData.getMockProjects();
       return $q.when(p);
     }
-  }
 
-  function createProject(project) {
-    mockData.addMockProject(project);
-    return $q.when(true);
-  }
+    function createProject(project) {
+      project.projectCreatedDate = moment().format('MM/DD/YYYY hh:mm');
+      project.projectLastUpdatedDate = project.projectCreatedDate;
+      project.billings = [];
+      mockData.addMockProject(project);
+      return $q.when(true);
+    }
 
+  }
 })();

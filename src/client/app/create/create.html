@@ -7,6 +7,33 @@
           <div class="widget-foot">
             <div class="clearfix"></div>
           </div>
+          <table class="table">
+            <tr>
+              <td>Field</td>
+              <td>Value</td>
+            </tr>
+            <tr>
+              <td>
+                Name
+              </td>
+              <td>
+                <input type="text" ng-model="vm.newProject.projectName" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Created By
+              </td>
+              <td>
+                <input type="text" ng-model="vm.newProject.projectCreatedBy" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn" ng-click="vm.create(vm.newProject)">Create</button>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
