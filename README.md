@@ -97,3 +97,29 @@ It depends on the `blocks.logger` module, because the implementation logs the ex
 
 ##### blocks.router Module
 The `blocks.router` module contains a routing helper module that assists in adding routes to the $routeProvider.
+
+## Testing
+
+### Performance Testing (TBD)
+
+To help keep our front end as fast as possible, the following performance benchmarks will be measured.  A minimal standard has not yet been setup but when the minimal requirements are in place then the build will fail.
+
+The testing should be done independent of the backend services using mock data.  The testing should be run against every page.  The testing should be done in a production optimized state meaning all js and css should be minimized.
+
+#### Tests
+
+* Time to First Render
+* Time to initial javascript loaded
+* Time to full page loading
+* Time for each subsequent Ajax calls
+* Run Google Page Speed against selected pages
+* RUn WebTestSpeed API against selected pages from selected locations
+
+### Complexity Testings
+
+The [plato](https://github.com/es-analysis/plato) complexity report is integrated into gulp.  Standards will be created as minimum required.
+
+### Code Coverage
+
+Code should be sufficiently (amount to be determined) covered by tests.
+
