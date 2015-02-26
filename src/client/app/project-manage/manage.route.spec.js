@@ -2,10 +2,10 @@
 describe('project routes', function () {
   describe('state', function () {
     var controller;
-    var list = 'app/projects/projects.html';
+    var list = 'app/project-manage/multiple.html';
 
     beforeEach(function () {
-      module('app.projects', bard.fakeToastr);
+      module('app.project-manage', bard.fakeToastr);
       bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
     });
 
@@ -13,8 +13,8 @@ describe('project routes', function () {
       $templateCache.put(list, '');
     });
 
-    it('should map state projects to url /projects ', function () {
-      expect($state.href('projects', {})).to.equal('/projects');
+    it('should map state multiple to url /projects ', function () {
+      expect($state.href('multiple', {})).to.equal('/projects');
     });
 
     it('should map /projects route to projects List template', function () {
@@ -22,9 +22,9 @@ describe('project routes', function () {
     });
 
     it('of projects should work with $state.go', function () {
-      $state.go('projects');
+      $state.go('multiple');
       $rootScope.$apply();
-      expect($state.is('projects'));
+      expect($state.is('multiple'));
     });
   });
 });

@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('app.projects')
-    .controller('ProjectController', ProjectController);
+    .module('app.project-manage')
+    .controller('MultipleProjectController', MultipleProjectController);
 
-  ProjectController.$inject = ['logger', 'dataservice'];
+  MultipleProjectController.$inject = ['logger', 'dataservice'];
   /* @ngInject */
-  function ProjectController(logger, dataservice) {
+  function MultipleProjectController(logger, dataservice) {
     var vm = this;
     vm.title = 'Projects';
 

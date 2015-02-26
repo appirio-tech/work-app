@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('app.create')
-    .controller('CreateController', CreateController);
+    .module('app.project-create')
+    .controller('ProjectCreateController', ProjectCreateController);
 
-  CreateController.$inject = ['logger', 'dataservice'];
+  ProjectCreateController.$inject = ['logger', 'dataservice'];
   /* @ngInject */
-  function CreateController(logger, dataservice) {
+  function ProjectCreateController(logger, dataservice) {
     var vm = this;
     vm.title = 'Create';
     vm.newProject = {};

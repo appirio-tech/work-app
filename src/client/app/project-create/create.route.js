@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.create')
+    .module('app.project-create')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -17,13 +17,13 @@
         state: 'create',
         config: {
           url: '/create',
-          templateUrl: 'app/create/create.html',
-          controller: 'CreateController',
+          templateUrl: 'app/project-create/create.html',
+          controller: 'ProjectCreateController',
           controllerAs: 'vm',
-          title: 'Create',
+          title: 'ProjectCreate',
           settings: {
             nav: 4,
-            content: '<i class="fa fa-lock"></i> Create'
+            content: '<i class="fa fa-lock"></i> Project Create'
           }
         }
       }
