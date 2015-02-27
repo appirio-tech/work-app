@@ -5,9 +5,9 @@
     .module('app.project.create')
     .controller('ProjectCreateController', ProjectCreateController);
 
-  ProjectCreateController.$inject = ['logger', 'dataservice'];
+  ProjectCreateController.$inject = ['logger', 'ProjectService'];
   /* @ngInject */
-  function ProjectCreateController(logger, dataservice) {
+  function ProjectCreateController(logger, ProjectService) {
     var vm = this;
     vm.title = 'Create';
     vm.newProject = {};
@@ -16,7 +16,7 @@
     activate();
 
     function create(project) {
-      dataservice.createProject(project);
+      ProjectService.createProject(project);
       vm.newProject = {};
     }
 

@@ -5,9 +5,9 @@
     .module('app.project.create')
     .controller('ProjectHomeController', ProjectHomeController);
 
-  ProjectHomeController.$inject = ['logger', 'dataservice'];
+  ProjectHomeController.$inject = ['logger', 'ProjectService'];
   /* @ngInject */
-  function ProjectHomeController(logger, dataservice) {
+  function ProjectHomeController(logger, ProjectService) {
     var vm = this;
     vm.title = 'Home';
     vm.newProject = {};

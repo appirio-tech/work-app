@@ -3,7 +3,8 @@
 
   angular.module('app.project.create', [
     'app.core',
-    'app.widgets'
+    'app.widgets',
+    'app.project'
   ]);
 
 })();
