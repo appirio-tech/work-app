@@ -15,7 +15,7 @@
 
     function activate() {
       logger.info('Activated Projects View');
-      dataservice.getProjects().then(function(data) {
+      dataservice.getProjects().then(function(data)  {
         vm.projects = data;
       });
     }
