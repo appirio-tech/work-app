@@ -10,10 +10,6 @@
           <h3>Background Information</h3>
           <table class="table">
             <tr>
-              <td>Field</td>
-              <td>Value</td>
-            </tr>
-            <tr>
               <td>
                 Description
               </td>
@@ -30,6 +26,73 @@
               </td>
             </tr>
           </table>
+          <h3>Visual Style</h3>
+          <table class="table" style="width:400px">
+            <tr>
+              <td>
+                Minimal
+              </td>
+              <td>
+                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleMinimalComplex" />
+              </td>
+              <td>
+                Complex
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Modern
+              </td>
+              <td>
+                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleModernClassic" />
+              </td>
+              <td>
+                Classic
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Playful
+              </td>
+              <td>
+                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.stylePlayfulSerious" />
+              </td>
+              <td>
+                Serious
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Loud
+              </td>
+              <td>
+                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleLoudSubtle" />
+              </td>
+              <td>
+                Subtle
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Luxury
+              </td>
+              <td>
+                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleLuxuryBudget" />
+              </td>
+              <td>
+                Budget
+              </td>
+            </tr>
+            <tr>
+              <td>
+                What ideas do you have for the style/theme of your app?
+              </td>
+              <td>
+                <textarea name="styleIdeas" ng-model="vm.newProject.styleIdeas" />
+              </td>
+            </tr>
+          </table>
+
         </div>
       </div>
     </div>
