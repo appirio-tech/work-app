@@ -92,7 +92,66 @@
               </td>
             </tr>
           </table>
-
+          <h3>Content Details</h3>
+          <table class="table">
+            <tr>
+              <td>
+                Name
+              </td>
+              <td>
+                <input name="name" type="text" ng-model="vm.newProject.name" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                # screens
+              </td>
+              <td>
+                <input type="radio" name="1" ng-value="1" ng-model="vm.newProject.screens" />
+                1 screen
+                <br />
+                <input type="radio" name="2" ng-value="2" ng-model="vm.newProject.screens" />
+                2 screens
+                <br />
+                <input type="radio" name="3" ng-value="3" ng-model="vm.newProject.screens" />
+                3 screens
+                <br />
+                <input type="radio" name="4" ng-value="4" ng-model="vm.newProject.screens" />
+                4 screens
+                <br />
+                <input type="radio" name="5" ng-value="5" ng-model="vm.newProject.screens" />
+                5 screens
+                <br />
+                <input type="radio" name="6" ng-value="6" ng-model="vm.newProject.screens" />
+                Other
+              </td>
+            </tr>
+            <tr>
+              <td>Describe the screens</td>
+              <td>
+                <textarea name="screensDescription" ng-model="vm.newProject.screensDescription" />
+              </td>
+            </tr>
+          </table>
+          <h3>Project Duration</h3>
+          <table class="table">
+            <tr>
+              <td>
+                How soon do you need it?
+              </td>
+              <td>
+                <select name="duration" ng-model="duration">
+                  <option ng-value="5" selected>5 days</option>
+                  <option ng-value="10">10 days</option>
+                  <option ng-value="15">15 days</option>
+                  <option ng-value="20">20 days</option>
+                  <option ng-value="25">25 days</option>
+                  <option ng-value="30">30 days</option>
+                  <option ng-value="0">Decide later</option>
+                </select>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
