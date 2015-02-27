@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.project')
+    .module('app.project.core')
     .factory('ProjectService', ProjectService);
 
   ProjectService.$inject = ['$q'];

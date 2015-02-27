@@ -7,7 +7,8 @@
     'app.admin',
     'app.layout',
     'app.project.manage',
-    'app.project.create'
+    'app.project.create',
+    'app.project.core'
   ]);
 
 })();

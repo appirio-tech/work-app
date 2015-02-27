@@ -4,7 +4,7 @@
   angular.module('app.project.manage', [
     'app.core',
     'app.widgets',
-    'app.project'
+    'app.project.core'
   ]);
 
 })();
