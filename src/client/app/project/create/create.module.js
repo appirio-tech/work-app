@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('app.project-create', [
+  angular.module('app.project.create', [
     'app.core',
     'app.widgets'
   ]);

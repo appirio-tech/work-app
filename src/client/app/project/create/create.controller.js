@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.project-create')
+    .module('app.project.create')
     .controller('ProjectCreateController', ProjectCreateController);
 
   ProjectCreateController.$inject = ['logger', 'dataservice'];

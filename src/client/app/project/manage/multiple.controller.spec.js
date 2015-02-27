@@ -3,7 +3,7 @@ describe('MultipleProjectController', function () {
   var controller;
 
   beforeEach(function () {
-    bard.appModule('app.project-manage');
+    bard.appModule('app.project.manage');
     bard.inject('$controller', '$log', '$rootScope');
   });
 

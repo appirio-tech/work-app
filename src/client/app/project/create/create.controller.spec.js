@@ -3,7 +3,7 @@ describe('ProjectCreateController', function () {
   var controller;
 
   beforeEach(function () {
-    bard.appModule('app.project-create');
+    bard.appModule('app.project.create');
     bard.inject('$controller', '$log', '$rootScope');
   });
 

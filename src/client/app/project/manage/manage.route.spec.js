@@ -5,7 +5,7 @@ describe('project routes', function () {
     var list = 'app/project/manage/multiple.html';
 
     beforeEach(function () {
-      module('app.project-manage', bard.fakeToastr);
+      module('app.project.manage', bard.fakeToastr);
       bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
     });
 

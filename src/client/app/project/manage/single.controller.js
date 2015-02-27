@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.project-manage')
+    .module('app.project.manage')
     .controller('SingleProjectController', SingleProjectController);
 
   SingleProjectController.$inject = ['logger', 'dataservice', '$routeParams'];

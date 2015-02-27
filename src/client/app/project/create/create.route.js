@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.project-create')
+    .module('app.project.create')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
