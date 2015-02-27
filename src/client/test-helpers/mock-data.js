@@ -12,42 +12,58 @@ var mockData = (function () {
   data.projects = [
     {
       'id': '30000007',
-      'projectName': 'Client 30000001 Billing Account 3 Web API Project 1',
+      'name': 'Client 30000001 Billing Account 3 Web API Project 1',
       'projectStatusId': 3,
       'projectStatusName': 'Cancelled',
-      'projectCreatedDate': '12/25/2014 07:12',
-      'projectCreatedBy': 132458,
-      'projectLastUpdatedDate': '12/27/2014 01:18',
+      'createdAt': '12/25/2014 07:12',
+      'updatedAt': '12/25/2014 07:12',
+      'createdBy': 132458,
+      'updatedBy': 132458,
+      'type': 'design',
+      'description': 'Lorem ipsum',
+      'website': 'http://example.com',
+      'styleMinimalComplex': 3,
+      'styleModernClassic': 3,
+      'stylePlayfulSerious': 3,
+      'styleLoudSubtle': 3,
+      'styleLuxuryBudget': 3,
+      'styleIdeas': 'I have several ideas',
+      'screens': 6,
+      'duration': 15,
+      'links': ['http://example.com/pic.jpg', 'http://example.com/pic2.jpg'],
+      'additionalDetails': 'here are more details',
+      'files': [],
       'billings': [
         {
           'id': '30000003',
           'name': 'Client 30000001 Secret Billing Account 3'
         }
       ]
-    },
-    {
-      'id': '30000001',
-      'projectName': 'Client 30000001 Billing Account 1 Web Application Project 1',
-      'projectStatusId': 2,
-      'projectStatusName': 'Inactive',
-      'projectCreatedDate': '12/31/2014 01:12',
-      'projectCreatedBy': 132458,
-      'projectLastUpdatedDate': '12/31/2014 07:18',
-      'billings': [
-        {
-          'id': '30000001',
-          'name': 'Client 30000001 Major Billing Account 1'
-        },
-        {
-          'id': '30000002',
-          'name': 'Client 30000001 Minor Billing Account 2'
-        },
-        {
-          'id': '30000003',
-          'name': 'Client 30000001 Secret Billing Account 3'
-        }
-      ]
-    }
+    }//,
+//    {
+//      'id': '30000001',
+//      'name': 'Client 30000001 Billing Account 1 Web Application Project 1',
+//      'projectStatusId': 2,
+//      'projectStatusName': 'Inactive',
+//      'createdAt': '12/31/2014 01:12',
+//      'updatedAt': '12/31/2014 01:12',
+//      'createdBy': 132458,
+//      'updatedBy': 132458,
+//      'billings': [
+//        {
+//          'id': '30000001',
+//          'name': 'Client 30000001 Major Billing Account 1'
+//        },
+//        {
+//          'id': '30000002',
+//          'name': 'Client 30000001 Minor Billing Account 2'
+//        },
+//        {
+//          'id': '30000003',
+//          'name': 'Client 30000001 Secret Billing Account 3'
+//        }
+//      ]
+//    }
   ];
 
   return ans;
