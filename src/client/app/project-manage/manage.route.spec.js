@@ -18,7 +18,7 @@ describe('project routes', function () {
     });
 
     it('should map /projects route to projects List template', function () {
-      expect($state.get('projects').templateUrl).to.equal(list);
+      expect($state.get('multiple').templateUrl).to.equal(list);
     });
 
     it('of projects should work with $state.go', function () {

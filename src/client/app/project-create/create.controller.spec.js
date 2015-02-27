@@ -29,5 +29,12 @@ describe('ProjectCreateController', function () {
       });
 
     });
+
+    describe('project object', function() {
+      it('should exist', function() {
+        expect(controller.newProject).to.be.a('object');
+      });
+
+    });
   });
 });
