@@ -2,7 +2,7 @@
 describe('create routes', function () {
   describe('state', function () {
     var controller;
-    var list = 'app/project-create/create.html';
+    var list = 'app/project/create/create.html';
 
     beforeEach(function () {
       module('app.project-create', bard.fakeToastr);

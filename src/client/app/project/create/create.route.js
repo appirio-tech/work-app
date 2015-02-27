@@ -17,7 +17,7 @@
         state: 'create',
         config: {
           url: '/create',
-          templateUrl: 'app/project-create/create.html',
+          templateUrl: 'app/project/create/create.html',
           controller: 'ProjectCreateController',
           controllerAs: 'vm',
           title: 'ProjectCreate',
@@ -31,7 +31,7 @@
         state: 'home',
         config: {
           url: '/',
-          templateUrl: 'app/project-create/home.html',
+          templateUrl: 'app/project/create/home.html',
           controller: 'ProjectHomeController',
           controllerAs: 'vm',
           title: 'Home',
