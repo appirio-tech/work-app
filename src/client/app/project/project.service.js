@@ -2,20 +2,18 @@
   'use strict';
 
   angular
-    .module('app.core')
-    .factory('dataservice', dataservice);
+    .module('app.project')
+    .factory('ProjectService', ProjectService);
 
-  dataservice.$inject = ['$q'];
+  ProjectService.$inject = ['$q'];
   /* @ngInject */
-  function dataservice($q) {
-    var service = {
+  function ProjectService($q) {
+    return {
       getPeople: getPeople,
       getMessageCount: getMessageCount,
       getProjects: getProjects,
       createProject: createProject
     };
-
-    return service;
 
     function getMessageCount() {
       return $q.when(72);
