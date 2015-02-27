@@ -5,7 +5,6 @@
     'app.core',
     'app.widgets',
     'app.admin',
-    'app.dashboard',
     'app.layout',
     'app.project-manage',
     'app.project-create'

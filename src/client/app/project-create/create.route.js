@@ -26,6 +26,18 @@
             content: '<i class="fa fa-lock"></i> Project Create'
           }
         }
+      },
+      {
+        state: 'home',
+        config: {
+          url: '/',
+          templateUrl: 'app/project-create/home.html',
+          controller: 'ProjectHomeController',
+          controllerAs: 'vm',
+          title: 'Home',
+          settings: {
+          }
+        }
       }
     ];
   }
