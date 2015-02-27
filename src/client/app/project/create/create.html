@@ -140,7 +140,7 @@
                 How soon do you need it?
               </td>
               <td>
-                <select name="duration" ng-model="duration">
+                <select name="duration" ng-model="vm.duration">
                   <option ng-value="5" selected>5 days</option>
                   <option ng-value="10">10 days</option>
                   <option ng-value="15">15 days</option>
@@ -149,6 +149,42 @@
                   <option ng-value="30">30 days</option>
                   <option ng-value="0">Decide later</option>
                 </select>
+              </td>
+            </tr>
+          </table>
+          <h3>Other</h3>
+          <table class="table">
+            <tr>
+              <td>Additional links</td>
+              <td>
+                <ul>
+                  <li ng-repeat="link in vm.newProject.links">
+                    {{link}}
+                  </li>
+                </ul>
+                <input type="text" ng-model="vm.newUrl" />
+                <a ng-click="vm.addUrl()">+</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Documents
+              </td>
+              <td>
+                <ul>
+                  <li ng-repeat="file in vm.newProject.files">
+                    {{file}}
+                  </li>
+                <input type="text" ng-model="vm.newFile" />
+                <a ng-click="vm.addFile()">+</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Additional Details
+              </td>
+              <td>
+                <textarea name="additionalDetails" ng-model="vm.newProject.additionalDetails" />
               </td>
             </tr>
           </table>
