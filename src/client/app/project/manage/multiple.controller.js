@@ -5,9 +5,9 @@
     .module('app.project.manage')
     .controller('MultipleProjectController', MultipleProjectController);
 
-  MultipleProjectController.$inject = ['logger', 'dataservice'];
+  MultipleProjectController.$inject = ['logger', 'ProjectService'];
   /* @ngInject */
-  function MultipleProjectController(logger, dataservice) {
+  function MultipleProjectController(logger, ProjectService) {
     var vm = this;
     vm.title = 'Projects';
 
@@ -15,7 +15,7 @@
 
     function activate() {
       logger.info('Activated Projects View');
-      dataservice.getProjects().then(function(data)  {
+      ProjectService.getProjects().then(function(data) {
         vm.projects = data;
       });
     }

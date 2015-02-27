@@ -5,9 +5,9 @@
     .module('app.project.manage')
     .controller('SingleProjectController', SingleProjectController);
 
-  SingleProjectController.$inject = ['logger', 'dataservice', '$routeParams'];
+  SingleProjectController.$inject = ['logger', 'ProjectService', '$routeParams'];
   /* @ngInject */
-  function SingleProjectController(logger, dataservice) {
+  function SingleProjectController(logger, ProjectService, $routeParams) {
     var vm = this;
     vm.title = 'Manage';
 
@@ -15,7 +15,7 @@
 
     function activate() {
       logger.info('Activated Single Project View');
-      dataservice.getProject($routeParams.id).then(function(data) {
+      ProjectService.getProject($routeParams.id).then(function(data) {
         vm.project = data;
       });
     }
