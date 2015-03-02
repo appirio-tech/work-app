@@ -17,8 +17,18 @@ var glo;
     vm.addUrl = addUrl;
     vm.newFile = '';
     vm.addFile = addFile;
+    vm.createProject = createProject;
+    vm.getProjects = getProjects;
 
     activate();
+
+    function createProject() {
+      return ProjectService.createProject(vm.newProject);
+    }
+
+    function getProjects() {
+      return ProjectService.getProjects();
+    }
 
     function newProject() {
       return {

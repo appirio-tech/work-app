@@ -60,8 +60,18 @@
       var projectsResponse = response;
       projectsResponse.content = projects;
 
+      var projectsPostResponse = {
+        result: {success: true, status: 200}
+      };
+
       // projects
       $httpBackend.whenGET('/api/v3/projects').respond(projectsResponse);
+      $httpBackend.whenPOST('/api/v3/projects', function(data) {
+        console.log('project POST');
+        console.log(data);
+        projects.push(JSON.parse(data));
+        return true;
+      }).respond(projectsPostResponse);
 
 
       // @TODO needs a better way to catch passthroughs

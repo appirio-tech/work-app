@@ -3,10 +3,6 @@
     <div class="container">
       <div class="row">
         <div class="widget wviolet">
-          <div ht-widget-header title="{{vm.title}}"></div>
-          <div class="widget-foot">
-            <div class="clearfix"></div>
-          </div>
           <h3>Background Information</h3>
           <table class="table">
             <tr>
@@ -191,5 +187,7 @@
         </div>
       </div>
     </div>
+    <button class="btn" ng-click="vm.createProject()">Create Project</button>
+    <button class="btn" ng-click="vm.getProjects()">Get Projects</button>
   </section>
 </section>

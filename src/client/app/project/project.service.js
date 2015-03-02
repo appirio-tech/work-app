@@ -50,8 +50,20 @@
       project.projectCreatedDate = moment().format('MM/DD/YYYY hh:mm');
       project.projectLastUpdatedDate = project.projectCreatedDate;
       project.billings = [];
-      mockData.addMockProject(project);
-      return $q.when(true);
+      return $http.post('/api/v3/projects', project)
+        .then(postProjectReport)
+        .catch(function(message) {
+          exception.catcher('XHR Failed for createProject')(message);
+          $location.url('/');
+        });
+
+      function postProjectReport(data, status, headers, config) {
+        logger.info('project data', data.data.content);
+        return data;
+      }
+
+      //mockData.addMockProject(project);
+      //return $q.when(true);
     }
 
   }
