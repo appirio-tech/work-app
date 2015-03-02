@@ -42,7 +42,7 @@
 
       function getProjectsComplete(data, status, headers, config) {
         logger.info('project data', data.data.content);
-        return data;
+        return data.data.content;
       }
     }
 
