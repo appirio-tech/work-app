@@ -41,7 +41,7 @@
         });
 
       function getProjectsComplete(data, status, headers, config) {
-        logger.info('project data', data);
+        logger.info('project data', data.data.content);
         return data;
       }
     }

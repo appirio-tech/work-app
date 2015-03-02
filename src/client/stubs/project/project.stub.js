@@ -6,8 +6,7 @@
   ])
     .run(function ($httpBackend) {
 
-      var data = {id:0};
-      data.projects = [
+      var projects = [
         {
           'id': '30000007',
           'name': 'Client 30000001 Billing Account 3 Web API Project 1',
@@ -40,7 +39,7 @@
         }
       ];
 
-      data.people = [
+      var people = [
         {firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida'},
         {firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California'},
         {firstName: 'Colleen', lastName: 'Jones', age: 21, location: 'New York'},
@@ -59,21 +58,18 @@
       };
 
       var projectsResponse = response;
-      projectsResponse.content = data.projects;
+      projectsResponse.content = projects;
 
       // projects
       $httpBackend.whenGET('/api/v3/projects').respond(projectsResponse);
 
-      var projectsPOSTResponse = response;
-      projectsPOSTResponse.id = 2;
-      $httpBackend.whenPOST('/api/v3/projects').respond(projectsPOSTResponse);
 
-
-      var projectResponse = response;
-      projectResponse.content = data.projects[0];
-
-      // project/{id}
-      $httpBackend.whenGET('/api/v3/projects/*').respond(projectResponse);
+      // @TODO needs a better way to catch passthroughs
+      $httpBackend.whenGET('app/layout/shell.html').passThrough();
+      $httpBackend.whenGET('app/project/manage/multiple.html').passThrough();
+      $httpBackend.whenGET('app/layout/ht-top-nav.html').passThrough();
+      $httpBackend.whenGET('app/widgets/widget-header.html').passThrough();
+      $httpBackend.whenGET('app/core/404.html').passThrough();
     })
-});
+})();
 
