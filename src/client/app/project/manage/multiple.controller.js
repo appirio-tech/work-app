@@ -9,7 +9,7 @@
   /* @ngInject */
   function MultipleProjectController(logger, ProjectService) {
     var vm = this;
-    vm.title = 'Projects';
+    vm.title = 'Manage your projects';
 
     activate();
 

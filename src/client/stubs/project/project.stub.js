@@ -9,7 +9,7 @@
       var projects = [
         {
           'id': '30000007',
-          'name': 'Client 30000001 Billing Account 3 Web API Project 1',
+          'name': 'Billing Account 3 Web API Project 1',
           'projectStatusId': 3,
           'projectStatusName': 'Cancelled',
           'createdAt': '12/25/2014 07:12',
@@ -29,6 +29,7 @@
           'duration': 15,
           'links': ['http://example.com/pic.jpg', 'http://example.com/pic2.jpg'],
           'additionalDetails': 'here are more details',
+          'status': 'Project submitted',
           'files': [],
           'billings': [
             {
