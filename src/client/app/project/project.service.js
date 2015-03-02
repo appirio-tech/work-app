@@ -5,9 +5,9 @@
     .module('app.project.core')
     .factory('ProjectService', ProjectService);
 
-  ProjectService.$inject = ['$q'];
+  ProjectService.$inject = ['$q', '$http', '$location', 'exception', 'logger'];
   /* @ngInject */
-  function ProjectService($q) {
+  function ProjectService($q, $http, $location, exception, logger) {
     return {
       getPeople: getPeople,
       getMessageCount: getMessageCount,
@@ -33,8 +33,17 @@
     }
 
     function getProjects() {
-      var p = mockData.getMockProjects();
-      return $q.when(p);
+      return $http.get('/api/v3/projects')
+        .then(getProjectsComplete)
+        .catch(function(message) {
+          exception.catcher('XHR Failed for getProjects')(message);
+          $location.url('/');
+        });
+
+      function getProjectsComplete(data, status, headers, config) {
+        logger.info('project data', data);
+        return data;
+      }
     }
 
     function createProject(project) {
