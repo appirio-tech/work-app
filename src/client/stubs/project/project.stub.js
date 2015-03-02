@@ -65,11 +65,7 @@
 
 
       // @TODO needs a better way to catch passthroughs
-      $httpBackend.whenGET('app/layout/shell.html').passThrough();
-      $httpBackend.whenGET('app/project/manage/multiple.html').passThrough();
-      $httpBackend.whenGET('app/layout/ht-top-nav.html').passThrough();
-      $httpBackend.whenGET('app/widgets/widget-header.html').passThrough();
-      $httpBackend.whenGET('app/core/404.html').passThrough();
+      $httpBackend.whenGET(/.+\.html?/).passThrough();
     })
 })();
 
