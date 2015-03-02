@@ -1,6 +1,8 @@
 # IDE files
 .idea
 
+.sass-cache
+
 # Logs
 logs
 *.log
