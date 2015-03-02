@@ -1,3 +1,4 @@
+var glo;
 (function () {
   'use strict';
 
@@ -10,10 +11,31 @@
   function ProjectCreateController(logger, ProjectService) {
     var vm = this;
     vm.title = 'Create';
-    vm.newProject = {};
+    vm.newProject = glo = newProject();
     vm.create = create;
+    vm.newUrl = '';
+    vm.addUrl = addUrl;
+    vm.newFile = '';
+    vm.addFile = addFile;
 
     activate();
+
+    function newProject() {
+      return {
+        links: [],
+        files: []
+      };
+    }
+
+    function addUrl() {
+      vm.newProject.links.push(vm.newUrl);
+      vm.newUrl = '';
+    }
+
+    function addFile() {
+      vm.newProject.files.push(vm.newFile);
+      vm.newFile = '';
+    }
 
     function create(project) {
       ProjectService.createProject(project);
