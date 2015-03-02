@@ -1,10 +1,9 @@
-- app_scripts = ["app.module",
+- app_scripts = ["core/app_module",
   "admin/admin.module",
   "blocks/exception/exception.module",
   "blocks/logger/logger.module",
   "blocks/router/router.module",
   "core/core.module",
-  "layout/layout.module",
   "project/project.module",
   "project/create/create.module",
   "project/manage/manage.module",
@@ -18,10 +17,11 @@
   "core/config",
   "core/constants",
   "core/core.route",
-  "layout/ht-sidebar.directive",
-  "layout/ht-top-nav.directive",
-  "layout/shell.controller",
-  "layout/sidebar.controller",
+  "layout/scripts/layout_module",
+  "layout/scripts/directives/ht_sidebar_dir",
+  "layout/scripts/directives/ht_top_nav_dir",
+  "layout/scripts/controllers/shell_ctrl",
+  "layout/scripts/controllers/sidebar_ctrl",
   "project/project.service",
   "project/create/create.controller",
   "project/create/create.route",
@@ -39,9 +39,10 @@
   "extras.angular.plus/ngplus-overlay",
   "moment/moment",
   "angular-ui-router/release/angular-ui-router",
-  "angular-animate/angular-animate"]
+  "angular-animate/angular-animate",
+  "toastr/toastr"]
 
-- css = [:main]
+- css = ["layout/styles/main"]
 
 <!doctype html>
 %html{"ng-app" => "app"}
@@ -66,13 +67,13 @@
     <!-- build:css styles/lib.css -->
     <!-- bower:css -->
     - css.each do |path|
-      %link{ href: "styles/#{path}.css", rel: "stylesheet" }/
+      %link{ href: "#{path}.css", rel: "stylesheet" }/
     <!-- endbower -->
     <!-- endbuild -->
 
 %body
   %div
-    %div{ "ng-include" => "'app/layout/shell.html'" }
+    %div{ "ng-include" => "'layout/views/shell.html'" }
 
     #plash-page{ "ng-show" => "false" }
       .page-splash
@@ -92,7 +93,7 @@
   <!-- build:js js/app.js-->
   <!-- inject:js -->
   - app_scripts.each do |js|
-    %script{ src: "app/#{js}.js", type: "text/javascript" }
+    %script{ src: "#{js}.js", type: "text/javascript" }
   <!-- endinject -->
 
   <!-- inject:templates:js -->

@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
   // Configurable paths for the application
   var appConfig = {
-    app: 'src/client',
+    app: 'src/client/app',
     dist: 'dist',
     cdnPath: 's3.amazonaws.com'
   };
@@ -39,12 +39,16 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       coffee: {
-        files: ['<%= yeoman.app %>/scripts/**/*.coffee'],
+        files: ['<%= yeoman.app %>/**/*.coffee'],
         tasks: ['newer:coffee:dist']
       },
       coffeeTest: {
         files: ['test/spec/**/*.coffee'],
         tasks: ['newer:coffee:test', 'karma:unit']
+      },
+      compass: {
+        files: ['<%= yeoman.app %>/**/*.{scss,sass}'],
+        tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -76,7 +80,7 @@ module.exports = function (grunt) {
             return [
               require('grunt-connect-proxy/lib/utils').proxyRequest,
               require('connect-modrewrite')([
-                '!app/*|bower_components/*|spec/*|test/*|styles/*|locales/*|views/*|images/*|fonts/*|\\.ico$|\\.html$ /index.html [L]'
+                '!admin/*|bower_components/*|blocks/*|core/*|layout/*|project/*|widgets/*|images/*|fonts/*|\\.ico$|\\.html$ /index.html [L]'
               ]),
               connect.static('.tmp'),
               connect().use(
@@ -172,7 +176,7 @@ module.exports = function (grunt) {
         ignorePath:  /\.\.\//
       },
       sass: {
-        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        src: ['<%= yeoman.app %>/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
@@ -218,6 +222,38 @@ module.exports = function (grunt) {
             ext: '.html'
           }
         ]
+      }
+    },
+
+    // Compiles Sass to CSS and generates necessary files if requested
+    compass: {
+      options: {
+        sassDir: '<%= yeoman.app %>',
+        cssDir: '.tmp',
+        generatedImagesDir: '.tmp/images/generated',
+        imagesDir: '<%= yeoman.app %>/images',
+        javascriptsDir: '<%= yeoman.app %>/scripts',
+        fontsDir: '<%= yeoman.app %>/fonts',
+        importPath: './bower_components',
+        relativeAssets: false,
+        assetCacheBuster: false,
+        raw: 'Sass::Script::Number.precision = 10\n'
+      },
+      dist: {
+        options: {
+          generatedImagesDir: '<%= yeoman.dist %>/images/generated',
+          httpImagesPath: '/images',
+          httpFontsPath: '/fonts',
+          httpGeneratedImagesPath: '/images/generated',
+        }
+      },
+      server: {
+        options: {
+          debugInfo: true,
+          httpImagesPath: '/images',
+          httpGeneratedImagesPath: '/images/generated',
+          httpFontsPath: '/fonts',
+        }
       }
     },
 
@@ -401,14 +437,17 @@ module.exports = function (grunt) {
       server: [
         'coffee:dist',
         'haml:dist',
+        'compass:server'
       ],
       test: [
         'coffee',
         'haml',
+        'compass'
       ],
       dist: [
         'coffee',
         'haml:dist',
+        'compass:dist',
         'imagemin',
         'svgmin'
       ]
