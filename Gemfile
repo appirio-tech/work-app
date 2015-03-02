@@ -5,5 +5,4 @@ source 'https://rubygems.org'
 group :assets do
   gem 'compass'
   gem 'haml'
-  gem 'bourbon'
 end
