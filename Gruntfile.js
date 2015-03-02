@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
   // Configurable paths for the application
   var appConfig = {
-    app: 'src/client/app',
+    app: 'src/client',
     dist: 'dist',
     cdnPath: 's3.amazonaws.com'
   };
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9005,
+        port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: '0.0.0.0',
         livereload: 35730
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
             return [
               require('grunt-connect-proxy/lib/utils').proxyRequest,
               require('connect-modrewrite')([
-                '!scripts/*|bower_components/*|spec/*|test/*|styles/*|locales/*|views/*|images/*|fonts/*|\\.ico$|\\.html$ /index.html [L]'
+                '!app/*|bower_components/*|spec/*|test/*|styles/*|locales/*|views/*|images/*|fonts/*|\\.ico$|\\.html$ /index.html [L]'
               ]),
               connect.static('.tmp'),
               connect().use(

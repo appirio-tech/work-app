@@ -1,0 +1,101 @@
+- app_scripts = ["app.module",
+  "admin/admin.module",
+  "blocks/exception/exception.module",
+  "blocks/logger/logger.module",
+  "blocks/router/router.module",
+  "core/core.module",
+  "layout/layout.module",
+  "project/project.module",
+  "project/create/create.module",
+  "project/manage/manage.module",
+  "widgets/widgets.module",
+  "admin/admin.controller",
+  "admin/admin.route",
+  "blocks/exception/exception-handler.provider",
+  "blocks/exception/exception",
+  "blocks/logger/logger",
+  "blocks/router/router-helper.provider",
+  "core/config",
+  "core/constants",
+  "core/core.route",
+  "layout/ht-sidebar.directive",
+  "layout/ht-top-nav.directive",
+  "layout/shell.controller",
+  "layout/sidebar.controller",
+  "project/project.service",
+  "project/create/create.controller",
+  "project/create/create.route",
+  "project/create/home.controller",
+  "project/manage/manage.route",
+  "project/manage/multiple.controller",
+  "project/manage/single.controller",
+  "widgets/ht-img-person.directive",
+  "widgets/ht-widget-header.directive"]
+
+- bowers = ["jquery/dist/jquery",
+  "angular/angular",
+  "angular-sanitize/angular-sanitize",
+  "bootstrap/dist/js/bootstrap",
+  "extras.angular.plus/ngplus-overlay",
+  "moment/moment",
+  "angular-ui-router/release/angular-ui-router",
+  "angular-animate/angular-animate"]
+
+- css = [:main]
+
+<!doctype html>
+%html{"ng-app" => "app"}
+  %head
+    :css
+      /* This helps the ng-show/ng-hide animations start at the right place. */
+      /* Since Angular has this but needs to load, this gives us the class early. */
+      .ng-hide {
+        display: none !important;
+      }
+    .title{ "ng-bind" => "title" }
+      selfService
+
+    %meta{ charset: "utf-8" }
+
+    %meta{ "http-equiv" => "X-UA-Compatible", content: "IE=edge, chrome=1" }
+
+    %meta{ name:"viewport", content:"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" }
+
+    %base{ href: "/" }
+
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    - css.each do |path|
+      %link{ href: "styles/#{path}.css", rel: "stylesheet" }/
+    <!-- endbower -->
+    <!-- endbuild -->
+
+%body
+  %div
+    %div{ "ng-include" => "'app/layout/shell.html'" }
+
+    #plash-page{ "ng-show" => "false" }
+      .page-splash
+        .page-splash-message
+          selfService
+
+        .progress.progress-striped.active.page-progress-bar
+          .bar
+
+  <!-- build:js js/lib.js -->
+  <!-- bower:js -->
+  - bowers.each do |js|
+    %script{ src: "bower_components/#{js}.js", type: "text/javascript"  }
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js js/app.js-->
+  <!-- inject:js -->
+  - app_scripts.each do |js|
+    %script{ src: "app/#{js}.js", type: "text/javascript" }
+  <!-- endinject -->
+
+  <!-- inject:templates:js -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
