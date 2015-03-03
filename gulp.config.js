@@ -44,6 +44,7 @@ module.exports = function () {
       '**/*.js'
     ],
     less: client + 'styles/styles.less',
+    jade: clientApp + '**/*.jade',
     report: report,
     root: root,
     server: server,

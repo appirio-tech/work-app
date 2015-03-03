@@ -4,5 +4,4 @@ source 'https://rubygems.org'
 # in production environments by default.
 group :assets do
   gem 'compass'
-  gem 'haml'
 end

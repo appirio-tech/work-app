@@ -5,6 +5,8 @@ var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
 var path = require('path');
+var coffee = require('gulp-coffee');
+var jade = require('gulp-jade');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
@@ -45,6 +47,15 @@ gulp.task('vet', function () {
     .pipe($.jscs());
 });
 
+gulp.task('coffee', function () {
+  log('Convert coffee to JS');
+
+  return gulp
+    .src(config.alljs)
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest(config.temp));
+});
+
 /**
  * Create a visualizer report
  */
@@ -69,6 +80,16 @@ gulp.task('styles', ['clean-styles'], function () {
 //        .on('error', errorLogger) // more verbose and dupe output. requires emit.
     .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
     .pipe(gulp.dest(config.temp));
+});
+
+gulp.task('process-jade', function() {
+  var YOUR_LOCALS = {};
+
+  gulp.src(config.jade)
+    .pipe(jade({
+      locals: YOUR_LOCALS
+    }))
+    .pipe(gulp.dest(config.temp))
 });
 
 /**
@@ -494,6 +515,8 @@ function startBrowserSync(isDev, specRunner) {
   if (isDev) {
     gulp.watch([config.less], ['styles'])
       .on('change', changeEvent);
+
+    gulp.watch([config.jade], ['process-jade']).on('change', changeEvent);
   } else {
     gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
       .on('change', changeEvent);
