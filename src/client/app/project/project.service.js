@@ -5,44 +5,75 @@
     .module('app.project.core')
     .factory('ProjectService', ProjectService);
 
-  ProjectService.$inject = ['$q'];
+  ProjectService.$inject = ['$q', '$http', '$location', 'exception', 'logger'];
   /* @ngInject */
-  function ProjectService($q) {
-    return {
-      getPeople: getPeople,
-      getMessageCount: getMessageCount,
+  function ProjectService($q, $http, $location, exception, logger) {
+    var ob = {
+      getProject: getProject,
       getProjects: getProjects,
-      createProject: createProject
+      createProject: createProject,
+      getCurrent: getCurrent,
+      setCurrent: setCurrent
     };
+    return ob;
 
-    function getMessageCount() {
-      return $q.when(72);
+    function getCurrent() {
+      return ob.current || {
+        links: [],
+        files: []
+      };
     }
 
-    function getPeople() {
-      var people = [
-        {firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida'},
-        {firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California'},
-        {firstName: 'Colleen', lastName: 'Jones', age: 21, location: 'New York'},
-        {firstName: 'Madelyn', lastName: 'Green', age: 18, location: 'North Dakota'},
-        {firstName: 'Ella', lastName: 'Jobs', age: 18, location: 'South Dakota'},
-        {firstName: 'Landon', lastName: 'Gates', age: 11, location: 'South Carolina'},
-        {firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming'}
-      ];
-      return $q.when(people);
+    function setCurrent(project) {
+      return ob.current = project;
+    }
+
+    function getProject(id) {
+      return $http.get('/api/v3/projects/' + id)
+        .then(getProjectComplete)
+        .catch(function(message) {
+          exception.catcher('XHR Failed for getProject')(message);
+          $location.url('/');
+        });
+
+      function getProjectComplete(data, status, headers, config) {
+        logger.info('project data', data);
+        return data.data.content;
+      }
     }
 
     function getProjects() {
-      var p = mockData.getMockProjects();
-      return $q.when(p);
+      return $http.get('/api/v3/projects')
+        .then(getProjectsComplete)
+        .catch(function(message) {
+          exception.catcher('XHR Failed for getProjects')(message);
+          $location.url('/');
+        });
+
+      function getProjectsComplete(data, status, headers, config) {
+        logger.info('project data', data.data.content);
+        return data.data.content;
+      }
     }
 
     function createProject(project) {
       project.projectCreatedDate = moment().format('MM/DD/YYYY hh:mm');
       project.projectLastUpdatedDate = project.projectCreatedDate;
       project.billings = [];
-      mockData.addMockProject(project);
-      return $q.when(true);
+      return $http.post('/api/v3/projects', project)
+        .then(postProjectReport)
+        .catch(function(message) {
+          exception.catcher('XHR Failed for createProject')(message);
+          $location.url('/');
+        });
+
+      function postProjectReport(data, status, headers, config) {
+        logger.info('project data', data.data.content);
+        return data;
+      }
+
+      //mockData.addMockProject(project);
+      //return $q.when(true);
     }
 
   }

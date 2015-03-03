@@ -39,6 +39,7 @@ module.exports = function () {
       '!' + clientApp + '**/*.spec.js'
     ],
     jsOrder: [
+      '**/*stub.js',
       '**/app.module.js',
       '**/*.module.js',
       '**/*.js'

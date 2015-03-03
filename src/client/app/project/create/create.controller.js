@@ -11,20 +11,23 @@ var glo;
   function ProjectCreateController(logger, ProjectService) {
     var vm = this;
     vm.title = 'Create';
-    vm.newProject = glo = newProject();
-    vm.create = create;
+    vm.newProject = ProjectService.getCurrent();
+    vm.next = next;
     vm.newUrl = '';
     vm.addUrl = addUrl;
     vm.newFile = '';
     vm.addFile = addFile;
+    vm.createProject = createProject;
+    vm.getProjects = getProjects;
 
     activate();
 
-    function newProject() {
-      return {
-        links: [],
-        files: []
-      };
+    function createProject() {
+      return ProjectService.createProject(vm.newProject);
+    }
+
+    function getProjects() {
+      return ProjectService.getProjects();
     }
 
     function addUrl() {
@@ -37,9 +40,8 @@ var glo;
       vm.newFile = '';
     }
 
-    function create(project) {
-      ProjectService.createProject(project);
-      vm.newProject = {};
+    function next() {
+      ProjectService.setCurrent(vm.newProject);
     }
 
     function activate() {

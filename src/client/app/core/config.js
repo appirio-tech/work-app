@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[seldService Error] ',
-    appTitle: 'seldService'
+    appErrorPrefix: '[Appiro Work Platform Error] ',
+    appTitle: 'Appiro Work Platform'
   };
 
   core.value('config', config);
