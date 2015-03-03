@@ -15,18 +15,14 @@ GEM
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     ffi (1.9.6)
-    haml (4.0.6)
-      tilt
     multi_json (1.10.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     sass (3.4.13)
-    tilt (2.0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   compass
-  haml

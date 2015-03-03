@@ -7,6 +7,7 @@ var gulp = require('gulp');
 var path = require('path');
 var coffee = require('gulp-coffee');
 var jade = require('gulp-jade');
+var compass = require('gulp-compass');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
@@ -90,6 +91,12 @@ gulp.task('process-jade', function() {
       locals: YOUR_LOCALS
     }))
     .pipe(gulp.dest(config.temp))
+});
+
+gulp.task('process-scss', function() {
+  gulp.src(config.scss)
+    .pipe(compass(config.compass))
+    .pipe(gulp.dest(config.temp));
 });
 
 /**
@@ -517,6 +524,7 @@ function startBrowserSync(isDev, specRunner) {
       .on('change', changeEvent);
 
     gulp.watch([config.jade], ['process-jade']).on('change', changeEvent);
+    gulp.watch([config.scss], ['process-scss']).on('change', changeEvent);
   } else {
     gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
       .on('change', changeEvent);

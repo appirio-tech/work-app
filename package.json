@@ -55,6 +55,7 @@
     "gulp-bump": "^0.1.11",
     "gulp-bytediff": "^0.2.0",
     "gulp-coffee": "^2.3.1",
+    "gulp-compass": "^2.0.3",
     "gulp-concat": "^2.3.3",
     "gulp-csso": "^0.2.9",
     "gulp-filter": "^1.0.2",

@@ -44,6 +44,11 @@ module.exports = function () {
       '**/*.js'
     ],
     less: client + 'styles/styles.less',
+    scss: clientApp + '**/*.scss',
+    compass: {
+      css: temp,
+      sass: clientApp.replace('./', '')
+    },
     jade: clientApp + '**/*.jade',
     report: report,
     root: root,
