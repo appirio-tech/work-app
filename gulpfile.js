@@ -151,7 +151,7 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'templatecache'], function () {
+gulp.task('inject', ['wiredep', 'templatecache', "process-coffee", "process-jade", "process-scss"], function () {
   log('Wire up css into the html, after files are ready');
 
   return gulp
