@@ -38,6 +38,17 @@
           settings: {
           }
         }
+      },
+      {
+        state: 'submit',
+        config: {
+          url: '/create/submit',
+          templateUrl: 'app/project/create/submit/submit.html',
+          controller: 'ProjectSubmitController',
+          controllerAs: 'vm',
+          title: 'Submit',
+          settings: {}
+        }
       }
     ];
   }
