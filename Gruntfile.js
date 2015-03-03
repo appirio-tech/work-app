@@ -19,7 +19,8 @@ module.exports = function (grunt) {
   var appConfig = {
     app: 'src/client/app',
     dist: 'dist',
-    cdnPath: 's3.amazonaws.com'
+    cdnPath: 's3.amazonaws.com',
+    tmp: '.tmp'
   };
 
   // Define the configuration for all the tasks
@@ -152,6 +153,21 @@ module.exports = function (grunt) {
         }]
       },
       server: '.tmp'
+    },
+
+        // Add vendor prefixed styles
+    autoprefixer: {
+      options: {
+        browsers: ['last 1 version']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.tmp %>',
+          src: '{,*/}*.css',
+          dest: '<%= yeoman.tmp %>'
+        }]
+      }
     },
 
     includes: {
@@ -478,6 +494,7 @@ module.exports = function (grunt) {
       'includes',
       'wiredep',
       'configureProxies:server',
+      'autoprefixer',
       'connect:livereload',
       'watch'
     ]);
@@ -491,6 +508,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
+    'autoprefixer',
     'connect:test',
     'karma:unit'
   ]);
@@ -501,6 +519,7 @@ module.exports = function (grunt) {
     'includes',
     'wiredep',
     'useminPrepare',
+    'autoprefixer',
     'concat',
     'copy:dist',
     'cssmin',
@@ -509,23 +528,6 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin',
     'string-replace:cdnify',
-    'clean:server',
-    'concurrent:server'
-  ]);
-
-  grunt.registerTask('develop', [
-    'clean:dist',
-    'concurrent:dist',
-    'includes',
-    'wiredep',
-    'useminPrepare',
-    'concat',
-    'copy:dist',
-    'cssmin',
-    'uglify',
-    'filerev',
-    'usemin',
-    'htmlmin',
     'clean:server',
     'concurrent:server'
   ]);
