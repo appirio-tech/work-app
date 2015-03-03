@@ -40,17 +40,6 @@
         }
       ];
 
-      var people = [
-        {firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida'},
-        {firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California'},
-        {firstName: 'Colleen', lastName: 'Jones', age: 21, location: 'New York'},
-        {firstName: 'Madelyn', lastName: 'Green', age: 18, location: 'North Dakota'},
-        {firstName: 'Ella', lastName: 'Jobs', age: 18, location: 'South Dakota'},
-        {firstName: 'Landon', lastName: 'Gates', age: 11, location: 'South Carolina'},
-        {firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming'}
-      ];
-
-
       var response = {
         result: {
           success: true,
@@ -73,6 +62,11 @@
         projects.push(JSON.parse(data));
         return true;
       }).respond(projectsPostResponse);
+
+      var projectResponse = response;
+      projectResponse.content = projects[0];
+
+      $httpBackend.whenGET('/api/v3/projects/30000007').respond(projectResponse);
 
 
       // @TODO needs a better way to catch passthroughs

@@ -30,7 +30,7 @@
       {
         state: 'single',
         config: {
-          url: '/projects/:id',
+          url: '/projects/:projectId',
           templateUrl: 'app/project/manage/single.html',
           controller: 'SingleProjectController',
           controllerAs: 'vm',
@@ -38,6 +38,11 @@
           settings: {
             nav: 3,
             content: '<i class="fa fa-lock"></i> Project'
+          },
+          resolve: {
+            projectData: function(ProjectService, $stateParams) {
+              return ProjectService.getProject($stateParams.projectId);
+            }
           }
         }
       }
