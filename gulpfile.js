@@ -58,21 +58,6 @@ gulp.task('plato', function (done) {
   startPlatoVisualizer(done);
 });
 
-/**
- * Compile less to css
- * @return {Stream}
- */
-gulp.task('styles', ['clean-styles'], function () {
-  log('Compiling Less --> CSS');
-
-  return gulp
-    .src(config.less)
-    .pipe($.plumber()) // exit gracefully if something fails after this
-    .pipe($.less())
-//        .on('error', errorLogger) // more verbose and dupe output. requires emit.
-    .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
-    .pipe(gulp.dest(config.temp));
-});
 
 gulp.task('process-jade', function() {
   log('Convert jade to HTML');
@@ -127,10 +112,6 @@ gulp.task('images', ['clean-images'], function () {
     .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('less-watcher', function () {
-  gulp.watch([config.less], ['styles']);
-});
-
 /**
  * Create $templateCache from the html templates
  * @return {Stream}
@@ -170,7 +151,7 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
+gulp.task('inject', ['wiredep', 'templatecache'], function () {
   log('Wire up css into the html, after files are ready');
 
   return gulp
@@ -521,16 +502,12 @@ function startBrowserSync(isDev, specRunner) {
   log('Starting BrowserSync on port ' + port);
 
   // If build: watches the files, builds, and restarts browser-sync.
-  // If dev: watches less, compiles it to css, browser-sync handles reload
   if (isDev) {
-    gulp.watch([config.less], ['styles'])
-      .on('change', changeEvent);
-
     gulp.watch([config.jade], ['process-jade']).on('change', changeEvent);
     gulp.watch([config.scss], ['process-scss']).on('change', changeEvent);
     gulp.watch([config.coffee], ['process-coffee']).on('change', changeEvent);
   } else {
-    gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
+    gulp.watch([config.js, config.html], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 
@@ -539,7 +516,6 @@ function startBrowserSync(isDev, specRunner) {
     port: 3000,
     files: isDev ? [
       config.client + '**/*.*',
-      '!' + config.less,
       config.temp + '**/*.css'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t
