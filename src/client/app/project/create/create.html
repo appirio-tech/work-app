@@ -1,193 +1,129 @@
 <section class="mainbar">
   <section class="matter">
-    <div class="container">
+    <div id="createProject" class="container">
       <div class="row">
         <div class="widget wviolet">
-          <h3>Background Information</h3>
-          <table class="table">
-            <tr>
-              <td>
-                Description
-              </td>
-              <td>
-                <textarea name="description" ng-model="vm.newProject.description" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Website
-              </td>
-              <td>
-                <input name="website" type="text" ng-model="vm.newProject.website" />
-              </td>
-            </tr>
-          </table>
-          <h3>Visual Style</h3>
-          <table class="table" style="width:400px">
-            <tr>
-              <td>
-                Minimal
-              </td>
-              <td>
-                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleMinimalComplex" />
-              </td>
-              <td>
-                Complex
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Modern
-              </td>
-              <td>
-                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleModernClassic" />
-              </td>
-              <td>
-                Classic
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Playful
-              </td>
-              <td>
-                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.stylePlayfulSerious" />
-              </td>
-              <td>
-                Serious
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Loud
-              </td>
-              <td>
-                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleLoudSubtle" />
-              </td>
-              <td>
-                Subtle
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Luxury
-              </td>
-              <td>
-                <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleLuxuryBudget" />
-              </td>
-              <td>
-                Budget
-              </td>
-            </tr>
-            <tr>
-              <td>
-                What ideas do you have for the style/theme of your app?
-              </td>
-              <td>
-                <textarea name="styleIdeas" ng-model="vm.newProject.styleIdeas" />
-              </td>
-            </tr>
-          </table>
+          <div id="backgroundInformation" class="createContainer centered">
+            <h3>Background Information</h3>
+            <h4>Briefly describe what your app does</h4>
+            <br />
+            <textarea name="description" ng-model="vm.newProject.description" />
+            <h4>If you have an existing website, please list it here <span class="ital">(optional)</span></h4>
+            <input name="website" type="text" ng-model="vm.newProject.website" />
+          </div>
+          <div id="visualStyle" class="createContainer centered">
+            <h3>Visual Style</h3>
+            <h4>What best describes the look and feel you'd like for your app?</h4>
+            <table class="table" style="width:400px">
+              <tr>
+                <td>
+                  Minimal
+                </td>
+                <td>
+                  <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleMinimalComplex" />
+                </td>
+                <td>
+                  Complex
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Modern
+                </td>
+                <td>
+                  <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleModernClassic" />
+                </td>
+                <td>
+                  Classic
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Playful
+                </td>
+                <td>
+                  <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.stylePlayfulSerious" />
+                </td>
+                <td>
+                  Serious
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Loud
+                </td>
+                <td>
+                  <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleLoudSubtle" />
+                </td>
+                <td>
+                  Subtle
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Luxury
+                </td>
+                <td>
+                  <input type="range" style="width: 150px;" max="6" ng-model="vm.newProject.styleLuxuryBudget" />
+                </td>
+                <td>
+                  Budget
+                </td>
+              </tr>
+            </table>
+            <h4>What ideas do you have for the style/theme of your app?</h4>
+            <textarea name="styleIdeas" ng-model="vm.newProject.styleIdeas" />
+          </div>
+          <div id="contentDetails" class="createContainer centered">
           <h3>Content Details</h3>
-          <table class="table">
-            <tr>
-              <td>
-                Name
-              </td>
-              <td>
-                <input name="name" type="text" ng-model="vm.newProject.name" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                # screens
-              </td>
-              <td>
-                <input type="radio" name="1" ng-value="1" ng-model="vm.newProject.screens" />
-                1 screen
-                <br />
-                <input type="radio" name="2" ng-value="2" ng-model="vm.newProject.screens" />
-                2 screens
-                <br />
-                <input type="radio" name="3" ng-value="3" ng-model="vm.newProject.screens" />
-                3 screens
-                <br />
-                <input type="radio" name="4" ng-value="4" ng-model="vm.newProject.screens" />
-                4 screens
-                <br />
-                <input type="radio" name="5" ng-value="5" ng-model="vm.newProject.screens" />
-                5 screens
-                <br />
-                <input type="radio" name="6" ng-value="6" ng-model="vm.newProject.screens" />
-                Other
-              </td>
-            </tr>
-            <tr>
-              <td>Describe the screens</td>
-              <td>
-                <textarea name="screensDescription" ng-model="vm.newProject.screensDescription" />
-              </td>
-            </tr>
-          </table>
-          <h3>Project Duration</h3>
-          <table class="table">
-            <tr>
-              <td>
-                How soon do you need it?
-              </td>
-              <td>
-                <select name="duration" ng-model="vm.duration">
-                  <option ng-value="5" selected>5 days</option>
-                  <option ng-value="10">10 days</option>
-                  <option ng-value="15">15 days</option>
-                  <option ng-value="20">20 days</option>
-                  <option ng-value="25">25 days</option>
-                  <option ng-value="30">30 days</option>
-                  <option ng-value="0">Decide later</option>
-                </select>
-              </td>
-            </tr>
-          </table>
-          <h3>Other</h3>
-          <table class="table">
-            <tr>
-              <td>Additional links</td>
-              <td>
-                <ul>
-                  <li ng-repeat="link in vm.newProject.links">
-                    {{link}}
-                  </li>
-                </ul>
-                <input type="text" ng-model="vm.newUrl" />
-                <a ng-click="vm.addUrl()">+</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Documents
-              </td>
-              <td>
-                <ul>
-                  <li ng-repeat="file in vm.newProject.files">
-                    {{file}}
-                  </li>
-                <input type="text" ng-model="vm.newFile" />
-                <a ng-click="vm.addFile()">+</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Additional Details
-              </td>
-              <td>
-                <textarea name="additionalDetails" ng-model="vm.newProject.additionalDetails" />
-              </td>
-            </tr>
-          </table>
+            <h4>What is the name of your project?</h4>
+            <input name="name" type="text" ng-model="vm.newProject.name" />
+            <h4>How many screens would you like designed?</h4>
+            <input type="radio" name="1" ng-value="1" ng-model="vm.newProject.screens" />
+            1 screen
+            <br />
+            <input type="radio" name="2" ng-value="2" ng-model="vm.newProject.screens" />
+            2 screens
+            <br />
+            <input type="radio" name="3" ng-value="3" ng-model="vm.newProject.screens" />
+            3 screens
+            <br />
+            <input type="radio" name="4" ng-value="4" ng-model="vm.newProject.screens" />
+            4 screens
+            <br />
+            <input type="radio" name="5" ng-value="5" ng-model="vm.newProject.screens" />
+            5 screens
+            <br />
+            <input type="radio" name="6" ng-value="6" ng-model="vm.newProject.screens" />
+            Other
+            <h4>Describe the screens and the main work flows for your app <span class="ital">(optional)</span></h4>
+            <textarea name="screensDescription" ng-model="vm.newProject.screensDescription" />
+          </div>
+          <div id="other" class="createContainer centered">
+            <h3>Other</h3>
+            <h4>Please provide any links to websites that help convey what you're looking for <span class-"ital">(optional)</span></h4>
+            <ul>
+              <li ng-repeat="link in vm.newProject.links">
+                {{link}}
+              </li>
+            </ul>
+            <input type="text" ng-model="vm.newUrl" />
+            <a ng-click="vm.addUrl()">+</a>
+            <h4>Do you have any documents that may help us (logos, design guides, branding guides, sketches, etc.)? <span class="ital">(optional)</span></h4>
+            <ul>
+              <li ng-repeat="file in vm.newProject.files">
+                {{file}}
+              </li>
+            </ul>
+            <input type="text" ng-model="vm.newFile" />
+            <a ng-click="vm.addFile()">+</a>
+            <h4>Additional details <span class="ital">(optional)</span></h4>
+            <textarea name="additionalDetails" ng-model="vm.newProject.additionalDetails" />
+          </div>
         </div>
       </div>
+      <button class="btn" ng-click="vm.createProject()">Create Project</button>
+      <button class="btn" ng-click="vm.getProjects()">Get Projects</button>
     </div>
-    <button class="btn" ng-click="vm.createProject()">Create Project</button>
-    <button class="btn" ng-click="vm.getProjects()">Get Projects</button>
   </section>
 </section>
