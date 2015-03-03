@@ -49,6 +49,7 @@ module.exports = function () {
       css: temp,
       sass: clientApp.replace('./', '')
     },
+    coffee: clientApp + '**/*.coffee',
     jade: clientApp + '**/*.jade',
     report: report,
     root: root,

@@ -48,15 +48,6 @@ gulp.task('vet', function () {
     .pipe($.jscs());
 });
 
-gulp.task('coffee', function () {
-  log('Convert coffee to JS');
-
-  return gulp
-    .src(config.alljs)
-    .pipe(coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest(config.temp));
-});
-
 /**
  * Create a visualizer report
  */
@@ -84,6 +75,7 @@ gulp.task('styles', ['clean-styles'], function () {
 });
 
 gulp.task('process-jade', function() {
+  log('Convert jade to HTML');
   var YOUR_LOCALS = {};
 
   gulp.src(config.jade)
@@ -94,8 +86,19 @@ gulp.task('process-jade', function() {
 });
 
 gulp.task('process-scss', function() {
+  log('Convert SCSS to CSS');
+
   gulp.src(config.scss)
     .pipe(compass(config.compass))
+    .pipe(gulp.dest(config.temp));
+});
+
+gulp.task('process-coffee', function () {
+  log('Convert coffee to JS');
+
+  return gulp
+    .src(config.coffee)
+    .pipe(coffee())
     .pipe(gulp.dest(config.temp));
 });
 
@@ -525,6 +528,7 @@ function startBrowserSync(isDev, specRunner) {
 
     gulp.watch([config.jade], ['process-jade']).on('change', changeEvent);
     gulp.watch([config.scss], ['process-scss']).on('change', changeEvent);
+    gulp.watch([config.coffee], ['process-coffee']).on('change', changeEvent);
   } else {
     gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
       .on('change', changeEvent);
