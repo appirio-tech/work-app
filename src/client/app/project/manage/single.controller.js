@@ -5,12 +5,13 @@
     .module('app.project.manage')
     .controller('SingleProjectController', SingleProjectController);
 
-  SingleProjectController.$inject = ['logger', 'projectData'];
+  SingleProjectController.$inject = ['logger', 'projectData', 'isNew'];
   /* @ngInject */
-  function SingleProjectController(logger, projectData) {
+  function SingleProjectController(logger, projectData, isNew) {
     var vm = this;
     vm.title = 'Manage';
     vm.project = projectData;
+    vm.isNew = isNew;
 
     activate();
 

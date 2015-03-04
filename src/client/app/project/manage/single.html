@@ -1,27 +1,32 @@
-<section class="mainbar">
-  <section class="matter">
-    <div class="container">
-      <div class="row">
-        <div class="widget wviolet">
-          <div ht-widget-header title="{{vm.title}}"></div>
-          <table>
-            <tr>
-              <td>
-                {{vm.project.name}}
-              </td>
-              <td>
-                {{vm.project.createdAt}}
-              </td>
-              <td>
-                {{vm.project.createdBy}}
-              </td>
-            </tr>
-          </table>
-          <div class="widget-foot">
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
+<section class="matter">
+  <div class="container">
+    <div class="lead" ng-if="vm.isNew">
+      <p>Your project has been submitted, and you may now add a payment method.<br/>
+      This step must be completed before your challenge can launch.</p>
+      <hr />
     </div>
-  </section>
+    <h1 class="text-center">{{vm.project.name}}</h1>
+    <h3>Description</h3>
+    <p>{{vm.project.description}}</p>
+    <h3>Existing website</h3>
+    <p>{{vm.project.website}}</p>
+    <h3>App look and feel</h3>
+    <p>{{vm.project.styleMinimalComplex | lookandFeelFilter : 'Minimal' : 'Complex'}}</p>
+    <p>{{vm.project.styleModernClassic | lookandFeelFilter : 'Modern' : 'Classic'}}</p>
+    <p>{{vm.project.stylePlayfulSerious | lookandFeelFilter : 'Playful' : 'Serious'}}</p>
+    <p>{{vm.project.styleLoudSubtle | lookandFeelFilter : 'Loud' : 'Subtle'}}</p>
+    <p>{{vm.project.styleLuxuryBudget | lookandFeelFilter : 'Luxury' : 'Budget'}}</p>
+    <h3>Ideas for app style/theme</h3>
+    <p>{{vm.project.styleIdeas}}</p>
+    <h3>Number of screens</h3>
+    <p>{{vm.project.screens}}</p>
+    <h3>Screens and the main work flows</h3>
+    <p>{{vm.project.screenFlow}}</p>
+    <h3>Duration</h3>
+    <p>{{vm.project.duration}}</p>
+    <h3>Supporting links, images, sketches or documents</h3>
+    <p ng-repeat="file in vm.project.files">{{file.url}}</p>
+    <h3>Additional details</h3>
+    <p>{{vm.project.additionalDetails}}</p>
+  </div>
 </section>
