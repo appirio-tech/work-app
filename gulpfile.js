@@ -5,9 +5,7 @@ var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
 var path = require('path');
-var coffee = require('gulp-coffee');
-var jade = require('gulp-jade');
-var compass = require('gulp-compass');
+var gutil = require('gulp-util');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
@@ -31,6 +29,12 @@ var port = process.env.PORT || config.defaultPort;
  */
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
+
+function handleError(error) {
+  colored = gutil.colors.red(error)
+  gutil.log(colored);
+  gutil.beep();
+}
 
 /**
  * vet the code and create coverage report
@@ -60,30 +64,34 @@ gulp.task('plato', function (done) {
 
 
 gulp.task('process-jade', function() {
-  log('Convert jade to HTML');
+  log('Convert Jade to HTML');
+
   var YOUR_LOCALS = {};
+  var jade = $.jade({ locals: YOUR_LOCALS }).on('error', handleError);
 
   gulp.src(config.jade)
-    .pipe(jade({
-      locals: YOUR_LOCALS
-    }))
+    .pipe(jade)
     .pipe(gulp.dest(config.temp))
 });
 
 gulp.task('process-scss', function() {
   log('Convert SCSS to CSS');
 
+  var compass = $.compass(config.compass).on('error', handleError);
+
   gulp.src(config.scss)
-    .pipe(compass(config.compass))
+    .pipe(compass)
     .pipe(gulp.dest(config.temp));
 });
 
 gulp.task('process-coffee', function () {
   log('Convert coffee to JS');
 
+  var coffee = $.coffee(config.coffee).on('error', handleError);
+
   return gulp
     .src(config.coffee)
-    .pipe(coffee())
+    .pipe(coffee)
     .pipe(gulp.dest(config.temp));
 });
 
