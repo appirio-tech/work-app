@@ -25,17 +25,13 @@
           'styleLoudSubtle': 4,
           'styleLuxuryBudget': 1,
           'styleIdeas': 'I have several ideas',
-          'screens': 6,
+          'screens': 3,
           'screenFlow': 'Lorem ipsum',
           'duration': 15,
           'links': ['http://example.com/pic.jpg', 'http://example.com/pic2.jpg'],
           'additionalDetails': 'here are more details',
           'status': 'Project submitted',
-          'files': [
-            {
-              'url': 'http://www.google.com'
-            }
-          ],
+          'files': [],
           'billings': [
             {
               'id': '30000003',

@@ -19,13 +19,11 @@
     <h3>Ideas for app style/theme</h3>
     <p>{{vm.project.styleIdeas}}</p>
     <h3>Number of screens</h3>
-    <p>{{vm.project.screens}}</p>
+    <p>{{vm.project.screens | screens}}</p>
     <h3>Screens and the main work flows</h3>
     <p>{{vm.project.screenFlow}}</p>
-    <h3>Duration</h3>
-    <p>{{vm.project.duration}}</p>
     <h3>Supporting links, images, sketches or documents</h3>
-    <p ng-repeat="file in vm.project.files">{{file.url}}</p>
+    <p ng-repeat="link in vm.project.links">{{link}}</p>
     <h3>Additional details</h3>
     <p>{{vm.project.additionalDetails}}</p>
   </div>
