@@ -1,3 +1,7 @@
+config = require('./config');
+
+// To access environment variables use config.getVal('name', 'default value')
+
 module.exports = function () {
   var client = './src/client/';
   var server = './src/server/';
