@@ -48,7 +48,7 @@ module.exports = function () {
     scss: clientApp + '**/*.scss',
     compass: {
       css: temp,
-      sass: clientApp.replace('./', '')
+      sass: clientApp.replace('./', '') // Bug in compass with `./`
     },
     coffee: clientApp + '**/*.coffee',
     jade: clientApp + '**/*.jade',
