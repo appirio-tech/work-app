@@ -123,3 +123,19 @@ The [plato](https://github.com/es-analysis/plato) complexity report is integrate
 
 Code should be sufficiently (amount to be determined) covered by tests.
 
+# Using Environment Configuration during build.
+
+Access environmental variables should be done via the config directory in this repository.  This allows easy overrides using a .env file.
+
+This is mostly useful during the build process
+
+```javascript
+config = require('./config');
+
+// To access environment variables use config.getVal('name', 'default value')
+var value = config.getVal('baseURL', 'http://topcoder.com');
+
+
+
+```
+
