@@ -52,6 +52,7 @@ module.exports = function () {
 
     scss: client + '**/*.scss',
     scssBuild: scssBuild,
+    // replace used because compass expects file paths without './'
     compass: {
       css: temp.replace('./', ''),
       sass: scssBuild.replace('./', '')
