@@ -33,3 +33,6 @@ lib-cov
 
 # nvm stuff
 .nvmrc
+
+# scss intermediary step
+.scss

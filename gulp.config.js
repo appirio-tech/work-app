@@ -12,6 +12,7 @@ module.exports = function () {
   var temp = './tmp/';
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({devDependencies: true})['js'];
+  var scssBuild = './.scss';
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
@@ -50,9 +51,10 @@ module.exports = function () {
     ],
 
     scss: client + '**/*.scss',
+    scssBuild: scssBuild,
     compass: {
       css: temp.replace('./', ''),
-      sass: client.replace('./', '') + 'styles'
+      sass: scssBuild.replace('./', '')
     },
     report: report,
     root: root,
