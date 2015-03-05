@@ -1,4 +1,3 @@
-var glo, ser;
 (function () {
   'use strict';
 
@@ -9,8 +8,7 @@ var glo, ser;
   ProjectSubmitController.$inject = ['logger', 'ProjectService'];
   /* @ngInject */
   function ProjectSubmitController(logger, ProjectService) {
-    ser = ProjectService;
-    var vm = glo = this;
+    var vm = this;
     vm.title = 'Submit';
     vm.newProject = ProjectService.getCurrent();
     vm.submit = submit;
