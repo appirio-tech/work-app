@@ -134,5 +134,6 @@ config = require('./config');
 
 // To access environment variables use config.getVal('name', 'default value')
 var value = config.getVal('baseURL', 'http://topcoder.com');
+
 ```
 
