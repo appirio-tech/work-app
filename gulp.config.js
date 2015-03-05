@@ -1,4 +1,4 @@
-config = require('./config');
+var envConfig = require('./config');
 
 // To access environment variables use config.getVal('name', 'default value')
 
@@ -128,7 +128,18 @@ module.exports = function () {
      * Node settings
      */
     nodeServer: './src/server/app.js',
-    defaultPort: '8001'
+    defaultPort: '8001',
+
+    /**
+     * AWS settings
+     */
+    aws: {
+      bucket: envConfig.getVal('AWS_BUCKET', 'foo'),
+      key: envConfig.getVal('AWS_KEY', 'bar'),
+      region: envConfig.getVal('AWS_REGION', 'foo'),
+      secret: envConfig.getVal('AWS_SECRET', 'bar'),
+      cdnUrl: envConfig.getVal('AWS_CDN_URL', 'foobar')
+    }
   };
 
   /**

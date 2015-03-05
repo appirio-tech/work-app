@@ -209,7 +209,7 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
  * and inject them into the new index.html
  * @return {Stream}
  */
-gulp.task('optimize', ['inject', 'test'], function () {
+gulp.task('optimize', ['inject'], function () {
   log('Optimizing the js, css, and html');
 
   var assets = $.useref.assets({searchPath: './'});
@@ -367,7 +367,38 @@ gulp.task('bump', function () {
     .pipe(gulp.dest(config.root));
 });
 
-////////////////
+/**
+ * Push build folder to s3
+ */
+gulp.task('deploy', ['build'], function() {
+  var awsConfig = {
+    bucket: config.aws.bucket,
+    key: config.aws.key,
+    secret: config.aws.secret
+  };
+
+  // create a new publisher
+  var publisher = $.awspublish.create(awsConfig);
+
+  // define custom headers
+  var headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public'
+    // ...
+  };
+
+  return gulp
+    .src(config.build)
+
+    // gzip, Set Content-Encoding headers and add .gz extension
+    .pipe($.awspublish.gzip({ext: '.gz'}))
+
+    // publisher will add Content-Length, Content-Type and headers specified above
+    // If not specified it will set x-amz-acl to public-read by default
+    .pipe(publisher.publish(headers))
+
+    // print upload updates to console
+    .pipe($.awspublish.reporter());
+});
 
 /**
  * When files change, log it
