@@ -9,7 +9,7 @@ module.exports = function () {
   var report = './report/';
   var root = './';
   var specRunnerFile = 'specs.html';
-  var temp = './.tmp/';
+  var temp = './tmp/';
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({devDependencies: true})['js'];
   var bower = {
@@ -30,12 +30,12 @@ module.exports = function () {
     ],
     build: './build/',
     client: client,
-    css: temp + 'styles.css',
+    css: temp + '**/*.css',
     fonts: bower.directory + 'font-awesome/fonts/**/*.*',
     html: client + '**/*.html',
     htmltemplates: clientApp + '**/*.html',
     images: client + 'images/**/*.*',
-    index: client + 'index.html',
+    index: clientApp + 'index.html',
     // app js, with no specs
     js: [
       clientApp + '**/*.module.js',
@@ -48,7 +48,12 @@ module.exports = function () {
       '**/*.module.js',
       '**/*.js'
     ],
-    less: client + 'styles/styles.less',
+
+    scss: client + '**/*.scss',
+    compass: {
+      css: temp.replace('./', ''),
+      sass: client.replace('./', '') + 'styles'
+    },
     report: report,
     root: root,
     server: server,
