@@ -15,6 +15,8 @@ var colors = $.util.colors;
 var envenv = $.util.env;
 var port = process.env.PORT || config.defaultPort;
 
+var i = 1;
+
 /**
  * yargs variables can be passed in to alter the behavior, when present.
  * Example: gulp serve-dev
@@ -59,27 +61,30 @@ gulp.task('plato', function (done) {
 });
 
 
-gulp.task('process-jade', function() {
+gulp.task('process-jade', ['clean-code'], function() {
   log('Convert jade to HTML');
+  log('TASK ' + i++);
   var YOUR_LOCALS = {};
 
   gulp.src(config.jade)
     .pipe(jade({
       locals: YOUR_LOCALS
     }))
-    .pipe(gulp.dest(config.temp))
+    .pipe(gulp.dest(config.client))
 });
 
-gulp.task('process-scss', function() {
+gulp.task('process-scss', ['clean-code'], function() {
   log('Convert SCSS to CSS');
+  log('TASK ' + i++);
 
   gulp.src(config.scss)
     .pipe(compass(config.compass))
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('process-coffee', function () {
+gulp.task('process-coffee', ['clean-code'], function () {
   log('Convert coffee to JS');
+  log('TASK ' + i++);
 
   return gulp
     .src(config.coffee)
@@ -93,6 +98,7 @@ gulp.task('process-coffee', function () {
  */
 gulp.task('fonts', ['clean-fonts'], function () {
   log('Copying fonts');
+  log('TASK ' + i++);
 
   return gulp
     .src(config.fonts)
@@ -105,6 +111,7 @@ gulp.task('fonts', ['clean-fonts'], function () {
  */
 gulp.task('images', ['clean-images'], function () {
   log('Compressing and copying images');
+  log('TASK ' + i++);
 
   return gulp
     .src(config.images)
@@ -118,6 +125,7 @@ gulp.task('images', ['clean-images'], function () {
  */
 gulp.task('templatecache', ['clean-code'], function () {
   log('Creating an AngularJS $templateCache');
+  log('TASK ' + i++);
 
   return gulp
     .src(config.htmltemplates)
@@ -135,8 +143,9 @@ gulp.task('templatecache', ['clean-code'], function () {
  * Wire-up the bower dependencies
  * @return {Stream}
  */
-gulp.task('wiredep', function () {
+gulp.task('wiredep', ['process-jade', 'process-scss', 'process-coffee'], function () {
   log('Wiring the bower dependencies into the html');
+  log('TASK ' + i++);
 
   var wiredep = require('wiredep').stream;
   var options = config.getWiredepDefaultOptions();
@@ -148,11 +157,13 @@ gulp.task('wiredep', function () {
     .src(config.index)
     .pipe(wiredep(options))
     .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.client));
+    .pipe(gulp.dest(config.client))
+    .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['wiredep', 'templatecache', "process-coffee", "process-jade", "process-scss"], function () {
+gulp.task('inject', ["process-jade", 'wiredep', 'templatecache', "process-coffee", "process-scss"], function () {
   log('Wire up css into the html, after files are ready');
+  log('TASK ' + i++);
 
   return gulp
     .src(config.index)
@@ -223,6 +234,7 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
  */
 gulp.task('optimize', ['inject', 'test'], function () {
   log('Optimizing the js, css, and html');
+  log('TASK ' + i++);
 
   var assets = $.useref.assets({searchPath: './'});
   // Filters are named for the gulp-useref path
@@ -268,6 +280,7 @@ gulp.task('optimize', ['inject', 'test'], function () {
 gulp.task('clean', function (done) {
   var delconfig = [].concat(config.build, config.temp, config.report);
   log('Cleaning: ' + $.util.colors.blue(delconfig));
+  log('TASK ' + i++);
   del(delconfig, done);
 });
 

@@ -36,7 +36,8 @@ module.exports = function () {
     js: [
       clientApp + '**/*.module.js',
       clientApp + '**/*.js',
-      '!' + clientApp + '**/*.spec.js'
+      '!' + clientApp + '**/*.spec.js',
+      '!' + clientApp + '**/*-spec.js'
     ],
     jsOrder: [
       '**/*stub.js',
@@ -58,7 +59,7 @@ module.exports = function () {
     source: 'src/',
     stubsjs: [
       bower.directory + 'angular-mocks/angular-mocks.js',
-      client + 'stubs/**/*.js'
+      client + '/**/*.stubs.js'
     ],
     temp: temp,
 
