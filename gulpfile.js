@@ -4,6 +4,7 @@ var config = require('./gulp.config')();
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
+var compass = require('gulp-compass');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -59,15 +60,13 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('styles', ['clean-styles'], function () {
-  log('Compiling Less --> CSS');
+gulp.task('scss', ['clean-styles'], function () {
+  log('Compiling SCSS --> CSS');
 
   return gulp
-    .src(config.less)
-    .pipe($.plumber()) // exit gracefully if something fails after this
-    .pipe($.less())
-//        .on('error', errorLogger) // more verbose and dupe output. requires emit.
-    .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+    .src(config.scss)
+    .pipe(gulp.dest(config.scssBuild))
+    .pipe(compass(config.compass))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -96,8 +95,8 @@ gulp.task('images', ['clean-images'], function () {
     .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('less-watcher', function () {
-  gulp.watch([config.less], ['styles']);
+gulp.task('scss-watcher', function () {
+  gulp.watch([config.scss], ['scss']);
 });
 
 /**
@@ -123,7 +122,7 @@ gulp.task('templatecache', ['clean-code'], function () {
  * Wire-up the bower dependencies
  * @return {Stream}
  */
-gulp.task('wiredep', function () {
+gulp.task('wiredep', ['scss'], function () {
   log('Wiring the bower dependencies into the html');
 
   var wiredep = require('wiredep').stream;
@@ -136,10 +135,11 @@ gulp.task('wiredep', function () {
     .src(config.index)
     .pipe(wiredep(options))
     .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.client));
+    .pipe(gulp.dest(config.client))
+    .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
+gulp.task('inject', ['wiredep', 'templatecache'], function () {
   log('Wire up css into the html, after files are ready');
 
   return gulp
@@ -492,7 +492,7 @@ function startBrowserSync(isDev, specRunner) {
   // If build: watches the files, builds, and restarts browser-sync.
   // If dev: watches less, compiles it to css, browser-sync handles reload
   if (isDev) {
-    gulp.watch([config.less], ['styles'])
+    gulp.watch([config.scss], ['scss'])
       .on('change', changeEvent);
   } else {
     gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
@@ -504,7 +504,7 @@ function startBrowserSync(isDev, specRunner) {
     port: 3000,
     files: isDev ? [
       config.client + '**/*.*',
-      '!' + config.less,
+      '!' + config.scss,
       config.temp + '**/*.css'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t
