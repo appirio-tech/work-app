@@ -30,7 +30,7 @@
       {
         state: 'single',
         config: {
-          url: '/projects/:projectId',
+          url: '/projects/:projectId?new',
           templateUrl: 'app/project/manage/single.html',
           controller: 'SingleProjectController',
           controllerAs: 'vm',
@@ -42,6 +42,10 @@
           resolve: {
             projectData: function(ProjectService, $stateParams) {
               return ProjectService.getProject($stateParams.projectId);
+            },
+            isNew: function($stateParams) {
+              console.log('is new?', $stateParams);
+              return $stateParams.new;
             }
           }
         }
