@@ -1,0 +1,105 @@
+- var app_scripts = []
+- app_scripts.push("core/app-module")
+- app_scripts.push("admin/admin.module")
+- app_scripts.push("blocks/exception/exception.module")
+- app_scripts.push("blocks/logger/logger.module")
+- app_scripts.push("blocks/router/router.module")
+- app_scripts.push("core/core.module")
+- app_scripts.push("project/project.module")
+- app_scripts.push("project/create/create.module")
+- app_scripts.push("project/manage/manage.module")
+- app_scripts.push("widgets/widgets.module")
+- app_scripts.push("admin/admin.controller")
+- app_scripts.push("admin/admin.route")
+- app_scripts.push("blocks/exception/exception-handler.provider")
+- app_scripts.push("blocks/exception/exception")
+- app_scripts.push("blocks/logger/logger")
+- app_scripts.push("blocks/router/router-helper.provider")
+- app_scripts.push("core/config")
+- app_scripts.push("core/constants")
+- app_scripts.push("core/core.route")
+- app_scripts.push("layout/scripts/layout-module")
+- app_scripts.push("layout/scripts/directives/ht-sidebar-dir")
+- app_scripts.push("layout/scripts/directives/ht-top-nav-dir")
+- app_scripts.push("layout/scripts/controllers/shell-ctrl")
+- app_scripts.push("layout/scripts/controllers/sidebar-ctrl")
+- app_scripts.push("project/project.service")
+- app_scripts.push("project/create/create.controller")
+- app_scripts.push("project/create/create.route")
+- app_scripts.push("project/create/home.controller")
+- app_scripts.push("project/create/submit/submit.controller")
+- app_scripts.push("project/manage/manage.route")
+- app_scripts.push("project/manage/multiple.controller")
+- app_scripts.push("project/manage/single.controller")
+- app_scripts.push("project/stubs/project.stub")
+- app_scripts.push("project/manage/filters/lookandFeel.filter")
+- app_scripts.push("project/manage/filters/screens.filter")
+- app_scripts.push("widgets/ht-img-person.directive")
+- app_scripts.push("widgets/ht-widget-header.directive")
+
+- var bowers = []
+- bowers.push("jquery/dist/jquery")
+- bowers.push("angular/angular")
+- bowers.push("angular-sanitize/angular-sanitize")
+- bowers.push("bootstrap/dist/js/bootstrap")
+- bowers.push("extras.angular.plus/ngplus-overlay")
+- bowers.push("moment/moment")
+- bowers.push("angular-ui-router/release/angular-ui-router")
+- bowers.push("angular-animate/angular-animate")
+- bowers.push("angular-mocks/angular-mocks")
+- bowers.push("toastr/toastr")
+
+- var css = ["layout/styles/main", "layout/styles/reset"]
+
+<!doctype html>
+html(ng-app="app")
+  head
+    style
+      include index.css
+
+    title("ng-bind" = "title") Appiro Work Platform
+
+    meta(charset: "utf-8")
+
+    meta(http-equiv="X-UA-Compatible", content="IE=edge, chrome=1")
+
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no")
+
+    base(href="/")
+
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    each path in css
+      link(href=path + ".css", rel="stylesheet")
+    <!-- endbower -->
+    <!-- endbuild -->
+
+  body
+    div
+      div("ng-include"="'layout/views/shell.html'")
+
+      #plash-page("ng-show"="false")
+        .page-splash
+          .page-splash-message
+            selfService
+
+          .progress.progress-striped.active.page-progress-bar
+            .bar
+
+    <!-- build:js js/lib.js -->
+    <!-- bower:js -->
+    each path in bowers
+      script(src="bower_components/" + path + ".js", type="text/javascript")
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js js/app.js-->
+    <!-- inject:js -->
+    each path in app_scripts
+      script(src=path + ".js", type="text/javascript")
+    <!-- endinject -->
+
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+    <!-- endbuild -->
+

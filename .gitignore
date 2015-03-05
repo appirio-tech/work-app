@@ -11,6 +11,8 @@ bower_components
 node_modules
 build
 report
+.sass-cache
+
 
 # env files
 .env

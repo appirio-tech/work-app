@@ -49,6 +49,13 @@ module.exports = function () {
       '**/*.js'
     ],
     less: client + 'styles/styles.less',
+    scss: clientApp + '**/*.scss',
+    compass: {
+      css: temp,
+      sass: clientApp.replace('./', '') // Bug in compass with `./`
+    },
+    coffee: clientApp + '**/*.coffee',
+    jade: clientApp + '**/*.jade',
     report: report,
     root: root,
     server: server,
