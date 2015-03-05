@@ -63,9 +63,6 @@ gulp.task('plato', function (done) {
 gulp.task('scss', ['clean-styles'], function () {
   log('Compiling SCSS --> CSS');
 
-  log('hey kid');
-  log(config.compass);
-
   return gulp
     .src(config.scss)
     .pipe(compass(config.compass))
