@@ -8,7 +8,6 @@ var compass = require('gulp-compass');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
-var flatten = require('gulp-flatten');
 
 var colors = $.util.colors;
 var envenv = $.util.env;
@@ -66,7 +65,6 @@ gulp.task('scss', ['clean-styles'], function () {
 
   return gulp
     .src(config.scss)
-    .pipe(flatten())
     .pipe(gulp.dest(config.scssBuild))
     .pipe(compass(config.compass))
     .pipe(gulp.dest(config.temp));
