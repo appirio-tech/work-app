@@ -386,6 +386,12 @@ gulp.task('deploy', ['build'], function() {
     // ...
   };
 
+  var msg = {
+    title: 'gulp deploy',
+    subtitle: 'Deploying to S3',
+  };
+  log(msg);
+
   return gulp
     .src(config.build)
 
