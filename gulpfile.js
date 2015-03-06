@@ -507,8 +507,10 @@ function startBrowserSync(isDev, specRunner) {
   if (isDev) {
     gulp.watch([config.scss], ['scss'])
       .on('change', changeEvent);
+    gulp.watch([config.jade], ['jade'])
+      .on('change', changeEvent);
   } else {
-    gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
+    gulp.watch([config.scss, config.js, config.html], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 
