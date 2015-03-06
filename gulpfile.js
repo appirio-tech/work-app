@@ -388,7 +388,7 @@ gulp.task('deploy', ['build'], function() {
 
   var msg = {
     title: 'gulp deploy',
-    subtitle: 'Deploying to S3',
+    subtitle: 'Deploying to S3'
   };
   log(msg);
 
