@@ -4,8 +4,6 @@ var config = require('./gulp.config')();
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
-var compass = require('gulp-compass');
-var jade = require('gulp-jade');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -67,7 +65,7 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
   return gulp
     .src(config.scss)
     .pipe(gulp.dest(config.scssBuild))
-    .pipe(compass(config.compass))
+    .pipe($.compass(config.compass))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -80,7 +78,7 @@ gulp.task('jade', ['clean-code'], function () {
 
   return gulp
     .src(config.jade)
-    .pipe(jade())
+    .pipe($.jade())
     .pipe(gulp.dest(config.temp));
 });
 
