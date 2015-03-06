@@ -6,11 +6,12 @@ logs
 *.log
 
 # Build files
-.tmp
+tmp
 bower_components
 node_modules
 build
 report
+.sass-cache
 
 # env files
 .env
@@ -29,3 +30,9 @@ lib-cov
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
+
+# nvm stuff
+.nvmrc
+
+# scss intermediary step
+.scss
