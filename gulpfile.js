@@ -152,7 +152,7 @@ gulp.task('wiredep', ['scss', 'jade'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['wiredep', 'jade', 'templatecache'], function () {
+gulp.task('inject', ['wiredep', 'templatecache'], function () {
   log('Wire up css into the html, after files are ready');
 
   return gulp
