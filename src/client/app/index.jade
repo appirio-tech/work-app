@@ -1,3 +1,58 @@
+- var scripts = []
+- scripts.push('/src/client/app/app.module')
+- scripts.push('/src/client/app/admin/admin.module')
+- scripts.push('/src/client/app/blocks/exception/exception.module')
+- scripts.push('/src/client/app/blocks/logger/logger.module')
+- scripts.push('/src/client/app/blocks/router/router.module')
+- scripts.push('/src/client/app/core/core.module')
+- scripts.push('/src/client/app/layout/layout.module')
+- scripts.push('/src/client/app/project/create/create.module')
+- scripts.push('/src/client/app/project/manage/manage.module')
+- scripts.push('/src/client/app/project/project.module')
+- scripts.push('/src/client/app/widgets/widgets.module')
+- scripts.push('/src/client/app/admin/admin.controller')
+- scripts.push('/src/client/app/admin/admin.route')
+- scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
+- scripts.push('/src/client/app/blocks/exception/exception')
+- scripts.push('/src/client/app/blocks/logger/logger')
+- scripts.push('/src/client/app/blocks/router/router-helper.provider')
+- scripts.push('/src/client/app/core/config')
+- scripts.push('/src/client/app/core/constants')
+- scripts.push('/src/client/app/core/core.route')
+- scripts.push('/src/client/app/layout/ht-sidebar.directive')
+- scripts.push('/src/client/app/layout/ht-top-nav.directive')
+- scripts.push('/src/client/app/layout/shell.controller')
+- scripts.push('/src/client/app/layout/sidebar.controller')
+- scripts.push('/src/client/app/project/create/create.controller')
+- scripts.push('/src/client/app/project/create/create.route')
+- scripts.push('/src/client/app/project/create/home.controller')
+- scripts.push('/src/client/app/project/create/submit/submit.controller')
+- scripts.push('/src/client/app/project/manage/filters/lookandFeel.filter')
+- scripts.push('/src/client/app/project/manage/filters/screens.filter')
+- scripts.push('/src/client/app/project/manage/manage.route')
+- scripts.push('/src/client/app/project/manage/multiple.controller')
+- scripts.push('/src/client/app/project/manage/single.controller')
+- scripts.push('/src/client/app/project/project.service')
+- scripts.push('/src/client/app/widgets/ht-img-person.directive')
+- scripts.push('/src/client/app/widgets/ht-widget-header.directive')
+
+- var bowers = []
+
+- bowers.push('/bower_components/jquery/dist/jquery')
+- bowers.push('/bower_components/angular/angular')
+- bowers.push('/bower_components/angular-sanitize/angular-sanitize')
+- bowers.push('/bower_components/bootstrap/dist/bootstrap')
+- bowers.push('/bower_components/extras.angular.plus/ngplus-overlay')
+- bowers.push('/bower_components/moment/moment')
+- bowers.push('/bower_components/angular-ui-router/release/angular-ui-router')
+- bowers.push('/bower_components/toastr/toastr')
+- bowers.push('/bower_components/angular-animate/angular-animate')
+
+- var bowercss = []
+- bowercss.push('/bower_components/bootstrap/dist/bootstrap')
+- bowercss.push('/bower_components/font-awesome/font-awesome')
+- bowercss.push('/bower_components/toastr/toastr')
+
 doctype html
 html(ng-app='app')
   head
@@ -14,9 +69,8 @@ html(ng-app='app')
     base(href='/')
     // build:css styles/lib.css
     // bower:css
-    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
-    link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.css')
-    link(rel='stylesheet', href='/bower_components/toastr/toastr.css')
+    each path in bowercss
+      link(href=path + ".css", rel="stylesheet")
     // endbower
     // endbuild
     // build:css styles/app.css
@@ -35,57 +89,14 @@ html(ng-app='app')
             .bar
     // build:js js/lib.js
     // bower:js
-    script(src='/bower_components/jquery/dist/jquery.js')
-    script(src='/bower_components/angular/angular.js')
-    script(src='/bower_components/angular-sanitize/angular-sanitize.js')
-    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
-    script(src='/bower_components/extras.angular.plus/ngplus-overlay.js')
-    script(src='/bower_components/moment/moment.js')
-    script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
-    script(src='/bower_components/toastr/toastr.js')
-    script(src='/bower_components/angular-animate/angular-animate.js')
+    each path in bowers
+      script(src= path + ".js", type="text/javascript")
     // endbower
     // endbuild
     // build:js js/app.js
     // inject:js
-    script(src='/src/client/stubs/project/project.stub.js')
-    script(src='/src/client/app/app.module.js')
-    script(src='/src/client/app/admin/admin.module.js')
-    script(src='/src/client/app/blocks/exception/exception.module.js')
-    script(src='/src/client/app/blocks/logger/logger.module.js')
-    script(src='/src/client/app/blocks/router/router.module.js')
-    script(src='/src/client/app/core/core.module.js')
-    script(src='/src/client/app/layout/layout.module.js')
-    script(src='/src/client/app/project/create/create.module.js')
-    script(src='/src/client/app/project/manage/manage.module.js')
-    script(src='/src/client/app/project/project.module.js')
-    script(src='/src/client/app/widgets/widgets.module.js')
-    script(src='/src/client/app/admin/admin.controller.js')
-    script(src='/src/client/app/admin/admin.route.js')
-    script(src='/bower_components/angular-mocks/angular-mocks.js')
-    script(src='/src/client/app/blocks/exception/exception-handler.provider.js')
-    script(src='/src/client/app/blocks/exception/exception.js')
-    script(src='/src/client/app/blocks/logger/logger.js')
-    script(src='/src/client/app/blocks/router/router-helper.provider.js')
-    script(src='/src/client/app/core/config.js')
-    script(src='/src/client/app/core/constants.js')
-    script(src='/src/client/app/core/core.route.js')
-    script(src='/src/client/app/layout/ht-sidebar.directive.js')
-    script(src='/src/client/app/layout/ht-top-nav.directive.js')
-    script(src='/src/client/app/layout/shell.controller.js')
-    script(src='/src/client/app/layout/sidebar.controller.js')
-    script(src='/src/client/app/project/create/create.controller.js')
-    script(src='/src/client/app/project/create/create.route.js')
-    script(src='/src/client/app/project/create/home.controller.js')
-    script(src='/src/client/app/project/create/submit/submit.controller.js')
-    script(src='/src/client/app/project/manage/filters/lookandFeel.filter.js')
-    script(src='/src/client/app/project/manage/filters/screens.filter.js')
-    script(src='/src/client/app/project/manage/manage.route.js')
-    script(src='/src/client/app/project/manage/multiple.controller.js')
-    script(src='/src/client/app/project/manage/single.controller.js')
-    script(src='/src/client/app/project/project.service.js')
-    script(src='/src/client/app/widgets/ht-img-person.directive.js')
-    script(src='/src/client/app/widgets/ht-widget-header.directive.js')
+    each path in scripts
+      script(src=path + ".js", type="text/javascript")
     // endinject
     // inject:templates:js
     // endinject
