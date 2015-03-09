@@ -78,40 +78,40 @@ html(ng-app='app')
 
     base(href='/')
 
-    //- build:css styles/lib.css
-    //- bower:css
+    // build:css styles/lib.css
+    // bower:css
     each path in bowercss
       link(href=path + ".css", rel="stylesheet")
-    //- endbower
-    //- endbuild
+    // endbower
+    // endbuild
 
-    //- build:css styles/app.css
-    //- bower:css
+    // build:css styles/app.css
+    // bower:css
     each path in css
       link(href=path + ".css", rel="stylesheet")
-    //- endbower
-    //- endbuild
+    // endbower
+    // endbuild
 
-    //- build:css styles/mobile-portrait.css
-    //- inject:css
+    // build:css styles/mobile-portrait.css
+    // inject:css
     each path in mobilePortCss
       link(href=path + ".css", rel="stylesheet", media="(max-width: 375px)")
-    //- endbower
-    //- endbuild
+    // endbower
+    // endbuild
 
-    //- build:css styles/mobile-landscape.css
-    //- inject:css
+    // build:css styles/mobile-landscape.css
+    // inject:css
     each path in mobileLandCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 376px) and (max-width:767px)")
-    //- endbower
-    //- endbuild
+    // endbower
+    // endbuild
 
-    //- build:css styles/desktop.css
-    //- inject:css
+    // build:css styles/desktop.css
+    // inject:css
    each path in desktopCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
-    //- endbower
-    //- endbuild
+    // endbower
+    // endbuild
 
   body
     include layout/views/shell.jade
