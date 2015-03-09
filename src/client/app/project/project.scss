@@ -1,7 +1,12 @@
 .project-list {
-  border: 2px dashed;
+  border: 1px solid;
   margin: 4px;
-  padding: 4px;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.box-shadow {
+  box-shadow: 0 1px 3px grey;
 }
 
 .sidemenu {
