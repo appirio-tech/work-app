@@ -1,3 +1,4 @@
+/*global form:true */
 (function () {
   'use strict';
 
@@ -49,7 +50,7 @@
 
     function next() {
       $window.scrollTo(0, 0);
-      if (!vm.form || (vm.form.$pristine && form.description.length == 0)) {
+      if (!vm.form || (vm.form.$pristine && form.description.length === 0)) {
         vm.emptyError = true;
         return;
       }
