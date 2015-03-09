@@ -6,9 +6,9 @@ var glo, ser;
     .module('app.project.create')
     .controller('ProjectSubmitController', ProjectSubmitController);
 
-  ProjectSubmitController.$inject = ['logger', 'ProjectService'];
+  ProjectSubmitController.$inject = ['logger', 'ProjectService', '$location'];
   /* @ngInject */
-  function ProjectSubmitController(logger, ProjectService) {
+  function ProjectSubmitController(logger, ProjectService, $location) {
     ser = ProjectService;
     var vm = glo = this;
     vm.title = 'Submit';
@@ -18,7 +18,8 @@ var glo, ser;
     activate();
 
     function submit() {
-      return ProjectService.createProject(vm.newProject);
+      ProjectService.createProject(vm.newProject);
+      $location.url('/projects');
     }
 
     function activate() {
