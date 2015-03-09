@@ -1,5 +1,11 @@
 .project-list {
-  border: 5px solid;
+  border: 2px dashed;
+  margin: 4px;
+  padding: 4px;
+}
+
+.sidemenu {
+  margin-top: 200px;
 }
 
 #createProject {
@@ -29,7 +35,7 @@
   .ng-invalid-required {
     box-shadow: none;
   }
-  .next {
+  .next, .submit {
     width: 60%;
   }
 
