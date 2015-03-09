@@ -1,0 +1,10 @@
+- links = []
+- links.push({ href: "#", label: 'Sign up'})
+- links.push({ href: "#", label: 'Help'})
+- links.push({ href: "#", label: 'About'})
+
+footer.layout-footer
+  ul
+    each link in links
+      li
+        a(href=link.href)!= link.label

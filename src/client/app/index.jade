@@ -54,6 +54,11 @@
 - bowercss.push('/bower_components/font-awesome/font-awesome')
 - bowercss.push('/bower_components/toastr/toastr')
 
+- var css = ["layout/styles/reset", "layout/styles/main", "layout/styles/header", "getting-started/styles/getting-started"]
+- var mobileLandCss = ["layout/styles/mobile-landscape/header"]
+- var mobilePortCss = ["layout/styles/mobile-portrait/header"]
+- var desktopCss = ["layout/styles/desktop/header"]
+
 doctype html
 html(ng-app='app')
   head
@@ -64,36 +69,60 @@ html(ng-app='app')
       display: none !important;
       }
     title(ng-bind='title') Appiro Work Platform
+
     meta(charset='utf-8')
+
     meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
+
     base(href='/')
-    // build:css styles/lib.css
-    // bower:css
+
+    //- build:css styles/lib.css
+    //- bower:css
     each path in bowercss
       link(href=path + ".css", rel="stylesheet")
-    // endbower
-    // endbuild
-    // build:css styles/app.css
-    // inject:css
-    link(rel='stylesheet', href='/.tmp/styles.css')
-    // endinject
-    // endbuild
+    //- endbower
+    //- endbuild
+
+    //- build:css styles/app.css
+    //- bower:css
+    each path in css
+      link(href=path + ".css", rel="stylesheet")
+    //- endbower
+    //- endbuild
+
+    //- build:css styles/mobile-portrait.css
+    //- inject:css
+    each path in mobilePortCss
+      link(href=path + ".css", rel="stylesheet", media="(max-width: 375px)")
+    //- endbower
+    //- endbuild
+
+    //- build:css styles/mobile-landscape.css
+    //- inject:css
+    each path in mobileLandCss
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 376px) and (max-width:767px)")
+    //- endbower
+    //- endbuild
+
+    //- build:css styles/desktop.css
+    //- inject:css
+   each path in desktopCss
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
+    //- endbower
+    //- endbuild
+
   body
-    div
-      div(ng-include="'app/layout/shell.html'")
-      #splash-page(ng-show='false')
-        .page-splash
-          .page-splash-message
-            | selfService
-          .progress.progress-striped.active.page-progress-bar
-            .bar
+    include layout/views/shell.jade
+
     // build:js js/lib.js
     // bower:js
     each path in bowers
       script(src= path + ".js", type="text/javascript")
     // endbower
     // endbuild
+
     // build:js js/app.js
     // inject:js
     each path in scripts

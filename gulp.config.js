@@ -12,7 +12,7 @@ module.exports = function () {
   var temp = './.tmp/';
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({devDependencies: true})['js'];
-  var scssBuild = './.scss';
+  var scssBuild = clientApp.replace('./', '') // Bug in compass with `./`;
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
@@ -51,7 +51,7 @@ module.exports = function () {
       '**/*.js'
     ],
 
-    scss: client + '**/*.scss',
+    scss: clientApp + '**/*.scss',
     scssBuild: scssBuild,
     // replace used because compass expects file paths without './'
     compass: {

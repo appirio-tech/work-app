@@ -1,0 +1,32 @@
+- builds = []
+- builds.push({ href: '#', icon: 'mobile-app-design', label: 'Mobile app design' })
+- builds.push({ href: '#', icon: 'mobile-app-development', label: 'Mobile app development'})
+- builds.push({ href: '#', icon: 'custom-solution', label: 'Custom solution'})
+
+section.jumbotron
+  h1 Our Talented 70,000 strong comunity is ready to work on your project today
+
+section.choose-build
+  h2 What can we build for you?
+
+  ul.builds
+    each build in builds
+      li
+        a(href=build.href)
+          .icon
+            svg
+              image("xlink:href"="#{build.icon}.svg" src="#{build.icon}.png")
+
+          .label!= build.label
+
+- articles = []
+- articles.push({ header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ header: 'Learn about our process', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ header: 'See examples of our work', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+
+aside.learn-more
+  each article in articles
+    article
+      header!= article.header
+
+      p!= article.p
