@@ -5,7 +5,6 @@ var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
 var path = require('path');
-var gutil = require('gulp-util');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
@@ -29,12 +28,6 @@ var port = process.env.PORT || config.defaultPort;
  */
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
-
-function handleError(error) {
-  colored = gutil.colors.red(error)
-  gutil.log(colored);
-  gutil.beep();
-}
 
 /**
  * vet the code and create coverage report
@@ -62,36 +55,30 @@ gulp.task('plato', function (done) {
   startPlatoVisualizer(done);
 });
 
+/**
+ * Compile less to css
+ * @return {Stream}
+ */
+gulp.task('scss', ['clean-styles', 'jade'], function () {
+  log('Compiling SCSS --> CSS');
 
-gulp.task('process-jade', function() {
-  log('Convert Jade to HTML');
-
-  var YOUR_LOCALS = {};
-  var jade = $.jade({ locals: YOUR_LOCALS }).on('error', handleError);
-
-  gulp.src(config.jade)
-    .pipe(jade)
-    .pipe(gulp.dest(config.temp))
-});
-
-gulp.task('process-scss', function() {
-  log('Convert SCSS to CSS');
-
-  var compass = $.compass(config.compass).on('error', handleError);
-
-  gulp.src(config.scss)
-    .pipe(compass)
+  return gulp
+    .src(config.scss)
+    .pipe(gulp.dest(config.scssBuild))
+    .pipe($.compass(config.compass))
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('process-coffee', function () {
-  log('Convert coffee to JS');
-
-  var coffee = $.coffee(config.coffee).on('error', handleError);
+/**
+ * Compile jade to html 
+ * @return {Stream}
+ */
+gulp.task('jade', ['clean-code'], function () {
+  log('Compiling Jade --> HTML');
 
   return gulp
-    .src(config.coffee)
-    .pipe(coffee)
+    .src(config.jade)
+    .pipe($.jade())
     .pipe(gulp.dest(config.temp));
 });
 
@@ -120,6 +107,10 @@ gulp.task('images', ['clean-images'], function () {
     .pipe(gulp.dest(config.build + 'images'));
 });
 
+gulp.task('scss-watcher', function () {
+  gulp.watch([config.scss], ['scss']);
+});
+
 /**
  * Create $templateCache from the html templates
  * @return {Stream}
@@ -143,7 +134,7 @@ gulp.task('templatecache', ['clean-code'], function () {
  * Wire-up the bower dependencies
  * @return {Stream}
  */
-gulp.task('wiredep', function () {
+gulp.task('wiredep', ['scss', 'jade'], function () {
   log('Wiring the bower dependencies into the html');
 
   var wiredep = require('wiredep').stream;
@@ -156,16 +147,16 @@ gulp.task('wiredep', function () {
     .src(config.index)
     .pipe(wiredep(options))
     .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.client));
+    .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['wiredep', 'templatecache', "process-coffee", "process-jade", "process-scss"], function () {
+gulp.task('inject', ['wiredep', 'templatecache'], function () {
   log('Wire up css into the html, after files are ready');
 
   return gulp
     .src(config.index)
     .pipe(inject(config.css))
-    .pipe(gulp.dest(config.client));
+    .pipe(gulp.dest(config.temp));
 });
 
 /**
@@ -510,12 +501,14 @@ function startBrowserSync(isDev, specRunner) {
   log('Starting BrowserSync on port ' + port);
 
   // If build: watches the files, builds, and restarts browser-sync.
+  // If dev: watches less, compiles it to css, browser-sync handles reload
   if (isDev) {
-    gulp.watch([config.jade], ['process-jade']).on('change', changeEvent);
-    gulp.watch([config.scss], ['process-scss']).on('change', changeEvent);
-    gulp.watch([config.coffee], ['process-coffee']).on('change', changeEvent);
+    gulp.watch([config.scss], ['scss'])
+      .on('change', changeEvent);
+    gulp.watch([config.jade], ['jade'])
+      .on('change', changeEvent);
   } else {
-    gulp.watch([config.js, config.html], ['optimize', browserSync.reload])
+    gulp.watch([config.scss, config.js, config.html, config.jade], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 
@@ -524,6 +517,7 @@ function startBrowserSync(isDev, specRunner) {
     port: 3000,
     files: isDev ? [
       config.client + '**/*.*',
+      '!' + config.scss,
       config.temp + '**/*.css'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t

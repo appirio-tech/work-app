@@ -9,9 +9,10 @@ module.exports = function () {
   var report = './report/';
   var root = './';
   var specRunnerFile = 'specs.html';
-  var temp = './.tmp/';
+  var temp = './tmp/';
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({devDependencies: true})['js'];
+  var scssBuild = './.scss';
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
@@ -30,12 +31,13 @@ module.exports = function () {
     ],
     build: './build/',
     client: client,
-    css: temp + 'styles.css',
+    css: temp + '**/*.css',
     fonts: bower.directory + 'font-awesome/fonts/**/*.*',
     html: client + '**/*.html',
+    jade: clientApp + '**/*.jade',
     htmltemplates: clientApp + '**/*.html',
     images: client + 'images/**/*.*',
-    index: client + 'index.html',
+    index: temp + 'index.html',
     // app js, with no specs
     js: [
       clientApp + '**/*.module.js',
@@ -48,14 +50,14 @@ module.exports = function () {
       '**/*.module.js',
       '**/*.js'
     ],
-    less: client + 'styles/styles.less',
-    scss: clientApp + '**/*.scss',
+
+    scss: client + '**/*.scss',
+    scssBuild: scssBuild,
+    // replace used because compass expects file paths without './'
     compass: {
-      css: temp,
-      sass: clientApp.replace('./', '') // Bug in compass with `./`
+      css: temp.replace('./', ''),
+      sass: scssBuild.replace('./', '')
     },
-    coffee: clientApp + '**/*.coffee',
-    jade: clientApp + '**/*.jade',
     report: report,
     root: root,
     server: server,

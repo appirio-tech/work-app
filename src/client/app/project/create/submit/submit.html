@@ -3,8 +3,10 @@
     <div id="createProject" class="container">
       <div class="row">
         <div class="widget wviolet">
-          <a href="/create" class="btn">Edit</a>
           <div id="everything" class="createContainer centered">
+            <br />
+            <br />
+            <button href="/create" class="btn">Edit</button>
             <h3>Background Information</h3>
             <h4>Briefly describe what your app does</h4>
             <p ng-bind="vm.newProject.description"</p>
@@ -96,7 +98,7 @@
           </div>
         </div>
       </div>
+      <button class="btn submit" ng-click="vm.submit()">Submit</button>
     </div>
-    <a ng-click="vm.submit()">Submit</a>
   </section>
 </section>

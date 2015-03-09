@@ -8,7 +8,7 @@
 
       var projects = [
         {
-          'id': '30000007',
+          'id': 30000007,
           'name': 'Billing Account 3 Web API Project 1',
           'projectStatusId': 3,
           'projectStatusName': 'Cancelled',
@@ -64,15 +64,25 @@
         }
       };
 
+      var getTwoResponse = {
+        result: {
+          success: true,
+          status: 200,
+          content: projects[1]
+        }
+      };
+
       $httpBackend.whenPOST('/api/v3/projects', function(data) {
         console.log('project POST');
         console.log(data);
         projects.push(JSON.parse(data));
+        getTwoResponse.result.content = projects[1];
         return true;
       }).respond(postResponse);
 
       // projects
       $httpBackend.whenGET('/api/v3/projects/30000007').respond(getOneResponse);
+      $httpBackend.whenGET('/api/v3/projects/0').respond(getTwoResponse);
       $httpBackend.whenGET('/api/v3/projects').respond(getResponse);
 
       $httpBackend.whenGET(/.+\.html?/).passThrough();
