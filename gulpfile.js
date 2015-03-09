@@ -235,6 +235,11 @@ gulp.task('optimize', ['inject', 'test'], function () {
 
   var templateCache = config.temp + config.templateCache.file;
 
+  var replaceOptions = {};
+  if (config.aws.cdnUrl) {
+    replaceOptions.prefix = config.aws.cdnUrl;
+  }
+
   return gulp
     .src(config.index)
     .pipe($.plumber())
@@ -260,7 +265,7 @@ gulp.task('optimize', ['inject', 'test'], function () {
     .pipe(assets.restore())
     .pipe($.useref())
     // Replace the file names in the html with rev numbers
-    .pipe($.revReplace())
+    .pipe($.revReplace(replaceOptions))
     .pipe(gulp.dest(config.build));
 });
 
@@ -451,10 +456,6 @@ function inject(src, label, order) {
   var options = {read: false};
   if (label) {
     options.name = 'inject:' + label;
-  }
-
-  if (config.aws.cdnUrl) {
-    options.prefix = config.aws.cdnUrl;
   }
 
   return $.inject(orderSrc(src, order), options);
