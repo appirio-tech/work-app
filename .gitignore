@@ -7,7 +7,7 @@ logs
 *.log
 
 # Build files
-tmp
+.tmp
 bower_components
 node_modules
 build
