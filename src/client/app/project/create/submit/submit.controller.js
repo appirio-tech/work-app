@@ -17,7 +17,7 @@
 
     function submit() {
       ProjectService.createProject(vm.newProject);
-      $location.url('/projects');
+      $location.url('/projects?new');
     }
 
     function activate() {
