@@ -34,9 +34,10 @@ module.exports = function () {
     css: temp + '**/*.css',
     fonts: bower.directory + 'font-awesome/fonts/**/*.*',
     html: client + '**/*.html',
+    jade: clientApp + '**/*.jade',
     htmltemplates: clientApp + '**/*.html',
     images: client + 'images/**/*.*',
-    index: clientApp + 'index.html',
+    index: temp + 'index.html',
     // app js, with no specs
     js: [
       clientApp + '**/*.module.js',

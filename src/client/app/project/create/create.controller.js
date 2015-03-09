@@ -1,4 +1,3 @@
-var glo;
 (function () {
   'use strict';
 
@@ -6,9 +5,9 @@ var glo;
     .module('app.project.create')
     .controller('ProjectCreateController', ProjectCreateController);
 
-  ProjectCreateController.$inject = ['logger', 'ProjectService'];
+  ProjectCreateController.$inject = ['logger', 'ProjectService', '$location', '$scope', '$window'];
   /* @ngInject */
-  function ProjectCreateController(logger, ProjectService) {
+  function ProjectCreateController(logger, ProjectService, $location, $scope, $window) {
     var vm = this;
     vm.title = 'Create';
     vm.newProject = ProjectService.getCurrent();
@@ -19,6 +18,10 @@ var glo;
     vm.addFile = addFile;
     vm.createProject = createProject;
     vm.getProjects = getProjects;
+
+    $scope.$watch('form', function(form) {
+      vm.form = form;
+    });
 
     activate();
 
@@ -31,17 +34,36 @@ var glo;
     }
 
     function addUrl() {
-      vm.newProject.links.push(vm.newUrl);
-      vm.newUrl = '';
+      if (vm.newUrl.length == 0) {
+        return;
+      } else {
+        vm.newProject.links.push(vm.newUrl);
+        vm.newUrl = '';
+      };
     }
 
     function addFile() {
-      vm.newProject.files.push(vm.newFile);
-      vm.newFile = '';
+      if (vm.newFile.length == 0) {
+        return;
+      } else {
+        vm.newProject.files.push(vm.newFile);
+        vm.newFile = '';
+      };
     }
 
     function next() {
-      ProjectService.setCurrent(vm.newProject);
+      $window.scrollTo(0, 0);
+      if (!vm.form || (vm.form.$pristine && form.description.length == 0)) {
+        vm.emptyError = true;
+        return;
+      }
+      if (!vm.form.$valid) {
+        vm.form.$submitted = true;
+        return;
+      } else {
+        ProjectService.setCurrent(vm.newProject);
+        $location.url('/create/submit');
+      }
     }
 
     function activate() {

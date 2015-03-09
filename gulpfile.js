@@ -4,7 +4,6 @@ var config = require('./gulp.config')();
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
-var compass = require('gulp-compass');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -60,13 +59,26 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('scss', ['clean-styles'], function () {
+gulp.task('scss', ['clean-styles', 'jade'], function () {
   log('Compiling SCSS --> CSS');
 
   return gulp
     .src(config.scss)
     .pipe(gulp.dest(config.scssBuild))
-    .pipe(compass(config.compass))
+    .pipe($.compass(config.compass))
+    .pipe(gulp.dest(config.temp));
+});
+
+/**
+ * Compile jade to html
+ * @return {Stream}
+ */
+gulp.task('jade', ['clean-code'], function () {
+  log('Compiling Jade --> HTML');
+
+  return gulp
+    .src(config.jade)
+    .pipe($.jade())
     .pipe(gulp.dest(config.temp));
 });
 
@@ -122,7 +134,7 @@ gulp.task('templatecache', ['clean-code'], function () {
  * Wire-up the bower dependencies
  * @return {Stream}
  */
-gulp.task('wiredep', ['scss'], function () {
+gulp.task('wiredep', ['scss', 'jade'], function () {
   log('Wiring the bower dependencies into the html');
 
   var wiredep = require('wiredep').stream;
@@ -135,7 +147,6 @@ gulp.task('wiredep', ['scss'], function () {
     .src(config.index)
     .pipe(wiredep(options))
     .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.client))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -145,7 +156,7 @@ gulp.task('inject', ['wiredep', 'templatecache'], function () {
   return gulp
     .src(config.index)
     .pipe(inject(config.css))
-    .pipe(gulp.dest(config.client));
+    .pipe(gulp.dest(config.temp));
 });
 
 /**
@@ -531,8 +542,10 @@ function startBrowserSync(isDev, specRunner) {
   if (isDev) {
     gulp.watch([config.scss], ['scss'])
       .on('change', changeEvent);
+    gulp.watch([config.jade], ['jade'])
+      .on('change', changeEvent);
   } else {
-    gulp.watch([config.scss, config.js, config.html], ['optimize', browserSync.reload])
+    gulp.watch([config.scss, config.js, config.html, config.jade], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 

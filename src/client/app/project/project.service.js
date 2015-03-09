@@ -8,6 +8,7 @@
   ProjectService.$inject = ['$q', '$http', '$location', 'exception', 'logger'];
   /* @ngInject */
   function ProjectService($q, $http, $location, exception, logger) {
+    var i = 0;
     var ob = {
       getProject: getProject,
       getProjects: getProjects,
@@ -20,7 +21,22 @@
     function getCurrent() {
       return ob.current || {
         links: [],
-        files: []
+        files: [],
+        billings: [],
+        duration: 15,
+        styleMinimalComplex: 3,
+        styleLoudSubtle: 3,
+        styleModernClassic: 3,
+        stylePlayfulSerious: 3,
+        additionalDetails: '',
+        status: '',
+        website: '',
+        updatedAt: (new Date()),
+        updatedBy: 12345,
+        createdAt: (new Date()),
+        styleIdeas: '',
+        type: 0,
+        id: i++
       };
     }
 

@@ -1,5 +1,16 @@
 .project-list {
-  border: 5px solid;
+  border: 1px solid;
+  margin: 4px;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.box-shadow {
+  box-shadow: 0 1px 3px grey;
+}
+
+.sidemenu {
+  margin-top: 200px;
 }
 
 #createProject {
@@ -23,5 +34,18 @@
   .ital {
     font-style: italic;
   }
+  .validation {
+    color: red;
+  }
+  .ng-invalid-required {
+    box-shadow: none;
+  }
+  .next, .submit {
+    width: 60%;
+  }
 
+}
+
+.manage-project {
+  margin-top: 40px;
 }
