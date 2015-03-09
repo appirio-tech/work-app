@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/alex/nowars/webapp",
+      "file_exclude_patterns": [".tmp/**.*", ".sass-cache/**.*"]
+		}
+	]
+}

@@ -1,4 +1,4 @@
-@import "core/styles/all-configs";
+@import "core/styles/combined";
 
 html {
   height: 100%;
@@ -13,4 +13,13 @@ body {
   overflow-y: auto;
   -webkit-text-stroke: 1px transparent;
   font-family: Helvetica Neue;
+  background-color: $limed-spruce;
+}
+
+main {
+  background-color: $white;
+}
+
+a {
+  text-decoration: none;
 }

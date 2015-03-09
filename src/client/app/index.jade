@@ -21,7 +21,7 @@
 - app_scripts.push("layout/scripts/layout-module")
 - app_scripts.push("layout/scripts/directives/ht-sidebar-dir")
 - app_scripts.push("layout/scripts/directives/ht-top-nav-dir")
-- app_scripts.push("layout/scripts/controllers/shell-ctrl")
+- app_scripts.push("layout/scripts/controllers/content-ctrl")
 - app_scripts.push("layout/scripts/controllers/sidebar-ctrl")
 - app_scripts.push("project/project.service")
 - app_scripts.push("project/create/create.controller")
@@ -49,10 +49,13 @@
 - bowers.push("angular-mocks/angular-mocks")
 - bowers.push("toastr/toastr")
 
-- var css = ["layout/styles/main", "layout/styles/reset"]
+- var css = ["layout/styles/reset", "layout/styles/main", "layout/styles/header", "getting-started/styles/getting-started"]
+- var mobileLandCss = ["layout/styles/mobile-landscape/header"]
+- var mobilePortCss = ["layout/styles/mobile-portrait/header"]
+- var desktopCss = ["layout/styles/desktop/header"]
 
 <!doctype html>
-html(ng-app="app")
+html(ng-app="app", lang="en")
   head
     style
       include index.css
@@ -74,17 +77,37 @@ html(ng-app="app")
     <!-- endbower -->
     <!-- endbuild -->
 
+    <!-- build:css styles/mobile-portrait.css -->
+    <!-- bower:css -->
+    each path in mobilePortCss
+      link(href=path + ".css", rel="stylesheet", media="(max-width: 375px)")
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/mobile-landscape.css -->
+    <!-- bower:css -->
+    each path in mobileLandCss
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 376px) and (max-width:767px)")
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/desktop.css -->
+    <!-- bower:css -->
+    each path in desktopCss
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
+    <!-- endbower -->
+    <!-- endbuild -->
+
   body
-    div
-      div("ng-include"="'layout/views/shell.html'")
+    include layout/views/shell.jade
 
-      #plash-page("ng-show"="false")
-        .page-splash
-          .page-splash-message
-            selfService
+    #plash-page("ng-show"="false")
+      .page-splash
+        .page-splash-message
+          selfService
 
-          .progress.progress-striped.active.page-progress-bar
-            .bar
+        .progress.progress-striped.active.page-progress-bar
+          .bar
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->

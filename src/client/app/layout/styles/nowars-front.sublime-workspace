@@ -1,0 +1,1152 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"bacl",
+				"background-color"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"na",
+				"navs"
+			],
+			[
+				"bo",
+				"bower_components"
+			],
+			[
+				"app",
+				"app_scripts"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"s",
+				"suggestion"
+			],
+			[
+				"exp",
+				"expiration"
+			],
+			[
+				"is",
+				"isExp"
+			],
+			[
+				"ul",
+				"unless"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/alex/nowars/webapp/app/scripts/controllers/reports_ctrl.coffee",
+			"settings":
+			{
+				"buffer_size": 674,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/alex/nowars/webapp/app/scripts/services/api/full_reports_srv.coffee",
+			"settings":
+			{
+				"buffer_size": 1027,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/alex/nowars/webapp/app/scripts/services/api/full_suggestions_srv.coffee",
+			"settings":
+			{
+				"buffer_size": 1348,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 27.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git dif",
+				"Git: Diff"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"git di",
+				"Git: Diff"
+			],
+			[
+				"git d",
+				"Git: Diff"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/alex/app-express/src/client/app/layout/styles/nowars-front.sublime-project",
+		"/Users/alex/app-express/src/client/app/core/styles/_combined.scss",
+		"/Users/alex/app-express/gulpfile.js",
+		"/Users/alex/app-express/src/client/app/layout/styles/header.scss",
+		"/Users/alex/app-express/src/client/app/core/styles/_hacks.scss",
+		"/Users/alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/alex/Library/Application Support/Sublime Text 2/Packages/User/app-xpress.sublime-project",
+		"/Users/alex/Library/Application Support/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
+		"/Users/alex/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/alex/Library/Application Support/Sublime Text 2/Packages/User/JSON.sublime-settings",
+		"/Users/alex/app-express/.tmp/index.html",
+		"/Users/alex/app-express/src/client/index.html",
+		"/Users/alex/app-express/src/client/app/index.jade",
+		"/Users/alex/app-express/src/client/app/layout/views/header.jade",
+		"/Users/alex/app-express/src/client/app/core/styles/_fonts.scss",
+		"/Users/alex/app-express/src/client/app/layout/styles/desktop/header.scss",
+		"/Users/alex/app-express/src/client/app/layout/styles/mobile-portrait/header.scss",
+		"/Users/alex/app-express/src/client/app/layout/styles/mobile-landscape/header.scss",
+		"/Users/alex/app-express/src/client/app/layout/styles/main.scss",
+		"/Users/alex/app-express/package.json",
+		"/Users/alex/app-express/src/client/app/layout/views/shell.jade",
+		"/Users/alex/.profile",
+		"/Users/alex/nowars/lib/tasks/get_roptions.rake",
+		"/Users/alex/nowars/config/database.yml",
+		"/Users/alex/nowars/.gitignore",
+		"/Users/alex/nowars/db/migrate/20150305034733_create_condition.rb",
+		"/Users/alex/nowars/db/migrate/20150305034833_create_views.rb",
+		"/Users/alex/app-express/src/client/app/index.css",
+		"/Users/alex/test-app/src/server/app.js",
+		"/Users/alex/test-app/gulpfile.js",
+		"/Users/alex/test-app/.tmp/index.html",
+		"/Users/alex/test-app/src/client/index.html",
+		"/Users/alex/np-front-end-reference/src/client/app/index.html",
+		"/Users/alex/np-front-end-reference/gulp.config.js",
+		"/Users/alex/np-front-end-reference/package.json",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/styles/main.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/styles/reset.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_all-configs.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_borders.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_colors.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_fonts.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_margins.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_paddings.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/layout-module.js",
+		"/Users/alex/np-front-end-reference/Gruntfile.js",
+		"/Users/alex/np-front-end-reference/src/client/app/index.jade",
+		"/Users/alex/np-front-end-reference/gulpfile.js",
+		"/Users/alex/np-front-end-reference/config.rb",
+		"/Users/alex/np-front-end-reference/.tmp/client/app/layout/styles/main.css",
+		"/Users/alex/np-front-end-reference/compass-config.rb",
+		"/Users/alex/np-front-end-reference/src/client/app/index.css",
+		"/Users/alex/np-front-end-reference/src/client/app/index.haml",
+		"/Users/alex/np-front-end-reference/src/client/app/index-jade.jade",
+		"/Users/alex/np-front-end-reference/Gemfile",
+		"/Users/alex/np-front-end-reference/.gitignore",
+		"/Users/alex/np-front-end-reference/src/client/app/core/styles/_padding.scss",
+		"/Users/alex/np-front-end-reference/.tmp/index.html",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/directives/ht-sidebar-dir.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/directives/ht-top-nav-dir.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/directives/ht_top_nav_dir.js",
+		"/Users/alex/np-front-end-reference/views",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/tests/controllers/shell_controller_spec.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/tests/controllers/sidebar_controller_spec.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/controllers/sidebar_controller.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/views/shell.html",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/views/ht_top_nav.html",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/tests/controllers/sidebar_controller.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/controllers/shell_controller.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/directives/ht_sidebar_directive.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/layout_module.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/scripts/directives/ht_top_nav_directive.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/tests/directives/ht_sidebar_directive_spec.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/views/sidebar.html",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/views/ht_top_nav.haml",
+		"/Users/alex/np-front-end-reference/src/client/app/project/create/create.route.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/ht-top-nav.directive.js",
+		"/Users/alex/np-front-end-reference/src/client/app/core/app_module.coffee",
+		"/Users/alex/np-front-end-reference/src/client/app/app_module.coffee",
+		"/Users/alex/np-front-end-reference/src/client/app/scripts/directives/ht_top_nav_directive.js",
+		"/Users/alex/np-front-end-reference/src/client/app/views/layout/sidebar.html",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/ht-top-nav.html",
+		"/Users/alex/np-front-end-reference/src/client/app/scripts/directives/ht-sidebar-directive.js",
+		"/Users/alex/np-front-end-reference/src/client/app/scripts/directives/ht_sidebar_directive.js",
+		"/Users/alex/np-front-end-reference/src/client/app/layout/ht-sidebar.directive.js",
+		"/Users/alex/np-front-end-reference/src/client/tests/directives/ht_sidebar_directive_spec.js",
+		"/Users/alex/np-front-end-reference/src/client/app/views/layout/shell.haml",
+		"/Users/alex/np-front-end-reference/src/client/app/views/layout/ht-top-nav.html",
+		"/Users/alex/np-front-end-reference/src/client/app/views/layout/shell.html",
+		"/Users/alex/np-front-end-reference/src/client/app/styles/main.scss",
+		"/Users/alex/np-front-end-reference/src/client/app/scripts/app.module.coffee",
+		"/Users/alex/np-front-end-reference/src/client/app/app.module.js",
+		"/Users/alex/np-front-end-reference/src/client/index.haml",
+		"/Users/alex/np-front-end-reference/bower.json",
+		"/Users/alex/nowars/spec/spec_helper.rb",
+		"/Users/alex/nowars/spec/factories.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/stats/full_stock_stats_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/stats/suggestion_stats_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/conditions_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/full_report_options_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/full_conditions_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/full_suggestions_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/full_reports_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/report_options_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/reports_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/suggestions_controller.rb",
+		"/Users/alex/nowars_new/app/controllers/api/v1/unread_counts_controller.rb",
+		"/Users/alex/nowars_new/Gemfile",
+		"/Users/alex/nowars_new/app/controllers/api/api_controller.rb",
+		"/Users/alex/nowars_new/spec/models/stats/stock_stat_spec.rb",
+		"/Users/alex/nowars_new/app/models/stats/stock_stat.rb",
+		"/Users/alex/nowars_new/config/environments/development.rb",
+		"/Users/alex/nowars_new/spec/factories.rb",
+		"/Users/alex/nowars_new/app/models/condition.rb",
+		"/Users/alex/nowars_new/config/application.rb",
+		"/Users/alex/nowars_new/lib/tasks/suggest_stats.rake",
+		"/Users/alex/nowars_new/config/secrets.yml",
+		"/Users/alex/nowars_new/config/database.yml",
+		"/Users/alex/nowars/app/models/stats/stock_stat.rb",
+		"/Users/alex/nowars/lib/tasks/suggest_stats.rake",
+		"/Users/alex/nowars/spec/models/stats/stock_stat_spec.rb",
+		"/Users/alex/nowars_new/config/routes.rb",
+		"/Users/alex/nowars/webapp/node_modules/karma/node_modules/connect/node_modules/body-parser/node_modules/iconv-lite/encodings/tables/shiftjis.json",
+		"/Users/alex/nowars/Gemfile",
+		"/Users/alex/nowars/spec/quote_response.json",
+		"/Users/alex/nowars/app/controllers/application_controller.rb",
+		"/Users/alex/nowars/.openshift/action_hooks/deploy",
+		"/Users/alex/nowars/.openshift/markers/README",
+		"/Users/alex/nowars/Gemfile.lock"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/alex/np-front-end-reference/",
+			"/Users/alex/nowars_new/",
+			"/Users/alex/nowars/",
+			"/Users/alex/nowars/lib/tasks",
+			"/Users/alex/winapi/lib/tasks",
+			"/Users/alex/winapi",
+			"/Users/alex/winapi/webapp",
+			"/Users/alex/winapi/",
+			"/Users/alex/winapi/app",
+			"/Users/alex/winapi/spec",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"folderexcludepatterns",
+			"process-jade",
+			"href",
+			"mobilePortCss",
+			"nowars",
+			"cleardb_id",
+			"update",
+			";",
+			"));",
+			"CREATE OR REPLACE",
+			"ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER",
+			"reload",
+			"watch",
+			"jade",
+			"styles",
+			"nodemon",
+			"startBrowserSync",
+			"8001",
+			"sync",
+			"serve(",
+			".serve",
+			"server",
+			"def getNodeOptions",
+			"less",
+			"styles",
+			"less",
+			"watch",
+			"grunt",
+			"process-coffee",
+			"watch",
+			"CSS",
+			"coffee",
+			"watch",
+			"compass",
+			"config",
+			"clientApp",
+			"clientpp",
+			"clientApp",
+			"compass",
+			"\",\n\"",
+			", bowers.push",
+			", \"",
+			"process-jade",
+			"less-watcher",
+			"process-jade",
+			"jade",
+			"process-jade",
+			"jade",
+			"styles",
+			"less",
+			"styles",
+			"haml",
+			"serve",
+			"serve-dev",
+			"wire",
+			"webtestpage",
+			"watch",
+			"measurempaddents",
+			"colors",
+			"measurements",
+			"autop",
+			"_",
+			"compass",
+			"styles",
+			"css",
+			"images/gulp-tiny.png",
+			"images/gulp-tiny.png ",
+			"ht-top-nav.html",
+			"shell",
+			"home.html",
+			"html.html",
+			"shell.html",
+			"@color_success",
+			"@color_blue",
+			"@color_lightblue",
+			"haml",
+			"directives",
+			".js\"></script>",
+			"<script src=\"/src/client/app/",
+			"Stockstat",
+			".js\"></script>",
+			"  <script src=\"/bower_components/",
+			"body",
+			"href",
+			"name",
+			"content",
+			"compass",
+			"time-grunt",
+			"sinon",
+			"imagemin",
+			"newer",
+			"cdn",
+			"compass",
+			"autoprefixer",
+			"global",
+			"FullReportOption",
+			"activesupport",
+			"oauth",
+			"Stats",
+			"StockStat",
+			"eager",
+			"first_name",
+			"autoload_paths",
+			"inher",
+			"Stats::StockStat",
+			"postgresql",
+			"openshift_secret_generator",
+			"openshift",
+			"bundle install",
+			"coffee",
+			"debugger",
+			"DebugExceptions",
+			"consider_all_requests_local",
+			".mass_assignment_san",
+			"eager_load",
+			"config.active_record.auto_explain_threshold",
+			"serve_static_assets",
+			"serve",
+			"serve_static_files",
+			"config.eager_load",
+			"config.active_record.whitelist_attributes",
+			"Bundler.require(*Rail",
+			"auto_explain_threshold_in_seconds",
+			"total",
+			"job",
+			"task",
+			"job",
+			"task"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"b220f5050911eb",
+			";\"",
+			"));\"",
+			"execute \"CREATE OR REPLACE",
+			"OR REPLACE",
+			"OR REPLACE\n- app_scripts.push(\"",
+			"\")\n- app_scripts.push(\"",
+			"\")\n- app_scripts.push(",
+			"\n- app_scripts.push(",
+			"- app_scripts.push(",
+			"), bowers.push(\"",
+			"$color_success",
+			"$color_blue",
+			"$color_lightblue",
+			"\",",
+			"\"",
+			"",
+			"StockStat",
+			"job",
+			"Job",
+			"",
+			"scope.suggestion['close'] ",
+			"report_option",
+			"OR REPLACE VIEW"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/alex/nowars/webapp/app/scripts/controllers/reports_ctrl.coffee",
+					"settings":
+					{
+						"buffer_size": 674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/alex/nowars/webapp/app/scripts/services/api/full_reports_srv.coffee",
+					"settings":
+					{
+						"buffer_size": 1027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								726,
+								726
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/alex/nowars/webapp/app/scripts/services/api/full_suggestions_srv.coffee",
+					"settings":
+					{
+						"buffer_size": 1348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 271.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.git":
+	{
+		"height": 124.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"fullsuggest",
+				"app/scripts/services/api/full_suggestions_srv.coffee"
+			],
+			[
+				"fullreportsr",
+				"app/scripts/services/api/full_reports_srv.coffee"
+			],
+			[
+				"reportctrl",
+				"app/scripts/controllers/reports_ctrl.coffee"
+			],
+			[
+				"_margin",
+				"src/client/app/core/styles/_margins.scss"
+			],
+			[
+				"_font",
+				"src/client/app/core/styles/_fonts.scss"
+			],
+			[
+				"padding",
+				"src/client/app/core/styles/_paddings.scss"
+			],
+			[
+				"headerjade",
+				"src/client/app/layout/views/header.jade"
+			],
+			[
+				"header",
+				"src/client/app/layout/styles/header.scss"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"hacks",
+				"src/client/app/core/styles/_hacks.scss"
+			],
+			[
+				"headerscss",
+				"src/client/app/layout/styles/header.scss"
+			],
+			[
+				"src/client/index.html",
+				"src/client/index.html"
+			],
+			[
+				"layeaderjade",
+				"src/client/app/layout/views/header.jade"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"gul",
+				"gulpfile.js"
+			],
+			[
+				"app-modulecof",
+				"src/client/app/core/app-module.coffee"
+			],
+			[
+				"mainscs",
+				"src/client/app/layout/styles/main.scss"
+			],
+			[
+				"grun",
+				"Gruntfile.js"
+			],
+			[
+				"gulpconfig",
+				"gulp.config.js"
+			],
+			[
+				"layoustyle",
+				"src/client/app/layout/styles/main.scss"
+			],
+			[
+				"indexhaml",
+				"src/client/app/index.haml"
+			],
+			[
+				"indexha",
+				"src/client/app/index.haml"
+			],
+			[
+				"index",
+				".tmp/index.html"
+			],
+			[
+				"indexham",
+				"src/client/app/index.haml"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"fac",
+				"spec/factories.rb"
+			],
+			[
+				"spec",
+				"spec/spec_helper.rb"
+			],
+			[
+				"controllers/api/v1/conditions_controller.rb",
+				"app/controllers/api/v1/conditions_controller.rb"
+			],
+			[
+				"app/controllers/api/api_controller.rb",
+				"app/controllers/api/api_controller.rb"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"models/stats/stock_stat_spec.rb",
+				"spec/models/stats/stock_stat_spec.rb"
+			],
+			[
+				"stocksta",
+				"app/models/stats/stock_stat.rb"
+			],
+			[
+				"config/application.rb",
+				"config/application.rb"
+			],
+			[
+				"app/models/condition.rb",
+				"app/models/condition.rb"
+			],
+			[
+				"api/api_controller.rb",
+				"app/controllers/api/api_controller.rb"
+			],
+			[
+				"pec/factories.rb",
+				"spec/factories.rb"
+			],
+			[
+				"models/stats/stock_stat.rb",
+				"app/models/stats/stock_stat.rb"
+			],
+			[
+				"gemfi",
+				"Gemfile"
+			],
+			[
+				"openshif",
+				"webapp/node_modules/karma/node_modules/connect/node_modules/body-parser/node_modules/iconv-lite/encodings/tables/shiftjis.json"
+			],
+			[
+				"configtest",
+				"config/environments/test.rb"
+			],
+			[
+				"configdev",
+				"config/environments/development.rb"
+			],
+			[
+				"specmodestats",
+				"spec/models/stats/suggestion_stats_spec.rb"
+			],
+			[
+				"app/controllers/api/v1/stats/suggestion_stats_controller.rb",
+				"app/controllers/api/v1/stats/suggestion_stats_controller.rb"
+			],
+			[
+				"configdeve",
+				"config/environments/development.rb"
+			],
+			[
+				"unreadcountctrspec",
+				"spec/controllers/api/v1/unread_counts_countroller_spec.rb"
+			],
+			[
+				"unreadcount",
+				"app/controllers/api/v1/unread_counts_controller.rb"
+			],
+			[
+				"re",
+				"README.md"
+			],
+			[
+				"readm",
+				"webapp/node_modules/grunt/node_modules/colors/ReadMe.md"
+			],
+			[
+				"tasks/get_all_suggestions.rake",
+				"lib/tasks/get_all_suggestions.rake"
+			],
+			[
+				"odels/job_spec.rb",
+				"spec/models/job_spec.rb"
+			],
+			[
+				"modeltask",
+				"app/models/task.rb"
+			],
+			[
+				"tasks/update_to_crossed_spec.rb",
+				"spec/models/tasks/update_to_crossed_spec.rb"
+			],
+			[
+				"symcharthaml",
+				"app/views/reports/symetrical_chart.haml"
+			],
+			[
+				"chartdir",
+				"app/scripts/directives/chart_dir.coffee"
+			],
+			[
+				"fulls",
+				"app/scripts/controllers/full_suggestions_ctrl.coffee"
+			],
+			[
+				"fullsuggha",
+				"app/views/full_suggestions.haml"
+			],
+			[
+				"inhere",
+				"app/scripts/services/inherit_resources.coffee"
+			],
+			[
+				"full",
+				"app/scripts/controllers/full_suggestions_ctrl.coffee"
+			],
+			[
+				"fullsuggestctrco",
+				"app/scripts/controllers/full_suggestions_ctrl.coffee"
+			],
+			[
+				"unreadcountcontr",
+				"app/controllers/api/v1/unread_counts_controller.rb"
+			],
+			[
+				"fullreportcontroll",
+				"app/controllers/api/v1/full_reports_controller.rb"
+			],
+			[
+				"factor",
+				"spec/factories.rb"
+			],
+			[
+				"fullreportoptionspec",
+				"spec/controllers/api/v1/full_report_options_controller_spec.rb"
+			],
+			[
+				"fullcondi",
+				"app/models/full_condition.rb"
+			],
+			[
+				"fullcondicontrol",
+				"app/controllers/api/v1/full_conditions_controller.rb"
+			],
+			[
+				"fullcondictr",
+				"app/controllers/api/v1/full_conditions_controller.rb"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"fullsuctr",
+				"app/controllers/api/v1/full_suggestions_controller.rb"
+			],
+			[
+				"modelcondit",
+				"app/models/condition.rb"
+			],
+			[
+				"rout",
+				"config/routes.rb"
+			],
+			[
+				"modelsugg",
+				"app/models/suggestion.rb"
+			],
+			[
+				"suggestionc",
+				"app/controllers/api/v1/suggestions_controller.rb"
+			],
+			[
+				"models/option_spec.rb",
+				"spec/models/option_spec.rb"
+			],
+			[
+				"modeloption",
+				"app/models/option.rb"
+			],
+			[
+				"spechel",
+				"spec/spec_helper.rb"
+			],
+			[
+				"secret",
+				"config/initializers/secret_token.rb"
+			],
+			[
+				"route",
+				"config/routes.rb"
+			],
+			[
+				"modelstoc",
+				"app/models/stock.rb"
+			],
+			[
+				"api_controller.rb",
+				"app/controllers/api/api_controller.rb"
+			],
+			[
+				"modeltrade",
+				"app/models/trade_king.rb"
+			],
+			[
+				"models/trade_king_spec.rb",
+				"spec/models/trade_king_spec.rb"
+			],
+			[
+				"spec/models/unread_count_spec.rb",
+				"spec/models/unread_count_spec.rb"
+			],
+			[
+				"controllers/api/api_controller.rb",
+				"app/controllers/api/api_controller.rb"
+			],
+			[
+				"controllers/api/v1/suggestions_controller.rb",
+				"app/controllers/api/v1/suggestions_controller.rb"
+			],
+			[
+				"suggestionscontroller",
+				"app/controllers/api/v1/suggestions_controller.rb"
+			],
+			[
+				"spec/controllers/api/v1/suggestions_controller_spec.rb",
+				"spec/controllers/api/v1/suggestions_controller_spec.rb"
+			],
+			[
+				"report/suggest_big_g_spec.rb",
+				"spec/models/report/suggest_big_g_spec.rb"
+			],
+			[
+				"1/stats/suggestion_stats_contro",
+				"app/controllers/api/v1/stats/suggestion_stats_controller.rb"
+			],
+			[
+				"fullstockstatscontroller",
+				"spec/controllers/api/v1/stats/full_stock_stats_controller_spec.rb"
+			],
+			[
+				"modelo",
+				"app/models/option.rb"
+			],
+			[
+				"tats/full_stock_stats_controller.rb",
+				"app/controllers/api/v1/stats/full_stock_stats_controller.rb"
+			],
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"gemfile.lock",
+				"Gemfile.lock"
+			],
+			[
+				"trade_king_spec",
+				"spec/models/trade_king_spec.rb"
+			],
+			[
+				"update_confidence_spec.rb",
+				"spec/models/tasks/update_confidence_spec.rb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 291.0,
+	"status_bar_visible": true
+}
