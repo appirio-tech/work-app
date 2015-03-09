@@ -76,9 +76,13 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
 gulp.task('jade', ['clean-code'], function () {
   log('Compiling Jade --> HTML');
 
+  var options = {
+    pretty: true
+  };
+
   return gulp
     .src(config.jade)
-    .pipe($.jade())
+    .pipe($.jade(options))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -447,6 +451,10 @@ function inject(src, label, order) {
   var options = {read: false};
   if (label) {
     options.name = 'inject:' + label;
+  }
+
+  if (config.aws.cdnUrl) {
+    options.prefix = config.aws.cdnUrl;
   }
 
   return $.inject(orderSrc(src, order), options);
