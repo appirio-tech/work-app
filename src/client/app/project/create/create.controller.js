@@ -1,4 +1,3 @@
-var bal;
 (function () {
   'use strict';
 
@@ -9,7 +8,7 @@ var bal;
   ProjectCreateController.$inject = ['logger', 'ProjectService', '$location', '$scope', '$window'];
   /* @ngInject */
   function ProjectCreateController(logger, ProjectService, $location, $scope, $window) {
-    var vm = bal = this;
+    var vm = this;
     vm.title = 'Create';
     vm.newProject = ProjectService.getCurrent();
     vm.next = next;
