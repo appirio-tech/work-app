@@ -21,6 +21,8 @@ module.exports = function () {
   var nodeModules = 'node_modules';
 
   var config = {
+    // Env Path
+    env: envConfig.getVal('NODE_ENV', 'dev'),
     /**
      * File paths
      */

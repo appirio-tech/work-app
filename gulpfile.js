@@ -9,7 +9,6 @@ var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 var colors = $.util.colors;
-var envenv = $.util.env;
 var port = process.env.PORT || config.defaultPort;
 
 /**
@@ -59,7 +58,7 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('scss', ['clean-styles', 'jade'], function () {
+gulp.task('scss', ['clean-styles'], function () {
   log('Compiling SCSS --> CSS');
 
   return gulp
@@ -134,33 +133,10 @@ gulp.task('templatecache', ['clean-code'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-/**
- * Wire-up the bower dependencies
- * @return {Stream}
- */
-gulp.task('wiredep', ['scss', 'jade'], function () {
-  log('Wiring the bower dependencies into the html');
-
-  var wiredep = require('wiredep').stream;
-  var options = config.getWiredepDefaultOptions();
-
-  // Only include stubs if flag is enabled
-  var js = args.stubs ? [].concat(config.js, config.stubsjs) : config.js;
-
-  return gulp
-    .src(config.index)
-    .pipe(wiredep(options))
-    .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.temp));
-});
-
-gulp.task('inject', ['wiredep', 'templatecache'], function () {
+gulp.task('inject', ['jade', 'scss', 'templatecache'], function (done) {
   log('Wire up css into the html, after files are ready');
 
-  return gulp
-    .src(config.index)
-    .pipe(inject(config.css))
-    .pipe(gulp.dest(config.temp));
+  done();
 });
 
 /**
@@ -177,23 +153,18 @@ gulp.task('serve-specs', ['build-specs'], function (done) {
  * Inject all the spec files into the specs.html
  * @return {Stream}
  */
-gulp.task('build-specs', ['templatecache'], function (done) {
+gulp.task('build-specs', ['inject'], function (done) {
   log('building the spec runner');
 
-  var wiredep = require('wiredep').stream;
   var templateCache = config.temp + config.templateCache.file;
-  var options = config.getWiredepDefaultOptions();
   var specs = config.specs;
 
   if (args.startServers) {
     specs = [].concat(specs, config.serverIntegrationSpecs);
   }
-  options.devDependencies = true;
 
   return gulp
     .src(config.specRunner)
-    .pipe(wiredep(options))
-    .pipe(inject(config.js, '', config.jsOrder))
     .pipe(inject(config.testlibraries, 'testlibraries'))
     .pipe(inject(config.specHelpers, 'spechelpers'))
     .pipe(inject(specs, 'specs', ['**/*']))
@@ -270,6 +241,35 @@ gulp.task('optimize', ['inject', 'test'], function () {
 });
 
 /**
+ * Inject files in a sorted sequence at a specified inject label
+ * @param   {Array} src   glob pattern for source files
+ * @param   {String} label   The label name
+ * @param   {Array} order   glob pattern for sort order of the files
+ * @returns {Stream}   The stream
+ */
+function inject(src, label, order) {
+  var options = {read: false};
+  if (label) {
+    options.name = 'inject:' + label;
+  }
+
+  return $.inject(orderSrc(src, order), options);
+}
+
+/**
+ * Order a stream
+ * @param   {Stream} src   The gulp.src stream
+ * @param   {Array} order Glob array pattern
+ * @returns {Stream} The ordered stream
+ */
+function orderSrc(src, order) {
+  //order = order || ['**/*'];
+  return gulp
+    .src(src)
+    .pipe($.if(order, $.order(order)));
+}
+
+/**
  * Remove all files from the build, temp, and reports folders
  * @param  {Function} done - callback when complete
  */
@@ -326,7 +326,7 @@ gulp.task('clean-code', function (done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['vet', 'templatecache'], function (done) {
+gulp.task('test', ['inject', 'vet'], function (done) {
   startTests(true /*singleRun*/, done);
 });
 
@@ -446,35 +446,6 @@ function clean(path, done) {
 }
 
 /**
- * Inject files in a sorted sequence at a specified inject label
- * @param   {Array} src   glob pattern for source files
- * @param   {String} label   The label name
- * @param   {Array} order   glob pattern for sort order of the files
- * @returns {Stream}   The stream
- */
-function inject(src, label, order) {
-  var options = {read: false};
-  if (label) {
-    options.name = 'inject:' + label;
-  }
-
-  return $.inject(orderSrc(src, order), options);
-}
-
-/**
- * Order a stream
- * @param   {Stream} src   The gulp.src stream
- * @param   {Array} order Glob array pattern
- * @returns {Stream} The ordered stream
- */
-function orderSrc(src, order) {
-  //order = order || ['**/*'];
-  return gulp
-    .src(src)
-    .pipe($.if(order, $.order(order)));
-}
-
-/**
  * serve the code
  * --debug-brk or --debug
  * --nosync
@@ -516,13 +487,13 @@ function serve(isDev, specRunner) {
     });
 }
 
-function getNodeOptions(isDev) {
+function getNodeOptions() {
   return {
     script: config.nodeServer,
     delayTime: 1,
     env: {
       'PORT': port,
-      'NODE_ENV': isDev ? 'dev' : 'build'
+      'NODE_ENV': config.env
     },
     watch: [config.server]
   };
@@ -564,6 +535,7 @@ function startBrowserSync(isDev, specRunner) {
     files: isDev ? [
       config.client + '**/*.*',
       '!' + config.scss,
+      '!' + config.jade,
       config.temp + '**/*.css'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t
