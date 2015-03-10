@@ -60,7 +60,7 @@ gulp.task('plato', function (done) {
  * @return {Stream}
  */
 
-gulp.task('scss', function () {
+gulp.task('scss', ['clean-styles', 'jade'], function () {
   log('Compiling SCSS --> CSS');
 
   return gulp

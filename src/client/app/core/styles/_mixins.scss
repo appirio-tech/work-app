@@ -1,0 +1,17 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin bg-image-pixel($low, $high) {
+  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+    background-image: url($low)
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url($high)
+  }
+}

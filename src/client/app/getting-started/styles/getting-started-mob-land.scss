@@ -17,13 +17,16 @@
 
     ul.builds {
       li {
-        margin: $margin-28 0;
+        $diameter: 112px;
+
+        margin : $margin-28 0;
         padding: 0 $padding-20;
-        width  : 112px;
+        width  : $diameter;
 
         .icon {
-          width : 112px;
-          height : 112px;
+          width      : $diameter;
+          height     : $diameter;
+          line-height: $diameter;
         }
 
         .label {

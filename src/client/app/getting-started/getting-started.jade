@@ -1,7 +1,7 @@
 - builds = []
-- builds.push({ href: '#', icon: 'mobile-app-design', label: 'Mobile app design' })
-- builds.push({ href: '#', icon: 'mobile-app-development', label: 'Mobile app development'})
-- builds.push({ href: '#', icon: 'custom-solution', label: 'Custom solution'})
+- builds.push({ href: '#', icon: 'project-design', label: 'Mobile app design' })
+- builds.push({ href: '#', icon: 'project-development', label: 'Mobile app development'})
+- builds.push({ href: '#', icon: 'project-custom', label: 'Custom solution'})
 
 section.jumbotron
   h1 Our Talented 70,000 strong comunity is ready to work on your project today
@@ -14,8 +14,9 @@ section.choose-build
       li
         a(href=build.href)
           .icon
+            //- img("src"="/getting-started/images/#{build.icon}.svg")
             svg
-              image("xlink:href"="#{build.icon}.svg" src="#{build.icon}.png")
+              image("xlink:href"="/getting-started/images/#{build.icon}.svg" src="#{build.icon}.png", width="100%", height="100%")
 
           .label!= build.label
 

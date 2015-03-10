@@ -1,7 +1,7 @@
 @import "core/styles/combined";
+@import "compass/css3/border-radius";
 
 .getting-started-page {
-
   .jumbotron {
     line-height     : 484px - ($padding-30 * 2);
     background-color: purple;
@@ -28,21 +28,37 @@
 
     ul.builds {
       li {
-        margin-top: $margin-63;
-        display: inline-block;
+        $diameter: 220px;
+
+        margin-top    : $margin-63;
+        display       : inline-block;
         vertical-align: top;
-        padding: 0 $padding-40;
+        padding       : 0 $padding-40;
 
         .icon {
-          width           : 220px;
-          height          : 220px;
-          background-color: blue;
+          width           : $diameter;
+          height          : $diameter;
+          line-height     : $diameter;
+          @include border-radius(50%);
+          background-color: $silver-sand;
+
+          svg {
+            vertical-align: middle;
+            width         : 70%;
+            height        : 70%;
+          }
         }
 
         .label {
           margin-top: $margin-22;
           font-size : $font-20;
           color     : $limed-spruce;
+        }
+
+        &:active, &:hover {
+          .icon {
+            background-color: $cerulean;
+          }
         }
       }
     }
