@@ -98,7 +98,7 @@ html(ng-app='app')
 
     // build:css styles/desktop.css
     // inject:css
-   each path in desktopCss
+    each path in desktopCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
     // endbower
     // endbuild
