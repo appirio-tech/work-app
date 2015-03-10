@@ -75,17 +75,13 @@ html(ng-app='app')
     base(href='/')
 
     // build:css styles/lib.css
-    // bower:css
     each path in bowercss
       link(href=path + ".css", rel="stylesheet")
-    // endbower
     // endbuild
 
     // build:css styles/app.css
-    // bower:css
     each path in css
       link(href=path + ".css", rel="stylesheet")
-    // endbower
     // endbuild
 
     // build:css styles/mobile-portrait.css
@@ -113,17 +109,13 @@ html(ng-app='app')
     include layout/views/shell.jade
 
     // build:js js/lib.js
-    // bower:js
     each path in bowers
       script(src= path + ".js", type="text/javascript")
-    // endbower
     // endbuild
 
     // build:js js/app.js
-    // inject:js
     each path in scripts
       script(src=path + ".js", type="text/javascript")
-    // endinject
     // inject:templates:js
     // endinject
     // endbuild
