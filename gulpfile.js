@@ -220,6 +220,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
   var cssAppFilter = $.filter('**/app.css');
   var jsAppFilter = $.filter('**/' + config.optimized.app);
   var jslibFilter = $.filter('**/' + config.optimized.lib);
+  var htmlFilter = $.filter('**/*.html');
 
   var templateCache = config.temp + config.templateCache.file;
 
@@ -384,7 +385,7 @@ gulp.task('bump', function () {
 /**
  * Push build folder to s3
  */
-gulp.task('deploy', ['build'], function() {
+gulp.task('deploy', function() {
   var awsConfig = {
     bucket: config.aws.bucket,
     key: config.aws.key,
