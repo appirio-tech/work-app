@@ -147,7 +147,7 @@ gulp.task('templatecache', ['clean-code'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['templatecache', 'jade', 'scss', 'ng-constants'], function (done) {
+gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
   done();
@@ -209,7 +209,7 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
  * and inject them into the new index.html
  * @return {Stream}
  */
-gulp.task('optimize', ['inject', 'test'], function () {
+gulp.task('optimize', ['inject', 'templatecache'], function () {
   log('Optimizing the js, css, and html');
 
   var assets = $.useref.assets({searchPath: './'});
