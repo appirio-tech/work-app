@@ -86,6 +86,21 @@ gulp.task('jade', ['clean-code'], function () {
 });
 
 /**
+ * Build ng-contants file
+ */
+gulp.task('ng-constants', function() {
+  log('Generating angular constants');
+
+  var options = {
+    name: "app.core.config",
+    constants: config.ngConstants,
+    stream: true
+  };
+  return $.ngConstant(options)
+    .pipe(gulp.dest(config.temp))
+});
+
+/**
  * Copy fonts
  * @return {Stream}
  */
@@ -133,7 +148,7 @@ gulp.task('templatecache', ['clean-code'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['jade', 'scss', 'templatecache'], function (done) {
+gulp.task('inject', ['templatecache', 'jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
   done();
@@ -239,35 +254,6 @@ gulp.task('optimize', ['inject', 'test'], function () {
     .pipe($.revReplace(replaceOptions))
     .pipe(gulp.dest(config.build));
 });
-
-/**
- * Inject files in a sorted sequence at a specified inject label
- * @param   {Array} src   glob pattern for source files
- * @param   {String} label   The label name
- * @param   {Array} order   glob pattern for sort order of the files
- * @returns {Stream}   The stream
- */
-function inject(src, label, order) {
-  var options = {read: false};
-  if (label) {
-    options.name = 'inject:' + label;
-  }
-
-  return $.inject(orderSrc(src, order), options);
-}
-
-/**
- * Order a stream
- * @param   {Stream} src   The gulp.src stream
- * @param   {Array} order Glob array pattern
- * @returns {Stream} The ordered stream
- */
-function orderSrc(src, order) {
-  //order = order || ['**/*'];
-  return gulp
-    .src(src)
-    .pipe($.if(order, $.order(order)));
-}
 
 /**
  * Remove all files from the build, temp, and reports folders
@@ -425,6 +411,35 @@ gulp.task('deploy', ['build'], function() {
     // print upload updates to console
     .pipe($.awspublish.reporter());
 });
+
+/**
+ * Inject files in a sorted sequence at a specified inject label
+ * @param   {Array} src   glob pattern for source files
+ * @param   {String} label   The label name
+ * @param   {Array} order   glob pattern for sort order of the files
+ * @returns {Stream}   The stream
+ */
+function inject(src, label, order) {
+  var options = {read: false};
+  if (label) {
+    options.name = 'inject:' + label;
+  }
+
+  return $.inject(orderSrc(src, order), options);
+}
+
+/**
+ * Order a stream
+ * @param   {Stream} src   The gulp.src stream
+ * @param   {Array} order Glob array pattern
+ * @returns {Stream} The ordered stream
+ */
+function orderSrc(src, order) {
+  //order = order || ['**/*'];
+  return gulp
+    .src(src)
+    .pipe($.if(order, $.order(order)));
+}
 
 /**
  * When files change, log it

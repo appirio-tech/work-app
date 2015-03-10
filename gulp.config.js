@@ -21,6 +21,10 @@ module.exports = function () {
   var nodeModules = 'node_modules';
 
   var config = {
+    // angular contants
+    ngConstants: {
+      apiUrl: envConfig.getVal('BASE_API_URL', 'http://localhost:8080/v3/')
+    },
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
     /**
@@ -149,7 +153,7 @@ module.exports = function () {
       key: envConfig.getVal('AWS_KEY', 'bar'),
       region: envConfig.getVal('AWS_REGION', 'foo'),
       secret: envConfig.getVal('AWS_SECRET', 'bar'),
-      cdnUrl: envConfig.getVal('AWS_CDN_URL', 'asdf')
+      cdnUrl: envConfig.getVal('AWS_CDN_URL', '/')
     }
   };
 
