@@ -336,7 +336,7 @@ gulp.task('autotest', function (done) {
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-dev', ['inject', 'scss', 'jade'], function () {
+gulp.task('serve-dev', ['inject'], function () {
   serve(true /*isDev*/);
 });
 
