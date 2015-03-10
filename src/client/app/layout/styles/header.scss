@@ -6,6 +6,7 @@ $header-height: 38px;
   padding  : $padding-20 $padding-30;
   background-color: $white;
   @include clearfix();
+  font-family: source sans pro;
 
   > * {
     display    : block;
@@ -16,7 +17,8 @@ $header-height: 38px;
     float           : left;
     width           : 176px;
     height          : $header-height;
-    background-color: blue;
+    @include bg-image-pixel("../images/logo-appirio.png", "../images/logo-appirio-2x.png");
+    background-size : 176px $header-height;
   }
 
   .login, .get-started {
@@ -33,8 +35,10 @@ $header-height: 38px;
     .icon {
       width: 21px;
       height: 22px;
-      background-color: blue;
       vertical-align: middle;
+      @include bg-image-pixel("../images/sprite.png", "../images/sprite-2x.png");
+      background-position: 0px 0px;
+      background-size: 272px auto;
     }
 
     .label {
