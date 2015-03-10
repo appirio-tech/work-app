@@ -191,7 +191,7 @@ gulp.task('build-specs', ['inject'], function (done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts'], function () {
+gulp.task('build', ['clean-code', 'optimize', 'images', 'fonts'], function () {
   log('Building everything');
 
   var msg = {
@@ -216,8 +216,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     searchPath: [config.temp, './']
   });
   // Filters are named for the gulp-useref path
-  var cssLibFilter = $.filter('**/lib.css');
-  var cssAppFilter = $.filter('**/app.css');
+  var cssLibFilter = $.filter('**/*.css');
   var jsAppFilter = $.filter('**/' + config.optimized.app);
   var jslibFilter = $.filter('**/' + config.optimized.lib);
   var htmlFilter = $.filter('**/*.html');
@@ -238,9 +237,6 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(cssLibFilter)
     .pipe($.csso())
     .pipe(cssLibFilter.restore())
-    .pipe(cssAppFilter)
-    .pipe($.csso())
-    .pipe(cssAppFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
     .pipe($.ngAnnotate({add: true}))
@@ -258,6 +254,10 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe($.useref())
     // Replace the file names in the html with rev numbers
     .pipe($.revReplace(replaceOptions))
+    // minimize html
+    .pipe(htmlFilter)
+    .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
+    .pipe(htmlFilter.restore())
     .pipe(gulp.dest(config.build));
 });
 
@@ -304,15 +304,9 @@ gulp.task('clean-styles', function (done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-code', function (done) {
-  var files = [].concat(
-    config.temp + '**/*.js',
-    config.temp + '**/*.css',
-    config.temp + '**/*.html',
-    config.build + 'js/**/*.js',
-    config.build + 'styles/**/*.css',
-    config.build + '**/*.html'
-  );
-  clean(files, done);
+  log('Removing old build');
+  del(config.temp);
+  del(config.build);
 });
 
 /**
