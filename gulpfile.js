@@ -64,13 +64,12 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
 
   return gulp
     .src(config.scss)
-    .pipe(gulp.dest(config.scssBuild))
     .pipe($.compass(config.compass))
     .pipe(gulp.dest(config.temp));
 });
 
 /**
- * Compile jade to html 
+ * Compile jade to html
  * @return {Stream}
  */
 gulp.task('jade', ['clean-code'], function () {
