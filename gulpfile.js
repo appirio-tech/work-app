@@ -63,14 +63,16 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
   log('Compiling SCSS --> CSS');
 
   return gulp
-    .src(config.scss)
-    .pipe(gulp.dest(config.scssBuild))
-    .pipe($.compass(config.compass))
-    .pipe(gulp.dest(config.temp));
+    .src('./src/client/app/**/*.scss')
+    .pipe($.compass({
+      css: '.tmp/',
+      sass: 'src/client/app/'
+    }))
+    .pipe(gulp.dest('.tmp/'));
 });
 
 /**
- * Compile jade to html 
+ * Compile jade to html
  * @return {Stream}
  */
 gulp.task('jade', ['clean-code'], function () {
