@@ -59,7 +59,8 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('scss', ['clean-styles', 'jade'], function () {
+
+gulp.task('scss', function () {
   log('Compiling SCSS --> CSS');
 
   return gulp
@@ -72,7 +73,7 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
  * Compile jade to html
  * @return {Stream}
  */
-gulp.task('jade', ['clean-code'], function () {
+gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
   return gulp
@@ -335,7 +336,7 @@ gulp.task('autotest', function (done) {
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-dev', ['inject'], function () {
+gulp.task('serve-dev', ['inject', 'scss', 'jade'], function () {
   serve(true /*isDev*/);
 });
 

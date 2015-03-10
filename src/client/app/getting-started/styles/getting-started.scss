@@ -18,7 +18,7 @@
   }
 
   .choose-build {
-    margin-top: $margin-84;
+    margin: $margin-84 0 $margin-72 0;
     text-align: center;
 
     h2 {
@@ -27,10 +27,10 @@
     }
 
     ul.builds {
-      margin-top: $margin-63;
-
       li {
+        margin-top: $margin-63;
         display: inline-block;
+        vertical-align: top;
         padding: 0 $padding-40;
 
         .icon {
@@ -50,16 +50,28 @@
 
   .learn-more {
     background-color: $limed-spruce;
+    text-align: center;
     @include clearfix();
 
     article {
-      width  : 290px;
+      margin-top: $margin-57;
+      text-align: left;
+      width  : 260px;
       display: inline-block;
       padding: 0 $padding-20;
+      vertical-align: top;
 
       header {
-        font-size: $font-28;
-        color    : $white;
+        a {
+          font-size: $font-28;
+          color    : $white;
+        }
+      }
+
+      p {
+        margin-top: $margin-18;
+        color: $mercury;
+        font-size: $font-18;
       }
     }
   }

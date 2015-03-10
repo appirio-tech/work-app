@@ -55,7 +55,11 @@
 - bowercss.push('/bower_components/toastr/toastr')
 
 - var css = ["layout/styles/reset", "layout/styles/main", "layout/styles/header", "getting-started/styles/getting-started"]
-- var mobileLandCss = ["layout/styles/mobile-landscape/header"]
+
+- var mobileLandCss = []
+- mobileLandCss.push("layout/styles/mobile-landscape/header")
+- mobileLandCss.push("getting-started/styles/getting-started-mob-land")
+
 - var mobilePortCss = ["layout/styles/mobile-portrait/header"]
 - var desktopCss = ["layout/styles/desktop/header"]
 
@@ -95,14 +99,14 @@ html(ng-app='app')
     // build:css styles/mobile-portrait.css
     // inject:css
     each path in mobilePortCss
-      link(href=path + ".css", rel="stylesheet", media="(max-width: 375px)")
+      link(href=path + ".css", rel="stylesheet", media="max-device-width : 567px")
     // endbower
     // endbuild
 
     // build:css styles/mobile-landscape.css
     // inject:css
     each path in mobileLandCss
-      link(href=path + ".css", rel="stylesheet", media="(min-width: 376px) and (max-width:767px)")
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 568px) and (max-width:767px)")
     // endbower
     // endbuild
 
