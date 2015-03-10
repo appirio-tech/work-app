@@ -91,12 +91,12 @@ gulp.task('ng-constants', function() {
   log('Generating angular constants');
 
   var options = {
-    name: "app.core.config",
+    name: 'app.core.config',
     constants: config.ngConstants,
     stream: true
   };
   return $.ngConstant(options)
-    .pipe(gulp.dest(config.temp))
+    .pipe(gulp.dest(config.temp));
 });
 
 /**
