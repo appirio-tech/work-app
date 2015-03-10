@@ -11,6 +11,12 @@
 1. Install [Node.js](http://nodejs.org) 
  - on OSX use [homebrew](http://brew.sh) `brew install node`
  - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
+ - 
+
+1.5. For OSX users, we recommend installing [nvm](https://github.com/creationix/nvm). This is due to problems with cross-version compatibility with node for certain packages this project uses.
+ - This will allow you to use versions of node and npm that are compatible with this project without affecting what you use globally
+ - In your `.nvmrc` (which should be at the root of your local version of this repo), list the version number `0.10.25`.
+ - While inside the repo, run `nvm install` and `nvm use`.
 
 2. Install Yeoman `npm install -g yo`
 
