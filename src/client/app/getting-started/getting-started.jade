@@ -1,7 +1,7 @@
 - builds = []
-- builds.push({ href: '#', icon: 'mobile-app-design', label: 'Mobile app design' })
-- builds.push({ href: '#', icon: 'mobile-app-development', label: 'Mobile app development'})
-- builds.push({ href: '#', icon: 'custom-solution', label: 'Custom solution'})
+- builds.push({ href: '#', icon: 'project-design', label: 'Mobile app design' })
+- builds.push({ href: '#', icon: 'project-development', label: 'Mobile app development'})
+- builds.push({ href: '#', icon: 'project-custom', label: 'Custom solution'})
 
 section.jumbotron
   h1 Our Talented 70,000 strong comunity is ready to work on your project today
@@ -14,19 +14,21 @@ section.choose-build
       li
         a(href=build.href)
           .icon
+            //- img("src"="/getting-started/images/#{build.icon}.svg")
             svg
-              image("xlink:href"="#{build.icon}.svg" src="#{build.icon}.png")
+              image("xlink:href"="/getting-started/images/#{build.icon}.svg" src="#{build.icon}.png", width="100%", height="100%")
 
           .label!= build.label
 
 - articles = []
-- articles.push({ header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
-- articles.push({ header: 'Learn about our process', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
-- articles.push({ header: 'See examples of our work', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ href:"/speak-with-an-expert", header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ href:"/learn-about-our-process", header: 'Learn about our process', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ href:"/see-examples", header: 'See examples of our work', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
 
 aside.learn-more
   each article in articles
     article
-      header!= article.header
+      header
+        a(href=article.href)!= article.header
 
       p!= article.p

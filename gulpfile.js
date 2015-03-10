@@ -59,6 +59,7 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
+
 gulp.task('scss', ['clean-styles', 'jade'], function () {
   log('Compiling SCSS --> CSS');
 
@@ -72,7 +73,7 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
  * Compile jade to html
  * @return {Stream}
  */
-gulp.task('jade', ['clean-code'], function () {
+gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
   return gulp

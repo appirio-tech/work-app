@@ -1,7 +1,7 @@
 @import "core/styles/combined";
+@import "compass/css3/border-radius";
 
 .getting-started-page {
-
   .jumbotron {
     line-height     : 484px - ($padding-30 * 2);
     background-color: purple;
@@ -18,7 +18,7 @@
   }
 
   .choose-build {
-    margin-top: $margin-84;
+    margin: $margin-84 0 $margin-72 0;
     text-align: center;
 
     h2 {
@@ -27,16 +27,26 @@
     }
 
     ul.builds {
-      margin-top: $margin-63;
-
       li {
-        display: inline-block;
-        padding: 0 $padding-40;
+        $diameter: 220px;
+
+        margin-top    : $margin-63;
+        display       : inline-block;
+        vertical-align: top;
+        padding       : 0 $padding-40;
 
         .icon {
-          width           : 220px;
-          height          : 220px;
-          background-color: blue;
+          width           : $diameter;
+          height          : $diameter;
+          line-height     : $diameter;
+          @include border-radius(50%);
+          background-color: $silver-sand;
+
+          svg {
+            vertical-align: middle;
+            width         : 70%;
+            height        : 70%;
+          }
         }
 
         .label {
@@ -44,22 +54,40 @@
           font-size : $font-20;
           color     : $limed-spruce;
         }
+
+        &:active, &:hover {
+          .icon {
+            background-color: $cerulean;
+          }
+        }
       }
     }
   }
 
   .learn-more {
     background-color: $limed-spruce;
+    text-align: center;
     @include clearfix();
 
     article {
-      width  : 290px;
+      margin-top: $margin-57;
+      text-align: left;
+      width  : 260px;
       display: inline-block;
       padding: 0 $padding-20;
+      vertical-align: top;
 
       header {
-        font-size: $font-28;
-        color    : $white;
+        a {
+          font-size: $font-28;
+          color    : $white;
+        }
+      }
+
+      p {
+        margin-top: $margin-18;
+        color: $mercury;
+        font-size: $font-18;
       }
     }
   }
