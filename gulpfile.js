@@ -58,7 +58,7 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('scss', ['clean-styles'], function () {
+gulp.task('scss', function () {
   log('Compiling SCSS --> CSS');
 
   return gulp
@@ -71,7 +71,7 @@ gulp.task('scss', ['clean-styles'], function () {
  * Compile jade to html
  * @return {Stream}
  */
-gulp.task('jade', ['clean-code'], function () {
+gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
   var options = {
@@ -132,7 +132,7 @@ gulp.task('scss-watcher', function () {
  * Create $templateCache from the html templates
  * @return {Stream}
  */
-gulp.task('templatecache', ['clean-code'], function () {
+gulp.task('templatecache', function () {
   log('Creating an AngularJS $templateCache');
 
   return gulp
@@ -212,9 +212,12 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
 gulp.task('optimize', ['inject', 'templatecache'], function () {
   log('Optimizing the js, css, and html');
 
-  var assets = $.useref.assets({searchPath: './'});
+  var assets = $.useref.assets({
+    searchPath: [config.temp, './']
+  });
   // Filters are named for the gulp-useref path
-  var cssFilter = $.filter('**/*.css');
+  var cssLibFilter = $.filter('**/lib.css');
+  var cssAppFilter = $.filter('**/app.css');
   var jsAppFilter = $.filter('**/' + config.optimized.app);
   var jslibFilter = $.filter('**/' + config.optimized.lib);
 
@@ -231,9 +234,12 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(inject(templateCache, 'templates'))
     .pipe(assets) // Gather all assets from the html with useref
     // Get the css
-    .pipe(cssFilter)
+    .pipe(cssLibFilter)
     .pipe($.csso())
-    .pipe(cssFilter.restore())
+    .pipe(cssLibFilter.restore())
+    .pipe(cssAppFilter)
+    .pipe($.csso())
+    .pipe(cssAppFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
     .pipe($.ngAnnotate({add: true}))
@@ -299,7 +305,10 @@ gulp.task('clean-styles', function (done) {
 gulp.task('clean-code', function (done) {
   var files = [].concat(
     config.temp + '**/*.js',
+    config.temp + '**/*.css',
+    config.temp + '**/*.html',
     config.build + 'js/**/*.js',
+    config.build + 'styles/**/*.css',
     config.build + '**/*.html'
   );
   clean(files, done);
