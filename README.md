@@ -14,11 +14,9 @@
 1.5. For OSX users, we recommend installing [nvm](https://github.com/creationix/nvm). This is due to problems with cross-version compatibility with node for certain packages this project uses.
  - This will allow you to use versions of node and npm that are compatible with this project without affecting what you use globally
  - In your `.nvmrc` (which should be at the root of your local version of this repo), list the version number `0.10.25`.
- - While inside the repo, run `nvm install` and `nvm use`.
+ - While inside the repo, run `nvm install`, `nvm use`, and `bower install`.
 
-2. Install Yeoman `npm install -g yo`
-
-3. Install these NPM packages globally
+2. Install these NPM packages globally
 
     ```bash
     npm install -g bower gulp nodemon`
@@ -26,7 +24,7 @@
 
     >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 
-## Running HotTowel
+## Gulp tasks
 
 ### Linting
  - Run code analysis using `gulp analyze`. This runs jshint, jscs, and plato.
@@ -35,9 +33,7 @@
  - Run the unit tests using `gulp test` (via karma, mocha, sinon).
 
 ### Running in dev mode
- - Run the project with `gulp serve-dev --sync`
-
- - `--sync` opens it in a browser and updates the browser with any files changes.
+ - Run the project with `gulp serve-dev`
 
 ### Building the project
  - Build the optimized project using `gulp build`
@@ -50,26 +46,22 @@
 HotTowel Angular starter project
 
 ### Structure
-The structure also contains a gulpfile.js and a server folder. The server is there just so we can serve the app using node. Feel free to use any server you wish.
+The structure also contains a gulpfile.js and a server folder. The server is there just so we can serve the app using node.
 
 	/src
 		/client
 			/app
 			/content
 	
-### Installing Packages
-When you generate the project it should run these commands, but if you notice missing pavkages, run these again:
-
- - `npm install`
- - `bower install`
 
 ### The Modules
-The app has 4 feature modules and depends on a series of external modules and custom but cross-app modules
+The app has several modules and depends on a series of external modules and custom but cross-app modules
 
 ```
 app --> [
-        app.admin,
-        app.dashboard,
+        
+        app.project,
+        app.getting-started,
         app.layout,
         app.widgets,
 		app.core --> [
