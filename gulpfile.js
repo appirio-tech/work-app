@@ -63,7 +63,6 @@ gulp.task('scss', ['clean-styles'], function () {
 
   return gulp
     .src(config.scss)
-    .pipe(gulp.dest(config.scssBuild))
     .pipe($.compass(config.compass))
     .pipe(gulp.dest(config.temp));
 });

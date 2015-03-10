@@ -57,12 +57,12 @@ module.exports = function () {
       '**/*.js'
     ],
 
-    scss: client + '**/*.scss',
+    scss: clientApp + '**/*.scss',
     scssBuild: scssBuild,
     // replace used because compass expects file paths without './'
     compass: {
       css: temp.replace('./', ''),
-      sass: scssBuild.replace('./', '')
+      sass: 'src/client/app'
     },
     report: report,
     root: root,
