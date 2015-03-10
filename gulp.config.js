@@ -157,7 +157,7 @@ module.exports = function () {
       key: envConfig.getVal('AWS_KEY', 'bar'),
       region: envConfig.getVal('AWS_REGION', 'foo'),
       secret: envConfig.getVal('AWS_SECRET', 'bar'),
-      cdnUrl: envConfig.getVal('AWS_CDN_URL', '/')
+      cdnUrl: envConfig.getVal('AWS_CDN_URL', '')
     }
   };
 

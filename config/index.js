@@ -20,6 +20,6 @@ function getVal(name, defaultVal) {
     return defaultVal;
   }
   else {
-    throw new Error('Env setting: ' + name + ' is not configured!');
+    return null;
   }
 }
