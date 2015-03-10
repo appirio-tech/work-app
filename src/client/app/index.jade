@@ -83,24 +83,18 @@ html(ng-app='app')
     // endbuild
 
     // build:css styles/mobile-portrait.css
-    // inject:css
     each path in mobilePortCss
       link(href=path + ".css", rel="stylesheet", media="(max-width: 375px)")
-    // endbower
     // endbuild
 
     // build:css styles/mobile-landscape.css
-    // inject:css
     each path in mobileLandCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 376px) and (max-width:767px)")
-    // endbower
     // endbuild
 
     // build:css styles/desktop.css
-    // inject:css
     each path in desktopCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
-    // endbower
     // endbuild
 
   body
