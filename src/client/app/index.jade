@@ -1,17 +1,15 @@
 - var scripts = []
 - scripts.push('/src/client/app/app.module')
-- scripts.push('/src/client/app/admin/admin.module')
+- scripts.push('constants')
 - scripts.push('/src/client/app/blocks/exception/exception.module')
 - scripts.push('/src/client/app/blocks/logger/logger.module')
 - scripts.push('/src/client/app/blocks/router/router.module')
 - scripts.push('/src/client/app/core/core.module')
-- scripts.push('/src/client/app/layout/layout.module')
+- scripts.push('/src/client/app/layout/scripts/layout.module')
 - scripts.push('/src/client/app/project/create/create.module')
 - scripts.push('/src/client/app/project/manage/manage.module')
 - scripts.push('/src/client/app/project/project.module')
 - scripts.push('/src/client/app/widgets/widgets.module')
-- scripts.push('/src/client/app/admin/admin.controller')
-- scripts.push('/src/client/app/admin/admin.route')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
 - scripts.push('/src/client/app/blocks/logger/logger')
@@ -19,10 +17,6 @@
 - scripts.push('/src/client/app/core/config')
 - scripts.push('/src/client/app/core/constants')
 - scripts.push('/src/client/app/core/core.route')
-- scripts.push('/src/client/app/layout/ht-sidebar.directive')
-- scripts.push('/src/client/app/layout/ht-top-nav.directive')
-- scripts.push('/src/client/app/layout/shell.controller')
-- scripts.push('/src/client/app/layout/sidebar.controller')
 - scripts.push('/src/client/app/project/create/create.controller')
 - scripts.push('/src/client/app/project/create/create.route')
 - scripts.push('/src/client/app/project/create/home.controller')
@@ -40,9 +34,9 @@
 
 - bowers.push('/bower_components/jquery/dist/jquery')
 - bowers.push('/bower_components/angular/angular')
-- bowers.push('/bower_components/angular-messages/angular-messages')
+- bowers.push('/bower_components/ng-messages/angular-messages')
 - bowers.push('/bower_components/angular-sanitize/angular-sanitize')
-- bowers.push('/bower_components/bootstrap/dist/bootstrap')
+- bowers.push('/bower_components/bootstrap/dist/js/bootstrap')
 - bowers.push('/bower_components/extras.angular.plus/ngplus-overlay')
 - bowers.push('/bower_components/moment/moment')
 - bowers.push('/bower_components/angular-ui-router/release/angular-ui-router')
@@ -50,8 +44,8 @@
 - bowers.push('/bower_components/angular-animate/angular-animate')
 
 - var bowercss = []
-- bowercss.push('/bower_components/bootstrap/dist/bootstrap')
-- bowercss.push('/bower_components/font-awesome/font-awesome')
+- bowercss.push('/bower_components/bootstrap/dist/css/bootstrap')
+- bowercss.push('/bower_components/font-awesome/css/font-awesome')
 - bowercss.push('/bower_components/toastr/toastr')
 
 - var css = ["layout/styles/reset", "layout/styles/main", "layout/styles/header", "getting-started/styles/getting-started"]
@@ -83,55 +77,41 @@ html(ng-app='app')
     base(href='/')
 
     // build:css styles/lib.css
-    // bower:css
     each path in bowercss
       link(href=path + ".css", rel="stylesheet")
-    // endbower
     // endbuild
 
     // build:css styles/app.css
-    // bower:css
     each path in css
       link(href=path + ".css", rel="stylesheet")
-    // endbower
     // endbuild
 
     // build:css styles/mobile-portrait.css
-    // inject:css
     each path in mobilePortCss
       link(href=path + ".css", rel="stylesheet", media="max-device-width : 567px")
-    // endbower
     // endbuild
 
     // build:css styles/mobile-landscape.css
-    // inject:css
     each path in mobileLandCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 568px) and (max-width:767px)")
-    // endbower
     // endbuild
 
     // build:css styles/desktop.css
-    // inject:css
-   each path in desktopCss
+    each path in desktopCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
-    // endbower
     // endbuild
 
   body
     include layout/views/shell.jade
 
     // build:js js/lib.js
-    // bower:js
     each path in bowers
       script(src= path + ".js", type="text/javascript")
-    // endbower
     // endbuild
 
     // build:js js/app.js
-    // inject:js
     each path in scripts
       script(src=path + ".js", type="text/javascript")
-    // endinject
     // inject:templates:js
     // endinject
     // endbuild

@@ -22,6 +22,6 @@
         case 6:
           return 'Other';
       }
-    }
+    };
   }
 })();

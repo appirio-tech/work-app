@@ -1,3 +1,4 @@
+/*global form:true */
 (function () {
   'use strict';
 
@@ -34,32 +35,27 @@
     }
 
     function addUrl() {
-      if (vm.newUrl.length == 0) {
-        return;
-      } else {
+      if (vm.newUrl.length > 0) {
         vm.newProject.links.push(vm.newUrl);
         vm.newUrl = '';
-      };
+      }
     }
 
     function addFile() {
-      if (vm.newFile.length == 0) {
-        return;
-      } else {
+      if (vm.newFile.length > 0) {
         vm.newProject.files.push(vm.newFile);
         vm.newFile = '';
-      };
+      }
     }
 
     function next() {
       $window.scrollTo(0, 0);
-      if (!vm.form || (vm.form.$pristine && form.description.length == 0)) {
+      if (!vm.form || (vm.form.$pristine && form.description.length === 0)) {
         vm.emptyError = true;
         return;
       }
       if (!vm.form.$valid) {
         vm.form.$submitted = true;
-        return;
       } else {
         ProjectService.setCurrent(vm.newProject);
         $location.url('/create/submit');

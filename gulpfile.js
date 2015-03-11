@@ -9,7 +9,6 @@ var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 var colors = $.util.colors;
-var envenv = $.util.env;
 var port = process.env.PORT || config.defaultPort;
 
 /**
@@ -59,8 +58,7 @@ gulp.task('plato', function (done) {
  * Compile less to css
  * @return {Stream}
  */
-
-gulp.task('scss', ['clean-styles', 'jade'], function () {
+gulp.task('scss', function () {
   log('Compiling SCSS --> CSS');
 
   return gulp
@@ -76,9 +74,28 @@ gulp.task('scss', ['clean-styles', 'jade'], function () {
 gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
+  var options = {
+    pretty: true
+  };
+
   return gulp
     .src(config.jade)
-    .pipe($.jade())
+    .pipe($.jade(options))
+    .pipe(gulp.dest(config.temp));
+});
+
+/**
+ * Build ng-contants file
+ */
+gulp.task('ng-constants', function() {
+  log('Generating angular constants');
+
+  var options = {
+    name: 'app.core',
+    constants: config.ngConstants,
+    stream: true
+  };
+  return $.ngConstant(options)
     .pipe(gulp.dest(config.temp));
 });
 
@@ -86,11 +103,12 @@ gulp.task('jade', function () {
  * Copy fonts
  * @return {Stream}
  */
-gulp.task('fonts', ['clean-fonts'], function () {
+gulp.task('fonts', function () {
   log('Copying fonts');
 
   return gulp
     .src(config.fonts)
+    .pipe($.flatten())
     .pipe(gulp.dest(config.build + 'fonts'));
 });
 
@@ -98,12 +116,13 @@ gulp.task('fonts', ['clean-fonts'], function () {
  * Compress images
  * @return {Stream}
  */
-gulp.task('images', ['clean-images'], function () {
+gulp.task('images', function () {
   log('Compressing and copying images');
 
   return gulp
     .src(config.images)
     .pipe($.imagemin({optimizationLevel: 4}))
+    .pipe($.flatten())
     .pipe(gulp.dest(config.build + 'images'));
 });
 
@@ -115,8 +134,10 @@ gulp.task('scss-watcher', function () {
  * Create $templateCache from the html templates
  * @return {Stream}
  */
-gulp.task('templatecache', ['clean-code'], function () {
+gulp.task('templatecache', function () {
   log('Creating an AngularJS $templateCache');
+
+  var templateCache = config.temp + config.templateCache.file;
 
   return gulp
     .src(config.htmltemplates)
@@ -127,36 +148,14 @@ gulp.task('templatecache', ['clean-code'], function () {
       config.templateCache.file,
       config.templateCache.options
     ))
+    .pipe(inject(templateCache, 'templates'))
     .pipe(gulp.dest(config.temp));
 });
 
-/**
- * Wire-up the bower dependencies
- * @return {Stream}
- */
-gulp.task('wiredep', ['scss', 'jade'], function () {
-  log('Wiring the bower dependencies into the html');
-
-  var wiredep = require('wiredep').stream;
-  var options = config.getWiredepDefaultOptions();
-
-  // Only include stubs if flag is enabled
-  var js = args.stubs ? [].concat(config.js, config.stubsjs) : config.js;
-
-  return gulp
-    .src(config.index)
-    .pipe(wiredep(options))
-    .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.temp));
-});
-
-gulp.task('inject', ['wiredep', 'templatecache'], function () {
+gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
-  return gulp
-    .src(config.index)
-    .pipe(inject(config.css))
-    .pipe(gulp.dest(config.temp));
+  done();
 });
 
 /**
@@ -173,23 +172,18 @@ gulp.task('serve-specs', ['build-specs'], function (done) {
  * Inject all the spec files into the specs.html
  * @return {Stream}
  */
-gulp.task('build-specs', ['templatecache'], function (done) {
+gulp.task('build-specs', ['inject'], function (done) {
   log('building the spec runner');
 
-  var wiredep = require('wiredep').stream;
   var templateCache = config.temp + config.templateCache.file;
-  var options = config.getWiredepDefaultOptions();
   var specs = config.specs;
 
   if (args.startServers) {
     specs = [].concat(specs, config.serverIntegrationSpecs);
   }
-  options.devDependencies = true;
 
   return gulp
     .src(config.specRunner)
-    .pipe(wiredep(options))
-    .pipe(inject(config.js, '', config.jsOrder))
     .pipe(inject(config.testlibraries, 'testlibraries'))
     .pipe(inject(config.specHelpers, 'spechelpers'))
     .pipe(inject(specs, 'specs', ['**/*']))
@@ -210,7 +204,7 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
     subtitle: 'Deployed to the build folder',
     message: 'Running `gulp serve-build`'
   };
-  del(config.temp);
+
   log(msg);
   notify(msg);
 });
@@ -220,16 +214,26 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
  * and inject them into the new index.html
  * @return {Stream}
  */
-gulp.task('optimize', ['inject', 'test'], function () {
+gulp.task('optimize', ['inject', 'templatecache'], function () {
   log('Optimizing the js, css, and html');
 
-  var assets = $.useref.assets({searchPath: './'});
+  var assets = $.useref.assets({
+    searchPath: [config.temp, './']
+  });
   // Filters are named for the gulp-useref path
-  var cssFilter = $.filter('**/*.css');
+  var cssLibFilter = $.filter('**/*.css');
   var jsAppFilter = $.filter('**/' + config.optimized.app);
   var jslibFilter = $.filter('**/' + config.optimized.lib);
+  var htmlFilter = $.filter('**/*.html');
 
   var templateCache = config.temp + config.templateCache.file;
+
+  var replaceOptions = {};
+  if (config.aws.cdnUrl) {
+    replaceOptions.prefix = config.aws.cdnUrl;
+  }
+
+  var sourcemaps = $.sourcemaps;
 
   return gulp
     .src(config.index)
@@ -237,9 +241,11 @@ gulp.task('optimize', ['inject', 'test'], function () {
     .pipe(inject(templateCache, 'templates'))
     .pipe(assets) // Gather all assets from the html with useref
     // Get the css
-    .pipe(cssFilter)
-    .pipe($.csso())
-    .pipe(cssFilter.restore())
+    .pipe(cssLibFilter)
+    .pipe(sourcemaps.init())
+    .pipe($.minifyCss({rebase: 'false'}))
+    .pipe(sourcemaps.write())
+    .pipe(cssLibFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
     .pipe($.ngAnnotate({add: true}))
@@ -256,7 +262,12 @@ gulp.task('optimize', ['inject', 'test'], function () {
     .pipe(assets.restore())
     .pipe($.useref())
     // Replace the file names in the html with rev numbers
-    .pipe($.revReplace())
+    .pipe($.revReplace(replaceOptions))
+    // minimize html
+    .pipe(htmlFilter)
+    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
+    .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
+    .pipe(htmlFilter.restore())
     .pipe(gulp.dest(config.build));
 });
 
@@ -303,12 +314,9 @@ gulp.task('clean-styles', function (done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-code', function (done) {
-  var files = [].concat(
-    config.temp + '**/*.js',
-    config.build + 'js/**/*.js',
-    config.build + '**/*.html'
-  );
-  clean(files, done);
+  log('Removing old build');
+  del(config.temp);
+  del(config.build);
 });
 
 /**
@@ -317,7 +325,7 @@ gulp.task('clean-code', function (done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['vet', 'templatecache'], function (done) {
+gulp.task('test', ['inject', 'vet'], function (done) {
   startTests(true /*singleRun*/, done);
 });
 
@@ -378,26 +386,40 @@ gulp.task('bump', function () {
     .pipe(gulp.dest(config.root));
 });
 
-////////////////
-
 /**
- * When files change, log it
- * @param  {Object} event - event that fired
+ * Push build folder to s3
  */
-function changeEvent(event) {
-  var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
-  log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
-}
+gulp.task('deploy', ['build'], function() {
+  var awsConfig = {
+    bucket: config.aws.bucket,
+    key: config.aws.key,
+    secret: config.aws.secret
+  };
 
-/**
- * Delete all files in a given path
- * @param  {Array}   path - array of paths to delete
- * @param  {Function} done - callback when complete
- */
-function clean(path, done) {
-  log('Cleaning: ' + $.util.colors.blue(path));
-  del(path, done);
-}
+  // create a new publisher
+  var publisher = $.awspublish.create(awsConfig);
+
+  // define custom headers
+  var headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public'
+    // ...
+  };
+
+  var msg = {
+    title: 'gulp deploy',
+    subtitle: 'Deploying to S3'
+  };
+  log(msg);
+
+  return gulp
+    .src('./build/**/*')
+    // publisher will add Content-Length, Content-Type and headers specified above
+    // If not specified it will set x-amz-acl to public-read by default
+    .pipe(publisher.publish(headers))
+    .pipe(publisher.sync())
+    // print upload updates to console
+    .pipe($.awspublish.reporter());
+});
 
 /**
  * Inject files in a sorted sequence at a specified inject label
@@ -426,6 +448,25 @@ function orderSrc(src, order) {
   return gulp
     .src(src)
     .pipe($.if(order, $.order(order)));
+}
+
+/**
+ * When files change, log it
+ * @param  {Object} event - event that fired
+ */
+function changeEvent(event) {
+  var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
+  log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
+}
+
+/**
+ * Delete all files in a given path
+ * @param  {Array}   path - array of paths to delete
+ * @param  {Function} done - callback when complete
+ */
+function clean(path, done) {
+  log('Cleaning: ' + $.util.colors.blue(path));
+  del(path, done);
 }
 
 /**
@@ -470,13 +511,13 @@ function serve(isDev, specRunner) {
     });
 }
 
-function getNodeOptions(isDev) {
+function getNodeOptions() {
   return {
     script: config.nodeServer,
     delayTime: 1,
     env: {
       'PORT': port,
-      'NODE_ENV': isDev ? 'dev' : 'build'
+      'NODE_ENV': config.env
     },
     watch: [config.server]
   };
@@ -518,6 +559,7 @@ function startBrowserSync(isDev, specRunner) {
     files: isDev ? [
       config.client + '**/*.*',
       '!' + config.scss,
+      '!' + config.jade,
       config.temp + '**/*.css'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t
