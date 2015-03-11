@@ -106,7 +106,6 @@ module.exports = function () {
       file: 'templates.js',
       options: {
         module: 'app.core',
-        root: 'app/',
         standAlone: false
       }
     },

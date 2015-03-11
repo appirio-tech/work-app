@@ -91,7 +91,7 @@ gulp.task('ng-constants', function() {
   log('Generating angular constants');
 
   var options = {
-    name: 'app.core.config',
+    name: 'app.core',
     constants: config.ngConstants,
     stream: true
   };
@@ -103,7 +103,7 @@ gulp.task('ng-constants', function() {
  * Copy fonts
  * @return {Stream}
  */
-gulp.task('fonts', ['clean-fonts'], function () {
+gulp.task('fonts', function () {
   log('Copying fonts');
 
   return gulp
@@ -116,7 +116,7 @@ gulp.task('fonts', ['clean-fonts'], function () {
  * Compress images
  * @return {Stream}
  */
-gulp.task('images', ['clean-images'], function () {
+gulp.task('images', function () {
   log('Compressing and copying images');
 
   return gulp
@@ -137,6 +137,8 @@ gulp.task('scss-watcher', function () {
 gulp.task('templatecache', function () {
   log('Creating an AngularJS $templateCache');
 
+  var templateCache = config.temp + config.templateCache.file;
+
   return gulp
     .src(config.htmltemplates)
     .pipe($.if(args.verbose, $.bytediff.start()))
@@ -146,6 +148,7 @@ gulp.task('templatecache', function () {
       config.templateCache.file,
       config.templateCache.options
     ))
+    .pipe(inject(templateCache, 'templates'))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -201,7 +204,7 @@ gulp.task('build', ['clean-code', 'optimize', 'images', 'fonts'], function () {
     subtitle: 'Deployed to the build folder',
     message: 'Running `gulp serve-build`'
   };
-  del(config.temp);
+
   log(msg);
   notify(msg);
 });
