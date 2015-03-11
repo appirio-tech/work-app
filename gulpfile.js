@@ -196,7 +196,7 @@ gulp.task('build-specs', ['inject'], function (done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['clean-code', 'optimize', 'images', 'fonts'], function () {
+gulp.task('build', ['optimize', 'images', 'fonts'], function () {
   log('Building everything');
 
   var msg = {
@@ -389,7 +389,7 @@ gulp.task('bump', function () {
 /**
  * Push build folder to s3
  */
-gulp.task('deploy', function() {
+gulp.task('deploy', ['build'], function() {
   var awsConfig = {
     bucket: config.aws.bucket,
     key: config.aws.key,
