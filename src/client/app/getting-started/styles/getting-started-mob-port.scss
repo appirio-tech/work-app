@@ -1,0 +1,13 @@
+@import "core/styles/combined";
+.getting-started-page {
+  .choose-build {
+    ul.builds {
+      li {
+        display: block;
+        margin: $margin-28 auto 0 auto;
+      }
+
+      margin-bottom: $margin-28;
+    }
+  }
+}

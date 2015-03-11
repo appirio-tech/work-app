@@ -1,0 +1,22 @@
+@import "core/styles/combined";
+$header-height: 28px;
+
+.layout-header {
+  padding : $padding-16 $padding-20;
+
+  .logo {
+    width: 56px;
+    height: $header-height;
+    @include bg-image-pixel("../../images/logo-appirio-icon.png", "../../images/logo-appirio-icon-2x.png");
+    background-size : 56px $header-height;
+  }
+
+  .login {
+    line-height: $header-height;
+    font-size  : $font-16;
+  }
+
+  .get-started {
+    display: none;
+  }
+}
