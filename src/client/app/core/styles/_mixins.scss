@@ -15,3 +15,11 @@
     background-image: url($high)
   }
 }
+
+@mixin bg-cover($src) {
+  background             : url($src) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size   : cover;
+  -o-background-size     : cover;
+  background-size        : cover;
+}
