@@ -108,6 +108,7 @@ gulp.task('fonts', ['clean-fonts'], function () {
 
   return gulp
     .src(config.fonts)
+    .pipe($.flatten())
     .pipe(gulp.dest(config.build + 'fonts'));
 });
 
@@ -239,7 +240,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the css
     .pipe(cssLibFilter)
     .pipe(sourcemaps.init())
-    .pipe($.minifyCss({root: 'images'}))
+    .pipe($.minifyCss({rebase: 'false'}))
     .pipe(sourcemaps.write())
     .pipe(cssLibFilter.restore())
     // Get the custom javascript

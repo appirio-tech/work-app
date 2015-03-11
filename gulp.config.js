@@ -38,7 +38,10 @@ module.exports = function () {
     build: './build/',
     client: client,
     css: temp + '**/*.css',
-    fonts: bower.directory + 'font-awesome/fonts/**/*.*',
+    fonts: [
+      bower.directory + 'font-awesome/fonts/**/*.*',
+      clientApp + '**/fonts/*'
+    ],
     html: client + '**/*.html',
     jade: clientApp + '**/*.jade',
     htmltemplates: [
@@ -153,10 +156,10 @@ module.exports = function () {
      * AWS settings
      */
     aws: {
-      bucket: envConfig.getVal('AWS_BUCKET', 'foo'),
-      key: envConfig.getVal('AWS_KEY', 'bar'),
-      region: envConfig.getVal('AWS_REGION', 'foo'),
-      secret: envConfig.getVal('AWS_SECRET', 'bar'),
+      bucket: envConfig.getVal('AWS_BUCKET', ''),
+      key: envConfig.getVal('AWS_KEY', ''),
+      region: envConfig.getVal('AWS_REGION', ''),
+      secret: envConfig.getVal('AWS_SECRET', ''),
       cdnUrl: envConfig.getVal('AWS_CDN_URL', '')
     }
   };
