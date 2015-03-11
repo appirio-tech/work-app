@@ -28,22 +28,10 @@
         }
       },
       {
-        state: 'home',
-        config: {
-          url: '/',
-          templateUrl: 'project/create/home.html',
-          controller: 'ProjectHomeController',
-          controllerAs: 'vm',
-          title: 'Home',
-          settings: {
-          }
-        }
-      },
-      {
         state: 'submit',
         config: {
           url: '/create/submit',
-          templateUrl: 'app/project/create/submit/submit.html',
+          templateUrl: 'project/create/submit/submit.html',
           controller: 'ProjectSubmitController',
           controllerAs: 'vm',
           title: 'Submit',

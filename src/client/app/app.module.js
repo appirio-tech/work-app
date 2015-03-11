@@ -7,7 +7,8 @@
     'app.layout',
     'app.project.manage',
     'app.project.create',
-    'app.project.core'
+    'app.project.core',
+    'app.getting-started'
   ]);
 
 })();
