@@ -46,7 +46,7 @@ module.exports = function () {
       temp + '**/*.html',
       '!' + temp + '/index.html'
     ],
-    images: client + 'images/**/*.*',
+    images: client + '**/images/**/*.*',
     index: temp + 'index.html',
     // app js, with no specs
     js: [

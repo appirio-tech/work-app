@@ -121,6 +121,7 @@ gulp.task('images', ['clean-images'], function () {
   return gulp
     .src(config.images)
     .pipe($.imagemin({optimizationLevel: 4}))
+    .pipe($.flatten())
     .pipe(gulp.dest(config.build + 'images'));
 });
 
@@ -228,6 +229,8 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     replaceOptions.prefix = config.aws.cdnUrl;
   }
 
+  var sourcemaps = $.sourcemaps;
+
   return gulp
     .src(config.index)
     .pipe($.plumber())
@@ -235,7 +238,9 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(assets) // Gather all assets from the html with useref
     // Get the css
     .pipe(cssLibFilter)
-    .pipe($.csso())
+    .pipe(sourcemaps.init())
+    .pipe($.minifyCss())
+    .pipe(sourcemaps.write())
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
