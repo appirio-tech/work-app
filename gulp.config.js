@@ -1,4 +1,4 @@
-config = require('./config');
+var envConfig = require('./config');
 
 // To access environment variables use config.getVal('name', 'default value')
 
@@ -21,6 +21,12 @@ module.exports = function () {
   var nodeModules = 'node_modules';
 
   var config = {
+    // angular contants
+    ngConstants: {
+      apiUrl: envConfig.getVal('BASE_API_URL', 'http://localhost:8080/v3/')
+    },
+    // Env Path
+    env: envConfig.getVal('NODE_ENV', 'dev'),
     /**
      * File paths
      */
@@ -32,11 +38,18 @@ module.exports = function () {
     build: './build/',
     client: client,
     css: temp + '**/*.css',
-    fonts: bower.directory + 'font-awesome/fonts/**/*.*',
+    fonts: [
+      bower.directory + 'font-awesome/fonts/**/*.*',
+      clientApp + '**/fonts/*'
+    ],
     html: client + '**/*.html',
     jade: clientApp + '**/*.jade',
-    htmltemplates: clientApp + '**/*.html',
-    images: client + 'images/**/*.*',
+    htmltemplates: [
+      clientApp + '**/*.html',
+      temp + '**/*.html',
+      '!' + temp + '/index.html'
+    ],
+    images: client + '**/images/**/*.*',
     index: temp + 'index.html',
     // app js, with no specs
     js: [
@@ -93,7 +106,6 @@ module.exports = function () {
       file: 'templates.js',
       options: {
         module: 'app.core',
-        root: 'app/',
         standAlone: false
       }
     },
@@ -137,7 +149,18 @@ module.exports = function () {
      * Node settings
      */
     nodeServer: './src/server/app.js',
-    defaultPort: '8001'
+    defaultPort: '8001',
+
+    /**
+     * AWS settings
+     */
+    aws: {
+      bucket: envConfig.getVal('AWS_BUCKET', ''),
+      key: envConfig.getVal('AWS_KEY', ''),
+      region: envConfig.getVal('AWS_REGION', ''),
+      secret: envConfig.getVal('AWS_SECRET', ''),
+      cdnUrl: envConfig.getVal('AWS_CDN_URL', '')
+    }
   };
 
   /**

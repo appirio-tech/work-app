@@ -41,7 +41,8 @@
     }
 
     function setCurrent(project) {
-      return ob.current = project;
+      ob.current = project;
+      return ob.current;
     }
 
     function getProject(id) {

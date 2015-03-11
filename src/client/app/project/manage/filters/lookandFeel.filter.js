@@ -20,6 +20,6 @@
         case 5:
           return right;
       }
-    }
+    };
   }
 })();

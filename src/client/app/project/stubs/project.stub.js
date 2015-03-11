@@ -86,6 +86,5 @@
       $httpBackend.whenGET('/api/v3/projects').respond(getResponse);
 
       $httpBackend.whenGET(/.+\.html?/).passThrough();
-    })
+    });
 })();
-
