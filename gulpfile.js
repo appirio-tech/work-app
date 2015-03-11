@@ -408,11 +408,7 @@ gulp.task('deploy', function() {
   log(msg);
 
   return gulp
-    .src('./build/*')
-
-    // gzip, Set Content-Encoding headers and add .gz extension
-    .pipe($.awspublish.gzip({ext: '.gz'}))
-
+    .src('./build/**/*')
     // publisher will add Content-Length, Content-Type and headers specified above
     // If not specified it will set x-amz-acl to public-read by default
     .pipe(publisher.publish(headers))
