@@ -239,7 +239,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the css
     .pipe(cssLibFilter)
     .pipe(sourcemaps.init())
-    .pipe($.minifyCss())
+    .pipe($.minifyCss({root: 'images'}))
     .pipe(sourcemaps.write())
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
@@ -261,6 +261,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe($.revReplace(replaceOptions))
     // minimize html
     .pipe(htmlFilter)
+    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
     .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest(config.build));
@@ -407,7 +408,7 @@ gulp.task('deploy', function() {
   log(msg);
 
   return gulp
-    .src(config.build)
+    .src('./build/*')
 
     // gzip, Set Content-Encoding headers and add .gz extension
     .pipe($.awspublish.gzip({ext: '.gz'}))
