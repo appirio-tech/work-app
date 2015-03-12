@@ -23,7 +23,7 @@
 	  // want to check the delegation-token example
 	  $httpProvider.interceptors.push('jwtInterceptor');
 	  
-	})run(function($rootScope, auth, store, jwtHelper, $location) {
+	}).run(function($rootScope, auth, store, jwtHelper, $location) {
 		  // This events gets triggered on refresh or URL change
 		  $rootScope.$on('$locationChangeStart', function() {
 		    if (!auth.isAuthenticated) {
