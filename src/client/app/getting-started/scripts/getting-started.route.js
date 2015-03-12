@@ -17,7 +17,7 @@
         state: 'home',
         config: {
           url: '/',
-          templateUrl: 'getting-started/getting-started.html',
+          templateUrl: 'getting-started/views/getting-started.html',
           controller: 'GettingStartedController',
           controllerAs: 'vm',
           title: 'Getting Started',

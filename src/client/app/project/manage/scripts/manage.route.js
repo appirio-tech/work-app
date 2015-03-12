@@ -17,7 +17,7 @@
         state: 'multiple',
         config: {
           url: '/projects',
-          templateUrl: 'project/manage/multiple.html',
+          templateUrl: 'project/manage/views/multiple.html',
           controller: 'MultipleProjectController',
           controllerAs: 'vm',
           title: 'Projects',
@@ -31,7 +31,7 @@
         state: 'single',
         config: {
           url: '/projects/:projectId?new',
-          templateUrl: 'project/manage/single.html',
+          templateUrl: 'project/manage/views/single.html',
           controller: 'SingleProjectController',
           controllerAs: 'vm',
           title: 'Manage',
