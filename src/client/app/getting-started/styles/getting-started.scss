@@ -3,42 +3,36 @@
 
 .getting-started-page {
   .jumbotron {
-    line-height     : 484px - ($padding-30 * 2);
-    background-color: purple;
-    padding         : $padding-30;
-
-    h1 {
-      display       : inline-block;
-      line-height   : normal;
-      vertical-align: bottom;
-      color         : $white;
-      font-size     : $font-50;
-      text-align    : center;
-    }
+    display: none;
   }
 
   .choose-build {
-    margin: $margin-84 0 $margin-72 0;
+    margin: 0;
     text-align: center;
 
     h2 {
-      font-size: $font-36;
-      color    : $limed-spruce;
+      background-color: $all-ports;
+      font-size       : $font-20;
+      color           : $white;
+      padding         : $padding-10 0;
     }
 
     ul.builds {
-      li {
-        $diameter: 220px;
+      margin-bottom: $margin-28;
 
-        margin-top    : $margin-63;
-        display       : inline-block;
+      li {
+        $diameter: 112px;
+
+        padding       : 0 $padding-20;
+        width         : $diameter;
+        display       : block;
+        margin        : $margin-28 auto 0 auto;
         vertical-align: top;
-        padding       : 0 $padding-40;
 
         .icon {
-          width           : $diameter;
-          height          : $diameter;
-          line-height     : $diameter;
+          width      : $diameter;
+          height     : $diameter;
+          line-height: $diameter;
           @include border-radius(50%);
           background-color: $silver-sand;
 
@@ -50,9 +44,10 @@
         }
 
         .label {
-          margin-top: $margin-22;
-          font-size : $font-20;
-          color     : $limed-spruce;
+          margin-top : $margin-10;
+          font-size  : $font-14;
+          line-height: $lh-115;
+          color      : $limed-spruce;
         }
 
         &:active, &:hover {
@@ -65,29 +60,35 @@
   }
 
   .learn-more {
+    text-align      : left;
+    padding         : $padding-25;
     background-color: $limed-spruce;
-    text-align: center;
     @include clearfix();
 
     article {
-      margin-top: $margin-57;
-      text-align: left;
-      width  : 260px;
-      display: inline-block;
-      padding: 0 $padding-20;
+      margin-top    : $margin-25;
+      text-align    : left;
+      width         : 100%;
+      display       : block;
+      padding       : 0;
       vertical-align: top;
+
+      &:first-child {
+        margin-top: 0;
+      }
 
       header {
         a {
-          font-size: $font-28;
+          font-size: $font-18;
           color    : $white;
         }
       }
 
       p {
-        margin-top: $margin-18;
-        color: $mercury;
-        font-size: $font-18;
+        margin-top : $margin-10;
+        font-size  : $font-14;
+        color      : $mercury;
+        line-height: $lh-120;
       }
     }
   }

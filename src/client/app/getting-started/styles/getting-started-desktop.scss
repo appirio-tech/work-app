@@ -1,0 +1,81 @@
+@import "core/styles/combined";
+@import "compass/css3/border-radius";
+
+.getting-started-page {
+  .jumbotron {
+    display    : block;
+    line-height: 484px - ($padding-30 * 2);
+    padding    : $padding-30;
+
+    @include bg-cover("../images/jumbo.jpg");
+
+    h1 {
+      display       : inline-block;
+      line-height   : normal;
+      vertical-align: bottom;
+      color         : $white;
+      font-size     : $font-50;
+      text-align    : center;
+      line-height   : $lh-1;
+    }
+  }
+
+  .choose-build {
+    margin: $margin-63 0;
+
+    h2 {
+      background-color: $white;
+      font-size: $font-36;
+      color    : $limed-spruce;
+    }
+
+    ul.builds {
+      li {
+        $diameter: 220px;
+
+        margin-top: $margin-63;
+        padding   : 0 $padding-40;
+        width     : $diameter;
+
+        .icon {
+          width      : $diameter;
+          height     : $diameter;
+          line-height: $diameter;
+        }
+
+        .label {
+          margin-top : $margin-22;
+          font-size  : $font-20;
+          line-height: $lh-120;
+        }
+      }
+    }
+  }
+
+  .learn-more {
+    text-align: center;
+
+    article {
+      margin-top    : $margin-57;
+      width         : 260px;
+      display       : inline-block;
+      padding       : 0 $padding-20;
+
+      &:first-child {
+        margin-top: $margin-57;
+      }
+
+      header {
+        a {
+          font-size: $font-28;
+        }
+      }
+
+      p {
+        margin-top : $margin-18;
+        font-size  : $font-18;
+        line-height: $lh-133;
+      }
+    }
+  }
+}

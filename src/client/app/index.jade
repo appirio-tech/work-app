@@ -52,14 +52,19 @@
 - bowercss.push('/bower_components/font-awesome/css/font-awesome')
 - bowercss.push('/bower_components/toastr/toastr')
 
-- var css = ["layout/styles/reset", "layout/styles/main", "layout/styles/header", "getting-started/styles/getting-started"]
+- var css = []
+- css.push("layout/styles/reset")
+- css.push("layout/styles/main")
+- css.push("layout/styles/header")
+- css.push("layout/styles/footer")
+- css.push("getting-started/styles/getting-started")
 
 - var mobileLandCss = []
 - mobileLandCss.push("layout/styles/mobile-landscape/header")
 - mobileLandCss.push("getting-started/styles/getting-started-mob-land")
 
-- var mobilePortCss = ["layout/styles/mobile-portrait/header"]
-- var desktopCss = ["layout/styles/desktop/header"]
+- var desktopCss = []
+- desktopCss.push("getting-started/styles/getting-started-desktop")
 
 doctype html
 html(ng-app='app')
@@ -90,19 +95,14 @@ html(ng-app='app')
       link(href=path + ".css", rel="stylesheet")
     // endbuild
 
-    // build:css styles/mobile-portrait.css
-    each path in mobilePortCss
-      link(href=path + ".css", rel="stylesheet", media="max-device-width : 567px")
-    // endbuild
-
     // build:css styles/mobile-landscape.css
     each path in mobileLandCss
-      link(href=path + ".css", rel="stylesheet", media="(min-width: 568px) and (max-width:767px)")
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
     // endbuild
 
     // build:css styles/desktop.css
     each path in desktopCss
-      link(href=path + ".css", rel="stylesheet", media="(min-width: 768px)")
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
     // endbuild
 
   body

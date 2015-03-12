@@ -1,1 +1,33 @@
 @import "core/styles/combined";
+
+$header-height: 38px;
+
+.layout-header {
+  padding         : $padding-20 $padding-30;
+
+  > * {
+    line-height: $header-height;
+  }
+
+  .logo {
+    width           : 176px;
+    height          : $header-height;
+    background-size : 176px $header-height;
+
+    @include bg-image-pixel("../../images/logo-appirio.png", "../../images/logo-appirio-2x.png");
+  }
+
+  .login, .get-started {
+    line-height: $header-height;
+  }
+
+  .get-started {
+    display         : block;
+    line-height     : $header-height - ($padding-10 * 2);
+    margin-left     : 5%;
+    background-color: $celery;
+    border-radius   : $border-radius-4;
+    padding         : $padding-10 $padding-16;
+    color           : $white;
+  }
+}
