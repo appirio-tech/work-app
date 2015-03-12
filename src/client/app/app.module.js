@@ -9,6 +9,8 @@
     'app.project.create',
     'app.project.core',
     'app.getting-started'
-  ]);
+  ]).config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode(false);
+  }]);
 
 })();
