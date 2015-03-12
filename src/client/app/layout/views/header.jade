@@ -3,9 +3,10 @@ header.layout-header(role="banner")
 
   a.get-started("href"="#") Get Started
 
-  a.login("href"="#")
-    .icon
-
-    .label Log in
+  .login-page(class=['clearfix'])
+    .login-box(class=['auth0-box'])
+      a.login(ng-click="login()")
+        .icon
+        .label Log in
 
 
