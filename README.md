@@ -1,4 +1,6 @@
-# ap-work-client
+# ap-work-client (River)
+
+![ScreenShot](http://cdn1.ouchpress.com/media/celebrities/404/gina-torres-7565.jpg)
 
 **Generated from [HotTowel Angular](https://github.com/johnpapa/HotTowel-Angular)**
 
@@ -49,11 +51,11 @@ HotTowel Angular starter project
 ### Structure
 The structure also contains a gulpfile.js and a server folder. The server is there just so we can serve the app using node.
 
-	/src
-		/client
-			/app
-			/content
-	
+  /src
+    /client
+      /app
+      /content
+  
 
 ### The Modules
 The app has several modules and depends on a series of external modules and custom but cross-app modules
@@ -65,14 +67,14 @@ app --> [
         app.getting-started,
         app.layout,
         app.widgets,
-		app.core --> [
-			ngAnimate,
-			ngSanitize,
-			ui.router,
-			blocks.exception,
-			blocks.logger,
-			blocks.router
-		]
+    app.core --> [
+      ngAnimate,
+      ngSanitize,
+      ui.router,
+      blocks.exception,
+      blocks.logger,
+      blocks.router
+    ]
     ]
 ```
 
