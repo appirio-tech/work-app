@@ -3,10 +3,10 @@
 $header-height: 38px;
 
 .layout-header {
-  padding  : $padding-20 $padding-30;
+  padding         : $padding-20 $padding-30;
   background-color: $white;
   @include clearfix();
-  font-family: source sans pro;
+  font-family     : source sans pro;
 
   > * {
     display    : block;
@@ -33,26 +33,28 @@ $header-height: 38px;
     }
 
     .icon {
-      width: 21px;
-      height: 22px;
-      vertical-align: middle;
+      width              : 21px;
+      height             : 22px;
+      vertical-align     : middle;
       @include bg-image-pixel("../images/sprite.png", "../images/sprite-2x.png");
       background-position: 0px 0px;
-      background-size: 272px auto;
+      background-size    : 272px auto;
     }
 
     .label {
       margin-left: $margin-10;
+      color      : $pacific-blue;
+      font-size  : $font-16;
     }
   }
 
   .get-started {
-    line-height: $header-height - ($padding-10 * 2);
-    margin-left: 5%;
+    line-height     : $header-height - ($padding-10 * 2);
+    margin-left     : 5%;
     background-color: $celery;
-    border-radius: $border-radius-4;
-    padding: $padding-10 $padding-16;
-    color: $white;
+    border-radius   : $border-radius-4;
+    padding         : $padding-10 $padding-16;
+    color           : $white;
   }
 
 }
