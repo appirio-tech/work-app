@@ -1,12 +1,13 @@
 @import "core/styles/combined";
 
-$header-height: 38px;
+$header-height: 28px;
 
 .layout-header {
-  padding         : $padding-20 $padding-30;
+  padding         : $padding-16 $padding-20;
   background-color: $white;
-  @include clearfix();
   font-family     : source sans pro;
+
+  @include clearfix();
 
   > * {
     display    : block;
@@ -14,11 +15,12 @@ $header-height: 38px;
   }
 
   .logo {
-    float           : left;
-    width           : 176px;
-    height          : $header-height;
-    @include bg-image-pixel("../images/logo-appirio.png", "../images/logo-appirio-2x.png");
-    background-size : 176px $header-height;
+    float          : left;
+    width          : 56px;
+    background-size : 56px $header-height;
+    height         : $header-height;
+
+    @include bg-image-pixel("../images/logo-appirio-icon.png", "../images/logo-appirio-icon-2x.png");
   }
 
   .login, .get-started {
@@ -36,9 +38,10 @@ $header-height: 38px;
       width              : 21px;
       height             : 22px;
       vertical-align     : middle;
-      @include bg-image-pixel("../images/sprite.png", "../images/sprite-2x.png");
       background-position: 0px 0px;
       background-size    : 272px auto;
+
+      @include bg-image-pixel("../images/sprite.png", "../images/sprite-2x.png");
     }
 
     .label {
@@ -49,12 +52,6 @@ $header-height: 38px;
   }
 
   .get-started {
-    line-height     : $header-height - ($padding-10 * 2);
-    margin-left     : 5%;
-    background-color: $celery;
-    border-radius   : $border-radius-4;
-    padding         : $padding-10 $padding-16;
-    color           : $white;
+    display: none;
   }
-
 }
