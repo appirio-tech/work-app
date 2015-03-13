@@ -1,3 +1,7 @@
-$lh-1: 1rem;
-$lh-18: 1.8rem;
+$base: 1;
+
+$lh-1: 1 * $base;
+$lh-115: 1.15 * $base;
+$lh-120: 1.20 * $base;
+$lh-133: 1.33 * $base;
 
