@@ -1,7 +1,6 @@
 angular.module( 'app.login', [
   'auth0'
-])
-.controller( 'LoginCtrl', function HomeController( $scope, auth, $location, store ) {
+]).controller( 'LoginCtrl', function LoginCtrl( $scope, auth, $location, store ) {
 
   $scope.login = function() {
     auth.signin({

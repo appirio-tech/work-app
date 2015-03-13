@@ -3,7 +3,7 @@ header.layout-header(role="banner")
 
   a.get-started("href"="#") Get Started
 
-  .login-page(class=['clearfix'])
+  .login-page(class=['clearfix'] ng-controller="LoginCtrl")
     .login-box(class=['auth0-box'])
       a.login(ng-click="login()")
         .icon
