@@ -143,7 +143,6 @@ module.exports = function () {
     ],
     specHelpers: [client + 'test-helpers/*.js'],
     specs: [clientApp + '**/*.spec.js'],
-    serverIntegrationSpecs: [client + '/**/*.spec.js'],
 
     /**
      * Node settings

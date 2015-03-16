@@ -179,10 +179,6 @@ gulp.task('build-specs', ['inject'], function (done) {
   var templateCache = config.temp + config.templateCache.file;
   var specs = config.specs;
 
-  if (args.startServers) {
-    specs = [].concat(specs, config.serverIntegrationSpecs);
-  }
-
   return gulp
     .src(config.specRunner)
     .pipe(inject(config.testlibraries, 'testlibraries'))
@@ -621,10 +617,8 @@ function startPlatoVisualizer(done) {
  */
 function startTests(singleRun, done) {
   var child;
-  var excludeFiles = [];
   var fork = require('child_process').fork;
   var karma = require('karma').server;
-  var serverSpecs = config.serverIntegrationSpecs;
 
   if (args.startServers) {
     log('Starting servers');
@@ -632,10 +626,6 @@ function startTests(singleRun, done) {
     savedEnv.NODE_ENV = 'dev';
     savedEnv.PORT = 8888;
     child = fork(config.nodeServer);
-  } else {
-    if (serverSpecs && serverSpecs.length) {
-      excludeFiles = serverSpecs;
-    }
   }
 
   karma.start({
