@@ -1,0 +1,23 @@
+h1 Create an account
+
+.close x
+
+form
+  input(type="text", placeholder="Email dddress", required=true)
+
+  p.error Email address is required
+
+  p.error Email address is already taken
+
+  input(type="text", placeholder="Password")
+
+  p.error Password needs to be stronger
+
+  input(type="text", placeholder="Confirm Password")
+
+  p.error Confirm password does not match
+
+  input(type="submit" value="Register and sign in")
+
+a.existing-user(href="#") Already have an account? Log in
+
