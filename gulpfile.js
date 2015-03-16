@@ -155,6 +155,7 @@ gulp.task('templatecache', function () {
 gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
+  startTests(true /*singleRun*/, done);
   done();
 });
 
