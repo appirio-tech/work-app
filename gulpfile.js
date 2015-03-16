@@ -196,7 +196,7 @@ gulp.task('build-specs', ['inject'], function (done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts'], function () {
+gulp.task('build', ['optimize', 'images', 'fonts', 'test'], function () {
   log('Building everything');
 
   var msg = {
