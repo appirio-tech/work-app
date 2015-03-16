@@ -386,7 +386,7 @@ gulp.task('bump', function () {
 /**
  * Push build folder to s3
  */
-gulp.task('deploy', ['build'], function() {
+gulp.task('deploy', ['build', 'test'], function() {
   var awsConfig = {
     bucket: config.aws.bucket,
     key: config.aws.key,
