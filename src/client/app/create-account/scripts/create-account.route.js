@@ -14,11 +14,11 @@
   function getStates() {
     return [
       {
-        state: 'home',
+        state: 'create-account',
         config: {
           url: '/create-account',
           templateUrl: 'create-account/views/create-account.html',
-          controller: 'CreatedAccountController',
+          controller: 'CreateAccountController',
           controllerAs: 'vm',
           title: 'Create Account',
         }
@@ -26,3 +26,4 @@
     ];
   }
 })();
+

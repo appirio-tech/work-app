@@ -4,7 +4,7 @@
 
   angular
     .module('app.create-account')
-    .controller('CreateAccontController', CreateAccontController);
+    .controller('CreateAccountController', CreateAccontController);
 
   CreateAccontController.$inject = ['logger'];
   /* @ngInject */
