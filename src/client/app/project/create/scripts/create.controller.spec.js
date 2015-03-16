@@ -1,6 +1,4 @@
 /* jshint -W117, -W030 */
-
-/*
 describe('ProjectCreateController', function () {
   var controller;
 
@@ -40,4 +38,3 @@ describe('ProjectCreateController', function () {
     });
   });
 });
-*/
