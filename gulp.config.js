@@ -201,7 +201,8 @@ module.exports = function () {
           // reporters not supporting the `file` property
           {type: 'html', subdir: 'report-html'},
           {type: 'lcov', subdir: 'report-lcov'},
-          {type: 'text-summary'} //, subdir: '.', file: 'text-summary.txt'}
+          {type: 'text-summary'}, //, subdir: '.', file: 'text-summary.txt'}
+          {type: 'cobertura', subdir: 'cobertura', file: 'cobertura.txt'},
         ]
       },
       preprocessors: {}
