@@ -632,14 +632,18 @@ function startTests(singleRun, done) {
   }
 
   karma.start({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: !!singleRun
+    configFile: __dirname + '/karma.conf.js'
   }, karmaCompleted);
 
   ////////////////
 
   function karmaCompleted(karmaResult) {
     log('Karma completed');
+
+    if (child) {
+      log('shutting down the child process');
+      child.kill();
+    }
 
     if (karmaResult === 1) {
       done('karma: tests failed with code ' + karmaResult);
