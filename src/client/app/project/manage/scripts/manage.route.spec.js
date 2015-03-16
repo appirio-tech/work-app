@@ -2,7 +2,7 @@
 describe('project routes', function () {
   describe('state', function () {
     var controller;
-    var list = 'app/project/manage/multiple.html';
+    var list = 'project/manage/views/multiple.html';
 
     beforeEach(function () {
       module('app.project.manage', bard.fakeToastr);

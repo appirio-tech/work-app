@@ -143,7 +143,7 @@ module.exports = function () {
     ],
     specHelpers: [client + 'test-helpers/*.js'],
     specs: [clientApp + '**/*.spec.js'],
-    serverIntegrationSpecs: [client + '/tests/server-integration/**/*.spec.js'],
+    serverIntegrationSpecs: [client + '/**/*.spec.js'],
 
     /**
      * Node settings
@@ -191,8 +191,7 @@ module.exports = function () {
         config.specHelpers,
         clientApp + '**/*.module.js',
         clientApp + '**/*.js',
-        temp + config.templateCache.file,
-        config.serverIntegrationSpecs
+        temp + config.templateCache.file
       ),
       exclude: [],
       coverage: {
@@ -202,7 +201,7 @@ module.exports = function () {
           {type: 'html', subdir: 'report-html'},
           {type: 'lcov', subdir: 'report-lcov'},
           {type: 'text-summary'}, //, subdir: '.', file: 'text-summary.txt'}
-          {type: 'cobertura', subdir: 'cobertura', file: 'cobertura.txt'},
+          {type: 'cobertura', subdir: 'cobertura', file: 'cobertura.txt'}
         ]
       },
       preprocessors: {}

@@ -2,10 +2,10 @@
 describe('create routes', function () {
   describe('state', function () {
     var controller;
-    var list = 'app/project/create/create.html';
+    var list = 'project/create/views/create.html';
 
     beforeEach(function () {
-      module('app.project-create', bard.fakeToastr);
+      module('app.project.create', bard.fakeToastr);
       bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
     });
 
