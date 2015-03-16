@@ -201,7 +201,7 @@ module.exports = function () {
           {type: 'html', subdir: 'report-html'},
           {type: 'lcov', subdir: 'report-lcov'},
           {type: 'text-summary'}, //, subdir: '.', file: 'text-summary.txt'}
-          {type: 'cobertura', subdir: 'cobertura', file: 'cobertura.txt'}
+          {type: 'cobertura', subdir: 'cobertura', file: 'cobertura.xml'}
         ]
       },
       preprocessors: {}
