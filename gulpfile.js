@@ -158,8 +158,8 @@ gulp.task('templatecache', function () {
 gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
-  //startTests(true /*singleRun*/, done);
-  done();
+  startTests(true /*singleRun*/, done);
+  //done();
 });
 
 /**
@@ -196,7 +196,7 @@ gulp.task('build-specs', ['inject'], function (done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts', 'test'], function () {
+gulp.task('build', ['optimize', 'images', 'fonts'], function () {
   log('Building everything');
 
   var msg = {
