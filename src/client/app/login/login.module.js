@@ -3,7 +3,6 @@
 
   angular.module('app.login', [
 	'auth0',
-	'ngRoute',
 	'angular-storage',
 	'angular-jwt'
   ]).config(function (authProvider) {
