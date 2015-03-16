@@ -632,7 +632,8 @@ function startTests(singleRun, done) {
   }
 
   karma.start({
-    configFile: __dirname + '/karma.conf.js'
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: !!singleRun
   }, karmaCompleted);
 
   ////////////////
