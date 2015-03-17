@@ -74,7 +74,7 @@ gulp.task('scss', function () {
 gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
-  var stubs = $.util.env.stubs ? true : false;
+  var stubs = config.useStubs ? true : false;
 
   var options = {
     pretty: true,

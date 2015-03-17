@@ -3,9 +3,13 @@
 
   angular.module('app.project.core', [
     'app.core',
-    'projectMock',
     'ngMessages',
     'app.constants'
-  ]);
+  ])
+  .run(['$injector', 'useStubs', function($injector, useStubs) {
+    if (useStubs == 'true') {
+      return $injector.get('projectMock');
+    }
+  }]);
 
 })();
