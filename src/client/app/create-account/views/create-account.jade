@@ -1,22 +1,29 @@
-h1 Create an account
+style.
+  /* This helps the ng-show/ng-hide animations start at the right place. */
+  /* Since Angular has this but needs to load, this gives us the class early. */
+  .overlay {
+    display: block;
+  }
 
-.close x
+.layout-modal.create-account
+  h1 Create an account
 
-form
-  input(type="text", placeholder="Email dddress", required=true)
+  a.close(href="#")
 
-  p.error Email address is required
+  form
+    input(type="email", placeholder="Email address", required=true)
 
+    p.error Email address is required
 
-  input(type="text", placeholder="Password")
+    input(type="password", placeholder="Password")
 
-  p.error Password is required
+    p.error Password is required
 
-  input(type="text", placeholder="Confirm Password")
+    input(type="password", placeholder="Confirm Password")
 
-  p.error Confirm password is required
+    p.error Confirm password is required
 
-  input(type="submit" value="Register and sign in")
+    button.submit(type="submit") Register and sign in
 
-a.existing-user(href="#") Already have an account? Log in
+  a.existing-user(href="#") Already have an account? Log in
 

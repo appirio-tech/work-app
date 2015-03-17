@@ -1,0 +1,39 @@
+@import "core/styles/combined";
+@import "compass/css3/border-radius";
+
+.layout-modal.create-account {
+  $width: 568px;
+  $height: 320px;
+
+  width      : $width - ($padding-20 * 2);
+  height     : $height - ($padding-15 * 2);
+  margin-left: -$width / 2;
+  margin-top : -$height / 2;
+
+  h1 {
+    float       : right;
+    margin-right: $margin-30;
+    text-align  : center;
+  }
+
+  form {
+    float: left;
+    margin-top: $margin-10;
+    width: 280px;
+
+    input {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    button.submit {
+      width: 200px;
+    }
+  }
+
+  .existing-user {
+    float: right;
+    margin-right: $margin-30;
+  }
+}
