@@ -144,7 +144,7 @@ module.exports = function () {
       nodeModules + '/mocha-clean/index.js',
       nodeModules + '/sinon-chai/lib/sinon-chai.js'
     ],
-    specHelpers: [client + 'test-helpers/*.js'],
+    specHelpers: [client + 'test-helpers/*.js', 'test-globals.js'],
     specs: [clientApp + '**/*.spec.js'],
 
     /**
@@ -193,6 +193,7 @@ module.exports = function () {
         config.specHelpers,
         clientApp + '**/*.module.js',
         clientApp + '**/*.js',
+        temp + '**/*.js',
         temp + config.templateCache.file
       ),
       exclude: [],

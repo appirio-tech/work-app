@@ -4,12 +4,8 @@
   angular.module('app.project.core', [
     'app.core',
     'ngMessages',
+    'projectMock',
     'app.constants'
-  ])
-  .run(['$injector', 'useStubs', function($injector, useStubs) {
-    if (useStubs == 'true') {
-      return $injector.get('projectMock');
-    }
-  }]);
+  ]);
 
 })();
