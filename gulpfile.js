@@ -94,7 +94,7 @@ gulp.task('ng-constants', function() {
   log('Generating angular constants');
 
   var options = {
-    name: 'app.core',
+    name: 'app.constants',
     constants: config.ngConstants,
     stream: true
   };
