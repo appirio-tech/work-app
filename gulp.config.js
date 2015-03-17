@@ -190,6 +190,7 @@ module.exports = function () {
         config.specHelpers,
         clientApp + '**/*.module.js',
         clientApp + '**/*.js',
+        temp + '**/*.js',
         temp + config.templateCache.file
       ),
       exclude: [],
