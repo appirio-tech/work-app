@@ -5,10 +5,10 @@
 	'auth0',
 	'angular-storage',
 	'angular-jwt'
-  ]).config(function (authProvider) {
+  ]).config(function (authProvider, $httpProvider, jwtInterceptorProvider) {
 	  authProvider.init({
-		    domain: 'YOUR_NAMESPACE',
-		    clientID: 'YOUR_CLIENT_ID'
+		    domain: AUTH0_DOMAIN,
+		    clientID: AUTH0_CLIENT_ID
 		  });
 	  
 	  // We're annotating this function so that the `store` is injected correctly when this file is minified
