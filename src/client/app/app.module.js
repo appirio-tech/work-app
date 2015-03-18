@@ -7,7 +7,8 @@
     'app.project.manage',
     'app.project.create',
     'app.project.core',
-    'app.getting-started'
+    'app.getting-started',
+    'app.create-account'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);
