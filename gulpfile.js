@@ -74,11 +74,17 @@ gulp.task('scss', function () {
 gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
-  var stubs = config.useStubs ? true : false;
+  var stubs = config.useStubs === 'true';
+  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseImageUrl;
+  var useCDN = config.aws.cdnUrl ? true : false;
 
   var options = {
     pretty: true,
-    locals: {stubs: stubs}
+    locals: {
+      stubs: stubs,
+      imagePath: imagePath,
+      useCDN: useCDN
+    }
   };
 
   return gulp
