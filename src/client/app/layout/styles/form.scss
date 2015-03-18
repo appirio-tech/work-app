@@ -1,5 +1,5 @@
-@import "core/styles/combined";
-@import "compass";
+@import "../../core/styles/combined";
+@import "bourbon";
 
 form {
   input {
@@ -11,7 +11,7 @@ form {
     background-position: 0 0;
     margin-top         : $margin-20;
 
-    @include input-placeholder {
+    @include placeholder {
       color: $slate-gray;
     }
 
