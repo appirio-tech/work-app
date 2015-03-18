@@ -36,7 +36,6 @@
     "gulp-filter": "^1.0.2",
     "gulp-flatten": "0.0.4",
     "gulp-header": "^1.2.2",
-    "gulp-htmlmin": "^1.1.1",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^1.0.1",
     "gulp-inject": "^1.0.1",
