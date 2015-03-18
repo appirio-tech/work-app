@@ -83,7 +83,8 @@ gulp.task('jade', function () {
     locals: {
       stubs: stubs,
       imagePath: imagePath,
-      useCDN: useCDN
+      useCDN: useCDN,
+      basePath: config.baseURL
     }
   };
 
