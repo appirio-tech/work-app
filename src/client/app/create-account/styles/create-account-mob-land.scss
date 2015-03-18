@@ -11,14 +11,14 @@
   margin-top : -$height / 2;
 
   h1 {
-    float       : right;
+    float       : left;
     margin-right: $margin-30;
     text-align  : center;
   }
 
   form {
     float: left;
-    margin-top: $margin-10;
+    margin-top: 0;
     width: 280px;
 
     input {
@@ -33,7 +33,6 @@
   }
 
   .existing-user {
-    float: right;
-    margin-right: $margin-30;
+    position: absolute;
   }
 }

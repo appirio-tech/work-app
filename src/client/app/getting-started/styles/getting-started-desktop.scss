@@ -9,7 +9,7 @@
 
     @include bg-cover("../images/jumbo.jpg");
 
-    h1 {
+    p {
       display       : inline-block;
       line-height   : normal;
       vertical-align: bottom;
@@ -23,7 +23,7 @@
   .choose-build {
     margin: $margin-63 0;
 
-    h2 {
+    h1 {
       background-color: $white;
       font-size: $font-36;
       color    : $limed-spruce;
