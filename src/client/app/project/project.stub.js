@@ -75,7 +75,7 @@
           }
         };
 
-        $httpBackend.whenPOST('/api/v3/projects', function(data) {
+        $httpBackend.whenPOST('/v3/workitems', function(data) {
           console.log('project POST');
           console.log(data);
           projects.push(JSON.parse(data));
@@ -84,9 +84,9 @@
         }).respond(postResponse);
 
         // projects
-        $httpBackend.whenGET('/api/v3/projects/30000007').respond(getOneResponse);
-        $httpBackend.whenGET('/api/v3/projects/0').respond(getTwoResponse);
-        $httpBackend.whenGET('/api/v3/projects').respond(getResponse);
+        $httpBackend.whenGET('/v3/workitems/30000007').respond(getOneResponse);
+        $httpBackend.whenGET('/v3/workitems/0').respond(getTwoResponse);
+        $httpBackend.whenGET('/v3/workitems').respond(getResponse);
 
         $httpBackend.whenGET(/.+\.html?/).passThrough();
       }

@@ -5,9 +5,9 @@
     .module('app.project.core')
     .factory('ProjectService', ProjectService);
 
-  ProjectService.$inject = ['$q', '$http', '$location', 'exception', 'logger'];
+  ProjectService.$inject = ['$q', '$http', '$location', 'exception', 'logger', 'apiUrl'];
   /* @ngInject */
-  function ProjectService($q, $http, $location, exception, logger) {
+  function ProjectService($q, $http, $location, exception, logger, apiUrl) {
     var i = 0;
     var ob = {
       getProject: getProject,
@@ -46,7 +46,7 @@
     }
 
     function getProject(id) {
-      return $http.get('/api/v3/projects/' + id)
+      return $http.get(apiUrl + 'workitems/' + id)
         .then(getProjectComplete)
         .catch(function(message) {
           exception.catcher('XHR Failed for getProject')(message);
@@ -60,7 +60,7 @@
     }
 
     function getProjects() {
-      return $http.get('/api/v3/projects')
+      return $http.get(apiUrl + 'workitems')
         .then(getProjectsComplete)
         .catch(function(message) {
           exception.catcher('XHR Failed for getProjects')(message);
@@ -77,7 +77,7 @@
       project.projectCreatedDate = moment().format('MM/DD/YYYY hh:mm');
       project.projectLastUpdatedDate = project.projectCreatedDate;
       project.billings = [];
-      return $http.post('/api/v3/projects', project)
+      return $http.post(apiUrl + 'workitems', project)
         .then(postProjectReport)
         .catch(function(message) {
           exception.catcher('XHR Failed for createProject')(message);

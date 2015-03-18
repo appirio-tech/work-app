@@ -24,7 +24,7 @@ module.exports = function () {
   var config = {
     // angular contants
     ngConstants: {
-      apiUrl: envConfig.getVal('BASE_API_URL', 'http://localhost:8080/v3/'),
+      apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
       useStubs: useStubs
     },
     useStubs: useStubs,
