@@ -235,7 +235,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
 
   var replaceOptions = {};
   if (config.aws.cdnUrl) {
-    replaceOptions.prefix = config.aws.cdnUrl;
+    replaceOptions.prefix = config.aws.cdnUrl ? config.aws.cdnUrl : config.baseURL;
   }
 
   var sourcemaps = $.sourcemaps;
