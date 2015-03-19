@@ -78,7 +78,9 @@
         $httpBackend.whenPOST('/v3/workitems', function(data) {
           console.log('project POST');
           console.log(data);
-          projects.push(JSON.parse(data));
+          var project = JSON.parse(data);
+          project.id = 0;
+          projects.push(project);
           getTwoResponse.result.content = projects[1];
           return true;
         }).respond(postResponse);
