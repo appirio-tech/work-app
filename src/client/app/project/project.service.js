@@ -8,7 +8,6 @@
   ProjectService.$inject = ['$q', '$http', '$location', 'exception', 'logger', 'apiUrl'];
   /* @ngInject */
   function ProjectService($q, $http, $location, exception, logger, apiUrl) {
-    var i = 0;
     var ob = {
       getProject: getProject,
       getProjects: getProjects,
@@ -21,22 +20,20 @@
     function getCurrent() {
       return ob.current || {
         links: [],
-        files: [],
-        billings: [],
+        type_id: 1,
         duration: 15,
         styleMinimalComplex: 3,
         styleLoudSubtle: 3,
         styleModernClassic: 3,
         stylePlayfulSerious: 3,
+        styleLuxuryBudget: 3,
         additionalDetails: '',
-        status: '',
+        status_id: 1,
         website: '',
-        updatedAt: (new Date()),
         updatedBy: 12345,
-        createdAt: (new Date()),
+        createdBy: 12345,
+        summary: '',
         styleIdeas: '',
-        type: 0,
-        id: i++
       };
     }
 
@@ -80,9 +77,7 @@
     }
 
     function createProject(project) {
-      project.projectCreatedDate = moment().format('MM/DD/YYYY hh:mm');
-      project.projectLastUpdatedDate = project.projectCreatedDate;
-      project.billings = [];
+      project.links = '';
       return $http.post(apiUrl + 'workitems', project)
         .then(postProjectReport)
         .catch(function(message) {
