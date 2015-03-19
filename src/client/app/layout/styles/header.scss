@@ -20,7 +20,7 @@ $header-height: 28px;
     background-size : 56px $header-height;
     height         : $header-height;
 
-    @include bg-image-pixel("../images/logo-appirio-icon.png", "../images/logo-appirio-icon-2x.png");
+    @include bg-image-ratio("../images/logo-appirio-icon.png", "../images/logo-appirio-icon-2x.png");
   }
 
   .login, .get-started {
@@ -36,12 +36,11 @@ $header-height: 28px;
 
     .icon {
       width              : 21px;
-      height             : 22px;
+      height             : 23px;
       vertical-align     : middle;
-      background-position: 0px 0px;
-      background-size    : 272px auto;
+      background-position: -379px 0px;
 
-      @include bg-image-pixel("../images/sprite.png", "../images/sprite-2x.png");
+      @include sprite();
     }
 
     .label {

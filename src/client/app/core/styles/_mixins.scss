@@ -6,13 +6,15 @@
   }
 }
 
-@mixin bg-image-pixel($low, $high) {
+@mixin bg-image-ratio($low, $high) {
+  background-repeat: no-repeat;
+
   @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-    background-image: url($low)
+    background-image: url($low);
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url($high)
+    background-image: url($high);
   }
 }
 
@@ -22,4 +24,9 @@
   -moz-background-size   : cover;
   -o-background-size     : cover;
   background-size        : cover;
+}
+
+@mixin sprite() {
+  background-size    : 400px 400px;
+  @include bg-image-ratio("../images/sprite.png", "../images/sprite-2x.png");
 }
