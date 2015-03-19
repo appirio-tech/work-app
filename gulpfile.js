@@ -147,10 +147,11 @@ gulp.task('scss-watcher', function () {
  * Create $templateCache from the html templates
  * @return {Stream}
  */
-gulp.task('templatecache', function () {
+gulp.task('templatecache', ['jade'], function () {
   log('Creating an AngularJS $templateCache');
 
   var templateCache = config.temp + config.templateCache.file;
+  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseImageUrl;
 
   return gulp
     .src(config.htmltemplates)
@@ -167,6 +168,7 @@ gulp.task('templatecache', function () {
       useShortDoctype: true
     }))
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
+    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="' + imagePath))
     .pipe($.angularTemplatecache(
       config.templateCache.file,
       config.templateCache.options
@@ -247,7 +249,6 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
   var htmlFilter = $.filter('**/*.html');
 
   var templateCache = config.temp + config.templateCache.file;
-  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseURL;
 
   var replaceOptions = {};
   if (config.aws.cdnUrl) {
@@ -270,7 +271,6 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the custom javascript
     .pipe(jsAppFilter)
     .pipe($.ngAnnotate({add: true}))
-    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="' + imagePath))
     .pipe($.uglify())
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
