@@ -11,6 +11,7 @@
 - scripts.push('/src/client/app/project/create/scripts/create.module')
 - scripts.push('/src/client/app/project/manage/scripts/manage.module')
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.module')
+- scripts.push('/src/client/app/create-account/scripts/create-account.module')
 - scripts.push('/src/client/app/project/project.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
@@ -30,6 +31,8 @@
 - scripts.push('/src/client/app/project/manage/scripts/single.controller')
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.route')
+- scripts.push('/src/client/app/create-account/scripts/create-account.controller')
+- scripts.push('/src/client/app/create-account/scripts/create-account.route')
 - scripts.push('/src/client/app/project/project.service')
 
 - var bowers = []
@@ -53,14 +56,19 @@
 - css.push("layout/styles/main")
 - css.push("layout/styles/header")
 - css.push("layout/styles/footer")
+- css.push("layout/styles/form")
 - css.push("getting-started/styles/getting-started")
+- css.push("create-account/styles/create-account")
 
 - var mobileLandCss = []
-- mobileLandCss.push("layout/styles/mobile-landscape/header")
+- mobileLandCss.push("layout/styles/header-mob-land")
 - mobileLandCss.push("getting-started/styles/getting-started-mob-land")
+- mobileLandCss.push("create-account/styles/create-account-mob-land")
 
 - var desktopCss = []
+- mobileLandCss.push("layout/styles/header-desktop")
 - desktopCss.push("getting-started/styles/getting-started-desktop")
+- desktopCss.push("create-account/styles/create-account-desktop")
 
 doctype html
 html(ng-app='app')
@@ -79,7 +87,7 @@ html(ng-app='app')
 
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
 
-    base(href='/')
+    base(href=basePath)
 
     // build:css styles/lib.css
     each path in bowercss

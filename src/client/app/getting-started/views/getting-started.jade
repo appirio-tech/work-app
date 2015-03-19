@@ -1,13 +1,15 @@
+include ../../core/views/images.mixins.jade
+
 - builds = []
 - builds.push({ href: '#/create', icon: 'project-design', label: 'Mobile app design' })
 - builds.push({ href: '#', icon: 'project-development', label: 'Mobile app development'})
 - builds.push({ href: '#', icon: 'project-custom', label: 'Custom solution'})
 
 section.jumbotron
-  h1 Our Talented 70,000 strong comunity is ready to work on your project today
+  p Our Talented 70,000 strong comunity is ready to work on your project today
 
 section.choose-build
-  h2 What can we build for you?
+  h1 What can we build for you?
 
   ul.builds
     each build in builds
@@ -16,7 +18,8 @@ section.choose-build
           .icon
             //- img("src"="/getting-started/images/#{build.icon}.svg")
             svg
-              image("xlink:href"="/getting-started/images/#{build.icon}.svg" src="#{build.icon}.png", width="100%", height="100%")
+              +image(build.icon, "getting-started/images")(src="#{build.icon}.png", width="100%", height="100%")
+              //image("xlink:href"="/getting-started/images/#{build.icon}.svg" src="#{build.icon}.png", width="100%", height="100%")
 
           .label!= build.label
 
