@@ -1,0 +1,49 @@
+@import "../../core/styles/combined";
+
+.layout-modal.create-account {
+  $width: 320px;
+  $height: 480px;
+
+  background-color: $white;
+  padding         : $padding-15 $padding-20;
+  position        : fixed;
+  top             : 50%;
+  left            : 50%;
+  width           : $width - ($padding-20 * 2);
+  height          : $height - ($padding-15 * 2);
+  margin-left     : -$width / 2;
+  margin-top      : -$height / 2;
+  z-index         : 11;
+
+  h1 {
+    font-size: $font-24;
+    color: $orient;
+  }
+
+  .close {
+    width           : 40px;
+    height          : 40px;
+    background-color: green;
+    position        : absolute;
+    top             : 0;
+    right           : 0;
+
+    @include bg-image-pixel("../../layout/images/sprite.png", "../../layout/images/sprite-2x.png");
+  }
+
+  form {
+    margin-top: $margin-10;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .existing-user {
+    margin-top: $margin-30;
+    display   : block;
+    text-align: center;
+    font-size : $font-14;
+    color     : $orient;
+  }
+}

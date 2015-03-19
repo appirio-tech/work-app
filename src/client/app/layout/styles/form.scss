@@ -1,0 +1,35 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+
+form {
+  input {
+    width              : 100%;
+    padding            : $padding-9;
+    box-sizing         : border-box;
+    font-size          : $font-15;
+    border             : $border-1 solid $slate-gray;
+    background-position: 0 0;
+    margin-top         : $margin-20;
+
+    @include placeholder {
+      color: $slate-gray;
+    }
+
+    // @include bg-image-pixel("../../layout/images/sprite.png", "../../layout/images/sprite-2x.png");
+  }
+
+  button.submit {
+    font-size       : $font-18;
+    background-color: $celery;
+    margin-top      : $margin-20;
+    border-radius   : $border-radius-3;
+    border          : none;
+    color           : $white;
+    height          : 40px;
+  }
+
+  .error {
+    margin   : $margin-5 $margin-10;
+    color    : $punch;
+  }
+}

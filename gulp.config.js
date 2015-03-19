@@ -13,6 +13,7 @@ module.exports = function () {
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({devDependencies: true})['js'];
   var scssBuild = './.scss';
+  var useStubs = envConfig.getVal('USE_STUBS', false);
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
@@ -23,8 +24,10 @@ module.exports = function () {
   var config = {
     // angular contants
     ngConstants: {
-      apiUrl: envConfig.getVal('BASE_API_URL', 'http://localhost:8080/v3/')
+      apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
+      useStubs: useStubs
     },
+    useStubs: useStubs,
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
     /**
@@ -141,7 +144,7 @@ module.exports = function () {
       nodeModules + '/mocha-clean/index.js',
       nodeModules + '/sinon-chai/lib/sinon-chai.js'
     ],
-    specHelpers: [client + 'test-helpers/*.js'],
+    specHelpers: [client + 'test-helpers/*.js', 'test-globals.js'],
     specs: [clientApp + '**/*.spec.js'],
 
     /**
@@ -190,6 +193,7 @@ module.exports = function () {
         config.specHelpers,
         clientApp + '**/*.module.js',
         clientApp + '**/*.js',
+        temp + '**/*.js',
         temp + config.templateCache.file
       ),
       exclude: [],

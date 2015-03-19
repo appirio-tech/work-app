@@ -3,8 +3,9 @@
 
   angular.module('app.project.core', [
     'app.core',
+    'ngMessages',
     'projectMock',
-    'ngMessages'
+    'app.constants'
   ]);
 
 })();
