@@ -13,6 +13,7 @@ node_modules
 build
 report
 .sass-cache
+test-results.xml
 
 # env files
 .env

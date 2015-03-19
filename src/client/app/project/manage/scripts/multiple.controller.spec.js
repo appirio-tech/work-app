@@ -21,7 +21,7 @@ describe('MultipleProjectController', function () {
 
     describe('after activate', function () {
       it('should have title of Projects', function () {
-        expect(controller.title).to.equal('Projects');
+        expect(controller.title).to.equal('Manage your projects');
       });
 
       it('should have logged "Activated"', function () {

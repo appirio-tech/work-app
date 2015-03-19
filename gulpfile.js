@@ -74,8 +74,11 @@ gulp.task('scss', function () {
 gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
+  var stubs = $.util.env.stubs ? true : false;
+
   var options = {
-    pretty: true
+    pretty: true,
+    locals: {stubs: stubs}
   };
 
   return gulp
@@ -155,7 +158,8 @@ gulp.task('templatecache', function () {
 gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
-  done();
+  startTests(true /*singleRun*/, done);
+  //done();
 });
 
 /**
@@ -177,10 +181,6 @@ gulp.task('build-specs', ['inject'], function (done) {
 
   var templateCache = config.temp + config.templateCache.file;
   var specs = config.specs;
-
-  if (args.startServers) {
-    specs = [].concat(specs, config.serverIntegrationSpecs);
-  }
 
   return gulp
     .src(config.specRunner)
@@ -620,10 +620,8 @@ function startPlatoVisualizer(done) {
  */
 function startTests(singleRun, done) {
   var child;
-  var excludeFiles = [];
   var fork = require('child_process').fork;
   var karma = require('karma').server;
-  var serverSpecs = config.serverIntegrationSpecs;
 
   if (args.startServers) {
     log('Starting servers');
@@ -631,15 +629,10 @@ function startTests(singleRun, done) {
     savedEnv.NODE_ENV = 'dev';
     savedEnv.PORT = 8888;
     child = fork(config.nodeServer);
-  } else {
-    if (serverSpecs && serverSpecs.length) {
-      excludeFiles = serverSpecs;
-    }
   }
 
   karma.start({
     configFile: __dirname + '/karma.conf.js',
-    exclude: excludeFiles,
     singleRun: !!singleRun
   }, karmaCompleted);
 
@@ -647,10 +640,12 @@ function startTests(singleRun, done) {
 
   function karmaCompleted(karmaResult) {
     log('Karma completed');
+
     if (child) {
       log('shutting down the child process');
       child.kill();
     }
+
     if (karmaResult === 1) {
       done('karma: tests failed with code ' + karmaResult);
     } else {

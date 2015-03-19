@@ -12,7 +12,7 @@
 	  activate();
 
 	  function activate() {
-	      logger.info('Activated login View');
+	      //logger.info('Activated login View');
 	  }
       
 	  $scope.login = function() {
@@ -32,6 +32,7 @@
 		  auth.signout();
 		  store.remove('profile');
 		  store.remove('token');
+		  //$route.reload();
 		}
 	}
 })();
