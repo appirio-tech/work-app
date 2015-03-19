@@ -84,6 +84,7 @@ gulp.task('jade', function () {
   return gulp
     .src(config.jade)
     .pipe($.jade(options))
+    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
     .pipe(gulp.dest(config.temp));
 });
 
