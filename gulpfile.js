@@ -157,15 +157,9 @@ gulp.task('templatecache', ['jade'], function () {
     .src(config.htmltemplates)
     .pipe($.if(args.verbose, $.bytediff.start()))
     .pipe($.htmlmin( {
-      collapseBooleanAttributes: true,
       collapseWhitespace: true,
-      removeAttributeQuotes: true,
       removeCommentsFromCDATA: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeOptionalTags: true,
-      removeRedundantAttributes: true,
-      useShortDoctype: true
+      removeComments: true
     }))
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
     .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="' + imagePath))
