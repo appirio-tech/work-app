@@ -145,7 +145,6 @@ AWS_REGION=
 AWS_SECRET=
 USE_STUBS=true
 BASE_URL=/
-BASE_IMAGE_URL
 AWS_CDN_URL=
 
 # Jade
@@ -158,5 +157,3 @@ Jade is used as the template rendering engine.  Please keep files with relevant 
 
 stubs: should the test stub files be included.  Uses USE_STUBS
 baseUrl: The base url.  in prod it's /work/.  Uses BASE_URL
-imagePath: The base image path. Uses BASE_IMAGE_URL and AWS_CDN_URL
-useCDN: If the CDN is in use.  Uses AWS_CDN_URL

@@ -1,5 +1,0 @@
-mixin image(fileName, defaultPath)
-  if useCDN
-    image("xlink:href"="#{imagePath}/#{fileName}.svg")&attributes(attributes)
-  else
-    image("xlink:href"="#{imagePath}/#{defaultPath}/#{fileName}.svg")&attributes(attributes)
