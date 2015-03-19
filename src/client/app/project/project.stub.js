@@ -89,6 +89,9 @@
         $httpBackend.whenGET('/v3/workitems').respond(getResponse);
 
         $httpBackend.whenGET(/.+\.html?/).passThrough();
+      } else {
+        $httpBackend.whenGET(/.+/).passThrough();
+        $httpBackend.whenPOST(/.+/).passThrough();
       }
     }]);
 })();
