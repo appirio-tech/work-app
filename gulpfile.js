@@ -158,7 +158,6 @@ gulp.task('templatecache', ['jade'], function () {
     .pipe($.if(args.verbose, $.bytediff.start()))
     .pipe($.htmlmin( {
       collapseWhitespace: true,
-      removeCommentsFromCDATA: true,
       removeComments: true
     }))
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
