@@ -28,7 +28,6 @@ module.exports = function () {
       useStubs: useStubs
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
-    baseImageUrl: envConfig.getVal('BASE_IMAGE_URL', '/'),
     useStubs: useStubs,
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
