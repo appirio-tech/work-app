@@ -151,7 +151,7 @@ gulp.task('templatecache', ['jade'], function () {
   log('Creating an AngularJS $templateCache');
 
   var templateCache = config.temp + config.templateCache.file;
-  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseImageUrl;
+  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseURL + 'images';
 
   return gulp
     .src(config.htmltemplates)
