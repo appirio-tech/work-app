@@ -4,6 +4,7 @@ var config = require('./gulp.config')();
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -55,15 +56,16 @@ gulp.task('plato', function (done) {
 });
 
 /**
- * Compile less to css
+ * Compile SCSS to css
  * @return {Stream}
  */
 gulp.task('scss', function () {
   log('Compiling SCSS --> CSS');
 
-  return gulp
-    .src(config.scss)
-    .pipe($.compass(config.compass))
+  return gulp.src(config.scss)
+    .pipe(sass({
+      includePaths: require('node-bourbon').includePaths
+    }))
     .pipe(gulp.dest(config.temp));
 });
 
