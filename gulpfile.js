@@ -75,8 +75,6 @@ gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
   var stubs = config.useStubs === 'true';
-  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseImageUrl;
-  var useCDN = config.aws.cdnUrl ? true : false;
 
   var options = {
     pretty: true,
@@ -89,7 +87,6 @@ gulp.task('jade', function () {
   return gulp
     .src(config.jade)
     .pipe($.jade(options))
-    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -238,6 +235,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
   var htmlFilter = $.filter('**/*.html');
 
   var templateCache = config.temp + config.templateCache.file;
+  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseURL;
 
   var replaceOptions = {};
   if (config.aws.cdnUrl) {
@@ -260,6 +258,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the custom javascript
     .pipe(jsAppFilter)
     .pipe($.ngAnnotate({add: true}))
+    .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="' + imagePath))
     .pipe($.uglify())
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
