@@ -161,7 +161,7 @@ gulp.task('templatecache', ['jade'], function () {
       removeComments: true
     }))
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
-    .pipe($.replace(/\bxlink:href(.+?\/\bimages)/g, imagePath))
+    .pipe($.replace(/\bxlink:href(.+?\/\bimages)/g, 'xlink:href="' + imagePath))
     .pipe($.angularTemplatecache(
       config.templateCache.file,
       config.templateCache.options
