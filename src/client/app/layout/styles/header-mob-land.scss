@@ -14,7 +14,7 @@ $header-height: 38px;
     height          : $header-height;
     background-size : 176px $header-height;
 
-    @include bg-image-pixel("../images/logo-appirio.png", "../images/logo-appirio-2x.png");
+    @include bg-image-ratio("../images/logo-appirio.png", "../images/logo-appirio-2x.png");
   }
 
   .login, .get-started {
