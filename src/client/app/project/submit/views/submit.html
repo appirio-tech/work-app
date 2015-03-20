@@ -9,7 +9,7 @@
             <button href="#/create" class="btn">Edit</button>
             <h3>Background Information</h3>
             <h4>Briefly describe what your app does</h4>
-            <p ng-bind="vm.newProject.description"</p>
+            <p ng-bind="vm.newProject.description"></p>
             <h4>If you have an existing website, please list it here <span class="ital">(optional)</span></h4>
             <p ng-bind="vm.newProject.website"></p>
             <h3>Visual Style</h3>
@@ -81,7 +81,7 @@
             <h4>Describe the screens and the main work flows for your app <span class="ital">(optional)</span></h4>
             <p ng-bind="vm.newProject.screensDescription"></p>
             <h3>Other</h3>
-            <h4>Please provide any links to websites that help convey what you're looking for <span class-"ital">(optional)</span></h4>
+            <h4>Please provide any links to websites that help convey what you're looking for <span class="ital">(optional)</span></h4>
             <ul>
               <li ng-repeat="link in vm.newProject.links">
                 {{link}}

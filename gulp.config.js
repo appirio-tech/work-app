@@ -27,6 +27,7 @@ module.exports = function () {
       apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
       useStubs: useStubs
     },
+    baseURL: envConfig.getVal('BASE_URL', '/'),
     useStubs: useStubs,
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
