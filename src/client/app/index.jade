@@ -1,6 +1,7 @@
 - var scripts = []
-- if (stubs) scripts.push('/src/client/app/project/project.stub')
 - if (stubs) scripts.push('/bower_components/angular-mocks/angular-mocks')
+- if (stubs) scripts.push('/src/client/app/project/project.stub')
+- if (!stubs) scripts.push('/src/client/nostubs/project.nostub')
 - scripts.push('/src/client/app/app.module')
 - scripts.push('constants')
 - scripts.push('/src/client/app/blocks/exception/exception.module')
@@ -60,6 +61,7 @@
 - css.push("layout/styles/form")
 - css.push("getting-started/styles/getting-started")
 - css.push("create-account/styles/create-account")
+- css.push("project/project")
 
 - var mobileLandCss = []
 - mobileLandCss.push("layout/styles/header-mob-land")
