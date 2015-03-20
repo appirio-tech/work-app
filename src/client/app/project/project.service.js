@@ -53,11 +53,6 @@
       function getProjectComplete(data, status, headers, config) {
         logger.info('project data', data);
         var project = data.data.result.content;
-        project.styleMinimalComplex = parseInt(project.styleMinimalComplex)
-        project.styleModernClassic = parseInt(project.styleModernClassic)
-        project.stylePlayfulSerious = parseInt(project.stylePlayfulSerious)
-        project.styleLoudSubtle = parseInt(project.styleLoudSubtle)
-        project.styleLuxuryBudget = parseInt(project.styleLuxuryBudget)
         return project;
       }
     }
