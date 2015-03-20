@@ -56,6 +56,7 @@ module.exports = function () {
     index: temp + 'index.html',
     // app js, with no specs
     js: [
+      client + 'nostubs/**/*.js',
       clientApp + '**/*.module.js',
       clientApp + '**/*.js',
       '!' + clientApp + '**/*.spec.js'
