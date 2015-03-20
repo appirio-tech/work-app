@@ -1,6 +1,6 @@
 /* jshint -W117, -W030 */
 describe('ProjectCreateController', function () {
-  var controller;
+  var controller, scope;
 
   beforeEach(function () {
     bard.appModule('app.project.create');
@@ -8,7 +8,8 @@ describe('ProjectCreateController', function () {
   });
 
   beforeEach(function () {
-    controller = $controller('ProjectCreateController');
+    scope = $rootScope.$new();
+    controller = $controller('ProjectCreateController', {$scope: scope});
     $rootScope.$apply();
   });
 
@@ -31,6 +32,7 @@ describe('ProjectCreateController', function () {
       it('should have a new project', function() {
         expect(controller.newProject).to.be.defined;
       });
+
     });
   });
 });
