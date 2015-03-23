@@ -41,6 +41,8 @@
           ]
         }
       ];
+      window.testData = window.testData || {};
+      window.testData.projects = projects;
 
       var postResponse = {
         result: {
