@@ -9,7 +9,7 @@ form {
     box-sizing         : border-box;
     font-size          : $font-15;
     border             : $border-1 solid $slate-gray;
-    margin-top         : $margin-20;
+    margin-top         : $margin-18;
 
     &.valid {
       background-position: -59px -68px;
@@ -23,13 +23,13 @@ form {
       color: $slate-gray;
     }
 
-    @include icon-sprite();
+    // @include icon-sprite();
   }
 
   button.submit {
     font-size       : $font-18;
     background-color: $celery;
-    margin-top      : $margin-20;
+    margin-top      : $margin-18;
     border-radius   : $border-radius-3;
     border          : none;
     color           : $white;

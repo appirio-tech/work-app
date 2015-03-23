@@ -1,12 +1,10 @@
 (function () {
   'use strict';
 
-  angular
-    .module('app.login')
-    .run(appRun);
+  angular.module('app.login').run(appRun);
 
   appRun.$inject = ['routerHelper'];
-  /* @ngInject */
+
   function appRun(routerHelper) {
     routerHelper.configureStates(getStates());
   }
@@ -16,11 +14,11 @@
       {
         state: 'login',
         config: {
-          url: '/login',
-          templateUrl: 'login/views/login.html',
-          controller: 'LoginController',
+          url         : '/login',
+          templateUrl : 'login/views/login.html',
+          controller  : 'LoginController',
           controllerAs: 'vm',
-          title: 'Login',
+          title       : 'Login'
         }
       },
     ];
