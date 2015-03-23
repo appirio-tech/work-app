@@ -1,6 +1,5 @@
 - var scripts = []
 - if (stubs) scripts.push('/bower_components/angular-mocks/angular-mocks')
-- if (stubs) scripts.push('/src/client/app/project/project.stub')
 - if (!stubs) scripts.push('/src/client/nostubs/project.nostub')
 - scripts.push('/src/client/app/app.module')
 - scripts.push('constants')
@@ -9,11 +8,6 @@
 - scripts.push('/src/client/app/blocks/router/router.module')
 - scripts.push('/src/client/app/core/core.module')
 - scripts.push('/src/client/app/layout/scripts/layout.module')
-- scripts.push('/src/client/app/project/create/scripts/create.module')
-- scripts.push('/src/client/app/project/manage/scripts/manage.module')
-- scripts.push('/src/client/app/getting-started/scripts/getting-started.module')
-- scripts.push('/src/client/app/create-account/scripts/create-account.module')
-- scripts.push('/src/client/app/project/project.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
 - scripts.push('/src/client/app/blocks/logger/logger')
@@ -21,23 +15,8 @@
 - scripts.push('/src/client/app/core/config')
 - scripts.push('/src/client/app/core/core.constants')
 - scripts.push('/src/client/app/core/core.route')
-- scripts.push('/src/client/app/project/create/scripts/create.controller')
-- scripts.push('/src/client/app/project/create/scripts/create.route')
-- scripts.push('/src/client/app/project/create/scripts/home.controller')
-- scripts.push('/src/client/app/project/submit/scripts/submit.controller')
-- scripts.push('/src/client/app/project/manage/scripts/lookandFeel.filter')
-- scripts.push('/src/client/app/project/manage/scripts/screens.filter')
-- scripts.push('/src/client/app/project/manage/scripts/manage.route')
-- scripts.push('/src/client/app/project/manage/scripts/multiple.controller')
-- scripts.push('/src/client/app/project/manage/scripts/single.controller')
-- scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
-- scripts.push('/src/client/app/getting-started/scripts/getting-started.route')
-- scripts.push('/src/client/app/create-account/scripts/create-account.controller')
-- scripts.push('/src/client/app/create-account/scripts/create-account.route')
-- scripts.push('/src/client/app/project/project.service')
 
 - var bowers = []
-
 - bowers.push('/bower_components/jquery/dist/jquery')
 - bowers.push('/bower_components/angular/angular')
 - bowers.push('/bower_components/ng-messages/angular-messages')
@@ -53,25 +32,50 @@
 - bowercss.push('/bower_components/toastr/toastr')
 
 - var css = []
+- var mobileLandCss = []
+- var desktopCss = []
+
+//- Layout
 - css.push("layout/styles/reset")
 - css.push("layout/styles/main")
 - css.push("layout/styles/header")
 - css.push("layout/styles/footer")
 - css.push("layout/styles/modal")
 - css.push("layout/styles/form")
-- css.push("getting-started/styles/getting-started")
-- css.push("create-account/styles/create-account")
-- css.push("project/project")
-
-- var mobileLandCss = []
 - mobileLandCss.push("layout/styles/header-mob-land")
-- mobileLandCss.push("getting-started/styles/getting-started-mob-land")
-- mobileLandCss.push("create-account/styles/create-account-mob-land")
 
-- var desktopCss = []
-- mobileLandCss.push("layout/styles/header-desktop")
+//- Getting Started
+- css.push("getting-started/styles/getting-started")
+- mobileLandCss.push("getting-started/styles/getting-started-mob-land")
 - desktopCss.push("getting-started/styles/getting-started-desktop")
+- scripts.push('/src/client/app/getting-started/scripts/getting-started.module')
+- scripts.push('/src/client/app/getting-started/scripts/getting-started.route')
+- scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
+
+//- Create Account
+- css.push("create-account/styles/create-account")
+- mobileLandCss.push("create-account/styles/create-account-mob-land")
 - desktopCss.push("create-account/styles/create-account-desktop")
+- scripts.push("/src/client/app/create-account/scripts/create-account.module")
+- scripts.push("/src/client/app/create-account/scripts/create-account.controller")
+- scripts.push("/src/client/app/create-account/scripts/create-account.route")
+
+//- Project
+- if (stubs) scripts.push('/src/client/app/project/project.stub')
+- css.push("project/project")
+- scripts.push('/src/client/app/project/create/scripts/create.module')
+- scripts.push('/src/client/app/project/manage/scripts/manage.module')
+- scripts.push('/src/client/app/project/project.module')
+- scripts.push('/src/client/app/project/create/scripts/create.controller')
+- scripts.push('/src/client/app/project/create/scripts/create.route')
+- scripts.push('/src/client/app/project/create/scripts/home.controller')
+- scripts.push('/src/client/app/project/submit/scripts/submit.controller')
+- scripts.push('/src/client/app/project/manage/scripts/lookandFeel.filter')
+- scripts.push('/src/client/app/project/manage/scripts/screens.filter')
+- scripts.push('/src/client/app/project/manage/scripts/manage.route')
+- scripts.push('/src/client/app/project/manage/scripts/multiple.controller')
+- scripts.push('/src/client/app/project/manage/scripts/single.controller')
+- scripts.push('/src/client/app/project/project.service')
 
 doctype html
 html(ng-app='app')

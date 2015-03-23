@@ -4,11 +4,11 @@
 
   angular
     .module('app.create-account')
-    .controller('CreateAccountController', CreateAccontController);
+    .controller('CreateAccountController', CreateAccountController);
 
-  CreateAccontController.$inject = ['logger'];
+  CreateAccountController.$inject = ['logger'];
   /* @ngInject */
-  function CreateAccontController(logger) {
+  function CreateAccountController(logger) {
     var vm = this;
     vm.title = 'Create Account';
 
