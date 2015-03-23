@@ -11,15 +11,15 @@ style.
   a.close(href="#")
 
   form
-    input(type="email", placeholder="Email address", required=true)
+    input.valid(type="email", placeholder="Email address", required=true)
 
     p.error Email address is required
 
-    input(type="password", placeholder="Password")
+    input.invalid(type="password", placeholder="Password")
 
     p.error Password is required
 
-    input(type="password", placeholder="Confirm Password")
+    input.valid(type="password", placeholder="Confirm Password")
 
     p.error Confirm password is required
 

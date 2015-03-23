@@ -26,7 +26,7 @@
   background-size        : cover;
 }
 
-@mixin sprite() {
+@mixin icon-sprite() {
   background-size    : 400px 400px;
   @include bg-image-ratio("../images/sprite.png", "../images/sprite-2x.png");
 }
