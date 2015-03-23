@@ -106,12 +106,12 @@ html(ng-app='app')
       link(href=path + ".css", rel="stylesheet")
     // endbuild
 
-    // build:css styles/mobile-landscape.css
+    // build:css styles/mobile-landscape.css media="(min-width: 568px)"
     each path in mobileLandCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
     // endbuild
 
-    // build:css styles/desktop.css
+    // build:css styles/desktop.css media="(min-width: 767px)"
     each path in desktopCss
       link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
     // endbuild
