@@ -5,17 +5,25 @@ form {
   input {
     width              : 100%;
     padding            : $padding-9;
+    padding-right      : $padding-40;
     box-sizing         : border-box;
     font-size          : $font-15;
     border             : $border-1 solid $slate-gray;
-    background-position: 0 0;
     margin-top         : $margin-20;
+
+    &.valid {
+      background-position: -59px -68px;
+    }
+
+    &.invalid, &:invalid {
+      background-position: 16px -143px;
+    }
 
     @include placeholder {
       color: $slate-gray;
     }
 
-    // @include bg-image-pixel("../../layout/images/sprite.png", "../../layout/images/sprite-2x.png");
+    @include icon-sprite();
   }
 
   button.submit {
