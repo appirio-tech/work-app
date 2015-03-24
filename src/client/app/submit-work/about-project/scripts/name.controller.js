@@ -6,14 +6,23 @@
     .module('app.submit-work')
     .controller('SubmitNameController', SubmitNameController);
 
-  SubmitNameController.$inject = ['logger'];
+  SubmitNameController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
-  function SubmitNameController(logger) {
+  function SubmitNameController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Name';
+    vm.name = '';
+    vm.next = next;
+
+    activate();
 
     function activate() {
       logger.info('Activated Name View');
+    }
+
+    function next() {
+      SubmitWorkService.setName(vm.name);
+      $state.go('about-type')
     }
   }
 })();
