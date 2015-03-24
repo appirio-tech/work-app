@@ -16,21 +16,6 @@
 - scripts.push('/src/client/app/core/core.constants')
 - scripts.push('/src/client/app/core/core.route')
 
-- var bowers = []
-- bowers.push('/bower_components/jquery/dist/jquery')
-- bowers.push('/bower_components/angular/angular')
-- bowers.push('/bower_components/ng-messages/angular-messages')
-- bowers.push('/bower_components/angular-sanitize/angular-sanitize')
-- bowers.push('/bower_components/extras.angular.plus/ngplus-overlay')
-- bowers.push('/bower_components/moment/moment')
-- bowers.push('/bower_components/angular-ui-router/release/angular-ui-router')
-- bowers.push('/bower_components/toastr/toastr')
-- bowers.push('/bower_components/angular-animate/angular-animate')
-
-- var bowercss = []
-- bowercss.push('/bower_components/font-awesome/css/font-awesome')
-- bowercss.push('/bower_components/toastr/toastr')
-
 - var css = []
 - var mobileLandCss = []
 - var desktopCss = []
@@ -84,6 +69,8 @@ include submit-work/includes.jade
 - mobileLandCss = mobileLandCss.concat(landscapeFiles)
 - desktopCss    = desktopCss.concat(desktopFiles)
 
+
+include bowers.jade
 
 doctype html
 html(ng-app='app')
