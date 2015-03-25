@@ -29,5 +29,10 @@ describe('SubmitWorkService', function () {
       expect(service.getCurrent().name).to.equal('foobar');
     })
 
+    it('should be able to setType()', function() {
+      service.setType(0);
+      expect(service.getCurrent().type).to.equal(0);
+    });
+
   });
 });

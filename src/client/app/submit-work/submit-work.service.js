@@ -9,13 +9,15 @@
   /* @ngInject */
   function SubmitWorkService($q, $http, $location, exception, logger, apiUrl) {
     var defaultWork = {
-      name: ''
+      name: '',
+      type: false
     }
     var ob = {
+      current: defaultWork,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
       setName: setName,
-      current: defaultWork
+      setType: setType
     };
     return ob;
 
@@ -30,6 +32,10 @@
 
     function setName(name) {
       ob.current.name = name;
+    }
+
+    function setType(type) {
+      ob.current.type = type;
     }
 
   }
