@@ -11,6 +11,7 @@
   function SubmitBriefController(logger, $state) {
     var vm = this;
     vm.title = 'Brief';
+    vm.description = '';
     vm.next = next;
 
     activate();
