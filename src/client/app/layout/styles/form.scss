@@ -9,10 +9,14 @@ form {
     box-sizing         : border-box;
     font-size          : $font-15;
     border             : $border-1 solid $slate-gray;
-    margin-top         : $margin-20;
+    margin-top         : $margin-18;
 
     &.valid {
       background-position: -59px -68px;
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
 
     &.invalid, &:invalid {
@@ -26,10 +30,11 @@ form {
     @include icon-sprite();
   }
 
-  button.submit {
+  button {
+    width           : 100%;
     font-size       : $font-18;
     background-color: $celery;
-    margin-top      : $margin-20;
+    margin-top      : $margin-18;
     border-radius   : $border-radius-3;
     border          : none;
     color           : $white;

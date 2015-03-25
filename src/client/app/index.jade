@@ -39,11 +39,17 @@
 
 //- Create Account
 - css.push("create-account/styles/create-account")
-- mobileLandCss.push("create-account/styles/create-account-mob-land")
-- desktopCss.push("create-account/styles/create-account-desktop")
 - scripts.push("/src/client/app/create-account/scripts/create-account.module")
 - scripts.push("/src/client/app/create-account/scripts/create-account.controller")
 - scripts.push("/src/client/app/create-account/scripts/create-account.route")
+
+//- Login
+- css.push("login/styles/login")
+- mobileLandCss.push("login/styles/login.landscape")
+- desktopCss.push("login/styles/login.desktop")
+- scripts.push("/src/client/app/login/scripts/login.module")
+- scripts.push("/src/client/app/login/scripts/login.controller")
+- scripts.push("/src/client/app/login/scripts/login.route")
 
 //- Project
 - if (stubs) scripts.push('/src/client/app/project/project.stub')
