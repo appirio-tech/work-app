@@ -70,4 +70,9 @@ a {
 
 .layout-main {
   padding: $padding-10;
+
+  > * {
+    width  : 280px;
+    margin : 0 auto;
+  }
 }

@@ -1,21 +1,10 @@
 @import "../../core/styles/combined";
 
-.layout-main .create-account {
+.layout-main.create-account {
   text-align: center;
 
-  h1 {
-    font-size: $font-24;
-    color    : $orient;
-  }
-
   form {
-    $width: 320px;
-    $height: 480px;
-
-    padding: $padding-15 $padding-20;
-    width  : $width - ($padding-20 * 2);
-    height : $height - ($padding-15 * 2);
-    margin : $margin-10 auto;
+    margin-top: $margin-10;
 
     .error {
       text-align: left;
