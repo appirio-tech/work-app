@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['logger', '$state'];
+  SubmitBriefController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
-  function SubmitBriefController(logger, $state) {
+  function SubmitBriefController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Brief';
     vm.description = '';
@@ -21,6 +21,7 @@
     }
 
     function next() {
+      SubmitWorkService.setDescription(vm.description);
       $state.go('about-competitors');
     }
   }

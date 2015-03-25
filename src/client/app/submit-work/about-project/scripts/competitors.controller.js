@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitCompetitorsController', SubmitCompetitorsController);
 
-  SubmitCompetitorsController.$inject = ['logger', '$state'];
+  SubmitCompetitorsController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
-  function SubmitCompetitorsController(logger, $state) {
+  function SubmitCompetitorsController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Competitors';
     vm.appName = '';
@@ -23,12 +23,12 @@
     }
 
     function add() {
-      logger.info('hello!');
       vm.appNames.push(vm.appName);
       vm.appName = '';
     }
 
     function next() {
+      SubmitWorkService.setCompetitors(vm.appNames);
       $state.go('users');
     }
   }
