@@ -10,14 +10,18 @@
   function SubmitWorkService($q, $http, $location, exception, logger, apiUrl) {
     var defaultWork = {
       name: '',
-      type: false
+      type: false,
+      description: '',
+      competitors: []
     }
     var ob = {
       current: defaultWork,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
       setName: setName,
-      setType: setType
+      setType: setType,
+      setDescription: setDescription,
+      setCompetitors: setCompetitors
     };
     return ob;
 
@@ -36,6 +40,14 @@
 
     function setType(type) {
       ob.current.type = type;
+    }
+
+    function setDescription(description) {
+      ob.current.description = description;
+    }
+
+    function setCompetitors(competitors) {
+      ob.current.competitors = competitors;
     }
 
   }

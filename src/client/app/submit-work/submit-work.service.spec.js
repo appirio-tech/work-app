@@ -34,5 +34,15 @@ describe('SubmitWorkService', function () {
       expect(service.getCurrent().type).to.equal(0);
     });
 
+    it('should be able to setDescription()', function() {
+      service.setDescription('foobar');
+      expect(service.getCurrent().description).to.equal('foobar');
+    });
+
+    it('should be able to setCompetitors()', function() {
+      service.setCompetitors(['a', 'b', 'c']);
+      expect(JSON.stringify(service.getCurrent().competitors)).to.equal(JSON.stringify(['a','b','c']));
+    });
+
   });
 });
