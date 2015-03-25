@@ -23,7 +23,7 @@ form {
       color: $slate-gray;
     }
 
-    // @include icon-sprite();
+    @include icon-sprite();
   }
 
   button.submit {

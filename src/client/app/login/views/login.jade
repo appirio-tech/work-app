@@ -1,25 +1,17 @@
-style.
-  /* Need to remove this when integrating with logic */
-  .overlay {
-    display: block;
-  }
+h1 Login
 
-.layout-modal.login
-  h1 Login
+form
+  input.valid(type="email", placeholder="Email address", required=true)
 
-  a.close(href="#")
+  p.error Email address is required
 
-  form
-    input.valid(type="email", placeholder="Email address", required=true)
+  input.invalid(type="password", placeholder="Password")
 
-    p.error Email address is required
+  p.error Password is required
 
-    input.invalid(type="password", placeholder="Password")
+  button.submit(type="submit") Log in
 
-    p.error Password is required
-
-    button.submit(type="submit") Log in
-
+footer
   a.forgot(href="#") Forgot password?
 
   a.new(href="#") Create an account
