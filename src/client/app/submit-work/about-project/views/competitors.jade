@@ -5,3 +5,8 @@ input(type="text", ng-model="vm.appName")
 button(ng-click="vm.add()") +
 
 button(ng-click="vm.next()") Next
+
+ul
+  li(ng-repeat="appName in vm.appNames")
+    span {{appName}}
+    button(ng-click="vm.appNames.splice($index, 1)") x

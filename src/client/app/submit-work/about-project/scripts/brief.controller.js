@@ -6,14 +6,21 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['logger'];
+  SubmitBriefController.$inject = ['logger', '$state'];
   /* @ngInject */
-  function SubmitBriefController(logger) {
+  function SubmitBriefController(logger, $state) {
     var vm = this;
     vm.title = 'Brief';
+    vm.next = next;
+
+    activate();
 
     function activate() {
       logger.info('Activated Brief View');
+    }
+
+    function next() {
+      $state.go('about-competitors');
     }
   }
 })();
