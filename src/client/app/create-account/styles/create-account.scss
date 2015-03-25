@@ -1,26 +1,24 @@
 @import "../../core/styles/combined";
 
-.layout-modal.create-account {
-  $width: 320px;
-  $height: 480px;
+.create-account {
+  text-align: center;
 
-  padding    : $padding-15 $padding-20;
-  width      : $width - ($padding-20 * 2);
-  height     : $height - ($padding-15 * 2);
-  margin-left: -$width / 2;
-  margin-top : -$height / 2;
-
-  form {
-    margin-top: $margin-10;
-
-    button {
-      width: 100%;
-    }
+  h1 {
+    font-size: $font-24;
+    color    : $orient;
   }
 
-  .existing-user {
-    margin-top: $margin-30;
-    display   : block;
-    text-align: center;
+  form {
+    $width: 320px;
+    $height: 480px;
+
+    padding: $padding-15 $padding-20;
+    width  : $width - ($padding-20 * 2);
+    height : $height - ($padding-15 * 2);
+    margin : 0 auto;
+
+    .error {
+      text-align: left;
+    }
   }
 }
