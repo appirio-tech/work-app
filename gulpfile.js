@@ -76,11 +76,14 @@ gulp.task('scss', function () {
 gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
-  var stubs = config.useStubs ? true : false;
+  var stubs = config.useStubs === 'true';
 
   var options = {
     pretty: true,
-    locals: {stubs: stubs}
+    locals: {
+      stubs: stubs,
+      basePath: config.baseURL
+    }
   };
 
   return gulp
@@ -126,7 +129,12 @@ gulp.task('images', function () {
 
   return gulp
     .src(config.images)
-    .pipe($.imagemin({optimizationLevel: 4}))
+    .pipe($.imagemin({
+      optimizationLevel: 4,
+      svgoPlugins: [{cleanupIDs: false}],
+      interlaced: true,
+      progressive: true
+    }))
     .pipe($.flatten())
     .pipe(gulp.dest(config.build + 'images'));
 });
@@ -139,16 +147,21 @@ gulp.task('scss-watcher', function () {
  * Create $templateCache from the html templates
  * @return {Stream}
  */
-gulp.task('templatecache', function () {
+gulp.task('templatecache', ['jade'], function () {
   log('Creating an AngularJS $templateCache');
 
   var templateCache = config.temp + config.templateCache.file;
+  var imagePath = config.aws.cdnUrl ? config.aws.cdnUrl + 'images' : config.baseURL + 'images';
 
   return gulp
     .src(config.htmltemplates)
     .pipe($.if(args.verbose, $.bytediff.start()))
-    .pipe($.minifyHtml({empty: true}))
+    .pipe($.htmlmin( {
+      collapseWhitespace: true,
+      removeComments: true
+    }))
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
+    .pipe($.replace(/\bxlink:href(.+?\/\bimages)/g, 'xlink:href="' + imagePath))
     .pipe($.angularTemplatecache(
       config.templateCache.file,
       config.templateCache.options
@@ -232,7 +245,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
 
   var replaceOptions = {};
   if (config.aws.cdnUrl) {
-    replaceOptions.prefix = config.aws.cdnUrl;
+    replaceOptions.prefix = config.aws.cdnUrl ? config.aws.cdnUrl : config.baseURL;
   }
 
   var sourcemaps = $.sourcemaps;

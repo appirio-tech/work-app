@@ -32,7 +32,7 @@
 		  auth.signout();
 		  store.remove('profile');
 		  store.remove('token');
-		  //$route.reload();
+		  $location.path('/');
 		}
 	}
 })();

@@ -40,7 +40,7 @@ $header-height: 28px;
       vertical-align     : middle;
       background-position: -379px 0px;
 
-      @include sprite();
+      @include icon-sprite();
     }
 
     .label {

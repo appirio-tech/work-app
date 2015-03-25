@@ -13,7 +13,7 @@
             <h3>Background Information</h3>
             <h4>Briefly describe what your app does</h4>
             <br />
-            <textarea name="description" ng-model="vm.newProject.description" required="" maxlength=250 />
+            <textarea name="description" ng-model="vm.newProject.description" required="" maxlength=250 ></textarea>
             <div class="validation" ng-messages="form.description.$error" ng-show="!form.description.$pristine">
               <span ng-message="required">This field is required.</span>
             </div>
@@ -84,7 +84,7 @@
               </tr>
             </table>
             <h4>What ideas do you have for the style/theme of your app? <span class="ital">(optional)</span></h4>
-            <textarea name="styleIdeas" ng-model="vm.newProject.styleIdeas" maxlength=250 />
+            <textarea name="styleIdeas" ng-model="vm.newProject.styleIdeas" maxlength=250 ></textarea>
           </div>
           <div id="contentDetails" class="createContainer centered">
           <h3>Content Details</h3>
@@ -115,11 +115,11 @@
               <span ng-message="required">This field is required.</span>
             </div>
             <h4>Describe the screens and the main work flows for your app <span class="ital">(optional)</span></h4>
-            <textarea name="screensDescription" ng-model="vm.newProject.screensDescription" maxlength=250 />
+            <textarea name="screensDescription" ng-model="vm.newProject.screensDescription" maxlength=250 ></textarea>
           </div>
           <div id="other" class="createContainer centered">
             <h3>Other</h3>
-            <h4>Please provide any links to websites that help convey what you're looking for <span class-"ital">(optional)</span></h4>
+            <h4>Please provide any links to websites that help convey what you're looking for <span class="ital">(optional)</span></h4>
             <ul>
               <li ng-repeat="link in vm.newProject.links">
                 {{link}}
@@ -139,10 +139,10 @@
             <input type="text" ng-model="vm.newFile" />
             <a href="javascript:; "ng-click="vm.addFile()">+</a>
             <h4>Additional details <span class="ital">(optional)</span></h4>
-            <textarea name="additionalDetails" ng-model="vm.newProject.additionalDetails" maxlength=250 />
+            <textarea name="additionalDetails" ng-model="vm.newProject.additionalDetails" maxlength=250 ></textarea>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
       <button ng-click="vm.next()" class="btn next">Next</button>
     </div>
   </section>

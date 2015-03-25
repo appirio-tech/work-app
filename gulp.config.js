@@ -27,6 +27,7 @@ module.exports = function () {
       apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
       useStubs: useStubs
     },
+    baseURL: envConfig.getVal('BASE_URL', '/'),
     useStubs: useStubs,
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
@@ -56,6 +57,7 @@ module.exports = function () {
     index: temp + 'index.html',
     // app js, with no specs
     js: [
+      client + 'nostubs/**/*.js',
       clientApp + '**/*.module.js',
       clientApp + '**/*.js',
       '!' + clientApp + '**/*.spec.js'
