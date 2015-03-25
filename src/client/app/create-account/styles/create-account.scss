@@ -1,6 +1,6 @@
 @import "../../core/styles/combined";
 
-.create-account {
+.layout-main .create-account {
   text-align: center;
 
   h1 {
@@ -15,7 +15,7 @@
     padding: $padding-15 $padding-20;
     width  : $width - ($padding-20 * 2);
     height : $height - ($padding-15 * 2);
-    margin : 0 auto;
+    margin : $margin-10 auto;
 
     .error {
       text-align: left;
