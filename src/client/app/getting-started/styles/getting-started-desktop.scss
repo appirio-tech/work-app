@@ -1,6 +1,10 @@
 @import "../../core/styles/combined";
 
 .layout-main.getting-started {
+  main {
+    width: 100%;
+  }
+
   .jumbotron {
     display    : block;
     line-height: 484px - ($padding-30 * 2);
@@ -20,8 +24,6 @@
   }
 
   .choose-build {
-    margin: $margin-63 0;
-
     h1 {
       background-color: $white;
       font-size: $font-36;
@@ -32,9 +34,12 @@
       li {
         $diameter: 220px;
 
-        margin-top: $margin-63;
         padding   : 0 $padding-40;
         width     : $diameter;
+
+        &:first-child {
+          margin-top: $margin-28;
+        }
 
         .icon {
           width      : $diameter;
