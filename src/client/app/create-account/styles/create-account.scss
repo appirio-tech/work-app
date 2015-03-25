@@ -10,11 +10,6 @@
   margin-left: -$width / 2;
   margin-top : -$height / 2;
 
-  h1 {
-    font-size: $font-24;
-    color: $orient;
-  }
-
   form {
     margin-top: $margin-10;
 
@@ -27,7 +22,5 @@
     margin-top: $margin-30;
     display   : block;
     text-align: center;
-    font-size : $font-14;
-    color     : $orient;
   }
 }

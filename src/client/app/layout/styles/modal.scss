@@ -17,4 +17,14 @@
 
     @include icon-sprite();
   }
+
+  font-size : $font-14;
+
+  h1 {
+    font-size: $font-24;
+  }
+
+  a, h1 {
+    color: $orient;
+  }
 }
