@@ -1,0 +1,28 @@
+@import "../../core/styles/combined";
+
+#submit-work-nav {
+  > li {
+    margin-top: $margin-10;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &::before {
+      content: 'O';
+      padding: 0 $padding-2;
+      border: 1px solid $black;
+      margin-right: $margin-5;
+    }
+
+    &.completed::before {
+      content: 'X';
+      background-color: $celery;
+    }
+
+
+    ul {
+      margin: 0 0 0 $margin-18;
+    }
+  }
+}

@@ -11,7 +11,7 @@ form {
     border             : $border-1 solid $slate-gray;
     margin-top         : $margin-18;
 
-    &.valid {
+    &.valid, &:valid {
       background-position: -59px -68px;
     }
 

@@ -1,1 +1,26 @@
-.abc123 {}
+@import "../core/styles/combined";
+
+.layout-main.submit-work {
+  main {
+    width: 70%;
+    float: left;
+    padding: 0;
+    margin: 0;
+
+    > * {
+      @include main-styles();
+    }
+  }
+
+  nav {
+    width: 30%;
+    float: left;
+    padding: 0;
+
+    > * {
+      padding: $padding-18 $padding-10;
+    }
+  }
+
+  @include clearfix();
+}
