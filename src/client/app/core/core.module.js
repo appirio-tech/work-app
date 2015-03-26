@@ -5,7 +5,7 @@
     .module('app.core', [
       'ngAnimate', 'ngSanitize',
       'blocks.exception', 'blocks.logger', 'blocks.router',
-      'ui.router', 'ngplus',
-      'app.resource'
+      'ui.router', 'ngplus'
+      //'app.resource'
     ]);
 })();
