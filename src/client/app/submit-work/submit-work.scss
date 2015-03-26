@@ -4,4 +4,14 @@
   nav {
     background-color: $mercury;
   }
+
+  h2 {
+    text-align: center;
+  }
+
+  form {
+    button.submit {
+      width: 280px;
+    }
+  }
 }

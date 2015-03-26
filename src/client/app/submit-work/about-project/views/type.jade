@@ -1,16 +1,47 @@
-h2 About Your Project
+header(role="heading")
+  h1 About your project
 
-p What type of project do you need?
+main
+  form
+    h2 What type of project do you need?
 
-li
-  ul
-    input(type="radio", ng-model="vm.project.type", value=0)
-    span Design
-  ul
-    input(type="radio", ng-model="vm.project.type", value=1)
-    span Code
-  ul
-    input(type="radio", ng-model="vm.project.type", value=2)
-    span Design and Code
+    ul.project-types
+      li
+        label(for="project-type-design") Design
 
-button(ng-click="vm.next()") Next
+        button#project-type-design
+          .starting-at starting at
+
+          .price $3,000
+
+          .duration About 1 week
+
+        .description I need a mobile app designed.
+
+      li
+        label(for="project-type-code") Code
+
+        button#project-type-code.selected
+          .starting-at starting at
+
+          .price $3,000
+
+          .duration About 1 week
+
+        .description I have a design and I need a mobile app created from it.
+
+      li
+        label(for="project-type-design-code") Design + Code
+
+        button#project-type-design-code
+          .starting-at starting at
+
+          .price $3,000
+
+          .duration About 1 week
+
+        .description I have an idea for a mobile app and I need it designed and built.
+
+    button.submit(type="submit") Next
+
+nav(role="navigation", "ng-submit-work-nav"=true)

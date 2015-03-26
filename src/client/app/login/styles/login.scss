@@ -3,6 +3,10 @@
 .layout-main.login {
   text-align: center;
 
+  main {
+    @include main-restricted();
+  }
+
   form {
     .error {
       text-align: left;
