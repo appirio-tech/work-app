@@ -23,6 +23,10 @@ form {
       background-position: 16px -143px;
     }
 
+    &:optional {
+      background-position: 0 0;
+    }
+
     @include placeholder {
       color: $slate-gray;
     }
