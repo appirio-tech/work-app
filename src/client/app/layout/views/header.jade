@@ -3,7 +3,7 @@ header.layout-header(role="banner")
 
   a.get-started("href"="#") Get Started
 
-      a.login(href="#" ng-controller="LoginCtrl as vm")
+      a.login(href="#" ng-controller="LoginController as vm")
         .icon(ng-hide="vm.loggedInUser")
         .label(ng-click="login()" ng-hide="vm.loggedInUser") Log in
         .label(ng-click="logout()" ng-show="vm.loggedInUser") {{vm.loggedInUser}}
