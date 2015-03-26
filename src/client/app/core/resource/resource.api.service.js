@@ -5,9 +5,9 @@
     .module('app.resource')
     .factory('api', ApiResource);
 
-  ApiResource.$inject = ['$resource', BASE_API_URL];
+  ApiResource.$inject = ['$resource', 'apiUrl'];
 
-  function ApiResource($resource, BASE_API_URL) {
+  function ApiResource($resource, apiUrl) {
 
     var api = {
       defaultConfig : {id: '@id'},
@@ -34,7 +34,7 @@
         }
 
         // Add the base url
-        config.url = BASE_API_URL + config.url;
+        config.url = apiUrl + config.url;
 
 
         // If the url follows the expected pattern, we can set cool defaults

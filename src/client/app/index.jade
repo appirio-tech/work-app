@@ -71,6 +71,10 @@
 - scripts.push('/src/client/app/project/manage/scripts/single.controller')
 - scripts.push('/src/client/app/project/project.service')
 
+//- resources
+- scripts.push('/src/client/app/core/resource/resource.api.service')
+- scripts.push('/src/client/app/core/resource/resource.module')
+
 //- submit work
 include submit-work/includes.jade
 - scripts       = scripts.concat(jsFiles)
