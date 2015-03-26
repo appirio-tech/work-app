@@ -6,9 +6,9 @@ var proj;
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', 'apiUrl'];
+  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', 'apiUrl', '$state'];
   /* @ngInject */
-  function SubmitWorkService($q, $http, $location, exception, logger, apiUrl) {
+  function SubmitWorkService($q, $http, $location, exception, logger, apiUrl, $state) {
     var defaultWork = {
       name: '',
       type: false,
@@ -19,6 +19,7 @@ var proj;
       current: defaultWork,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
+      next: next
     };
     return service;
 
@@ -29,6 +30,12 @@ var proj;
     function setCurrent(work) {
       service.current = work;
       return service.current;
+    }
+
+    function next(state) {
+      return function() {
+        $state.go(state);
+      };
     }
 
   }

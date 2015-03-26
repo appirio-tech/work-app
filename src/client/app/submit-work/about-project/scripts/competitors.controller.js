@@ -14,7 +14,7 @@
     vm.appName = '';
     vm.project = {};
     vm.add = add;
-    vm.next = next;
+    vm.next = SubmitWorkService.next('users');
 
     activate();
 
@@ -28,8 +28,5 @@
       vm.appName = '';
     }
 
-    function next() {
-      $state.go('users');
-    }
   }
 })();

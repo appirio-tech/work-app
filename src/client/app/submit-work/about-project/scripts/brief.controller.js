@@ -12,7 +12,7 @@
     var vm = this;
     vm.title = 'Brief';
     vm.project = {};
-    vm.next = next;
+    vm.next = SubmitWorkService.next('about-competitors');
 
     activate();
 
@@ -21,8 +21,5 @@
       vm.project = SubmitWorkService.getCurrent();
     }
 
-    function next() {
-      $state.go('about-competitors');
-    }
   }
 })();
