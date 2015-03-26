@@ -29,10 +29,6 @@ describe('SubmitBriefController', function () {
         expect($log.info.logs).to.match(/Activated/);
       });
 
-      it('should have a description field', function() {
-        expect(controller.description).to.equal('');
-      });
-
     });
   });
 });

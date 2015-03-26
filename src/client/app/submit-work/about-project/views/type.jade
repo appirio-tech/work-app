@@ -4,13 +4,13 @@ p What type of project do you need?
 
 li
   ul
-    input(type="radio", ng-model="vm.type", value=0)
+    input(type="radio", ng-model="vm.project.type", value=0)
     span Design
   ul
-    input(type="radio", ng-model="vm.type", value=1)
+    input(type="radio", ng-model="vm.project.type", value=1)
     span Code
   ul
-    input(type="radio", ng-model="vm.type", value=2)
+    input(type="radio", ng-model="vm.project.type", value=2)
     span Design and Code
 
 button(ng-click="vm.next()") Next

@@ -1,3 +1,4 @@
+var proj;
 (function () {
   'use strict';
 
@@ -14,40 +15,20 @@
       description: '',
       competitors: []
     }
-    var ob = {
+    var service = {
       current: defaultWork,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
-      setName: setName,
-      setType: setType,
-      setDescription: setDescription,
-      setCompetitors: setCompetitors
     };
-    return ob;
+    return service;
 
     function getCurrent() {
-      return ob.current;
+      return proj = service.current;
     }
 
     function setCurrent(work) {
-      ob.current = work;
-      return ob.current;
-    }
-
-    function setName(name) {
-      ob.current.name = name;
-    }
-
-    function setType(type) {
-      ob.current.type = type;
-    }
-
-    function setDescription(description) {
-      ob.current.description = description;
-    }
-
-    function setCompetitors(competitors) {
-      ob.current.competitors = competitors;
+      service.current = work;
+      return service.current;
     }
 
   }

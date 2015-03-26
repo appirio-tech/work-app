@@ -29,10 +29,6 @@ describe('SubmitTypeController', function () {
         expect($log.info.logs).to.match(/Activated/);
       });
 
-      it('should have vm.type', function() {
-        expect(controller.type).to.equal(false);
-      });
-
     });
   });
 });

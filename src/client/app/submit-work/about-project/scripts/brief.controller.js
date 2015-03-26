@@ -11,17 +11,17 @@
   function SubmitBriefController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Brief';
-    vm.description = '';
+    vm.project = {};
     vm.next = next;
 
     activate();
 
     function activate() {
       logger.info('Activated Brief View');
+      vm.project = SubmitWorkService.getCurrent();
     }
 
     function next() {
-      SubmitWorkService.setDescription(vm.description);
       $state.go('about-competitors');
     }
   }

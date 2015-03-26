@@ -11,17 +11,17 @@
   function SubmitNameController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Name';
-    vm.name = '';
+    vm.project = {};
     vm.next = next;
 
     activate();
 
     function activate() {
       logger.info('Activated Name View');
+      vm.project = SubmitWorkService.getCurrent();
     }
 
     function next() {
-      SubmitWorkService.setName(vm.name);
       $state.go('about-type')
     }
   }
