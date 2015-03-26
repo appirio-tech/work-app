@@ -32,8 +32,12 @@ h1, h2, h3, h4, h5, h6, header {
   font-family: bree;
 }
 
-h1 {
-  font-size: $font-24;
+h1, h2, h3, h4, h5, h6 {
+  margin-top: $margin-10;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 p, input, a {
@@ -41,9 +45,6 @@ p, input, a {
   line-height: $lh-120;
 }
 
-main {
-  background-color: $white;
-}
 
 a {
   text-decoration: none;
@@ -58,4 +59,29 @@ a {
   width: 100%;
   z-index: 10;
   background-color: rgba(0,0,0,0.6);
+}
+
+.layout-main {
+  background-color: $white;
+
+  header {
+    h1 {
+      background-color: $all-ports;
+      font-size       : $font-20;
+      color           : $white;
+      padding         : $padding-10 0;
+      text-align      : center;
+    }
+  }
+
+  main {
+    padding: $padding-18 $padding-10;
+    width  : 280px;
+    margin : 0 auto;
+    display: block;
+  }
+
+  footer {
+    margin: $margin-18;
+  }
 }

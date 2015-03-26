@@ -1,14 +1,8 @@
-style.
-  /* This helps the ng-show/ng-hide animations start at the right place. */
-  /* Since Angular has this but needs to load, this gives us the class early. */
-  .overlay {
-    display: block;
-  }
+header
+  h1 Welcome to Topcoder
 
-.layout-modal.create-account
-  h1 Create an account
-
-  a.close(href="#")
+main
+  h2 Begin building your app now. Start by creating an account.
 
   form
     input.valid(type="email", placeholder="Email address", required=true)
@@ -23,7 +17,5 @@ style.
 
     p.error Confirm password is required
 
-    button.submit(type="submit") Register and sign in
-
-  a.existing-user(href="#") Already have an account? Log in
+    button.submit(type="submit") Create Account
 
