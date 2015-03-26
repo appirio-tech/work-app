@@ -11,6 +11,10 @@
         width         : 120px;
         margin        : $margin-10;
 
+        .price {
+          margin-top      : $margin-10;
+        }
+
         button {
           height          : 80px;
           font-size       : $font-14;
