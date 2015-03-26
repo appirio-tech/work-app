@@ -9,7 +9,8 @@ describe('SingleProjectController', function () {
 
   beforeEach(function () {
     scope = $rootScope.$new();
-    controller = $controller('SingleProjectController', {$scope: scope, projectData: window.testData.projects[0], isNew: true});
+    controller = $controller('SingleProjectController',
+      {$scope: scope, projectData: window.testData.projects[0], isNew: true});
     $rootScope.$apply();
   });
 
