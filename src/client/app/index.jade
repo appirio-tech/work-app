@@ -19,8 +19,8 @@
 - scripts.push('/src/client/app/core/core.route')
 
 - var css = []
-- var mobileLandCss = []
-- var desktopCss = []
+- var landscapeCSS = []
+- var desktopCSS = []
 
 //- Layout
 - css.push("layout/styles/reset")
@@ -29,12 +29,16 @@
 - css.push("layout/styles/footer")
 - css.push("layout/styles/modal")
 - css.push("layout/styles/form")
-- mobileLandCss.push("layout/styles/header-mob-land")
+
+- landscapeCSS.push("layout/styles/header.landscape")
+- landscapeCSS.push("layout/styles/main.landscape")
+
+- desktopCSS.push("layout/styles/main.desktop")
 
 //- Getting Started
 - css.push("getting-started/styles/getting-started")
-- mobileLandCss.push("getting-started/styles/getting-started-mob-land")
-- desktopCss.push("getting-started/styles/getting-started-desktop")
+- landscapeCSS.push("getting-started/styles/getting-started.landscape")
+- desktopCSS.push("getting-started/styles/getting-started.desktop")
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.module')
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.route')
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
@@ -47,8 +51,8 @@
 
 //- Login
 - css.push("login/styles/login")
-- mobileLandCss.push("login/styles/login.landscape")
-- desktopCss.push("login/styles/login.desktop")
+- landscapeCSS.push("login/styles/login.landscape")
+- desktopCSS.push("login/styles/login.desktop")
 - scripts.push("/src/client/app/login/scripts/login.module")
 - scripts.push("/src/client/app/login/scripts/login.controller")
 - scripts.push("/src/client/app/login/scripts/login.route")
@@ -74,8 +78,8 @@
 include submit-work/includes.jade
 - scripts       = scripts.concat(jsFiles)
 - css           = css.concat(cssFiles)
-- mobileLandCss = mobileLandCss.concat(landscapeFiles)
-- desktopCss    = desktopCss.concat(desktopFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS    = desktopCSS.concat(desktopFiles)
 
 include bowers.jade
 
@@ -109,12 +113,12 @@ html(ng-app='app')
     // endbuild
 
     // build:css styles/mobile-landscape.css media="(min-width: 568px)"
-    each path in mobileLandCss
+    each path in landscapeCSS
       link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
     // endbuild
 
     // build:css styles/desktop.css media="(min-width: 767px)"
-    each path in desktopCss
+    each path in desktopCSS
       link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
     // endbuild
 

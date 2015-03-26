@@ -31,9 +31,15 @@
   @include bg-image-ratio("../images/sprite.png", "../images/sprite-2x.png");
 }
 
-@mixin main-styles() {
-  padding: $padding-18 $padding-10;
+
+@mixin main-restricted() {
   width  : 280px;
+  margin : 0 auto;
+  display: block;
+}
+
+@mixin main-restricted-landscape() {
+  width  : 528px;
   margin : 0 auto;
   display: block;
 }
