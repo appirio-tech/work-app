@@ -6,9 +6,9 @@ var proj;
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', 'apiUrl', '$state'];
+  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', '$state'];
   /* @ngInject */
-  function SubmitWorkService($q, $http, $location, exception, logger, apiUrl, $state) {
+  function SubmitWorkService($q, $http, $location, exception, logger, $state) {
     var defaultWork = {
       name: '',
       type: false,
