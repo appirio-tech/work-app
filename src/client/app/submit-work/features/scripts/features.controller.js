@@ -12,16 +12,17 @@
     var vm = this;
     vm.title = 'Features';
     vm.usersDescription = '';
+    vm.work = {};
     vm.next = next;
 
     activate();
 
     function activate() {
       logger.info('Activated Features View');
+      vm.work = SubmitWorkService.getCurrent();
     }
 
     function next() {
-      SubmitWorkService.getCurrent().usersDescription = vm.usersDescription;
       $state.go('features');
     }
   }
