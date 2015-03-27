@@ -7,7 +7,7 @@ describe('SubmitWorkService', function () {
     bard.inject('SubmitWorkService');
   });
 
-  beforeEach(function (SubmitWorkService) {
+  beforeEach(function () {
     service = SubmitWorkService;
   });
 

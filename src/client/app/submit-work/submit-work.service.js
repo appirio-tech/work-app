@@ -5,9 +5,9 @@
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', '$state', 'DataProvider'];
+  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', '$state', 'ApiResource'];
   /* @ngInject */
-  function SubmitWorkService($q, $http, $location, exception, logger, $state, DataProvider) {
+  function SubmitWorkService($q, $http, $location, exception, logger, $state, ApiResource) {
     var defaultWork = {
       name: '',
       type: false,
@@ -41,7 +41,7 @@
     }
 
     function save(cb) {
-      DataProvider.create('workRequest', service.current)
+      ApiResource.save('workRequest', service.current)
         .then(function(newWorkRequest) {
           service.setCurrent(newWorkRequest);
           cb(newWorkRequest);
