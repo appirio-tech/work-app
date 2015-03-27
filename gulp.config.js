@@ -25,7 +25,8 @@ module.exports = function () {
     // angular contants
     ngConstants: {
       apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
-      useStubs: useStubs
+      useStubs: useStubs,
+      apiToken: envConfig.getVal('JWT_TOKEN', '')
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
     useStubs: useStubs,

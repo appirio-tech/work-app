@@ -3,7 +3,7 @@
 
   angular
     .module('app.resource')
-    .factory('api', ApiResource);
+    .factory('ApiResource', ApiResource);
 
   ApiResource.$inject = ['$resource', 'apiUrl'];
 

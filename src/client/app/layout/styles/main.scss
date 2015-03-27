@@ -74,12 +74,12 @@ a {
     }
   }
 
-  main {
-    @include main-styles();
+  main, aside {
+    padding: $padding-18 $padding-10;
   }
 
-  aside {
-    padding: $padding-18 $padding-10;
+  main {
+    @include main-restricted();
   }
 
   footer {

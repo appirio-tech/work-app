@@ -2,14 +2,17 @@
 @import "bourbon";
 
 form {
+  input, textarea {
+    margin-top: $margin-18;
+    width     : 100%;
+    padding   : $padding-9;
+    border    : $border-1 solid $slate-gray;
+    font-size : $font-15;
+    box-sizing: border-box;
+  }
+
   input {
-    width              : 100%;
-    padding            : $padding-9;
-    padding-right      : $padding-40;
-    box-sizing         : border-box;
-    font-size          : $font-15;
-    border             : $border-1 solid $slate-gray;
-    margin-top         : $margin-18;
+    padding-right: $padding-40;
 
     &.valid, &:valid {
       background-position: -59px -68px;
@@ -23,11 +26,19 @@ form {
       background-position: 16px -143px;
     }
 
+    &:optional {
+      background-position: 0 0;
+    }
+
     @include placeholder {
       color: $slate-gray;
     }
 
     @include icon-sprite();
+  }
+
+  textarea {
+    height: 75px;
   }
 
   button {

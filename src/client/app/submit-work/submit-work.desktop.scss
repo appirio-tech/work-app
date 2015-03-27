@@ -8,7 +8,7 @@
     margin: 0;
 
     > * {
-      @include main-styles();
+      padding: $padding-18 $padding-10;
     }
   }
 
