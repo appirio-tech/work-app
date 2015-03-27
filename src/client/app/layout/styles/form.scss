@@ -11,6 +11,10 @@ form {
     box-sizing: border-box;
   }
 
+  input[type=checkbox] {
+    width: initial;
+  }
+
   input {
     padding-right: $padding-40;
 

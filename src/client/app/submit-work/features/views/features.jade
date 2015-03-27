@@ -1,12 +1,48 @@
-h2 What features does your app need?
+- features = []
+- features.push({ id: 'login', label: 'Email/Username Login', desc: 'Login with an email or username' })
+- features.push({ id: 'social-login',  label: 'Social Login', desc: 'Login with Twitter, Facebook, LinkedIn, or Google' })
+- features.push({ id: 'profiles',  label: 'Profiles', desc: 'People can enter information about themselves' })
+- features.push({ id: 'accept-payments',  label: 'Accept Payments', desc: 'Accept credit cards, PayPal, Bitcoin' })
+- features.push({ id: 'ratings',  label: 'Ratings/Reviews', desc: 'People leave reviews and/or rate things' })
+- features.push({ id: 'location',  label: 'Location-based or Navigation Element', desc: 'A map, GPS tracking' })
+- features.push({ id: 'sharing',  label: 'Sharing Functions', desc: 'Share on Twitter, Facebook, Email' })
+- features.push({ id: 'api',  label: 'An API', desc: 'Data can be connected with a website or other' })
+- features.push({ id: 'search',  label: 'Search', desc: 'People can search/browse/filter' })
 
-p Choose features and describe it.
-feature(name="Email/Username Login", explanation="Email or Username, yo", description="")
+header(role="heading")
+  h1 What features does your app need?
 
-div(ng-repeat="feature in vm.work.features")
-  h4 {{feature.name}}
-  span {{feature.description}}
-  input(type="checkbox", ng-model="feature.selected")
-  textarea(ng-show="feature.selected", ng-model="feature.explanation")
+main
+  form
+    h2 Choose features and describe it.
 
-button(ng-click="vm.next()") Next
+    ul
+      each feature in features
+        - id = 'feature-' + feature.id
+
+        li
+          input(id=id, type="checkbox")
+
+          label(for=id)!= feature.label
+
+          .desc!= feature.desc
+
+          a.example(href='#') example
+
+          textarea(ng-show="feature.selected", ng-model="feature.explanation")
+
+    button.submit(type="submit", ng-click="vm.next()") Next
+
+nav(role="navigation", "ng-submit-work-nav"=true)
+
+style.
+  /* need to remove this when integrating with controller */
+  .overlay {
+    display: block;
+  }
+
+.example.layout-modal
+
+  a.close(href="#")
+
+  img(src="/submit-work/images/iphone.png")

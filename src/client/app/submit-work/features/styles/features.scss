@@ -1,0 +1,42 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work.features {
+  ul {
+    li {
+      margin-top: $margin-18;
+
+      label {
+        font-weight: bold;
+      }
+
+      .desc, .example {
+        margin: $margin-5 0 0 $margin-22;
+      }
+
+      .example {
+        display: block;
+        font-size: $font-12;
+      }
+    }
+  }
+
+  main {
+    > * {
+      @include main-restricted();
+    }
+  }
+
+  .layout-modal.example {
+    display: block;
+
+    $width: 320px;
+    $height: 480px;
+
+    padding    : $padding-15 $padding-20;
+    width      : $width - ($padding-20 * 2);
+    height     : $height - ($padding-15 * 2);
+    margin-left: -$width / 2;
+    margin-top : -$height / 2;
+
+  }
+}
