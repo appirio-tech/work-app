@@ -1,0 +1,9 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work.about.brief {
+  main {
+    > * {
+      @include main-restricted();
+    }
+  }
+}
