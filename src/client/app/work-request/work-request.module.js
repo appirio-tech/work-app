@@ -4,8 +4,10 @@
   angular
     .module('app.workRequest', [
       'blocks.exception', 'blocks.logger',
-      'app.resource'
+      'app.resource',
+      'app.constants'
     ])
+    .config(WorkRequestConfig)
     .run(WorkRequest);
 
   WorkRequest.$inject = ['ApiResource'];
@@ -17,5 +19,10 @@
     };
 
     ApiResource.add(config);
+  }
+
+  WorkRequestConfig.$inject = ['$httpProvider', 'apiToken'];
+  function WorkRequestConfig($httpProvider, apiToken) {
+    $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + apiToken;
   }
 })();
