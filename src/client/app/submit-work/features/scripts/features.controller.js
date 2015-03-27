@@ -12,7 +12,7 @@
     var vm = this;
     vm.title = 'Features';
     vm.work = {};
-    vm.next = SubmitWorkService.next('estimate');
+    vm.next = SubmitWorkService.next('launch-estimate');
 
     activate();
 
