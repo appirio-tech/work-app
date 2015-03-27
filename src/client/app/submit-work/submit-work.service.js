@@ -12,7 +12,7 @@ var proj;
     var defaultWork = {
       name: '',
       type: false,
-      description: '',
+      usersDescription: '',
       competitors: [],
       features: [
         {name: "Email/Username Login", explanation: "", description: "Description"},
