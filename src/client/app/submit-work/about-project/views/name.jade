@@ -1,1 +1,11 @@
-h2 Name
+header(role="heading")
+  h1 About your project
+
+main
+  form
+    label(for="name-your-project") Name your project:
+    input#name-your-project(placeholder="My Project", required=true)
+
+    button.submit(type="submit") Next
+
+nav(role="navigation", "ng-submit-work-nav"=true)

@@ -1,1 +1,7 @@
-.abc123 {}
+@import "../core/styles/combined";
+
+.layout-main.submit-work {
+  nav {
+    background-color: $mercury;
+  }
+}
