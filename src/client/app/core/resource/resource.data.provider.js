@@ -3,31 +3,31 @@
 
   angular
     .module('app.resource')
-    .provider('DataProvider', DataProvider);
+    .provider('data', data);
 
-  DataProvider.$inject = ['ApiResource'];
+  data.$inject = ['ApiResource'];
 
-  function DataProvider(ApiResource) {
+  function data() {
     return {
       list : function (resource, query) {
         return [
-          'DataProvider',
-          function (DataProvider) {  // inject the data service
-            return DataProvider.list(resource, query);
+          'data',
+          function (data) {  // inject the data service
+            return data.list(resource, query);
           }
         ]
       },
 
       get: function (resource, query) {
         return [
-          'DataProvider',
-          function(DataProvider) {
-            return DataProvider .get(resource, query);
+          'data',
+          function(data) {
+            return data .get(resource, query);
           }
         ]
       },
 
-      $get: function () {
+      $get: function (ApiResource) {
 
         var data = {
 
