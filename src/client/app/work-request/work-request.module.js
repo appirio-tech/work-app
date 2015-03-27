@@ -5,5 +5,17 @@
     .module('app.workRequest', [
       'blocks.exception', 'blocks.logger',
       'app.resource'
-    ]);
+    ])
+    .run(WorkRequest);
+
+  WorkRequest.$inject = ['ApiResource'];
+
+  function WorkRequest(ApiResource) {
+    var config = {
+      url: '/app-work-requests',
+      resource: 'work-request'
+    };
+
+    ApiResource.add(config);
+  }
 })();
