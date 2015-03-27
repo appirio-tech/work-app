@@ -11,9 +11,8 @@
   function SubmitFeaturesController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Features';
-    vm.usersDescription = '';
     vm.work = {};
-    vm.next = next;
+    vm.next = SubmitWorkService.next('estimate');
 
     activate();
 
@@ -22,8 +21,5 @@
       vm.work = SubmitWorkService.getCurrent();
     }
 
-    function next() {
-      $state.go('features');
-    }
   }
 })();
