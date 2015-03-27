@@ -9,12 +9,10 @@
     }
   }
 
-  footer {
-    .forgot, .new {
-      margin-top: $margin-20;
-      display   : inline-block;
-      text-align: center;
-      width     : 50%;
-    }
+  .forgot, .new {
+    display   : inline-block;
+    text-align: center;
+    margin-top: $margin-18;
+    width     : 50%;
   }
 }

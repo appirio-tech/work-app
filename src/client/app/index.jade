@@ -1,6 +1,8 @@
 - var scripts = []
 - if (stubs) scripts.push('/bower_components/angular-mocks/angular-mocks')
 - if (!stubs) scripts.push('/src/client/nostubs/project.nostub')
+- scripts.push('/src/client/app/core/resource/resource.module')
+- scripts.push('/src/client/app/core/resource/resource.api.service')
 - scripts.push('/src/client/app/app.module')
 - scripts.push('constants')
 - scripts.push('/src/client/app/blocks/exception/exception.module')
