@@ -35,14 +35,15 @@ main
 
 nav(role="navigation", "ng-submit-work-nav"=true)
 
-style.
-  /* need to remove this when integrating with controller */
-  .overlay {
-    display: block;
-  }
 
 .example.layout-modal
 
-  a.close(href="#")
+  a.close(href="#", onclick)
 
   img(src="/submit-work/images/iphone.png")
+
+style.
+  /* need to remove this when integrating with controller */
+  .overlay, .layout-modal {
+    display: none;
+  }

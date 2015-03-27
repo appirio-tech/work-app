@@ -4,8 +4,6 @@
   .layout-modal.example {
     $width     : 320px;
     $height    : 480px;
-
-    display    : block;
     padding    : $padding-15 $padding-20;
     width      : $width - ($padding-20 * 2);
     height     : $height - ($padding-15 * 2);
