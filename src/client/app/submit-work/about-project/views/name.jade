@@ -1,7 +1,11 @@
-h2 About Your Project
+header(role="heading")
+  h1 About your project
 
-p Name your project
+main
+  form
+    label(for="name-your-project") Name your project:
+    input#name-your-project(placeholder="My Project", required=true)
 
-input(type="text", ng-model="vm.project.name")
+    button.submit(type="submit") Next
 
-button(ng-click="vm.next()") Next
+nav(role="navigation", "ng-submit-work-nav"=true)

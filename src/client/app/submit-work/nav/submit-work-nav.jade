@@ -1,0 +1,33 @@
+- aboutProject = { label: 'About project', href: '#', kids: [] }
+- aboutProject.kids.push({ label: 'Project name', href: '#' })
+- aboutProject.kids.push({ label: 'Brief/elevator pitch', href: '#' })
+- aboutProject.kids.push({ label: 'Similar apps', href: '#' })
+
+- appUsers = { label: 'App users', href: '#', kids: [] }
+- appUsers.kids.push({ label: 'Who are your users?', href: '#' })
+
+- appFeatures = { label: 'App features', href: '#', kids: [] }
+- appFeatures.kids.push({ label: 'What features will your app need?', href: '#' })
+
+- appDesign = { label: 'App design', href: '#', kids: [] }
+- appDesign.kids.push({ label: 'Add visual elements', href: '#' })
+
+- launch = { label: 'Launch App', href: '#', kids: [] }
+- launch.kids.push({ label: 'Review App Estimates', href: '#' })
+
+- navs = [aboutProject, appUsers, appFeatures, appDesign, launch]
+
+ul#submit-work-nav
+  each nav, i in navs
+    if i % 2 == 0
+      - completed = 'completed'
+    else
+      - completed = ''
+
+    li(class=completed)
+      a(href=nav.href)!= nav.label
+
+      ul
+        each kid in nav.kids
+          li
+            a(href=kid.href)!= kid.label
