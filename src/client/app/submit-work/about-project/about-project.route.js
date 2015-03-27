@@ -7,7 +7,7 @@
 
   appRun.$inject = ['routerHelper'];
   /* @ngInject */
-  function appRun(routerHelper) {
+  function appRun(routerHelper, dataProvider) {
     routerHelper.configureStates(getStates());
   }
 
