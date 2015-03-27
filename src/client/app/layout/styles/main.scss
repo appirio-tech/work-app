@@ -40,18 +40,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1 {
-  font-size: $font-24;
-}
-
 p, input, a {
   font-family: source sans pro;
   line-height: $lh-120;
 }
 
-main {
-  background-color: $white;
-}
 
 a {
   text-decoration: none;
@@ -69,10 +62,27 @@ a {
 }
 
 .layout-main {
-  padding: $padding-10;
+  background-color: $white;
 
-  > * {
-    width  : 280px;
-    margin : 0 auto;
+  header {
+    h1 {
+      background-color: $all-ports;
+      font-size       : $font-20;
+      color           : $white;
+      padding         : $padding-10 0;
+      text-align      : center;
+    }
+  }
+
+  main {
+    @include main-styles();
+  }
+
+  aside {
+    padding: $padding-18 $padding-10;
+  }
+
+  footer {
+    margin: $margin-18;
   }
 }

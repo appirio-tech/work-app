@@ -6,19 +6,9 @@
   }
 
   .choose-build {
-    margin: 0;
     text-align: center;
 
-    h1 {
-      background-color: $all-ports;
-      font-size       : $font-20;
-      color           : $white;
-      padding         : $padding-10 0;
-    }
-
     ul.builds {
-      margin-bottom: $margin-28;
-
       li {
         $diameter: 112px;
 
@@ -27,6 +17,10 @@
         display       : block;
         margin        : $margin-28 auto 0 auto;
         vertical-align: top;
+
+        &:first-child {
+          margin-top: 0;
+        }
 
         .icon {
           width           : $diameter;
@@ -60,7 +54,6 @@
 
   .learn-more {
     text-align      : left;
-    padding         : $padding-25;
     background-color: $limed-spruce;
     @include clearfix();
 

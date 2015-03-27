@@ -1,19 +1,21 @@
-h1 Welcome to Topcoder
+header
+  h1 Welcome to Topcoder
 
-h2 Begin building your app now. Start by creating an account.
+main
+  h2 Begin building your app now. Start by creating an account.
 
-form
-  input.valid(type="email", placeholder="Email address", required=true)
+  form
+    input.valid(type="email", placeholder="Email address", required=true)
 
-  p.error Email address is required
+    p.error Email address is required
 
-  input.invalid(type="password", placeholder="Password")
+    input.invalid(type="password", placeholder="Password")
 
-  p.error Password is required
+    p.error Password is required
 
-  input.valid(type="password", placeholder="Confirm Password")
+    input.valid(type="password", placeholder="Confirm Password")
 
-  p.error Confirm password is required
+    p.error Confirm password is required
 
-  button.submit(type="submit") Create Account
+    button.submit(type="submit") Create Account
 
