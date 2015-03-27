@@ -32,7 +32,7 @@
         var data = {
 
           list: function (resource, query) {
-            return ApiResource[resource].get(query).$promise;
+            return ApiResource[resource].query(query).$promise;
           },
 
           get : function (resource, query) {
