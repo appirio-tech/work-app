@@ -51,7 +51,7 @@
         config: {
           url: '/submit-work/about/competitors',
           templateUrl: 'submit-work/about-project/views/competitors.html',
-          controller: 'SubmitBriefController',
+          controller: 'SubmitCompetitorsController',
           controllerAs: 'vm',
           title: 'Competitors',
           settings: {}

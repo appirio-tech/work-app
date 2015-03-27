@@ -1,1 +1,16 @@
-h2 Type
+h2 About Your Project
+
+p What type of project do you need?
+
+li
+  ul
+    input(type="radio", ng-model="vm.project.type", value=0)
+    span Design
+  ul
+    input(type="radio", ng-model="vm.project.type", value=1)
+    span Code
+  ul
+    input(type="radio", ng-model="vm.project.type", value=2)
+    span Design and Code
+
+button(ng-click="vm.next()") Next
