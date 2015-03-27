@@ -5,7 +5,9 @@
     'app.core',
     'ngMessages',
     'projectMock',
-    'app.constants'
+    'app.constants',
+    'app.resource',
+    'app.workRequest'
   ]);
 
 })();

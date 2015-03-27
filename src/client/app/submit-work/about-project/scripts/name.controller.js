@@ -11,14 +11,14 @@
   function SubmitNameController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Name';
-    vm.project = {};
+    vm.workRequest = {};
     vm.next = SubmitWorkService.next('about-type');
 
     activate();
 
     function activate() {
       logger.info('Activated Name View');
-      vm.project = SubmitWorkService.getCurrent();
+      vm.workRequest = SubmitWorkService.getCurrent();
     }
 
   }
