@@ -29,10 +29,6 @@ describe('SubmitUsersController', function () {
         expect($log.info.logs).to.match(/Activated/);
       });
 
-      it('should have a usersDescription field', function() {
-        expect(controller.usersDescription).to.equal('');
-      });
-
     });
   });
 });
