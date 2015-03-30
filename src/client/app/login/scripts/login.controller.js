@@ -4,38 +4,38 @@
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$http', 'auth', '$location', 'store', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl'];
+  LoginController.$inject = ['$scope', '$http', 'auth', '$location', 'store', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
   /* @ngInject */
-  function LoginController($scope, $http, auth, $location, store, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl) {
+  function LoginController($scope, $http, auth, $location, store, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
 
     function activate() {
-      logger.info('Activated Login View'); 
+      logger.info('Activated Login View');
       init();
     }
-    
+
     function getParameterByName(name) {
 	  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 	      results = regex.exec(location.hash);
 	  return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
-    
+
     function decodeJwt() {
-        var decoded = jwt_decode(localStorage.getItem("userJWTToken"));
+        var decoded = jwtHelper.decodeToken(localStorage.getItem("userJWTToken"));
         if(decoded && decoded.userId){
-          var promise = LoginService.getUser(decoded.userId);        
+          var promise = LoginService.getUser(decoded.userId);
           promise.then(function(data){
         	  vm.loggedInUser = data.handle;
-          }); 
-        }     
+          });
+        }
     }
-    
+
     function init(){
       //set parameter passed JWT token and remove if any.
-	  var userJWTToken = getParameterByName('userJWTToken') 
+	  var userJWTToken = getParameterByName('userJWTToken')
 	  //logger.info("userJWTToken : " +userJWTToken);
 	  if(userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
@@ -45,9 +45,9 @@
         decodeJwt();
 	  }
     }
-    
+
     activate();
-	
+
 	// auth0 login form
 	var lock = new Auth0Lock(auth0ClientId, auth0Domain);
 	$scope.signin = function() {
@@ -63,7 +63,7 @@
         , usernameStyle: 'username'
       });
 	}
-	
+
 	$scope.signout = function() {
 	  var promise = LoginService.logout();
 	  promise.then(function(response){
