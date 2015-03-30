@@ -12,6 +12,7 @@
       name: '',
       type: false,
       usersDescription: '',
+      elevatorPitch: '',
       competitors: [],
       features: [
         {name: "Email/Username Login", explanation: "", description: "Description"},

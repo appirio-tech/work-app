@@ -16,7 +16,7 @@
     vm.designButtonStyle = '';
     vm.codeButtonStyle = '';
     vm.bothButtonStyle = '';
-    vm.next = SubmitWorkService.next('about-brief');
+    vm.next = SubmitWorkService.next('about-elevator-pitch');
 
     activate();
 

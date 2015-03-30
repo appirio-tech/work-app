@@ -4,8 +4,8 @@ header(role="heading")
 main
   form
     label(for="project-elevator-pitch") Give us a brief explanation or "Elevator Pitch"
-    textarea#project-elevator-pitch(type="file", placeholder="My Project")
+    textarea#project-elevator-pitch(type="file", placeholder="My Project", ng-model="vm.work.elevatorPitch")
 
-    button.submit(type="submit") Next
+    button.submit(type="submit", ng-click="vm.next()") Next
 
 nav(role="navigation", "ng-submit-work-nav"=true)
