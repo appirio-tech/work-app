@@ -15,9 +15,10 @@ $header-height: 28px;
   }
 
   .logo {
+    display        : none;
     float          : left;
     width          : 56px;
-    background-size : 56px $header-height;
+    background-size: 56px $header-height;
     height         : $header-height;
 
     @include bg-image-ratio("../images/logo-appirio-icon.png", "../images/logo-appirio-icon-2x.png");
