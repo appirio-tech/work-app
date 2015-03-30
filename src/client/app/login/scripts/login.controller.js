@@ -50,14 +50,14 @@
     $scope.signin = function () {
       var state = encodeURIComponent('retUrl=' + retUrl);
       lock.show({
-        callbackURL: callbackUrl
-        , responseType: 'code'
-        , connections: ['LDAP']
-        , authParams: {
+        callbackURL: callbackUrl,
+        responseType: 'code',
+        connections: ['LDAP'],
+        authParams: {
           scope: 'openid profile offline_access',
           state: state
-        }
-        , usernameStyle: 'username'
+        },
+        usernameStyle: 'username'
       });
     };
 

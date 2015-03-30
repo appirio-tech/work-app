@@ -20,7 +20,7 @@
           controllerAs: 'vm',
           title: 'Login'
         }
-      },
+      }
     ];
   }
 })();
