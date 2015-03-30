@@ -4,13 +4,12 @@
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$http', 'auth', '$location', 'store', 'LoginService', 'logger'];
+  LoginController.$inject = ['$scope', '$http', 'auth', '$location', 'store', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl'];
   /* @ngInject */
-  function LoginController($scope, $http, auth, $location, store, LoginService, logger) {
+  function LoginController($scope, $http, auth, $location, store, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
-    vm.user ='';
 
     function activate() {
       logger.info('Activated Login View'); 
@@ -27,7 +26,8 @@
     function decodeJwt() {
         var decoded = jwt_decode(localStorage.getItem("userJWTToken"));
         if(decoded && decoded.userId){
-          vm.loggedInUser = decoded.userId;
+          var user = LoginService.getUser(decoded.userId);        
+          vm.loggedInUser = user;       
         }     
     }
     
@@ -37,24 +37,21 @@
 	  //logger.info("userJWTToken : " +userJWTToken);
 	  if(userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
-        //$http.defaults.headers.common['Authorization'] = 'Bearer '+userJWTToken;
+        $http.defaults.headers.common['Authorization'] = 'Bearer '+userJWTToken;
         var clean_uri = location.protocol + "//" + location.host + location.pathname;
         window.history.replaceState({}, document.title, clean_uri);
         decodeJwt();
-        vm.user = LoginService.getUser(vm.loggedInUser);
 	  }
     }
     
     activate();
 	
 	// auth0 login form
-	var clientId = 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT';
-	var domain = 'topcoder-dev.auth0.com';
-	var lock = new Auth0Lock(clientId, domain);
+	var lock = new Auth0Lock(auth0ClientId, auth0Domain);
 	$scope.signin = function() {
-	  var state = encodeURIComponent('retUrl=http://localhost:3000/#/');
+	  var state = encodeURIComponent('retUrl='+retUrl);
       lock.show({
-          callbackURL: 'http://api.topcoder-dev.com/pub/callback.html'
+          callbackURL: callbackUrl
         , responseType: 'code'
         , connections: ['LDAP']
         , authParams: {

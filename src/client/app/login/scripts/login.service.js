@@ -15,26 +15,22 @@
     return ob;
 
     function getUser(id) {
-      return $http.get('http://api.topcoder-dev.com'+apiUrl + 'users/' + id, {
-        headers: {'Authorization': 'Bearer '+localStorage.getItem('userJWTToken')}
-      })
+      return $http.get(apiUrl + 'users/' + id)
         .then(getUserComplete)
         .catch(function(message) {
           exception.catcher('XHR Failed for getUser')(message);
           $location.url('/');
-        });
+        }); 
 
       function getUserComplete(data, status, headers, config) {
-        //logger.info('user data', data);
         var user = data.data.result.content;
+        console.log('user : ' + user);
         return user;
       }
     }
     
     function logout() {
-        return $http.delete('http://api.topcoder-dev.com'+apiUrl + 'authorizations/', {
-    	  headers: {'Authorization': 'Bearer '+localStorage.getItem('userJWTToken')}
-        })
+        return $http.delete(apiUrl + 'authorizations/')
           .then(logoutComplete)
           .catch(function(message) {
             exception.catcher('XHR Failed for logout')(message);

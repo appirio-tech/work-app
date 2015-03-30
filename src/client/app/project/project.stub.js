@@ -91,5 +91,7 @@
       $httpBackend.whenGET('/v3/workitems').respond(getResponse);
 
       $httpBackend.whenGET(/.+\.html?/).passThrough();
+      $httpBackend.whenGET('http://api.topcoder-dev.com/v3/users/23074121').passThrough();
+      $httpBackend.whenDELETE('http://api.topcoder-dev.com/v3/authorizations/').passThrough();
     }]);
 })();
