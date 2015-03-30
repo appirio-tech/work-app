@@ -51,7 +51,15 @@
 - scripts.push("/src/client/app/create-account/scripts/create-account.controller")
 - scripts.push("/src/client/app/create-account/scripts/create-account.route")
 
-include login/includes
+//- Login
+- css.push("login/styles/login")
+- landscapeCSS.push("login/styles/login.landscape")
+- desktopCSS.push("login/styles/login.desktop")
+- scripts.push("/src/client/app/login/scripts/login.module")
+- scripts.push("/src/client/app/login/scripts/login.controller")
+- scripts.push("/src/client/app/login/scripts/auth0-variables")
+- scripts.push("/src/client/app/login/scripts/login.route")
+- scripts.push("/src/client/app/login/scripts/login.service")
 
 //- Project
 - if (stubs) scripts.push('/src/client/app/project/project.stub')
