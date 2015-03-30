@@ -8,11 +8,11 @@
   LoginService.$inject = ['$q', '$http', '$location', 'exception', 'logger', 'apiUrl'];
   /* @ngInject */
   function LoginService($q, $http, $location, exception, logger, apiUrl) {
-    var ob = {
+    var service = {
       getUser: getUser,
       logout: logout
     };
-    return ob;
+    return service;
 
     function getUser(id) {
       return $http.get(apiUrl + 'users/' + id)
@@ -33,12 +33,12 @@
         return $http.delete(apiUrl + 'authorizations/')
           .then(logoutComplete)
           .catch(function(message) {
-            exception.catcher('XHR Failed for logout')(message);
+            exception.catcher(message.statusText)(message);
             $location.url('/');
           });
 
         function logoutComplete(data, status, headers, config) {
-          $location.url('/');
+          return data;
         }
       }
   }

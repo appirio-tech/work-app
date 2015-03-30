@@ -13,7 +13,7 @@
 
     function activate() {
       logger.info('Activated Login View'); 
-      setToken();
+      init();
     }
     
     function getParameterByName(name) {
@@ -26,14 +26,16 @@
     function decodeJwt() {
         var decoded = jwt_decode(localStorage.getItem("userJWTToken"));
         if(decoded && decoded.userId){
-          var user = LoginService.getUser(decoded.userId);        
-          vm.loggedInUser = user;       
+          var promise = LoginService.getUser(decoded.userId);        
+          promise.then(function(data){
+        	  vm.loggedInUser = data.handle;
+          }); 
         }     
     }
     
-    function setToken(){
+    function init(){
       //set parameter passed JWT token and remove if any.
-	  var userJWTToken = getParameterByName('userJWTToken');
+	  var userJWTToken = getParameterByName('userJWTToken') 
 	  //logger.info("userJWTToken : " +userJWTToken);
 	  if(userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
@@ -63,7 +65,13 @@
 	}
 	
 	$scope.signout = function() {
-	  LoginService.logout();
+	  var promise = LoginService.logout();
+	  promise.then(function(response){
+		  if(200 == response.status){
+			vm.loggedInUser = '';
+		  }
+		  $location.url('/');
+	  });
 	}
   }
 })();
