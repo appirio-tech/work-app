@@ -5,24 +5,22 @@
     ul {
       li {
         margin-top: $margin-18;
+        margin-left: $margin-22;
 
-        input {
+        input[type="checkbox"]{
           position: absolute;
+          margin-left: -$margin-22;
         }
 
-        label {
-          font-weight: bold;
-          display: block;
-          margin-left: $margin-22;
+        .label-example {
+          a {
+            font-size: $font-10;
+            margin-left: $margin-5;
+          }
         }
 
-        .desc, .example {
-          margin: $margin-5 0 0 $margin-22;
-        }
-
-        .example {
-          display: block;
-          font-size: $font-12;
+        .desc{
+          margin: $margin-5 0 0 0;
         }
       }
     }
@@ -41,6 +39,5 @@
     height     : $height - ($padding-15 * 2);
     margin-left: -$width / 2;
     margin-top : -$height / 2;
-
   }
 }

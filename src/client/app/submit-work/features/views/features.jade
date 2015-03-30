@@ -23,13 +23,14 @@ main
         li
           input(id=id, type="checkbox")
 
-          label(for=id)!= feature.label
+          .label-example
+            label(for=id)!= feature.label
+
+            a(href='#') (example)
 
           .desc!= feature.desc
 
-          a.example(href='#') example
-
-          textarea(ng-show="feature.selected", ng-model="feature.explanation")
+          textarea(placeholder="explain briefly (optional)")
 
     button.submit(type="submit", ng-click="vm.next()") Next
 
