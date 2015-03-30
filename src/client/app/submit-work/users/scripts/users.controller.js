@@ -21,7 +21,5 @@
       vm.work = SubmitWorkService.getCurrent();
     }
 
-    function next() {
-    }
   }
 })();
