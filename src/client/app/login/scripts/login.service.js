@@ -17,10 +17,10 @@
     function getUser(id) {
       return $http.get(apiUrl + 'users/' + id)
         .then(getUserComplete)
-        .catch(function(message) {
+        .catch(function (message) {
           exception.catcher('XHR Failed for getUser')(message);
           $location.url('/');
-        }); 
+        });
 
       function getUserComplete(data, status, headers, config) {
         var user = data.data.result.content;
@@ -28,18 +28,18 @@
         return user;
       }
     }
-    
-    function logout() {
-        return $http.delete(apiUrl + 'authorizations/')
-          .then(logoutComplete)
-          .catch(function(message) {
-            exception.catcher(message.statusText)(message);
-            $location.url('/');
-          });
 
-        function logoutComplete(data, status, headers, config) {
-          return data;
-        }
+    function logout() {
+      return $http.delete(apiUrl + 'authorizations/')
+        .then(logoutComplete)
+        .catch(function (message) {
+          exception.catcher(message.statusText)(message);
+          $location.url('/');
+        });
+
+      function logoutComplete(data, status, headers, config) {
+        return data;
       }
+    }
   }
 })();

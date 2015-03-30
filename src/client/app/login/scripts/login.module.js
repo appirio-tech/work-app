@@ -2,8 +2,8 @@
   'use strict';
 
   angular.module('app.login', [
-	'auth0',
-	'angular-storage',
-	'angular-jwt'
+    'auth0',
+    'angular-storage',
+    'angular-jwt'
   ]);
 })();
