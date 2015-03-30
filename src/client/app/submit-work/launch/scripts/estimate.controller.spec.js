@@ -1,5 +1,5 @@
 /* jshint -W117, -W030 */
-describe('SubmitUsersController', function () {
+describe('SubmitEstimateController', function () {
   var controller, scope;
 
   beforeEach(function () {
@@ -9,20 +9,20 @@ describe('SubmitUsersController', function () {
 
   beforeEach(function () {
     scope = $rootScope.$new();
-    controller = $controller('SubmitUsersController', {$scope: scope});
+    controller = $controller('SubmitEstimateController', {$scope: scope});
     $rootScope.$apply();
   });
 
   bard.verifyNoOutstandingHttpRequests();
 
-  describe('Users controller', function () {
+  describe('Estimate controller', function () {
     it('should be created successfully', function () {
       expect(controller).to.be.defined;
     });
 
     describe('after activate', function () {
-      it('should have title of Users', function () {
-        expect(controller.title).to.equal('Users');
+      it('should have title of Estimate', function () {
+        expect(controller.title).to.equal('Estimate');
       });
 
       it('should have logged "Activated"', function () {

@@ -11,18 +11,17 @@
   function SubmitUsersController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Users';
-    vm.usersDescription = '';
-    vm.next = next;
+    vm.work = {};
+    vm.next = SubmitWorkService.next('features');
 
     activate();
 
     function activate() {
       logger.info('Activated Users View');
+      vm.work = SubmitWorkService.getCurrent();
     }
 
     function next() {
-      SubmitWorkService.getCurrent().usersDescription = vm.usersDescription;
-      $state.go('features');
     }
   }
 })();

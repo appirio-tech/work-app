@@ -1,32 +1,12 @@
 h2 What features does your app need?
 
 p Choose features and describe it.
-div
-  input(type="checkbox")
-  span Email/Username Login
-div
-  input(type="checkbox")
-  span Social Login
-div
-  input(type="checkbox")
-  span Profiles
-div
-  input(type="checkbox")
-  span Accept Payments
-div
-  input(type="checkbox")
-  span Ratings/Reviews
-div
-  input(type="checkbox")
-  span Location-based or Navigation Element
-div
-  input(type="checkbox")
-  span Sharing Functions
-div
-  input(type="checkbox")
-  span An API
-div
-  input(type="checkbox")
-  span Search
+feature(name="Email/Username Login", explanation="Email or Username, yo", description="")
+
+div(ng-repeat="feature in vm.work.features")
+  h4 {{feature.name}}
+  span {{feature.description}}
+  input(type="checkbox", ng-model="feature.selected")
+  textarea(ng-show="feature.selected", ng-model="feature.explanation")
 
 button(ng-click="vm.next()") Next

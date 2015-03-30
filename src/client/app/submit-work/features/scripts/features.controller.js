@@ -11,18 +11,15 @@
   function SubmitFeaturesController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Features';
-    vm.usersDescription = '';
-    vm.next = next;
+    vm.work = {};
+    vm.next = SubmitWorkService.next('launch-estimate');
 
     activate();
 
     function activate() {
       logger.info('Activated Features View');
+      vm.work = SubmitWorkService.getCurrent();
     }
 
-    function next() {
-      SubmitWorkService.getCurrent().usersDescription = vm.usersDescription;
-      $state.go('features');
-    }
   }
 })();
