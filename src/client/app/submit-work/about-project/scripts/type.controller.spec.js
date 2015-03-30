@@ -29,6 +29,24 @@ describe('SubmitTypeController', function () {
         expect($log.info.logs).to.match(/Activated/);
       });
 
+      it('should be able to select different app types', function() {
+        expect(controller.designButtonStyle).to.equal('');
+        expect(controller.codeButtonStyle).to.equal('');
+        expect(controller.bothButtonStyle).to.equal('');
+        controller.select('design');
+        expect(controller.designButtonStyle).to.equal('selected');
+        expect(controller.codeButtonStyle).to.equal('');
+        expect(controller.bothButtonStyle).to.equal('');
+        controller.select('code');
+        expect(controller.designButtonStyle).to.equal('');
+        expect(controller.codeButtonStyle).to.equal('selected');
+        expect(controller.bothButtonStyle).to.equal('');
+        controller.select('both');
+        expect(controller.designButtonStyle).to.equal('');
+        expect(controller.codeButtonStyle).to.equal('');
+        expect(controller.bothButtonStyle).to.equal('selected');
+      })
+
     });
   });
 });

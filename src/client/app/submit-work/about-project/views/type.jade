@@ -9,7 +9,7 @@ main
       li
         label(for="project-type-design") Design
 
-        button#project-type-design
+        button#project-type-design(class="{{vm.designButtonStyle}}", ng-click="vm.select('design')")
           .starting-at starting at
 
           .price $3,000
@@ -21,7 +21,7 @@ main
       li
         label(for="project-type-code") Code
 
-        button#project-type-code.selected
+        button#project-type-code(class="{{vm.codeButtonStyle}}", ng-click="vm.select('code')")
           .starting-at starting at
 
           .price $3,000
@@ -33,7 +33,7 @@ main
       li
         label(for="project-type-design-code") Design + Code
 
-        button#project-type-design-code
+        button#project-type-design-code(class="{{vm.bothButtonStyle}}", ng-click="vm.select('both')")
           .starting-at starting at
 
           .price $3,000
@@ -42,6 +42,6 @@ main
 
         .description I have an idea for a mobile app and I need it designed and built.
 
-    button.submit(type="submit") Next
+    button.submit(type="submit", ng-click="vm.next()") Next
 
 nav(role="navigation", "ng-submit-work-nav"=true)
