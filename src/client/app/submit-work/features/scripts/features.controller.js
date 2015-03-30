@@ -19,7 +19,9 @@
     function activate() {
       logger.info('Activated Features View');
       vm.work = SubmitWorkService.getCurrent();
-      vm.work.features = FeatureService.getFeatures();
+      FeatureService.getFeatures().then(function(features) {
+        vm.work.features = features;
+      });
     }
   }
 })();
