@@ -1,0 +1,12 @@
+h2 What features does your app need?
+
+p Choose features and describe it.
+feature(name="Email/Username Login", explanation="Email or Username, yo", description="")
+
+div(ng-repeat="feature in vm.work.features")
+  h4 {{feature.name}}
+  span {{feature.description}}
+  input(type="checkbox", ng-model="feature.selected")
+  textarea(ng-show="feature.selected", ng-model="feature.explanation")
+
+button(ng-click="vm.next()") Next

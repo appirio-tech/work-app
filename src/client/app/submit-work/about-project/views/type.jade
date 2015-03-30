@@ -1,1 +1,47 @@
-h2 Type
+header(role="heading")
+  h1 About your project
+
+main
+  form
+    h2 What type of project do you need?
+
+    ul.project-types
+      li
+        label(for="project-type-design") Design
+
+        button#project-type-design
+          .starting-at starting at
+
+          .price $3,000
+
+          .duration 1 week
+
+        .description I need a mobile app designed.
+
+      li
+        label(for="project-type-code") Code
+
+        button#project-type-code.selected
+          .starting-at starting at
+
+          .price $3,000
+
+          .duration 2 weeks
+
+        .description I have a design and I need a mobile app created from it.
+
+      li
+        label(for="project-type-design-code") Design + Code
+
+        button#project-type-design-code
+          .starting-at starting at
+
+          .price $3,000
+
+          .duration 3 weeks
+
+        .description I have an idea for a mobile app and I need it designed and built.
+
+    button.submit(type="submit") Next
+
+nav(role="navigation", "ng-submit-work-nav"=true)

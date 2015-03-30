@@ -30,6 +30,8 @@ module.exports = function () {
       retUrl: envConfig.getVal('RET_URL', 'http://localhost:3000/#/'),
       callbackUrl: envConfig.getVal('CALLBACK_URL', 'http://api.topcoder-dev.com/pub/callback.html'),
       useStubs: useStubs
+      useStubs: useStubs,
+      apiToken: envConfig.getVal('JWT_TOKEN', '')
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
     useStubs: useStubs,

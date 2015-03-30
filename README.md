@@ -157,3 +157,33 @@ Jade is used as the template rendering engine.  Please keep files with relevant 
 
 stubs: should the test stub files be included.  Uses USE_STUBS
 baseUrl: The base url.  in prod it's /work/.  Uses BASE_URL
+
+# Base API
+
+This is a factory for creating resources. It would be used like this:
+
+First, the individual services would register themselves with the API:
+
+api.add('work');
+
+// OR
+
+api.add({
+  resource: 'work',
+  url: '/work'
+});
+
+// OR
+
+api.add({
+  resource: 'work',
+  url: '/users/:user_id/work',
+  params: {
+    user_id: '@user_id'
+  }
+});
+Then api service would be used like this in a controller:
+
+api.work.get.$promise.then(function () {});
+
+Original concept came from http://www.objectpartners.com/2014/06/03/extending-angulars-resource-service-for-a-consistent-api/.

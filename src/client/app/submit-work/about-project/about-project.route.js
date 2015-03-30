@@ -7,7 +7,7 @@
 
   appRun.$inject = ['routerHelper'];
   /* @ngInject */
-  function appRun(routerHelper) {
+  function appRun(routerHelper, dataProvider) {
     routerHelper.configureStates(getStates());
   }
 
@@ -47,11 +47,22 @@
         }
       },
       {
+        state: 'about-elevator-pitch',
+        config: {
+          url: '/submit-work/about/elevator-pitch',
+          templateUrl: 'submit-work/about-project/views/elevator-pitch.html',
+          controller: 'SubmitElevatorPitchController',
+          controllerAs: 'vm',
+          title: 'Elevator Pitch',
+          settings: {}
+        }
+      },
+      {
         state: 'about-competitors',
         config: {
           url: '/submit-work/about/competitors',
           templateUrl: 'submit-work/about-project/views/competitors.html',
-          controller: 'SubmitBriefController',
+          controller: 'SubmitCompetitorsController',
           controllerAs: 'vm',
           title: 'Competitors',
           settings: {}

@@ -74,11 +74,12 @@ a {
     }
   }
 
-  main {
+  main, aside {
     padding: $padding-18 $padding-10;
-    width  : 280px;
-    margin : 0 auto;
-    display: block;
+  }
+
+  main {
+    @include main-restricted();
   }
 
   footer {

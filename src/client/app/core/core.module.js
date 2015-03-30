@@ -6,6 +6,5 @@
       'ngAnimate', 'ngSanitize',
       'blocks.exception', 'blocks.logger', 'blocks.router',
       'ui.router', 'ngplus'
-      //'app.resource'
     ]);
 })();
