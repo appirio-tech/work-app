@@ -275,8 +275,8 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify()) // another option is to override wiredep to use min files
+    //.pipe($.ngAnnotate({add: true}))
+    //.pipe($.uglify()) // another option is to override wiredep to use min files
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())
