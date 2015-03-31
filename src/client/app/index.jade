@@ -8,6 +8,7 @@
 - scripts.push('/src/client/app/core/resource/resource.api.service')
 - scripts.push('/src/client/app/core/resource/resource.data.provider')
 - scripts.push('/src/client/app/core/core.module')
+- scripts.push("/src/client/app/login/scripts/login.module")
 - scripts.push('/src/client/app/layout/scripts/layout.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
@@ -52,7 +53,6 @@
 - css.push("login/styles/login")
 - landscapeCSS.push("login/styles/login.landscape")
 - desktopCSS.push("login/styles/login.desktop")
-- scripts.push("/src/client/app/login/scripts/login.module")
 - scripts.push("/src/client/app/login/scripts/login.controller")
 - scripts.push("/src/client/app/login/scripts/login.route")
 - scripts.push("/src/client/app/login/scripts/login.service")
@@ -121,6 +121,8 @@ html(ng-app='app')
     each path in bowers
       script(src= path + ".js", type="text/javascript")
     // endbuild
+
+    script(src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js", type="text/javascript")
 
     // build:js js/app.js
     each path in scripts
