@@ -5,3 +5,7 @@ AWS_SECRET=bar
 AWS_CDN_URL=
 VERSION=1
 USE_STUBS=true
+AUTH0_CLIENT_ID=Auth0_Client_Id
+AUTH0_DOMAIN=topcoder-domain.auth0.com
+RET_URL=login_return_url
+CALLBACK_URL=login_callback_url

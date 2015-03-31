@@ -10,6 +10,7 @@ var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 var colors = $.util.colors;
+var env = $.util.env;
 var port = process.env.PORT || config.defaultPort;
 
 /**
@@ -173,7 +174,12 @@ gulp.task('templatecache', ['jade'], function () {
 gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
-  startTests(true /*singleRun*/, done);
+  if (env.skiptests) {
+    done();
+  } else {
+    startTests(true /*singleRun*/, done);
+  }
+
   //done();
 });
 

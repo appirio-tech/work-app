@@ -25,8 +25,11 @@ module.exports = function () {
     // angular contants
     ngConstants: {
       apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
-      useStubs: useStubs,
-      apiToken: envConfig.getVal('JWT_TOKEN', '')
+      auth0ClientId: envConfig.getVal('AUTH0_CLIENT_ID', ''),
+      auth0Domain: envConfig.getVal('AUTH0_DOMAIN', 'topcoder-dev.auth0.com'),
+      retUrl: envConfig.getVal('RET_URL', 'http://localhost:3000/#/'),
+      callbackUrl: envConfig.getVal('CALLBACK_URL', 'http://api.topcoder-dev.com/pub/callback.html'),
+      useStubs: useStubs
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
     useStubs: useStubs,
@@ -147,7 +150,7 @@ module.exports = function () {
       nodeModules + '/mocha-clean/index.js',
       nodeModules + '/sinon-chai/lib/sinon-chai.js'
     ],
-    specHelpers: [client + 'test-helpers/*.js', 'test-globals.js'],
+    specHelpers: [client + 'test-helpers/*.js', clientApp + '**/*.stubs.js'],
     specs: [clientApp + '**/*.spec.js'],
 
     /**

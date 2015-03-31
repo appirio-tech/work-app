@@ -1,6 +1,4 @@
 - var scripts = []
-- if (stubs) scripts.push('/bower_components/angular-mocks/angular-mocks')
-- if (!stubs) scripts.push('/src/client/nostubs/project.nostub')
 - scripts.push('/src/client/app/app.module')
 - scripts.push('constants')
 - scripts.push('/src/client/app/blocks/exception/exception.module')
@@ -57,26 +55,14 @@
 - scripts.push("/src/client/app/login/scripts/login.module")
 - scripts.push("/src/client/app/login/scripts/login.controller")
 - scripts.push("/src/client/app/login/scripts/login.route")
-
-//- Project
-- if (stubs) scripts.push('/src/client/app/project/project.stub')
-- css.push("project/project")
-- scripts.push('/src/client/app/project/create/scripts/create.module')
-- scripts.push('/src/client/app/project/manage/scripts/manage.module')
-- scripts.push('/src/client/app/project/project.module')
-- scripts.push('/src/client/app/project/create/scripts/create.controller')
-- scripts.push('/src/client/app/project/create/scripts/create.route')
-- scripts.push('/src/client/app/project/create/scripts/home.controller')
-- scripts.push('/src/client/app/project/submit/scripts/submit.controller')
-- scripts.push('/src/client/app/project/manage/scripts/lookandFeel.filter')
-- scripts.push('/src/client/app/project/manage/scripts/screens.filter')
-- scripts.push('/src/client/app/project/manage/scripts/manage.route')
-- scripts.push('/src/client/app/project/manage/scripts/multiple.controller')
-- scripts.push('/src/client/app/project/manage/scripts/single.controller')
-- scripts.push('/src/client/app/project/project.service')
+- scripts.push("/src/client/app/login/scripts/login.service")
 
 //- work request
-include work-request/includes
+- scripts.push("/src/client/app/work-request/work-request.module")
+
+//- features
+- scripts.push("/src/client/app/feature/feature.module")
+- scripts.push("/src/client/app/feature/feature.service")
 
 //- submit work
 include submit-work/includes
