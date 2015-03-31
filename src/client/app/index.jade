@@ -9,7 +9,6 @@
 - scripts.push('/src/client/app/core/resource/resource.module')
 - scripts.push('/src/client/app/core/resource/resource.api.service')
 - scripts.push('/src/client/app/core/resource/resource.data.provider')
-- scripts.push('/src/client/app/work-request/work-request.module')
 - scripts.push('/src/client/app/core/core.module')
 - scripts.push('/src/client/app/layout/scripts/layout.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
@@ -77,14 +76,18 @@
 - scripts.push('/src/client/app/project/manage/scripts/single.controller')
 - scripts.push('/src/client/app/project/project.service')
 
+//- work request
+include work-request/includes
+
 //- submit work
-include submit-work/includes.jade
+include submit-work/includes
+
 - scripts       = scripts.concat(jsFiles)
 - css           = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
 - desktopCSS    = desktopCSS.concat(desktopFiles)
 
-include bowers.jade
+include bowers
 
 doctype html
 html(ng-app='app')
