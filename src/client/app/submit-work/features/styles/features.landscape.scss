@@ -1,0 +1,28 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work.features {
+
+  .layout-modal.example {
+    $width: 568px;
+    $height: 320px;
+
+    padding    : $padding-15 $padding-20;
+    width      : $width - ($padding-20 * 2);
+    height     : $height - ($padding-15 * 2);
+    margin-left: -$width / 2;
+    margin-top : -$height / 2;
+  }
+
+  main {
+    .submit {
+      margin-left : auto;
+      margin-right: auto;
+      display     : block;
+    }
+
+    > * {
+      @include main-restricted-landscape();
+      width: 508px;
+    }
+  }
+}

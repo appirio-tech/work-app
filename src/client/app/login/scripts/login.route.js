@@ -14,13 +14,13 @@
       {
         state: 'login',
         config: {
-          url         : '/login',
-          templateUrl : 'login/views/login.html',
-          controller  : 'LoginController',
+          url: '/login',
+          templateUrl: 'login/views/login.html',
+          controller: 'LoginController',
           controllerAs: 'vm',
-          title       : 'Login'
+          title: 'Login'
         }
-      },
+      }
     ];
   }
 })();

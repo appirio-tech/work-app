@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitFeaturesController', SubmitFeaturesController);
 
-  SubmitFeaturesController.$inject = ['logger', '$state', 'SubmitWorkService'];
+  SubmitFeaturesController.$inject = ['logger', '$state', 'SubmitWorkService', 'FeatureService'];
   /* @ngInject */
-  function SubmitFeaturesController(logger, $state, SubmitWorkService) {
+  function SubmitFeaturesController(logger, $state, SubmitWorkService, FeatureService) {
     var vm = this;
     vm.title = 'Features';
     vm.work = {};
@@ -19,7 +19,9 @@
     function activate() {
       logger.info('Activated Features View');
       vm.work = SubmitWorkService.getCurrent();
+      FeatureService.getFeatures().then(function(features) {
+        vm.work.features = features;
+      });
     }
-
   }
 })();

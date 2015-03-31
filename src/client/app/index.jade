@@ -1,6 +1,4 @@
 - var scripts = []
-- if (stubs) scripts.push('/bower_components/angular-mocks/angular-mocks')
-- if (!stubs) scripts.push('/src/client/nostubs/project.nostub')
 - scripts.push('/src/client/app/app.module')
 - scripts.push('constants')
 - scripts.push('/src/client/app/blocks/exception/exception.module')
@@ -9,8 +7,8 @@
 - scripts.push('/src/client/app/core/resource/resource.module')
 - scripts.push('/src/client/app/core/resource/resource.api.service')
 - scripts.push('/src/client/app/core/resource/resource.data.provider')
-- scripts.push('/src/client/app/work-request/work-request.module')
 - scripts.push('/src/client/app/core/core.module')
+- scripts.push("/src/client/app/login/scripts/login.module")
 - scripts.push('/src/client/app/layout/scripts/layout.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
@@ -55,35 +53,26 @@
 - css.push("login/styles/login")
 - landscapeCSS.push("login/styles/login.landscape")
 - desktopCSS.push("login/styles/login.desktop")
-- scripts.push("/src/client/app/login/scripts/login.module")
 - scripts.push("/src/client/app/login/scripts/login.controller")
 - scripts.push("/src/client/app/login/scripts/login.route")
+- scripts.push("/src/client/app/login/scripts/login.service")
 
-//- Project
-- if (stubs) scripts.push('/src/client/app/project/project.stub')
-- css.push("project/project")
-- scripts.push('/src/client/app/project/create/scripts/create.module')
-- scripts.push('/src/client/app/project/manage/scripts/manage.module')
-- scripts.push('/src/client/app/project/project.module')
-- scripts.push('/src/client/app/project/create/scripts/create.controller')
-- scripts.push('/src/client/app/project/create/scripts/create.route')
-- scripts.push('/src/client/app/project/create/scripts/home.controller')
-- scripts.push('/src/client/app/project/submit/scripts/submit.controller')
-- scripts.push('/src/client/app/project/manage/scripts/lookandFeel.filter')
-- scripts.push('/src/client/app/project/manage/scripts/screens.filter')
-- scripts.push('/src/client/app/project/manage/scripts/manage.route')
-- scripts.push('/src/client/app/project/manage/scripts/multiple.controller')
-- scripts.push('/src/client/app/project/manage/scripts/single.controller')
-- scripts.push('/src/client/app/project/project.service')
+//- work request
+- scripts.push("/src/client/app/work-request/work-request.module")
+
+//- features
+- scripts.push("/src/client/app/feature/feature.module")
+- scripts.push("/src/client/app/feature/feature.service")
 
 //- submit work
-include submit-work/includes.jade
+include submit-work/includes
+
 - scripts       = scripts.concat(jsFiles)
 - css           = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
 - desktopCSS    = desktopCSS.concat(desktopFiles)
 
-include bowers.jade
+include bowers
 
 doctype html
 html(ng-app='app')
@@ -94,6 +83,7 @@ html(ng-app='app')
       .ng-hide {
         display: none !important;
       }
+
     title(ng-bind='title') Appiro Work Platform
 
     meta(charset='utf-8')
@@ -131,6 +121,8 @@ html(ng-app='app')
     each path in bowers
       script(src= path + ".js", type="text/javascript")
     // endbuild
+
+    script(src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js", type="text/javascript")
 
     // build:js js/app.js
     each path in scripts

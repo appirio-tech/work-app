@@ -10,6 +10,7 @@ var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 var colors = $.util.colors;
+var env = $.util.env;
 var port = process.env.PORT || config.defaultPort;
 
 /**
@@ -173,7 +174,12 @@ gulp.task('templatecache', ['jade'], function () {
 gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   log('Wire up css into the html, after files are ready');
 
-  startTests(true /*singleRun*/, done);
+  if (env.skiptests) {
+    done();
+  } else {
+    startTests(true /*singleRun*/, done);
+  }
+
   //done();
 });
 
@@ -264,12 +270,13 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the custom javascript
     .pipe(jsAppFilter)
     .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify())
+    .pipe($.uglify({mangle: false, compress: false}))
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.uglify()) // another option is to override wiredep to use min files
+    .pipe($.ngAnnotate({add: true}))
+    .pipe($.uglify({mangle: false, compress: false})) // another option is to override wiredep to use min files
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())

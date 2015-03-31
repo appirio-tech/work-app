@@ -143,9 +143,14 @@ AWS_BUCKET=
 AWS_KEY=
 AWS_REGION=
 AWS_SECRET=
-USE_STUBS=true
 BASE_URL=/
 AWS_CDN_URL=
+BASE_API_URL=
+AUTH0_CLIENT_ID=
+AUTH0_DOMAIN=
+RET_URL=
+CALLBACK_URL=
+NODE_ENV=
 
 # Jade
 
@@ -155,8 +160,12 @@ Jade is used as the template rendering engine.  Please keep files with relevant 
 
 ## Global Variables:
 
-stubs: should the test stub files be included.  Uses USE_STUBS
 baseUrl: The base url.  in prod it's /work/.  Uses BASE_URL
+apiUrl: The base url for the API.  Defaults to /v3/.  Uses BASE_API_URL.
+auth0ClientId: The Auth0 Client ID.  
+auth0Domain: The Auth0 domain.  Defaults to topcoder-dev.auth0.com. Uses AUTH0_DOMAIN.
+retUrl: The URL which the Authorization service sends the after login.  Uses RET_URL
+callbackUrl: The callback url for auth0.  Defaults to http://api.topcoder-dev.com/pub/callback.html.  Uses CALLBACK_URL.
 
 # Base API
 

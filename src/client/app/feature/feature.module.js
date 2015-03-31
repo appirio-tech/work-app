@@ -1,10 +1,8 @@
 (function () {
   'use strict';
 
-  angular.module('app.project.core', [
+  angular.module('app.feature', [
     'app.core',
-    'ngMessages',
-    'projectMock',
     'app.constants'
   ]);
 
