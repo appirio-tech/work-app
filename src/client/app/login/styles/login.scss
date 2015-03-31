@@ -4,6 +4,8 @@
   text-align: center;
 
   form {
+    @include main-restricted();
+
     .error {
       text-align: left;
     }
