@@ -1,3 +1,4 @@
+var work;
 (function () {
   'use strict';
 
@@ -8,7 +9,7 @@
   SubmitWorkService.$inject = ['exception', '$state', 'ApiResource'];
   /* @ngInject */
   function SubmitWorkService(exception, $state, ApiResource) {
-    var defaultWork = {
+    var defaultWork = work = {
       name: '',
       type: false,
       usersDescription: '',
