@@ -150,7 +150,7 @@ module.exports = function () {
       nodeModules + '/mocha-clean/index.js',
       nodeModules + '/sinon-chai/lib/sinon-chai.js'
     ],
-    specHelpers: [client + 'test-helpers/*.js', 'test-globals.js'],
+    specHelpers: [client + 'test-helpers/*.js', clientApp + '**/*.stubs.js'],
     specs: [clientApp + '**/*.spec.js'],
 
     /**
