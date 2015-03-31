@@ -1,10 +1,9 @@
-header(role="heading")
-  h1 About your project
+.type
+  h2 About your project
 
-main
+  h3 What type of project do you need?
+
   form
-    h2 What type of project do you need?
-
     ul.project-types
       li
         label(for="project-type-design") Design
@@ -44,4 +43,3 @@ main
 
     button.submit(type="submit", ng-click="vm.next()") Next
 
-nav(role="navigation", "ng-submit-work-nav"=true)

@@ -1,15 +1,18 @@
 @import "../core/styles/combined";
 
 .layout-main.submit-work {
+
+  main {
+    text-align: center;
+  }
+
   nav {
     background-color: $mercury;
   }
 
-  h2 {
-    text-align: center;
-  }
-
   form {
+    margin-top: $margin-18;
+
     button.submit {
       width: 280px;
     }

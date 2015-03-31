@@ -1,7 +1,6 @@
-header(role="heading")
-  h1 About your project
+.competitors
+  h2 About your project
 
-main
   form
     label(for="project-competitors") Name some similar or competitors apps:
 
@@ -19,5 +18,3 @@ main
         button.remove-competitor(ng-click="vm.project.competitors.splice($index, 1)") x
 
     button.submit(type="submit", ng-click="vm.next()") Next
-
-nav(role="navigation", "ng-submit-work-nav"=true)

@@ -1,11 +1,16 @@
-header(role="heading")
-  h1 About your project
+.name
+  h2 About your project
 
-main
   form
     label(for="name-your-project") Name your project:
     input#name-your-project(type="text", placeholder="My Project", required=true, ng-model="vm.work.name")
 
+<<<<<<< HEAD
     button.submit(type="submit", ng-click="vm.next()") Next
 
 nav(role="navigation", "ng-submit-work-nav"=true)
+=======
+    input#name-your-project(type="text", placeholder="My Project", required=true)
+
+    button.submit(type="submit") Next
+>>>>>>> [DEM-138] infinite scroll
