@@ -11,7 +11,7 @@
   function SubmitElevatorPitchController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Elevator Pitch';
-    vm.wor = {};
+    vm.work = {};
     vm.next = SubmitWorkService.next('about-competitors');
 
     activate();
