@@ -11,14 +11,39 @@
   function SubmitTypeController(logger, SubmitWorkService, $state) {
     var vm = this;
     vm.title = 'Type';
-    vm.project = {};
-    vm.next = SubmitWorkService.next('about-brief');
+    vm.work = {};
+    vm.select = select;
+    vm.designButtonStyle = '';
+    vm.codeButtonStyle = '';
+    vm.bothButtonStyle = '';
+    vm.next = SubmitWorkService.next('about-elevator-pitch');
 
     activate();
 
     function activate() {
       logger.info('Activated Type View');
-      vm.project = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.getCurrent();
+    }
+
+    function select(type) {
+      vm.work.type = type;
+      switch (type) {
+        case 'design':
+          vm.designButtonStyle = 'selected';
+          vm.codeButtonStyle = '';
+          vm.bothButtonStyle = '';
+          break;
+        case 'code':
+          vm.designButtonStyle = '';
+          vm.codeButtonStyle = 'selected';
+          vm.bothButtonStyle = '';
+          break;
+        case 'both':
+          vm.designButtonStyle = '';
+          vm.codeButtonStyle = '';
+          vm.bothButtonStyle = 'selected';
+          break;
+      }
     }
 
   }

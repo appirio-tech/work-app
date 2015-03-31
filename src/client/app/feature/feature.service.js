@@ -9,15 +9,15 @@
   /* @ngInject */
   function FeatureService($q) {
     var features= [
-      {name: "Email/Username Login", explanation: "", description: "Description"},
-      {name: "Social Login", explanation: "", description: "Description"},
-      {name: "Profiles", explanation: "", description: "Description"},
-      {name: "Accept Payments", explanation: "", description: "Description"},
-      {name: "Ratings/Reviews", explanation: "", description: "Description"},
-      {name: "Location-based or Navigation Element", explanation: "", description: "Description"},
-      {name: "Sharing Functions", explanation: "", description: "Description"},
-      {name: "An API", explanation: "", description: "Description"},
-      {name: "Search", explanation: "", description: "Description"}
+      {id: 'login', name: "Email/Username Login", explanation: "", description: "Login with an email or username", selected: false},
+      {id: 'social-login', name: "Social Login", explanation: "", description: "Login with Twitter, Facebook, LinkedIn, or Google", selected: false},
+      {id: 'profiles', name: "Profiles", explanation: "", description: "People can enter information about themselves", selected: false},
+      {id: 'accept-payments', name: "Accept Payments", explanation: "", description: "Accept credit cards, PayPal, Bitcoin", selected: false},
+      {id: 'ratings', name: "Ratings/Reviews", explanation: "", description: "People leave reviews and/or rate things", selected: false},
+      {id: 'location', name: "Location-based or Navigation Element", explanation: "", description: "Location-based or Navigation Element", selected: false},
+      {id: 'sharing', name: "Sharing Functions", explanation: "", description: "Share on Twitter, Facebook, Email", selected: false},
+      {id: 'api', name: "An API", explanation: "", description: "Data can be connected with a website or other", selected: false},
+      {id: 'search', name: "Search", explanation: "", description: "People can search/browse/filter", selected: false}
     ];
 
     var service = {

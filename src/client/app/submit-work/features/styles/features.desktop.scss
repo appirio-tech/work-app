@@ -9,5 +9,6 @@
     height     : $height - ($padding-15 * 2);
     margin-left: -$width / 2;
     margin-top : -$height / 2;
+    display: none;
   }
 }

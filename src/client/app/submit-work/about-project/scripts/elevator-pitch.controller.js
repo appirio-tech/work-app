@@ -6,14 +6,20 @@
     .module('app.submit-work')
     .controller('SubmitElevatorPitchController', SubmitElevatorPitchController);
 
-  SubmitElevatorPitchController.$inject = ['logger'];
+  SubmitElevatorPitchController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
-  function SubmitElevatorPitchController(logger) {
+  function SubmitElevatorPitchController(logger, $state, SubmitWorkService) {
     var vm = this;
     vm.title = 'Elevator Pitch';
+    vm.wor = {};
+    vm.next = SubmitWorkService.next('about-competitors');
+
+    activate();
 
     function activate() {
       logger.info('Activated Elevator Pitch View');
+      vm.work = SubmitWorkService.getCurrent();
     }
+
   }
 })();
