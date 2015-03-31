@@ -58,6 +58,11 @@
             controller: 'SubmitFeaturesController',
             controllerAs: 'vm'
           },
+          'designs': {
+            templateUrl: 'submit-work/designs/views/designs.html',
+            controller: 'SubmitDesignsController',
+            controllerAs: 'vm'
+          },
           'estimate': {
             templateUrl: 'submit-work/launch/views/estimate.html',
             controller: 'SubmitEstimateController',
