@@ -2,6 +2,10 @@
 @import "bourbon";
 
 form {
+  label {
+    font-weight: bold;
+  }
+
   input, textarea {
     margin-top: $margin-18;
     width     : 100%;
@@ -9,6 +13,10 @@ form {
     border    : $border-1 solid $slate-gray;
     font-size : $font-15;
     box-sizing: border-box;
+  }
+
+  input[type=checkbox] {
+    width: initial;
   }
 
   input {

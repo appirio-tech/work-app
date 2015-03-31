@@ -1,0 +1,43 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work.features {
+  main {
+    ul {
+      li {
+        margin-top: $margin-18;
+        margin-left: $margin-22;
+
+        input[type="checkbox"]{
+          position: absolute;
+          margin-left: -$margin-22;
+        }
+
+        .label-example {
+          a {
+            font-size: $font-10;
+            margin-left: $margin-5;
+          }
+        }
+
+        .desc{
+          margin: $margin-5 0 0 0;
+        }
+      }
+    }
+
+    > * {
+      @include main-restricted();
+    }
+  }
+
+  .layout-modal.example {
+    $width: 320px;
+    $height: 480px;
+
+    padding    : $padding-15 $padding-20;
+    width      : $width - ($padding-20 * 2);
+    height     : $height - ($padding-15 * 2);
+    margin-left: -$width / 2;
+    margin-top : -$height / 2;
+  }
+}

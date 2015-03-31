@@ -5,25 +5,15 @@
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['$q', '$http', '$location', 'exception', 'logger', '$state', 'ApiResource'];
+  SubmitWorkService.$inject = ['exception', '$state', 'ApiResource'];
   /* @ngInject */
-  function SubmitWorkService($q, $http, $location, exception, logger, $state, ApiResource) {
+  function SubmitWorkService(exception, $state, ApiResource) {
     var defaultWork = {
       name: '',
       type: false,
       usersDescription: '',
       competitors: [],
-      features: [
-        {name: "Email/Username Login", explanation: "", description: "Description"},
-        {name: "Social Login", explanation: "", description: "Description"},
-        {name: "Profiles", explanation: "", description: "Description"},
-        {name: "Accept Payments", explanation: "", description: "Description"},
-        {name: "Ratings/Reviews", explanation: "", description: "Description"},
-        {name: "Location-based or Navigation Element", explanation: "", description: "Description"},
-        {name: "Sharing Functions", explanation: "", description: "Description"},
-        {name: "An API", explanation: "", description: "Description"},
-        {name: "Search", explanation: "", description: "Description"}
-      ]
+      features: []
     };
 
     var service = {
@@ -61,6 +51,5 @@
           exception(e);
         });
     }
-
   }
 })();
