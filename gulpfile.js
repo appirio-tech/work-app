@@ -269,14 +269,14 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify({mangle: false}))
+    //.pipe($.ngAnnotate({add: true}))
+    .pipe($.uglify({mangle: false, compress: false}))
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify({mangle: false})) // another option is to override wiredep to use min files
+    //.pipe($.ngAnnotate({add: true}))
+    .pipe($.uglify({mangle: false, compress: false})) // another option is to override wiredep to use min files
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())
