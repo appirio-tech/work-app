@@ -9,13 +9,12 @@
 - features.push({ id: 'api',  label: 'An API', desc: 'Data can be connected with a website or other' })
 - features.push({ id: 'search',  label: 'Search', desc: 'People can search/browse/filter' })
 
-header(role="heading")
-  h1 What features does your app need?
+.features
+  h2 What features does your app need?
 
-main
+  h3 Choose features and describe it.
+
   form
-    h2 Choose features and describe it.
-
     ul
       each feature in features
         - id = 'feature-' + feature.id
@@ -34,17 +33,14 @@ main
 
     button.submit(type="submit", ng-click="vm.next()") Next
 
-nav(role="navigation", "ng-submit-work-nav"=true)
+  .example.layout-modal
 
+    a.close(href="#", onclick)
 
-.example.layout-modal
+    img(src="/submit-work/images/iphone.png")
 
-  a.close(href="#", onclick)
-
-  img(src="/submit-work/images/iphone.png")
-
-style.
-  /* need to remove this when integrating with controller */
-  .overlay, .layout-modal {
-    display: block;
-  }
+  style.
+    /* need to remove this when integrating with controller */
+    .overlay, .layout-modal {
+      display: none;
+    }
