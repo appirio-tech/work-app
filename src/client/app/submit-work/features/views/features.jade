@@ -9,38 +9,38 @@
 - features.push({ id: 'api',  label: 'An API', desc: 'Data can be connected with a website or other' })
 - features.push({ id: 'search',  label: 'Search', desc: 'People can search/browse/filter' })
 
-.features
-  h2 What features does your app need?
 
-  h3 Choose features and describe it.
+h2 What features does your app need?
 
-  form
-    ul
-      each feature in features
-        - id = 'feature-' + feature.id
+h3 Choose features and describe it.
 
-        li
-          input(id=id, type="checkbox")
+form
+  ul
+    each feature in features
+      - id = 'feature-' + feature.id
 
-          .label-example
-            label(for=id)!= feature.label
+      li
+        input(id=id, type="checkbox")
 
-            a(href='#') (example)
+        .label-example
+          label(for=id)!= feature.label
 
-          .desc!= feature.desc
+          a(href='#') (example)
 
-          textarea(placeholder="explain briefly (optional)")
+        .desc!= feature.desc
 
-    button.submit(type="submit", ng-click="vm.next()") Next
+        textarea(placeholder="explain briefly (optional)")
 
-  .example.layout-modal
+  button.submit(type="submit", ng-click="vm.next()") Next
 
-    a.close(href="#", onclick)
+.example.layout-modal
 
-    img(src="/submit-work/images/iphone.png")
+  a.close(href="#", onclick)
 
-  style.
-    /* need to remove this when integrating with controller */
-    .overlay, .layout-modal {
-      display: none;
-    }
+  img(src="/submit-work/images/iphone.png")
+
+style.
+  /* need to remove this when integrating with controller */
+  .overlay, .layout-modal {
+    display: none;
+  }

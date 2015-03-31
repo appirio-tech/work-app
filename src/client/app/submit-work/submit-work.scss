@@ -1,20 +1,28 @@
 @import "../core/styles/combined";
 
 .layout-main.submit-work {
-
   main {
     text-align: center;
+    max-width: 784px;
+
+    article {
+      margin-top: $margin-18;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      form {
+        margin-top: $margin-12;
+
+        button.submit {
+          width: 280px;
+        }
+      }
+    }
   }
 
   nav {
     background-color: $mercury;
-  }
-
-  form {
-    margin-top: $margin-18;
-
-    button.submit {
-      width: 280px;
-    }
   }
 }

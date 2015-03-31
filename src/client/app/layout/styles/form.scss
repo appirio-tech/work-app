@@ -7,12 +7,11 @@ form {
   }
 
   input, textarea {
-    margin-top: $margin-18;
+    margin-top: $margin-12;
     width     : 100%;
     padding   : $padding-9;
     border    : $border-1 solid $slate-gray;
     font-size : $font-15;
-    box-sizing: border-box;
   }
 
   input[type=checkbox] {
@@ -23,7 +22,7 @@ form {
     padding-right: $padding-40;
 
     &.valid, &:valid {
-      background-position: -59px -68px;
+      background-position: -39px -68px;
     }
 
     &:first-child {
@@ -31,7 +30,7 @@ form {
     }
 
     &.invalid, &:invalid {
-      background-position: 16px -143px;
+      background-position: 36px -143px;
     }
 
     &:optional {
@@ -53,7 +52,7 @@ form {
     width           : 100%;
     font-size       : $font-18;
     background-color: $celery;
-    margin-top      : $margin-18;
+    margin-top      : $margin-12;
     border-radius   : $border-radius-3;
     border          : none;
     color           : $white;

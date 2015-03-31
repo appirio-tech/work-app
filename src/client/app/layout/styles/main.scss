@@ -12,7 +12,12 @@
 
 html {
   min-height: 100%;
-  font-size: 10px;
+  font-size : 10px;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -71,6 +76,8 @@ a {
 
 .layout-main {
   background-color: $white;
+  max-width       : 1024px;
+  margin          : 0 auto;
 
   header {
     h1 {
@@ -85,8 +92,9 @@ a {
     padding: $padding-18 $padding-10;
   }
 
-  main {
+  > main {
     @include main-restricted();
+    width: 320px;
   }
 
   footer {
