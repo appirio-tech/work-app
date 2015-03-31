@@ -11,6 +11,34 @@
     vm.title = 'Login';
     vm.loggedInUser = '';
 
+    // auth0 login form
+    var lock = new Auth0Lock(auth0ClientId, auth0Domain);
+    vm.signin = function () {
+      var state = encodeURIComponent('retUrl=' + retUrl);
+      lock.show({
+        callbackURL: callbackUrl,
+        responseType: 'code',
+        connections: ['LDAP'],
+        authParams: {
+          scope: 'openid profile offline_access',
+          state: state
+        },
+        usernameStyle: 'username'
+      });
+    };
+
+    vm.signout = function () {
+      var promise = LoginService.logout();
+      promise.then(function (response) {
+        if (200 == response.status) {
+          vm.loggedInUser = '';
+        }
+        $location.url('/');
+      });
+    };
+
+    activate();
+
     function activate() {
       logger.info('Activated Login View');
 
@@ -41,34 +69,6 @@
           vm.loggedInUser = data.handle;
         });
       }
-    }
-
-    activate();
-
-    // auth0 login form
-    var lock = new Auth0Lock(auth0ClientId, auth0Domain);
-    $scope.signin = function () {
-      var state = encodeURIComponent('retUrl=' + retUrl);
-      lock.show({
-        callbackURL: callbackUrl,
-        responseType: 'code',
-        connections: ['LDAP'],
-        authParams: {
-          scope: 'openid profile offline_access',
-          state: state
-        },
-        usernameStyle: 'username'
-      });
-    };
-
-    $scope.signout = function () {
-      var promise = LoginService.logout();
-      promise.then(function (response) {
-        if (200 == response.status) {
-          vm.loggedInUser = '';
-        }
-        $location.url('/');
-      });
     }
   }
 })();
