@@ -34,6 +34,7 @@
           vm.loggedInUser = '';
         }
         $location.url('/');
+        localstorage.removeItem('userJWTToken');
       });
     };
 
