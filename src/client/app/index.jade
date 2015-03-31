@@ -122,6 +122,9 @@ html(ng-app='app')
       script(src= path + ".js", type="text/javascript")
     // endbuild
 
+    each path in cnds
+      script(src=path + ".js", type="text/javascript")
+
     // build:js js/app.js
     each path in scripts
       script(src=path + ".js", type="text/javascript")
