@@ -13,7 +13,7 @@
 
     // auth0 login form
     var lock = new Auth0Lock(auth0ClientId, auth0Domain);
-    vm.signin = function () {
+    $scope.signin = function () {
       var state = encodeURIComponent('retUrl=' + retUrl);
       lock.show({
         callbackURL: callbackUrl,
@@ -27,7 +27,7 @@
       });
     };
 
-    vm.signout = function () {
+    $scope.signout = function () {
       var promise = LoginService.logout();
       promise.then(function (response) {
         if (200 == response.status) {
@@ -42,6 +42,8 @@
     function activate() {
       logger.info('Activated Login View');
 
+      decodeJwt();
+
       //set parameter passed JWT token and remove if any.
       var userJWTToken = getParameterByName('userJWTToken')
       //logger.info("userJWTToken : " +userJWTToken);
@@ -50,7 +52,6 @@
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + userJWTToken;
         var clean_uri = location.protocol + "//" + location.host + location.pathname;
         window.history.replaceState({}, document.title, clean_uri);
-        decodeJwt();
       }
     }
 
