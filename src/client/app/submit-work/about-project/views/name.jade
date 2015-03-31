@@ -1,16 +1,8 @@
-.name
-  h2 About your project
+h2 About your project
 
-  form
-    label(for="name-your-project") Name your project:
-    input#name-your-project(type="text", placeholder="My Project", required=true, ng-model="vm.work.name")
+form
+  label(for="name-your-project") Name your project:
 
-<<<<<<< HEAD
-    button.submit(type="submit", ng-click="vm.next()") Next
+  input#name-your-project(type="text", placeholder="My Project", required=true, ng-model="vm.work.name")
 
-nav(role="navigation", "ng-submit-work-nav"=true)
-=======
-    input#name-your-project(type="text", placeholder="My Project", required=true)
-
-    button.submit(type="submit") Next
->>>>>>> [DEM-138] infinite scroll
+  button.submit(type="submit", ng-click="vm.next()") Next

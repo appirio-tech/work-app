@@ -1,55 +1,23 @@
-<<<<<<< HEAD
-header(role="heading")
-  h1 What features does your app need?
-=======
-- features = []
-- features.push({ id: 'login', label: 'Email/Username Login', desc: 'Login with an email or username' })
-- features.push({ id: 'social-login',  label: 'Social Login', desc: 'Login with Twitter, Facebook, LinkedIn, or Google' })
-- features.push({ id: 'profiles',  label: 'Profiles', desc: 'People can enter information about themselves' })
-- features.push({ id: 'accept-payments',  label: 'Accept Payments', desc: 'Accept credit cards, PayPal, Bitcoin' })
-- features.push({ id: 'ratings',  label: 'Ratings/Reviews', desc: 'People leave reviews and/or rate things' })
-- features.push({ id: 'location',  label: 'Location-based or Navigation Element', desc: 'A map, GPS tracking' })
-- features.push({ id: 'sharing',  label: 'Sharing Functions', desc: 'Share on Twitter, Facebook, Email' })
-- features.push({ id: 'api',  label: 'An API', desc: 'Data can be connected with a website or other' })
-- features.push({ id: 'search',  label: 'Search', desc: 'People can search/browse/filter' })
+h2 What features does your app need?
 
-.features
-  h2 What features does your app need?
->>>>>>> [DEM-138] infinite scroll
+h3 Choose features and describe it.
 
-  h3 Choose features and describe it.
+form
+  ul
+    li(ng-repeat="feature in vm.work.features")
+      input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
 
-  form
-    ul
-      li(ng-repeat="feature in vm.work.features")
-        input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
+      .label-example
+        label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
-        .label-example
-          label(for="{{'feature-' + feature.id}}") {{feature.name}}
+        a(href='#') (example)
 
-          a(href='#') (example)
+      .desc {{feature.description}}
 
-        .desc {{feature.description}}
+      textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
 
-        textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
+  button.submit(type="submit", ng-click="vm.next()") Next
 
-    button.submit(type="submit", ng-click="vm.next()") Next
+.example.layout-modal
 
-  .example.layout-modal
-
-    a.close(href="#", onclick)
-
-    img(src="/submit-work/images/iphone.png")
-
-<<<<<<< HEAD
-style.
-  /* need to remove this when integrating with controller */
-  .overlay, .layout-modal {
-  }
-=======
-  style.
-    /* need to remove this when integrating with controller */
-    .overlay, .layout-modal {
-      display: none;
-    }
->>>>>>> [DEM-138] infinite scroll
+  a.close(href="#", onclick)

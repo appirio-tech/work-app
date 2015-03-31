@@ -3,10 +3,6 @@
 .layout-main.create-account {
   text-align: center;
 
-  main {
-    @include main-restricted();
-  }
-
   form {
     margin-top: $margin-10;
 
