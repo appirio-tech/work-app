@@ -45,7 +45,7 @@
       decodeJwt();
 
       //set parameter passed JWT token and remove if any.
-      var userJWTToken = getParameterByName('userJWTToken')
+      var userJWTToken = getParameterByName('userJWTToken');
       //logger.info("userJWTToken : " +userJWTToken);
       if (userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
@@ -63,12 +63,14 @@
     }
 
     function decodeJwt() {
-      var decoded = jwtHelper.decodeToken(localStorage.getItem("userJWTToken"));
-      if (decoded && decoded.userId) {
-        var promise = LoginService.getUser(decoded.userId);
-        promise.then(function (data) {
-          vm.loggedInUser = data.handle;
-        });
+      if (localStorage.getItem("userJWTToken")) {
+        var decoded = jwtHelper.decodeToken(localStorage.getItem("userJWTToken"));
+        if (decoded && decoded.userId) {
+          var promise = LoginService.getUser(decoded.userId);
+          promise.then(function (data) {
+            vm.loggedInUser = data.handle;
+          });
+        }
       }
     }
   }

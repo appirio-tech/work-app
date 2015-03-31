@@ -10,9 +10,7 @@
   JwtConfig.$inject = ['$httpProvider', 'jwtInterceptorProvider'];
 
   function JwtConfig($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptor.$inject = ['jwtHelper'];
-
-    function jwtInterceptor(jwtHelper) {
+    function jwtInterceptor() {
       //@TODO handle expired tokens
       return localStorage.getItem('userJWTToken');
     }
