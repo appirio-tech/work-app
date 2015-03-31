@@ -4,6 +4,8 @@
   text-align: center;
 
   form {
+    @include main-restricted();
+
     margin-top: $margin-10;
 
     .error {
