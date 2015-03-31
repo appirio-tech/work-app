@@ -1,7 +1,13 @@
 h2 Price Estimate:
 
-h1 {{vm.estimate}}
+h3 {{vm.estimate}}
 
-input(type="checkbox", ng-model="vm.termsAccepted")
+form
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-button(ng-click="vm.next()") Next
+  input#submit-work-accept-terms(type="checkbox", ng-model="vm.termsAccepted")
+
+  label(for="submit-work-accept-terms") Accept
+    a(href="#") {{ ' ' + 'Terms and Conditions' }}
+
+  button.submit(ng-click="vm.next()") Launch Project
