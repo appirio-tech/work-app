@@ -21,6 +21,10 @@
       ul {
         margin: 0 0 0 $margin-18;
         font-size: $font-12;
+
+        .completed {
+          color: green;
+        }
       }
     }
   }
