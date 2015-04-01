@@ -3,57 +3,58 @@
 
   angular
     .module('app.resource')
-    .provider('data', data);
+    .provider('data', dataProvider);
 
-  data.$inject = ['ApiResource'];
+  dataProvider.$inject = [];
 
-  function data() {
-    return {
-      list : function (resource, query) {
-        return [
-          'data',
-          function (data) {  // inject the data service
-            return data.list(resource, query);
-          }
-        ]
-      },
+  function dataProvider() {
+    this.list = function (resource, query) {
+      return [
+        'data',
+        function (data) {  // inject the data service
+          return data.list(resource, query);
+        }
+      ]
+    };
 
-      get: function (resource, query) {
-        return [
-          'data',
-          function(data) {
-            return data .get(resource, query);
-          }
-        ]
-      },
+    this.get = function (resource, query) {
+      return [
+        'data',
+        function(data) {
+          return data .get(resource, query);
+        }
+      ]
+    };
 
-      $get: function (ApiResource) {
+    this.$get = Data;
 
-        var data = {
+    Data.inject = ['ApiResource'];
 
-          list: function (resource, query) {
-            return ApiResource[resource].query(query).$promise;
-          },
+    function Data(ApiResource) {
+      var data = {
 
-          get : function (resource, query) {
-            return ApiResource[resource].get(query).$promise;
-          },
+        list: function (resource, query) {
+          return ApiResource[resource].query(query).$promise;
+        },
 
-          create : function (resource, model) {
-            return ApiResource[resource].save(model).$promise;
-          },
+        get : function (resource, query) {
+          return ApiResource[resource].get(query).$promise;
+        },
 
-          update : function (resource, model) {
-            return ApiResource[resource].update(model).$promise;
-          },
+        create : function (resource, model) {
+          return ApiResource[resource].save(model).$promise;
+        },
 
-          remove : function (resource, model) {
-            return data.remove(resource, model).$promise;
-          }
-        };
+        update : function (resource, model) {
+          return ApiResource[resource].update(model).$promise;
+        },
 
-        return data;
-      }
+        remove : function (resource, model) {
+          return data.remove(resource, model).$promise;
+        }
+      };
+
+      return data;
     }
   }
-});
+})();
