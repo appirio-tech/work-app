@@ -19,7 +19,6 @@
         .then(getUserComplete)
         .catch(function (message) {
           exception.catcher('XHR Failed for getUser')(message);
-          $state.reload();
         });
 
       function getUserComplete(data, status, headers, config) {

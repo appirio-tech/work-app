@@ -4,9 +4,9 @@
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$state', '$scope', '$http', '$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
+  LoginController.$inject = ['$state', '$scope', '$stateParams', '$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
   /* @ngInject */
-  function LoginController($state, $scope, $http, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
+  function LoginController($state, $scope, $stateParams, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
@@ -14,7 +14,7 @@
     // auth0 login form
     var lock = new Auth0Lock(auth0ClientId, auth0Domain);
     $scope.signin = function () {
-      var state = encodeURIComponent('retUrl=' + retUrl);
+      var state = encodeURIComponent('retUrl=' + retUrl + '&setParam=true');
       console.log('retUrl', retUrl);
       lock.show({
         callbackURL: callbackUrl,
@@ -51,9 +51,7 @@
       //logger.info("userJWTToken : " +userJWTToken);
       if (userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
-        $http.defaults.headers.common['Authorization'] = 'Bearer ' + userJWTToken;
-        var clean_uri = location.protocol + "//" + location.host + location.pathname;
-        window.history.replaceState({}, document.title, clean_uri);
+        $location.search('userJWTToken', null);
       }
     }
 
