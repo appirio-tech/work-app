@@ -12,6 +12,9 @@
     var vm = this;
     vm.title = 'Designs';
     vm.work = {};
+    vm.imageFilenames = [];
+    vm.filename = '';
+    vm.add = add;
     vm.next = SubmitWorkService.next('launch-estimate');
 
     activate();
@@ -19,6 +22,11 @@
     function activate() {
       logger.info('Activated Designs View');
       vm.work = SubmitWorkService.getCurrent();
+    }
+
+    function add() {
+      vm.imageFilenames.push(vm.filename);
+      vm.filename = '';
     }
 
   }
