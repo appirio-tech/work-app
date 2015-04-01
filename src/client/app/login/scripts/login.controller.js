@@ -15,6 +15,7 @@
     var lock = new Auth0Lock(auth0ClientId, auth0Domain);
     $scope.signin = function () {
       var state = encodeURIComponent('retUrl=' + retUrl);
+      console.log('retUrl', retUrl);
       lock.show({
         callbackURL: callbackUrl,
         responseType: 'code',

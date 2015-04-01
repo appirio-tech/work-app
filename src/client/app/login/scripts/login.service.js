@@ -5,9 +5,9 @@
     .module('app.login')
     .factory('LoginService', LoginService);
 
-  LoginService.$inject = ['$q', '$http', '$location', '$state', 'exception', 'logger', 'apiUrl'];
+  LoginService.$inject = ['$q', '$http', '$location', '$state', '$window', 'exception', 'logger', 'apiUrl'];
   /* @ngInject */
-  function LoginService($q, $http, $location, $state, exception, logger, apiUrl) {
+  function LoginService($q, $http, $location, $state, $window, exception, logger, apiUrl) {
     var service = {
       getUser: getUser,
       logout: logout
