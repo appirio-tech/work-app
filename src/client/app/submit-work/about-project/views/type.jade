@@ -1,47 +1,44 @@
-header(role="heading")
-  h1 About your project
+h2 About your project
 
-main
-  form
-    h2 What type of project do you need?
+h3 What type of project do you need?
 
-    ul.project-types
-      li
-        label(for="project-type-design") Design
+form
+  ul.project-types
+    li
+      label(for="project-type-design") Design
 
-        button#project-type-design(class="{{vm.designButtonStyle}}", ng-click="vm.select('design')")
-          .starting-at starting at
+      button#project-type-design(class="{{vm.designButtonStyle}}", ng-click="vm.select('design')")
+        .starting-at starting at
 
-          .price $3,000
+        .price $3,000
 
-          .duration 1 week
+        .duration 1 week
 
-        .description I need a mobile app designed.
+      .description I need a mobile app designed.
 
-      li
-        label(for="project-type-code") Code
+    li
+      label(for="project-type-code") Code
 
-        button#project-type-code(class="{{vm.codeButtonStyle}}", ng-click="vm.select('code')")
-          .starting-at starting at
+      button#project-type-code(class="{{vm.codeButtonStyle}}", ng-click="vm.select('code')")
+        .starting-at starting at
 
-          .price $3,000
+        .price $3,000
 
-          .duration 2 weeks
+        .duration 2 weeks
 
-        .description I have a design and I need a mobile app created from it.
+      .description I have a design and I need a mobile app created from it.
 
-      li
-        label(for="project-type-design-code") Design + Code
+    li
+      label(for="project-type-design-code") Design + Code
 
-        button#project-type-design-code(class="{{vm.bothButtonStyle}}", ng-click="vm.select('both')")
-          .starting-at starting at
+      button#project-type-design-code(class="{{vm.bothButtonStyle}}", ng-click="vm.select('both')")
+        .starting-at starting at
 
-          .price $3,000
+        .price $3,000
 
-          .duration 3 weeks
+        .duration 3 weeks
 
-        .description I have an idea for a mobile app and I need it designed and built.
+      .description I have an idea for a mobile app and I need it designed and built.
 
-    button.submit(type="submit", ng-click="vm.next()") Next
+  button.submit(type="submit", ng-click="vm.next()") Next
 
-nav(role="navigation", "ng-submit-work-nav"=true)

@@ -1,23 +1,19 @@
-header(role="heading")
-  h1 About your project
+h2 About your project
 
-main
-  form
-    label(for="project-competitors") Name some similar or competitors apps:
+form
+  label(for="project-competitors") Name some similar or competitors apps:
 
-    fieldset
-      input#project-competitors(type="text", placeholder="Facebook Messenger", ng-model="vm.appName")
+  fieldset
+    input#project-competitors(type="text", placeholder="Facebook Messenger", ng-model="vm.appName")
 
-      button.add-competitor(ng-click="vm.add()") +
+    button.add-competitor(ng-click="vm.add()") +
 
-    h6 Similar Apps
+  h6 Similar Apps
 
-    ul.added-competitors
-      li(ng-repeat="appName in vm.project.competitorApps")
-        .competitor {{appName}}
+  ul.added-competitors
+    li(ng-repeat="appName in vm.project.competitorApps")
+      .competitor {{appName}}
 
-        button.remove-competitor(ng-click="vm.project.competitorApps.splice($index, 1)") x
+      button.remove-competitor(ng-click="vm.project.competitorApps.splice($index, 1)") x
 
-    button.submit(type="submit", ng-click="vm.next()") Next
-
-nav(role="navigation", "ng-submit-work-nav"=true)
+  button.submit(type="submit", ng-click="vm.next()") Next

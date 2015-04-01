@@ -1,0 +1,19 @@
+- views = []
+- views.push('name')
+- views.push('type')
+- views.push('brief')
+- views.push('elevator-pitch')
+- views.push('competitors')
+- views.push('users')
+- views.push('features')
+- views.push('designs')
+- views.push('estimate')
+
+header
+  h1 Submit Work Flow
+
+main
+  - each view in views
+    article(ui-view=view, class=view)
+
+nav(role="navigation", "ng-submit-work-nav"=true)

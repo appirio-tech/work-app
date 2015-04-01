@@ -1,33 +1,32 @@
 @import "../../../core/styles/combined";
 
-.layout-main.submit-work.features {
-  main {
-    ul {
-      li {
-        margin-top: $margin-18;
-        margin-left: $margin-22;
+.layout-main.submit-work .features {
+  ul {
+    li {
+      text-align: left;
+      margin-top: $margin-18;
+      margin-left: $margin-22;
 
-        input[type="checkbox"]{
-          position: absolute;
-          margin-left: -$margin-22;
-        }
+      input[type="checkbox"]{
+        position: absolute;
+        margin-left: -$margin-22;
+      }
 
-        .label-example {
-          a {
-            font-size: $font-10;
-            margin-left: $margin-5;
-          }
-        }
-
-        .desc{
-          margin: $margin-5 0 0 0;
+      .label-example {
+        a {
+          font-size: $font-10;
+          margin-left: $margin-5;
         }
       }
-    }
 
-    > * {
-      @include main-restricted();
+      .desc{
+        margin: $margin-5 0 0 0;
+      }
     }
+  }
+
+  > form {
+    @include main-restricted();
   }
 
   .layout-modal.example {

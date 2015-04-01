@@ -33,13 +33,19 @@
 
 
 @mixin main-restricted() {
-  width  : 280px;
-  margin : 0 auto;
-  display: block;
+  width       : 300px;
+  margin-left : auto;
+  margin-right: auto;
+  display     : block;
 }
 
 @mixin main-restricted-landscape() {
-  width  : 528px;
-  margin : 0 auto;
-  display: block;
+  width       : 548px;
+  margin-left : auto;
+  margin-right: auto;
+  display     : block;
+}
+
+@mixin main-restricted-desktop() {
+  width: 100%;
 }

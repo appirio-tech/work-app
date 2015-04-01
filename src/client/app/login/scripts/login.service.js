@@ -5,9 +5,9 @@
     .module('app.login')
     .factory('LoginService', LoginService);
 
-  LoginService.$inject = ['$q', '$http', '$location', '$state', 'exception', 'logger', 'apiUrl'];
+  LoginService.$inject = ['$http', '$state', 'exception', 'logger', 'apiUrl'];
   /* @ngInject */
-  function LoginService($q, $http, $location, $state, exception, logger, apiUrl) {
+  function LoginService($http, $state, exception, logger, apiUrl) {
     var service = {
       getUser: getUser,
       logout: logout
@@ -19,13 +19,10 @@
         .then(getUserComplete)
         .catch(function (message) {
           exception.catcher('XHR Failed for getUser')(message);
-          $state.reload();
         });
 
       function getUserComplete(data, status, headers, config) {
-        var user = data.data.result.content;
-        console.log('user : ' + user);
-        return user;
+        return data.data.result.content;
       }
     }
 

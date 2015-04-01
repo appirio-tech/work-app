@@ -1,35 +1,29 @@
-header(role="heading")
-  h1 What features does your app need?
+h2 What features does your app need?
 
-main
-  form
-    h2 Choose features and describe it.
+h3 Choose features and describe it.
 
-    ul
-      li(ng-repeat="feature in vm.work.features")
-        input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
+form
+  ul
+    li(ng-repeat="feature in vm.work.features")
+      input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
 
-        .label-example
-          label(for="{{'feature-' + feature.id}}") {{feature.name}}
+      .label-example
+        label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
-          a(href='#') (example)
+        a(href='#') (example)
 
-        .desc {{feature.description}}
+      .desc {{feature.description}}
 
-        textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
+      textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
 
-    button.submit(type="submit", ng-click="vm.next()") Next
-
-nav(role="navigation", "ng-submit-work-nav"=true)
-
+  button.submit(type="submit", ng-click="vm.next()") Next
 
 .example.layout-modal
 
   a.close(href="#", onclick)
 
-  img(src="/submit-work/images/iphone.png")
-
 style.
   /* need to remove this when integrating with controller */
   .overlay, .layout-modal {
+    display: none;
   }

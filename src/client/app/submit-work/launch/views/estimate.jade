@@ -1,7 +1,13 @@
 h2 Price Estimate:
 
-h1 {{vm.estimate}}
+h3 {{vm.estimate}}
 
-input(type="checkbox", ng-model="vm.termsAccepted")
+form
+  p This is our closest estimate for your project based on the information you’ve provided today. When you click "Launch Project," we'll process your info and provide a formal project proposal.
 
-button(ng-click="vm.next()") Next
+  input#submit-work-accept-terms(type="checkbox", ng-model="vm.termsAccepted")
+
+  label(for="submit-work-accept-terms") Accept
+    a(href="#") {{ ' ' + 'Terms and Conditions' }}
+
+  button.submit(ng-click="vm.next()") Launch Project

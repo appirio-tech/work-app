@@ -1,9 +1,7 @@
 @import "../../../core/styles/combined";
 
-.layout-main.submit-work.about.name {
-  main {
-    > * {
-      @include main-restricted();
-    }
+.layout-main.submit-work .name {
+  > form {
+    @include main-restricted();
   }
 }
