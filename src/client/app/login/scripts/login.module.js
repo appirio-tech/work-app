@@ -15,7 +15,7 @@
     function jwtInterceptor(jwtHelper, $http, apiUrl) {
       var idToken = localStorage.getItem('userJWTToken');
 
-      if (idToken) {
+      if (idToken && idToken !== 'undefined') {
         if (jwtHelper.isTokenExpired(idToken)) {
           // This is a promise of a JWT id_token
           // @TODO put this in a service

@@ -4,9 +4,9 @@
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$http', '$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
+  LoginController.$inject = ['$state', '$scope', '$http', '$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
   /* @ngInject */
-  function LoginController($scope, $http, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
+  function LoginController($state, $scope, $http, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
@@ -33,8 +33,8 @@
         if (200 == response.status) {
           vm.loggedInUser = '';
         }
-        $location.url('/');
         localStorage.removeItem('userJWTToken');
+        $state.reload();
       });
     };
 
@@ -64,8 +64,10 @@
     }
 
     function decodeJwt() {
-      if (localStorage.getItem("userJWTToken")) {
-        var decoded = jwtHelper.decodeToken(localStorage.getItem("userJWTToken"));
+      var idToken = localStorage.getItem('userJWTToken');
+
+      if (idToken && idToken !== 'undefined') {
+        var decoded = jwtHelper.decodeToken(idToken);
         if (decoded && decoded.userId) {
           var promise = LoginService.getUser(decoded.userId);
           promise.then(function (data) {
