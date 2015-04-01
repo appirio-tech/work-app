@@ -16,6 +16,13 @@ form
 
       textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
 
+    li
+      .label-example
+        label New Feature
+      input(type="text", ng-model="vm.newFeatureName", placeholder="Name")
+      input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation")
+      button(ng-click="vm.add()") +
+
   button.submit(type="submit", ng-click="vm.next()") Next
 
 .example.layout-modal
