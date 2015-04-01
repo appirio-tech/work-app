@@ -1,0 +1,20 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .estimate {
+  h3 {
+    font-size: $font-36;
+  }
+
+  p {
+    margin-top: $margin-12;
+  }
+
+  > form {
+    @include main-restricted();
+
+    button {
+      height: 70px;
+      font-size: $font-24;
+    }
+  }
+}

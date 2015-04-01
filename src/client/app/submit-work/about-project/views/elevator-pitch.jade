@@ -1,11 +1,12 @@
-header(role="heading")
-  h1 About your project
+h2 About your project
 
-main
-  form
-    label(for="project-elevator-pitch") Give us a brief explanation or "Elevator Pitch"
-    textarea#project-elevator-pitch(placeholder="My Project", ng-model="vm.work.elevatorPitch")
+form
+  label(for="project-elevator-pitch") Give us a brief explanation or "Elevator Pitch"
 
-    button.submit(type="submit", ng-click="vm.next()") Next
+  textarea#project-elevator-pitch(placeholder="My Project", ng-model="vm.work.elevatorPitch")
 
-nav(role="navigation", "ng-submit-work-nav"=true)
+  button.submit(type="submit", ng-click="vm.next()") Next
+
+
+
+
