@@ -1,4 +1,5 @@
 var work;
+var serv;
 (function () {
   'use strict';
 
@@ -6,9 +7,9 @@ var work;
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['exception', '$state', 'ApiResource'];
+  SubmitWorkService.$inject = ['exception', '$state', 'ApiResource', '$q', 'data'];
   /* @ngInject */
-  function SubmitWorkService(exception, $state, ApiResource) {
+  function SubmitWorkService(exception, $state, ApiResource, $q, data) {
     var defaultWork = work = {
       name: '',
       type: false,
@@ -18,7 +19,7 @@ var work;
       features: []
     };
 
-    var service = {
+    var service = serv = {
       current: defaultWork,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
@@ -43,15 +44,19 @@ var work;
       };
     }
 
-    function save(cb) {
-      ApiResource.save('workRequest', service.current)
-        .then(function(newWorkRequest) {
-          service.setCurrent(newWorkRequest);
-          cb(newWorkRequest);
-        })
-        .catch(function(e) {
-          exception(e);
-        });
+    function save() {
+      var promise = $q.defer();
+      service.current.features = service.current.features.filter(function(x) {
+        return x.selected;
+      });
+      data.create('work-request', service.current)
+      .then(function(newWorkRequest) {
+        service.setCurrent(newWorkRequest);
+        promise.resolve(newWorkRequest);
+      })
+      .catch(function(e) {
+        throw e;
+      });
     }
   }
 })();
