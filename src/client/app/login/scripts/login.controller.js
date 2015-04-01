@@ -4,9 +4,9 @@
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$state', '$scope', '$stateParams', '$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
+  LoginController.$inject = ['$state', '$scope','$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
   /* @ngInject */
-  function LoginController($state, $scope, $stateParams, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
+  function LoginController($state, $scope, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
@@ -15,7 +15,6 @@
     var lock = new Auth0Lock(auth0ClientId, auth0Domain);
     $scope.signin = function () {
       var state = encodeURIComponent('retUrl=' + retUrl + '&setParam=true');
-      console.log('retUrl', retUrl);
       lock.show({
         callbackURL: callbackUrl,
         responseType: 'code',
@@ -44,13 +43,12 @@
     function activate() {
       logger.info('Activated Login View');
 
-      decodeJwt();
-
       //set parameter passed JWT token and remove if any.
       var userJWTToken = getParameterByName('userJWTToken');
       //logger.info("userJWTToken : " +userJWTToken);
       if (userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
+        decodeJwt();
         $location.search('userJWTToken', null);
       }
     }
