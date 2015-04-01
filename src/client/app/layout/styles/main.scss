@@ -88,8 +88,12 @@ a {
     }
   }
 
-  main, aside {
+  main {
     padding: $padding-18 $padding-10;
+  }
+
+  aside {
+    padding: $padding-18;
   }
 
   > main {

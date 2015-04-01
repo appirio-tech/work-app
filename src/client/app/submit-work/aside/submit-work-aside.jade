@@ -19,17 +19,27 @@
 
 - navs = [aboutProject, appUsers, appFeatures, appDesign, launch]
 
-ul#submit-work-nav
-  each nav, i in navs
-    if i % 2 == 0
-      - completed = 'completed'
-    else
-      - completed = ''
+.project
+  .name Project Name XYZ
 
-    li(class=completed)
-      a(href=nav.href)!= nav.label
+  .type Design Only
 
-      ul
-        each kid in nav.kids
-          li
-            a(href=kid.href)!= kid.label
+  .estimate estimate
+
+  .price $3000 / 3 weeks
+
+nav(role="navigation")
+  ul#submit-work-nav
+    each nav, i in navs
+      if i % 2 == 0
+        - completed = 'completed'
+      else
+        - completed = ''
+
+      li(class=completed)
+        a(href=nav.href)!= nav.label
+
+        ul
+          each kid in nav.kids
+            li
+              a(href=kid.href)!= kid.label

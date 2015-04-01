@@ -22,7 +22,16 @@
     }
   }
 
-  nav {
+  aside {
     background-color: $mercury;
+
+    .project {
+      .name {
+        font-weight: bold;
+      }
+      .type {
+
+      }
+    }
   }
 }

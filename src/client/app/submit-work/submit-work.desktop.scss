@@ -8,9 +8,15 @@
     float: left;
   }
 
-  nav {
+  aside {
     width: 25%;
     float: left;
+
+    &.fixed {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
   }
 
   @include clearfix();
