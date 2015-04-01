@@ -4,9 +4,9 @@
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$http', '$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
+  LoginController.$inject = ['$state', '$scope','$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
   /* @ngInject */
-  function LoginController($scope, $http, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
+  function LoginController($state, $scope, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
@@ -14,7 +14,7 @@
     // auth0 login form
     var lock = new Auth0Lock(auth0ClientId, auth0Domain);
     $scope.signin = function () {
-      var state = encodeURIComponent('retUrl=' + retUrl);
+      var state = encodeURIComponent('retUrl=' + retUrl + '&setParam=true');
       lock.show({
         callbackURL: callbackUrl,
         responseType: 'code',
@@ -33,8 +33,8 @@
         if (200 == response.status) {
           vm.loggedInUser = '';
         }
-        $location.url('/');
-        localstorage.removeItem('userJWTToken');
+        localStorage.removeItem('userJWTToken');
+        $state.reload();
       });
     };
 
@@ -43,16 +43,13 @@
     function activate() {
       logger.info('Activated Login View');
 
-      decodeJwt();
-
       //set parameter passed JWT token and remove if any.
       var userJWTToken = getParameterByName('userJWTToken');
       //logger.info("userJWTToken : " +userJWTToken);
       if (userJWTToken && localStorage) {
         localStorage.setItem('userJWTToken', userJWTToken);
-        $http.defaults.headers.common['Authorization'] = 'Bearer ' + userJWTToken;
-        var clean_uri = location.protocol + "//" + location.host + location.pathname;
-        window.history.replaceState({}, document.title, clean_uri);
+        decodeJwt();
+        $location.search('userJWTToken', null);
       }
     }
 
@@ -64,8 +61,10 @@
     }
 
     function decodeJwt() {
-      if (localStorage.getItem("userJWTToken")) {
-        var decoded = jwtHelper.decodeToken(localStorage.getItem("userJWTToken"));
+      var idToken = localStorage.getItem('userJWTToken');
+
+      if (idToken && idToken !== 'undefined') {
+        var decoded = jwtHelper.decodeToken(idToken);
         if (decoded && decoded.userId) {
           var promise = LoginService.getUser(decoded.userId);
           promise.then(function (data) {
