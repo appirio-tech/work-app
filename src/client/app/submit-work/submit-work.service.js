@@ -1,5 +1,3 @@
-var work;
-var serv;
 (function () {
   'use strict';
 
@@ -10,16 +8,16 @@ var serv;
   SubmitWorkService.$inject = ['exception', '$state', 'ApiResource', '$q', 'data'];
   /* @ngInject */
   function SubmitWorkService(exception, $state, ApiResource, $q, data) {
-    var defaultWork = work = {
+    var defaultWork = {
       name: '',
-      type: false,
-      usersDescription: '',
-      elevatorPitch: '',
-      competitors: [],
+      requestType: false,
+      usageDescription: '',
+      summary: '',
+      competitorApps: [],
       features: []
     };
 
-    var service = serv = {
+    var service = {
       current: defaultWork,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
@@ -55,7 +53,7 @@ var serv;
         promise.resolve(newWorkRequest);
       })
       .catch(function(e) {
-        throw e;
+        $q.reject(e);
       });
     }
   }

@@ -24,7 +24,7 @@
     }
 
     function add() {
-      vm.project.competitors.push(vm.appName);
+      vm.project.competitorApps.push(vm.appName);
       vm.appName = '';
     }
 

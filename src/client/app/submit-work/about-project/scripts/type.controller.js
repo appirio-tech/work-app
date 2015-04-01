@@ -26,7 +26,7 @@
     }
 
     function select(type) {
-      vm.work.type = type;
+      vm.work.requestType = type;
       switch (type) {
         case 'design':
           vm.designButtonStyle = 'selected';
