@@ -12,6 +12,7 @@
     var vm = this;
     vm.title = 'Name';
     vm.work = {};
+    vm.validate = validate;
     vm.next = SubmitWorkService.next('about-type');
 
     activate();
@@ -19,6 +20,10 @@
     function activate() {
       logger.info('Activated Name View');
       vm.work = SubmitWorkService.getCurrent();
+    }
+
+    function validate() {
+      return SubmitWorkService.validateName(vm.work.name);
     }
 
   }

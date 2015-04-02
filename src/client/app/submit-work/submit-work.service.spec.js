@@ -26,16 +26,21 @@ describe('SubmitWorkService', function () {
 
     describe('validation', function() {
       it('should be able to validate names', function() {
+        // rule 0: req'd
         // rule 1: 3 char min
+        var res = service.validateName('');
+        expect(res.valid).to.equal(false);
+        expect(res.required).to.equal(true);
         var res = service.validateName('a');
         expect(res.valid).to.equal(false);
-        expect(res.reason).to.equal('minlength');
+        expect(res.minlength).to.equal(true);
         // rule 2: must start with a letter
-        res = service.validateName('1asd');
+        res = service.validateName('!asd');
         expect(res.valid).to.equal(false);
-        expect(res.reason).to.equal('letter');
+        expect(res.letter).to.equal(true);
         // rule 3: must be <= 50 char length
         // this one will just use maxlength
+        
         res = service.validateName('foo');
         expect(res.valid).to.equal(true);
       });

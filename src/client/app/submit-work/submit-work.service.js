@@ -63,12 +63,17 @@
     function validateName(name) {
       var res = {
         valid: false,
-        reason: ''
+        minlength: false,
+        letter: false,
+        required: false
       };
-      if (name.length < 3) {
-        res.reason = 'minlength';
-      } else if (name.charAt(0).match(/\d/)) {
-        res.reason = 'letter';
+      if (typeof name == 'undefined' || name.length == 0) {
+        res.required = true;
+      }
+      else if (name.length < 3) {
+        res.minlength = true;
+      } else if (!name.charAt(0).match(/[\w\d]/)) {
+        res.letter = true;
       } else {
         res.valid = true;
       }
