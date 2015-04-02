@@ -31,7 +31,7 @@ describe('SubmitWorkService', function () {
         var res = service.validateName('');
         expect(res.valid).to.equal(false);
         expect(res.required).to.equal(true);
-        var res = service.validateName('a');
+        res = service.validateName('a');
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
         // rule 2: must start with a letter
@@ -46,14 +46,19 @@ describe('SubmitWorkService', function () {
       });
 
       it('should be able to validate summary', function() {
-        // rule 1: must be at least 200 characters
-        var res = service.validateSummary('asdf');
+        // rule 0: field required
+        var res = service.validateSummary('');
         expect(res.valid).to.equal(false);
-        expect(res.reason).to.equal('minlength');
+        expect(res.required).to.equal(true);
+
+        // rule 1: must be at least 200 characters
+        res = service.validateSummary('asdf');
+        expect(res.valid).to.equal(false);
+        expect(res.minlength).to.equal(true);
   
         res = service.validateSummary('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
         expect(res.valid).to.equal(false);
-        expect(res.reason).to.equal('minlength');
+        expect(res.minlength).to.equal(true);
 
         var str = '0123456789';
         str = str + str + str + str + str;
@@ -63,14 +68,19 @@ describe('SubmitWorkService', function () {
       });
 
       it('should be able to validate usageDescription', function() {
+        // rule 0: field required
+        var res = service.validateUsageDescription('');
+        expect(res.valid).to.equal(false);
+        expect(res.required).to.equal(true);
+
         // rule 1: must be at least 200 characters
         var res = service.validateUsageDescription('asdf');
         expect(res.valid).to.equal(false);
-        expect(res.reason).to.equal('minlength');
+        expect(res.minlength).to.equal(true);
   
         res = service.validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
         expect(res.valid).to.equal(false);
-        expect(res.reason).to.equal('minlength');
+        expect(res.minlength).to.equal(true);
 
         var str = '0123456789';
         str = str + str + str + str + str;

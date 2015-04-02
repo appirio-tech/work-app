@@ -69,8 +69,7 @@
       };
       if (typeof name == 'undefined' || name.length == 0) {
         res.required = true;
-      }
-      else if (name.length < 3) {
+      } else if (name.length < 3) {
         res.minlength = true;
       } else if (!name.charAt(0).match(/[\w\d]/)) {
         res.letter = true;
@@ -83,10 +82,13 @@
     function validateSummary(summary) {
       var res = {
         valid: false,
-        reason: ''
+        minlength: false,
+        required: false
       };
-      if (summary.length < 200) {
-        res.reason = 'minlength';
+      if (typeof summary == 'undefined' || summary.length == 0) {
+        res.required = true;
+      } else if (summary.length < 200) {
+        res.minlength = true;
       } else {
         res.valid = true;
       }
@@ -97,10 +99,13 @@
   function validateUsageDescription(usageDescription) {
     var res = {
       valid: false,
-      reason: ''
+      minlength: false,
+      required: false
     };
-    if (usageDescription.length < 200) {
-      res.reason = 'minlength';
+    if (typeof usageDescription == 'undefined' || usageDescription.length == 0) {
+      res.required = true;
+    } else if (usageDescription.length < 200) {
+      res.minlength = true;
     } else {
       res.valid = true;
     }
