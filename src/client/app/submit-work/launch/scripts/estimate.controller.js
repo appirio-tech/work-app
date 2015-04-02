@@ -24,7 +24,7 @@
     }
 
     function next() {
-      if (vm.termsAccepted) SubmitWorkService.next('launch-success')();
+      if (vm.termsAccepted) SubmitWorkService.next('success')();
     }
 
   }
