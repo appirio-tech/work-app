@@ -1,4 +1,3 @@
-var work;
 (function () {
   'use strict';
 
@@ -6,15 +5,15 @@ var work;
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['exception', '$state', 'ApiResource'];
+  SubmitWorkService.$inject = ['exception', '$state', 'ApiResource', '$q', 'data'];
   /* @ngInject */
-  function SubmitWorkService(exception, $state, ApiResource) {
-    var defaultWork = work = {
+  function SubmitWorkService(exception, $state, ApiResource, $q, data) {
+    var defaultWork = {
       name: '',
-      type: false,
-      usersDescription: '',
-      elevatorPitch: '',
-      competitors: [],
+      requestType: false,
+      usageDescription: '',
+      summary: '',
+      competitorApps: [],
       features: []
     };
 
@@ -43,15 +42,19 @@ var work;
       };
     }
 
-    function save(cb) {
-      ApiResource.save('workRequest', service.current)
-        .then(function(newWorkRequest) {
-          service.setCurrent(newWorkRequest);
-          cb(newWorkRequest);
-        })
-        .catch(function(e) {
-          exception(e);
-        });
+    function save() {
+      var promise = $q.defer();
+      service.current.features = service.current.features.filter(function(x) {
+        return x.selected;
+      });
+      data.create('work-request', service.current)
+      .then(function(newWorkRequest) {
+        service.setCurrent(newWorkRequest);
+        promise.resolve(newWorkRequest);
+      })
+      .catch(function(e) {
+        $q.reject(e);
+      });
     }
   }
 })();

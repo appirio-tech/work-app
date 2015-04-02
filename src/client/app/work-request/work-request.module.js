@@ -13,7 +13,7 @@
 
   function WorkRequest(ApiResource) {
     var config = {
-      url: '/app-work-requests',
+      url: 'app-work-requests',
       resource: 'work-request'
     };
 

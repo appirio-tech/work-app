@@ -11,9 +11,9 @@ form
   h6 Similar Apps
 
   ul.added-competitors
-    li(ng-repeat="appName in vm.project.competitors")
+    li(ng-repeat="appName in vm.project.competitorApps")
       .competitor {{appName}}
 
-      button.remove-competitor(ng-click="vm.project.competitors.splice($index, 1)") x
+      button.remove-competitor(ng-click="vm.project.competitorApps.splice($index, 1)") x
 
   button.submit(type="submit", ng-click="vm.next()") Next

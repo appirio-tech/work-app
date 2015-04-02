@@ -5,7 +5,7 @@
     .module('app.submit-work')
     .run(appRun);
 
-  appRun.$inject = ['routerHelper'];
+  appRun.$inject = ['routerHelper', 'SubmitWorkService'];
   /* @ngInject */
   function appRun(routerHelper) {
     routerHelper.configureStates(getStates());
@@ -31,6 +31,11 @@
           templateUrl: 'submit-work/launch/views/success.html',
           controller: 'SubmitSuccessController',
           controllerAs: 'vm',
+          resolve: {
+            work: function(SubmitWorkService) {
+              return SubmitWorkService.save();
+            }
+          },
           title: 'Success',
           settings: {}
         }
