@@ -29,6 +29,16 @@ describe('SubmitFeaturesController', function () {
         expect($log.info.logs).to.match(/Activated/);
       });
 
+      it('should be able to add custom features', function() {
+        controller.newFeatureName = 'foo';
+        controller.newFeatureExplanation = 'bar';
+        var x = controller.work.features.length;
+        controller.add();
+        expect(controller.newFeatureName).to.equal('');
+        expect(controller.newFeatureExplanation).to.equal('');
+        expect(controller.work.features.length).to.equal(x + 1);
+      });
+
     });
   });
 });

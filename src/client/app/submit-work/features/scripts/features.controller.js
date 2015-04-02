@@ -12,6 +12,9 @@
     var vm = this;
     vm.title = 'Features';
     vm.work = {};
+    vm.add = add;
+    vm.newFeatureName = '';
+    vm.newFeatureExplanation = '';
     vm.next = SubmitWorkService.next('launch-estimate');
 
     activate();
@@ -25,5 +28,18 @@
         });
       }
     }
+
+    function add() {
+      vm.work.features.push({
+        id: vm.newFeatureName,
+        name: vm.newFeatureName,
+        explanation: vm.newFeatureExplanation,
+        description: '',
+        selected: true
+      });
+      vm.newFeatureName = '';
+      vm.newFeatureExplanation = '';
+    }
+
   }
 })();

@@ -12,6 +12,7 @@
     var vm = this;
     vm.title = 'Brief';
     vm.project = {};
+    vm.briefFilename = '';
     vm.next = SubmitWorkService.next('about-competitors');
 
     activate();

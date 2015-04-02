@@ -4,19 +4,14 @@ h3 Help us to understand your visual design preferences. Upload any existing des
 
 form
   fieldset
-    input#project-design-file(type="file")
+    input#project-design-file(type="text", ng-model="vm.filename")
 
     button.add-design-file(ng-click="vm.add()") +
 
   ul.added-design-files
-    li
-      .label styleguid.ai
+    li(ng-repeat="filename in vm.imageFilenames")
+      .label {{filename}}
 
-      button.remove x
-
-    li
-      .label super screenshot.jpg
-
-      button.remove x
+      button.remove(ng-click="vm.imageFilenames.splice($index, 1)") x
 
   button.submit(type="submit", ng-click="vm.next()") Next
