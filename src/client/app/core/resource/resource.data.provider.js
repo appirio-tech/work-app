@@ -21,7 +21,7 @@
       return [
         'data',
         function(data) {
-          return data .get(resource, query);
+          return data.get(resource, query);
         }
       ]
     };
