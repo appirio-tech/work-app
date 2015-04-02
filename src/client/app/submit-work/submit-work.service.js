@@ -22,7 +22,10 @@
       getCurrent: getCurrent,
       setCurrent: setCurrent,
       next: next,
-      save: save
+      save: save,
+      validateName: validateName,
+      validateSummary: validateSummary,
+      validateUsageDescription: validateUsageDescription
     };
 
     return service;
@@ -56,5 +59,46 @@
         $q.reject(e);
       });
     }
+
+    function validateName(name) {
+      var res = {
+        valid: false,
+        reason: ''
+      };
+      if (name.length < 3) {
+        res.reason = 'minlength';
+      } else if (name.charAt(0).match(/\d/)) {
+        res.reason = 'letter';
+      } else {
+        res.valid = true;
+      }
+      return res;
+    }
+
+    function validateSummary(summary) {
+      var res = {
+        valid: false,
+        reason: ''
+      };
+      if (summary.length < 200) {
+        res.reason = 'minlength';
+      } else {
+        res.valid = true;
+      }
+      return res;
+    }
+  }
+
+  function validateUsageDescription(usageDescription) {
+    var res = {
+      valid: false,
+      reason: ''
+    };
+    if (usageDescription.length < 200) {
+      res.reason = 'minlength';
+    } else {
+      res.valid = true;
+    }
+    return res;
   }
 })();
