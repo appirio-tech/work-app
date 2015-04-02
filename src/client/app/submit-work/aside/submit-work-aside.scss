@@ -33,8 +33,9 @@
           color: green;
         }
 
-        .current {
+        .state-active {
           font-weight: bold;
+          text-decoration: underline;
         }
       }
     }

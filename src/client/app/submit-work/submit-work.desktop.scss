@@ -10,12 +10,17 @@
 
   aside {
     width: 25%;
+    position: relative;
+    overflow: hidden;
     float: left;
 
     &.fixed {
-      position: fixed;
-      right: 0;
-      top: 0;
+      .fixed-wrapper {
+        position: fixed;
+        top: $margin-18;
+      }
+
+      height  : 100%;
     }
   }
 
