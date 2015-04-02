@@ -12,6 +12,7 @@
     var vm = this;
     vm.title = 'Users';
     vm.work = {};
+    vm.validate = validate;
     vm.next = SubmitWorkService.next('features');
 
     activate();
@@ -19,6 +20,10 @@
     function activate() {
       logger.info('Activated Users View');
       vm.work = SubmitWorkService.getCurrent();
+    }
+
+    function validate() {
+      return SubmitWorkService.validateUsageDescription(vm.work.usageDescription);
     }
 
   }
