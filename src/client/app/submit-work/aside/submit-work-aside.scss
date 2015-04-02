@@ -6,15 +6,22 @@
       margin-top: $margin-10;
 
       &::before {
-        content: 'O';
-        padding: 0 $padding-2;
-        border: 1px solid $black;
-        margin-right: $margin-5;
+        $diameter: 14px;
+
+        margin-right    : $margin-5;
+        content         : '';
+        background      : no-repeat;
+        background-image: url("../images/check-green.png");
+        background-size : 12px;
+        height          : $diameter;
+        width           : $diameter;
+        display         : block;
+        margin-top      : 2px;
+        float           : left;
       }
 
       &.completed::before {
-        content: 'X';
-        background-color: $celery;
+        background-image: url("../images/check-grey.png");
       }
 
 
@@ -24,6 +31,10 @@
 
         .completed {
           color: green;
+        }
+
+        .current {
+          font-weight: bold;
         }
       }
     }

@@ -42,4 +42,4 @@ nav(role="navigation")
         ul
           each kid in nav.kids
             li
-              a(href=kid.href, class=completed)!= kid.label
+              a(href=kid.href, class=completed, class="current")!= kid.label
