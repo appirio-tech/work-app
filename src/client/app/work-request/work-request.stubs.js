@@ -17,8 +17,7 @@ var mockWorkRequest = (function() {
         success: true,
         status: 200,
         metadata: null,
-        // Yes, eval is bad but it's just a test with controlled data so get over it
-        content: eval(callback)()
+        content: mockWorkRequest[callback]()
       }
     }
   }
