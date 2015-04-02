@@ -8,7 +8,7 @@
   SubmitWorkService.$inject = ['exception', '$state', 'ApiResource', '$q', 'data'];
   /* @ngInject */
   function SubmitWorkService(exception, $state, ApiResource, $q, data) {
-    var defaultWork = {
+    var work = {
       name: '',
       requestType: false,
       usageDescription: '',
@@ -18,14 +18,15 @@
     };
 
     var service = {
-      current: defaultWork,
+      current: work,
       getCurrent: getCurrent,
       setCurrent: setCurrent,
       next: next,
       save: save,
       validateName: validateName,
       validateSummary: validateSummary,
-      validateUsageDescription: validateUsageDescription
+      validateUsageDescription: validateUsageDescription,
+      globalValidate: globalValidate
     };
 
     return service;
@@ -50,6 +51,7 @@
       service.current.features = service.current.features.filter(function(x) {
         return x.selected;
       });
+      service.current.submitAttempted = undefined;
       data.create('work-request', service.current)
       .then(function(newWorkRequest) {
         service.setCurrent(newWorkRequest);
@@ -94,21 +96,35 @@
       }
       return res;
     }
-  }
 
-  function validateUsageDescription(usageDescription) {
-    var res = {
-      valid: false,
-      minlength: false,
-      required: false
-    };
-    if (typeof usageDescription == 'undefined' || usageDescription.length == 0) {
-      res.required = true;
-    } else if (usageDescription.length < 200) {
-      res.minlength = true;
-    } else {
-      res.valid = true;
+    function validateUsageDescription(usageDescription) {
+      var res = {
+        valid: false,
+        minlength: false,
+        required: false
+      };
+      if (typeof usageDescription == 'undefined' || usageDescription.length == 0) {
+        res.required = true;
+      } else if (usageDescription.length < 200) {
+        res.minlength = true;
+      } else {
+        res.valid = true;
+      }
+      return res;
     }
-    return res;
+
+    function globalValidate() {
+      var name = validateName(work.name).valid;
+      var summary = validateSummary(work.summary).valid;
+      var usageDescription = validateUsageDescription(work.usageDescription).valid;
+      var res = {
+        name: name,
+        summary: summary,
+        usageDescription: usageDescription,
+        valid: name && summary && usageDescription
+      }
+      work.submitAttempted = true;
+      return res;
+    }
   }
 })();
