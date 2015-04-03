@@ -10,11 +10,11 @@
 - views.push('estimate')
 
 header
-  h1 Submit Work Flow
 
 main("ng-scroll-state"="submit-work")
   - each view in views
-    article.state(id="submit-work-" + view, ui-view=view, class=view, state=view)
+    a(id="anchor-state-#{view}")
+    article.state(ui-view=view, class=view, state=view)
 
 
 aside#submit-work-aside("ng-submit-work-aside"=true)
