@@ -5,8 +5,8 @@
     var link = function (scope, element, attrs) {
       scope.scrollTo = function() {
         SubmitWorkService.save();
-        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
-        $document.scrollToElementAnimated(stateElement, 150);
+        var stateElement = angular.element('#starting-line-' + state);
+        $document.scrollToElementAnimated(stateElement);
       };
     };
 
