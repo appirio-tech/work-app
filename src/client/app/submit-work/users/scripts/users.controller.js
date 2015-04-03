@@ -12,6 +12,7 @@
     var vm = this;
     vm.title = 'Users';
     vm.work = {};
+    vm.next = false;
     vm.validate = validate;
     vm.nextState = 'features';
 

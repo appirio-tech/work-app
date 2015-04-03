@@ -13,6 +13,7 @@
     vm.title = 'Name';
     vm.work = {};
     vm.validate = validate;
+    vm.next = false;
     vm.nextState = 'type';
 
     activate();

@@ -23,7 +23,7 @@ form
       input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation")
       button(ng-click="vm.add()") +
 
-  next-state(state="vm.nextState")
+  next-state(state="vm.nextState", vm="vm")
 
 .example.layout-modal
 

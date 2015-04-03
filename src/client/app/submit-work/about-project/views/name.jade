@@ -5,9 +5,9 @@ form(name="nameForm")
 
   input#name-your-project(name="name", type="text", placeholder="My Project", required=true, ng-model="vm.work.name")
 
-  ng-messages(for="vm.validate()" ng-hide="nameForm.name.$pristine && !vm.work.submitAttempted")
+  ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="nameForm.name.$pristine && !vm.work.submitAttempted")
     ng-message(when="required") This field is required
     ng-message(when="minlength") The project name must be at least 3 characters long
     ng-message(when="letter") The project name must start with a letter or a number
 
-  next-state(state="vm.nextState")
+  next-state(state="vm.nextState", vm="vm")
