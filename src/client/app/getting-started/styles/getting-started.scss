@@ -5,53 +5,6 @@
     display: none;
   }
 
-  .choose-build {
-    text-align: center;
-
-    ul.builds {
-      li {
-        $diameter: 112px;
-
-        padding       : 0 $padding-20;
-        width         : $diameter;
-        display       : block;
-        margin        : $margin-28 auto 0 auto;
-        vertical-align: top;
-
-        &:first-child {
-          margin-top: 0;
-        }
-
-        .icon {
-          width           : $diameter;
-          height          : $diameter;
-          line-height     : $diameter;
-          border-radius   : 50%;
-          background-color: $silver-sand;
-
-          svg {
-            vertical-align: middle;
-            width         : 70%;
-            height        : 70%;
-          }
-        }
-
-        .label {
-          margin-top : $margin-10;
-          font-size  : $font-14;
-          line-height: $lh-115;
-          color      : $limed-spruce;
-        }
-
-        &:active, &:hover {
-          .icon {
-            background-color: $cerulean;
-          }
-        }
-      }
-    }
-  }
-
   .learn-more {
     text-align      : left;
     background-color: $limed-spruce;
