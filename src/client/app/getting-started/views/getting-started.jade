@@ -1,25 +1,8 @@
-- builds = []
-- builds.push({ href: '#/submit-work', icon: 'project-design', label: 'Mobile app design' })
-- builds.push({ href: '#', icon: 'project-development', label: 'Mobile app development'})
-- builds.push({ href: '#', icon: 'project-custom', label: 'Custom solution'})
-
 section.jumbotron
   p Our Talented 70,000 strong community is ready to work on your project today
 
 header
   h1 What can we build for you?
-
-main.choose-build
-  ul.builds
-    each build in builds
-      li
-        a(href=build.href)
-          .icon
-            //- img("src"="/getting-started/images/#{build.icon}.svg")
-            svg
-              image("xlink:href"="/getting-started/images/#{build.icon}.svg" src="#{build.icon}.png", width="100%", height="100%")
-
-          .label!= build.label
 
 - articles = []
 - articles.push({ href:"/speak-with-an-expert", header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
