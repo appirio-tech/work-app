@@ -38,7 +38,7 @@
 
     function next(state) {
       return function() {
-        $location.hash(state).replace();
+        $location.hash("submit-work-" + state).replace();
         $anchorScroll();
       };
     }
