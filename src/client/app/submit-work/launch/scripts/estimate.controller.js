@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitEstimateController', SubmitEstimateController);
 
-  SubmitEstimateController.$inject = ['logger', '$state', 'SubmitWorkService', '$anchorScroll', '$location'];
+  SubmitEstimateController.$inject = ['logger', '$state', 'SubmitWorkService', '$document'];
   /* @ngInject */
-  function SubmitEstimateController(logger, $state, SubmitWorkService, $anchorScroll, $location) {
+  function SubmitEstimateController(logger, $state, SubmitWorkService, $document) {
     var vm = this;
     vm.title = 'Estimate';
     vm.work = {};
@@ -26,19 +26,20 @@
 
     function launch() {
       var validateResult = SubmitWorkService.globalValidate();
+      console.log(validateResult);
       if (vm.termsAccepted && validateResult.valid) {
         SubmitWorkService.next('launch-success')(); 
       } else {
+        var state = '';
         if (!validateResult.name) {
-          $location.hash('name-your-project').replace();
-          $anchorScroll('name-your-project');
+          state = 'name';
         } else if (!validateResult.summary) {
-          $location.hash('project-elevator-pitch').replace();
-          $anchorScroll('project-elevator-pitch');
+          state = 'elevator-pitch';
         } else if (!validateResult.usageDescription) {
-          $location.hash('your-app-users').replace();
-          $anchorScroll('your-app-users');
+          state = 'users';
         }
+        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + state + '"]');
+        $document.scrollToElementAnimated(stateElement, 150);
       }
     }
 

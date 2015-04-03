@@ -13,6 +13,7 @@
     vm.title = 'Elevator Pitch';
     vm.work = {};
     vm.validate = validate;
+    vm.nextState = 'competitors';
 
     activate();
 
