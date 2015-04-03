@@ -1,6 +1,7 @@
 @import "../../../core/styles/combined";
 
-.layout-main.submit-work .estimate {
+.layout-main.submit-work article.estimate {
+  margin-bottom: 400px;
   h3 {
     font-size: $font-36;
   }

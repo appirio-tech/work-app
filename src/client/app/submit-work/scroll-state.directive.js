@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var directive = function ($window, $rootScope) {
+  var directive = function ($document, $rootScope) {
     var link = function (scope, element, attrs) {
       var states = element.find('.state');
 
@@ -9,9 +9,9 @@
         var lastVisible = states.first();
 
         states.each(function (i, state) {
-          // need to remove static `+ 200`
-
-          if (states.eq(i).offset().top < ($window.scrollY + 200)) {
+          // need to remove static `+ 220`
+          // Cant do more than 220 untill we can load modules in order to do layout first
+          if (states.eq(i).offset().top < ($document.scrollTop() + 220)) {
             lastVisible = states.eq(i);
           }
         });
@@ -25,7 +25,7 @@
         $rootScope.scrollState = lastVisible.attr('state');
       };
 
-      angular.element($window).bind('scroll', setState);
+      $document.bind('scroll', setState);
 
       setState();
     };
@@ -36,7 +36,7 @@
     };
   };
 
-  directive.$inject = ['$window', '$rootScope'];
+  directive.$inject = ['$document', '$rootScope'];
 
   angular.module('app.submit-work').directive('ngScrollState', directive);
 })();

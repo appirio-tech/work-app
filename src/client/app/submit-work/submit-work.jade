@@ -10,10 +10,10 @@
 - views.push('estimate')
 
 header
-  h1 Submit Work Flow
 
 main("ng-scroll-state"="submit-work")
   - each view in views
+    a(id="anchor-state-#{view}")
     article.state(ui-view=view, class=view, state=view)
 
 
