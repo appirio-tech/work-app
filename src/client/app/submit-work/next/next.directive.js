@@ -6,8 +6,8 @@
       scope.scrollTo = function() {
         if (scope.vm.validate && !scope.vm.validate().valid) return;
         SubmitWorkService.save();
-        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
-        $document.scrollToElementAnimated(stateElement, 150);
+        var stateElement = angular.element('#starting-line-' + state);
+        $document.scrollToElementAnimated(stateElement);
       };
     };
 
