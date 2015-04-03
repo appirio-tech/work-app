@@ -41,7 +41,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Login View');
+      logger.log('Activated Login View');
 
       //set parameter passed JWT token and remove if any.
       var userJWTToken = getParameterByName('userJWTToken');

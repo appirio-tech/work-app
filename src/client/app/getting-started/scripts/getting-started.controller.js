@@ -13,7 +13,7 @@
     vm.title = 'Getting Started';
 
     function activate() {
-      logger.info('Activated Getting Started View');
+      logger.log('Activated Getting Started View');
     }
   }
 })();

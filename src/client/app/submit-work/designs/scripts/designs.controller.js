@@ -21,7 +21,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Designs View');
+      logger.log('Activated Designs View');
       vm.work = SubmitWorkService.getCurrent();
     }
 

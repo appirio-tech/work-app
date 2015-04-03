@@ -15,7 +15,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Success View');
+      logger.log('Activated Success View');
     }
 
   }

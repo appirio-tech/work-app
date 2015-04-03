@@ -13,7 +13,7 @@
     vm.title = 'Create Account';
 
     function activate() {
-      logger.info('Activated Create Account View');
+      logger.log('Activated Create Account View');
     }
   }
 })();

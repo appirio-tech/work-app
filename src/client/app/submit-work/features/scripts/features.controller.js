@@ -20,7 +20,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Features View');
+      logger.log('Activated Features View');
       vm.work = SubmitWorkService.getCurrent();
       if (vm.work.features.length == 0) {
         FeatureService.getFeatures().then(function(features) {

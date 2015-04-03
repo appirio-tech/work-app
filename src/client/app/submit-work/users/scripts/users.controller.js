@@ -17,7 +17,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Users View');
+      logger.log('Activated Users View');
       vm.work = SubmitWorkService.getCurrent();
     }
 
