@@ -4,7 +4,7 @@
   var directive = function ($rootScope, $document, SubmitWorkService) {
     var link = function (scope, element, attrs) {
       scope.scrollTo = function() {
-        //SubmitWorkService.save();
+        SubmitWorkService.save();
         var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
         $document.scrollToElementAnimated(stateElement, 150);
       };
