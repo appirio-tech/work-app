@@ -38,6 +38,7 @@
 
     function next(state) {
       return function() {
+        save();
         $location.hash("submit-work-" + state).replace();
         $anchorScroll();
       };
