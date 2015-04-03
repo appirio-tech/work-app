@@ -13,7 +13,7 @@
     vm.title = 'Users';
     vm.work = {};
     vm.validate = validate;
-    vm.next = SubmitWorkService.next('features');
+    vm.nextState = 'features';
 
     activate();
 

@@ -61,6 +61,8 @@ p, input, a {
 
 a {
   text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 
 .overlay {
@@ -88,8 +90,12 @@ a {
     }
   }
 
-  main, aside {
+  main {
     padding: $padding-18 $padding-10;
+  }
+
+  aside {
+    padding: $padding-18;
   }
 
   > main {
@@ -101,3 +107,4 @@ a {
     margin: $margin-18;
   }
 }
+

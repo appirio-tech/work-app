@@ -5,9 +5,9 @@
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['exception', '$state', 'ApiResource', '$q', 'data'];
+  SubmitWorkService.$inject = ['$anchorScroll', '$q', '$location', 'data'];
   /* @ngInject */
-  function SubmitWorkService(exception, $state, ApiResource, $q, data) {
+  function SubmitWorkService($anchorScroll, $q, $location, data) {
     var work = {
       name: '',
       requestType: false,
@@ -42,7 +42,9 @@
 
     function next(state) {
       return function() {
-        $state.go(state);
+        save();
+        $location.hash("submit-work-" + state).replace();
+        $anchorScroll();
       };
     }
 

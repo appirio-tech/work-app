@@ -13,7 +13,6 @@
     vm.title = 'Elevator Pitch';
     vm.work = {};
     vm.validate = validate;
-    vm.next = SubmitWorkService.next('about-competitors');
 
     activate();
 

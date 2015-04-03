@@ -1,0 +1,46 @@
+- aboutProject = { label: 'About project', href: '#', kids: [] }
+- aboutProject.kids.push({ label: 'Project name', href: '#', state: "name" })
+- aboutProject.kids.push({ label: 'Project type', href: '#', state: "type" })
+- aboutProject.kids.push({ label: 'Project Brief', href: '#', state: "brief"  })
+- aboutProject.kids.push({ label: 'Project Elevator pitch', href: '#', state: "elevator-pitch"  })
+- aboutProject.kids.push({ label: 'Similar apps', href: '#', state: "competitors"  })
+
+- appUsers = { label: 'App users', href: '#', kids: [] }
+- appUsers.kids.push({ label: 'Who are your users?', href: '#', state: "users" })
+
+- appFeatures = { label: 'App features', href: '#', kids: [] }
+- appFeatures.kids.push({ label: 'What features will your app need?', href: '#', state: "features" })
+
+- appDesign = { label: 'App design', href: '#', kids: [] }
+- appDesign.kids.push({ label: 'Add visual elements', href: '#', state: "designs" })
+
+- launch = { label: 'Launch App', href: '#', kids: [] }
+- launch.kids.push({ label: 'Review App Estimates', href: '#', state: "estimate" })
+
+- navs = [aboutProject, appUsers, appFeatures, appDesign, launch]
+
+.fixed-wrapper
+  .project
+    .name Project Name XYZ
+
+    .type Design Only
+
+    .estimate estimate
+
+    .price $3000 / 3 weeks {{ state }}
+
+  nav(role="navigation")
+    ul#submit-work-nav
+      each nav, i in navs
+        if i % 2 == 0
+          - completed = 'completed'
+        else
+          - completed = ''
+
+        li(class=completed)
+          p!= nav.label
+
+          ul
+            each kid in nav.kids
+              li
+                a(class=kid.state, class="current", state=kid.state, ng-click="scrollTo('#{kid.state}')")!= kid.label

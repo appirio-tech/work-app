@@ -10,4 +10,4 @@ form(name="nameForm")
     ng-message(when="minlength") The project name must be at least 3 characters long
     ng-message(when="letter") The project name must start with a letter or a number
 
-  button.submit(type="submit", ng-click="vm.next()") Next
+  next-state(state="vm.nextState")

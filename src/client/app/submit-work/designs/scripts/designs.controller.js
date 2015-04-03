@@ -15,7 +15,7 @@
     vm.imageFilenames = [];
     vm.filename = '';
     vm.add = add;
-    vm.next = SubmitWorkService.next('launch-estimate');
+    vm.nextState = 'estimate';
     var i = 1;
 
     activate();

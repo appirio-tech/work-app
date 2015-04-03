@@ -13,7 +13,6 @@
     vm.title = 'Name';
     vm.work = {};
     vm.validate = validate;
-    vm.next = SubmitWorkService.next('about-type');
 
     activate();
 
