@@ -7,7 +7,8 @@
     'app.constants',
     'app.resource',
     'app.workRequest',
-    'app.feature'
+    'app.feature',
+    'duScroll'
   ]);
 
 })();

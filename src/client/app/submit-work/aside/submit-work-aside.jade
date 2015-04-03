@@ -38,9 +38,9 @@
           - completed = ''
 
         li(class=completed)
-          a(href=nav.href)!= nav.label
+          p!= nav.label
 
           ul
             each kid in nav.kids
               li
-                a(href=kid.href, class=kid.state, class="current", state=kid.state)!= kid.label
+                a(class=kid.state, class="current", state=kid.state, ng-click="scrollTo('#{kid.state}')")!= kid.label

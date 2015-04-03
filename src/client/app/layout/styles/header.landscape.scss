@@ -22,7 +22,7 @@ $header-height: 38px;
   }
 
   .get-started {
-    display         : block;
+    display         : none;
     line-height     : $header-height - ($padding-10 * 2);
     margin-left     : 5%;
     background-color: $celery;

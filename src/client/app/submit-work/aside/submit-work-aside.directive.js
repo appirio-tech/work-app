@@ -1,10 +1,15 @@
 (function () {
   'use strict';
 
-  var directive = function ($window, $rootScope) {
+  var directive = function ($rootScope, $document) {
     var link = function (scope, element, attrs) {
+      scope.scrollTo = function(state) {
+        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + state + '"]');
+        $document.scrollToElementAnimated(stateElement, 150);
+      };
+
       var setFixed = function () {
-        if ($window.scrollY >= 100) {
+        if ($document.scrollTop() >= 100) {
           element.addClass('fixed');
         }
         else {
@@ -12,7 +17,7 @@
         }
       };
 
-      angular.element($window).bind('scroll', setFixed);
+      angular.element($document).bind('scroll', setFixed);
 
       setFixed();
 
@@ -33,7 +38,7 @@
     };
   };
 
-  directive.$inject = ['$window', '$rootScope'];
+  directive.$inject = ['$rootScope', '$document'];
 
   angular.module('app.submit-work').directive('ngSubmitWorkAside', directive);
 })();
