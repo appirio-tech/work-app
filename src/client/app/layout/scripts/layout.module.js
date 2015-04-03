@@ -7,7 +7,7 @@
         $rootScope.pageClass = 'getting-started';
       }
       else {
-        $rootScope.pageClass = $location.$$url.replace(/\//g, ' ');
+        $rootScope.pageClass = $location.$$path.replace(/\//g, ' ');
       }
     });
   });
