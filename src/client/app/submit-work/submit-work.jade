@@ -14,6 +14,6 @@ header
 
 main
   - each view in views
-    article(id=view ui-view=view, class=view)
+    article(id="submit-work-flow-" + view, ui-view=view, class=view)
 
 nav(role="navigation", "ng-submit-work-nav"=true)
