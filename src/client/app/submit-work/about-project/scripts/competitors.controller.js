@@ -14,7 +14,7 @@
     vm.appName = '';
     vm.project = {};
     vm.add = add;
-    vm.next = SubmitWorkService.next('users');
+    vm.nextState = 'users';
 
     activate();
 
