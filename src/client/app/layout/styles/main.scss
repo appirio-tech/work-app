@@ -1,15 +1,5 @@
 @import "../../core/styles/combined";
 
-@font-face {
-  font-family: bree;
-  src: url(../fonts/bree-regular-webfont.woff);
-}
-
-@font-face {
-  font-family: source sans pro;
-  src: url(../fonts/source-sans-pro-regular.woff);
-}
-
 html {
   min-height: 100%;
   font-size : 10px;
@@ -21,21 +11,19 @@ html {
 }
 
 body {
-  position: relative;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  position           : relative;
+  min-height         : 100%;
+  margin             : 0;
+  padding            : 0;
+  overflow-x         : hidden;
+  overflow-y         : auto;
   -webkit-text-stroke: 1px transparent;
-  font-family: source sans pro;
-  background-color: $limed-spruce;
-  font-size : $font-14;
+  background-color   : $limed-spruce;
+  font-size          : $font-14;
+
+  @include source-sans();
 }
 
-h1, h2, h3, h4, h5, h6, header {
-  font-family: bree;
-}
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: $margin-10;
@@ -50,8 +38,14 @@ h1 {
 }
 
 h2 {
-  font-size: $font-18;
+  color: $ship-gray;
+  @include roboto-light();
 }
+
+h3 {
+  color: $mine-shaft;
+}
+
 
 p, input, a {
   font-family: source sans pro;

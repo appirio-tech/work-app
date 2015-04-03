@@ -1,5 +1,7 @@
 h2 About your project
 
+h3 Name you project
+
 form(name="nameForm")
   label(for="name-your-project") Name your project:
 
@@ -7,7 +9,9 @@ form(name="nameForm")
 
   ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="nameForm.name.$pristine && !vm.work.submitAttempted")
     ng-message(when="required") This field is required
+
     ng-message(when="minlength") The project name must be at least 3 characters long
+
     ng-message(when="letter") The project name must start with a letter or a number
 
   next-state(state="vm.nextState", vm="vm")

@@ -6,6 +6,12 @@
   main {
     width: 75%;
     float: left;
+
+    article {
+      h3 {
+        margin-top: $margin-20;
+      }
+    }
   }
 
   aside {

@@ -11,7 +11,7 @@
         states.each(function (i, state) {
           // need to remove static `+ 220`
           // Cant do more than 220 untill we can load modules in order to do layout first
-          if (states.eq(i).offset().top < ($document.scrollTop() + 220)) {
+          if (states.eq(i).offset().top < ($document.scrollTop() + 210)) {
             lastVisible = states.eq(i);
           }
         });
