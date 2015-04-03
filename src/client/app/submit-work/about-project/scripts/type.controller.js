@@ -21,7 +21,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Type View');
+      logger.log('Activated Type View');
       vm.work = SubmitWorkService.getCurrent();
     }
 

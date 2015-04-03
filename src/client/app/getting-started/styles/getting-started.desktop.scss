@@ -23,35 +23,6 @@
     }
   }
 
-  .choose-build {
-    h1 {
-      background-color: $white;
-      font-size: $font-36;
-      color    : $limed-spruce;
-    }
-
-    ul.builds {
-      li {
-        $diameter: 174px;
-
-        padding   : 0 $padding-40;
-        width     : $diameter;
-
-        .icon {
-          width      : $diameter;
-          height     : $diameter;
-          line-height: $diameter;
-        }
-
-        .label {
-          margin-top : $margin-22;
-          font-size  : $font-20;
-          line-height: $lh-120;
-        }
-      }
-    }
-  }
-
   .learn-more {
     text-align: center;
 

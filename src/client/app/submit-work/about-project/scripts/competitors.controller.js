@@ -19,7 +19,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Competitors View');
+      logger.log('Activated Competitors View');
       vm.project = SubmitWorkService.getCurrent();
     }
 

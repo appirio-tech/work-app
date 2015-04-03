@@ -19,7 +19,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Elevator Pitch View');
+      logger.log('Activated Elevator Pitch View');
       vm.work = SubmitWorkService.getCurrent();
     }
 

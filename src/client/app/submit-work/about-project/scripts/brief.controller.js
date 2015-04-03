@@ -18,7 +18,7 @@
     activate();
 
     function activate() {
-      logger.info('Activated Brief View');
+      logger.log('Activated Brief View');
       vm.project = SubmitWorkService.getCurrent();
     }
 
