@@ -12,6 +12,8 @@
     var vm = this;
     vm.title = 'Elevator Pitch';
     vm.work = {};
+    vm.validate = validate;
+    vm.next = false;
     vm.nextState = 'competitors';
 
     activate();
@@ -19,6 +21,10 @@
     function activate() {
       logger.info('Activated Elevator Pitch View');
       vm.work = SubmitWorkService.getCurrent();
+    }
+
+    function validate() {
+      return SubmitWorkService.validateSummary(vm.work.summary);
     }
 
   }
