@@ -12,7 +12,7 @@
     var vm = this;
     vm.title = 'Elevator Pitch';
     vm.work = {};
-    vm.next = SubmitWorkService.next('competitors');
+    vm.nextState = 'competitors';
 
     activate();
 

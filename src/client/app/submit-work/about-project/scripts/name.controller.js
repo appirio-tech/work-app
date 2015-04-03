@@ -12,7 +12,7 @@
     var vm = this;
     vm.title = 'Name';
     vm.work = {};
-    vm.next = SubmitWorkService.next('type');
+    vm.nextState = 'type';
 
     activate();
 

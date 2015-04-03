@@ -16,7 +16,7 @@
     vm.designButtonStyle = '';
     vm.codeButtonStyle = '';
     vm.bothButtonStyle = '';
-    vm.next = SubmitWorkService.next('elevator-pitch');
+    vm.nextState = 'elevator-pitch';
 
     activate();
 

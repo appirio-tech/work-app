@@ -13,7 +13,7 @@
     vm.title = 'Brief';
     vm.project = {};
     vm.briefFilename = '';
-    vm.next = SubmitWorkService.next('competitors');
+    vm.nextState = 'competitors';
 
     activate();
 

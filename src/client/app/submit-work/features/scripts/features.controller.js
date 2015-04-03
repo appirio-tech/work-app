@@ -15,7 +15,7 @@
     vm.add = add;
     vm.newFeatureName = '';
     vm.newFeatureExplanation = '';
-    vm.next = SubmitWorkService.next('estimate');
+    vm.nextState = 'estimate';
 
     activate();
 
