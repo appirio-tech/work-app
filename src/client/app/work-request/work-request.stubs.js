@@ -3,8 +3,24 @@
 var mockWorkRequest = (function() {
   return {
     getMockWorkRequests: getMockWorkRequests,
-    getMockWorkRequest: getMockWorkRequest
+    getMockWorkRequest: getMockWorkRequest,
+    getResponse: getResponse
   };
+
+  function getResponse(type) {
+    var callback = "getMock" + type;
+
+    return {
+      id: "-65f3d89e:14c71d48140:-7fae",
+      version: "v3",
+      result: {
+        success: true,
+        status: 200,
+        metadata: null,
+        content: mockWorkRequest[callback]()
+      }
+    }
+  }
 
   function getMockWorkRequest() {
     return {
