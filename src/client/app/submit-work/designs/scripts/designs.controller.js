@@ -16,6 +16,7 @@
     vm.filename = '';
     vm.add = add;
     vm.next = SubmitWorkService.next('estimate');
+    var i = 1;
 
     activate();
 
@@ -25,7 +26,7 @@
     }
 
     function add() {
-      vm.imageFilenames.push(vm.filename);
+      vm.imageFilenames.push('file ' + i++);
       vm.filename = '';
     }
 

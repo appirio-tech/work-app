@@ -1,0 +1,43 @@
+@import "../../core/styles/combined";
+
+#submit-work-aside {
+  nav > ul {
+    > li {
+      margin-top: $margin-10;
+
+      &::before {
+        $diameter: 14px;
+
+        margin-right    : $margin-5;
+        content         : '';
+        background      : no-repeat;
+        background-image: url("../images/check-green.png");
+        background-size : 12px;
+        height          : $diameter;
+        width           : $diameter;
+        display         : block;
+        margin-top      : 2px;
+        float           : left;
+      }
+
+      &.completed::before {
+        background-image: url("../images/check-grey.png");
+      }
+
+
+      ul {
+        margin: 0 0 0 $margin-18;
+        font-size: $font-12;
+
+        .completed {
+          color: green;
+        }
+
+        .state-active {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

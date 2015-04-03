@@ -1,12 +1,23 @@
 @import "../core/styles/combined";
+@import "bourbon";
 
 .layout-main.submit-work {
+  background-color: $mercury;
+
   main {
-    text-align: center;
-    max-width: 784px;
+    background-color: $white;
+    text-align      : center;
+    max-width       : 784px;
 
     article {
-      margin-top: $margin-18;
+      margin-top: 150px;
+      opacity   : 0.2;
+      @include transition(opacity 0.3s ease-in 0s);
+
+      &.state-active {
+        opacity: 1;
+        @include transition(opacity 0.3s ease-in 0s);
+      }
 
       &:first-child {
         margin-top: 0;
@@ -22,7 +33,16 @@
     }
   }
 
-  nav {
+  aside {
     background-color: $mercury;
+
+    .project {
+      .name {
+        font-weight: bold;
+      }
+      .type {
+
+      }
+    }
   }
 }
