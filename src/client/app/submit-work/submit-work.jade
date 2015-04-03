@@ -13,7 +13,8 @@ header
 
 main("ng-scroll-state"="submit-work")
   - each view in views
-    a(id="anchor-state-#{view}")
+    div(id="starting-line-#{view}")
+
     article.state(ui-view=view, class=view, state=view)
 
 

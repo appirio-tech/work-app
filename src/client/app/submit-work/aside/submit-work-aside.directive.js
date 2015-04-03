@@ -4,11 +4,13 @@
   var directive = function ($rootScope, $document) {
     var link = function (scope, element, attrs) {
       scope.scrollTo = function(state) {
-        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + state + '"]');
-        $document.scrollToElementAnimated(stateElement, 150);
+        var stateElement = angular.element('#starting-line-' + state);
+
+        $document.scrollToElementAnimated(stateElement);
       };
 
       var setFixed = function () {
+        // Need to refactor to avoid constant
         if ($document.scrollTop() >= 100) {
           element.addClass('fixed');
         }
@@ -17,7 +19,7 @@
         }
       };
 
-      angular.element($document).bind('scroll', setFixed);
+      $document.bind('scroll', setFixed);
 
       setFixed();
 
