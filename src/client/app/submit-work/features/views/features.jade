@@ -10,7 +10,7 @@ form
       .label-example
         label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
-        a(href='#') (example)
+        a(href='#', ng-mouseover="vm.showExample('login')", ng-mouseleave="vm.hideExample()") (example)
 
       .desc {{feature.description}}
 
