@@ -3,9 +3,7 @@ h2 Your App's Users
 h3 Who are your app's users and how will they use your app?
 
 form(name="usersForm")
-  label(for="your-app-users") Who are your app's users and how will they use your app?
-
-  textarea#your-app-users(name="usageDescription", ng-model="vm.work.usageDescription", maxlength="300")
+  textarea(name="usageDescription", ng-model="vm.work.usageDescription", maxlength="300")
 
 ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="usersForm.usageDescription.$pristine && !vm.work.submitAttempted")
   ng-message(when="required") This field is required

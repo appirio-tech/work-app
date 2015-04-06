@@ -24,7 +24,8 @@ input, textarea {
   width     : 100%;
   padding   : $padding-9;
   border    : $border-1 solid $slate-gray;
-  font-size : $font-16;
+
+  @include font-line(16);
 }
 
 input[type=checkbox] {
@@ -60,13 +61,15 @@ textarea {
 
 button {
   width           : 100%;
-  font-size       : $font-18;
-  background-color: $celery;
+  background-color: $apple;
   border-radius   : $border-radius-3;
   border          : none;
   color           : $white;
   height          : 40px;
   max-width       : 300px;
+
+  @include roboto-bold();
+  @include font-line(16);
 
   &.submit {
     display     : block;

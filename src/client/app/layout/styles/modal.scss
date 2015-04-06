@@ -18,10 +18,10 @@
     @include icon-sprite();
   }
 
-  font-size : $font-14;
+  @include font-line(14);
 
   h1 {
-    font-size: $font-24;
+    @include font-line(24);
   }
 
   a, h1 {
