@@ -25,10 +25,6 @@ describe('SubmitCompetitorsController', function () {
         expect(controller.title).to.equal('Competitors');
       });
 
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
       it('should be able to add an appName', function() {
         expect(controller.project.competitorApps.length).to.equal(0);
         expect(controller.appName).to.equal('');

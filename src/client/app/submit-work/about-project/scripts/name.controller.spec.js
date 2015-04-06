@@ -24,11 +24,6 @@ describe('SubmitNameController', function () {
       it('should have title of Name', function () {
         expect(controller.title).to.equal('Name');
       });
-
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
     });
   });
 });

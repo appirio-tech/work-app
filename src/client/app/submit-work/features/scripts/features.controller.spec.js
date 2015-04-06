@@ -25,10 +25,6 @@ describe('SubmitFeaturesController', function () {
         expect(controller.title).to.equal('Features');
       });
 
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
       it('should be able to add custom features', function() {
         controller.newFeatureName = 'foo';
         controller.newFeatureExplanation = 'bar';

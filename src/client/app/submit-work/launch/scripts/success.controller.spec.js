@@ -24,11 +24,6 @@ describe('SubmitSuccessController', function () {
       it('should have title of Success', function () {
         expect(controller.title).to.equal('Success');
       });
-
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
     });
   });
 });
