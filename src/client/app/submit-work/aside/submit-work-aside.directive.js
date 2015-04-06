@@ -30,6 +30,14 @@
         element.find('[state="' + state + '"]').addClass('state-active');
       });
 
+      $rootScope.$on('submit-work-show-example', function (rootScope, example) {
+        element.find('.example.' +  example).show();
+      });
+
+      $rootScope.$on('submit-work-hide-example', function (rootScope, example) {
+        element.find('.example').hide();
+      });
+
       element.find('[state="' + $rootScope.scrollState + '"]').addClass('state-active');
     };
 
