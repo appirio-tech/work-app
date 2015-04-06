@@ -40,7 +40,7 @@ describe('SubmitWorkService', function () {
         expect(res.letter).to.equal(true);
         // rule 3: must be <= 50 char length
         // this one will just use maxlength
-        
+
         res = service.validateName('foo');
         expect(res.valid).to.equal(true);
       });
@@ -55,7 +55,7 @@ describe('SubmitWorkService', function () {
         res = service.validateSummary('asdf');
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
-  
+
         res = service.validateSummary('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
@@ -74,11 +74,12 @@ describe('SubmitWorkService', function () {
         expect(res.required).to.equal(true);
 
         // rule 1: must be at least 200 characters
-        var res = service.validateUsageDescription('asdf');
+        res = service.validateUsageDescription('asdf');
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
-  
-        res = service.validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
+
+        res = service
+          .validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
 

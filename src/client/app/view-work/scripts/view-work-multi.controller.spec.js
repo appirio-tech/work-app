@@ -12,7 +12,7 @@ describe('ViewWorkMultiController', function () {
 
     controller = $controller('ViewWorkMultiController', {
       $scope: scope,
-      workRequests: mockWorkRequest.getResponse("WorkRequests")
+      workRequests: mockWorkRequest.getResponse('WorkRequests')
     });
 
     $rootScope.$apply();
@@ -37,7 +37,7 @@ describe('ViewWorkMultiController', function () {
       it('should have an array of Work Requests', function() {
         expect(controller.workRequest).to.be.array;
         expect(controller.workRequests).to.be.eql(mockWorkRequest.getMockWorkRequests());
-      })
+      });
     });
   });
 });

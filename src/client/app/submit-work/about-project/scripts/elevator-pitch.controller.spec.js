@@ -24,11 +24,6 @@ describe('SubmitElevatorPitchController', function () {
       it('should have title of ElevatorPitch', function () {
         expect(controller.title).to.equal('Elevator Pitch');
       });
-
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
     });
   });
 });

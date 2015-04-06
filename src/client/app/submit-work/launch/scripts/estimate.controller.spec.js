@@ -24,11 +24,6 @@ describe('SubmitEstimateController', function () {
       it('should have title of Estimate', function () {
         expect(controller.title).to.equal('Estimate');
       });
-
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
     });
   });
 });

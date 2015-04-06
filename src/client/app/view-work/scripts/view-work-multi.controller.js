@@ -10,7 +10,7 @@
   function ViewWorkMultiController(logger, workRequests) {
     var vm = this;
     vm.title = 'Work Requests';
-    logger.info("work requests", workRequests);
+    logger.info('work requests', workRequests);
     vm.workRequests = workRequests.result.content;
 
     activate();

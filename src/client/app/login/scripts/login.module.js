@@ -1,3 +1,4 @@
+/* jshint -W106 */
 (function () {
   'use strict';
 
@@ -28,9 +29,9 @@
               'Authorization': 'Bearer ' + idToken
             }
           }).then(function(response) {
-            var id_token = response.data.id_token;
-            localStorage.setItem('userJWTToken', id_token);
-            return id_token;
+            var idToken = response.data.id_token;
+            localStorage.setItem('userJWTToken', idToken);
+            return idToken;
           });
         } else {
           return idToken;
@@ -45,5 +46,3 @@
     $httpProvider.interceptors.push('jwtInterceptor');
   }
 })();
-
-

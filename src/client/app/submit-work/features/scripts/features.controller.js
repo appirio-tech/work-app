@@ -22,7 +22,7 @@
     function activate() {
       logger.log('Activated Features View');
       vm.work = SubmitWorkService.getCurrent();
-      if (vm.work.features.length == 0) {
+      if (vm.work.features.length === 0) {
         FeatureService.getFeatures().then(function(features) {
           vm.work.features = features;
         });

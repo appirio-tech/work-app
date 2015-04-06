@@ -36,7 +36,6 @@
         // Add the base url
         config.url = apiUrl + config.url;
 
-
         // If the url follows the expected pattern, we can set cool defaults
         if (!config.unnatural) {
           var orig = angular.copy(api.defaultConfig);

@@ -12,7 +12,7 @@ describe('ViewWorkSingleController', function () {
 
     controller = $controller('ViewWorkSingleController', {
       $scope: scope,
-      workRequest: mockWorkRequest.getResponse("WorkRequest")
+      workRequest: mockWorkRequest.getResponse('WorkRequest')
     });
 
     $rootScope.$apply();
@@ -37,7 +37,7 @@ describe('ViewWorkSingleController', function () {
 
       it('should have a Work Requests', function() {
         expect(controller.workRequest).to.be.eql(workRequest);
-      })
+      });
     });
   });
 });

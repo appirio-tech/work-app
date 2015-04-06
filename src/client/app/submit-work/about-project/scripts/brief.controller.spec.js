@@ -24,11 +24,6 @@ describe('SubmitBriefController', function () {
       it('should have title of Brief', function () {
         expect(controller.title).to.equal('Brief');
       });
-
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
     });
   });
 });

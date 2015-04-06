@@ -4,9 +4,13 @@
   var directive = function ($rootScope, $document, SubmitWorkService) {
     var link = function (scope, element, attrs) {
       scope.scrollTo = function() {
-        if (scope.vm.validate && !scope.vm.validate().valid) return;
+        if (scope.vm.validate && !scope.vm.validate().valid) {
+          return;
+        }
+
         SubmitWorkService.save();
-        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
+        var stateElement =
+              angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
         $document.scrollToElementAnimated(stateElement, 150);
       };
     };

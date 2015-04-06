@@ -25,10 +25,6 @@ describe('SubmitTypeController', function () {
         expect(controller.title).to.equal('Type');
       });
 
-      it('should have logged "Activated"', function () {
-        expect($log.info.logs).to.match(/Activated/);
-      });
-
       it('should be able to select different app types', function() {
         expect(controller.designButtonStyle).to.equal('');
         expect(controller.codeButtonStyle).to.equal('');
@@ -45,7 +41,7 @@ describe('SubmitTypeController', function () {
         expect(controller.designButtonStyle).to.equal('');
         expect(controller.codeButtonStyle).to.equal('');
         expect(controller.bothButtonStyle).to.equal('selected');
-      })
+      });
 
     });
   });

@@ -1,3 +1,4 @@
+/* jshint -W040 */
 (function() {
   'use strict';
 
@@ -14,7 +15,7 @@
         function (data) {  // inject the data service
           return data.list(resource, query);
         }
-      ]
+      ];
     };
 
     this.get = function (resource, query) {
@@ -23,7 +24,7 @@
         function(data) {
           return data.get(resource, query);
         }
-      ]
+      ];
     };
 
     this.$get = Data;
