@@ -17,6 +17,7 @@
     article {
       margin-top: 150px;
       opacity   : 0.2;
+
       @include transition(opacity 0.3s ease-in 0s);
 
       &.state-active {
@@ -25,24 +26,11 @@
       }
 
       form {
-        margin-top: $margin-12;
-
         button.submit {
           width: 280px;
+          // Need to fix this due to button being in next tag
+          margin-top: 30px;
         }
-      }
-    }
-  }
-
-  aside {
-    background-color: $mercury;
-
-    .project {
-      .name {
-        font-weight: bold;
-      }
-      .type {
-
       }
     }
   }

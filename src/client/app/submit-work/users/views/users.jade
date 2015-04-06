@@ -1,13 +1,16 @@
-.users
-  h2 Your App's Users
+h2 Your App's Users
 
-  form(name="usersForm")
-    label(for="your-app-users") Who are your app's users and how will they use your app?
+h3 Who are your app's users and how will they use your app?
 
-    textarea#your-app-users(name="usageDescription", ng-model="vm.work.usageDescription", maxlength="300")
+form(name="usersForm")
+  label(for="your-app-users") Who are your app's users and how will they use your app?
 
-  ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="usersForm.usageDescription.$pristine && !vm.work.submitAttempted")
-    ng-message(when="required") This field is required
-    ng-message(when="minlength") Help our designers understand your needs, please enter at least 200 characters.
+  textarea#your-app-users(name="usageDescription", ng-model="vm.work.usageDescription", maxlength="300")
 
-  next-state(state="vm.nextState", vm="vm")
+ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="usersForm.usageDescription.$pristine && !vm.work.submitAttempted")
+  ng-message(when="required") This field is required
+
+  ng-message(when="minlength") Help our designers understand your needs, please enter at least 200 characters.
+
+next-state(state="vm.nextState", vm="vm")
+

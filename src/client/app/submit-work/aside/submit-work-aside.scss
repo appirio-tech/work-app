@@ -1,9 +1,24 @@
 @import "../../core/styles/combined";
 
 #submit-work-aside {
+  background-color: $mercury;
+
+  .project {
+    @include roboto-thin();
+
+    .price {
+      margin-top: $margin-15;
+      @include source-sans();
+    }
+
+    border-bottom: 1px solid #A7A9AB;
+    padding-bottom: 4px;
+  }
+
   nav > ul {
     > li {
-      margin-top: $margin-10;
+      margin-top: $margin-30;
+      @include roboto();
 
       &::before {
         $diameter: 14px;
@@ -24,8 +39,8 @@
         background-image: url("../images/check-grey.png");
       }
 
-
       ul {
+        @include source-sans();
         margin: 0 0 0 $margin-18;
         font-size: $font-12;
 

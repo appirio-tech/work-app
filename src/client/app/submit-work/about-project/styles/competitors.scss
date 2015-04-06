@@ -6,16 +6,16 @@
   }
 
   input {
-    margin-top: $margin-18;
     width: 240px;
     float: left;
   }
 
   .add-competitor {
-    width: 34px;
-    float: right;
+    width           : 34px;
+    float           : right;
     background-color: $white;
-    color: $black;
+    color           : $black;
+    margin-top      : 0;
   }
 
   h6 {
