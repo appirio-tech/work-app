@@ -78,7 +78,8 @@ describe('SubmitWorkService', function () {
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
 
-        res = service.validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
+        res = service
+          .validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
         expect(res.valid).to.equal(false);
         expect(res.minlength).to.equal(true);
 

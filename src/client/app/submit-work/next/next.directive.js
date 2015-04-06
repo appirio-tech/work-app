@@ -9,7 +9,8 @@
         }
 
         SubmitWorkService.save();
-        var stateElement = angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
+        var stateElement =
+              angular.element('[ng-scroll-state="submit-work"] [state="' + scope.state + '"]');
         $document.scrollToElementAnimated(stateElement, 150);
       };
     };

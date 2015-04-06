@@ -157,7 +157,7 @@ gulp.task('templatecache', ['jade'], function () {
   return gulp
     .src(config.htmltemplates)
     .pipe($.if(args.verbose, $.bytediff.start()))
-    .pipe($.htmlmin( {
+    .pipe($.htmlmin({
       collapseWhitespace: true,
       removeComments: true
     }))

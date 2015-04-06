@@ -28,7 +28,7 @@
       var validateResult = SubmitWorkService.globalValidate();
       console.log(validateResult);
       if (vm.termsAccepted && validateResult.valid) {
-        SubmitWorkService.next('launch-success')(); 
+        SubmitWorkService.next('launch-success')();
       } else {
         var state = '';
         if (!validateResult.name) {

@@ -65,7 +65,13 @@
         description: 'Data can be connected with a website or other',
         selected: false
       },
-      {id: 'search', name: 'Search', explanation: '', description: 'People can search/browse/filter', selected: false}
+      {
+        id: 'search',
+        name: 'Search',
+        explanation: '',
+        description: 'People can search/browse/filter',
+        selected: false
+      }
     ];
 
     var service = {

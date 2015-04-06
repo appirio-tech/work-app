@@ -59,9 +59,14 @@ describe('FeatureService', function () {
       description: 'Data can be connected with a website or other',
       selected: false
     },
-    {id: 'search', name: 'Search', explanation: '', description: 'People can search/browse/filter', selected: false}
+    {
+      id: 'search',
+      name: 'Search',
+      explanation: '',
+      description: 'People can search/browse/filter',
+      selected: false
+    }
   ];
-
 
   beforeEach(function () {
     bard.appModule('app.feature');
