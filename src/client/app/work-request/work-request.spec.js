@@ -16,7 +16,7 @@ describe('WorkRequest', function() {
       query: $.when(mockWorkRequest.getMockWorkRequests()),
       get: $.when(mockWorkRequest.getMockWorkRequest()),
       default: $q.when([])
-    })
+    });
   });
 
   bard.verifyNoOutstandingHttpRequests();

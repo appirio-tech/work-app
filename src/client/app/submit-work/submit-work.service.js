@@ -70,7 +70,7 @@
         letter: false,
         required: false
       };
-      if (typeof name == 'undefined' || name.length == 0) {
+      if (typeof name === 'undefined' || name.length === 0) {
         res.required = true;
       } else if (name.length < 3) {
         res.minlength = true;
@@ -88,7 +88,7 @@
         minlength: false,
         required: false
       };
-      if (typeof summary == 'undefined' || summary.length == 0) {
+      if (typeof summary === 'undefined' || summary.length === 0) {
         res.required = true;
       } else if (summary.length < 200) {
         res.minlength = true;
@@ -104,7 +104,7 @@
         minlength: false,
         required: false
       };
-      if (typeof usageDescription == 'undefined' || usageDescription.length == 0) {
+      if (typeof usageDescription === 'undefined' || usageDescription.length === 0) {
         res.required = true;
       } else if (usageDescription.length < 200) {
         res.minlength = true;
@@ -123,7 +123,7 @@
         summary: summary,
         usageDescription: usageDescription,
         valid: name && summary && usageDescription
-      }
+      };
       work.submitAttempted = true;
       return res;
     }

@@ -3,5 +3,4 @@ header(role="heading")
 
 ul
   li(ng-repeat= "workRequest in vm.workRequests")
-    a(ng-href='#/work/{{workRequest.id}}')
-      {{workRequest.name}}
+    a(ng-href='#/work/{{workRequest.id}}') {{workRequest.name}}

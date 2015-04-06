@@ -45,7 +45,7 @@ describe('SubmitTypeController', function () {
         expect(controller.designButtonStyle).to.equal('');
         expect(controller.codeButtonStyle).to.equal('');
         expect(controller.bothButtonStyle).to.equal('selected');
-      })
+      });
 
     });
   });

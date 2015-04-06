@@ -1,12 +1,15 @@
-/*global form:true */
+/*global form:true, Auth0Lock:true */
 (function () {
   'use strict';
 
   angular.module('app.login').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$state', '$scope','$location', 'LoginService', 'logger', 'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
+  LoginController.$inject = ['$state', '$scope', '$location', 'LoginService', 'logger',
+    'auth0ClientId', 'auth0Domain', 'retUrl', 'callbackUrl', 'jwtHelper'];
+
   /* @ngInject */
-  function LoginController($state, $scope, $location, LoginService, logger, auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
+  function LoginController($state, $scope, $location, LoginService, logger,
+                           auth0ClientId, auth0Domain, retUrl, callbackUrl, jwtHelper) {
     var vm = this;
     vm.title = 'Login';
     vm.loggedInUser = '';
@@ -30,7 +33,7 @@
     $scope.signout = function () {
       var promise = LoginService.logout();
       promise.then(function (response) {
-        if (200 == response.status) {
+        if (200 === response.status) {
           vm.loggedInUser = '';
         }
         localStorage.removeItem('userJWTToken');
@@ -54,10 +57,10 @@
     }
 
     function getParameterByName(name) {
-      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
         results = regex.exec(location.hash);
-      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 
     function decodeJwt() {
