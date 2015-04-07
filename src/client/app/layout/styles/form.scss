@@ -39,7 +39,11 @@ input {
     background-position: -39px -68px;
   }
 
-  &.invalid, &:invalid {
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &.invalid, &:focus:invalid {
     background-position: 36px -143px;
   }
 
