@@ -91,5 +91,16 @@ describe('SubmitWorkService', function () {
       });
     });
 
+    it('should be able to calculate a price', function() {
+      service.current.features = [];
+      expect(service.getPrice()).to.equal(2000);
+      service.current.features = [{selected: true}];
+      expect(service.getPrice()).to.equal(2800);
+      service.current.features = [{selected: true}, {selected: true}, {selected: true}];
+      expect(service.getPrice()).to.equal(4400);
+      service.current.features = [{selected: false}, {selected: true}, {selected: true}];
+      expect(service.getPrice()).to.equal(3600);
+    })
+
   });
 });

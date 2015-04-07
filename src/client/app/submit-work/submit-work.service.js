@@ -23,10 +23,12 @@
       setCurrent: setCurrent,
       next: next,
       save: save,
+      getPrice: getPrice,
+      updatePrice: updatePrice,
       validateName: validateName,
       validateSummary: validateSummary,
       validateUsageDescription: validateUsageDescription,
-      globalValidate: globalValidate
+      globalValidate: globalValidate,
     };
 
     return service;
@@ -49,17 +51,41 @@
 
     function save() {
       var promise = $q.defer();
-      service.current.features = service.current.features.filter(function(x) {
+      var work = angular.copy(service.current);
+      work.features = work.features.filter(function(x) {
         return x.selected;
+      }).map(function(x) {
+        x.id = undefined;
+        x.description = x.explanation;
+        x.explanation = undefined;
+        x.selected = undefined;
       });
-      service.current.submitAttempted = undefined;
-      data.create('work-request', service.current)
-      .then(function(newWorkRequest) {
-        service.setCurrent(newWorkRequest);
-        promise.resolve(newWorkRequest);
+      work.submitAttempted = undefined;
+      data.create('work-request', work)
+      .then(function(data) {
+        service.id = data.result.content;
+        updatePrice();
+        promise.resolve(data);
       })
       .catch(function(e) {
         $q.reject(e);
+      });
+    }
+
+    function getPrice() {
+      var calcPrice = work.features.reduce(function(x, y) {
+        return y.selected ? x + 800 : x;
+      }, 2000);
+      if (work.costEstimate && work.costEstimate.low > calcPrice) {
+        return work.costEstimate.low;
+      } else {
+        return calcPrice;
+      }
+    }
+
+    function updatePrice() {
+      data.get('work-request', {id: service.id}).then(function(data) {
+        service.current.costEstimate = data.result.content.costEstimate;
       });
     }
 

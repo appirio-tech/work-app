@@ -1,13 +1,16 @@
 (function () {
   'use strict';
 
-  var directive = function ($rootScope, $document) {
+  var directive = function ($rootScope, $document, SubmitWorkService) {
     var link = function (scope, element, attrs) {
       scope.scrollTo = function(state) {
         var stateElement = angular.element('#starting-line-' + state);
 
         $document.scrollToElementAnimated(stateElement);
       };
+      scope.getPrice = function() {
+        return SubmitWorkService.getPrice();
+      }
 
       var setFixed = function () {
         // Need to refactor to avoid constant
@@ -40,7 +43,7 @@
     };
   };
 
-  directive.$inject = ['$rootScope', '$document'];
+  directive.$inject = ['$rootScope', '$document', 'SubmitWorkService'];
 
   angular.module('app.submit-work').directive('ngSubmitWorkAside', directive);
 })();
