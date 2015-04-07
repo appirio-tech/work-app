@@ -2,7 +2,7 @@ h2 About your project
 
 h3 What type of project do you need?
 
-form
+form(ng-submit="vm.next()")
   ul.project-types
     li
       label(for="project-type-design") Design
@@ -40,5 +40,5 @@ form
 
       .description I have an idea for a mobile app and I need it designed and built.
 
-  next-state(state="vm.nextState", vm="vm")
+  next-state(state="vm.nextState", vm="vm", ng-show="vm.work && vm.work.requestType")
 

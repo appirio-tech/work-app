@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitTypeController', SubmitTypeController);
 
-  SubmitTypeController.$inject = ['logger', 'SubmitWorkService', '$state'];
+  SubmitTypeController.$inject = ['logger', 'SubmitWorkService', '$state', '$scope'];
   /* @ngInject */
-  function SubmitTypeController(logger, SubmitWorkService, $state) {
+  function SubmitTypeController(logger, SubmitWorkService, $state, $scope) {
     var vm = this;
     vm.title = 'Type';
     vm.work = {};
