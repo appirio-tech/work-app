@@ -24,16 +24,16 @@
 
       header {
         a {
-          font-size: $font-18;
+          @include font-line(18);
           color    : $white;
         }
       }
 
       p {
         margin-top : $margin-10;
-        font-size  : $font-14;
         color      : $mercury;
-        line-height: $lh-120;
+
+        @include font-line(14);
       }
     }
   }

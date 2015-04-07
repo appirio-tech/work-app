@@ -17,9 +17,9 @@
       line-height   : normal;
       vertical-align: bottom;
       color         : $white;
-      font-size     : $font-50;
       text-align    : center;
-      line-height   : $lh-1;
+
+      @include font-line(50);
     }
   }
 
@@ -35,13 +35,12 @@
 
       header {
         a {
-          font-size: $font-28;
+          @include font-line(28);
         }
       }
 
       p {
-        font-size  : $font-18;
-        line-height: $lh-133;
+        @include font-line(18);
       }
     }
   }

@@ -31,6 +31,15 @@
   @include bg-image-ratio("../images/sprite.png", "../images/sprite-2x.png");
 }
 
+@mixin font-line($pt) {
+  font-size: ($pt * 1px);
+
+  @include line-height($pt * 1.15);
+}
+
+@mixin line-height($pt) {
+  line-height: ($pt * 1px);
+}
 
 @mixin main-restricted() {
   width       : 300px;

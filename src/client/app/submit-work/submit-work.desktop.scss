@@ -14,21 +14,5 @@
     }
   }
 
-  aside {
-    width: 25%;
-    position: relative;
-    overflow: hidden;
-    float: left;
-
-    &.fixed {
-      .fixed-wrapper {
-        position: fixed;
-        top: $margin-18;
-      }
-
-      height  : 100%;
-    }
-  }
-
   @include clearfix();
 }

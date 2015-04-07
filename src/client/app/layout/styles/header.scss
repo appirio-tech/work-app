@@ -27,7 +27,8 @@ $header-height: 28px;
   .login, .get-started {
     float      : right;
     line-height: $header-height;
-    font-size  : $font-16;
+
+    @include font-line(16);
   }
 
   .login {
@@ -47,7 +48,8 @@ $header-height: 28px;
     .label {
       margin-left: $margin-10;
       color      : $pacific-blue;
-      font-size  : $font-16;
+
+      @include font-line(16);
     }
   }
 

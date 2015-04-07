@@ -2,7 +2,6 @@
 
 html {
   min-height: 100%;
-  font-size : 10px;
   box-sizing: border-box;
 }
 
@@ -19,8 +18,8 @@ body {
   overflow-y         : auto;
   -webkit-text-stroke: 1px transparent;
   background-color   : $limed-spruce;
-  font-size          : $font-14;
 
+  @include font-line(14);
   @include source-sans();
 }
 
@@ -34,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: $font-20;
+  @include font-line(20);
 }
 
 h2 {
@@ -45,13 +44,6 @@ h2 {
 h3 {
   color: $mine-shaft;
 }
-
-
-p, input, a {
-  font-family: source sans pro;
-  line-height: $lh-120;
-}
-
 
 a {
   text-decoration: none;

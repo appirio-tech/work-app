@@ -18,6 +18,10 @@
       margin-top: 150px;
       opacity   : 0.2;
 
+      > * {
+        margin-top: $margin-30;
+      }
+
       @include transition(opacity 0.3s ease-in 0s);
 
       &.state-active {
