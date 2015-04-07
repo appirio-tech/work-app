@@ -28,7 +28,7 @@
       validateName: validateName,
       validateSummary: validateSummary,
       validateUsageDescription: validateUsageDescription,
-      globalValidate: globalValidate,
+      globalValidate: globalValidate
     };
 
     return service;
