@@ -5,40 +5,40 @@ h3 What type of project do you need?
 form
   ul.project-types
     li
-      label(for="project-type-design") Design
+      label(for="project-type-design") DESIGN
 
       button#project-type-design(class="{{vm.designButtonStyle}}", ng-click="vm.select('design')")
         .starting-at starting at
 
-        .price $3,000
+        .price $2,000
 
-        .duration 1 week
+        .duration about 1 week
 
-      .description I need a mobile app designed.
+      .description I need design for my app.
 
     li
-      label(for="project-type-code") Code
+      label(for="project-type-code") CODE
 
       button#project-type-code(class="{{vm.codeButtonStyle}}", ng-click="vm.select('code')")
         .starting-at starting at
 
-        .price $3,000
+        .price $5,000
 
-        .duration 2 weeks
+        .duration about 2 weeks
 
-      .description I have a design and I need a mobile app created from it.
+      .description I have a design and need an app created from it.
 
     li
-      label(for="project-type-design-code") Design + Code
+      label(for="project-type-design-code") DESIGN &amp; CODE
 
       button#project-type-design-code(class="{{vm.bothButtonStyle}}", ng-click="vm.select('both')")
         .starting-at starting at
 
-        .price $3,000
+        .price $10,000
 
-        .duration 3 weeks
+        .duration about 3 weeks
 
-      .description I have an idea for a mobile app and I need it designed and built.
+      .description I have an idea for an app and need it designed and built.
 
-  next-state(state="vm.nextState", vm="vm")
+  next-state(state="vm.nextState", vm="vm", ng-show="vm.work && vm.work.requestType")
 

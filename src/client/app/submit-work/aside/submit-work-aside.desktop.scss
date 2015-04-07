@@ -1,9 +1,30 @@
 @import "../../core/styles/combined";
 
 #submit-work-aside {
+  width   : 25%;
+  position: relative;
+  overflow: hidden;
+  float   : left;
+
+  &.fixed {
+    padding : 0;
+
+    .fixed-wrapper {
+      position: fixed;
+      margin  : $margin-18;
+      top     : 0;
+    }
+
+    height  : 100%;
+  }
+
   .project {
     .name {
-      font-size: $font-24;
+      @include font-line(24);
+    }
+
+    .price {
+      @include font-line(20);
     }
   }
 }

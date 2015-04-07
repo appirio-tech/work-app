@@ -4,7 +4,7 @@
   margin-bottom: 800px;
 
   h3 {
-    font-size: $font-36;
+    @include font-line(36);
   }
 
   p {
@@ -16,7 +16,7 @@
 
     button {
       height: 70px;
-      font-size: $font-24;
+      @include font-line(24);
     }
   }
 }

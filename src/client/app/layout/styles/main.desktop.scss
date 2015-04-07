@@ -1,9 +1,9 @@
 @import "../../core/styles/combined";
 
 h2 {
-  font-size: $font-52;
+  @include font-line(52);
 }
 
 h3 {
-  font-size: $font-20;
+  @include font-line(20);
 }

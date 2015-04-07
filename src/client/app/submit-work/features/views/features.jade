@@ -1,6 +1,6 @@
 h2 What features does your app need?
 
-h3 Choose features and describe it.
+h3 Select from our list, or describe your own.
 
 form
   ul
@@ -10,27 +10,20 @@ form
       .label-example
         label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
-        a(href='#') (example)
+        a(href='#', ng-mouseover="vm.showExample('login')", ng-mouseleave="vm.hideExample()") (example)
 
       .desc {{feature.description}}
 
       textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
 
-    li
-      .label-example
-        label New Feature
+  h3 Add a custom feature.
+
+  .new-feature
+    fieldset
       input(type="text", ng-model="vm.newFeatureName", placeholder="Name")
+
       input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation")
+
       button(ng-click="vm.add()") +
 
   next-state(state="vm.nextState", vm="vm")
-
-.example.layout-modal
-
-  a.close(href="#", onclick)
-
-style.
-  /* need to remove this when integrating with controller */
-  .overlay, .layout-modal {
-    display: none;
-  }

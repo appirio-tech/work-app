@@ -13,10 +13,11 @@
       }
 
       button {
-        height          : 80px;
-        font-size       : $font-14;
+        height          : 100px;
         margin-top      : $margin-10;
         background-color: $silver-sand;
+
+        @include font-line(14);
 
         &.selected {
           background-color: $celery;
