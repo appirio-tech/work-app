@@ -10,7 +10,5 @@ form(name="usersForm")
 ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="usersForm.usageDescription.$pristine && !vm.work.submitAttempted")
   ng-message(when="required") This field is required
 
-  ng-message(when="minlength") Help our designers understand your needs, please enter at least 200 characters.
-
 next-state(state="vm.nextState", vm="vm")
 

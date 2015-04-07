@@ -101,13 +101,10 @@
     function validateUsageDescription(usageDescription) {
       var res = {
         valid: false,
-        minlength: false,
         required: false
       };
       if (typeof usageDescription === 'undefined' || usageDescription.length === 0) {
         res.required = true;
-      } else if (usageDescription.length < 200) {
-        res.minlength = true;
       } else {
         res.valid = true;
       }
