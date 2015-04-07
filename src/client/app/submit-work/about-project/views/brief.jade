@@ -1,22 +1,21 @@
 h2 About your project
 
-h3(ng-show="vm.showYesNo") Do you have a written brief to upload?
+h3(ng-show="vm.showYesNo || vm.showBrief") Do you have any project specifications to provide?
 
-button.yes(ng-show="vm.showYesNo", ng-click="vm.toggleYes()") Yes
+h3(ng-show="vm.showElevator") Give us your elevator pitch—a brief explanation of your app.
 
-button.no(ng-show="vm.showYesNo", ng-click="vm.toggleNo()") No
+button.yes(ng-show="vm.showYesNo", ng-click="vm.toggleYes()") YES
+
+button.no(ng-show="vm.showYesNo", ng-click="vm.toggleNo()") NO
 
 form(ng-show="vm.showBrief")
-  label(for="brief-your-project") Please upload your project brief.
-
-  input#brief-your-project(type="file", placeholder="My Project", ng-model="vm.briefFilename")
+  input(type="file", placeholder="My Project", ng-model="vm.briefFilename")
 
   next-state(state="vm.nextState", vm="vm")
 
 form(name="summaryForm", ng-show="vm.showElevator")
-  label(for="project-elevator-pitch") Give us a brief explanation or "Elevator Pitch"
 
-  textarea#project-elevator-pitch(name="summary", placeholder="My Project", ng-model="vm.work.summary")
+  textarea(name="summary", placeholder="I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.", ng-model="vm.work.summary")
 
   ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="summaryForm.summary.$pristine && !vm.work.submitAttempted")
     ng-message(when="required") This field is required
