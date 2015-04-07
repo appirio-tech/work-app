@@ -12,10 +12,10 @@
     var vm = this;
     vm.title = 'Estimate';
     vm.work = {};
-    vm.estimate = '$8,000 - $10,000';
     vm.termsAccepted = false;
     vm.launch = launch;
     vm.nextState = 'success';
+    vm.getPrice = SubmitWorkService.getPrice;
 
     activate();
 
