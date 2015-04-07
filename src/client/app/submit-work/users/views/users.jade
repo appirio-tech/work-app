@@ -1,9 +1,9 @@
-h2 Your App's Users
+h2 Your Users
 
-h3 Who are your app's users and how will they use your app?
+h3 Who do you want to use your app? How will they interact with it?
 
 form(name="usersForm")
-  textarea(name="usageDescription", ng-model="vm.work.usageDescription", maxlength="300")
+  textarea(name="usageDescription", placeholder="My users will be people who want to get automatic stock  prices while they’re working.", ng-model="vm.work.usageDescription", maxlength="300")
 
 ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="usersForm.usageDescription.$pristine && !vm.work.submitAttempted")
   ng-message(when="required") This field is required
