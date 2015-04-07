@@ -39,7 +39,6 @@
       });
       vm.newFeatureName = '';
       vm.newFeatureExplanation = '';
-      SubmitWorkService.updatePrice();
     }
 
   }

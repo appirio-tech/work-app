@@ -85,7 +85,7 @@
 
     function updatePrice() {
       data.get('work-request', {id: service.id}).then(function(data) {
-        service.current.costEstimate = data.result.content.costEstimate;
+        work.costEstimate = data.result.content.costEstimate;
       });
     }
 
