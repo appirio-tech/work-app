@@ -77,6 +77,7 @@ describe('SubmitWorkService', function () {
 
     it('should be able to calculate a price', function() {
       service.current.features = [];
+      service.current.requestType = 'design';
       expect(service.getPrice()).to.equal(2000);
       service.current.features = [{selected: true}];
       expect(service.getPrice()).to.equal(2800);
