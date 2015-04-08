@@ -18,5 +18,9 @@
       logger.log('Activated Success View');
     }
 
+    function home() {
+      $state.go('timeline');
+    }
+
   }
 })();
