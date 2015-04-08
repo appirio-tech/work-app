@@ -24,6 +24,7 @@
       next: next,
       save: save,
       getPrice: getPrice,
+      getName: getName,
       updatePrice: updatePrice,
       validateName: validateName,
       validateSummary: validateSummary,
@@ -81,6 +82,12 @@
       } else {
         return calcPrice;
       }
+    }
+
+    function getName() {
+      if (work.name)
+        return work.name;
+      return '';
     }
 
     function updatePrice() {

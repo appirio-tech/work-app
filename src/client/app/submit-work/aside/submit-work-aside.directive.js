@@ -11,6 +11,9 @@
       scope.getPrice = function() {
         return SubmitWorkService.getPrice();
       }
+      scope.getName = function() {
+        return SubmitWorkService.getName();
+      }
 
       var setFixed = function () {
         // Need to refactor to avoid constant
