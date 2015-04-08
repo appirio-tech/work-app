@@ -5,65 +5,44 @@ describe('FeatureService', function () {
   var featuresData = [
     {
       id: 'login',
-      name: 'Email/Username Login',
+      name: 'Login',
       explanation: '',
-      description: 'Login with an email or username',
+      description: 'Users can login / register for your app',
       selected: false
     },
     {
       id: 'social-login',
-      name: 'Social Login',
+      name: 'Social',
       explanation: '',
-      description: 'Login with Twitter, Facebook, LinkedIn, or Google',
+      description: 'Users can see data from social networks (FB, Twitter etc.) in your app',
       selected: false
     },
     {
       id: 'profiles',
       name: 'Profiles',
       explanation: '',
-      description: 'People can enter information about themselves',
+      description: 'Users can create profiles with personal info',
       selected: false
     },
     {
-      id: 'accept-payments',
-      name: 'Accept Payments',
+      id: 'map',
+      name: 'Map',
       explanation: '',
-      description: 'Accept credit cards, PayPal, Bitcoin',
+      description: 'A map with a user\'s GPS location that helps them get to places',
       selected: false
     },
     {
-      id: 'ratings',
-      name: 'Ratings/Reviews',
+      id: 'forms',
+      name: 'Forms',
       explanation: '',
-      description: 'People leave reviews and/or rate things',
+      description: 'Users send specific information to you via forms ',
       selected: false
     },
     {
-      id: 'location',
-      name: 'Location-based or Navigation Element',
+      id: 'listing',
+      name: 'Listing',
       explanation: '',
-      description: 'Location-based or Navigation Element',
-      selected: false
-    },
-    {
-      id: 'sharing',
-      name: 'Sharing Functions',
-      explanation: '',
-      description: 'Share on Twitter, Facebook, Email',
-      selected: false
-    },
-    {
-      id: 'api',
-      name: 'An API',
-      explanation: '',
-      description: 'Data can be connected with a website or other',
-      selected: false
-    },
-    {
-      id: 'search',
-      name: 'Search',
-      explanation: '',
-      description: 'People can search/browse/filter',
+      description: 'Display list of products, images, items that the user can browse or search through',
       selected: false
     }
   ];
