@@ -24,8 +24,10 @@
     }
 
     function add() {
-      vm.project.competitorApps.push(vm.appName);
-      vm.appName = '';
+      if (!(vm.appName.trim().length === 0)) {
+        vm.project.competitorApps.push(vm.appName);
+        vm.appName = '';
+      }
     }
 
   }
