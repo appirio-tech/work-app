@@ -16,7 +16,7 @@
     vm.designButtonStyle = '';
     vm.codeButtonStyle = '';
     vm.bothButtonStyle = '';
-    vm.nextState = 'elevator-pitch';
+    vm.nextState = 'brief';
 
     activate();
 

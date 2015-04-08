@@ -47,17 +47,6 @@
         }
       },
       {
-        state: 'about-elevator-pitch',
-        config: {
-          url: '/submit-work/about/elevator-pitch',
-          templateUrl: 'submit-work/about-project/views/elevator-pitch.html',
-          controller: 'SubmitElevatorPitchController',
-          controllerAs: 'vm',
-          title: 'Elevator Pitch',
-          settings: {}
-        }
-      },
-      {
         state: 'about-competitors',
         config: {
           url: '/submit-work/about/competitors',

@@ -9,17 +9,47 @@
   SubmitBriefController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
   function SubmitBriefController(logger, $state, SubmitWorkService) {
-    var vm = this;
-    vm.title = 'Brief';
-    vm.project = {};
+    var vm           = this;
+    vm.title         = 'Brief';
+    vm.work          = {};
     vm.briefFilename = '';
-    vm.nextState = 'competitors';
-
+    vm.next          = false;
+    vm.nextState     = 'competitors';
+    vm.showYesNo     = true;
+    vm.showBrief     = false;
+    vm.showElevator  = false;
+    vm.validate      = validate;
+    vm.toggleYes     = toggleYes;
+    vm.toggleNo      = toggleNo;
+    vm.toggleCancel  = toggleCancel;
+      
     activate();
+
+    function toggleYes() {
+      vm.showYesNo    = false;
+      vm.showBrief    = true;
+      vm.showElevator = false;
+    }
+
+    function toggleNo() {
+      vm.showYesNo    = false;
+      vm.showBrief    = false;
+      vm.showElevator = true;
+    }
+
+    function toggleCancel() {
+      vm.showYesNo    = true;
+      vm.showBrief    = false;
+      vm.showElevator = false;
+    }
 
     function activate() {
       logger.log('Activated Brief View');
-      vm.project = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.getCurrent();
+    }
+
+    function validate() {
+      return SubmitWorkService.validateSummary(vm.work.summary);
     }
 
   }

@@ -34,7 +34,7 @@
         if (!validateResult.name) {
           state = 'name';
         } else if (!validateResult.summary) {
-          state = 'elevator-pitch';
+          state = 'brief';
         } else if (!validateResult.usageDescription) {
           state = 'users';
         }
