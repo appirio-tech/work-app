@@ -1,8 +1,28 @@
 h2 About your project
 
-h3 Do you have a project brief?
+h3(ng-show="vm.showYesNo || vm.showBrief") Do you have any project specifications to provide?
 
-form
-  input#brief-your-project(type="file", placeholder="My Project", ng-model="vm.briefFilename")
+h3(ng-show="vm.showElevator") Give us your elevator pitch—a brief explanation of your app.
+
+button.yes(ng-show="vm.showYesNo", ng-click="vm.toggleYes()") YES
+
+button.no(ng-show="vm.showYesNo", ng-click="vm.toggleNo()") NO
+
+form(ng-show="vm.showBrief")
+  input(type="file", placeholder="My Project", ng-model="vm.briefFilename")
 
   next-state(state="vm.nextState", vm="vm")
+
+form(name="summaryForm", ng-show="vm.showElevator")
+
+  textarea(name="summary", placeholder="I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.", ng-model="vm.work.summary")
+
+  .character-count {{ vm.work.summary.length || '&nbsp;' }}
+
+  ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="summaryForm.summary.$pristine && !vm.work.submitAttempted")
+    ng-message(when="required") This field is required
+    ng-message(when="minlength") Help our designers understand your needs, please enter at least 200 characters.
+
+  next-state(state="vm.nextState", vm="vm")
+
+button.cancel(ng-hide="vm.showYesNo", ng-click="vm.toggleCancel()") Cancel
