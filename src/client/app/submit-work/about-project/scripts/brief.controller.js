@@ -13,14 +13,15 @@
     vm.title         = 'Brief';
     vm.work          = {};
     vm.briefFilename = '';
+    vm.next          = false;
     vm.nextState     = 'competitors';
     vm.showYesNo     = true;
     vm.showBrief     = false;
     vm.showElevator  = false;
     vm.validate      = validate;
     vm.toggleYes     = toggleYes;
-    vm.toggleNo = toggleNo;
-    vm.toggleCancel = toggleCancel;
+    vm.toggleNo      = toggleNo;
+    vm.toggleCancel  = toggleCancel;
       
     activate();
 
