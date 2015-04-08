@@ -14,6 +14,9 @@
       scope.getName = function() {
         return SubmitWorkService.getName();
       }
+      scope.getRequestType = function() {
+        return SubmitWorkService.getRequestType();
+      }
 
       var setFixed = function () {
         // Need to refactor to avoid constant

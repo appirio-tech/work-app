@@ -25,6 +25,7 @@
       save: save,
       getPrice: getPrice,
       getName: getName,
+      getRequestType: getRequestType,
       updatePrice: updatePrice,
       validateName: validateName,
       validateSummary: validateSummary,
@@ -87,6 +88,17 @@
     function getName() {
       if (work.name)
         return work.name;
+      return '';
+    }
+
+    function getRequestType() {
+      if (work.requestType && work.requestType.length > 0) {
+        if (work.requestType == 'both')
+          return 'Design & Code';
+        // eww stinky
+        return work.requestType.charAt(0).toUpperCase() + work.requestType.substr(1) + " Only";
+      }
+        
       return '';
     }
 
