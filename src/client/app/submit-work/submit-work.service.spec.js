@@ -91,8 +91,15 @@ describe('SubmitWorkService', function () {
       });
     });
 
+    it('should have a default price of 0', function() {
+      service.current.features = [];
+      expect(service.getPrice()).to.equal(0);
+    });
+
+
     it('should be able to calculate a price', function() {
       service.current.features = [];
+      service.current.requestType='design';
       expect(service.getPrice()).to.equal(2000);
       service.current.features = [{selected: true}];
       expect(service.getPrice()).to.equal(2800);

@@ -14,7 +14,8 @@
       usageDescription: '',
       summary: '',
       competitorApps: [],
-      features: []
+      features: [],
+      costEstimate: {low: 0}
     };
 
     var service = {
@@ -24,8 +25,6 @@
       next: next,
       save: save,
       getPrice: getPrice,
-      getName: getName,
-      getRequestType: getRequestType,
       updatePrice: updatePrice,
       validateName: validateName,
       validateSummary: validateSummary,
@@ -75,31 +74,18 @@
     }
 
     function getPrice() {
-      var calcPrice = work.features.reduce(function(x, y) {
-        return y.selected ? x + 800 : x;
-      }, 2000);
-      if (work.costEstimate && work.costEstimate.low > calcPrice) {
-        return work.costEstimate.low;
+      if (work.requestType) {
+        var calcPrice = work.features.reduce(function(x, y) {
+          return y.selected ? x + 800 : x;
+        }, 2000);
+        if (work.costEstimate && work.costEstimate.low > calcPrice) {
+          return work.costEstimate.low;
+        } else {
+          return calcPrice;
+        }
       } else {
-        return calcPrice;
+        return 0;
       }
-    }
-
-    function getName() {
-      if (work.name)
-        return work.name;
-      return '';
-    }
-
-    function getRequestType() {
-      if (work.requestType && work.requestType.length > 0) {
-        if (work.requestType == 'both')
-          return 'Design & Code';
-        // eww stinky
-        return work.requestType.charAt(0).toUpperCase() + work.requestType.substr(1) + " Only";
-      }
-        
-      return '';
     }
 
     function updatePrice() {

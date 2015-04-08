@@ -28,11 +28,11 @@
     img(src="/submit-work/images/phone.png")
 
   .project
-    .name Name: {{getName()}}
+    .name Name: {{work.name}}
 
-    .type {{getRequestType()}}
+    .type {{work.requestType | requestType }}
 
-    .price {{getPrice()}}
+    .price {{work.costEstimate.low | estimate}}
 
   nav(role="navigation")
     ul#submit-work-nav

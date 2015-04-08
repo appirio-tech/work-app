@@ -9,21 +9,7 @@
         $document.scrollToElementAnimated(stateElement);
       };
 
-      scope.getPrice = function() {
-        if (SubmitWorkService.current.requestType) {
-          return '$' + SubmitWorkService.getPrice();
-        } else {
-          return '';
-        }
-      };
-
-      scope.getName = function() {
-        return SubmitWorkService.getName();
-      };
-
-      scope.getRequestType = function() {
-        return SubmitWorkService.getRequestType();
-      };
+      scope.work = SubmitWorkService.getCurrent();
 
       var setFixed = function () {
         // Need to refactor to avoid constant
