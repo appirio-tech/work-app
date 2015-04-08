@@ -11,7 +11,7 @@
   function SubmitBriefController(logger, $state, SubmitWorkService) {
     var vm           = this;
     vm.title         = 'Brief';
-    vm.project       = {};
+    vm.work          = {};
     vm.briefFilename = '';
     vm.nextState     = 'competitors';
     vm.showYesNo     = true;
@@ -44,7 +44,7 @@
 
     function activate() {
       logger.log('Activated Brief View');
-      vm.project = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.getCurrent();
     }
 
     function validate() {
