@@ -11,6 +11,8 @@
 
       scope.work = SubmitWorkService.getCurrent();
 
+      scope.price = SubmitWorkService.getPrice;
+
       var setFixed = function () {
         // Need to refactor to avoid constant
         if ($document.scrollTop() >= 100) {
