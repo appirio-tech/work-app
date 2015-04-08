@@ -72,24 +72,19 @@ describe('SubmitWorkService', function () {
         var res = service.validateUsageDescription('');
         expect(res.valid).to.equal(false);
         expect(res.required).to.equal(true);
-
-        // rule 1: must be at least 200 characters
-        res = service.validateUsageDescription('asdf');
-        expect(res.valid).to.equal(false);
-        expect(res.minlength).to.equal(true);
-
-        res = service
-          .validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
-        expect(res.valid).to.equal(false);
-        expect(res.minlength).to.equal(true);
-
-        var str = '0123456789';
-        str = str + str + str + str + str;
-        str = str + str + str + str;
-        res = service.validateUsageDescription(str);
-        expect(res.valid).to.equal(true);
       });
     });
+
+    it('should be able to calculate a price', function() {
+      service.current.features = [];
+      expect(service.getPrice()).to.equal(2000);
+      service.current.features = [{selected: true}];
+      expect(service.getPrice()).to.equal(2800);
+      service.current.features = [{selected: true}, {selected: true}, {selected: true}];
+      expect(service.getPrice()).to.equal(4400);
+      service.current.features = [{selected: false}, {selected: true}, {selected: true}];
+      expect(service.getPrice()).to.equal(3600);
+    })
 
   });
 });
