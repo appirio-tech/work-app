@@ -7,13 +7,10 @@
   float   : left;
 
   &.fixed {
-    padding : 0;
-
     .fixed-wrapper {
-      position: fixed;
-      margin  : $margin-18;
-      top     : 0;
-      width   : 220px;
+      position : fixed;
+      top      : 0;
+      max-width: 256px;
     }
 
     height  : 100%;
