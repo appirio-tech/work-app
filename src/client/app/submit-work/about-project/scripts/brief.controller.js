@@ -17,30 +17,38 @@
     vm.showYesNo     = true;
     vm.showBrief     = false;
     vm.showElevator  = false;
+    vm.validate      = validate;
+    vm.toggleYes     = toggleYes;
+    vm.toggleNo = toggleNo;
+    vm.toggleCancel = toggleCancel;
+      
+    activate();
 
-    vm.toggleYes = function () {
+    function toggleYes() {
       vm.showYesNo    = false;
       vm.showBrief    = true;
       vm.showElevator = false;
     }
 
-    vm.toggleNo = function () {
+    function toggleNo() {
       vm.showYesNo    = false;
       vm.showBrief    = false;
       vm.showElevator = true;
     }
 
-    vm.toggleCancel = function () {
+    function toggleCancel() {
       vm.showYesNo    = true;
       vm.showBrief    = false;
       vm.showElevator = false;
     }
 
-    activate();
-
     function activate() {
       logger.log('Activated Brief View');
       vm.project = SubmitWorkService.getCurrent();
+    }
+
+    function validate() {
+      return SubmitWorkService.validateSummary(vm.work.summary);
     }
 
   }
