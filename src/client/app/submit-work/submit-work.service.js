@@ -14,7 +14,8 @@
       usageDescription: '',
       summary: '',
       competitorApps: [],
-      features: []
+      features: [],
+      costEstimate: {low: 0}
     };
 
     var service = {
@@ -73,13 +74,17 @@
     }
 
     function getPrice() {
-      var calcPrice = work.features.reduce(function(x, y) {
-        return y.selected ? x + 800 : x;
-      }, 2000);
-      if (work.costEstimate && work.costEstimate.low > calcPrice) {
-        return work.costEstimate.low;
+      if (work.requestType) {
+        var calcPrice = work.features.reduce(function(x, y) {
+          return y.selected ? x + 800 : x;
+        }, 2000);
+        if (work.costEstimate && work.costEstimate.low > calcPrice) {
+          return work.costEstimate.low;
+        } else {
+          return calcPrice;
+        }
       } else {
-        return calcPrice;
+        return 0;
       }
     }
 

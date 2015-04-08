@@ -2,6 +2,12 @@
 
 #submit-work-aside {
   background-color: $mercury;
+  min-height      : 1px;
+  padding         : 0;
+
+  .fixed-wrapper {
+    padding: $margin-18;
+  }
 
   .project {
     @include roboto-thin();

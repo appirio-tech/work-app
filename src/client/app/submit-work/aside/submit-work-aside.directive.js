@@ -8,9 +8,8 @@
 
         $document.scrollToElementAnimated(stateElement);
       };
-      scope.getPrice = function() {
-        return SubmitWorkService.getPrice();
-      }
+
+      scope.work = SubmitWorkService.getCurrent();
 
       var setFixed = function () {
         // Need to refactor to avoid constant
