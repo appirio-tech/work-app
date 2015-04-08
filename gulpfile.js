@@ -163,6 +163,7 @@ gulp.task('templatecache', ['jade'], function () {
     }))
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
     .pipe($.replace(/\bxlink:href(.+?\/\bimages)/g, 'xlink:href="' + imagePath))
+    .pipe($.replace(/\bsrc(.+?\/\bimages)/g, 'src="' + imagePath))
     .pipe($.angularTemplatecache(
       config.templateCache.file,
       config.templateCache.options
