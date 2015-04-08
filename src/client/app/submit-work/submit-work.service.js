@@ -73,6 +73,7 @@
     }
 
     function getPrice() {
+      if (!work.requestType) return 0;
       var calcPrice = work.features.reduce(function(x, y) {
         return y.selected ? x + 800 : x;
       }, 2000);
