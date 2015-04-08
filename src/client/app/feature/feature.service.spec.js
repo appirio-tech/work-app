@@ -71,7 +71,6 @@ describe('FeatureService', function () {
         expect(reponse).eql(featuresData);
 
         expect(reponse).to.be.a('array');
-        expect(reponse).to.be.length(9);
       });
     });
   });
