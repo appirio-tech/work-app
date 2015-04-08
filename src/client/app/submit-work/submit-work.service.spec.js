@@ -72,22 +72,6 @@ describe('SubmitWorkService', function () {
         var res = service.validateUsageDescription('');
         expect(res.valid).to.equal(false);
         expect(res.required).to.equal(true);
-
-        // rule 1: must be at least 200 characters
-        res = service.validateUsageDescription('asdf');
-        expect(res.valid).to.equal(false);
-        expect(res.minlength).to.equal(true);
-
-        res = service
-          .validateUsageDescription('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
-        expect(res.valid).to.equal(false);
-        expect(res.minlength).to.equal(true);
-
-        var str = '0123456789';
-        str = str + str + str + str + str;
-        str = str + str + str + str;
-        res = service.validateUsageDescription(str);
-        expect(res.valid).to.equal(true);
       });
     });
 
