@@ -27,8 +27,9 @@ module.exports = function () {
       apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
       auth0ClientId: envConfig.getVal('AUTH0_CLIENT_ID', ''),
       auth0Domain: envConfig.getVal('AUTH0_DOMAIN', 'topcoder-dev.auth0.com'),
-      retUrl: envConfig.getVal('RET_URL', 'http://localhost:3000/#/'),
-      callbackUrl: envConfig.getVal('CALLBACK_URL', 'http://api.topcoder-dev.com/pub/callback.html'),
+      auth0retUrl: envConfig.getVal('AUTH0_RET_URL', 'http://localhost:3000/#/'),
+      auth0callbackUrl: envConfig.getVal('AUTH0_CALLBACK_URL', 'http://api.topcoder-dev.com/pub/callback.html'),
+      auth0TokenName: envConfig.get('AUTH0_TOKEN_NAME', 'userJWTToken')
       useStubs: useStubs
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
