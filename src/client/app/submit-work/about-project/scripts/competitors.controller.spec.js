@@ -26,11 +26,11 @@ describe('SubmitCompetitorsController', function () {
       });
 
       it('should be able to add an appName', function() {
-        expect(controller.project.competitorApps.length).to.equal(0);
+        expect(controller.work.competitorApps.length).to.equal(0);
         expect(controller.appName).to.equal('');
         controller.appName = 'New App';
         controller.add();
-        expect(controller.project.competitorApps.length).to.equal(1);
+        expect(controller.work.competitorApps.length).to.equal(1);
         expect(controller.appName).to.equal('');
       });
 
