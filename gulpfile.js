@@ -77,12 +77,9 @@ gulp.task('scss', function () {
 gulp.task('jade', function () {
   log('Compiling Jade --> HTML');
 
-  var stubs = config.useStubs === 'true';
-
   var options = {
     pretty: true,
     locals: {
-      stubs: stubs,
       basePath: config.baseURL
     }
   };

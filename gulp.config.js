@@ -13,7 +13,6 @@ module.exports = function () {
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({devDependencies: true})['js'];
   var scssBuild = './.scss';
-  var useStubs = envConfig.getVal('USE_STUBS', false);
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
@@ -30,10 +29,8 @@ module.exports = function () {
       auth0retUrl: envConfig.getVal('AUTH0_RET_URL', 'http://localhost:3000/#/'),
       auth0callbackUrl: envConfig.getVal('AUTH0_CALLBACK_URL', 'http://api.topcoder-dev.com/pub/callback.html'),
       auth0TokenName: envConfig.get('AUTH0_TOKEN_NAME', 'userJWTToken')
-      useStubs: useStubs
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
-    useStubs: useStubs,
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
     /**
