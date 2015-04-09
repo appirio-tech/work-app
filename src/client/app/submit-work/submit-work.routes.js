@@ -16,7 +16,10 @@
         url: '/submit-work',
         title: 'Submit Work',
         abstract: true,
-        templateUrl: 'submit-work/submit-work.html'
+        templateUrl: 'submit-work/submit-work.html',
+        data: {
+          requiresLogin: true
+        }
       }
     }, {
       state: 'submit-work.flow',

@@ -5,9 +5,9 @@
     .module('app.auth')
     .factory('TokenService', TokenService);
 
-  TokenService.$inject = ['$http', 'exception', 'store', 'auth0TokenName', 'jwtHelper'];
+  TokenService.$inject = ['$http', 'exception', 'store', 'auth0TokenName', 'jwtHelper', 'auth'];
   /* @ngInject */
-  function TokenService($http, exception, store, auth0TokenName, jwtHelper) {
+  function TokenService($http, exception, store, auth0TokenName, jwtHelper, auth) {
     var service = {
       getToken: getToken,
       deleteToken: deleteToken,
@@ -52,7 +52,7 @@
     }
 
     function setToken(token) {
-      return store.set(auth0TokenName, token);
+      store.set(auth0TokenName, token);
     }
 
     function deleteToken() {
