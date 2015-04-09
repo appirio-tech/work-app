@@ -12,7 +12,7 @@
     var vm = this;
     vm.title = 'Competitors';
     vm.appName = '';
-    vm.project = {};
+    vm.work = {};
     vm.add = add;
     vm.nextState = 'users';
 
@@ -20,12 +20,12 @@
 
     function activate() {
       logger.log('Activated Competitors View');
-      vm.project = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.getCurrent();
     }
 
     function add() {
       if (!(vm.appName.trim().length === 0)) {
-        vm.project.competitorApps.push(vm.appName);
+        vm.work.competitorApps.push(vm.appName);
         vm.appName = '';
       }
     }
