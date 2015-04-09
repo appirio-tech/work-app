@@ -8,6 +8,6 @@ form
   input#submit-work-accept-terms(type="checkbox", ng-model="vm.termsAccepted")
 
   label(for="submit-work-accept-terms") Accept
-    a(href="#") {{ ' ' + 'Terms and Conditions' }}
+    a(ui-sref="terms") {{ ' ' + 'Terms and Conditions' }}
 
   button(ng-click="vm.launch()") SUBMIT PROJECT
