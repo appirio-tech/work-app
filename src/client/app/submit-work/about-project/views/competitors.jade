@@ -4,9 +4,9 @@ h3 What existing apps would be similar to (or compete against) your new app?
 
 form
   fieldset
-    input#project-competitors(type="text", placeholder="eTrade Mobile Trading App", ng-model="vm.appName")
+    input#project-competitors(type="text", placeholder="{{vm.placeholder || 'eTrade Mobile Trading App'}}", ng-model="vm.appName")
 
-    button.add-competitor(ng-click="vm.add()") +
+    button.add-competitor(ng-click="vm.add(); vm.placeholder = ' '") +
 
   h6 Your List of Similar Apps
 
