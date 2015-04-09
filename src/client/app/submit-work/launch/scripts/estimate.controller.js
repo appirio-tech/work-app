@@ -15,7 +15,7 @@
     vm.termsAccepted = false;
     vm.launch = launch;
     vm.nextState = 'success';
-    vm.getPrice = SubmitWorkService.getPrice;
+    vm.getEstimate = SubmitWorkService.getEstimate;
 
     activate();
 

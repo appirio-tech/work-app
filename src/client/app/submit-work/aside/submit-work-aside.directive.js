@@ -11,7 +11,7 @@
 
       scope.work = SubmitWorkService.getCurrent();
 
-      scope.price = SubmitWorkService.getPrice;
+      scope.getEstimate = SubmitWorkService.getEstimate;
 
       var setFixed = function () {
         // Need to refactor to avoid constant

@@ -24,7 +24,7 @@
       setCurrent: setCurrent,
       next: next,
       save: save,
-      getPrice: getPrice,
+      getEstimate: getEstimate,
       updatePrice: updatePrice,
       validateName: validateName,
       validateSummary: validateSummary,
@@ -73,18 +73,22 @@
       });
     }
 
-    function getPrice() {
+    function getEstimate() {
       if (work.requestType) {
-        var calcPrice = work.features.reduce(function(x, y) {
-          return y.selected ? x + 800 : x;
-        }, 2000);
-        if (work.costEstimate && work.costEstimate.low > calcPrice) {
-          return work.costEstimate.low;
+        var calcEstimate = work.features.reduce(function(x, y) {
+          if (y.selected) {
+            x.low += 800;
+            x.high += 1200;
+          }
+          return x;
+        }, {low: 2000, high: 2000});
+        if (work.costEstimate && work.costEstimate.low > calcEstimate.low) {
+          return work.costEstimate;
         } else {
-          return calcPrice;
+          return calcEstimate;
         }
       } else {
-        return 0;
+        return {low: 0, high: 0};
       }
     }
 
