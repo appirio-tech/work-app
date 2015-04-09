@@ -3,7 +3,7 @@ h2 About your project
 h3 Name your project
 
 form(name="nameForm")
-  input(name="name", type="text", placeholder="My Stock Monitor App", required=true, ng-model="vm.work.name")
+  input(name="name", type="text", placeholder="My Stock Monitor App", ng-model="vm.work.name")
 
   ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="nameForm.name.$pristine && !vm.work.submitAttempted")
     ng-message(when="required") This field is required
