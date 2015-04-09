@@ -28,7 +28,7 @@ describe('User', function() {
     });
 
     it('should return the array object for query', function() {
-      ApiResource['work-request'].query().then(function(response) {
+      ApiResource['user'].query().then(function(response) {
         expect(response).to.be.defined;
         expect(response).to.be.array;
         expect(response).to.have.length(1);
@@ -39,7 +39,7 @@ describe('User', function() {
     });
 
     it('should return the object for get', function() {
-      ApiResource['work-request'].get().then(function(response) {
+      ApiResource['user'].get().then(function(response) {
         expect(response).to.be.defined;
         expect(response).to.be.object;
         expect(response).to.be.eql(mockUser.getMockUserRequest());

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.workRequest', [
+    .module('app.user', [
       'blocks.exception', 'blocks.logger',
       'app.resource',
       'app.constants'
