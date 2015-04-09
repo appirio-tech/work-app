@@ -4,10 +4,34 @@
   form {
     @include main-restricted();
 
-    input {
-      margin-top: $margin-18;
-      width: 240px;
+    width: 530px;
+
+
+    input, [type=file] + label {
+      border: 1px solid #CCC;
+      border-radius: 3px;
+      height: 30px;
+      padding: 7px;
+      width: 100px;
+      float: right;
+      text-align: center;
+    }
+
+    .description {
+      margin-left: 50px;
+      height: 30px;
+      padding: 7px;
+      width: 260px;
+      height: 30px;
       float: left;
+      text-align: center;
+      left: 7.35em;
+      top: 0.5em;
+      background: #CCCCCC;
+    }
+
+    [type=file] {
+      opacity: 0;
     }
 
     .add-design-file {
@@ -19,6 +43,9 @@
     }
 
     .added-design-files {
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
       li {
         margin-top: $margin-10;
         overflow:  hidden;

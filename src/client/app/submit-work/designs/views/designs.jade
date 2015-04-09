@@ -1,12 +1,15 @@
 h2 Designing Your App
 
+h3.grey (optional)
+
 h3 Upload any files you may have that can help us understand your design preferences.
+
 
 form
   fieldset
+    .description e.g., style guides, icons, logos, etc.
     input#project-design-file(type="file", ng-model="vm.filename")
-
-    button.add-design-file(ng-click="vm.add()") +
+    label(for="project-design-file", ng-click="vm.add()") Browse
 
   ul.added-design-files
     li(ng-repeat="filename in vm.imageFilenames")
