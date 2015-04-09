@@ -21,9 +21,11 @@ form, input, textarea, button {
 }
 
 input, textarea {
-  width     : 100%;
-  padding   : $padding-9;
-  border    : $border-1 solid $slate-gray;
+  width           : 100%;
+  padding         : $padding-9;
+  border          : 0;
+  background-color: $mercury;
+  color           : $gray-chateau;
 
   @include font-line(16);
 }
