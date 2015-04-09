@@ -3,7 +3,7 @@
 
   angular
     .module('app.auth')
-    .factory('TokenService', TokenService, auth0TokenName);
+    .factory('TokenService', TokenService);
 
   TokenService.$inject = ['$http', 'exception', 'store', 'auth0TokenName', 'jwtHelper'];
   /* @ngInject */
