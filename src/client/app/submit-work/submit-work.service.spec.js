@@ -21,25 +21,34 @@ describe('SubmitWorkService', function () {
     it('should return an object for work', function() {
       var cur = service.work;
       expect(cur).to.be.defined;
-      expect(cur.name).to.equal('');
+      expect(cur.name).to.equal(null);
     });
 
     it('should have a default price of 0', function() {
       service.work.features = [];
-      expect(service.getPrice()).to.equal(0);
+      expect(service.work.price).to.equal(null);
     });
 
 
     it('should be able to calculate a price', function() {
+      // This should be split into multiple assertions/context
       service.work.features = [];
-      service.work.requestType='design';
-      expect(service.getPrice()).to.equal(2000);
+      service.work.requestType = 'design';
+      service.updatePrice();
+      expect(service.work.price).to.equal('$2000');
+
       service.work.features = [{selected: true}];
-      expect(service.getPrice()).to.equal(2800);
+      service.updatePrice();
+      expect(service.work.price).to.equal('$2800');
+
       service.work.features = [{selected: true}, {selected: true}, {selected: true}];
-      expect(service.getPrice()).to.equal(4400);
+      service.updatePrice();
+
+      expect(service.work.price).to.equal('$4400');
+
       service.work.features = [{selected: false}, {selected: true}, {selected: true}];
-      expect(service.getPrice()).to.equal(3600);
+      service.updatePrice();
+      expect(service.work.price).to.equal('$3600');
     })
 
   });
