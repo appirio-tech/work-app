@@ -32,15 +32,12 @@
         { 'key': 'designs' },
         { 'key': 'estimate' }
       ],
-      activeState        : null,
-      getActiveStateIndex: getActiveStateIndex,
-      setActiveState     : setActiveState,
-      findState          : findState,
-      setNextState       : setNextState,
-
-      // need to remove these and make private
-      save: save,
-      updatePrice: updatePrice,
+      activeState   : null,
+      setActiveState: setActiveState,
+      findState     : findState,
+      setNextState  : setNextState,
+      updatePrice   : updatePrice,
+      save          : save,
     };
 
     return service;
