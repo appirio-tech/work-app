@@ -8,8 +8,13 @@
   > form {
     @include main-restricted();
 
+
     .character-count {
       text-align: right;
     }
+  }
+  a.cancel {
+    display: block;
+    margin-top: 15px;
   }
 }
