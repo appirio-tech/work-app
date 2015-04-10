@@ -49,7 +49,7 @@
     return service;
 
     function getActiveStateIndex () {
-      var index = -1;
+      var index = 0;
 
       angular.forEach(service.states, function(state, i) {
         if (state.key == service.activeState) {
@@ -87,6 +87,8 @@
       setActiveState(nextState)
 
       save();
+
+      return service.activeState;
     }
 
     // NEED TO DELETE THIS

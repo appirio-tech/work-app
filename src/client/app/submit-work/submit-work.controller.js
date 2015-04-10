@@ -13,6 +13,14 @@
       }
     });
 
+    $scope.$watch(function () {
+       return SubmitWorkService.activeState;
+     }, function (activeState) {
+      if (activeState != $scope.activeState) {
+        $scope.activeState = activeState;
+      };
+    }, true);
+
     $scope.launch = function () {
       // angular.forEach(SubmitWorkService.states, function(state, key) {
       //   if (!state.form.$valid) {

@@ -9,10 +9,9 @@
   SubmitNameController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitNameController($scope, logger, SubmitWorkService) {
-    var vm          = this;
-    vm.title        = 'Name';
-    vm.work         = SubmitWorkService.work;
-    vm.setNextState = SubmitWorkService.setNextState
+    var vm   = this;
+    vm.title = 'Name';
+    vm.work  = SubmitWorkService.work;
 
     activate();
 
@@ -21,6 +20,12 @@
         SubmitWorkService.findState('name').form = nameForm;
       }
     });
+
+    $scope.submit = function () {
+      if ($scope.nameForm.$valid) {
+        SubmitWorkService.setNextState();
+      }
+    };
 
     function activate() {
       logger.log('Activated Name View');
