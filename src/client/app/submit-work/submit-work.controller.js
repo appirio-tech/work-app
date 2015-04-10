@@ -1,11 +1,10 @@
-/*global form:true */
 (function () {
   'use strict';
 
-  /* @ngInject */
   function SubmitWorkController($scope, SubmitWorkService, $state) {
     $scope.activeState = SubmitWorkService.activeState;
     $scope.work        = SubmitWorkService.work;
+    $scope.completed   = SubmitWorkService.completed;
 
     $scope.$watch('activeState', function(state) {
       if (state) {
@@ -17,6 +16,12 @@
        return SubmitWorkService.activeState;
      }, function (activeState) {
       $scope.activeState = activeState;
+    }, true);
+
+    $scope.$watch(function () {
+       return SubmitWorkService.completed;
+     }, function (completed) {
+      $scope.completed = completed;
     }, true);
 
     $scope.launch = function () {

@@ -20,5 +20,10 @@
         SubmitWorkService.findState('estimate').form = estimateForm;
       }
     });
+
+    $scope.change = function () {
+      // Force to save/update completed
+      SubmitWorkService.setActiveState('estimate');
+    };
   }
 })();

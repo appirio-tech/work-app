@@ -43,12 +43,7 @@
         }
         else if (state) {
           var stateElement = element.find('#starting-line-' + state);
-
-          var finishedScrolling = function () {
-            setActiveStateElement();
-          };
-
-          $document.scrollToElementAnimated(stateElement).then(finishedScrolling);
+          $document.scrollToElementAnimated(stateElement);
         }
       };
 
