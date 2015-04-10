@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitEstimateController', SubmitEstimateController);
 
-  SubmitEstimateController.$inject = ['logger', '$state', 'SubmitWorkService', '$document'];
+  SubmitEstimateController.$inject = ['$rootScope', 'logger', '$state', 'SubmitWorkService', '$document'];
   /* @ngInject */
-  function SubmitEstimateController(logger, $state, SubmitWorkService, $document) {
+  function SubmitEstimateController($rootScope, logger, $state, SubmitWorkService, $document) {
     var vm = this;
     vm.title = 'Estimate';
     vm.work = {};
@@ -16,6 +16,14 @@
     vm.launch = launch;
     vm.nextState = 'success';
     vm.getPrice = SubmitWorkService.getPrice;
+
+    vm.showTerms = function () {
+      $rootScope.$emit('submit-work-show-example', 'terms');
+    };
+
+    vm.hideTerms = function () {
+      $rootScope.$emit('submit-work-hide-example');
+    };
 
     activate();
 
