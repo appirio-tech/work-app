@@ -20,7 +20,7 @@
 
     function activate() {
       logger.log('Activated Competitors View');
-      vm.project = SubmitWorkService.getCurrent();
+      vm.project = SubmitWorkService.work;
     }
 
     function add() {

@@ -2,7 +2,6 @@
 - aboutProject.kids.push({ label: 'Project Name', href: '#', state: "name" })
 - aboutProject.kids.push({ label: 'Project Type', href: '#', state: "type" })
 - aboutProject.kids.push({ label: 'Project Specs', href: '#', state: "brief"  })
-- aboutProject.kids.push({ label: 'Project Elevator pitch', href: '#', state: "elevator-pitch"  })
 - aboutProject.kids.push({ label: 'Similar apps', href: '#', state: "competitors"  })
 
 - appUsers = { label: 'App Users', href: '#', kids: [] }
@@ -28,11 +27,11 @@
     img(src="/submit-work/images/phone.png")
 
   .project
-    .name {{work.name}}
+    //- .name {{work.name}}
 
-    .type {{work.requestType | requestType }}
+    //- .type {{work.requestType | requestType }}
 
-    .price {{price() | estimate}}
+    //- .price {{ work.price | work.estimate }}
 
   nav(role="navigation")
     ul#submit-work-nav
@@ -48,4 +47,4 @@
           ul
             each kid in nav.kids
               li
-                a(class=kid.state, class="current", state=kid.state, ng-click="scrollTo('#{kid.state}')")!= kid.label
+                a(class=kid.state, class="current", state=kid.state, ng-click="activeState = '#{kid.state}'")!= kid.label

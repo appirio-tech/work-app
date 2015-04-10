@@ -1,17 +1,13 @@
 (function () {
   'use strict';
 
-  var directive = function ($rootScope, $document, SubmitWorkService) {
+  var directive = function ($rootScope, $document) {
     var link = function (scope, element, attrs) {
-      scope.scrollTo = function(state) {
-        var stateElement = angular.element('#starting-line-' + state);
 
-        $document.scrollToElementAnimated(stateElement);
-      };
-
-      scope.work = SubmitWorkService.getCurrent();
-
-      scope.price = SubmitWorkService.getPrice;
+      scope.$watch('activeState', function (state) {
+        element.find('.state-active').removeClass('state-active');
+        element.find('[state="' + state + '"]').addClass('state-active');
+      }, true);
 
       var setFixed = function () {
         // Need to refactor to avoid constant
@@ -27,13 +23,6 @@
 
       setFixed();
 
-      // needs refactoring when more time
-      $rootScope.$on('scroll-state', function (rootScope, state) {
-        element.find('.state-active').removeClass('state-active');
-
-        element.find('[state="' + state + '"]').addClass('state-active');
-      });
-
       $rootScope.$on('submit-work-show-example', function (rootScope, example) {
         element.find('.example.' +  example).show();
       });
@@ -41,18 +30,20 @@
       $rootScope.$on('submit-work-hide-example', function (rootScope, example) {
         element.find('.example').hide();
       });
-
-      element.find('[state="' + $rootScope.scrollState + '"]').addClass('state-active');
     };
 
     return {
       restrict   : 'A',
+      scope: {
+        activeState : "=ngActiveState",
+        work: "=ngSubmitWorkAside"
+      },
       templateUrl: 'submit-work/aside/submit-work-aside.html',
       link       : link
     };
   };
 
-  directive.$inject = ['$rootScope', '$document', 'SubmitWorkService'];
+  directive.$inject = ['$rootScope', '$document'];
 
   angular.module('app.submit-work').directive('ngSubmitWorkAside', directive);
 })();

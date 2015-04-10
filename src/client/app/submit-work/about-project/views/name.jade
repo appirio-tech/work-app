@@ -2,14 +2,22 @@ h2 About your project
 
 h3 Name your project
 
-form(name="nameForm")
-  input(name="name", type="text", placeholder="My Stock Monitor App", required=true, ng-model="vm.work.name")
+form(name="nameForm", ng-submit="vm.setNextState()")
+  input(
+    name         = "name",
+    type         = "text",
+    placeholder  = "My Stock Monitor App",
+    required     = true,
+    ng-model     = "vm.work.name",
+    ng-minlength = "3",
+    ng-pattern   = "/^[0-9a-zA-Z].*$/"
+  )
 
-  ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="nameForm.name.$pristine && !vm.work.submitAttempted")
-    ng-message(when="required") This field is required
+  ul.invalid-messages
+    li(ng-show="nameForm.name.$dirty && nameForm.name.$error.required") This field is required.
 
-    ng-message(when="minlength") The project name must be at least 3 characters long
+    li(ng-show="nameForm.name.$dirty && nameForm.name.$error.minlength") The project name must be at least 3 characters long.
 
-    ng-message(when="letter") The project name must start with a letter or a number
+    li(ng-show="nameForm.name.$dirty && nameForm.name.$error.pattern") The project name must start with a letter or a number.
 
-  next-state(state="vm.nextState", vm="vm")
+  button.submit(type="submit", ng-show="nameForm.$valid") NEXT

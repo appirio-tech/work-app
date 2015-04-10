@@ -18,8 +18,8 @@ describe('SubmitWorkService', function () {
       expect(service).to.be.defined;
     });
 
-    it('should return an object for getCurrent()', function() {
-      var cur = service.getCurrent();
+    it('should return an object for work', function() {
+      var cur = service.work;
       expect(cur).to.be.defined;
       expect(cur.name).to.equal('');
     });
@@ -76,20 +76,20 @@ describe('SubmitWorkService', function () {
     });
 
     it('should have a default price of 0', function() {
-      service.current.features = [];
+      service.work.features = [];
       expect(service.getPrice()).to.equal(0);
     });
 
 
     it('should be able to calculate a price', function() {
-      service.current.features = [];
-      service.current.requestType='design';
+      service.work.features = [];
+      service.work.requestType='design';
       expect(service.getPrice()).to.equal(2000);
-      service.current.features = [{selected: true}];
+      service.work.features = [{selected: true}];
       expect(service.getPrice()).to.equal(2800);
-      service.current.features = [{selected: true}, {selected: true}, {selected: true}];
+      service.work.features = [{selected: true}, {selected: true}, {selected: true}];
       expect(service.getPrice()).to.equal(4400);
-      service.current.features = [{selected: false}, {selected: true}, {selected: true}];
+      service.work.features = [{selected: false}, {selected: true}, {selected: true}];
       expect(service.getPrice()).to.equal(3600);
     })
 

@@ -14,8 +14,17 @@
     text-align      : center;
     max-width       : 784px;
 
+    #starting-line-name {
+      position: absolute;
+      top: 0;
+    }
+
+    .starting-line, .finish-line {
+      min-height: 1px;
+      margin-bottom: 100px;
+    }
+
     article {
-      margin-top: 150px;
       opacity   : 0;
 
       > * {

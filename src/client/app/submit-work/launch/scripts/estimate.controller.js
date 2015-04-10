@@ -21,7 +21,7 @@
 
     function activate() {
       logger.log('Activated Estimate View');
-      vm.work = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.work;
     }
 
     function launch() {

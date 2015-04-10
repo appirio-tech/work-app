@@ -30,7 +30,7 @@
 
     function activate() {
       logger.log('Activated Features View');
-      vm.work = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.work;
       if (vm.work.features.length === 0) {
         FeatureService.getFeatures().then(function(features) {
           vm.work.features = features;

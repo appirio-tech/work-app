@@ -9,19 +9,33 @@
   /* @ngInject */
   function SubmitWorkService($anchorScroll, $q, $location, data, $state) {
     var work = {
-      name: '',
-      requestType: false,
+      name            : '',
+      requestType     : false,
       usageDescription: '',
-      summary: '',
-      competitorApps: [],
-      features: [],
-      costEstimate: {low: 0}
+      summary         : '',
+      competitorApps  : [],
+      features        : [],
+      costEstimate    : { low: 0 }
     };
 
     var service = {
-      current: work,
-      getCurrent: getCurrent,
-      setCurrent: setCurrent,
+      work: work,
+      states: [
+        { 'key': 'name' },
+        { 'key': 'type' },
+        { 'key': 'brief' },
+        { 'key': 'competitors' },
+        { 'key': 'users' },
+        { 'key': 'features' },
+        { 'key': 'designs' },
+        { 'key': 'designs' }
+      ],
+      activeState        : null,
+      getActiveStateIndex: getActiveStateIndex,
+      setActiveState     : setActiveState,
+      findState          : findState,
+      setNextState       : setNextState,
+
       next: next,
       save: save,
       getPrice: getPrice,
@@ -34,15 +48,48 @@
 
     return service;
 
-    function getCurrent() {
-      return service.current;
+    function getActiveStateIndex () {
+      var index = -1;
+
+      angular.forEach(service.states, function(state, i) {
+        if (state.key == service.activeState) {
+          index = i;
+        }
+      });
+
+      return index;
     }
 
-    function setCurrent(workRequest) {
-      service.current = workRequest;
-      return service.current;
+    function setActiveState (key) {
+      if (typeof key != 'string') {
+        key = key.key;
+      }
+
+      service.activeState = key;
     }
 
+    function findState (key) {
+      var found;
+
+      angular.forEach(service.states, function(state, i) {
+        if (state.key == key) {
+          found = state;
+        }
+      });
+
+      return found;
+    }
+
+    function setNextState () {
+      var activeIndex = getActiveStateIndex();
+      var nextState = service.states[activeIndex + 1];
+
+      setActiveState(nextState)
+
+      save();
+    }
+
+    // NEED TO DELETE THIS
     function next(state) {
       return function() {
         save();
@@ -52,7 +99,7 @@
 
     function save() {
       var promise = $q.defer();
-      var work = angular.copy(service.current);
+      var work = angular.copy(service.work);
       work.features = work.features.filter(function(x) {
         return x.selected;
       }).map(function(x) {

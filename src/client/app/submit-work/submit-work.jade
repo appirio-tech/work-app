@@ -8,13 +8,21 @@
 - views.push('designs')
 - views.push('estimate')
 
+- active = 'state-active'
+
 header
 
-main("ng-scroll-state"="submit-work")
+main("ng-scroll-state"="activeState")
   - each view in views
-    div(id="starting-line-#{view}")
+    .starting-line(id="starting-line-#{view}")
 
-    article.state(ui-view=view, class=view, state=view)
+    article.state(ui-view=view, class="#{view} #{active}", state=view)
+
+    .finish-line(id="finish-line-#{view}")
+
+    - active  = ''
+
+  button.submit(ng-click="launch()") submit {{ activeState }}
 
 
-aside#submit-work-aside("ng-submit-work-aside"=true)
+aside#submit-work-aside("ng-submit-work-aside"="work", ng-active-state="activeState")

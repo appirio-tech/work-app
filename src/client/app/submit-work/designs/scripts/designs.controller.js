@@ -22,7 +22,7 @@
 
     function activate() {
       logger.log('Activated Designs View');
-      vm.work = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.work;
     }
 
     function add() {

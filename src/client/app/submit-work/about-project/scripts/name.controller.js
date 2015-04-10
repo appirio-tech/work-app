@@ -6,26 +6,24 @@
     .module('app.submit-work')
     .controller('SubmitNameController', SubmitNameController);
 
-  SubmitNameController.$inject = ['logger', '$state', 'SubmitWorkService'];
-  /* @ngInject */
-  function SubmitNameController(logger, $state, SubmitWorkService) {
-    var vm = this;
-    vm.title = 'Name';
-    vm.work = {};
-    vm.validate = validate;
-    vm.next = false;
-    vm.nextState = 'type';
+  SubmitNameController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+
+  function SubmitNameController($scope, logger, SubmitWorkService) {
+    var vm          = this;
+    vm.title        = 'Name';
+    vm.work         = SubmitWorkService.work;
+    vm.setNextState = SubmitWorkService.setNextState
 
     activate();
 
+    $scope.$watch('nameForm', function(nameForm) {
+      if (nameForm) {
+        SubmitWorkService.findState('name').form = nameForm;
+      }
+    });
+
     function activate() {
       logger.log('Activated Name View');
-      vm.work = SubmitWorkService.getCurrent();
     }
-
-    function validate() {
-      return SubmitWorkService.validateName(vm.work.name);
-    }
-
   }
 })();
