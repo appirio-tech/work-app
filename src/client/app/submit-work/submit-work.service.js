@@ -10,7 +10,7 @@
   function SubmitWorkService($anchorScroll, $q, $location, data, $state) {
     var work = {
       name            : '',
-      requestType     : false,
+      requestType     : null,
       usageDescription: '',
       summary         : '',
       competitorApps  : [],

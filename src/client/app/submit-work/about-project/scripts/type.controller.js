@@ -6,17 +6,12 @@
     .module('app.submit-work')
     .controller('SubmitTypeController', SubmitTypeController);
 
-  SubmitTypeController.$inject = ['logger', 'SubmitWorkService', '$state'];
+  SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
   /* @ngInject */
-  function SubmitTypeController(logger, SubmitWorkService, $state) {
-    var vm = this;
+  function SubmitTypeController($scope, logger, SubmitWorkService) {
+    var vm   = this;
     vm.title = 'Type';
-    vm.work = {};
-    vm.select = select;
-    vm.designButtonStyle = '';
-    vm.codeButtonStyle = '';
-    vm.bothButtonStyle = '';
-    vm.nextState = 'brief';
+    vm.work  = SubmitWorkService.work;
 
     activate();
 
@@ -25,26 +20,17 @@
       vm.work = SubmitWorkService.work;
     }
 
-    function select(type) {
-      vm.work.requestType = type;
-      switch (type) {
-        case 'design':
-          vm.designButtonStyle = 'selected';
-          vm.codeButtonStyle = '';
-          vm.bothButtonStyle = '';
-          break;
-        case 'code':
-          vm.designButtonStyle = '';
-          vm.codeButtonStyle = 'selected';
-          vm.bothButtonStyle = '';
-          break;
-        case 'both':
-          vm.designButtonStyle = '';
-          vm.codeButtonStyle = '';
-          vm.bothButtonStyle = 'selected';
-          break;
+    $scope.$watch('typeForm', function(typeForm) {
+      if (typeForm) {
+        SubmitWorkService.findState('type').form = typeForm;
       }
-    }
+    });
+
+    $scope.submit = function () {
+      if (vm.work.requestType) {
+        SubmitWorkService.setNextState();
+      }
+    };
 
   }
 })();
