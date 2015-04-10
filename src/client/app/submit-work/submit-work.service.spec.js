@@ -44,35 +44,6 @@ describe('SubmitWorkService', function () {
         res = service.validateName('foo');
         expect(res.valid).to.equal(true);
       });
-
-      it('should be able to validate summary', function() {
-        // rule 0: field required
-        var res = service.validateSummary('');
-        expect(res.valid).to.equal(false);
-        expect(res.required).to.equal(true);
-
-        // rule 1: must be at least 200 characters
-        res = service.validateSummary('asdf');
-        expect(res.valid).to.equal(false);
-        expect(res.minlength).to.equal(true);
-
-        res = service.validateSummary('aasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsdf');
-        expect(res.valid).to.equal(false);
-        expect(res.minlength).to.equal(true);
-
-        var str = '0123456789';
-        str = str + str + str + str + str;
-        str = str + str + str + str;
-        res = service.validateSummary(str);
-        expect(res.valid).to.equal(true);
-      });
-
-      it('should be able to validate usageDescription', function() {
-        // rule 0: field required
-        var res = service.validateUsageDescription('');
-        expect(res.valid).to.equal(false);
-        expect(res.required).to.equal(true);
-      });
     });
 
     it('should have a default price of 0', function() {

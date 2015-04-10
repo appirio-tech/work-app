@@ -2,7 +2,7 @@ h2 What features does your app need?
 
 h3 Select from our list, or describe your own.
 
-form
+form(name="featureForm", ng-submit="submit()")
   ul
     li(ng-repeat="feature in vm.work.features")
       input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
@@ -24,6 +24,6 @@ form
 
       input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation")
 
-      button(ng-click="vm.add()") +
+      button(type="submit", ng-click="vm.add()") +
 
-  next-state(state="vm.nextState", vm="vm")
+  button.submit(type="submit", ng-show="featureForm.$valid") NEXT

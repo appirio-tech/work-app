@@ -6,14 +6,12 @@
     .module('app.submit-work')
     .controller('SubmitNameController', SubmitNameController);
 
-  SubmitNameController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+  SubmitNameController.$inject = ['$scope', 'SubmitWorkService'];
 
-  function SubmitNameController($scope, logger, SubmitWorkService) {
+  function SubmitNameController($scope, SubmitWorkService) {
     var vm   = this;
     vm.title = 'Name';
     vm.work  = SubmitWorkService.work;
-
-    activate();
 
     $scope.$watch('nameForm', function(nameForm) {
       if (nameForm) {
@@ -26,9 +24,5 @@
         SubmitWorkService.setNextState();
       }
     };
-
-    function activate() {
-      logger.log('Activated Name View');
-    }
   }
 })();

@@ -27,10 +27,9 @@
     });
 
     $scope.submit = function () {
-      if (vm.work.requestType) {
+      if ($scope.typeForm.$valid) {
         SubmitWorkService.setNextState();
       }
     };
-
   }
 })();

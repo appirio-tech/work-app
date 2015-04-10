@@ -3,6 +3,13 @@ h2 About your project
 h3 What type of project do you need?
 
 form(name="typeForm", ng-submit="submit()")
+  input(
+    name         = "type",
+    type         = "hidden",
+    required     = true,
+    ng-model     = "vm.work.requestType",
+  )
+
   ul.project-types
     li
       label(for="project-type-design") DESIGN
@@ -40,5 +47,8 @@ form(name="typeForm", ng-submit="submit()")
 
       .description I have an idea for an app and need it designed and built.
 
-    button.submit(type="submit", ng-show="vm.work.requestType") NEXT
+  ul.invalid-messages(ng-show="typeForm.$dirty")
+    li(ng-show="typeForm.type.$error.required") Please tell us the type of your project.
+
+  button.submit(type="submit", ng-show="typeForm.$valid") NEXT
 

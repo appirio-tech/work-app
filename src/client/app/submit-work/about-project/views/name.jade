@@ -13,11 +13,11 @@ form(name="nameForm", ng-submit="submit()")
     ng-pattern   = "/^[0-9a-zA-Z].*$/"
   )
 
-  ul.invalid-messages
-    li(ng-show="nameForm.name.$dirty && nameForm.name.$error.required") This field is required.
+  ul.invalid-messages(ng-show="nameForm.$dirty || nameForm.name.$dirty")
+    li(ng-show="nameForm.name.$error.required") This field is required.
 
-    li(ng-show="nameForm.name.$dirty && nameForm.name.$error.minlength") The project name must be at least 3 characters long.
+    li(ng-show="nameForm.name.$error.minlength") The project name must be at least 3 characters long.
 
-    li(ng-show="nameForm.name.$dirty && nameForm.name.$error.pattern") The project name must start with a letter or a number.
+    li(ng-show="nameForm.name.$error.pattern") The project name must start with a letter or a number.
 
   button.submit(type="submit", ng-show="nameForm.$valid") NEXT

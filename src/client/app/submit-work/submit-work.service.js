@@ -12,10 +12,11 @@
       name            : '',
       requestType     : null,
       usageDescription: '',
-      summary         : '',
+      elevator        : '',
       competitorApps  : [],
       features        : [],
-      costEstimate    : { low: 0 }
+      costEstimate    : { low: 0 },
+      acceptedTerms   : false
     };
 
     var service = {
@@ -28,7 +29,7 @@
         { 'key': 'users' },
         { 'key': 'features' },
         { 'key': 'designs' },
-        { 'key': 'designs' }
+        { 'key': 'estimate' }
       ],
       activeState        : null,
       getActiveStateIndex: getActiveStateIndex,
@@ -40,10 +41,7 @@
       save: save,
       getPrice: getPrice,
       updatePrice: updatePrice,
-      validateName: validateName,
-      validateSummary: validateSummary,
-      validateUsageDescription: validateUsageDescription,
-      globalValidate: globalValidate
+      validateName: validateName
     };
 
     return service;
@@ -159,49 +157,6 @@
       } else {
         res.valid = true;
       }
-      return res;
-    }
-
-    function validateSummary(summary) {
-      var res = {
-        valid: false,
-        minlength: false,
-        required: false
-      };
-      if (typeof summary === 'undefined' || summary.length === 0) {
-        res.required = true;
-      } else if (summary.length < 200) {
-        res.minlength = true;
-      } else {
-        res.valid = true;
-      }
-      return res;
-    }
-
-    function validateUsageDescription(usageDescription) {
-      var res = {
-        valid: false,
-        required: false
-      };
-      if (typeof usageDescription === 'undefined' || usageDescription.length === 0) {
-        res.required = true;
-      } else {
-        res.valid = true;
-      }
-      return res;
-    }
-
-    function globalValidate() {
-      var name = validateName(work.name).valid;
-      var summary = validateSummary(work.summary).valid;
-      var usageDescription = validateUsageDescription(work.usageDescription).valid;
-      var res = {
-        name: name,
-        summary: summary,
-        usageDescription: usageDescription,
-        valid: name && summary && usageDescription
-      };
-      work.submitAttempted = true;
       return res;
     }
   }

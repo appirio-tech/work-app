@@ -4,25 +4,37 @@ h3(ng-show="vm.showYesNo || vm.showBrief") Do you have a project brief to upload
 
 h3(ng-show="vm.showElevator") Give us your elevator pitch—a brief explanation of your app.
 
-button.yes(ng-show="vm.showYesNo", ng-click="vm.toggleYes()") YES
+form(name="questionForm", ng-submit="questionSubmit()")
+  input(type="hidden", name="question" required="true", ng-model="vm.question")
 
-button.no(ng-show="vm.showYesNo", ng-click="vm.toggleNo()") NO
+  button.yes(type="submit", ng-show="vm.showYesNo", ng-click="vm.question = 1") YES
 
-form(ng-show="vm.showBrief")
+  button.no(type="submit", ng-show="vm.showYesNo", ng-click="vm.question = 0") NO
+
+  ul.invalid-messages(ng-show="questionForm.$dirty")
+    li(ng-show="questionForm.question.$error.required") Please tell us if you have a brief to upload.
+
+form(name="briefForm", ng-show="vm.showBrief", ng-submit="submitBrief()")
   input(type="file", placeholder="My Project", ng-model="vm.briefFilename")
 
-  next-state(state="vm.nextState", vm="vm")
+  submit.submit(type="submit", ng-show="briefForm.$valid") NEXT
 
-form(name="summaryForm", ng-show="vm.showElevator")
+form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="submitElevator()")
+  textarea(
+    name         = "elevator",
+    placeholder  = "I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.",
+    ng-model     = "vm.work.elevator",
+    required     = true,
+    ng-minlength = "200",
+  )
 
-  textarea(name="summary", placeholder="I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.", ng-model="vm.work.summary")
+  .character-count {{ vm.work.elevator.length || '&nbsp;' }}
 
-  .character-count {{ vm.work.summary.length || '&nbsp;' }}
+  ul.invalid-messages(ng-show="elevatorForm.$dirty || elevatorForm.elevator.$dirty")
+    li(ng-show="elevatorForm.elevator.$error.required") This field is required.
 
-  ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="summaryForm.summary.$pristine && !vm.work.submitAttempted")
-    ng-message(when="required") This field is required
-    ng-message(when="minlength") Help our designers understand your needs, please enter at least 200 characters.
+    li(ng-show="elevatorForm.elevator.$error.minlength") Help our designers understand your needs, please enter at least 200 characters.
 
-  next-state(state="vm.nextState", vm="vm")
+  button.submit(type="submit", ng-show="elevatorForm.$valid") NEXT
 
 button.cancel(ng-hide="vm.showYesNo", ng-click="vm.toggleCancel()") Cancel
