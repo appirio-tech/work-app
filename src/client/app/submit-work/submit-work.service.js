@@ -9,50 +9,119 @@
   /* @ngInject */
   function SubmitWorkService($anchorScroll, $q, $location, data, $state) {
     var work = {
-      name: '',
-      requestType: false,
-      usageDescription: '',
-      summary: '',
-      competitorApps: [],
-      features: [],
-      costEstimate: {low: 0}
+      name            : null,
+      requestType     : null,
+      price           : null,
+      usageDescription: null,
+      elevator        : null,
+      competitorApps  : [],
+      features        : [],
+      costEstimate    : { low: 0 },
+      acceptedTerms   : false
     };
 
     var service = {
-      current: work,
-      getCurrent: getCurrent,
-      setCurrent: setCurrent,
-      next: next,
-      save: save,
-      getPrice: getPrice,
-      updatePrice: updatePrice,
-      validateName: validateName,
-      validateSummary: validateSummary,
-      validateUsageDescription: validateUsageDescription,
-      globalValidate: globalValidate
+      work: work,
+      states: [
+        { 'key': 'name' },
+        { 'key': 'type' },
+        { 'key': 'brief' },
+        { 'key': 'competitors' },
+        { 'key': 'users' },
+        { 'key': 'features' },
+        { 'key': 'designs' },
+        { 'key': 'estimate' }
+      ],
+      completed : {
+        aboutProject: false,
+        users        : false,
+        features     : false,
+        design       : false,
+        launch       : false
+      },
+      activeState   : null,
+      setActiveState: setActiveState,
+      findState     : findState,
+      setNextState  : setNextState,
+      updatePrice   : updatePrice,
+      save          : save,
     };
 
     return service;
 
-    function getCurrent() {
-      return service.current;
+    function setCompleted () {
+      var aboutProjectStates = ['name', 'type', 'brief', 'competitors'];
+
+      service.completed.aboutProject = true;
+
+      angular.forEach(aboutProjectStates, function (aboutProjectState, i) {
+        var state = findState(aboutProjectState);
+
+        service.completed.aboutProject = service.completed.aboutProject && state.form.$valid && state.visited;
+      });
+
+      service.completed.aboutProject = service.completed.aboutProject && findState('users').visited;
+      service.completed.users        = findState('users').form.$valid && findState('features').visited;
+      service.completed.features     = findState('features').form.$valid && findState('designs').visited;
+      service.completed.design       = findState('designs').form.$valid && findState('estimate').visited;
+      service.completed.launch       = findState('estimate').form.$valid;
     }
 
-    function setCurrent(workRequest) {
-      service.current = workRequest;
-      return service.current;
+    function getActiveStateIndex () {
+      var index = 0;
+
+      angular.forEach(service.states, function(state, i) {
+        if (state.key == service.activeState) {
+          index = i;
+        }
+      });
+
+      return index;
     }
 
-    function next(state) {
-      return function() {
-        save();
-        $state.go(state);
-      };
+    function setActiveState (key) {
+      if (typeof key != 'string') {
+        key = key.key;
+      }
+
+      service.activeState = key;
+
+      findState(key).visited = true;
+
+      setCompleted();
+
+      save();
+    }
+
+    function updatePrice() {
+      service.work.price = '$' + getPrice();
+    }
+
+    function findState (key) {
+      var found;
+
+      angular.forEach(service.states, function(state, i) {
+        if (state.key == key) {
+          found = state;
+        }
+      });
+
+      return found;
+    }
+
+    function setNextState () {
+      var activeIndex = getActiveStateIndex();
+      var nextState = service.states[activeIndex + 1];
+
+      setActiveState(nextState);
+
+      return service.activeState;
     }
 
     function save() {
       var promise = $q.defer();
-      var work = angular.copy(service.current);
+      var work = angular.copy(service.work);
+
       work.features = work.features.filter(function(x) {
         return x.selected;
       }).map(function(x) {
@@ -61,14 +130,14 @@
         x.explanation = undefined;
         x.selected = undefined;
       });
+
       work.submitAttempted = undefined;
-      data.create('work-request', work)
-      .then(function(data) {
+
+      data.create('work-request', work).then(function(data) {
         service.id = data.result.content;
-        updatePrice();
+        savePrice();
         promise.resolve(data);
-      })
-      .catch(function(e) {
+      }).catch(function(e) {
         $q.reject(e);
       });
     }
@@ -88,72 +157,10 @@
       }
     }
 
-    function updatePrice() {
+    function savePrice() {
       data.get('work-request', {id: service.id}).then(function(data) {
         work.costEstimate = data.result.content.costEstimate;
       });
-    }
-
-    function validateName(name) {
-      var res = {
-        valid: false,
-        minlength: false,
-        letter: false,
-        required: false
-      };
-      if (typeof name === 'undefined' || name.length === 0) {
-        res.required = true;
-      } else if (name.length < 3) {
-        res.minlength = true;
-      } else if (!name.charAt(0).match(/[\w\d]/)) {
-        res.letter = true;
-      } else {
-        res.valid = true;
-      }
-      return res;
-    }
-
-    function validateSummary(summary) {
-      var res = {
-        valid: false,
-        minlength: false,
-        required: false
-      };
-      if (typeof summary === 'undefined' || summary.length === 0) {
-        res.required = true;
-      } else if (summary.length < 200) {
-        res.minlength = true;
-      } else {
-        res.valid = true;
-      }
-      return res;
-    }
-
-    function validateUsageDescription(usageDescription) {
-      var res = {
-        valid: false,
-        required: false
-      };
-      if (typeof usageDescription === 'undefined' || usageDescription.length === 0) {
-        res.required = true;
-      } else {
-        res.valid = true;
-      }
-      return res;
-    }
-
-    function globalValidate() {
-      var name = validateName(work.name).valid;
-      var summary = validateSummary(work.summary).valid;
-      var usageDescription = validateUsageDescription(work.usageDescription).valid;
-      var res = {
-        name: name,
-        summary: summary,
-        usageDescription: usageDescription,
-        valid: name && summary && usageDescription
-      };
-      work.submitAttempted = true;
-      return res;
     }
   }
 })();

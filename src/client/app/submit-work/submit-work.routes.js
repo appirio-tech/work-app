@@ -16,6 +16,7 @@
         url: '/submit-work',
         title: 'Submit Work',
         abstract: true,
+        controller: 'SubmitWorkController',
         templateUrl: 'submit-work/submit-work.html'
       }
     }, {
