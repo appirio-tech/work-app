@@ -17,7 +17,7 @@ form(name="questionForm", ng-submit="questionSubmit()")
 form(name="briefForm", ng-show="vm.showBrief", ng-submit="submitBrief()")
   input(type="file", placeholder="My Project", ng-model="vm.briefFilename")
 
-  submit.submit(type="submit", ng-show="briefForm.$valid") NEXT
+  button.submit(type="submit", ng-show="briefForm.$valid") NEXT
 
 form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="submitElevator()")
   textarea(
