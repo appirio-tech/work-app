@@ -2,9 +2,14 @@ h2 About your project
 
 h3 What existing apps would be similar to (or compete against) your new app?
 
-form(name="competitorForm", ng-submit="submit()")
+form(name="competitorForm", ng-submit="submit($event)")
   fieldset
-    input#project-competitors(type="text", placeholder="eTrade Mobile Trading App", ng-model="vm.appName")
+    input#project-competitors(
+      type="text",
+      placeholder="eTrade Mobile Trading App",
+      ng-model="vm.appName",
+      ng-keypress="onPress($event)"
+    )
 
     button.add-competitor(type="button", ng-click="vm.add()") +
 

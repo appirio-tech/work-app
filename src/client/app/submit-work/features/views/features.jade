@@ -20,10 +20,10 @@ form(name="featureForm", ng-submit="submit()")
 
   .new-feature
     fieldset
-      input(type="text", ng-model="vm.newFeatureName", placeholder="Name")
+      input(type="text", ng-model="vm.newFeatureName", placeholder="Name", ng-keypress="onPress($event)")
 
-      input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation")
+      input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation", ng-keypress="onPress($event)")
 
-      button(type="submit", ng-click="vm.add()") +
+      button(type="button", ng-click="vm.add()") +
 
   button.submit(type="submit", ng-show="featureForm.$valid") NEXT

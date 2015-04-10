@@ -21,11 +21,12 @@ form(name="briefForm", ng-show="vm.showBrief", ng-submit="submitBrief()")
 
 form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="submitElevator()")
   textarea(
-    name         = "elevator",
-    placeholder  = "I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.",
-    ng-model     = "vm.work.elevator",
-    required     = true,
-    ng-minlength = "200",
+    name             = "elevator",
+    placeholder      = "I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.",
+    ng-model         = "vm.work.elevator",
+    ng-model-options ="{allowInvalid: true}"
+    required         = true,
+    ng-minlength     = "200",
   )
 
   .character-count {{ vm.work.elevator.length || '&nbsp;' }}
