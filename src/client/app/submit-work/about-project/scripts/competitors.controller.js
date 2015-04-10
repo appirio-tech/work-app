@@ -6,29 +6,50 @@
     .module('app.submit-work')
     .controller('SubmitCompetitorsController', SubmitCompetitorsController);
 
-  SubmitCompetitorsController.$inject = ['logger', '$state', 'SubmitWorkService'];
-  /* @ngInject */
-  function SubmitCompetitorsController(logger, $state, SubmitWorkService) {
-    var vm = this;
-    vm.title = 'Competitors';
+  SubmitCompetitorsController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+
+  function SubmitCompetitorsController($scope, logger, SubmitWorkService) {
+    var vm     = this;
+    vm.title   = 'Competitors';
     vm.appName = '';
-    vm.project = {};
-    vm.add = add;
-    vm.nextState = 'users';
+    vm.work    = SubmitWorkService.work;
+    vm.add     = add;
 
     activate();
 
     function activate() {
       logger.log('Activated Competitors View');
-      vm.project = SubmitWorkService.work;
     }
 
     function add() {
       if (!(vm.appName.trim().length === 0)) {
-        vm.project.competitorApps.push(vm.appName);
+        vm.work.competitorApps.push(vm.appName);
         vm.appName = '';
       }
     }
+
+    $scope.submit = function () {
+      if ($scope.competitorForm.$valid) {
+        SubmitWorkService.setNextState();
+      }
+    };
+
+    // can create ngEnter for this
+    $scope.onPress= function (e) {
+      if (e.which == 13) {
+        vm.add();
+
+        e.preventDefault();
+
+        return false;
+      }
+    };
+
+    $scope.$watch('competitorForm', function(competitorForm) {
+      if (competitorForm) {
+        SubmitWorkService.findState('competitors').form = competitorForm;
+      }
+    });
 
   }
 })();

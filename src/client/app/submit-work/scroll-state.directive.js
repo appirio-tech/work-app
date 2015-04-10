@@ -13,7 +13,7 @@
 
         stateElements.each(function (i, state) {
           var startingLine = element.find('#starting-line-' + stateElements.eq(i).attr('state'));
-          var hitThreshold = startingLine.offset().top <= $document.scrollTop();
+          var hitThreshold = startingLine.offset().top < $document.scrollTop() + 1;
 
           if (hitThreshold) {
             activeStateElement = stateElements.eq(i);
@@ -28,14 +28,12 @@
       }
 
       var manualScrolling = function (e) {
-        if (!isAutoScrolling) {
-          var activeState = setActiveStateElement().attr('state');
+        var activeState = setActiveStateElement().attr('state');
 
-          if (scope.activeState != activeState) {
-            isManualScrolling = true;
-            scope.activeState = activeState;
-            scope.$apply();
-          }
+        if (scope.activeState != activeState) {
+          isManualScrolling = true;
+          scope.activeState = activeState;
+          scope.$apply();
         }
       };
 
@@ -45,10 +43,8 @@
         }
         else if (state) {
           var stateElement = element.find('#starting-line-' + state);
-          isAutoScrolling = true;
 
           var finishedScrolling = function () {
-            isAutoScrolling = false;
             setActiveStateElement();
           };
 

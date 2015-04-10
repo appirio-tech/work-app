@@ -2,13 +2,19 @@ h2 Your Users
 
 h3 Who do you want to use your app? How will they interact with it?
 
-form(name="usersForm")
-  textarea(name="usageDescription", placeholder="My users will be people who want to get automatic stock  prices while they’re working.", ng-model="vm.work.usageDescription", maxlength="300")
+form(name="usersForm", ng-submit="submit()")
+  textarea(
+    name        = "usageDescription",
+    placeholder = "My users will be people who want to get automatic stock  prices while they’re working.",
+    ng-model    = "vm.work.usageDescription",
+    maxlength   = "300",
+    required    =  true
+  )
 
   .character-count {{ vm.work.usageDescription.length || '&nbsp;' }}
 
-ng-messages(for="(vm.next || vm.work.submitAttempted) && vm.validate()" ng-hide="usersForm.usageDescription.$pristine && !vm.work.submitAttempted")
-  ng-message(when="required") This field is required
+  ul.invalid-messages(ng-show="usersForm.$dirty || usersForm.usageDescription.$dirty")
+    li(ng-show="usersForm.usageDescription.$error.required") This field is required.
 
-next-state(state="vm.nextState", vm="vm")
+  button.submit(type="submit", ng-show="usersForm.$valid") NEXT
 
