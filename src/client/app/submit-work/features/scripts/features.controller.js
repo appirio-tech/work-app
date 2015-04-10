@@ -38,6 +38,8 @@
       }
     });
 
+    $scope.updatePrice = SubmitWorkService.updatePrice;
+
     function activate() {
       logger.log('Activated Features View');
 

@@ -12,7 +12,6 @@
     var vm      = this;
     vm.title    = 'Estimate';
     vm.work     = SubmitWorkService.work;
-    vm.getPrice = SubmitWorkService.getPrice;
 
     logger.log('Activated Estimate View');
 

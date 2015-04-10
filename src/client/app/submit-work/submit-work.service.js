@@ -9,10 +9,11 @@
   /* @ngInject */
   function SubmitWorkService($anchorScroll, $q, $location, data, $state) {
     var work = {
-      name            : '',
+      name            : null,
       requestType     : null,
-      usageDescription: '',
-      elevator        : '',
+      price           : null,
+      usageDescription: null,
+      elevator        : null,
       competitorApps  : [],
       features        : [],
       costEstimate    : { low: 0 },
@@ -37,11 +38,9 @@
       findState          : findState,
       setNextState       : setNextState,
 
-      next: next,
+      // need to remove these and make private
       save: save,
-      getPrice: getPrice,
       updatePrice: updatePrice,
-      validateName: validateName
     };
 
     return service;
@@ -64,6 +63,10 @@
       }
 
       service.activeState = key;
+    }
+
+    function updatePrice() {
+      service.work.price = '$' + getPrice();
     }
 
     function findState (key) {
@@ -89,17 +92,10 @@
       return service.activeState;
     }
 
-    // NEED TO DELETE THIS
-    function next(state) {
-      return function() {
-        save();
-        $state.go(state);
-      };
-    }
-
     function save() {
       var promise = $q.defer();
       var work = angular.copy(service.work);
+
       work.features = work.features.filter(function(x) {
         return x.selected;
       }).map(function(x) {
@@ -108,14 +104,14 @@
         x.explanation = undefined;
         x.selected = undefined;
       });
+
       work.submitAttempted = undefined;
-      data.create('work-request', work)
-      .then(function(data) {
+
+      data.create('work-request', work).then(function(data) {
         service.id = data.result.content;
-        updatePrice();
+        savePrice();
         promise.resolve(data);
-      })
-      .catch(function(e) {
+      }).catch(function(e) {
         $q.reject(e);
       });
     }
@@ -135,29 +131,10 @@
       }
     }
 
-    function updatePrice() {
+    function savePrice() {
       data.get('work-request', {id: service.id}).then(function(data) {
         work.costEstimate = data.result.content.costEstimate;
       });
-    }
-
-    function validateName(name) {
-      var res = {
-        valid: false,
-        minlength: false,
-        letter: false,
-        required: false
-      };
-      if (typeof name === 'undefined' || name.length === 0) {
-        res.required = true;
-      } else if (name.length < 3) {
-        res.minlength = true;
-      } else if (!name.charAt(0).match(/[\w\d]/)) {
-        res.letter = true;
-      } else {
-        res.valid = true;
-      }
-      return res;
     }
   }
 })();

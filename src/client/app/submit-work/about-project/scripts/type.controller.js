@@ -9,15 +9,20 @@
   SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
   /* @ngInject */
   function SubmitTypeController($scope, logger, SubmitWorkService) {
-    var vm   = this;
-    vm.title = 'Type';
-    vm.work  = SubmitWorkService.work;
+    var vm         = this;
+    vm.title       = 'Type';
+    vm.work        = SubmitWorkService.work;
 
     activate();
 
     function activate() {
       logger.log('Activated Type View');
       vm.work = SubmitWorkService.work;
+    }
+
+    $scope.setType = function (type) {
+      vm.work.requestType = type;
+      SubmitWorkService.updatePrice();
     }
 
     $scope.$watch('typeForm', function(typeForm) {

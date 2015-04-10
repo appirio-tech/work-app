@@ -5,7 +5,7 @@ h3 Select from our list, or describe your own.
 form(name="featureForm", ng-submit="submit()")
   ul
     li(ng-repeat="feature in vm.work.features")
-      input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
+      input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected", ng-change="updatePrice()")
 
       .label-example
         label(for="{{'feature-' + feature.id}}") {{feature.name}}
