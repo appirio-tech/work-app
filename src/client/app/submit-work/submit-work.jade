@@ -18,8 +18,6 @@ main("ng-scroll-state"="activeState")
 
     article.state(ui-view=view, class="#{view} #{active}", state=view)
 
-    .finish-line(id="finish-line-#{view}")
-
     - active  = ''
 
   button.submit(ng-click="launch()") submit {{ activeState }}
