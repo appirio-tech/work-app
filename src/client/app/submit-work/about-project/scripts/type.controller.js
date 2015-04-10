@@ -1,4 +1,3 @@
-/*global form:true */
 (function () {
   'use strict';
 
@@ -7,7 +6,7 @@
     .controller('SubmitTypeController', SubmitTypeController);
 
   SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
-  /* @ngInject */
+
   function SubmitTypeController($scope, logger, SubmitWorkService) {
     var vm         = this;
     vm.title       = 'Type';

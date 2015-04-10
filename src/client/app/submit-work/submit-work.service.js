@@ -32,6 +32,13 @@
         { 'key': 'designs' },
         { 'key': 'estimate' }
       ],
+      completed : {
+        aboutProject: false,
+        users        : false,
+        features     : false,
+        design       : false,
+        launch       : false
+      },
       activeState   : null,
       setActiveState: setActiveState,
       findState     : findState,
@@ -41,6 +48,24 @@
     };
 
     return service;
+
+    function setCompleted () {
+      var aboutProjectStates = ['name', 'type', 'brief', 'competitors'];
+
+      service.completed.aboutProject = true;
+
+      angular.forEach(aboutProjectStates, function (aboutProjectState, i) {
+        var state = findState(aboutProjectState);
+
+        service.completed.aboutProject = service.completed.aboutProject && state.form.$valid && state.visited;
+      });
+
+      service.completed.aboutProject = service.completed.aboutProject && findState('users').visited;
+      service.completed.users        = findState('users').form.$valid && findState('features').visited;
+      service.completed.features     = findState('features').form.$valid && findState('designs').visited;
+      service.completed.design       = findState('designs').form.$valid && findState('estimate').visited;
+      service.completed.launch       = findState('estimate').form.$valid;
+    }
 
     function getActiveStateIndex () {
       var index = 0;
@@ -60,6 +85,12 @@
       }
 
       service.activeState = key;
+
+      findState(key).visited = true;
+
+      setCompleted();
+
+      save();
     }
 
     function updatePrice() {
@@ -82,9 +113,7 @@
       var activeIndex = getActiveStateIndex();
       var nextState = service.states[activeIndex + 1];
 
-      setActiveState(nextState)
-
-      save();
+      setActiveState(nextState);
 
       return service.activeState;
     }

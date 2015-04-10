@@ -5,7 +5,7 @@ h3 {{ vm.work.price }}
 form(name="estimateForm")
   p This is our closest estimate for your project based on the information you’ve provided today. When you click "Submit Project," we'll process your info and provide a formal project proposal.
 
-  input#submit-work-accept-terms(name="acceptedTerms", type="checkbox", ng-model="vm.work.acceptedTerms", required=true, checked=false)
+  input#submit-work-accept-terms(name="acceptedTerms", type="checkbox", ng-model="vm.work.acceptedTerms", required=true, checked=false, ng-change="change()")
 
   label(for="submit-work-accept-terms") Accept
     a(href="#") {{ ' ' + 'Terms and Conditions' }}
