@@ -25,7 +25,7 @@
         });
 
       function logoutComplete(data, status, headers, config) {
-        $state.reload();
+        TokenService.deleteToken();
         return data;
       }
     }

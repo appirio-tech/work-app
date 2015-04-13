@@ -1,0 +1,11 @@
+header
+  h1 Welcome Back to Topcoder
+main
+  form(ng-submit="vm.submit()")
+    p.error We can't find an account with the email / password you entered. Please try again.
+
+    input(type="text", name="user", ng-model="vm.username", ng-disabled="loading" required=true)
+
+    input(type="password" name="password" ng-model="vm.password" ng-disabled="loading" required=true)
+
+    button.submit(type="submit") Log in

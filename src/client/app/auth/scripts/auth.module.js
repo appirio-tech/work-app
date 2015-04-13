@@ -36,20 +36,6 @@
       sso: false,
       callbackURL: auth0callbackUrl
     });
-
-    authProvider.on('logout', function() {
-      console.log('logout');
-    });
-
-    authProvider.on('authenticated', function(auth) {
-      console.log(auth.isAuthenticated);
-      console.log('authenticated');
-    });
-
-    authProvider.on('loginSucces', function(auth) {
-      console.log('loginSuccess');
-      console.log(auth.isAuthenticated);
-    })
   }
 
   authRun.$inject = ['$rootScope', '$location', 'ApiResource', 'auth', 'TokenService', 'auth0TokenName', 'store'];

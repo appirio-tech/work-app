@@ -5,9 +5,9 @@
     .module('app.auth')
     .factory('TokenService', TokenService);
 
-  TokenService.$inject = ['$http', 'exception', 'store', 'auth0TokenName', 'jwtHelper', 'apiUrl'];
+  TokenService.$inject = ['$rootScope', '$http', 'exception', 'store', 'auth0TokenName', 'jwtHelper', 'apiUrl'];
   /* @ngInject */
-  function TokenService($http, exception, store, auth0TokenName, jwtHelper, apiUrl) {
+  function TokenService($rootScope, $http, exception, store, auth0TokenName, jwtHelper, apiUrl) {
     var service = {
       getToken: getToken,
       deleteToken: deleteToken,
@@ -33,10 +33,9 @@
               'Authorization': 'Bearer ' + idToken
             }
           }).then(function(response) {
-            console.log('**** Invliad token response ***');
-            console.log(response);
-            var idToken = response.data.id_token;
+            var idToken = response.data.result.content.token;
             setToken(idToken);
+            $rootScope.$broadcast('tokenRefresh');
 
             return idToken;
           });
