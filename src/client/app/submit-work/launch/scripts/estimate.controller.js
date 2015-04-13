@@ -1,4 +1,3 @@
-/*global form:true */
 (function () {
   'use strict';
 
@@ -7,11 +6,13 @@
     .controller('SubmitEstimateController', SubmitEstimateController);
 
   SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
-  /* @ngInject */
+
   function SubmitEstimateController($scope, logger, SubmitWorkService) {
     var vm      = this;
     vm.title    = 'Estimate';
     vm.work     = SubmitWorkService.work;
+
+    $scope.showTerms = false;
 
     logger.log('Activated Estimate View');
 
@@ -21,8 +22,17 @@
       }
     });
 
+    // Hide terms when no longer on estimate
+    $scope.$watch(function () {
+       return SubmitWorkService.activeState;
+     }, function (activeState) {
+      if (activeState != 'estimate') {
+        $scope.showTerms = false;
+      }
+    }, true);
+
+    // Mark completed when terms is accepted
     $scope.change = function () {
-      // Force to save/update completed
       SubmitWorkService.setActiveState('estimate');
     };
   }

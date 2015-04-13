@@ -12,4 +12,18 @@
   > form {
     @include main-restricted();
   }
+
+  .terms {
+    $width     : 320px;
+    $height    : 480px;
+    padding    : $padding-15 $padding-20;
+    width      : $width;
+    height     : $height;
+    margin-left: -$width / 2;
+    margin-top : -$height / 2;
+
+    p {
+      text-align: left;
+    }
+  }
 }
