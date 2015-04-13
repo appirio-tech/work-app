@@ -40,11 +40,21 @@
     authProvider.on('logout', function() {
       console.log('logout');
     });
+
+    authProvider.on('authenticated', function(auth) {
+      console.log(auth.isAuthenticated);
+      console.log('authenticated');
+    });
+
+    authProvider.on('loginSucces', function(auth) {
+      console.log('loginSuccess');
+      console.log(auth.isAuthenticated);
+    })
   }
 
-  authRun.$inject = ['$rootScope', '$location', 'ApiResource', 'auth', 'TokenService', 'auth0TokenName'];
+  authRun.$inject = ['$rootScope', '$location', 'ApiResource', 'auth', 'TokenService', 'auth0TokenName', 'store'];
 
-  function authRun($rootScope, $location, ApiResource, auth, TokenService, auth0TokenName) {
+  function authRun($rootScope, $location, ApiResource, auth, TokenService, auth0TokenName, store) {
     // Setup the resource
     var config = {
       url     : 'authorizations',
@@ -62,6 +72,9 @@
       if (urlToken[auth0TokenName] && urlToken[auth0TokenName] !== 'undefined') {
         TokenService.setToken(urlToken[auth0TokenName]);
         $location.search(auth0TokenName, null);
+
+        var authState = store.get('login-state');
+        $rootScope.$broadcast('loginComplete', authState);
       }
     }
 

@@ -5,31 +5,46 @@
     .module('app.user')
     .factory('UserService', UserService);
 
-  UserService.$inject = ['data'];
+  UserService.$inject = ['data', 'logger'];
   /* @ngInject */
-  function UserService(data) {
+  function UserService(data, logger) {
     var service = {
       getUser: getUser,
-      user: user
+      user: user,
+      setUser: setUser
     };
     return service;
 
     var user;
+
+    function setUser(id) {
+      getUser(id)
+        .then(function(data) {
+          console.log(data);
+          service.user = data;
+        });
+    }
 
     function getUser(id) {
       if (service.user) {
         return user;
       }
 
-      var promise = data.get('work', {id: id});
+      var promise = data.get('user', {id: id});
 
-      promise.resolve(getUserComplete);
+      promise.then(getUserComplete);
+      promise.catch(userError);
 
       return promise;
 
       function getUserComplete(data) {
+        console.log(data);
         service.user = content;
         return data.data.result.content;
+      }
+
+      function userError(error) {
+        logger.log(error);
       }
     }
   }

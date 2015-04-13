@@ -5,13 +5,14 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['$http', '$q', 'data', 'exception', 'auth', 'auth0retUrl', 'logger', 'TokenService', 'apiUrl'];
+  AuthService.$inject = ['$http', '$q', 'data', 'exception', 'auth', 'auth0retUrl', 'logger', 'apiUrl', 'store', 'auth0TokenName', 'TokenService'];
   /* @ngInject */
-  function AuthService($http, $q, data, exception, auth, auth0retUrl, logger, TokenService, apiUrl) {
+  function AuthService($http, $q, data, exception, auth, auth0retUrl, logger, apiUrl, store, auth0TokenName, TokenService) {
     var service = {
       login: login,
       logout: logout,
-      authorize: authorize
+      authorize: authorize,
+      isAuthenticated: isAuthenticated
     };
     return service;
 
@@ -35,10 +36,13 @@
      * - username
      * - password
      * - retUrl: optional
-     * - success:  success callback
+     * - state:  an object containing formation to be based back
      * - error: error callback
      */
     function login(options) {
+
+      // First remove any old tokens
+      TokenService.deleteToken();
 
       var defaultOptions = {
         retUrl: auth0retUrl
@@ -46,7 +50,10 @@
 
       var lOptions = angular.extend({}, options, defaultOptions);
 
-      logger.log(lOptions);
+      if (options.state) {
+        store.set('login-state', options.state);
+      }
+
       auth.signin({
         username: lOptions.username,
         password: lOptions.password,
@@ -54,7 +61,7 @@
         response_type: 'code',
         authParams: {
           scope: 'openid profile offline_access',
-          state: encodeURIComponent('retUrl='+window.location.href)
+          state: encodeURIComponent('retUrl=' + defaultOptions.retUrl)
         }
       });
     }
@@ -85,6 +92,20 @@
         });
 
       return deferred.promise;
+    };
+
+    /**
+     * Check is a user is currently authenticated
+     */
+    function isAuthenticated() {
+      //@TODO this should check if the auth library is really valid.
+      var token = store.get(auth0TokenName);
+
+      if (token && token !== 'undefined') {
+        return true;
+      }
+
+      return false;
     }
   }
 })();
