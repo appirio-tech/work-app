@@ -6,16 +6,15 @@
     .module('app.submit-work')
     .controller('SubmitFeaturesController', SubmitFeaturesController);
 
-  SubmitFeaturesController.$inject = ['$rootScope', 'logger', '$state', 'SubmitWorkService', 'FeatureService'];
+  SubmitFeaturesController.$inject = ['$rootScope', '$scope', 'logger', 'SubmitWorkService', 'FeatureService'];
   /* @ngInject */
-  function SubmitFeaturesController($rootScope, logger, $state, SubmitWorkService, FeatureService) {
-    var vm = this;
-    vm.title = 'Features';
-    vm.work = {};
-    vm.add = add;
-    vm.newFeatureName = '';
+  function SubmitFeaturesController($rootScope, $scope, logger, SubmitWorkService, FeatureService) {
+    var vm                   = this;
+    vm.title                 = 'Features';
+    vm.work                  = SubmitWorkService.work;
+    vm.add                   = add;
+    vm.newFeatureName        = '';
     vm.newFeatureExplanation = '';
-    vm.nextState = 'estimate';
 
     vm.showExample = function (example) {
       $rootScope.$emit('submit-work-show-example', example);
@@ -25,12 +24,36 @@
       $rootScope.$emit('submit-work-hide-example');
     };
 
-
     activate();
+
+    $scope.submit = function () {
+      if ($scope.featureForm.$valid) {
+        SubmitWorkService.setNextState();
+      }
+    };
+
+    // can create ngEnter for this
+    $scope.onPress= function (e) {
+      if (e.which == 13) {
+        vm.add();
+
+        e.preventDefault();
+
+        return false;
+      }
+    };
+
+    $scope.$watch('featureForm', function(featureForm) {
+      if (featureForm) {
+        SubmitWorkService.findState('features').form = featureForm;
+      }
+    });
+
+    $scope.updatePrice = SubmitWorkService.updatePrice;
 
     function activate() {
       logger.log('Activated Features View');
-      vm.work = SubmitWorkService.getCurrent();
+
       if (vm.work.features.length === 0) {
         FeatureService.getFeatures().then(function(features) {
           vm.work.features = features;

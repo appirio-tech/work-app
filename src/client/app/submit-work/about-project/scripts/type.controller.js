@@ -1,4 +1,3 @@
-/*global form:true */
 (function () {
   'use strict';
 
@@ -6,45 +5,35 @@
     .module('app.submit-work')
     .controller('SubmitTypeController', SubmitTypeController);
 
-  SubmitTypeController.$inject = ['logger', 'SubmitWorkService', '$state'];
-  /* @ngInject */
-  function SubmitTypeController(logger, SubmitWorkService, $state) {
-    var vm = this;
-    vm.title = 'Type';
-    vm.work = {};
-    vm.select = select;
-    vm.designButtonStyle = '';
-    vm.codeButtonStyle = '';
-    vm.bothButtonStyle = '';
-    vm.nextState = 'brief';
+  SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+
+  function SubmitTypeController($scope, logger, SubmitWorkService) {
+    var vm         = this;
+    vm.title       = 'Type';
+    vm.work        = SubmitWorkService.work;
 
     activate();
 
     function activate() {
       logger.log('Activated Type View');
-      vm.work = SubmitWorkService.getCurrent();
+      vm.work = SubmitWorkService.work;
     }
 
-    function select(type) {
+    $scope.setType = function (type) {
       vm.work.requestType = type;
-      switch (type) {
-        case 'design':
-          vm.designButtonStyle = 'selected';
-          vm.codeButtonStyle = '';
-          vm.bothButtonStyle = '';
-          break;
-        case 'code':
-          vm.designButtonStyle = '';
-          vm.codeButtonStyle = 'selected';
-          vm.bothButtonStyle = '';
-          break;
-        case 'both':
-          vm.designButtonStyle = '';
-          vm.codeButtonStyle = '';
-          vm.bothButtonStyle = 'selected';
-          break;
-      }
+      SubmitWorkService.updatePrice();
     }
 
+    $scope.$watch('typeForm', function(typeForm) {
+      if (typeForm) {
+        SubmitWorkService.findState('type').form = typeForm;
+      }
+    });
+
+    $scope.submit = function () {
+      if ($scope.typeForm.$valid) {
+        SubmitWorkService.setNextState();
+      }
+    };
   }
 })();

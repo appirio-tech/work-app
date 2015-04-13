@@ -1,8 +1,6 @@
 @import "../../../core/styles/combined";
 
 .layout-main.submit-work article.estimate {
-  margin-bottom: 800px;
-
   h3 {
     @include font-line(36);
   }
@@ -13,10 +11,5 @@
 
   > form {
     @include main-restricted();
-
-    button {
-      height: 70px;
-      @include font-line(24);
-    }
   }
 }

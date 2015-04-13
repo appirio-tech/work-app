@@ -6,29 +6,35 @@
     .module('app.submit-work')
     .controller('SubmitDesignsController', SubmitDesignsController);
 
-  SubmitDesignsController.$inject = ['logger', '$state', 'SubmitWorkService'];
+  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
-  function SubmitDesignsController(logger, $state, SubmitWorkService) {
-    var vm = this;
-    vm.title = 'Designs';
-    vm.work = {};
+  function SubmitDesignsController($scope, logger, $state, SubmitWorkService) {
+    var vm            = this;
+    vm.title          = 'Designs';
+    vm.work           = SubmitWorkService.work;
     vm.imageFilenames = [];
-    vm.filename = '';
-    vm.add = add;
-    vm.nextState = 'estimate';
-    var i = 1;
+    vm.filename       = '';
+    vm.add            = add;
+    var i             = 1;
 
-    activate();
-
-    function activate() {
-      logger.log('Activated Designs View');
-      vm.work = SubmitWorkService.getCurrent();
-    }
+    logger.log('Activated Designs View');
 
     function add() {
       vm.imageFilenames.push('file ' + i++);
       vm.filename = '';
     }
+
+    $scope.submit = function () {
+      if ($scope.designForm.$valid) {
+        SubmitWorkService.setNextState();
+      }
+    };
+
+    $scope.$watch('designForm', function(designForm) {
+      if (designForm) {
+        SubmitWorkService.findState('designs').form = designForm;
+      }
+    });
 
   }
 })();
