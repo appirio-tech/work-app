@@ -21,7 +21,7 @@
     function refreshToken() {
       var idToken = getToken();
 
-      if (idToken && idToken !== 'undefined') {
+      if (idToken && idToken !== 'undefined' && angular.isString(idToken)) {
         if (jwtHelper.isTokenExpired(idToken)) {
           // This is a promise of a JWT id_token
           return $http({

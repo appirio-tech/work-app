@@ -32,27 +32,19 @@
       domain  : auth0Domain,
       clientID: auth0ClientId,
       loginState: 'login',
-      callbackURL: auth0callbackUrl,
-      sso: false
-    });
-
-    authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
-      console.log("Login Success");
-    });
-
-    authProvider.on('authenticated', function($location) {
-      console.log("Authenticated");
-
+      responseType: 'code',
+      sso: false,
+      callbackURL: auth0callbackUrl
     });
 
     authProvider.on('logout', function() {
-      console.log("Logged out");
-    })
+      console.log('logout');
+    });
   }
 
-  authRun.$inject = ['$rootScope', '$location', 'ApiResource', 'TokenService', 'auth0TokenName'];
+  authRun.$inject = ['$rootScope', '$location', 'ApiResource', 'auth', 'TokenService', 'auth0TokenName'];
 
-  function authRun($rootScope, $location, ApiResource, TokenService, auth0TokenName) {
+  function authRun($rootScope, $location, ApiResource, auth, TokenService, auth0TokenName) {
     // Setup the resource
     var config = {
       url     : 'authorizations',
@@ -61,13 +53,18 @@
 
     ApiResource.add(config);
 
-    $rootScope.$on('$locationChangeStart', function() {
+    auth.hookEvents();
+
+    function CheckToken() {
       // Add the token to the local store if it's in the url
-      var urlToken = $location.search()[auth0TokenName];
-      if (urlToken && urlToken !== 'undefined') {
-        TokenService.setToken(urlToken);
+      var urlToken = $location.search();
+
+      if (urlToken[auth0TokenName] && urlToken[auth0TokenName] !== 'undefined') {
+        TokenService.setToken(urlToken[auth0TokenName]);
         $location.search(auth0TokenName, null);
       }
-    });
+    }
+
+    $rootScope.$on('$locationChangeStart', CheckToken);
   }
 })();

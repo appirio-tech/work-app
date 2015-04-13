@@ -5,12 +5,13 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['data', 'exception', 'auth', 'auth0retUrl', 'logger', 'auth0callbackUrl'];
+  AuthService.$inject = ['$http', '$q', 'data', 'exception', 'auth', 'auth0retUrl', 'logger', 'TokenService', 'apiUrl'];
   /* @ngInject */
-  function AuthService(data, exception, auth, auth0retUrl, logger, auth0callbackUrl) {
+  function AuthService($http, $q, data, exception, auth, auth0retUrl, logger, TokenService, apiUrl) {
     var service = {
       login: login,
-      logout: logout
+      logout: logout,
+      authorize: authorize
     };
     return service;
 
@@ -34,29 +35,56 @@
      * - username
      * - password
      * - retUrl: optional
-     * - success:  sucess callback
+     * - success:  success callback
      * - error: error callback
      */
     function login(options) {
 
       var defaultOptions = {
-        retUrl: auth0retUrl,
-        success: function() { logger.info('login success')},
-        error: function() {logger.info('error in login')}
+        retUrl: auth0retUrl
       };
 
-      var lOptions = angular.extend({}, defaultOptions, options);
+      var lOptions = angular.extend({}, options, defaultOptions);
 
+      logger.log(lOptions);
       auth.signin({
         username: lOptions.username,
         password: lOptions.password,
         connection: 'LDAP',
-        callbackURL: auth0callbackUrl,
+        response_type: 'code',
         authParams: {
           scope: 'openid profile offline_access',
-          state: encodeURIComponent('retUrl=' + lOptions.retUrl + '&setParam=true')
+          state: encodeURIComponent('retUrl='+window.location.href)
         }
-      }, lOptions.success, lOptions.error);
+      });
+    }
+
+    function authorize(auth0Token) {
+
+      var deferred = $q.defer();
+
+      var config = {
+        method: 'POST',
+        url: apiUrl + 'authorizations',
+        data: {},
+        headers: {
+          Authorization: 'Auth0Code ' + auth0Token,
+          state: encodeURIComponent('retUrl='+window.location.href)
+        }
+      };
+
+      return $http(config)
+        .success(function(data) {
+          console.log(1);
+          console.log(data);
+          deferred.resolve(data.result.content.token);
+        })
+        .error(function(error) {
+          console.log(error);
+          deferred.reject(error);
+        });
+
+      return deferred.promise;
     }
   }
 })();

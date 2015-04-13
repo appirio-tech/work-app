@@ -5,7 +5,7 @@
     'app.core',
     'app.layout',
     'app.getting-started',
-    'app.login',
+    'app.auth',
     'app.submit-work',
     'app.create-account',
     'app.view-work',

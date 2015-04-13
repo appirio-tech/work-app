@@ -19,7 +19,8 @@
     function submit() {
       var loginOptions = {
         username: vm.username,
-        password: vm.password
+        password: vm.password,
+        error: loginFailure
       };
       AuthService.login(loginOptions);
     }
@@ -28,6 +29,14 @@
 
     function activate() {
       logger.log('Activated Login View');
+    }
+
+    function loginSuccess(profile, idToken, accessToken, state, refreshToken) {
+      logger.log('success', profile);
+    }
+
+    function loginFailure(error) {
+      logger.log('error', error);
     }
   }
 })();
