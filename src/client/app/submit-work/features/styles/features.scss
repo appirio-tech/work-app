@@ -1,9 +1,15 @@
 @import "../../../core/styles/combined";
 
 .layout-main.submit-work .features {
+  textarea {
+    height: 75px;
+  }
+
   ul {
+    text-align: left;
+    display   : inline-block;
+
     li {
-      text-align: left;
       margin-top: $margin-18;
       padding   : 0 $padding-20;
 
@@ -38,6 +44,13 @@
   }
 
   .new-feature {
-    @include main-restricted();
+    display   : inline-block;
+    width     : 100%;
+    text-align: left;
+    margin-top: $margin-18;
+
+    .explanation-n-add {
+      margin-top: $margin-18;
+    }
   }
 }
