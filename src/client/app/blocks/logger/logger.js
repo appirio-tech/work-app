@@ -10,7 +10,7 @@
   /* @ngInject */
   function logger($log, toastr) {
     var service = {
-      showToasts: true,
+      showToasts: false,
 
       error: error,
       info: info,
