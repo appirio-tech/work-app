@@ -8,10 +8,10 @@ form(name="competitorForm", ng-submit="submit($event)")
       type="text",
       placeholder="{{vm.placeholder || 'eTrade Mobile Trading App'}}",
       ng-model="vm.appName",
-      ng-keypress="onPress($event); vm.placeholder = ' '"
+      ng-keypress="onPress($event)"
     )
 
-    button.add-competitor(type="button", ng-click="vm.add(); vm.placeholder = ' '") +
+    button.add-competitor(type="button", ng-click="vm.add()") +
 
   h6 Your List of Similar Apps
 

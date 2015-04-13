@@ -25,6 +25,7 @@
       if (!(vm.appName.trim().length === 0)) {
         vm.work.competitorApps.push(vm.appName);
         vm.appName = '';
+        vm.placeholder = ' ';
       }
     }
 
