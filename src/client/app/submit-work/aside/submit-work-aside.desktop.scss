@@ -6,6 +6,10 @@
   overflow: hidden;
   float   : left;
 
+  .example {
+    max-width: 256px;
+  }
+
   &.fixed {
     .fixed-wrapper {
       position : fixed;
