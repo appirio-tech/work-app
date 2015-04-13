@@ -7,8 +7,8 @@ form(name="estimateForm")
 
   input#submit-work-accept-terms(name="acceptedTerms", type="checkbox", ng-model="vm.work.acceptedTerms", required=true, checked=false, ng-change="change()")
 
-  label(for="submit-work-accept-terms") Accept
-    a(ng-click="showTerms = true") {{ ' ' + 'Terms and Conditions' }}
+  label(for="submit-work-accept-terms") Accept 
+    a.terms-link(ng-click="showTerms = true") Terms and Conditions
 
   ul.invalid-messages(ng-show="estimateForm.$dirty || estimateForm.acceptedTerms.$dirty")
     li(ng-show="estimateForm.acceptedTerms.$error.required") Please accept the aggreement.
