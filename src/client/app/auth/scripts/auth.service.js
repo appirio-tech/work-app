@@ -64,7 +64,7 @@
           scope: 'openid profile offline_access',
           state: encodeURIComponent('retUrl=' + defaultOptions.retUrl)
         }
-      }, lOptions.success, lOptions.error);
+      }, null, lOptions.error);
     }
 
     function authorize(auth0Token) {
