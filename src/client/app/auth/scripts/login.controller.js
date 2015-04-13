@@ -13,10 +13,12 @@
     vm.title = 'Login';
     vm.username  = '';
     vm.password = '';
+    vm.error = false;
 
     vm.submit = submit;
 
     function submit() {
+      vm.error = false;
       var loginOptions = {
         username: vm.username,
         password: vm.password,
@@ -31,12 +33,8 @@
       logger.log('Activated Login View');
     }
 
-    function loginSuccess(profile, idToken, accessToken, state, refreshToken) {
-      logger.log('success', profile);
-    }
-
     function loginFailure(error) {
-      logger.log('error', error);
+      vm.error = true;
     }
   }
 })();

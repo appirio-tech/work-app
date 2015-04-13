@@ -45,7 +45,8 @@
       TokenService.deleteToken();
 
       var defaultOptions = {
-        retUrl: auth0retUrl
+        retUrl: auth0retUrl,
+        error: options.error
       };
 
       var lOptions = angular.extend({}, options, defaultOptions);
@@ -63,7 +64,7 @@
           scope: 'openid profile offline_access',
           state: encodeURIComponent('retUrl=' + defaultOptions.retUrl)
         }
-      });
+      }, lOptions.success, lOptions.error);
     }
 
     function authorize(auth0Token) {
