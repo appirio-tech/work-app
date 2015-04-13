@@ -34,7 +34,7 @@
 @mixin font-line($pt) {
   font-size: ($pt * 1px);
 
-  @include line-height($pt * 1.15);
+  @include line-height($pt * 1.20);
 }
 
 @mixin line-height($pt) {

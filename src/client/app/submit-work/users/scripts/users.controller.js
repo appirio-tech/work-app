@@ -6,26 +6,25 @@
     .module('app.submit-work')
     .controller('SubmitUsersController', SubmitUsersController);
 
-  SubmitUsersController.$inject = ['logger', '$state', 'SubmitWorkService'];
-  /* @ngInject */
-  function SubmitUsersController(logger, $state, SubmitWorkService) {
-    var vm = this;
-    vm.title = 'Users';
-    vm.work = {};
-    vm.next = false;
-    vm.validate = validate;
-    vm.nextState = 'features';
+  SubmitUsersController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
-    activate();
+  function SubmitUsersController($scope, logger, SubmitWorkService) {
+    var vm       = this;
+    vm.title     = 'Users';
+    vm.work      = SubmitWorkService.work;
 
-    function activate() {
-      logger.log('Activated Users View');
-      vm.work = SubmitWorkService.getCurrent();
-    }
+    logger.log('Activated Users View');
 
-    function validate() {
-      return SubmitWorkService.validateUsageDescription(vm.work.usageDescription);
-    }
+    $scope.submit = function () {
+      if ($scope.usersForm.$valid) {
+        SubmitWorkService.setNextState();
+      }
+    };
 
+    $scope.$watch('usersForm', function(usersForm) {
+      if (usersForm) {
+        SubmitWorkService.findState('users').form = usersForm;
+      }
+    });
   }
 })();

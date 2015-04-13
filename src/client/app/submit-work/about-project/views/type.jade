@@ -2,12 +2,19 @@ h2 About your project
 
 h3 What type of project do you need?
 
-form
+form(name="typeForm", ng-submit="submit()")
+  input(
+    name         = "type",
+    type         = "hidden",
+    required     = true,
+    ng-model     = "vm.work.requestType",
+  )
+
   ul.project-types
     li
       label(for="project-type-design") DESIGN
 
-      button#project-type-design(class="{{vm.designButtonStyle}}", ng-click="vm.select('design')")
+      button#project-type-design(type="button", ng-class="{'selected': vm.work.requestType == 'design'}", ng-click="setType('design')")
         .starting-at starting at
 
         .price $2,000
@@ -19,7 +26,7 @@ form
     li
       label(for="project-type-code") CODE
 
-      button#project-type-code(class="{{vm.codeButtonStyle}}", ng-click="vm.select('code')")
+      button#project-type-code(type="button", ng-class="{'selected': vm.work.requestType == 'code'}", ng-click="setType('code')")
         .starting-at starting at
 
         .price $5,000
@@ -31,7 +38,7 @@ form
     li
       label(for="project-type-design-code") DESIGN &amp; CODE
 
-      button#project-type-design-code(class="{{vm.bothButtonStyle}}", ng-click="vm.select('both')")
+      button#project-type-design-code(type="button", ng-class="{'selected': vm.work.requestType == 'both'}", ng-click="setType('both')")
         .starting-at starting at
 
         .price $10,000
@@ -40,5 +47,8 @@ form
 
       .description I have an idea for an app and need it designed and built.
 
-  next-state(state="vm.nextState", vm="vm", ng-show="vm.work && vm.work.requestType")
+  ul.invalid-messages(ng-show="typeForm.$dirty")
+    li(ng-show="typeForm.type.$error.required") Please tell us the type of your project.
+
+  button.submit(type="submit", ng-show="typeForm.$valid") NEXT
 

@@ -3,35 +3,60 @@
 
   var directive = function ($document, $rootScope) {
     var link = function (scope, element, attrs) {
-      var states = element.find('.state');
+      var stateElements      = element.find('.state');
+      var previousScrollTop  = $document.scrollTop();
+      var isAutoScrolling    = false;
+      var isManualScrolling  = false;
 
-      var setState = function () {
-        var lastVisible = states.first();
+      function setActiveStateElement () {
+        var activeStateElement = stateElements.eq(0);
 
-        states.each(function (i, state) {
-          // need to remove static `+ 220`
-          // Cant do more than 220 untill we can load modules in order to do layout first
-          if (states.eq(i).offset().top < ($document.scrollTop() + 210)) {
-            lastVisible = states.eq(i);
+        stateElements.each(function (i, state) {
+          var startingLine = element.find('#starting-line-' + stateElements.eq(i).attr('state'));
+          var hitThreshold = startingLine.offset().top < $document.scrollTop() + 1;
+
+          if (hitThreshold) {
+            activeStateElement = stateElements.eq(i);
           }
         });
 
-        states.removeClass('state-active');
+        stateElements.removeClass('state-active');
 
-        lastVisible.addClass('state-active');
+        activeStateElement.addClass('state-active');
 
-        // needs refactoring when more time
-        $rootScope.$emit('scroll-state', lastVisible.attr('state'));
-        $rootScope.scrollState = lastVisible.attr('state');
+        return activeStateElement;
+      }
+
+      var manualScrolling = function (e) {
+        var activeState = setActiveStateElement().attr('state');
+
+        if (scope.activeState != activeState) {
+          isManualScrolling = true;
+          scope.activeState = activeState;
+          scope.$apply();
+        }
       };
 
-      $document.bind('scroll', setState);
+      var autoScrolling = function (state) {
+        if (isManualScrolling) {
+          isManualScrolling = false;
+        }
+        else if (state) {
+          var stateElement = element.find('#starting-line-' + state);
+          $document.scrollToElementAnimated(stateElement);
+        }
+      };
 
-      setState();
+      scope.$watch('activeState', autoScrolling);
+
+      $document.bind('scroll', manualScrolling);
     };
 
     return {
       restrict   : 'A',
+      scope: {
+        activeState : "=ngScrollState"
+      },
       link       : link
     };
   };
