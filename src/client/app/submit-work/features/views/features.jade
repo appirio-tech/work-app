@@ -3,14 +3,19 @@ h2 What features does your app need?
 h3 Select from our list, or describe your own.
 
 form(name="featureForm", ng-submit="submit()")
-  ul
+  ul.features
     li(ng-repeat="feature in vm.work.features")
       input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected", ng-change="updatePrice()")
 
       .label-example
         label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
-        a(href='#', ng-mouseover="vm.showExample('login')", ng-mouseleave="vm.hideExample()") (example)
+        a(
+          href='#',
+          ng-mouseover="vm.showExample('login')",
+          ng-mouseleave="vm.hideExample()",
+          title="View example"
+        )
 
       .desc {{feature.description}}
 
