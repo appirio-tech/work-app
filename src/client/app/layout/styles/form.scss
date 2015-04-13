@@ -6,9 +6,11 @@ form {
     font-weight: bold;
   }
 
-  .error {
-    margin   : $margin-5 $margin-10;
-    color    : $punch;
+  .invalid-messages {
+    li {
+      margin-top: $margin-10;
+      color : $punch;
+    }
   }
 }
 
@@ -35,30 +37,23 @@ input[type=checkbox] {
 }
 
 input {
-  padding-right: $padding-40;
+  box-shadow: none;
 
-  &.valid, &:valid {
-    background-position: -39px -68px;
-  }
+  &:focus {
+    border-color: $celery;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px $celery;
 
-  &:invalid {
-    box-shadow: none;
-  }
-
-  &.invalid, &:focus:invalid {
-    background-position: 36px -143px;
-  }
-
-
-  &:optional {
-    background-position: 0 0;
+    &.ng-invalid, &:invalid {
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px $punch;
+      border-color: $punch;
+      color: $punch;
+    }
   }
 
   @include placeholder {
     color: $slate-gray;
   }
-
-  @include icon-sprite();
 }
 
 textarea {
