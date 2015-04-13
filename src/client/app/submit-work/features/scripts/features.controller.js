@@ -71,6 +71,7 @@
       });
       vm.newFeatureName = '';
       vm.newFeatureExplanation = '';
+      $scope.updatePrice();
     }
 
   }
