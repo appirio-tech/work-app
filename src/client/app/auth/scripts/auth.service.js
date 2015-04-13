@@ -5,14 +5,13 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['$http', '$q', 'data', 'exception', 'auth', 'auth0retUrl', 'logger', 'apiUrl', 'store', 'auth0TokenName', 'TokenService'];
+  AuthService.$inject = ['data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService'];
   /* @ngInject */
-  function AuthService($http, $q, data, exception, auth, auth0retUrl, logger, apiUrl, store, auth0TokenName, TokenService) {
+  function AuthService(data, exception, auth, auth0retUrl, store, TokenService) {
     var service = {
       login: login,
       logout: logout,
-      authorize: authorize,
-      isAuthenticated: isAuthenticated
+      authorize: authorize
     };
     return service;
 
@@ -65,45 +64,6 @@
           state: encodeURIComponent('retUrl=' + defaultOptions.retUrl)
         }
       });
-    }
-
-    function authorize(auth0Token) {
-
-      var deferred = $q.defer();
-
-      var config = {
-        method: 'POST',
-        url: apiUrl + 'authorizations',
-        data: {},
-        headers: {
-          Authorization: 'Auth0Code ' + auth0Token,
-          state: encodeURIComponent('retUrl='+window.location.href)
-        }
-      };
-
-      return $http(config)
-        .success(function(data) {
-          deferred.resolve(data.result.content.token);
-        })
-        .error(function(error) {
-          deferred.reject(error);
-        });
-
-      return deferred.promise;
-    };
-
-    /**
-     * Check is a user is currently authenticated
-     */
-    function isAuthenticated() {
-      //@TODO this should check if the auth library is really valid.
-      var token = store.get(auth0TokenName);
-
-      if (token && token !== 'undefined') {
-        return true;
-      }
-
-      return false;
     }
   }
 })();
