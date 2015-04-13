@@ -10,8 +10,7 @@
   function AuthService(data, exception, auth, auth0retUrl, store, TokenService) {
     var service = {
       login: login,
-      logout: logout,
-      authorize: authorize
+      logout: logout
     };
     return service;
 
