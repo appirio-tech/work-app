@@ -22,7 +22,8 @@
       var loginOptions = {
         username: vm.username,
         password: vm.password,
-        error: loginFailure
+        error: loginFailure,
+        success: loginSuccess
       };
       AuthService.login(loginOptions);
     }
@@ -35,6 +36,10 @@
 
     function loginFailure(error) {
       vm.error = true;
+    }
+
+    function loginSuccess() {
+      logger.log("adfadfasdfasdfasdf");
     }
   }
 })();

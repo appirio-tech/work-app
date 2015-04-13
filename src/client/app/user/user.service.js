@@ -20,7 +20,6 @@
     function setUser(id) {
       getUser(id)
         .then(function(data) {
-          console.log(data);
           service.user = data;
         });
     }
@@ -38,7 +37,6 @@
       return promise;
 
       function getUserComplete(data) {
-        console.log(data);
         service.user = content;
         return data.data.result.content;
       }

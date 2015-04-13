@@ -83,12 +83,9 @@
 
       return $http(config)
         .success(function(data) {
-          console.log(1);
-          console.log(data);
           deferred.resolve(data.result.content.token);
         })
         .error(function(error) {
-          console.log(error);
           deferred.reject(error);
         });
 
