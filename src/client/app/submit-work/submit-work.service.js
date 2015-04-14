@@ -140,17 +140,18 @@
 
     function getEstimate() {
       if (work.requestType) {
-        var calcEstimate = work.features.reduce(function(x, y) {
+        // this is a calculation of the estimate
+        var estimate = work.features.reduce(function(x, y) {
           if (y.selected) {
             x.low += 800;
             x.high += 1200;
           }
           return x;
         }, {low: 2000, high: 2000});
-        if (work.costEstimate && work.costEstimate.low > calcEstimate.low) {
+        if (work.costEstimate && work.costEstimate.low > estimate.low) {
           return work.costEstimate;
         } else {
-          return calcEstimate;
+          return estimate;
         }
       } else {
         return {low: 0, high: 0};
