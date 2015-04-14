@@ -21,13 +21,22 @@ form(name="featureForm", ng-submit="submit()")
 
       textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
 
-  h3 Add a custom feature.
-
   .new-feature
-    fieldset
-      input(type="text", ng-model="vm.newFeatureName", placeholder="Name", ng-keypress="onPress($event)")
+    .title
+      input(
+        type="text",
+        ng-model="vm.newFeatureName",
+        placeholder="Name",
+        ng-keypress="onPress($event)"
+      )
 
-      input(type="text", ng-model="vm.newFeatureExplanation", placeholder="Explanation", ng-keypress="onPress($event)")
+    .explanation-n-add
+      textarea(
+        type="text",
+        ng-model="vm.newFeatureExplanation",
+        ng-keypress="onPress($event)",
+        placeholder="Explanation"
+      )
 
       button(type="button", ng-click="vm.add()") +
 
