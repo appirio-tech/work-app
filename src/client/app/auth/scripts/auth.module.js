@@ -52,15 +52,21 @@
     auth.hookEvents();
 
     function CheckToken() {
-      // Add the token to the local store if it's in the url
-      var urlToken = $location.search();
+      if (TokenService.tokenIsValid()) {
+        auth.isAuthenticated = true;
+      } else {
+        auth.isAuthenticated = false;
+        // Add the token to the local store if it's in the url
+        var urlToken = $location.search();
 
-      if (urlToken[auth0TokenName] && urlToken[auth0TokenName] !== 'undefined') {
-        TokenService.setToken(urlToken[auth0TokenName]);
-        $location.search(auth0TokenName, null);
+        if (urlToken[auth0TokenName] && urlToken[auth0TokenName] !== 'undefined') {
+          TokenService.setToken(urlToken[auth0TokenName]);
+          $location.search(auth0TokenName, null);
 
-        var authState = store.get('login-state');
-        $rootScope.$broadcast('loginComplete', authState);
+          var authState = store.get('login-state');
+          auth.isAuthenticated = true;
+          $rootScope.$broadcast('loginComplete', authState);
+        }
       }
     }
 

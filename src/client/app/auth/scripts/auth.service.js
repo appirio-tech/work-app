@@ -10,7 +10,8 @@
   function AuthService(data, exception, auth, auth0retUrl, store, TokenService) {
     var service = {
       login: login,
-      logout: logout
+      logout: logout,
+      isAuthenticated: isAuthenticated
     };
     return service;
 
@@ -44,7 +45,7 @@
 
       var defaultOptions = {
         retUrl: auth0retUrl,
-        error: options.error
+        error: function() {}
       };
 
       var lOptions = angular.extend({}, options, defaultOptions);
@@ -63,6 +64,15 @@
           state: encodeURIComponent('retUrl=' + defaultOptions.retUrl)
         }
       });
+    }
+
+    /**
+     * Is there a current active session
+     *
+     * @return bool
+     */
+    function isAuthenticated() {
+      return TokenService.tokenIsValid();
     }
   }
 })();

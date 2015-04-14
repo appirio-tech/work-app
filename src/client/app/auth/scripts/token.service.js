@@ -13,7 +13,8 @@
       deleteToken: deleteToken,
       decodeToken: decodeToken,
       setToken: setToken,
-      refreshToken: refreshToken
+      refreshToken: refreshToken,
+      tokenIsValid: tokenIsValid
     };
 
     return service;
@@ -68,6 +69,19 @@
       }
 
       return {};
+    }
+
+    function tokenIsValid() {
+      var token = getToken();
+
+      if (token && token !== 'undefined' &&
+          angular.isString(token) &&
+          !jwtHelper.isTokenExpired(token)) {
+
+        return true;
+      }
+
+      return false;
     }
   }
 })();
