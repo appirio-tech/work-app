@@ -50,7 +50,7 @@
     button.launch {
       opacity: 0;
       height: 70px;
-      margin-bottom: 800px;
+      margin-bottom: 800px; /* allows scrolling for large screens, need a better solution */
       @include font-line(24);
       @include transition(opacity 0.3s ease-in 0s);
 

@@ -5,17 +5,29 @@
     li {
       text-align: left;
       margin-top: $margin-18;
-      margin-left: $margin-22;
+      padding   : 0 $padding-20;
 
       input[type="checkbox"]{
-        position: absolute;
-        margin-left: -$margin-22;
+        position   : absolute;
+        margin-left: -$margin-20;
+        margin-top : $margin-2;
       }
 
       .label-example {
-        a {
+        button {
+          float              : right;
+          display            : inline-block;
+          margin-left        : $margin-5;
+          width              : 16px;
+          height             : 13px;
+          background-image   : url("../../images/view-feature.png");
+          background-position: -12px -13px;
+
           @include font-line(10);
-          margin-left: $margin-5;
+
+          &:hover {
+            background-position: -44px -13px;
+          }
         }
       }
 
