@@ -10,8 +10,7 @@ form(name="featureForm", ng-submit="submit()")
       .label-example
         label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
-        a(
-          href='#',
+        button.clean(
           ng-mouseover="vm.showExample('login')",
           ng-mouseleave="vm.hideExample()",
           title="View example"
