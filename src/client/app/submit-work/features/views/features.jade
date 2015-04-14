@@ -12,8 +12,7 @@ form(name="featureForm", ng-submit="submit()")
 
         button.clean(
           type="button"
-          ng-mouseover="vm.showExample('login')",
-          ng-mouseleave="vm.hideExample()",
+          ng-click="clickExample()",
           title="View example"
         )
 
@@ -49,3 +48,12 @@ form(name="featureForm", ng-submit="submit()")
       button(type="button", ng-click="vm.add()") +
 
   button.submit(type="submit", ng-show="featureForm.$valid") NEXT
+
+.example.layout-modal(ng-modal="showExample")
+  button.clean.close(type="button", ng-click="showExample = false")
+
+  h2 Email Login:
+
+  h3 allows users to login with email and username
+
+  img(src="/submit-work/images/phone.png")

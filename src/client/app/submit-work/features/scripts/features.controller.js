@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitFeaturesController', SubmitFeaturesController);
 
-  SubmitFeaturesController.$inject = ['$rootScope', '$scope', 'logger', 'SubmitWorkService', 'FeatureService'];
+  SubmitFeaturesController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'FeatureService'];
   /* @ngInject */
-  function SubmitFeaturesController($rootScope, $scope, logger, SubmitWorkService, FeatureService) {
+  function SubmitFeaturesController($scope, logger, SubmitWorkService, FeatureService) {
     var vm                   = this;
     vm.title                 = 'Features';
     vm.work                  = SubmitWorkService.work;
@@ -17,12 +17,10 @@
     vm.newFeatureExplanation = '';
     vm.newFeature            = false;
 
-    vm.showExample = function (example) {
-      $rootScope.$emit('submit-work-show-example', example);
-    };
+    $scope.showExample       = false;
 
-    vm.hideExample = function () {
-      $rootScope.$emit('submit-work-hide-example');
+    $scope.clickExample = function () {
+      $scope.showExample = true;
     };
 
     activate();
