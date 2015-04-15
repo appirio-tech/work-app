@@ -35,22 +35,10 @@
       }
     };
 
-    // can create ngEnter for this
-    $scope.onPress= function (e) {
-      if (e.which == 13) {
-        vm.add();
-
-        e.preventDefault();
-
-        return false;
-      }
-    };
-
     $scope.$watch('competitorForm', function(competitorForm) {
       if (competitorForm) {
         SubmitWorkService.findState('competitors').form = competitorForm;
       }
     });
-
   }
 })();

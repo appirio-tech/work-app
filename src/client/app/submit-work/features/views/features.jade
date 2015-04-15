@@ -27,14 +27,14 @@ form(name="featureForm", ng-submit="submit()")
         type="text",
         ng-model="vm.newFeatureName",
         placeholder="Name",
-        ng-keypress="onPress($event)"
+        ng-enter="vm.add()"
       )
 
     .explanation-n-add
       textarea(
         type="text",
         ng-model="vm.newFeatureExplanation",
-        ng-keypress="onPress($event)",
+        ng-enter="vm.add()",
         placeholder="Explanation"
       )
 

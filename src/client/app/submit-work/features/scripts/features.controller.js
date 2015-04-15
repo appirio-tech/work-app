@@ -32,17 +32,6 @@
       }
     };
 
-    // can create ngEnter for this
-    $scope.onPress= function (e) {
-      if (e.which == 13) {
-        vm.add();
-
-        e.preventDefault();
-
-        return false;
-      }
-    };
-
     $scope.$watch('featureForm', function(featureForm) {
       if (featureForm) {
         SubmitWorkService.findState('features').form = featureForm;

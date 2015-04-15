@@ -14,7 +14,12 @@ form(name="typeForm", ng-submit="submit()")
     li
       label(for="project-type-design") DESIGN
 
-      button#project-type-design(type="button", ng-class="{'selected': vm.work.requestType == 'design'}", ng-click="setType('design')")
+      button#project-type-design(
+        type="button",
+        ng-class="{'selected': vm.work.requestType == 'design'}",
+        ng-click="setType('design')",
+        ng-enter="submit()"
+      )
         .starting-at starting at
 
         .price $2,000
@@ -26,7 +31,12 @@ form(name="typeForm", ng-submit="submit()")
     li
       label(for="project-type-code") CODE
 
-      button#project-type-code(type="button", ng-class="{'selected': vm.work.requestType == 'code'}", ng-click="setType('code')")
+      button#project-type-code(
+        type="button",
+        ng-class="{'selected': vm.work.requestType == 'code'}",
+        ng-click="setType('code')",
+        ng-enter="submit()"
+      )
         .starting-at starting at
 
         .price $5,000
@@ -38,7 +48,12 @@ form(name="typeForm", ng-submit="submit()")
     li
       label(for="project-type-design-code") DESIGN &amp; CODE
 
-      button#project-type-design-code(type="button", ng-class="{'selected': vm.work.requestType == 'both'}", ng-click="setType('both')")
+      button#project-type-design-code(
+        type="button",
+        ng-class="{'selected': vm.work.requestType == 'both'}",
+        ng-click="setType('both')",
+        ng-enter="submit()"
+      )
         .starting-at starting at
 
         .price $10,000
