@@ -21,7 +21,15 @@ form(name="featureForm", ng-submit="submit()")
 
       textarea(placeholder="explain briefly (optional)", ng-show="feature.selected", ng-model="feature.explanation")
 
-  .new-feature
+    li
+      input(type="checkbox", ng-model="vm.newFeature")
+
+      .label-example
+        label(for="{{'feature-' + feature.id}}") Additional Features
+
+      .desc Tell us about other features you need that are not listed here.
+
+  .new-feature(ng-show="vm.newFeature")
     .title
       input(
         type="text",
