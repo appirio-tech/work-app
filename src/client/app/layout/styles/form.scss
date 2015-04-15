@@ -79,6 +79,15 @@ button {
   }
 
   &.cancel {
-    background-color: $ship-gray;
+    background-color: initial;
+    color: $black;
+  }
+
+  &.clean {
+    width           : initial;
+    height          : initial;
+    background-color: initial;
+    color           : initial;
+    margin-top      : 0;
   }
 }

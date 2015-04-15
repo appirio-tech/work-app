@@ -15,6 +15,7 @@
     vm.add                   = add;
     vm.newFeatureName        = '';
     vm.newFeatureExplanation = '';
+    vm.newFeature            = false;
 
     vm.showExample = function (example) {
       $rootScope.$emit('submit-work-show-example', example);
@@ -61,14 +62,16 @@
 
     function add() {
       vm.work.features.push({
-        id: vm.newFeatureName,
-        name: vm.newFeatureName,
+        id         : vm.newFeatureName,
+        name       : vm.newFeatureName,
         explanation: vm.newFeatureExplanation,
         description: '',
-        selected: true
+        selected   : true
       });
-      vm.newFeatureName = '';
+
+      vm.newFeatureName        = '';
       vm.newFeatureExplanation = '';
+      vm.newFeature            = false;
     }
 
   }

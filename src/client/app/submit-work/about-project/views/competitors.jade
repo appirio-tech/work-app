@@ -6,7 +6,7 @@ form(name="competitorForm", ng-submit="submit($event)")
   fieldset
     input#project-competitors(
       type="text",
-      placeholder="eTrade Mobile Trading App",
+      placeholder="{{vm.placeholder || 'eTrade Mobile Trading App'}}",
       ng-model="vm.appName",
       ng-keypress="onPress($event)"
     )
