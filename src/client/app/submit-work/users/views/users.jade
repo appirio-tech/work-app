@@ -11,8 +11,6 @@ form(name="usersForm", ng-submit="submit()")
     required    =  true
   )
 
-  .character-count {{ vm.work.usageDescription.length || '&nbsp;' }}
-
   ul.invalid-messages(ng-show="usersForm.$dirty || usersForm.usageDescription.$dirty")
     li(ng-show="usersForm.usageDescription.$error.required") This field is required.
 
