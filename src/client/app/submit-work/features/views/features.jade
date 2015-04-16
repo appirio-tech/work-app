@@ -2,7 +2,7 @@ h2 What features does your app need?
 
 h3 Select from our list, or describe your own.
 
-form(name="featureForm", ng-submit="submit()")
+form(name="featureForm", ng-submit="vm.submit()")
   ul.features
     li(ng-repeat="feature in vm.work.features")
       input(id="{{'feature-' + feature.id}}", type="checkbox", ng-model="feature.selected")
@@ -12,8 +12,7 @@ form(name="featureForm", ng-submit="submit()")
 
         button.clean(
           type="button"
-          ng-mouseover="vm.showExample('login')",
-          ng-mouseleave="vm.hideExample()",
+          ng-click="vm.clickExample()",
           title="View example"
         )
 
@@ -49,3 +48,12 @@ form(name="featureForm", ng-submit="submit()")
       button(type="button", ng-click="vm.add()") +
 
   button.submit(type="submit", ng-show="featureForm.$valid") NEXT
+
+.example.layout-modal(ng-modal="showExample")
+  button.clean.close(type="button", ng-click="showExample = false")
+
+  h2 Email Login:
+
+  h3 allows users to login with email and username
+
+  img(src="/submit-work/images/phone.png")
