@@ -19,6 +19,8 @@
       costEstimate    : { low: 0, high: 0 },
       acceptedTerms   : false
     };
+    // local used by "save" function
+    var created = false;
 
     var service = {
       work: work,
@@ -129,13 +131,21 @@
 
       work.submitAttempted = undefined;
 
-      data.create('work-request', work).then(function(data) {
-        service.id = data.result.content;
-        savePrice();
-        promise.resolve(data);
-      }).catch(function(e) {
-        $q.reject(e);
-      });
+      if (!created) {
+        data.create('work-request', work).then(function(data) {
+          service.id = data.result.content;
+          savePrice();
+          promise.resolve(data);
+        }).catch(function(e) {
+          $q.reject(e);
+        });
+      } else {
+        data.update('work-request', {id: service.id}, work).then(function(data) {
+          // do nothing
+        }).catch(function(e) {
+          $q.reject(e);
+        });
+      }
     }
 
     function getEstimate() {
