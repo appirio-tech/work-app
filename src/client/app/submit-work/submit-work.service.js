@@ -11,9 +11,8 @@
     var work = {
       name            : null,
       requestType     : null,
-      price           : null,
       usageDescription: null,
-      elevator        : null,
+      summary         : null,
       competitorApps  : [],
       features        : [],
       costEstimate    : { low: 0, high: 0 },
@@ -128,6 +127,8 @@
       });
 
       work.submitAttempted = undefined;
+      work.acceptedTerms   = undefined;
+      work.costEstimate    = undefined;
 
       data.create('work-request', work).then(function(data) {
         service.id = data.result.content;
