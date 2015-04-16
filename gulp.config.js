@@ -3,23 +3,25 @@ var envConfig = require('./config');
 // To access environment variables use config.getVal('name', 'default value')
 
 module.exports = function () {
-  var client = './src/client/';
-  var server = './src/server/';
-  var clientApp = client + 'app/';
-  var report = './report/';
-  var root = './';
+  var client         = './src/client/';
+  var server         = './src/server/';
+  var clientApp      = client + 'app/';
+  var report         = './report/';
+  var root           = './';
   var specRunnerFile = 'specs.html';
-  var temp = './.tmp/';
-  var wiredep = require('wiredep');
-  var bowerFiles = wiredep({devDependencies: true})['js'];
-  var scssBuild = './.scss';
-  var useStubs = envConfig.getVal('USE_STUBS', false);
+  var temp           = './.tmp/';
+  var wiredep        = require('wiredep');
+  var bowerFiles     = wiredep({devDependencies: true})['js'];
+  var scssBuild      = './.scss';
+  var coffeeBuild    = './.coffee';
+  var useStubs       = envConfig.getVal('USE_STUBS', false);
+  var nodeModules    = 'node_modules';
+
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
     ignorePath: '../..'
   };
-  var nodeModules = 'node_modules';
 
   var config = {
     // angular contants
@@ -74,12 +76,8 @@ module.exports = function () {
     ],
 
     scss: clientApp + '**/*.scss',
+    coffee: clientApp + '**/*.coffee',
     scssBuild: scssBuild,
-    // replace used because compass expects file paths without './'
-    compass: {
-      css: temp.replace('./', ''),
-      sass: 'src/client/app'
-    },
     report: report,
     root: root,
     server: server,

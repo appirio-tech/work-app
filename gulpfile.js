@@ -6,6 +6,7 @@ var del         = require('del');
 var glob        = require('glob');
 var gulp        = require('gulp');
 var sass        = require('gulp-sass');
+var coffee      = require('gulp-coffee');
 var path        = require('path');
 var _           = require('lodash');
 var $           = require('gulp-load-plugins')({lazy: true});
@@ -75,6 +76,21 @@ gulp.task('scss', function () {
     .pipe(sass({
       includePaths: require('node-bourbon').includePaths
     }))
+    .pipe(gulp.dest(config.temp));
+});
+
+/**
+ * Compile coffee to js
+ * @return {Stream}
+ */
+gulp.task('coffee', function () {
+  log('Compiling COFFEE --> JS');
+
+  return gulp.src(config.coffee)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(coffee({ bare: false }))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -151,10 +167,6 @@ gulp.task('images', function () {
     .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('scss-watcher', function () {
-  gulp.watch([config.scss], ['scss']);
-});
-
 /**
  * Create $templateCache from the html templates
  * @return {Stream}
@@ -183,8 +195,8 @@ gulp.task('templatecache', ['jade'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
-  log('Wire up css into the html, after files are ready');
+gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants'], function (done) {
+  log('Wire up css/js into the html, after files are ready');
 
   if (env.skiptests) {
     done();
@@ -580,10 +592,12 @@ function startBrowserSync(isDev, specRunner) {
   if (isDev) {
     gulp.watch([config.scss], ['scss'])
       .on('change', changeEvent);
+    gulp.watch([config.coffee], ['coffee'])
+      .on('change', changeEvent);
     gulp.watch([config.jade], ['jade'])
       .on('change', changeEvent);
   } else {
-    gulp.watch([config.scss, config.js, config.html, config.jade], ['optimize', browserSync.reload])
+    gulp.watch([config.scss, config.coffee, config.js, config.html, config.jade], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 
@@ -594,8 +608,10 @@ function startBrowserSync(isDev, specRunner) {
     files: isDev ? [
       config.client + '**/*.*',
       '!' + config.scss,
+      '!' + config.coffee,
       '!' + config.jade,
-      config.temp + '**/*.css'
+      config.temp + '**/*.css',
+      config.temp + '**/*.js'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t
       clicks: true,
