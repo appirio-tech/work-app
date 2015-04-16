@@ -8,9 +8,10 @@
   SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitEstimateController($scope, logger, SubmitWorkService) {
-    var vm      = this;
-    vm.title    = 'Estimate';
-    vm.work     = SubmitWorkService.work;
+    var vm = this;
+    vm.title = 'Estimate';
+    vm.work = SubmitWorkService.work;
+    vm.getEstimate = SubmitWorkService.getEstimate;
 
     $scope.showTerms = false;
 

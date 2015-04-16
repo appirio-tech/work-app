@@ -35,9 +35,10 @@
     return {
       restrict   : 'A',
       scope: {
-        activeState: "=ngActiveState",
-        work       : "=ngSubmitWorkAside",
-        completed  : "=ngCompleted"
+        activeState : '=ngActiveState',
+        work        : '=ngSubmitWorkAside',
+        completed   : '=ngCompleted',
+        asideService: '=asideService'
       },
       templateUrl: 'submit-work/aside/submit-work-aside.html',
       link       : link

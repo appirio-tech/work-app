@@ -9,11 +9,14 @@
 
   function EstimateFilter() {
     return function(input) {
-      if (!input) {
+      if (!input || input.low === 0) {
         return '';
       }
-
-      return "$" + input;
+      if (input.low === input.high) {
+        return '$' + input.low;
+      } else {
+        return "$" + input.low + ' - ' + '$' + input.high;
+      }
     };
   }
 })();

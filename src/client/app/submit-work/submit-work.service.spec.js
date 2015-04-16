@@ -26,30 +26,24 @@ describe('SubmitWorkService', function () {
 
     it('should have a default price of 0', function() {
       service.work.features = [];
-      expect(service.work.price).to.equal(null);
+      expect(service.getEstimate().low).to.equal(0);
     });
 
-
     it('should be able to calculate a price', function() {
-      // This should be split into multiple assertions/context
       service.work.features = [];
-      service.work.requestType = 'design';
-      service.updatePrice();
-      expect(service.work.price).to.equal('$2000');
-
+      service.work.requestType='design';
+      expect(service.getEstimate().low).to.equal(2000);
+      expect(service.getEstimate().high).to.equal(2000);
       service.work.features = [{selected: true}];
-      service.updatePrice();
-      expect(service.work.price).to.equal('$2800');
-
+      expect(service.getEstimate().low).to.equal(2800);
+      expect(service.getEstimate().high).to.equal(3200);
       service.work.features = [{selected: true}, {selected: true}, {selected: true}];
-      service.updatePrice();
-
-      expect(service.work.price).to.equal('$4400');
-
+      expect(service.getEstimate().low).to.equal(4400);
+      expect(service.getEstimate().high).to.equal(5600);
       service.work.features = [{selected: false}, {selected: true}, {selected: true}];
-      service.updatePrice();
-      expect(service.work.price).to.equal('$3600');
-    })
+      expect(service.getEstimate().low).to.equal(3600);
+      expect(service.getEstimate().high).to.equal(4400);
+    });
 
   });
 });

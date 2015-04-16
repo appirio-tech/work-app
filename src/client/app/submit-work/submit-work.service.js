@@ -16,7 +16,7 @@
       elevator        : null,
       competitorApps  : [],
       features        : [],
-      costEstimate    : { low: 0 },
+      costEstimate    : { low: 0, high: 0 },
       acceptedTerms   : false
     };
 
@@ -43,8 +43,8 @@
       setActiveState: setActiveState,
       findState     : findState,
       setNextState  : setNextState,
-      updatePrice   : updatePrice,
       save          : save,
+      getEstimate   : getEstimate,
     };
 
     return service;
@@ -93,10 +93,6 @@
       save();
     }
 
-    function updatePrice() {
-      service.work.price = '$' + getPrice();
-    }
-
     function findState (key) {
       var found;
 
@@ -142,18 +138,23 @@
       });
     }
 
-    function getPrice() {
+    function getEstimate() {
       if (work.requestType) {
-        var calcPrice = work.features.reduce(function(x, y) {
-          return y.selected ? x + 800 : x;
-        }, 2000);
-        if (work.costEstimate && work.costEstimate.low > calcPrice) {
-          return work.costEstimate.low;
+        // this is a calculation of the estimate
+        var estimate = work.features.reduce(function(x, y) {
+          if (y.selected) {
+            x.low += 800;
+            x.high += 1200;
+          }
+          return x;
+        }, {low: 2000, high: 2000});
+        if (work.costEstimate && work.costEstimate.low > estimate.low) {
+          return work.costEstimate;
         } else {
-          return calcPrice;
+          return estimate;
         }
       } else {
-        return 0;
+        return {low: 0, high: 0};
       }
     }
 

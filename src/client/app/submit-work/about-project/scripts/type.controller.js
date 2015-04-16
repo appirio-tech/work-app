@@ -21,7 +21,6 @@
 
     $scope.setType = function (type) {
       vm.work.requestType = type;
-      SubmitWorkService.updatePrice();
     }
 
     $scope.$watch('typeForm', function(typeForm) {
