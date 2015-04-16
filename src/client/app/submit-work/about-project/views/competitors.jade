@@ -13,7 +13,7 @@ form(name="competitorForm", ng-submit="submit($event)")
 
     button.add-competitor(type="button", ng-click="vm.add()") +
 
-  h6 Your List of Similar Apps
+  h6(ng-show="vm.work.competitorApps.length > 0") Your List of Similar Apps
 
   ul.added-competitors
     li(ng-repeat="appName in vm.work.competitorApps")
