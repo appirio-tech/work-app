@@ -17,7 +17,7 @@ form(name="typeForm", ng-submit="submit()")
       button#project-type-design(
         type="button",
         ng-class="{'selected': vm.work.requestType == 'design'}",
-        ng-click="setType('design')",
+        ng-click="setType($event, 'design')",
         ng-enter="submit()"
       )
         .starting-at starting at
@@ -34,7 +34,7 @@ form(name="typeForm", ng-submit="submit()")
       button#project-type-code(
         type="button",
         ng-class="{'selected': vm.work.requestType == 'code'}",
-        ng-click="setType('code')",
+        ng-click="setType($event, 'code')",
         ng-enter="submit()"
       )
         .starting-at starting at
@@ -51,7 +51,7 @@ form(name="typeForm", ng-submit="submit()")
       button#project-type-design-code(
         type="button",
         ng-class="{'selected': vm.work.requestType == 'both'}",
-        ng-click="setType('both')",
+        ng-click="setType($event, 'both')",
         ng-enter="submit()"
       )
         .starting-at starting at
