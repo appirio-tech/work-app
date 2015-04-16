@@ -48,7 +48,7 @@
     "gulp-ng-constant": "^0.3.0",
     "gulp-nodemon": "^1.0.4",
     "gulp-order": "^1.1.1",
-    "gulp-plumber": "^0.6.6",
+    "gulp-plumber": "^1.0.0",
     "gulp-print": "^1.1.0",
     "gulp-replace": "^0.5.3",
     "gulp-rev": "^1.1.0",

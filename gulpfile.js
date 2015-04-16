@@ -1,17 +1,22 @@
-var args = require('yargs').argv;
+var args        = require('yargs').argv;
 var browserSync = require('browser-sync');
-var config = require('./gulp.config')();
-var del = require('del');
-var glob = require('glob');
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var path = require('path');
-var _ = require('lodash');
-var $ = require('gulp-load-plugins')({lazy: true});
+var config      = require('./gulp.config')();
+var plumber     = require('gulp-plumber');
+var del         = require('del');
+var glob        = require('glob');
+var gulp        = require('gulp');
+var sass        = require('gulp-sass');
+var path        = require('path');
+var _           = require('lodash');
+var $           = require('gulp-load-plugins')({lazy: true});
+var colors      = $.util.colors;
+var env         = $.util.env;
+var port        = process.env.PORT || config.defaultPort;
 
-var colors = $.util.colors;
-var env = $.util.env;
-var port = process.env.PORT || config.defaultPort;
+var onError = function (error) {
+  $.util.beep();
+  $.util.log("~~~ ERROR ~~~\n", $.util.colors.red(error));
+};
 
 /**
  * yargs variables can be passed in to alter the behavior, when present.
@@ -64,6 +69,9 @@ gulp.task('scss', function () {
   log('Compiling SCSS --> CSS');
 
   return gulp.src(config.scss)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(sass({
       includePaths: require('node-bourbon').includePaths
     }))
@@ -89,6 +97,9 @@ gulp.task('jade', function () {
 
   return gulp
     .src(config.jade)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe($.jade(options))
     .pipe(gulp.dest(config.temp));
 });
