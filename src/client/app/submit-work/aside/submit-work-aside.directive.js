@@ -1,13 +1,9 @@
 (function () {
   'use strict';
 
-  var directive = function ($rootScope, $document, SubmitWorkService) {
+  var directive = function ($rootScope, $document) {
     var link = function (scope, element, attrs) {
 
-
-      scope.work = SubmitWorkService.work;
-
-      scope.getEstimate = SubmitWorkService.getEstimate;
       scope.$watch('activeState', function (state) {
         element.find('.state-active').removeClass('state-active');
         element.find('[state="' + state + '"]').addClass('state-active');
@@ -39,16 +35,17 @@
     return {
       restrict   : 'A',
       scope: {
-        activeState: "=ngActiveState",
-        work       : "=ngSubmitWorkAside",
-        completed  : "=ngCompleted"
+        activeState : '=ngActiveState',
+        work        : '=ngSubmitWorkAside',
+        completed   : '=ngCompleted',
+        asideService: '=asideService'
       },
       templateUrl: 'submit-work/aside/submit-work-aside.html',
       link       : link
     };
   };
 
-  directive.$inject = ['$rootScope', '$document', 'SubmitWorkService'];
+  directive.$inject = ['$rootScope', '$document'];
 
   angular.module('app.submit-work').directive('ngSubmitWorkAside', directive);
 })();

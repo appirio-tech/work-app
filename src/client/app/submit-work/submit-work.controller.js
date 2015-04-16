@@ -2,9 +2,10 @@
   'use strict';
 
   function SubmitWorkController($scope, SubmitWorkService, $state) {
-    $scope.activeState = SubmitWorkService.activeState;
-    $scope.work        = SubmitWorkService.work;
-    $scope.completed   = SubmitWorkService.completed;
+    $scope.activeState  = SubmitWorkService.activeState;
+    $scope.work         = SubmitWorkService.work;
+    $scope.completed    = SubmitWorkService.completed;
+    $scope.asideService = {getEstimate: SubmitWorkService.getEstimate};
 
     $scope.$watch('activeState', function(state) {
       if (state) {
