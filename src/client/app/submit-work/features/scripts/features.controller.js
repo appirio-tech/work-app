@@ -16,29 +16,15 @@
     vm.newFeatureName        = '';
     vm.newFeatureExplanation = '';
     vm.newFeature            = false;
+    vm.showExample           = false;
 
-    $scope.showExample       = false;
-
-    $scope.clickExample = function () {
+    vm.clickExample = function () {
       $scope.showExample = true;
     };
 
-    activate();
-
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.featureForm.$valid) {
         SubmitWorkService.setNextState();
-      }
-    };
-
-    // can create ngEnter for this
-    $scope.onPress= function (e) {
-      if (e.which == 13) {
-        vm.add();
-
-        e.preventDefault();
-
-        return false;
       }
     };
 
@@ -47,16 +33,6 @@
         SubmitWorkService.findState('features').form = featureForm;
       }
     });
-
-    function activate() {
-      logger.log('Activated Features View');
-
-      if (vm.work.features.length === 0) {
-        FeatureService.getFeatures().then(function(features) {
-          vm.work.features = features;
-        });
-      }
-    }
 
     function add() {
       vm.work.features.push({
@@ -72,5 +48,14 @@
       vm.newFeature            = false;
     }
 
+    (function() {
+      logger.log('Activated Features View');
+
+      if (vm.work.features.length === 0) {
+        FeatureService.getFeatures().then(function(features) {
+          vm.work.features = features;
+        });
+      }
+    })();
   }
 })();
