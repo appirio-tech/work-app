@@ -21,29 +21,6 @@
     padding-bottom: 4px;
   }
 
-  .example {
-    display   : none;
-    position  : fixed;
-    height    : 100%;
-    background: rgba(0, 0, 0, 0.8);
-    margin    : -$margin-18 0 0 (-$margin-18);
-    padding   : $padding-30 $padding-20;
-
-    h2 {
-      color : $white;
-      @include font-line(18);
-    }
-
-    h3 {
-      color : $white;
-      @include font-line(16);
-    }
-
-    img {
-      margin-top: $margin-18;
-    }
-  }
-
   nav > ul {
     > li {
       margin-top: $margin-30;
