@@ -133,7 +133,9 @@
       work.costEstimate    = undefined;
 
       if (!created) {
+        console.log('CREATE');
         data.create('work-request', work).then(function(data) {
+          created = true;
           service.id = data.result.content;
           savePrice();
           promise.resolve(data);
@@ -141,7 +143,9 @@
           $q.reject(e);
         });
       } else {
-        data.update('work-request', {id: service.id}, work).then(function(data) {
+        console.log('UPDATE');
+        work.id = service.id;
+        data.update('work-request', work).then(function(data) {
           // do nothing
         }).catch(function(e) {
           $q.reject(e);
