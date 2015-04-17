@@ -19,7 +19,8 @@
       vm.work = SubmitWorkService.work;
     }
 
-    $scope.setType = function (type) {
+    $scope.setType = function (e, type) {
+      e.target.focus();
       vm.work.requestType = type;
     }
 
