@@ -159,6 +159,7 @@
     }
 
     function getEstimate() {
+      var work = service.work;
       if (work.requestType) {
         // this is a calculation of the estimate
         var estimate = work.features.reduce(function(x, y) {
@@ -180,7 +181,7 @@
 
     function savePrice() {
       data.get('work-request', {id: service.id}).then(function(data) {
-        work.costEstimate = data.result.content.costEstimate;
+        service.work.costEstimate = data.result.content.costEstimate;
       });
     }
 

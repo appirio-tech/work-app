@@ -60,7 +60,7 @@
 
     vm.questionSubmit = function () {
       if(vm.question === 1) {
-        toggleYes();
+        vm.toggleYes();
       }
       else if(vm.question === 0) {
         vm.toggleNo();
