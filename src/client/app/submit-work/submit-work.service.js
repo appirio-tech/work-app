@@ -126,6 +126,9 @@
         x.selected = undefined;
       });
 
+      // this is needed because the API doesn't
+      // expect these fields. the method here
+      // needs to be refactored.
       work.submitAttempted = undefined;
       work.acceptedTerms   = undefined;
       work.costEstimate    = undefined;
