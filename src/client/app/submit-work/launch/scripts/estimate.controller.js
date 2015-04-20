@@ -12,10 +12,7 @@
     vm.title = 'Estimate';
     vm.work = SubmitWorkService.work;
     vm.getEstimate = SubmitWorkService.getEstimate;
-
-    $scope.showTerms = false;
-
-    logger.log('Activated Estimate View');
+    vm.showTerms = false;
 
     $scope.$watch('estimateForm', function(estimateForm) {
       if (estimateForm) {
@@ -28,12 +25,12 @@
        return SubmitWorkService.activeState;
      }, function (activeState) {
       if (activeState != 'estimate') {
-        $scope.showTerms = false;
+        vm.showTerms = false;
       }
     }, true);
 
     // Mark completed when terms is accepted
-    $scope.change = function () {
+    vm.change = function () {
       SubmitWorkService.setActiveState('estimate');
     };
   }

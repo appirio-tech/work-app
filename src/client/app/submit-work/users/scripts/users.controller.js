@@ -15,7 +15,7 @@
 
     logger.log('Activated Users View');
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.usersForm.$valid) {
         SubmitWorkService.setNextState();
       }

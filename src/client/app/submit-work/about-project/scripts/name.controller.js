@@ -19,7 +19,7 @@
       }
     });
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.nameForm.$valid) {
         SubmitWorkService.setNextState();
       }

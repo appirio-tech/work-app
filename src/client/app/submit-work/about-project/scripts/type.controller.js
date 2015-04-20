@@ -19,7 +19,7 @@
       vm.work = SubmitWorkService.work;
     }
 
-    $scope.setType = function (e, type) {
+    vm.setType = function (e, type) {
       e.target.focus();
       vm.work.requestType = type;
     }
@@ -30,7 +30,7 @@
       }
     });
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.typeForm.$valid) {
         SubmitWorkService.setNextState();
       }

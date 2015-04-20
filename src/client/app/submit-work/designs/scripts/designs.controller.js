@@ -24,7 +24,7 @@
       vm.filename = '';
     }
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.designForm.$valid) {
         SubmitWorkService.setNextState();
       }

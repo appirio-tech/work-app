@@ -49,19 +49,19 @@
       logger.log('Activated Brief View');
     }
 
-    $scope.submitElevator = function () {
+    vm.submitElevator = function () {
       if ($scope.elevatorForm.$valid) {
         SubmitWorkService.setNextState();
       }
     };
 
-    $scope.submitBrief = function () {
+    vm.submitBrief = function () {
       if ($scope.briefForm.$valid) {
         SubmitWorkService.setNextState();
       }
     };
 
-    $scope.questionSubmit = function () {
+    vm.questionSubmit = function () {
       if(vm.question === 1) {
         toggleYes();
       }
