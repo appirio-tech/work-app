@@ -23,6 +23,16 @@ module.exports = function (config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: gulpConfig.karma.preprocessors,
 
+    coffeePreprocessor: {
+      options: {
+        bare: false,
+        sourceMap: false
+      },
+      transformPath: function (path) {
+        return path.replace(/\.coffee$/, '.js');
+      }
+    },
+
     reportSlowerThan: 500,
 
     // test results reporter to use

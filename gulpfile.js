@@ -251,7 +251,6 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
   };
 
   log(msg);
-  notify(msg);
 });
 
 /**
@@ -265,20 +264,20 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
   var assets = $.useref.assets({
     searchPath: [config.temp, './']
   });
+
   // Filters are named for the gulp-useref path
-  var cssLibFilter = $.filter('**/*.css');
-  var jsAppFilter = $.filter('**/' + config.optimized.app);
-  var jslibFilter = $.filter('**/' + config.optimized.lib);
-  var htmlFilter = $.filter('**/*.html');
-
-  var templateCache = config.temp + config.templateCache.file;
-
+  var cssLibFilter   = $.filter('**/*.css');
+  var jsAppFilter    = $.filter('**/' + config.optimized.app);
+  var jslibFilter    = $.filter('**/' + config.optimized.lib);
+  var htmlFilter     = $.filter('**/*.html');
+  var templateCache  = config.temp + config.templateCache.file;
   var replaceOptions = {};
+  var sourcemaps     = $.sourcemaps;
+
   if (config.aws.cdnUrl) {
     replaceOptions.prefix = config.aws.cdnUrl ? config.aws.cdnUrl : config.baseURL;
   }
 
-  var sourcemaps = $.sourcemaps;
 
   return gulp
     .src(config.index)
@@ -288,19 +287,17 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the css
     .pipe(cssLibFilter)
     .pipe(sourcemaps.init())
-    .pipe($.minifyCss({rebase: 'false'}))
+    .pipe($.minifyCss({ rebase: 'false' }))
     .pipe(sourcemaps.write())
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify({mangle: false, compress: false}))
+    .pipe($.uglify({ mangle: true, compress: true }))
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify({mangle: false, compress: false})) // another option is to override wiredep to use min files
+    .pipe($.uglify({ mangle: true, compress: true })) // another option is to override wiredep to use min files
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())
@@ -312,7 +309,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // minimize html
     .pipe(htmlFilter)
     .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
-    .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
+    .pipe($.htmlmin({ collapseWhitespace: true, removeComments: true }))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest(config.build));
 });
@@ -557,13 +554,19 @@ function serve(isDev, specRunner) {
     });
 }
 
-function getNodeOptions() {
+function getNodeOptions(isDev) {
+  var env = config.env;
+
+  if (!isDev && env == 'dev') { // for serve build
+    env = 'build';
+  }
+
   return {
     script: config.nodeServer,
     delayTime: 1,
     env: {
       'PORT': port,
-      'NODE_ENV': config.env
+      'NODE_ENV': env
     },
     watch: [config.server]
   };

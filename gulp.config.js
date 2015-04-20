@@ -196,7 +196,9 @@ module.exports = function () {
         bowerFiles,
         config.specHelpers,
         clientApp + '**/*.module.js',
+        clientApp + '**/*.module.coffee',
         clientApp + '**/*.js',
+        clientApp + '**/*.coffee',
         temp + '**/*.js',
         temp + config.templateCache.file
       ),
@@ -213,7 +215,11 @@ module.exports = function () {
       },
       preprocessors: {}
     };
+
     options.preprocessors[clientApp + '**/!(*.spec)+(.js)'] = ['coverage'];
+
+    options.preprocessors[clientApp + '**/*.coffee'] =  ['coffee'];
+
     return options;
   }
 };
