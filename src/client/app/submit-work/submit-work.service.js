@@ -11,14 +11,15 @@
     var work = {
       name            : null,
       requestType     : null,
-      price           : null,
       usageDescription: null,
-      elevator        : null,
+      summary         : null,
       competitorApps  : [],
       features        : [],
       costEstimate    : { low: 0, high: 0 },
       acceptedTerms   : false
     };
+    // local used by "save" function
+    var created = false;
 
     var service = {
       work: work,
@@ -127,15 +128,30 @@
         x.selected = undefined;
       });
 
+      // this is needed because the API doesn't
+      // expect these fields. the method here
+      // needs to be refactored.
       work.submitAttempted = undefined;
+      work.acceptedTerms   = undefined;
+      work.costEstimate    = undefined;
 
-      data.create('work-request', work).then(function(data) {
-        service.id = data.result.content;
-        savePrice();
-        promise.resolve(data);
-      }).catch(function(e) {
-        $q.reject(e);
-      });
+      if (!created) {
+        data.create('work-request', work).then(function(data) {
+          created = true;
+          service.id = data.result.content;
+          savePrice();
+          promise.resolve(data);
+        }).catch(function(e) {
+          $q.reject(e);
+        });
+      } else {
+        work.id = service.id;
+        data.update('work-request', work).then(function(data) {
+          // do nothing
+        }).catch(function(e) {
+          $q.reject(e);
+        });
+      }
     }
 
     function getEstimate() {
