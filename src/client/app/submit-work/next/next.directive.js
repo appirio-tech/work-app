@@ -1,7 +1,11 @@
 (function () {
   'use strict';
 
-  var directive = function ($rootScope, $document, SubmitWorkService) {
+  angular.module('app.submit-work').directive('nextState', NextDirective);
+
+  NextDirective.$inject = ['$rootScope', '$document', 'SubmitWorkService'];
+
+  function NextDirective($rootScope, $document, SubmitWorkService) {
     var link = function (scope, element, attrs) {
       scope.scrollTo = function() {
         if (scope.vm.validate && !scope.vm.validate().valid) {
@@ -25,8 +29,4 @@
       }
     };
   };
-
-  directive.$inject = ['$rootScope', '$document', 'SubmitWorkService'];
-
-  angular.module('app.submit-work').directive('nextState', directive);
 })();

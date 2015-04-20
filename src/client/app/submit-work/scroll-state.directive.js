@@ -1,7 +1,11 @@
 (function () {
   'use strict';
 
-  var directive = function ($document, $rootScope) {
+  angular.module('app.submit-work').directive('ngScrollState', ScrollStateDirective);
+
+  ScrollStateDirective.$inject = ['$document', '$rootScope'];
+
+  function ScrollStateDirective($document, $rootScope) {
     var link = function (scope, element, attrs) {
       var stateElements      = element.find('.state');
       var previousScrollTop  = $document.scrollTop();
@@ -60,8 +64,4 @@
       link       : link
     };
   };
-
-  directive.$inject = ['$document', '$rootScope'];
-
-  angular.module('app.submit-work').directive('ngScrollState', directive);
 })();
