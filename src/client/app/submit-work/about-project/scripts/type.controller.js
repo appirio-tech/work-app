@@ -8,9 +8,9 @@
   SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitTypeController($scope, logger, SubmitWorkService) {
-    var vm         = this;
-    vm.title       = 'Type';
-    vm.work        = SubmitWorkService.work;
+    var vm   = this;
+    vm.title = 'Type';
+    vm.work  = SubmitWorkService.work;
     vm.setType;
     vm.submit;
 

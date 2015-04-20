@@ -9,9 +9,9 @@
   SubmitUsersController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitUsersController($scope, logger, SubmitWorkService) {
-    var vm       = this;
-    vm.title     = 'Users';
-    vm.work      = SubmitWorkService.work;
+    var vm   = this;
+    vm.title = 'Users';
+    vm.work  = SubmitWorkService.work;
     vm.submit;
 
     vm.submit = function () {

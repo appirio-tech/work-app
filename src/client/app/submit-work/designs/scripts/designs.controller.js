@@ -17,7 +17,7 @@
     vm.add;
     vm.submit;
 
-    var i             = 1;
+    var i = 1;
 
     logger.log('Activated Designs View');
 

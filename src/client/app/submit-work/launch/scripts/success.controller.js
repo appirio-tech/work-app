@@ -9,7 +9,7 @@
   SubmitSuccessController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
   function SubmitSuccessController(logger, $state, SubmitWorkService) {
-    var vm = this;
+    var vm   = this;
     vm.title = 'Success';
 
   }
