@@ -13,15 +13,10 @@
     vm.title   = 'Competitors';
     vm.appName = '';
     vm.work    = SubmitWorkService.work;
-    vm.add     = add;
+    vm.add;
+    vm.submit;
 
-    activate();
-
-    function activate() {
-      logger.log('Activated Competitors View');
-    }
-
-    function add() {
+    vm.add = function() {
       if (!(vm.appName.trim().length === 0)) {
         vm.work.competitorApps.push(vm.appName);
         vm.appName = '';

@@ -12,8 +12,7 @@
     var vm       = this;
     vm.title     = 'Users';
     vm.work      = SubmitWorkService.work;
-
-    logger.log('Activated Users View');
+    vm.submit;
 
     vm.submit = function () {
       if ($scope.usersForm.$valid) {

@@ -13,6 +13,7 @@
     vm.work = SubmitWorkService.work;
     vm.getEstimate = SubmitWorkService.getEstimate;
     vm.showTerms = false;
+    vm.change;
 
     $scope.$watch('estimateForm', function(estimateForm) {
       if (estimateForm) {

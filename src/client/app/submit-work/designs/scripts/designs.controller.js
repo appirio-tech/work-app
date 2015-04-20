@@ -14,12 +14,14 @@
     vm.work           = SubmitWorkService.work;
     vm.imageFilenames = [];
     vm.filename       = '';
-    vm.add            = add;
+    vm.add;
+    vm.submit;
+
     var i             = 1;
 
     logger.log('Activated Designs View');
 
-    function add() {
+    vm.add = function() {
       vm.imageFilenames.push('file ' + i++);
       vm.filename = '';
     }

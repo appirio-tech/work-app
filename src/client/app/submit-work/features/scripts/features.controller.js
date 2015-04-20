@@ -12,11 +12,15 @@
     var vm                   = this;
     vm.title                 = 'Features';
     vm.work                  = SubmitWorkService.work;
-    vm.add                   = add;
     vm.newFeatureName        = '';
     vm.newFeatureExplanation = '';
     vm.newFeature            = false;
     vm.showExample           = false;
+    vm.clickExample;
+    vm.submit;
+    vm.add;
+
+    activate();
 
     vm.clickExample = function () {
       $scope.showExample = true;
@@ -34,7 +38,7 @@
       }
     });
 
-    function add() {
+    vm.add = function() {
       vm.work.features.push({
         id         : vm.newFeatureName,
         name       : vm.newFeatureName,
@@ -48,7 +52,7 @@
       vm.newFeature            = false;
     }
 
-    (function() {
+    function activate() {
       logger.log('Activated Features View');
 
       if (vm.work.features.length === 0) {
@@ -56,6 +60,6 @@
           vm.work.features = features;
         });
       }
-    })();
+    }
   }
 })();

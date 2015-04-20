@@ -11,6 +11,8 @@
     var vm         = this;
     vm.title       = 'Type';
     vm.work        = SubmitWorkService.work;
+    vm.setType;
+    vm.submit;
 
     activate();
 

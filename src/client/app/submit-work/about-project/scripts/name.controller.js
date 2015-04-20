@@ -12,6 +12,7 @@
     var vm   = this;
     vm.title = 'Name';
     vm.work  = SubmitWorkService.work;
+    vm.submit;
 
     $scope.$watch('nameForm', function(nameForm) {
       if (nameForm) {
