@@ -1,7 +1,11 @@
 (function () {
   'use strict';
 
-  var directive = function ($rootScope, $document) {
+  angular.module('app.submit-work').directive('ngSubmitWorkAside', AsideDirective);
+
+  AsideDirective.$inject = ['$rootScope', '$document'];
+
+  function AsideDirective($rootScope, $document) {
     var link = function (scope, element, attrs) {
 
       scope.$watch('activeState', function (state) {
@@ -44,8 +48,4 @@
       link       : link
     };
   };
-
-  directive.$inject = ['$rootScope', '$document'];
-
-  angular.module('app.submit-work').directive('ngSubmitWorkAside', directive);
 })();

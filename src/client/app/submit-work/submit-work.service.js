@@ -8,7 +8,22 @@
   SubmitWorkService.$inject = ['$anchorScroll', '$q', '$location', 'data', '$state'];
   /* @ngInject */
   function SubmitWorkService($anchorScroll, $q, $location, data, $state) {
-    var work = {
+    // local used by "save" function
+    var created = false;
+
+    var service = {
+      work: {},
+      completed : {},
+      states: [],
+      activeState   : null,
+      setActiveState: setActiveState,
+      findState     : findState,
+      setNextState  : setNextState,
+      save          : save,
+      getEstimate   : getEstimate,
+    };
+
+    service.work = {
       name            : null,
       requestType     : null,
       usageDescription: null,
@@ -18,37 +33,26 @@
       costEstimate    : { low: 0, high: 0 },
       acceptedTerms   : false
     };
-    // local used by "save" function
-    var created = false;
 
-    var service = {
-      work: work,
-      states: [
-        { 'key': 'name' },
-        { 'key': 'type' },
-        { 'key': 'brief' },
-        { 'key': 'competitors' },
-        { 'key': 'users' },
-        { 'key': 'features' },
-        { 'key': 'designs' },
-        { 'key': 'estimate' }
-      ],
-      completed : {
-        aboutProject: false,
-        users        : false,
-        features     : false,
-        design       : false,
-        launch       : false
-      },
-      activeState   : null,
-      setActiveState: setActiveState,
-      findState     : findState,
-      setNextState  : setNextState,
-      save          : save,
-      getEstimate   : getEstimate,
+    service.completed = {
+      aboutProject : false,
+      users        : false,
+      features     : false,
+      design       : false,
+      launch       : false
     };
 
-    return service;
+    service.states = [
+      { 'key': 'name' },
+      { 'key': 'type' },
+      { 'key': 'brief' },
+      { 'key': 'competitors' },
+      { 'key': 'users' },
+      { 'key': 'features' },
+      { 'key': 'designs' },
+      { 'key': 'estimate' }
+    ];
+
 
     function setCompleted () {
       var aboutProjectStates = ['name', 'type', 'brief', 'competitors'];
@@ -155,6 +159,7 @@
     }
 
     function getEstimate() {
+      var work = service.work;
       if (work.requestType) {
         // this is a calculation of the estimate
         var estimate = work.features.reduce(function(x, y) {
@@ -176,8 +181,11 @@
 
     function savePrice() {
       data.get('work-request', {id: service.id}).then(function(data) {
-        work.costEstimate = data.result.content.costEstimate;
+        service.work.costEstimate = data.result.content.costEstimate;
       });
     }
+
+    return service;
+
   }
 })();

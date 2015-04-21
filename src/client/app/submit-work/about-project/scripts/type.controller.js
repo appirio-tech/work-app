@@ -8,9 +8,11 @@
   SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitTypeController($scope, logger, SubmitWorkService) {
-    var vm         = this;
-    vm.title       = 'Type';
-    vm.work        = SubmitWorkService.work;
+    var vm   = this;
+    vm.title = 'Type';
+    vm.work  = SubmitWorkService.work;
+    vm.setType;
+    vm.submit;
 
     activate();
 
@@ -19,7 +21,7 @@
       vm.work = SubmitWorkService.work;
     }
 
-    $scope.setType = function (e, type) {
+    vm.setType = function (e, type) {
       e.target.focus();
       vm.work.requestType = type;
     }
@@ -30,7 +32,7 @@
       }
     });
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.typeForm.$valid) {
         SubmitWorkService.setNextState();
       }

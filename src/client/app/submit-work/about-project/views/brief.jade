@@ -4,7 +4,7 @@ h3(ng-show="vm.showYesNo || vm.showBrief") Do you have a project brief to upload
 
 h3(ng-show="vm.showElevator") Give us your elevator pitch—a brief explanation of your app.
 
-form(name="questionForm", ng-submit="questionSubmit()")
+form(name="questionForm", ng-submit="vm.questionSubmit()")
   input(type="hidden", name="question" required="true", ng-model="vm.question")
 
   button.yes(type="submit", ng-show="vm.showYesNo", ng-click="vm.question = 1") YES
@@ -14,12 +14,12 @@ form(name="questionForm", ng-submit="questionSubmit()")
   ul.invalid-messages(ng-show="questionForm.$dirty")
     li(ng-show="questionForm.question.$error.required") Please tell us if you have a brief to upload.
 
-form(name="briefForm", ng-show="vm.showBrief", ng-submit="submitBrief()")
+form(name="briefForm", ng-show="vm.showBrief", ng-submit="vm.submitBrief()")
   input(type="file", placeholder="My Project", ng-model="vm.briefFilename")
 
   button.submit(type="submit", ng-show="briefForm.$valid") NEXT
 
-form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="submitElevator()")
+form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="vm.submitElevator()")
   textarea(
     name             = "elevator",
     placeholder      = "I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.",

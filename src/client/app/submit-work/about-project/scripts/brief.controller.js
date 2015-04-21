@@ -17,27 +17,28 @@
     vm.showYesNo     = true;
     vm.showBrief     = false;
     vm.showElevator  = false;
-    vm.toggleYes     = toggleYes;
-    vm.toggleNo      = toggleNo;
-    vm.toggleCancel  = toggleCancel;
+    vm.toggleYes;
+    vm.toggleNo;
+    vm.toggleCancel;
+    vm.submitElevator;
+    vm.submitBrief;
+    vm.questionSubmit;
 
-    activate();
-
-    function toggleYes() {
+    vm.toggleYes = function() {
       vm.showYesNo    = false;
       vm.showBrief    = true;
       vm.showElevator = false;
       SubmitWorkService.findState('brief').form = $scope.briefForm;
     }
 
-    function toggleNo() {
+    vm.toggleNo = function() {
       vm.showYesNo    = false;
       vm.showBrief    = false;
       vm.showElevator = true;
       SubmitWorkService.findState('brief').form = $scope.elevatorForm;
     }
 
-    function toggleCancel() {
+    vm.toggleCancel = function() {
       vm.question     = null;
       vm.showYesNo    = true;
       vm.showBrief    = false;
@@ -45,28 +46,24 @@
       SubmitWorkService.findState('brief').form = $scope.questionForm;
     }
 
-    function activate() {
-      logger.log('Activated Brief View');
-    }
-
-    $scope.submitElevator = function () {
+    vm.submitElevator = function () {
       if ($scope.elevatorForm.$valid) {
         SubmitWorkService.setNextState();
       }
     };
 
-    $scope.submitBrief = function () {
+    vm.submitBrief = function () {
       if ($scope.briefForm.$valid) {
         SubmitWorkService.setNextState();
       }
     };
 
-    $scope.questionSubmit = function () {
+    vm.questionSubmit = function () {
       if(vm.question === 1) {
-        toggleYes();
+        vm.toggleYes();
       }
       else if(vm.question === 0) {
-        toggleNo();
+        vm.toggleNo();
       }
     }
 

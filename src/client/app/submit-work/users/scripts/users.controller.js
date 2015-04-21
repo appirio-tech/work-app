@@ -9,13 +9,12 @@
   SubmitUsersController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitUsersController($scope, logger, SubmitWorkService) {
-    var vm       = this;
-    vm.title     = 'Users';
-    vm.work      = SubmitWorkService.work;
+    var vm   = this;
+    vm.title = 'Users';
+    vm.work  = SubmitWorkService.work;
+    vm.submit;
 
-    logger.log('Activated Users View');
-
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.usersForm.$valid) {
         SubmitWorkService.setNextState();
       }

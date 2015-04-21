@@ -2,7 +2,7 @@ h2 About your project
 
 h3 What type of project do you need?
 
-form(name="typeForm", ng-submit="submit()")
+form(name="typeForm", ng-submit="vm.submit()")
   input(
     name         = "type",
     type         = "hidden",
@@ -17,8 +17,8 @@ form(name="typeForm", ng-submit="submit()")
       button#project-type-design(
         type="button",
         ng-class="{'selected': vm.work.requestType == 'design'}",
-        ng-click="setType($event, 'design')",
-        ng-enter="submit()"
+        ng-click="vm.setType($event, 'design')",
+        ng-enter="vm.submit()"
       )
         .starting-at starting at
 
@@ -34,8 +34,8 @@ form(name="typeForm", ng-submit="submit()")
       button#project-type-code(
         type="button",
         ng-class="{'selected': vm.work.requestType == 'code'}",
-        ng-click="setType($event, 'code')",
-        ng-enter="submit()"
+        ng-click="vm.setType($event, 'code')",
+        ng-enter="vm.submit()"
       )
         .starting-at starting at
 
@@ -51,8 +51,8 @@ form(name="typeForm", ng-submit="submit()")
       button#project-type-design-code(
         type="button",
         ng-class="{'selected': vm.work.requestType == 'both'}",
-        ng-click="setType($event, 'both')",
-        ng-enter="submit()"
+        ng-click="vm.setType($event, 'both')",
+        ng-enter="vm.submit()"
       )
         .starting-at starting at
 

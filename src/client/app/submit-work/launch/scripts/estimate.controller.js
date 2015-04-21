@@ -8,14 +8,12 @@
   SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
 
   function SubmitEstimateController($scope, logger, SubmitWorkService) {
-    var vm = this;
-    vm.title = 'Estimate';
-    vm.work = SubmitWorkService.work;
+    var vm         = this;
+    vm.title       = 'Estimate';
+    vm.work        = SubmitWorkService.work;
     vm.getEstimate = SubmitWorkService.getEstimate;
-
-    $scope.showTerms = false;
-
-    logger.log('Activated Estimate View');
+    vm.showTerms   = false;
+    vm.change;
 
     $scope.$watch('estimateForm', function(estimateForm) {
       if (estimateForm) {
@@ -28,12 +26,12 @@
        return SubmitWorkService.activeState;
      }, function (activeState) {
       if (activeState != 'estimate') {
-        $scope.showTerms = false;
+        vm.showTerms = false;
       }
     }, true);
 
     // Mark completed when terms is accepted
-    $scope.change = function () {
+    vm.change = function () {
       SubmitWorkService.setActiveState('estimate');
     };
   }

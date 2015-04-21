@@ -14,17 +14,19 @@
     vm.work           = SubmitWorkService.work;
     vm.imageFilenames = [];
     vm.filename       = '';
-    vm.add            = add;
-    var i             = 1;
+    vm.add;
+    vm.submit;
+
+    var i = 1;
 
     logger.log('Activated Designs View');
 
-    function add() {
+    vm.add = function() {
       vm.imageFilenames.push('file ' + i++);
       vm.filename = '';
     }
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.designForm.$valid) {
         SubmitWorkService.setNextState();
       }

@@ -12,6 +12,7 @@
     var vm   = this;
     vm.title = 'Name';
     vm.work  = SubmitWorkService.work;
+    vm.submit;
 
     $scope.$watch('nameForm', function(nameForm) {
       if (nameForm) {
@@ -19,7 +20,7 @@
       }
     });
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.nameForm.$valid) {
         SubmitWorkService.setNextState();
       }
