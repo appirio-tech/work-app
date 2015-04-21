@@ -17,7 +17,6 @@ var port        = process.env.PORT || config.defaultPort;
 var onError = function (error) {
   $.util.beep();
   $.util.log("~~~ ERROR ~~~\n", $.util.colors.red(error));
-  return true;
 };
 
 /**
