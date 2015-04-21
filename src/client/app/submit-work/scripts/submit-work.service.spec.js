@@ -3,7 +3,6 @@ describe('SubmitWorkService', function () {
   var service, scope;
 
   beforeEach(function () {
-    bard.appModule('app.submit-work');
     bard.inject('SubmitWorkService');
   });
 

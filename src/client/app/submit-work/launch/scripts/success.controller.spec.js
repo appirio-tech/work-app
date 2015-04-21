@@ -3,7 +3,6 @@ describe('SubmitSuccessController', function () {
   var controller, scope;
 
   beforeEach(function () {
-    bard.appModule('app.submit-work');
     bard.inject('$controller', '$log', '$rootScope');
   });
 

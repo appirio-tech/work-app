@@ -48,7 +48,6 @@ describe('FeatureService', function () {
   ];
 
   beforeEach(function () {
-    bard.appModule('app.feature');
     bard.inject('FeatureService', '$q', '$rootScope');
   });
 

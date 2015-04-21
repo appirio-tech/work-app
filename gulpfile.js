@@ -208,35 +208,6 @@ gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants'], function (done) 
 });
 
 /**
- * Run the spec runner
- * @return {Stream}
- */
-gulp.task('serve-specs', ['build-specs'], function (done) {
-  log('run the spec runner');
-  serve(true /* isDev */, true /* specRunner */);
-  done();
-});
-
-/**
- * Inject all the spec files into the specs.html
- * @return {Stream}
- */
-gulp.task('build-specs', ['inject'], function (done) {
-  log('building the spec runner');
-
-  var templateCache = config.temp + config.templateCache.file;
-  var specs = config.specs;
-
-  return gulp
-    .src(config.specRunner)
-    .pipe(inject(config.testlibraries, 'testlibraries'))
-    .pipe(inject(config.specHelpers, 'spechelpers'))
-    .pipe(inject(specs, 'specs', ['**/*']))
-    .pipe(inject(templateCache, 'templates'))
-    .pipe(gulp.dest(config.client));
-});
-
-/**
  * Build everything
  * This is separate so we can run tests on
  * optimize before handling image or fonts
@@ -368,7 +339,7 @@ gulp.task('clean-code', function (done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['inject', 'vet'], function (done) {
+gulp.task('test', ['ng-constants', 'templatecache'], function (done) {
   startTests(true /*singleRun*/, done);
 });
 
@@ -378,7 +349,7 @@ gulp.task('test', ['inject', 'vet'], function (done) {
  * To start servers and run midway specs as well:
  *    gulp autotest --startServers
  */
-gulp.task('autotest', function (done) {
+gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
   startTests(false /*singleRun*/, done);
 });
 
