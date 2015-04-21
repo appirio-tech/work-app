@@ -12,27 +12,38 @@
     var created = false;
 
     var service = {
-      work: {},
-      completed : {},
-      states: [],
-      activeState   : null,
-      setActiveState: setActiveState,
-      findState     : findState,
-      setNextState  : setNextState,
-      save          : save,
-      getEstimate   : getEstimate,
+      work           : {},
+      completed      : {},
+      states         : [],
+      activeState    : null,
+      setActiveState : setActiveState,
+      findState      : findState,
+      setNextState   : setNextState,
+      save           : save,
+      getEstimate    : getEstimate
     };
 
     service.work = {
-      name            : null,
-      requestType     : null,
-      usageDescription: null,
-      summary         : null,
-      competitorApps  : [],
-      features        : [],
-      costEstimate    : { low: 0, high: 0 },
-      acceptedTerms   : false
+      name             : null,
+      requestType      : null,
+      usageDescription : null,
+      summary          : null,
+      competitorApps   : [],
+      features         : [],
+      costEstimate     : { low: 0, high: 0 },
+      acceptedTerms    : false
     };
+
+    // these are all the fields we'll actually submit on
+    // a POST or PUT. everything else is filtered.
+    var submittableFields = [
+      'name',
+      'requestType',
+      'usageDescription',
+      'summary',
+      'competitorApps',
+      'features'
+    ];
 
     service.completed = {
       aboutProject : false,
@@ -121,8 +132,16 @@
 
     function save() {
       var promise = $q.defer();
-      var work = angular.copy(service.work);
+      var work = {};
 
+      // copy only submittable fields
+      for (var key in service.work) {
+        if (submittableFields.indexOf(key) >= 0) {
+          work[key] = angular.copy(service.work[key]);
+        }
+      }
+
+      // need to filter out stuff used for front-end processing
       work.features = work.features.filter(function(x) {
         return x.selected;
       }).map(function(x) {
@@ -131,13 +150,6 @@
         x.explanation = undefined;
         x.selected = undefined;
       });
-
-      // this is needed because the API doesn't
-      // expect these fields. the method here
-      // needs to be refactored.
-      work.submitAttempted = undefined;
-      work.acceptedTerms   = undefined;
-      work.costEstimate    = undefined;
 
       if (!created) {
         data.create('work-request', work).then(function(data) {
