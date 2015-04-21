@@ -16,11 +16,11 @@
       completed      : {},
       states         : [],
       activeState    : null,
-      setActiveState : setActiveState,
-      findState      : findState,
-      setNextState   : setNextState,
-      save           : save,
-      getEstimate    : getEstimate
+      setActiveState : '()',
+      findState      : '()',
+      setNextState   : '()',
+      save           : '()',
+      getEstimate    : '()'
     };
 
     service.work = {
@@ -71,16 +71,16 @@
       service.completed.aboutProject = true;
 
       angular.forEach(aboutProjectStates, function (aboutProjectState, i) {
-        var state = findState(aboutProjectState);
+        var state = service.findState(aboutProjectState);
 
         service.completed.aboutProject = service.completed.aboutProject && state.form.$valid && state.visited;
       });
 
-      service.completed.aboutProject = service.completed.aboutProject && findState('users').visited;
-      service.completed.users        = findState('users').form.$valid && findState('features').visited;
-      service.completed.features     = findState('features').form.$valid && findState('designs').visited;
-      service.completed.design       = findState('designs').form.$valid && findState('estimate').visited;
-      service.completed.launch       = findState('estimate').form.$valid;
+      service.completed.aboutProject = service.completed.aboutProject && service.findState('users').visited;
+      service.completed.users        = service.findState('users').form.$valid && service.findState('features').visited;
+      service.completed.features     = service.findState('features').form.$valid && service.findState('designs').visited;
+      service.completed.design       = service.findState('designs').form.$valid && service.findState('estimate').visited;
+      service.completed.launch       = service.findState('estimate').form.$valid;
     }
 
     function getActiveStateIndex () {
@@ -95,21 +95,21 @@
       return index;
     }
 
-    function setActiveState (key) {
+    service.setActiveState = function(key) {
       if (typeof key != 'string') {
         key = key.key;
       }
 
       service.activeState = key;
 
-      findState(key).visited = true;
+      service.findState(key).visited = true;
 
       setCompleted();
 
-      save();
-    }
+      service.save();
+    };
 
-    function findState (key) {
+    service.findState = function(key) {
       var found;
 
       angular.forEach(service.states, function(state, i) {
@@ -119,18 +119,18 @@
       });
 
       return found;
-    }
+    };
 
-    function setNextState () {
+    service.setNextState = function() {
       var activeIndex = getActiveStateIndex();
       var nextState = service.states[activeIndex + 1];
 
-      setActiveState(nextState);
+      service.setActiveState(nextState);
 
       return service.activeState;
-    }
+    };
 
-    function save() {
+    service.save = function() {
       var promise = $q.defer();
       var work = {};
 
@@ -155,7 +155,7 @@
         data.create('work-request', work).then(function(data) {
           created = true;
           service.id = data.result.content;
-          savePrice();
+          service.savePrice();
           promise.resolve(data);
         }).catch(function(e) {
           $q.reject(e);
@@ -168,9 +168,9 @@
           $q.reject(e);
         });
       }
-    }
+    };
 
-    function getEstimate() {
+    service.getEstimate = function() {
       var work = service.work;
       if (work.requestType) {
         // this is a calculation of the estimate
@@ -189,13 +189,13 @@
       } else {
         return {low: 0, high: 0};
       }
-    }
+    };
 
-    function savePrice() {
+    service.savePrice = function() {
       data.get('work-request', {id: service.id}).then(function(data) {
         service.work.costEstimate = data.result.content.costEstimate;
       });
-    }
+    };
 
     return service;
 
