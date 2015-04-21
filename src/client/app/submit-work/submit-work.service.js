@@ -36,7 +36,7 @@
 
     // these are all the fields we'll actually submit on
     // a POST or PUT. everything else is filtered.
-    var requiredFields = [
+    var submittableFields = [
       'name',
       'requestType',
       'usageDescription',
@@ -132,8 +132,16 @@
 
     function save() {
       var promise = $q.defer();
-      var work = angular.copy(service.work);
+      var work = {};
 
+      // copy only submittable fields
+      for (var key in service.work) {
+        if (submittableFields.indexOf(key) >= 0) {
+          work[key] = angular.copy(service.work[key]);
+        }
+      }
+
+      // need to filter out stuff used for front-end processing
       work.features = work.features.filter(function(x) {
         return x.selected;
       }).map(function(x) {
@@ -142,13 +150,6 @@
         x.explanation = undefined;
         x.selected = undefined;
       });
-
-      // delete all non-required fields before doing a POST or PUT
-      for (var key in work) {
-        if (requiredFields.indexOf(key) < 0) {
-          delete work[key];
-        }
-      }
 
       if (!created) {
         data.create('work-request', work).then(function(data) {
