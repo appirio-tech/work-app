@@ -1,4 +1,6 @@
 @import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
 
 .layout-main.getting-started {
   main {
@@ -8,11 +10,11 @@
   .jumbotron {
     display    : block;
     line-height: 484px - ($padding-30 * 2);
-    padding    : $padding-30;
 
     @include bg-cover("../images/jumbo.jpg");
 
     p {
+      @include span-columns(10);
       display       : inline-block;
       line-height   : normal;
       vertical-align: bottom;
@@ -24,24 +26,9 @@
   }
 
   .learn-more {
-    text-align: center;
-
     article {
-      width     : 200px;
-      display   : inline-block;
-      padding   : 0 $padding-20;
+      @include span-columns(4);
       margin-top: 0;
-
-
-      header {
-        a {
-          @include font-line(28);
-        }
-      }
-
-      p {
-        @include font-line(18);
-      }
     }
   }
 }

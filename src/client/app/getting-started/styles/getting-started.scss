@@ -11,16 +11,7 @@
     @include clearfix();
 
     article {
-      margin-top    : $margin-25;
-      text-align    : left;
-      width         : 100%;
-      display       : block;
-      padding       : 0;
-      vertical-align: top;
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include span-columns(12);
 
       header {
         a {
