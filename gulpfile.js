@@ -17,6 +17,7 @@ var port        = process.env.PORT || config.defaultPort;
 var onError = function (error) {
   $.util.beep();
   $.util.log("~~~ ERROR ~~~\n", $.util.colors.red(error));
+  return true;
 };
 
 /**
@@ -76,6 +77,7 @@ gulp.task('scss', function () {
     .pipe(sass({
       includePaths: require('node-neat').includePaths
     }))
+    .pipe(plumber.stop())
     .pipe(gulp.dest(config.temp));
 });
 

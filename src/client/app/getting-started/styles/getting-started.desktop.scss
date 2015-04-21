@@ -3,24 +3,19 @@
 @import "neat";
 
 .layout-main.getting-started {
-  main {
-    width: 100%;
-  }
-
   .jumbotron {
-    display    : block;
-    line-height: 484px - ($padding-30 * 2);
+    display: block;
 
     @include bg-cover("../images/jumbo.jpg");
+    @include clearfix;
 
     p {
-      @include span-columns(10);
-      display       : inline-block;
-      line-height   : normal;
-      vertical-align: bottom;
-      color         : $white;
-      text-align    : center;
+      color     : $white;
+      text-align: center;
+      margin: 400px 0 $margin-20 0;
 
+      @include span-columns(10);
+      @include shift(1);
       @include font-line(50);
     }
   }
