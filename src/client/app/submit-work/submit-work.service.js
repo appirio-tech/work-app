@@ -12,27 +12,38 @@
     var created = false;
 
     var service = {
-      work: {},
-      completed : {},
-      states: [],
-      activeState   : null,
-      setActiveState: setActiveState,
-      findState     : findState,
-      setNextState  : setNextState,
-      save          : save,
-      getEstimate   : getEstimate,
+      work           : {},
+      completed      : {},
+      states         : [],
+      activeState    : null,
+      setActiveState : setActiveState,
+      findState      : findState,
+      setNextState   : setNextState,
+      save           : save,
+      getEstimate    : getEstimate
     };
 
     service.work = {
-      name            : null,
-      requestType     : null,
-      usageDescription: null,
-      summary         : null,
-      competitorApps  : [],
-      features        : [],
-      costEstimate    : { low: 0, high: 0 },
-      acceptedTerms   : false
+      name             : null,
+      requestType      : null,
+      usageDescription : null,
+      summary          : null,
+      competitorApps   : [],
+      features         : [],
+      costEstimate     : { low: 0, high: 0 },
+      acceptedTerms    : false
     };
+
+    // these are all the fields we'll actually submit on
+    // a POST or PUT. everything else is filtered.
+    var requiredFields = [
+      'name',
+      'requestType',
+      'usageDescription',
+      'summary',
+      'competitorApps',
+      'features'
+    ];
 
     service.completed = {
       aboutProject : false,
@@ -132,12 +143,12 @@
         x.selected = undefined;
       });
 
-      // this is needed because the API doesn't
-      // expect these fields. the method here
-      // needs to be refactored.
-      work.submitAttempted = undefined;
-      work.acceptedTerms   = undefined;
-      work.costEstimate    = undefined;
+      // delete all non-required fields before doing a POST or PUT
+      for (var key in work) {
+        if (requiredFields.indexOf(key) < 0) {
+          delete work[key];
+        }
+      }
 
       if (!created) {
         data.create('work-request', work).then(function(data) {
