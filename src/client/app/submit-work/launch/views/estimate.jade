@@ -11,7 +11,7 @@ form(name="estimateForm")
     a.terms-link(ng-click="vm.showTerms = true") Terms and Conditions
 
   ul.invalid-messages(ng-show="estimateForm.$dirty || estimateForm.acceptedTerms.$dirty")
-    li(ng-show="estimateForm.acceptedTerms.$error.required") Please accept the aggreement.
+    li(ng-show="estimateForm.acceptedTerms.$error.required") You must agree to our Terms and Conditions in order to use our services
 
 .terms.layout-modal(ng-modal="vm.showTerms")
   h3 Terms &amp; Conditions
