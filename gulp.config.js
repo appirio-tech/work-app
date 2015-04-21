@@ -149,7 +149,6 @@ module.exports = function () {
       nodeModules + '/sinon-chai/lib/sinon-chai.js'
     ],
     specHelpers: [client + 'test-helpers/*.js', clientApp + '**/*.stubs.js'],
-    specs: [clientApp + '**/*.spec.js'],
 
     /**
      * Node settings
@@ -196,10 +195,8 @@ module.exports = function () {
         bowerFiles,
         config.specHelpers,
         client    + 'mock-api/*.coffee',
-        clientApp + '**/*.module.js',
-        clientApp + '**/*.module.coffee',
-        clientApp + '**/*.js',
-        clientApp + '**/*.coffee',
+        clientApp + '**/*.module.{js,coffee}',
+        clientApp + '**/*.{js,coffee}',
         client    + 'test-helpers/*.coffee',
         temp + 'constants.js',
         temp + 'templates.js'
