@@ -12,15 +12,18 @@
     var created = false;
 
     var service = {
+      // variables
       work           : {},
       completed      : {},
       states         : [],
       activeState    : null,
-      setActiveState : '()',
-      findState      : '()',
-      setNextState   : '()',
-      save           : '()',
-      getEstimate    : '()'
+
+      // functions
+      setActiveState : null,
+      findState      : null,
+      setNextState   : null,
+      save           : null,
+      getEstimate    : null
     };
 
     service.work = {
