@@ -195,12 +195,14 @@ module.exports = function () {
       files: [].concat(
         bowerFiles,
         config.specHelpers,
+        client    + 'mock-api/*.coffee',
         clientApp + '**/*.module.js',
         clientApp + '**/*.module.coffee',
         clientApp + '**/*.js',
         clientApp + '**/*.coffee',
-        temp + '**/*.js',
-        temp + config.templateCache.file
+        client    + 'test-helpers/*.coffee',
+        temp + 'constants.js',
+        temp + 'templates.js'
       ),
       exclude: [],
       coverage: {
@@ -218,7 +220,7 @@ module.exports = function () {
 
     options.preprocessors[clientApp + '**/!(*.spec)+(.js)'] = ['coverage'];
 
-    options.preprocessors[clientApp + '**/*.coffee'] =  ['coffee'];
+    options.preprocessors['**/*.coffee'] =  ['coffee'];
 
     return options;
   }

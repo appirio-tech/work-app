@@ -378,7 +378,7 @@ gulp.task('test', ['inject', 'vet'], function (done) {
  * To start servers and run midway specs as well:
  *    gulp autotest --startServers
  */
-gulp.task('autotest', function (done) {
+gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
   startTests(false /*singleRun*/, done);
 });
 
