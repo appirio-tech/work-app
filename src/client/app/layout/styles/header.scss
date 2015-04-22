@@ -1,45 +1,42 @@
 @import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
 
-$header-height: 28px;
+$header-height: 38px;
 
 .layout-header {
-  padding         : $padding-16 $padding-20;
+  padding         : 0 $padding-20;
   background-color: $white;
-  font-family     : source sans pro;
+  border-bottom   : 2px solid $black;
 
   @include clearfix();
 
   > * {
-    display    : block;
+    display    : inline-block;
     line-height: $header-height;
   }
 
   .logo {
-    display        : none;
-    float          : left;
-    width          : 56px;
-    background-size: 56px $header-height;
-    height         : $header-height;
-
-    @include bg-image-ratio("../images/logo-appirio-icon.png", "../images/logo-appirio-icon-2x.png");
-  }
-
-  .login, .get-started {
-    float      : right;
-    line-height: $header-height;
-
-    @include font-line(16);
+    @include span-columns(4);
   }
 
   .login {
+    @include span-columns(4);
+    @include shift(4);
+
+    @include font(16);
+  }
+
+  .login {
+    text-align: right;
+
     > * {
-      display    : inline-block;
+      display: inline-block;
     }
 
     .icon {
       width              : 21px;
-      height             : 23px;
-      vertical-align     : middle;
+      line-height        : 23px;
       background-position: -379px 0px;
 
       @include icon-sprite();
@@ -51,9 +48,5 @@ $header-height: 28px;
 
       @include font-line(16);
     }
-  }
-
-  .get-started {
-    display: none;
   }
 }

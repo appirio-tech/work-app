@@ -1,47 +1,29 @@
 @import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
 
 .layout-main.getting-started {
-  main {
-    width: 100%;
-  }
-
   .jumbotron {
-    display    : block;
-    line-height: 484px - ($padding-30 * 2);
-    padding    : $padding-30;
+    display: block;
 
     @include bg-cover("../images/jumbo.jpg");
+    @include clearfix;
 
     p {
-      display       : inline-block;
-      line-height   : normal;
-      vertical-align: bottom;
-      color         : $white;
-      text-align    : center;
+      color     : $white;
+      text-align: center;
+      margin: 400px 0 $margin-20 0;
 
+      @include span-columns(10);
+      @include shift(1);
       @include font-line(50);
     }
   }
 
   .learn-more {
-    text-align: center;
-
     article {
-      width     : 200px;
-      display   : inline-block;
-      padding   : 0 $padding-20;
+      @include span-columns(4);
       margin-top: 0;
-
-
-      header {
-        a {
-          @include font-line(28);
-        }
-      }
-
-      p {
-        @include font-line(18);
-      }
     }
   }
 }

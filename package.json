@@ -80,6 +80,7 @@
     "mocha": "^1.20.1",
     "mocha-clean": "^0.4.0",
     "node-bourbon": "^4.2.1-beta1",
+    "node-neat": "^1.7.1-beta1",
     "node-notifier": "^4.0.3",
     "phantomjs": "1.9.9",
     "plato": "^1.2.0",
