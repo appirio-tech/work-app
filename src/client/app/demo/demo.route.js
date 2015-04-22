@@ -14,28 +14,6 @@
   function getStates() {
     return [
       {
-        state: 'timeline',
-        config: {
-          url: '/timeline',
-          templateUrl: 'demo/timeline.html',
-          controller: 'TimelineController',
-          controllerAs: 'vm',
-          title: 'Timeline',
-          settings: {}
-        }
-      },
-      {
-        state: 'timeline-detail',
-        config: {
-          url: '/timeline/detail',
-          templateUrl: 'demo/timeline-detail.html',
-          controller: 'TimelineController',
-          controllerAs: 'vm',
-          title: 'Detail',
-          settings: {}
-        }
-      },
-      {
         state: 'manage',
         config: {
           url: '/manage',

@@ -20,7 +20,6 @@
 - scripts.push('/src/client/app/core/core.route')
 - scripts.push('/src/client/app/demo/demo.module')
 - scripts.push('/src/client/app/demo/demo.route')
-- scripts.push('/src/client/app/demo/timeline.controller')
 
 - var css = []
 - var landscapeCSS = []
@@ -81,10 +80,18 @@
 //- submit work
 include submit-work/includes
 
-- scripts       = scripts.concat(jsFiles)
-- css           = css.concat(cssFiles)
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
-- desktopCSS    = desktopCSS.concat(desktopFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- timeline
+include timeline/timeline-includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
 
 include bowers
 
