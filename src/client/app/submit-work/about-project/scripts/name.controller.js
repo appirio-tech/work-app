@@ -22,6 +22,7 @@
 
     vm.submit = function () {
       if ($scope.nameForm.$valid) {
+        NavService.findState('name').visited = true;
         NavService.setNextState();
       }
     };
