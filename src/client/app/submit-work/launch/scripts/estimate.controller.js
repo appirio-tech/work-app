@@ -5,9 +5,9 @@
     .module('app.submit-work')
     .controller('SubmitEstimateController', SubmitEstimateController);
 
-  SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+  SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'NavService'];
 
-  function SubmitEstimateController($scope, logger, SubmitWorkService) {
+  function SubmitEstimateController($scope, logger, SubmitWorkService, NavService) {
     var vm         = this;
     vm.title       = 'Estimate';
     vm.work        = SubmitWorkService.work;
@@ -17,13 +17,13 @@
 
     $scope.$watch('estimateForm', function(estimateForm) {
       if (estimateForm) {
-        SubmitWorkService.findState('estimate').form = estimateForm;
+        NavService.findState('estimate').form = estimateForm;
       }
     });
 
     // Hide terms when no longer on estimate
     $scope.$watch(function () {
-       return SubmitWorkService.activeState;
+       return NavService.activeState;
      }, function (activeState) {
       if (activeState != 'estimate') {
         vm.showTerms = false;
@@ -32,7 +32,7 @@
 
     // Mark completed when terms is accepted
     vm.change = function () {
-      SubmitWorkService.setActiveState('estimate');
+      NavService.setActiveState('estimate');
     };
   }
 })();

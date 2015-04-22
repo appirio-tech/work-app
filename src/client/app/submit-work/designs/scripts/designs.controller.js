@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitDesignsController', SubmitDesignsController);
 
-  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService'];
+  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
   /* @ngInject */
-  function SubmitDesignsController($scope, logger, $state, SubmitWorkService) {
+  function SubmitDesignsController($scope, logger, $state, SubmitWorkService, NavService) {
     var vm            = this;
     vm.title          = 'Designs';
     vm.work           = SubmitWorkService.work;
@@ -28,13 +28,13 @@
 
     vm.submit = function () {
       if ($scope.designForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
 
     $scope.$watch('designForm', function(designForm) {
       if (designForm) {
-        SubmitWorkService.findState('designs').form = designForm;
+        NavService.findState('designs').form = designForm;
       }
     });
 

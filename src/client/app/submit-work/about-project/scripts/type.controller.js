@@ -5,9 +5,9 @@
     .module('app.submit-work')
     .controller('SubmitTypeController', SubmitTypeController);
 
-  SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+  SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'NavService'];
 
-  function SubmitTypeController($scope, logger, SubmitWorkService) {
+  function SubmitTypeController($scope, logger, SubmitWorkService, NavService) {
     var vm   = this;
     vm.title = 'Type';
     vm.work  = SubmitWorkService.work;
@@ -28,13 +28,13 @@
 
     $scope.$watch('typeForm', function(typeForm) {
       if (typeForm) {
-        SubmitWorkService.findState('type').form = typeForm;
+        NavService.findState('type').form = typeForm;
       }
     });
 
     vm.submit = function () {
       if ($scope.typeForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
   }

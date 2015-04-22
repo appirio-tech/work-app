@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService'];
+  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
   /* @ngInject */
-  function SubmitBriefController($scope, logger, $state, SubmitWorkService) {
+  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService) {
     var vm           = this;
     vm.title         = 'Brief';
     vm.work          = SubmitWorkService.work;
@@ -28,14 +28,14 @@
       vm.showYesNo    = false;
       vm.showBrief    = true;
       vm.showElevator = false;
-      SubmitWorkService.findState('brief').form = $scope.briefForm;
+      NavService.findState('brief').form = $scope.briefForm;
     }
 
     vm.toggleNo = function() {
       vm.showYesNo    = false;
       vm.showBrief    = false;
       vm.showElevator = true;
-      SubmitWorkService.findState('brief').form = $scope.elevatorForm;
+      NavService.findState('brief').form = $scope.elevatorForm;
     }
 
     vm.toggleCancel = function() {
@@ -43,18 +43,18 @@
       vm.showYesNo    = true;
       vm.showBrief    = false;
       vm.showElevator = false;
-      SubmitWorkService.findState('brief').form = $scope.questionForm;
+      NavService.findState('brief').form = $scope.questionForm;
     }
 
     vm.submitElevator = function () {
       if ($scope.elevatorForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
 
     vm.submitBrief = function () {
       if ($scope.briefForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
 
@@ -69,7 +69,7 @@
 
     $scope.$watch('questionForm', function(questionForm) {
       if (questionForm) {
-        SubmitWorkService.findState('brief').form = $scope.questionForm;
+        NavService.findState('brief').form = $scope.questionForm;
       }
     });
   }
