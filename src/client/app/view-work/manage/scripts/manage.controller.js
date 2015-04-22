@@ -3,11 +3,11 @@
 
   angular
     .module('app.view-work')
-    .controller('ViewWorkMultiController', ViewWorkMultiController);
+    .controller('ManageController', ManageController);
 
-  ViewWorkMultiController.$inject = ['logger', 'workRequests'];
+  ManageController.$inject = ['logger', 'workRequests'];
   /* @ngInject */
-  function ViewWorkMultiController(logger, workRequests) {
+  function ManageController(logger, workRequests) {
     var vm = this;
     vm.title = 'Work Requests';
     logger.info('work requests', workRequests);

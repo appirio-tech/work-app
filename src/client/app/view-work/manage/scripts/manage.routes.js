@@ -16,30 +16,14 @@
       {
         state: 'view-work-multiple',
         config: {
-          url: '/work',
-          templateUrl: 'view-work/views/view-work-multiple.html',
-          controller: 'ViewWorkMultiController',
+          url: '/manage',
+          templateUrl: 'view-work/views/manage.html',
+          controller: 'ManageController',
           controllerAs: 'vm',
           title: 'View Work',
           settings: {},
           resolve : {
             workRequests : function ($stateParams, data) {
-              return data.get('work-request', $stateParams);
-            }
-          }
-        }
-      },
-      {
-        state: 'view-work-single',
-        config: {
-          url: '/work/:id',
-          templateUrl: 'view-work/views/view-work-single.html',
-          controller: 'ViewWorkSingleController',
-          controllerAs: 'vm',
-          title: 'View Work',
-          settings: {},
-          resolve : {
-            workRequest : function ($stateParams, data) {
               return data.get('work-request', $stateParams);
             }
           }
