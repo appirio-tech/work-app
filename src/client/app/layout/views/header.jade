@@ -1,7 +1,7 @@
 header.layout-header(role="banner")
-  a.logo("href"="#") Juno
+  a.clean.logo("href"="#") Juno
 
-  a.login(href="#/" ng-controller="LoginController as vm")
+  a.clean.login(href="#/" ng-controller="LoginController as vm")
     .icon(ng-hide="vm.loggedInUser") &nbsp
 
     .label(ng-click="signin()" ng-hide="vm.loggedInUser") Log in

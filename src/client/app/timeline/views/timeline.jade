@@ -3,38 +3,29 @@ h1 Project Timeline
 hr
 
 ul
-  li.checkpoint.completed
-    .icon
+  include parts/project-submitted
 
-    h4 Project Submitted
+  include parts/verify-email
 
-  li.info
-    .icon !
+  include parts/quote
 
-    p We sent an email to johndoe@example.com. <br /> Click the link in the email to verify your email address.
+  include parts/payment
 
-    a.resend(href="#") Re-send Email
+  include parts/co-pilot
 
-  li.completed
-    .progress
-      .percent 6%
+  include parts/launched
 
-      .status Complete
+  include parts/feedback
 
-      .day Day 1
+  include parts/checkpoint-1
 
-    .icon
+  include parts/select-finalists
 
-    p Thanks! Your email is verified.
+  include parts/final-design
 
-    p We have begun to generate your quote and will be contacting you shortly.
+  include parts/choose-winner
 
-  li
-    .icon
+  include parts/final-feedback
 
-    h4 Generate Quote
+  include parts/project-complete
 
-  li
-    .icon
-
-    h4 Assign Co-Pilot

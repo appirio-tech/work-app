@@ -57,10 +57,17 @@ hr {
   border-bottom: 2px solid $mercury;
 }
 
+time {
+  font-style: italic;
+}
+
 a {
-  text-decoration: none;
   color: black;
   cursor: pointer;
+}
+
+a.clean {
+  text-decoration: none;
 }
 
 .layout-main {

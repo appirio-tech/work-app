@@ -1,0 +1,18 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.timeline {
+  padding: $padding-15 $padding-20;
+
+  > ul {
+    @include span-columns(9);
+    @include shift(3);
+
+    li {
+      .progress {
+        display: block;
+      }
+    }
+  }
+}
