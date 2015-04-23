@@ -34,17 +34,6 @@
           title: 'Detail',
           settings: {}
         }
-      },
-      {
-        state: 'manage',
-        config: {
-          url: '/manage',
-          templateUrl: 'demo/manage.html',
-          controller: 'TimelineController',
-          controllerAs: 'vm',
-          title: 'Timeline',
-          settings: {}
-        }
       }
     ];
   }

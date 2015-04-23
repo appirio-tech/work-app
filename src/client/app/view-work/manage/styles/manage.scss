@@ -1,0 +1,64 @@
+@import "../../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.manage {
+
+  @include outer-container;
+  @include pad($padding-30);
+
+  @include roboto();
+
+  .heading {
+
+    margin-bottom: $margin-28;
+
+    h1 {
+      font-size: 28px;
+      display: inline;
+    }
+
+    button {
+      display: inline;
+    }
+  }
+  
+  li.project {
+
+    @include span-columns(3);
+    @include omega(4n);
+    background: whitesmoke;
+    height: 245px;
+    margin-bottom: $margin-20;
+
+    -webkit-box-shadow: 1px 1px 14px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 14px 1px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 14px 1px rgba(0,0,0,0.75);
+
+    .top {
+
+      height: 17%;
+      padding: $padding-3;
+
+      .name {
+        float: left;
+      }
+
+      .type {
+        float: right;
+        @include source-sans();
+        font-size: 12px;
+      }
+    }
+
+    .middle {
+      height: 48%;
+      background: black;
+    }
+
+    .bottom {
+      height: 25%;
+    }
+  }
+  
+}

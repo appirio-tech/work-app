@@ -1,6 +1,15 @@
-header(role="heading")
-  h1 {{vm.title}}
+.heading
+  h1 Manage Projects
+  button New Project
 
-ul
-  li(ng-repeat= "workRequest in vm.workRequests")
-    a(ng-href='#/work/{{workRequest.id}}') {{workRequest.name}}
+ul.projects
+  li.project(ng-repeat= "project in vm.workRequests")
+    .top
+      .name {{project.name}}
+      .type {{project.requestType}}
+    .middle
+      img
+    .bottom
+      .status {{project.status}}
+      .action
+        a Action

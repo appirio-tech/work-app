@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.view-work')
+    .module('app.view-work.manage')
     .controller('ManageController', ManageController);
 
   ManageController.$inject = ['logger', 'workRequests'];

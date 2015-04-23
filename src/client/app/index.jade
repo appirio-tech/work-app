@@ -69,9 +69,12 @@
 - scripts.push("/src/client/app/work-request/work-request.module")
 
 //- manage
-- scripts.push("/src/client/app/view-work/manage/scripts/manage.module")
-- scripts.push("/src/client/app/view-work/manage/scripts/manage.routes")
-- scripts.push("/src/client/app/view-work/manage/scripts/manage.controller")
+include view-work/manage/manage-includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
 
 //- features
 - scripts.push("/src/client/app/feature/feature.module")
