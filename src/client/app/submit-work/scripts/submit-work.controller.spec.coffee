@@ -2,23 +2,25 @@
 
 scope          = null
 submitWorkServ = null
+navServ        = null
 stateSpy       = null
 
 describe 'SubmitWorkController', ->
-  beforeEach inject ($controller, $rootScope, SubmitWorkService, $state) ->
+  beforeEach inject ($controller, $rootScope, SubmitWorkService, NavService, $state) ->
     scope          = $rootScope.$new()
     submitWorkServ = SubmitWorkService
+    navServ        = NavService
     stateSpy       = sinon.spy $state, 'go'
 
-    stashIt submitWorkServ, 'states'
-    stashIt submitWorkServ, 'activeState'
-    stashIt submitWorkServ, 'completed'
+    stashIt navServ, 'states'
+    stashIt navServ, 'activeState'
+    stashIt navServ, 'completed'
 
     # Allow manipulation of states
-    submitWorkServ.states = []
+    navServ.states = []
 
     for state in ['name', 'type']
-      submitWorkServ.states.push
+      navServ.states.push
         key: state,
         form:
           '$valid': true
@@ -29,9 +31,9 @@ describe 'SubmitWorkController', ->
 
   afterEach ->
     stateSpy.restore()
-    unstashIt submitWorkServ, 'states'
-    unstashIt submitWorkServ, 'activeState'
-    unstashIt submitWorkServ, 'completed'
+    unstashIt navServ, 'states'
+    unstashIt navServ, 'activeState'
+    unstashIt navServ, 'completed'
 
   it 'should define activeState', ->
     expect(scope.activeState).to.isDefined
@@ -47,7 +49,7 @@ describe 'SubmitWorkController', ->
 
   describe 'watch service to set active state', ->
     beforeEach inject ->
-      submitWorkServ.activeState = 'type'
+      navServ.activeState = 'type'
       scope.$apply()
 
     it 'should set activeState to "type"', ->
@@ -55,7 +57,7 @@ describe 'SubmitWorkController', ->
 
   describe 'watch service to set completed', ->
     beforeEach inject ->
-      submitWorkServ.completed = true
+      navServ.completed = true
       scope.$apply()
 
     it 'should set completed to true', ->
@@ -71,7 +73,7 @@ describe 'SubmitWorkController', ->
 
     context 'when a form is invalid', ->
       beforeEach inject ->
-        submitWorkServ.states[1].form.$valid = false
+        navServ.states[1].form.$valid = false
         scope.launch()
         scope.$apply()
 

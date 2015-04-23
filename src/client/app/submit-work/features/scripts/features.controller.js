@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitFeaturesController', SubmitFeaturesController);
 
-  SubmitFeaturesController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'FeatureService'];
+  SubmitFeaturesController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'FeatureService', 'NavService'];
   /* @ngInject */
-  function SubmitFeaturesController($scope, logger, SubmitWorkService, FeatureService) {
+  function SubmitFeaturesController($scope, logger, SubmitWorkService, FeatureService, NavService) {
     var vm                   = this;
     vm.title                 = 'Features';
     vm.work                  = SubmitWorkService.work;
@@ -28,13 +28,13 @@
 
     vm.submit = function () {
       if ($scope.featureForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
 
     $scope.$watch('featureForm', function(featureForm) {
       if (featureForm) {
-        SubmitWorkService.findState('features').form = featureForm;
+        NavService.findState('features').form = featureForm;
       }
     });
 
