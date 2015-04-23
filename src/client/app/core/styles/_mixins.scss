@@ -32,9 +32,13 @@
 }
 
 @mixin font-line($pt) {
-  font-size: ($pt * 1px);
+  @include font($pt);
 
   @include line-height($pt * 1.20);
+}
+
+@mixin font($pt) {
+  font-size: ($pt * 1px);
 }
 
 @mixin line-height($pt) {

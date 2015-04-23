@@ -1,4 +1,6 @@
 @import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
 
 html {
   min-height: 100%;
@@ -53,8 +55,8 @@ a {
 
 .layout-main {
   background-color: $white;
-  max-width       : 1024px;
-  margin          : 0 auto;
+
+  @include outer-container;
 
   header {
     h1 {
