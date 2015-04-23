@@ -47,6 +47,16 @@ h3 {
   color: $mine-shaft;
 }
 
+h4, h5, h6 {
+  @include font-line(16);
+}
+
+hr {
+  border: none;
+  margin: $margin-15 0;
+  border-bottom: 2px solid $mercury;
+}
+
 a {
   text-decoration: none;
   color: black;
