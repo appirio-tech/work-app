@@ -23,7 +23,6 @@ var onError = function (error) {
 
   for (key in error) {
     $.util.log(
-      $.util.colors.red("~~~ ERROR ~~~\n"),
       $.util.colors.red(error[key])
     );
   }

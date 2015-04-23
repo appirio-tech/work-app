@@ -15,8 +15,8 @@
       $timeline-width      : 3px;
       $progress-width      : 60px;
       $spacing             : $padding-30;
-      $icon-margin-left    : -$spacing - ($icon-width + $timeline-width) / 2;
-      $big-icon-margin-left: -$spacing - ($big-icon-width + $timeline-width) / 2;
+      $icon-margin-left    : -$spacing - 2px - ($icon-width + $timeline-width) / 2;
+      $big-icon-margin-left: -$spacing - 2px - ($big-icon-width + $timeline-width) / 2;
       $progress-margin-left: -$progress-width - ($spacing * 2);
 
       border-left: $timeline-width solid grey;
