@@ -20,31 +20,29 @@
 
     button {
       display: inline;
+      margin-left: 100px;
     }
   }
   
-  li.project {
+  li {
 
     @include span-columns(3);
     @include omega(4n);
     background: whitesmoke;
     height: 245px;
     margin-bottom: $margin-20;
+    box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
 
-    -webkit-box-shadow: 1px 1px 14px 1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 1px 14px 1px rgba(0,0,0,0.75);
-    box-shadow: 1px 1px 14px 1px rgba(0,0,0,0.75);
-
-    .top {
+    header {
 
       height: 17%;
       padding: $padding-3;
 
-      .name {
+      h4 {
         float: left;
       }
 
-      .type {
+      span.type {
         float: right;
         @include source-sans();
         font-size: 12px;

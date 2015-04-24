@@ -2,11 +2,11 @@
   h1 Manage Projects
   button New Project
 
-ul.projects
-  li.project(ng-repeat= "project in vm.workRequests")
-    .top
-      .name {{project.name}}
-      .type {{project.requestType}}
+ul
+  li(ng-repeat= "project in vm.workRequests")
+    header
+      h4 {{project.name}}
+      span.type {{project.requestType}}
     .middle
       img
     .bottom
