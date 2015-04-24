@@ -9,7 +9,7 @@
     'app.submit-work',
     'app.create-account',
     'app.view-work.manage',
-    'app.demo'
+    'app.timeline'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);

@@ -15,8 +15,17 @@ var env         = $.util.env;
 var port        = process.env.PORT || config.defaultPort;
 
 var onError = function (error) {
+  if (typeof(error) == 'string') {
+    error = { message: error };
+  }
+
   $.util.beep();
-  $.util.log("~~~ ERROR ~~~\n", $.util.colors.red(error));
+
+  for (key in error) {
+    $.util.log(
+      $.util.colors.red(error[key])
+    );
+  }
 };
 
 /**
@@ -74,7 +83,8 @@ gulp.task('scss', function () {
       errorHandler: onError
     }))
     .pipe(sass({
-      includePaths: require('node-neat').includePaths
+      includePaths: require('node-neat').includePaths,
+      onError: onError
     }))
     .pipe(plumber.stop())
     .pipe(gulp.dest(config.temp));

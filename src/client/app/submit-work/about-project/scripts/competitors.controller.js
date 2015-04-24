@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitCompetitorsController', SubmitCompetitorsController);
 
-  SubmitCompetitorsController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+  SubmitCompetitorsController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'NavService'];
 
-  function SubmitCompetitorsController($scope, logger, SubmitWorkService) {
+  function SubmitCompetitorsController($scope, logger, SubmitWorkService, NavService) {
     var vm     = this;
     vm.title   = 'Competitors';
     vm.appName = '';
@@ -26,13 +26,13 @@
 
     vm.submit = function () {
       if ($scope.competitorForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
 
     $scope.$watch('competitorForm', function(competitorForm) {
       if (competitorForm) {
-        SubmitWorkService.findState('competitors').form = competitorForm;
+        NavService.findState('competitors').form = competitorForm;
       }
     });
   }
