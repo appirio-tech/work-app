@@ -5,11 +5,22 @@
 .layout-main.timeline {
   padding: $padding-15 $padding-20;
 
-  > ul {
-    position: relative;
-    margin-top: 40px;
+  .avatar {
+    display         : inline-block;
+    width           : 35px;
+    height          : 35px;
+    background-color: black;
+    border-radius   : 35px;
+    margin-right    : 6px;
+    vertical-align  : middle;
+  }
 
-    li {
+  > ul {
+    position  : relative;
+    margin-top: 40px;
+    max-width : 500px;
+
+    > li {
       $point-width      : 27px;
       $big-point-width  : 37px;
       $timeline-width   : 3px;
@@ -25,10 +36,9 @@
       margin-left   : $head-width-big;
 
       .checkpoint {
-        display    : inline-block;
-        margin-top : -$checkpoint-height - $head-width-big;
         margin-left: -$head-width;
         white-space: nowrap;
+        overflow   : hidden;
 
         > * {
           display       : inline-block;
@@ -66,20 +76,23 @@
           margin-left: -3px;
           padding    : 5px;
           white-space: initial;
+          width      : 80%; // dont know why but this fixes overflow issue
         }
       }
 
       > *:nth-child(n + 2) {
+        display: block;
         margin-left: $spacing + $head-width-big + $lead-after-width;
-      }
-
-      > p:nth-child(n + 2) {
         margin-top: 10px;
       }
 
       &.milestone {
         .checkpoint {
           margin-left: -$head-width-big;
+
+          label {
+            font-size: 20px;
+          }
         }
 
         .point {
@@ -100,6 +113,12 @@
           .percent {
             color: green;
           }
+        }
+      }
+
+      &.no-progress {
+        .checkpoint {
+          margin-left: -$head-width;
         }
       }
 

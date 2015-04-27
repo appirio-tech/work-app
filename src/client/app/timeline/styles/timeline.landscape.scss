@@ -6,7 +6,7 @@
   padding: $padding-15 $padding-20;
 
   > ul {
-    li {
+    > li {
       $point-width    : 27px;
       $big-point-width: 37px;
       $timeline-width : 3px;
