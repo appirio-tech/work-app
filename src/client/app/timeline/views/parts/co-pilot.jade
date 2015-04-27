@@ -1,19 +1,25 @@
 li
-  .icon
+  section.checkpoint
+    .progress
+      .percent 22%
 
-  p Assign Co-Pilot
+      .status Complete
 
-li
-  .icon
+      .day Day 1
 
-  p We are choosing a Co-Pilot best suited for your project.
+    .lead
 
-li.completed
-  .icon
+    .point
 
-  p Co-Pilot Assigned
+    .lead-after
+
+    label Assign Co-Pilot
+
+    label(ng-show="completed") We are choosing a Co-Pilot best suited for your project.
+
+    label(ng-show="completed") Co-Pilot Assigned
 
   .co-pilot
-    .avatar
+    .img
 
-    .greeting Hi I'm John. I'll be your project manager.
+    p Hi I'm John. I'll be your project manager.

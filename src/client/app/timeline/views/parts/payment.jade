@@ -1,16 +1,18 @@
 li
-  .icon
+  section.checkpoint
+    .progress
+      .percent 20%
 
-  p Add Payment Method
+      .status Complete
 
-li.completed
-  .progress
-    .percent 20%
+      .day Day 1
 
-    .status Complete
+    .lead
 
-    .day Day 1
+    .point
 
-  .icon
+    .lead-after
 
-  p Payment Method Accepted
+    label Add Payment Method
+
+    label(ng-show="completed") Payment Method Accepted.

@@ -1,20 +1,24 @@
 li
-  .icon
+  section.checkpoint
+    .progress
+      .percent 10%
 
-  h4 Generate Quote
+      .status Complete
 
-li.completed
-  .progress
-    .percent 10%
+      .day Day 1
 
-    .status Complete
+    .lead
 
-    .day Day 1
+    .point
 
-  .icon
+    .lead-after
 
-  p Quote has been generated.
+    label Generate Quote
 
-  a(href="#") View quote and pay to continue.
+    label(ng-show="completed") Quote has been generated.
 
-  p Co-Pilot will not be assigned until your payment has been approved.
+  p
+    a(href="#") View quote and pay to continue.
+
+  p
+    em Co-Pilot will not be assigned until your payment has been approved.

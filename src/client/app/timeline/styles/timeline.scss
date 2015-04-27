@@ -6,106 +6,93 @@
   padding: $padding-15 $padding-20;
 
   > ul {
-    @include span-columns(11);
-    @include shift(1);
+    position: relative;
+    margin-top: 40px;
 
     li {
-      $icon-width          : 25px;
-      $big-icon-width      : 35px;
-      $timeline-width      : 3px;
-      $progress-width      : 60px;
-      $spacing             : $padding-30;
-      $icon-margin-left    : -$spacing - 2px - ($icon-width + $timeline-width) / 2;
-      $big-icon-margin-left: -$spacing - 2px - ($big-icon-width + $timeline-width) / 2;
-      $progress-margin-left: -$progress-width - ($spacing * 3);
+      $point-width      : 27px;
+      $big-point-width  : 37px;
+      $timeline-width   : 3px;
+      $spacing          : 20px;
+      $head-width       : $point-width/2 + $timeline-width/2;
+      $head-width-big   : $big-point-width/2 + $timeline-width/2;
+      $checkpoint-height: $head-width-big + 8px * 2;
+      $lead-after-width : 10px;
 
-      border-left: $timeline-width solid grey;
-      padding    : 0 0 $spacing $spacing;
-      overflow   : hidden;
-      color      : grey;
+      border-left   : $timeline-width solid grey;
+      color         : grey;
+      padding-bottom: $point-width;
+      margin-left   : $head-width-big;
 
-      .progress {
-        width         : $progress-width;
-        position      : absolute;
-        margin-left   : $progress-margin-left;
-        text-align    : right;
-        text-transform: uppercase;
-        margin-top    : $margin-5;
-        display       : none;
+      .checkpoint {
+        display    : inline-block;
+        margin-top : -$checkpoint-height - $head-width-big;
+        margin-left: -$head-width;
+        white-space: nowrap;
 
-        &:before {
-          content      : "";
-          position     : absolute;
-          width        : $spacing / 2;
-          height       : 1;
-          margin-left  : $spacing / 2;
-          margin-top   : $margin-5;
-          border-bottom: 3px solid grey;
-        }
-      }
-
-      .icon {
-        width           : $icon-width;
-        height          : $icon-width;
-        box-sizing      : content-box;
-        border          : 3px solid white;
-        border-radius   : $icon-width;
-        background-color: grey;
-        margin-left     : $icon-margin-left;
-        position        : absolute;
-        text-align      : center;
-        color           : $white;
-        line-height     : $icon-width;
-      }
-
-      h4 {
-        margin: 0;
-        line-height: $icon-width;
-      }
-
-      &.checkpoint {
-        .icon {
-          width        : $big-icon-width;
-          height       : $big-icon-width;
-          border-radius: $big-icon-width;
-          margin-left  : $big-icon-margin-left;
-        }
-      }
-
-      &.info {
-        .icon {
-          background-color: blue;
+        > * {
+          display       : inline-block;
+          vertical-align: middle;
         }
 
-        p {
-          $arrow-size: 10px;
+        .progress, .lead {
+          display: none;
+        }
 
-          background-color: blue;
-          color           : white;
-          display         : inline-block;
-          padding         : $padding-4;
+        .lead-after {
+          border-top   : $lead-after-width solid transparent;
+          border-bottom: $lead-after-width solid transparent;
+          border-right : $lead-after-width solid blue;
+          margin-left  : $spacing;
+          visibility   : hidden;
+        }
 
-          &:before {
-            content      : "\A";
-            position     : absolute;
-            border-top   : $arrow-size solid transparent;
-            border-bottom: $arrow-size solid transparent;
-            border-right : $arrow-size solid blue;
-            margin-left  : -$arrow-size - $padding-4 + 1px;
+        .point {
+          width           : $point-width;
+          height          : $point-width;
+          line-height     : $point-width - 3px * 2;
+          border          : 3px solid white;
+          border-radius   : 50%;
+          background-color: grey;
+          text-align      : center;
+          color           : $white;
+
+          .info {
+            display: none;
           }
         }
 
-        a {
-          color  : blue;
-          margin : $margin-10;
-          display: inline-block;
+        label {
+          margin-left: -3px;
+          padding    : 5px;
+          white-space: initial;
+        }
+      }
+
+      > *:nth-child(n + 2) {
+        margin-left: $spacing + $head-width-big + $lead-after-width;
+      }
+
+      > p:nth-child(n + 2) {
+        margin-top: 10px;
+      }
+
+      &.milestone {
+        .checkpoint {
+          margin-left: -$head-width-big;
+        }
+
+        .point {
+          margin: 8px 0;
+          width : $big-point-width;
+          height: $big-point-width;
         }
       }
 
       &.completed {
         border-color: green;
 
-        .icon {
+        .point {
           background-color: green;
         }
 
@@ -116,8 +103,30 @@
         }
       }
 
-      &:last-child {
-        padding-bottom: 0;
+      &.info {
+        .checkpoint {
+          .point {
+            background-color: blue;
+
+            .info {
+              display: block;
+            }
+          }
+          .lead-after {
+            visibility: visible;
+          }
+        }
+
+        a {
+          color: blue;
+        }
+
+        label {
+          $arrow-size: 10px;
+
+          background-color: blue;
+          color: white;
+        }
       }
     }
   }

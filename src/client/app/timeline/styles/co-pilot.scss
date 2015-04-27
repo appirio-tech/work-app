@@ -1,0 +1,26 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.timeline {
+  .co-pilot {
+    padding         : $padding-4;
+    background-color: white;
+    border          : 1px solid grey;
+    display         : inline-block;
+
+    > * {
+      display         : inline-block;
+      vertical-align  : middle;
+    }
+
+    .img {
+      width           : 35px;
+      height          : 35px;
+      background-color: black;
+      border-radius   : 35px;
+      margin-right    : 4px;
+    }
+  }
+
+}

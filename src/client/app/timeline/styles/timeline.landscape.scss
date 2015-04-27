@@ -6,12 +6,42 @@
   padding: $padding-15 $padding-20;
 
   > ul {
-    @include span-columns(9);
-    @include shift(3);
-
     li {
-      .progress {
-        display: block;
+      $point-width    : 27px;
+      $big-point-width: 37px;
+      $timeline-width : 3px;
+      $progress-width : 65px;
+      $lead-width     : 20px;
+      $spacing        : 20px;
+      $magic-offset   : 5px; // dont know why
+      $head-width     : $magic-offset + $spacing + $progress-width + $lead-width + $point-width/2;
+      $head-width-big : $magic-offset + $spacing + $progress-width + $lead-width + $big-point-width/2;
+
+      margin-left: $head-width-big;
+
+      .checkpoint {
+        margin-left: -$head-width;
+
+        .progress {
+          width         : $progress-width;
+          text-align    : right;
+          text-transform: uppercase;
+          display       : inline-block;
+        }
+
+        .lead {
+          width           : $lead-width;
+          margin          : 0 $spacing/2;
+          height          : 2px;
+          background-color: grey;
+          display         : inline-block;
+        }
+      }
+
+      &.milestone {
+        .checkpoint {
+          margin-left: -$head-width-big;
+        }
       }
     }
   }
