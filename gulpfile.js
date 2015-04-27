@@ -206,7 +206,7 @@ gulp.task('templatecache', ['jade'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants'], function (done) {
+gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants', 'templatecache'], function (done) {
   log('Wire up css/js into the html, after files are ready');
 
   if (env.skiptests) {
