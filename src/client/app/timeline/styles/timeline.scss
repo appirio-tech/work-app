@@ -23,18 +23,17 @@
   }
 
   > ul {
-    position  : relative;
-    max-width : 500px;
+    position : relative;
+    max-width: 500px;
 
     > li {
-      $point-width      : 27px;
-      $big-point-width  : 37px;
-      $timeline-width   : 3px;
-      $spacing          : 20px;
-      $head-width       : $point-width/2 + $timeline-width/2;
-      $head-width-big   : $big-point-width/2 + $timeline-width/2;
-      $checkpoint-height: $head-width-big + 8px * 2;
-      $lead-after-width : 10px;
+      $point-width     : 27px;
+      $big-point-width : 37px;
+      $timeline-width  : 3px;
+      $spacing         : 20px;
+      $head-width      : $point-width/2 + $timeline-width/2;
+      $head-width-big  : $big-point-width/2 + $timeline-width/2;
+      $lead-after-width: 10px;
 
       border-left   : $timeline-width solid grey;
       color         : grey;
@@ -47,13 +46,17 @@
         position        : absolute;
         width           : 20px;
         height          : 20px;
-        margin-top      : -10px;
-        margin-left     : -10px;
+        margin-top      : -12px;
+        margin-left     : -12px;
         background-color: white;
       }
 
       &:last-child {
         padding-bottom: 0;
+
+        &::after {
+          margin-top: -8px;
+        }
       }
 
       .checkpoint {
@@ -79,10 +82,12 @@
         }
 
         .point {
+          $border-width: 3px;
+
           width           : $point-width;
           height          : $point-width;
-          line-height     : $point-width - 3px * 2;
-          border          : 3px solid white;
+          line-height     : $point-width - ($border-width * 2);
+          border          : $border-width solid white;
           border-radius   : 50%;
           background-color: grey;
           text-align      : center;
@@ -94,7 +99,6 @@
         }
 
         label {
-          margin-left: -3px;
           white-space: initial;
           width      : 80%; // dont know why but this fixes overflow issue
         }
@@ -102,7 +106,7 @@
 
       > *:nth-child(n + 2) {
         display: block;
-        margin-left: $spacing + $head-width-big + $lead-after-width;
+        margin-left: $spacing + $lead-after-width + ($point-width/2);
         margin-top: 10px;
       }
 
@@ -120,7 +124,6 @@
         }
 
         .point {
-          margin: 8px 0;
           width : $big-point-width;
           height: $big-point-width;
         }
