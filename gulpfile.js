@@ -115,7 +115,7 @@ gulp.task('jade', function () {
   var stubs = config.useStubs === 'true';
 
   var options = {
-    pretty: true,
+    pretty: false,
     locals: {
       stubs: stubs,
       basePath: config.baseURL
