@@ -161,7 +161,7 @@
           }
 
           label {
-            padding    : 5px;
+            padding: 5px;
           }
         }
 
@@ -170,10 +170,8 @@
         }
 
         label {
-          $arrow-size: 10px;
-
           background-color: blue;
-          color: white;
+          color           : white;
         }
       }
     }
