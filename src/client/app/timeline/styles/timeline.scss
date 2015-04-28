@@ -5,101 +5,174 @@
 .layout-main.timeline {
   padding: $padding-15 $padding-20;
 
+  .avatar-box {
+    padding         : $padding-4;
+    background-color: white;
+    border          : 1px solid grey;
+    display         : table;
+
+    .avatar {
+      display         : inline-block;
+      width           : 35px;
+      height          : 35px;
+      background-color: black;
+      border-radius   : 35px;
+      margin-right    : 6px;
+      vertical-align  : middle;
+    }
+  }
+
   > ul {
-    @include span-columns(9);
-    @include shift(3);
+    position  : relative;
+    max-width : 500px;
 
-    li {
-      $icon-width          : 25px;
-      $big-icon-width      : 30px;
-      $timeline-width      : 3px;
-      $progress-width      : 60px;
-      $spacing             : $padding-30;
-      $icon-margin-left    : -$spacing - 2px - ($icon-width + $timeline-width) / 2;
-      $big-icon-margin-left: -$spacing - 2px - ($big-icon-width + $timeline-width) / 2;
-      $progress-margin-left: -$progress-width - ($spacing * 2);
+    > li {
+      $point-width      : 27px;
+      $big-point-width  : 37px;
+      $timeline-width   : 3px;
+      $spacing          : 20px;
+      $head-width       : $point-width/2 + $timeline-width/2;
+      $head-width-big   : $big-point-width/2 + $timeline-width/2;
+      $checkpoint-height: $head-width-big + 8px * 2;
+      $lead-after-width : 10px;
 
-      border-left: $timeline-width solid grey;
-      padding    : 0 0 $spacing $spacing;
-      overflow   : hidden;
-      color      : grey;
+      border-left   : $timeline-width solid grey;
+      color         : grey;
+      padding-bottom: $point-width;
+      margin-left   : $head-width-big;
 
-      .progress {
-        width      : $progress-width;
-        position   : absolute;
-        margin-left: $progress-margin-left;
-        text-align : right;
-      }
-
-      .icon {
-        width           : $icon-width;
-        height          : $icon-width;
-        box-sizing      : content-box;
-        border          : 3px solid white;
-        border-radius   : $icon-width;
-        background-color: grey;
-        margin-left     : $icon-margin-left;
+      // this will be used to hide the extra borders
+      &:first-child::before, &:last-child::after {
+        content         : "";
         position        : absolute;
-        text-align      : center;
-        color           : $white;
-        line-height     : $icon-width;
+        width           : 20px;
+        height          : 20px;
+        margin-top      : -10px;
+        margin-left     : -10px;
+        background-color: white;
       }
 
-      h4 {
-        margin: 0;
-        line-height: $icon-width;
+      &:last-child {
+        padding-bottom: 0;
       }
 
-      &.checkpoint {
-        .icon {
-          width        : $big-icon-width;
-          height       : $big-icon-width;
-          border-radius: $big-icon-width;
-          margin-left  : $big-icon-margin-left;
-        }
-      }
+      .checkpoint {
+        margin-left: -$head-width;
+        white-space: nowrap;
+        overflow   : hidden;
 
-      &.info {
-        .icon {
-          background-color: blue;
+        > * {
+          display       : inline-block;
+          vertical-align: middle;
         }
 
-        p {
-          $arrow-size: 10px;
+        .progress, .lead {
+          display: none;
+        }
 
-          background-color: blue;
+        .lead-after {
+          border-top   : $lead-after-width solid transparent;
+          border-bottom: $lead-after-width solid transparent;
+          border-right : $lead-after-width solid blue;
+          margin-left  : $spacing;
+          visibility   : hidden;
+        }
+
+        .point {
+          width           : $point-width;
+          height          : $point-width;
+          line-height     : $point-width - 3px * 2;
+          border          : 3px solid white;
+          border-radius   : 50%;
+          background-color: grey;
+          text-align      : center;
           color           : $white;
-          display         : inline-block;
-          padding         : $padding-4;
 
-          &:before {
-            content      : "\A";
-            position     : absolute;
-            border-top   : $arrow-size solid transparent;
-            border-bottom: $arrow-size solid transparent;
-            border-right : $arrow-size solid blue;
-            margin-left  : -$arrow-size - $padding-4 + 1px;
+          .info {
+            display: none;
           }
         }
 
-        a {
-          text-decoration: underline;
-          color          : blue;
-          margin         : $margin-10;
-          display        : inline-block;
+        label {
+          margin-left: -3px;
+          white-space: initial;
+          width      : 80%; // dont know why but this fixes overflow issue
+        }
+      }
+
+      > *:nth-child(n + 2) {
+        display: block;
+        margin-left: $spacing + $head-width-big + $lead-after-width;
+        margin-top: 10px;
+      }
+
+      &.milestone {
+        .checkpoint {
+          margin-left: -$head-width-big;
+
+          .lead-after {
+            margin-left: $spacing - ($big-point-width/2 - $point-width/2);
+          }
+
+          label {
+            font-size: 20px;
+          }
+        }
+
+        .point {
+          margin: 8px 0;
+          width : $big-point-width;
+          height: $big-point-width;
         }
       }
 
       &.completed {
         border-color: green;
 
-        .icon {
+        .point {
           background-color: green;
+        }
+
+        .progress {
+          .percent {
+            color: green;
+          }
         }
       }
 
-      &:last-child {
-        padding-bottom: 0;
+      &.no-progress {
+        .checkpoint {
+          margin-left: -$head-width;
+        }
+      }
+
+      &.info {
+        .checkpoint {
+          .point {
+            background-color: blue;
+
+            .info {
+              display: block;
+            }
+          }
+
+          .lead-after {
+            visibility: visible;
+          }
+
+          label {
+            padding: 5px;
+          }
+        }
+
+        a {
+          color: blue;
+        }
+
+        label {
+          background-color: blue;
+          color           : white;
+        }
       }
     }
   }
