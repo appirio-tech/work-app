@@ -13,8 +13,8 @@
       $progress-width : 80px;
       $lead-width     : 20px;
       $spacing        : 20px;
-      $head-width     : $spacing + $progress-width + $lead-width + $point-width/2;
-      $head-width-big : $spacing + $progress-width + $lead-width + $big-point-width/2;
+      $head-width     : $spacing + $progress-width + $lead-width + $point-width/2 + $timeline-width/2;
+      $head-width-big : $spacing + $progress-width + $lead-width + $big-point-width/2 + $timeline-width/2;
 
       margin-left: $head-width-big;
 
