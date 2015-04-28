@@ -5,19 +5,25 @@
 .layout-main.timeline {
   padding: $padding-15 $padding-20;
 
-  .avatar {
-    display         : inline-block;
-    width           : 35px;
-    height          : 35px;
-    background-color: black;
-    border-radius   : 35px;
-    margin-right    : 6px;
-    vertical-align  : middle;
+  .avatar-box {
+    padding         : $padding-4;
+    background-color: white;
+    border          : 1px solid grey;
+    display         : table;
+
+    .avatar {
+      display         : inline-block;
+      width           : 35px;
+      height          : 35px;
+      background-color: black;
+      border-radius   : 35px;
+      margin-right    : 6px;
+      vertical-align  : middle;
+    }
   }
 
   > ul {
     position  : relative;
-    margin-top: 40px;
     max-width : 500px;
 
     > li {
@@ -34,6 +40,21 @@
       color         : grey;
       padding-bottom: $point-width;
       margin-left   : $head-width-big;
+
+      // this will be used to hide the extra borders
+      &:first-child::before, &:last-child::after {
+        content         : "";
+        position        : absolute;
+        width           : 20px;
+        height          : 20px;
+        margin-top      : -10px;
+        margin-left     : -10px;
+        background-color: white;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
 
       .checkpoint {
         margin-left: -$head-width;
@@ -74,7 +95,6 @@
 
         label {
           margin-left: -3px;
-          padding    : 5px;
           white-space: initial;
           width      : 80%; // dont know why but this fixes overflow issue
         }
@@ -89,6 +109,10 @@
       &.milestone {
         .checkpoint {
           margin-left: -$head-width-big;
+
+          .lead-after {
+            margin-left: $spacing - ($big-point-width/2 - $point-width/2);
+          }
 
           label {
             font-size: 20px;
@@ -131,8 +155,13 @@
               display: block;
             }
           }
+
           .lead-after {
             visibility: visible;
+          }
+
+          label {
+            padding    : 5px;
           }
         }
 
