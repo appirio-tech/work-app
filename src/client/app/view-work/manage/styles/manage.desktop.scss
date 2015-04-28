@@ -1,0 +1,16 @@
+@import "../../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.manage {
+
+  li {
+
+    @include omega-reset(3n);
+    @include span-columns(3);
+    @include omega(4n);
+    height: 245px;
+    margin-bottom: $margin-20;
+  }
+
+}

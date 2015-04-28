@@ -92,3 +92,8 @@
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
 }
+
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}

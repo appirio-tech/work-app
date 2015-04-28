@@ -8,10 +8,7 @@
 
     @include span-columns(4);
     @include omega(3n);
-    background: whitesmoke;
-    height: 245px;
-    margin-bottom: $margin-20;
-    box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
+    height: 150px;
 
   }
 
