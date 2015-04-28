@@ -109,7 +109,7 @@ gulp.task('coffee', function () {
  * Compile jade to html
  * @return {Stream}
  */
-gulp.task('jade', function () {
+gulp.task('jade', ['jade-index'], function () {
   log('Compiling Jade --> HTML');
 
   var stubs = config.useStubs === 'true';
@@ -124,6 +124,28 @@ gulp.task('jade', function () {
 
   return gulp
     .src(config.jade)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe($.jade(options))
+    .pipe(gulp.dest(config.temp));
+});
+
+gulp.task('jade-index', function () {
+  log('Compiling Index Jade --> Index HTML');
+
+  var stubs = config.useStubs === 'true';
+
+  var options = {
+    pretty: true,
+    locals: {
+      stubs: stubs,
+      basePath: config.baseURL
+    }
+  };
+
+  return gulp
+    .src(config.jadeIndex)
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -581,8 +603,10 @@ function startBrowserSync(isDev, specRunner) {
       .on('change', changeEvent);
     gulp.watch([config.jade], ['jade'])
       .on('change', changeEvent);
+    gulp.watch([config.jadeIndex], ['jade-index'])
+      .on('change', changeEvent);
   } else {
-    gulp.watch([config.scss, config.coffee, config.js, config.html, config.jade], ['optimize', browserSync.reload])
+    gulp.watch([config.scss, config.coffee, config.js, config.html, config.jade, config.jadeIndex], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 
@@ -595,6 +619,7 @@ function startBrowserSync(isDev, specRunner) {
       '!' + config.scss,
       '!' + config.coffee,
       '!' + config.jade,
+      '!' + config.jadeIndex,
       config.temp + '**/*.css',
       config.temp + '**/*.js'
     ] : [],

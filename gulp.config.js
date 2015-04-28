@@ -53,7 +53,8 @@ module.exports = function () {
       clientApp + '**/fonts/*'
     ],
     html: client + '**/*.html',
-    jade: clientApp + '**/*.jade',
+    jade: clientApp + '**/!(index)+(.jade)',
+    jadeIndex: clientApp + '**/index.jade',
     htmltemplates: [
       clientApp + '**/*.html',
       temp + '**/*.html',
