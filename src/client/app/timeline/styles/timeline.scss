@@ -44,10 +44,10 @@
       &:first-child::before, &:last-child::after {
         content         : "";
         position        : absolute;
-        width           : 20px;
-        height          : 20px;
-        margin-top      : -12px;
-        margin-left     : -12px;
+        width           : 10px;
+        height          : 10px;
+        margin-top      : -10px;
+        margin-left     : -10px;
         background-color: white;
       }
 
@@ -55,7 +55,7 @@
         padding-bottom: 0;
 
         &::after {
-          margin-top: -8px;
+          margin-top: -10px;
         }
       }
 

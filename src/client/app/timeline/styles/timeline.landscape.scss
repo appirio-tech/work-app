@@ -16,6 +16,18 @@
       $head-width     : $spacing + $progress-width + $lead-width + $point-width/2 + $timeline-width/2;
       $head-width-big : $spacing + $progress-width + $lead-width + $big-point-width/2 + $timeline-width/2;
 
+      &:first-child::before, &:last-child::after {
+        margin-top      : -3px;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+
+        &::after {
+          margin-top: -6px;
+        }
+      }
+
       margin-left: $head-width-big;
 
       .checkpoint {
