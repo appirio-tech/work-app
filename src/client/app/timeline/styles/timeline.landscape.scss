@@ -10,12 +10,11 @@
       $point-width    : 27px;
       $big-point-width: 37px;
       $timeline-width : 3px;
-      $progress-width : 65px;
+      $progress-width : 80px;
       $lead-width     : 20px;
       $spacing        : 20px;
-      $magic-offset   : 5px; // dont know why
-      $head-width     : $magic-offset + $spacing + $progress-width + $lead-width + $point-width/2;
-      $head-width-big : $magic-offset + $spacing + $progress-width + $lead-width + $big-point-width/2;
+      $head-width     : $spacing + $progress-width + $lead-width + $point-width/2 + $timeline-width/2;
+      $head-width-big : $spacing + $progress-width + $lead-width + $big-point-width/2 + $timeline-width/2;
 
       margin-left: $head-width-big;
 
