@@ -19,7 +19,7 @@
       margin-left: $head-width-big;
 
       .checkpoint {
-        margin-left: -$head-width; // its not centered in dev due to whitespace but will in production
+        margin-left: -$head-width;
 
         .progress {
           width         : $progress-width;
