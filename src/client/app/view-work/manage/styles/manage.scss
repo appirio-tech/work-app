@@ -15,44 +15,70 @@
 
     h1 {
       font-size: 28px;
-      display: inline;
+      display: inline-block;
+      height: 10px;
+      vertical-align: -11px;
     }
 
     button {
-      display: inline;
-      margin-left: 100px;
+      display: inline-block;
+      margin-left: 10%;
+      width: 20%;
+      height: 50px;
+    }
+
+    hr {
+      margin-top: 9px;
     }
   }
   
   li {
 
-    background: whitesmoke;
+    @include span-columns(12);
+    @include omega(1n);
+    //@include shift(.5);
+    height: 245px;
     margin-bottom: $margin-20;
-    box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
 
-    header {
+    div {
 
-      height: 17%;
-      padding: $padding-3;
+      margin-left: auto;
+      margin-right: auto;
 
-      h4 {
-        float: left;
+      width: 220px;
+      height: 100%;
+      background: whitesmoke;
+      box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
+
+      header {
+
+        height: 17%;
+        padding: $padding-3;
+
+        h4 {
+          float: left;
+        }
+
+        span.type {
+          float: right;
+          @include source-sans();
+          font-size: 12px;
+        }
       }
 
-      span.type {
-        float: right;
-        @include source-sans();
-        font-size: 12px;
+      .middle {
+        height: 48%;
+        background: black;
       }
-    }
 
-    .middle {
-      height: 48%;
-      background: black;
-    }
+      .bottom {
+        height: 35%;
 
-    .bottom {
-      height: 25%;
+        &.incomplete {
+          background: tomato;
+        }
+      }
+
     }
   }
   

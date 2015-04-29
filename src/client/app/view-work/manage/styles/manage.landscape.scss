@@ -4,11 +4,25 @@
 
 .layout-main.manage {
 
+  .heading {
+    
+    h1 {
+      vertical-align: -3px;
+    }
+
+    button {
+      width: 175px;
+      height: 40px;
+      margin-left: 5%;
+    }
+  }
+
   li {
 
-    @include span-columns(4);
-    @include omega(3n);
-    height: 150px;
+    @include omega-reset(1n);
+    @include span-columns(6);
+    @include omega(2n);
+    height: 245px;
 
   }
 
