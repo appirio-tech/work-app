@@ -2,7 +2,7 @@ h2 About your project
 
 h3 What type of project do you need?
 
-form(name="typeForm", ng-submit="submit()")
+form(name="typeForm", ng-submit="vm.submit()")
   input(
     name         = "type",
     type         = "hidden",
@@ -14,19 +14,29 @@ form(name="typeForm", ng-submit="submit()")
     li
       label(for="project-type-design") DESIGN
 
-      button#project-type-design(type="button", ng-class="{'selected': vm.work.requestType == 'design'}", ng-click="setType('design')")
+      button#project-type-design(
+        type="button",
+        ng-class="{'selected': vm.work.requestType == 'design'}",
+        ng-click="vm.setType($event, 'design')",
+        ng-enter="vm.submit()"
+      )
         .starting-at starting at
 
         .price $2,000
 
         .duration about 1 week
 
-      .description I need design for my app.
+      .description I need a design for my app.
 
     li
       label(for="project-type-code") CODE
 
-      button#project-type-code(type="button", ng-class="{'selected': vm.work.requestType == 'code'}", ng-click="setType('code')")
+      button#project-type-code(
+        type="button",
+        ng-class="{'selected': vm.work.requestType == 'code'}",
+        ng-click="vm.setType($event, 'code')",
+        ng-enter="vm.submit()"
+      )
         .starting-at starting at
 
         .price $5,000
@@ -38,7 +48,12 @@ form(name="typeForm", ng-submit="submit()")
     li
       label(for="project-type-design-code") DESIGN &amp; CODE
 
-      button#project-type-design-code(type="button", ng-class="{'selected': vm.work.requestType == 'both'}", ng-click="setType('both')")
+      button#project-type-design-code(
+        type="button",
+        ng-class="{'selected': vm.work.requestType == 'both'}",
+        ng-click="vm.setType($event, 'both')",
+        ng-enter="vm.submit()"
+      )
         .starting-at starting at
 
         .price $10,000

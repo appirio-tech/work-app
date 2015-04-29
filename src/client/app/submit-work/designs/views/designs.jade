@@ -1,8 +1,10 @@
 h2 Designing Your App
 
+h3.optional (optional)
+
 h3 Upload any files you may have that can help us understand your design preferences.
 
-form(name="designForm", ng-submit="submit()")
+form(name="designForm", ng-submit="vm.submit()")
   fieldset
     input#project-design-file(type="file", ng-model="vm.filename")
 

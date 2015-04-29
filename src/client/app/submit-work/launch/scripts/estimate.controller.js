@@ -1,4 +1,3 @@
-/*global form:true */
 (function () {
   'use strict';
 
@@ -6,24 +5,34 @@
     .module('app.submit-work')
     .controller('SubmitEstimateController', SubmitEstimateController);
 
-  SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
-  /* @ngInject */
-  function SubmitEstimateController($scope, logger, SubmitWorkService) {
-    var vm      = this;
-    vm.title    = 'Estimate';
-    vm.work     = SubmitWorkService.work;
+  SubmitEstimateController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'NavService'];
 
-    logger.log('Activated Estimate View');
+  function SubmitEstimateController($scope, logger, SubmitWorkService, NavService) {
+    var vm         = this;
+    vm.title       = 'Estimate';
+    vm.work        = SubmitWorkService.work;
+    vm.getEstimate = SubmitWorkService.getEstimate;
+    vm.showTerms   = false;
+    vm.change;
 
     $scope.$watch('estimateForm', function(estimateForm) {
       if (estimateForm) {
-        SubmitWorkService.findState('estimate').form = estimateForm;
+        NavService.findState('estimate').form = estimateForm;
       }
     });
 
-    $scope.change = function () {
-      // Force to save/update completed
-      SubmitWorkService.setActiveState('estimate');
+    // Hide terms when no longer on estimate
+    $scope.$watch(function () {
+       return NavService.activeState;
+     }, function (activeState) {
+      if (activeState != 'estimate') {
+        vm.showTerms = false;
+      }
+    }, true);
+
+    // Mark completed when terms is accepted
+    vm.change = function () {
+      NavService.setActiveState('estimate');
     };
   }
 })();

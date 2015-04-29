@@ -5,12 +5,14 @@
     .module('app.submit-work')
     .controller('SubmitTypeController', SubmitTypeController);
 
-  SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+  SubmitTypeController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'NavService'];
 
-  function SubmitTypeController($scope, logger, SubmitWorkService) {
-    var vm         = this;
-    vm.title       = 'Type';
-    vm.work        = SubmitWorkService.work;
+  function SubmitTypeController($scope, logger, SubmitWorkService, NavService) {
+    var vm   = this;
+    vm.title = 'Type';
+    vm.work  = SubmitWorkService.work;
+    vm.setType;
+    vm.submit;
 
     activate();
 
@@ -19,20 +21,20 @@
       vm.work = SubmitWorkService.work;
     }
 
-    $scope.setType = function (type) {
+    vm.setType = function (e, type) {
+      e.target.focus();
       vm.work.requestType = type;
-      SubmitWorkService.updatePrice();
     }
 
     $scope.$watch('typeForm', function(typeForm) {
       if (typeForm) {
-        SubmitWorkService.findState('type').form = typeForm;
+        NavService.findState('type').form = typeForm;
       }
     });
 
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.typeForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
   }

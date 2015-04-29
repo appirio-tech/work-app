@@ -9,18 +9,8 @@
   SubmitSuccessController.$inject = ['logger', '$state', 'SubmitWorkService'];
   /* @ngInject */
   function SubmitSuccessController(logger, $state, SubmitWorkService) {
-    var vm = this;
+    var vm   = this;
     vm.title = 'Success';
-
-    activate();
-
-    function activate() {
-      logger.log('Activated Success View');
-    }
-
-    function home() {
-      $state.go('timeline');
-    }
 
   }
 })();

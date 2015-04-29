@@ -1,7 +1,11 @@
 (function () {
   'use strict';
 
-  var directive = function ($rootScope, $document) {
+  angular.module('app.submit-work').directive('ngSubmitWorkAside', AsideDirective);
+
+  AsideDirective.$inject = ['$rootScope', '$document'];
+
+  function AsideDirective($rootScope, $document) {
     var link = function (scope, element, attrs) {
 
       scope.$watch('activeState', function (state) {
@@ -35,16 +39,13 @@
     return {
       restrict   : 'A',
       scope: {
-        activeState: "=ngActiveState",
-        work       : "=ngSubmitWorkAside",
-        completed  : "=ngCompleted"
+        activeState : '=ngActiveState',
+        work        : '=ngSubmitWorkAside',
+        completed   : '=ngCompleted',
+        asideService: '=asideService'
       },
       templateUrl: 'submit-work/aside/submit-work-aside.html',
       link       : link
     };
   };
-
-  directive.$inject = ['$rootScope', '$document'];
-
-  angular.module('app.submit-work').directive('ngSubmitWorkAside', directive);
 })();

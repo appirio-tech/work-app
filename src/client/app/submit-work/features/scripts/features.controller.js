@@ -6,50 +6,51 @@
     .module('app.submit-work')
     .controller('SubmitFeaturesController', SubmitFeaturesController);
 
-  SubmitFeaturesController.$inject = ['$rootScope', '$scope', 'logger', 'SubmitWorkService', 'FeatureService'];
+  SubmitFeaturesController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'FeatureService', 'NavService'];
   /* @ngInject */
-  function SubmitFeaturesController($rootScope, $scope, logger, SubmitWorkService, FeatureService) {
+  function SubmitFeaturesController($scope, logger, SubmitWorkService, FeatureService, NavService) {
     var vm                   = this;
     vm.title                 = 'Features';
     vm.work                  = SubmitWorkService.work;
-    vm.add                   = add;
     vm.newFeatureName        = '';
     vm.newFeatureExplanation = '';
-
-    vm.showExample = function (example) {
-      $rootScope.$emit('submit-work-show-example', example);
-    };
-
-    vm.hideExample = function () {
-      $rootScope.$emit('submit-work-hide-example');
-    };
+    vm.newFeature            = false;
+    vm.showExample           = false;
+    vm.clickExample;
+    vm.submit;
+    vm.add;
 
     activate();
 
-    $scope.submit = function () {
-      if ($scope.featureForm.$valid) {
-        SubmitWorkService.setNextState();
-      }
+    vm.clickExample = function () {
+      $scope.showExample = true;
     };
 
-    // can create ngEnter for this
-    $scope.onPress= function (e) {
-      if (e.which == 13) {
-        vm.add();
-
-        e.preventDefault();
-
-        return false;
+    vm.submit = function () {
+      if ($scope.featureForm.$valid) {
+        NavService.setNextState();
       }
     };
 
     $scope.$watch('featureForm', function(featureForm) {
       if (featureForm) {
-        SubmitWorkService.findState('features').form = featureForm;
+        NavService.findState('features').form = featureForm;
       }
     });
 
-    $scope.updatePrice = SubmitWorkService.updatePrice;
+    vm.add = function() {
+      vm.work.features.push({
+        id         : vm.newFeatureName,
+        name       : vm.newFeatureName,
+        explanation: vm.newFeatureExplanation,
+        description: '',
+        selected   : true
+      });
+
+      vm.newFeatureName        = '';
+      vm.newFeatureExplanation = '';
+      vm.newFeature            = false;
+    }
 
     function activate() {
       logger.log('Activated Features View');
@@ -60,18 +61,5 @@
         });
       }
     }
-
-    function add() {
-      vm.work.features.push({
-        id: vm.newFeatureName,
-        name: vm.newFeatureName,
-        explanation: vm.newFeatureExplanation,
-        description: '',
-        selected: true
-      });
-      vm.newFeatureName = '';
-      vm.newFeatureExplanation = '';
-    }
-
   }
 })();

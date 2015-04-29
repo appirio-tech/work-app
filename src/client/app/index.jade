@@ -8,8 +8,9 @@
 - scripts.push('/src/client/app/core/resource/resource.api.service')
 - scripts.push('/src/client/app/core/resource/resource.data.provider')
 - scripts.push('/src/client/app/core/core.module')
-- scripts.push("/src/client/app/login/scripts/login.module")
-- scripts.push('/src/client/app/layout/scripts/layout.module')
+- scripts.push('/src/client/app/core/ng-enter.directive')
+- scripts.push('/src/client/app/login/scripts/login.module')
+- scripts.push('layout/scripts/layout.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
 - scripts.push('/src/client/app/blocks/logger/logger')
@@ -19,13 +20,14 @@
 - scripts.push('/src/client/app/core/core.route')
 - scripts.push('/src/client/app/demo/demo.module')
 - scripts.push('/src/client/app/demo/demo.route')
-- scripts.push('/src/client/app/demo/timeline.controller')
 
 - var css = []
 - var landscapeCSS = []
 - var desktopCSS = []
 
 //- Layout
+- scripts.push('/src/client/app/layout/scripts/modal.directive')
+
 - css.push("layout/styles/reset")
 - css.push("layout/styles/main")
 - css.push("layout/styles/header")
@@ -61,6 +63,7 @@
 - scripts.push("/src/client/app/auth/scripts/token.service")
 - scripts.push("/src/client/app/auth/scripts/login.controller")
 - scripts.push("/src/client/app/auth/scripts/login.directive")
+- css.push("login/styles/login")
 
 //- user
 - scripts.push("/src/client/app/user/user.module")
@@ -82,19 +85,27 @@
 //- submit work
 include submit-work/includes
 
-- scripts       = scripts.concat(jsFiles)
-- css           = css.concat(cssFiles)
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
-- desktopCSS    = desktopCSS.concat(desktopFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- timeline
+include timeline/timeline-includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
 
 include bowers
 
 doctype html
 html(ng-app='app')
   head
+    //- This helps the ng-show/ng-hide animations start at the right place.
+    //- Since Angular has this but needs to load, this gives us the class early.
     style.
-      /* This helps the ng-show/ng-hide animations start at the right place. */
-      /* Since Angular has this but needs to load, this gives us the class early. */
       .ng-hide {
         display: none !important;
       }

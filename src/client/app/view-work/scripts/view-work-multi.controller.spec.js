@@ -3,7 +3,6 @@ describe('ViewWorkMultiController', function () {
   var controller, scope;
 
   beforeEach(function () {
-    bard.appModule('app.view-work');
     bard.inject(this, '$controller', '$log', '$rootScope', '$q', 'ApiResource');
   });
 

@@ -1,4 +1,6 @@
 @import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
 
 html {
   min-height: 100%;
@@ -45,27 +47,33 @@ h3 {
   color: $mine-shaft;
 }
 
+h4, h5, h6 {
+  @include font-line(16);
+}
+
+hr {
+  border: none;
+  margin: $margin-15 0;
+  border-bottom: 2px solid $mercury;
+}
+
+time, em {
+  font-style: italic;
+}
+
 a {
-  text-decoration: none;
   color: black;
   cursor: pointer;
 }
 
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.6);
+a.clean {
+  text-decoration: none;
 }
 
 .layout-main {
   background-color: $white;
-  max-width       : 1024px;
-  margin          : 0 auto;
+
+  @include outer-container;
 
   header {
     h1 {

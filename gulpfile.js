@@ -1,17 +1,32 @@
-var args = require('yargs').argv;
+var args        = require('yargs').argv;
 var browserSync = require('browser-sync');
-var config = require('./gulp.config')();
-var del = require('del');
-var glob = require('glob');
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var path = require('path');
-var _ = require('lodash');
-var $ = require('gulp-load-plugins')({lazy: true});
+var config      = require('./gulp.config')();
+var plumber     = require('gulp-plumber');
+var del         = require('del');
+var glob        = require('glob');
+var gulp        = require('gulp');
+var sass        = require('gulp-sass');
+var coffee      = require('gulp-coffee');
+var path        = require('path');
+var _           = require('lodash');
+var $           = require('gulp-load-plugins')({lazy: true});
+var colors      = $.util.colors;
+var env         = $.util.env;
+var port        = process.env.PORT || config.defaultPort;
 
-var colors = $.util.colors;
-var env = $.util.env;
-var port = process.env.PORT || config.defaultPort;
+var onError = function (error) {
+  if (typeof(error) == 'string') {
+    error = { message: error };
+  }
+
+  $.util.beep();
+
+  for (key in error) {
+    $.util.log(
+      $.util.colors.red(error[key])
+    );
+  }
+};
 
 /**
  * yargs variables can be passed in to alter the behavior, when present.
@@ -64,9 +79,29 @@ gulp.task('scss', function () {
   log('Compiling SCSS --> CSS');
 
   return gulp.src(config.scss)
-    .pipe(sass({
-      includePaths: require('node-bourbon').includePaths
+    .pipe(plumber({
+      errorHandler: onError
     }))
+    .pipe(sass({
+      includePaths: require('node-neat').includePaths,
+      onError: onError
+    }))
+    .pipe(plumber.stop())
+    .pipe(gulp.dest(config.temp));
+});
+
+/**
+ * Compile coffee to js
+ * @return {Stream}
+ */
+gulp.task('coffee', function () {
+  log('Compiling COFFEE --> JS');
+
+  return gulp.src(config.coffee)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(coffee({ bare: false }))
     .pipe(gulp.dest(config.temp));
 });
 
@@ -74,11 +109,11 @@ gulp.task('scss', function () {
  * Compile jade to html
  * @return {Stream}
  */
-gulp.task('jade', function () {
+gulp.task('jade', ['jade-index'], function () {
   log('Compiling Jade --> HTML');
 
   var options = {
-    pretty: true,
+    pretty: false,
     locals: {
       basePath: config.baseURL
     }
@@ -86,6 +121,31 @@ gulp.task('jade', function () {
 
   return gulp
     .src(config.jade)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe($.jade(options))
+    .pipe(gulp.dest(config.temp));
+});
+
+gulp.task('jade-index', function () {
+  log('Compiling Index Jade --> Index HTML');
+
+  var stubs = config.useStubs === 'true';
+
+  var options = {
+    pretty: true,
+    locals: {
+      stubs: stubs,
+      basePath: config.baseURL
+    }
+  };
+
+  return gulp
+    .src(config.jadeIndex)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe($.jade(options))
     .pipe(gulp.dest(config.temp));
 });
@@ -137,10 +197,6 @@ gulp.task('images', function () {
     .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('scss-watcher', function () {
-  gulp.watch([config.scss], ['scss']);
-});
-
 /**
  * Create $templateCache from the html templates
  * @return {Stream}
@@ -169,8 +225,8 @@ gulp.task('templatecache', ['jade'], function () {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
-  log('Wire up css into the html, after files are ready');
+gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants', 'templatecache'], function (done) {
+  log('Wire up css/js into the html, after files are ready');
 
   if (env.skiptests) {
     done();
@@ -179,35 +235,6 @@ gulp.task('inject', ['jade', 'scss', 'ng-constants'], function (done) {
   }
 
   //done();
-});
-
-/**
- * Run the spec runner
- * @return {Stream}
- */
-gulp.task('serve-specs', ['build-specs'], function (done) {
-  log('run the spec runner');
-  serve(true /* isDev */, true /* specRunner */);
-  done();
-});
-
-/**
- * Inject all the spec files into the specs.html
- * @return {Stream}
- */
-gulp.task('build-specs', ['inject'], function (done) {
-  log('building the spec runner');
-
-  var templateCache = config.temp + config.templateCache.file;
-  var specs = config.specs;
-
-  return gulp
-    .src(config.specRunner)
-    .pipe(inject(config.testlibraries, 'testlibraries'))
-    .pipe(inject(config.specHelpers, 'spechelpers'))
-    .pipe(inject(specs, 'specs', ['**/*']))
-    .pipe(inject(templateCache, 'templates'))
-    .pipe(gulp.dest(config.client));
 });
 
 /**
@@ -225,7 +252,6 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function () {
   };
 
   log(msg);
-  notify(msg);
 });
 
 /**
@@ -239,20 +265,20 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
   var assets = $.useref.assets({
     searchPath: [config.temp, './']
   });
+
   // Filters are named for the gulp-useref path
-  var cssLibFilter = $.filter('**/*.css');
-  var jsAppFilter = $.filter('**/' + config.optimized.app);
-  var jslibFilter = $.filter('**/' + config.optimized.lib);
-  var htmlFilter = $.filter('**/*.html');
-
-  var templateCache = config.temp + config.templateCache.file;
-
+  var cssLibFilter   = $.filter('**/*.css');
+  var jsAppFilter    = $.filter('**/' + config.optimized.app);
+  var jslibFilter    = $.filter('**/' + config.optimized.lib);
+  var htmlFilter     = $.filter('**/*.html');
+  var templateCache  = config.temp + config.templateCache.file;
   var replaceOptions = {};
+  var sourcemaps     = $.sourcemaps;
+
   if (config.aws.cdnUrl) {
     replaceOptions.prefix = config.aws.cdnUrl ? config.aws.cdnUrl : config.baseURL;
   }
 
-  var sourcemaps = $.sourcemaps;
 
   return gulp
     .src(config.index)
@@ -262,19 +288,17 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the css
     .pipe(cssLibFilter)
     .pipe(sourcemaps.init())
-    .pipe($.minifyCss({rebase: 'false'}))
+    .pipe($.minifyCss({ rebase: 'false' }))
     .pipe(sourcemaps.write())
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify({mangle: false, compress: false}))
+    .pipe($.uglify({ mangle: true, compress: true }))
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify({mangle: false, compress: false})) // another option is to override wiredep to use min files
+    .pipe($.uglify({ mangle: true, compress: true })) // another option is to override wiredep to use min files
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())
@@ -286,7 +310,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // minimize html
     .pipe(htmlFilter)
     .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
-    .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
+    .pipe($.htmlmin({ collapseWhitespace: true, removeComments: true }))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest(config.build));
 });
@@ -345,7 +369,7 @@ gulp.task('clean-code', function (done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['inject', 'vet'], function (done) {
+gulp.task('test', ['ng-constants', 'templatecache'], function (done) {
   startTests(true /*singleRun*/, done);
 });
 
@@ -355,7 +379,7 @@ gulp.task('test', ['inject', 'vet'], function (done) {
  * To start servers and run midway specs as well:
  *    gulp autotest --startServers
  */
-gulp.task('autotest', function (done) {
+gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
   startTests(false /*singleRun*/, done);
 });
 
@@ -531,13 +555,19 @@ function serve(isDev, specRunner) {
     });
 }
 
-function getNodeOptions() {
+function getNodeOptions(isDev) {
+  var env = config.env;
+
+  if (!isDev && env == 'dev') { // for serve build
+    env = 'build';
+  }
+
   return {
     script: config.nodeServer,
     delayTime: 1,
     env: {
       'PORT': port,
-      'NODE_ENV': config.env
+      'NODE_ENV': env
     },
     watch: [config.server]
   };
@@ -566,10 +596,14 @@ function startBrowserSync(isDev, specRunner) {
   if (isDev) {
     gulp.watch([config.scss], ['scss'])
       .on('change', changeEvent);
+    gulp.watch([config.coffee], ['coffee'])
+      .on('change', changeEvent);
     gulp.watch([config.jade], ['jade'])
       .on('change', changeEvent);
+    gulp.watch([config.jadeIndex], ['jade-index'])
+      .on('change', changeEvent);
   } else {
-    gulp.watch([config.scss, config.js, config.html, config.jade], ['optimize', browserSync.reload])
+    gulp.watch([config.scss, config.coffee, config.js, config.html, config.jade, config.jadeIndex], ['optimize', browserSync.reload])
       .on('change', changeEvent);
   }
 
@@ -580,8 +614,11 @@ function startBrowserSync(isDev, specRunner) {
     files: isDev ? [
       config.client + '**/*.*',
       '!' + config.scss,
+      '!' + config.coffee,
       '!' + config.jade,
-      config.temp + '**/*.css'
+      '!' + config.jadeIndex,
+      config.temp + '**/*.css',
+      config.temp + '**/*.js'
     ] : [],
     ghostMode: { // these are the defaults t,f,t,t
       clicks: true,

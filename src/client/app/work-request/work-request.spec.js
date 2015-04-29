@@ -6,7 +6,6 @@ describe('WorkRequest', function() {
   var flush;
 
   beforeEach(function() {
-    bard.appModule('app.workRequest');
     bard.inject(this, '$q', '$rootScope', 'ApiResource');
     flush = function() { $rootScope.$apply(); };
   });

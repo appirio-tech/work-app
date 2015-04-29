@@ -29,7 +29,7 @@
 
     this.$get = Data;
 
-    Data.inject = ['ApiResource'];
+    Data.$inject = ['ApiResource'];
 
     function Data(ApiResource) {
       var data = {

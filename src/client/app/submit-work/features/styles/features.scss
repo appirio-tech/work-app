@@ -1,21 +1,39 @@
 @import "../../../core/styles/combined";
 
 .layout-main.submit-work .features {
+  textarea {
+    height: 75px;
+  }
+
   ul {
+    text-align: left;
+    display   : inline-block;
+
     li {
-      text-align: left;
       margin-top: $margin-18;
-      margin-left: $margin-22;
+      padding   : 0 $padding-20;
 
       input[type="checkbox"]{
-        position: absolute;
-        margin-left: -$margin-22;
+        position   : absolute;
+        margin-left: -$margin-20;
+        margin-top : $margin-2;
       }
 
       .label-example {
-        a {
+        button {
+          float              : right;
+          display            : inline-block;
+          margin-left        : $margin-5;
+          width              : 16px;
+          height             : 13px;
+          background-image   : url("../../images/view-feature.png");
+          background-position: -12px -13px;
+
           @include font-line(10);
-          margin-left: $margin-5;
+
+          &:hover {
+            background-position: -44px -13px;
+          }
         }
       }
 
@@ -26,6 +44,37 @@
   }
 
   .new-feature {
-    @include main-restricted();
+    display   : inline-block;
+    width     : 100%;
+    text-align: left;
+    margin-top: $margin-18;
+
+    .explanation-n-add {
+      margin-top: $margin-18;
+    }
+  }
+
+  .example {
+    $width     : 320px;
+    $height    : 480px;
+    display    : none;
+    width      : $width;
+    height     : $height;
+    margin-left: -$width / 2;
+    margin-top : -$height / 2;
+    padding    : $padding-15 $padding-20;
+
+    h2 {
+      margin-top: 0;
+      @include font-line(18);
+    }
+
+    h3 {
+      @include font-line(16);
+    }
+
+    img {
+      margin-top: $margin-18;
+    }
   }
 }

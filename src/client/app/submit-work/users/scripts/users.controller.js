@@ -6,24 +6,23 @@
     .module('app.submit-work')
     .controller('SubmitUsersController', SubmitUsersController);
 
-  SubmitUsersController.$inject = ['$scope', 'logger', 'SubmitWorkService'];
+  SubmitUsersController.$inject = ['$scope', 'logger', 'SubmitWorkService', 'NavService'];
 
-  function SubmitUsersController($scope, logger, SubmitWorkService) {
-    var vm       = this;
-    vm.title     = 'Users';
-    vm.work      = SubmitWorkService.work;
+  function SubmitUsersController($scope, logger, SubmitWorkService, NavService) {
+    var vm   = this;
+    vm.title = 'Users';
+    vm.work  = SubmitWorkService.work;
+    vm.submit;
 
-    logger.log('Activated Users View');
-
-    $scope.submit = function () {
+    vm.submit = function () {
       if ($scope.usersForm.$valid) {
-        SubmitWorkService.setNextState();
+        NavService.setNextState();
       }
     };
 
     $scope.$watch('usersForm', function(usersForm) {
       if (usersForm) {
-        SubmitWorkService.findState('users').form = usersForm;
+        NavService.findState('users').form = usersForm;
       }
     });
   }

@@ -3,22 +3,24 @@ var envConfig = require('./config');
 // To access environment variables use config.getVal('name', 'default value')
 
 module.exports = function () {
-  var client = './src/client/';
-  var server = './src/server/';
-  var clientApp = client + 'app/';
-  var report = './report/';
-  var root = './';
+  var client         = './src/client/';
+  var server         = './src/server/';
+  var clientApp      = client + 'app/';
+  var report         = './report/';
+  var root           = './';
   var specRunnerFile = 'specs.html';
-  var temp = './.tmp/';
-  var wiredep = require('wiredep');
-  var bowerFiles = wiredep({devDependencies: true})['js'];
-  var scssBuild = './.scss';
+  var temp           = './.tmp/';
+  var wiredep        = require('wiredep');
+  var bowerFiles     = wiredep({devDependencies: true})['js'];
+  var scssBuild      = './.scss';
+  var coffeeBuild    = './.coffee';
+  var nodeModules    = 'node_modules';
+
   var bower = {
     json: require('./bower.json'),
     directory: './bower_components/',
     ignorePath: '../..'
   };
-  var nodeModules = 'node_modules';
 
   var config = {
     // angular contants
@@ -49,7 +51,8 @@ module.exports = function () {
       clientApp + '**/fonts/*'
     ],
     html: client + '**/*.html',
-    jade: clientApp + '**/*.jade',
+    jade: clientApp + '**/!(index)+(.jade)',
+    jadeIndex: clientApp + '**/index.jade',
     htmltemplates: [
       clientApp + '**/*.html',
       temp + '**/*.html',
@@ -72,12 +75,8 @@ module.exports = function () {
     ],
 
     scss: clientApp + '**/*.scss',
+    coffee: clientApp + '**/*.coffee',
     scssBuild: scssBuild,
-    // replace used because compass expects file paths without './'
-    compass: {
-      css: temp.replace('./', ''),
-      sass: 'src/client/app'
-    },
     report: report,
     root: root,
     server: server,
@@ -149,7 +148,6 @@ module.exports = function () {
       nodeModules + '/sinon-chai/lib/sinon-chai.js'
     ],
     specHelpers: [client + 'test-helpers/*.js', clientApp + '**/*.stubs.js'],
-    specs: [clientApp + '**/*.spec.js'],
 
     /**
      * Node settings
@@ -195,10 +193,12 @@ module.exports = function () {
       files: [].concat(
         bowerFiles,
         config.specHelpers,
-        clientApp + '**/*.module.js',
-        clientApp + '**/*.js',
-        temp + '**/*.js',
-        temp + config.templateCache.file
+        client    + 'mock-api/*.coffee',
+        clientApp + '**/*.module.{js,coffee}',
+        clientApp + '**/*.{js,coffee}',
+        client    + 'test-helpers/*.coffee',
+        temp + 'constants.js',
+        temp + 'templates.js'
       ),
       exclude: [],
       coverage: {
@@ -213,7 +213,11 @@ module.exports = function () {
       },
       preprocessors: {}
     };
+
     options.preprocessors[clientApp + '**/!(*.spec)+(.js)'] = ['coverage'];
+
+    options.preprocessors['**/*.coffee'] =  ['coffee'];
+
     return options;
   }
 };

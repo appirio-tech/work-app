@@ -2,11 +2,11 @@ h2 About your project
 
 h3 Name your project
 
-form(name="nameForm", ng-submit="submit()")
+form(name="nameForm", ng-submit="vm.submit()")
   input(
     name         = "name",
     type         = "text",
-    placeholder  = "My Stock Monitor App",
+    placeholder  = "Ex. My Stock Monitor App",
     required     = true,
     ng-model     = "vm.work.name",
     ng-minlength = "3",

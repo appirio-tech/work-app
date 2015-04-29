@@ -1,6 +1,11 @@
 @import "../../../core/styles/combined";
 
 .layout-main.submit-work .designs {
+
+  > .optional {
+    color: $gray-chateau;
+  }
+
   form {
     @include main-restricted();
 

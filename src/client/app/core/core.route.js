@@ -1,15 +1,13 @@
 (function () {
   'use strict';
 
-  angular
-    .module('app.core')
-    .run(appRun);
-
   /* @ngInject */
   function appRun(routerHelper) {
     var otherwise = '/404';
     routerHelper.configureStates(getStates(), otherwise);
   }
+
+  appRun.$inject = ['routerHelper'];
 
   function getStates() {
     return [
@@ -23,4 +21,8 @@
       }
     ];
   }
+
+  angular
+    .module('app.core')
+    .run(appRun);
 })();
