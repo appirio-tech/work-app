@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', 'AuthService', 'logger'];
+  LoginController.$inject = ['$scope', '$location', '$state', 'AuthService', 'logger', 'auth0callbackUrl'];
 
   /* @ngInject */
-  function LoginController($scope, AuthService, logger) {
+  function LoginController($scope, $location, $state, AuthService, logger, auth0callbackUrl) {
     var vm = this;
     vm.title = 'Login';
     vm.username  = '';
@@ -22,7 +22,8 @@
       var loginOptions = {
         username: vm.username,
         password: vm.password,
-        error: loginFailure
+        error: loginFailure,
+        success: loginSuccess
       };
       AuthService.login(loginOptions);
     }
@@ -35,6 +36,23 @@
 
     function loginFailure(error) {
       vm.error = true;
+      logger.error(error);
+    }
+
+    function loginSuccess() {
+      vm.error = false;
+
+      // Redirect to a url sent in
+      var urlToken = $location.search();
+
+      if (urlToken.retUrl) {
+        $location.path(urlToken.retUrl).replace();
+      }
+      else if(urlToken.retState) {
+        $state.go(urlToken.retState);
+      } else {
+        $location.path(auth0callbackUrl);
+      }
     }
   }
 })();

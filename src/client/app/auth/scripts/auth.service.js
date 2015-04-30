@@ -36,6 +36,7 @@
      * - password
      * - retUrl: optional
      * - state:  an object containing formation to be based back
+     * - success:  success callback
      * - error: error callback
      */
     function login(options) {
@@ -45,7 +46,8 @@
 
       var defaultOptions = {
         retUrl: auth0retUrl,
-        error: function() {}
+        error: function() {},
+        success: function(state) {}
       };
 
       var lOptions = angular.extend({}, options, defaultOptions);
@@ -57,13 +59,30 @@
       auth.signin({
         username: lOptions.username,
         password: lOptions.password,
-        connection: 'LDAP',
-        response_type: 'code',
         authParams: {
-          scope: 'openid profile offline_access',
-          state: encodeURIComponent('retUrl=' + defaultOptions.retUrl)
+          scope: 'openid profile offline_access'
         }
-      });
+      }, successFunction, lOptions.error);
+
+      function successFunction(profile, idToken, accessToken, state, refreshToken) {
+        var query = {
+          params: {
+            refreshToken: refreshToken,
+            externalToken: idToken
+          }
+        };
+
+        data.create('auth', query)
+          .then(function(res) {
+            // Save the token
+            TokenService.setToken(res.result.content.token);
+            // set the auth flag to true
+            auth.isAuthenticated = true;
+            lOptions.success(state);
+          }).catch(function(e) {
+            lOptions.error(e);
+          });
+      }
     }
 
     /**

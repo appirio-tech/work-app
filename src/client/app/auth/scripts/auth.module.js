@@ -32,15 +32,14 @@
       domain  : auth0Domain,
       clientID: auth0ClientId,
       loginState: 'login',
-      responseType: 'code',
-      sso: false,
-      callbackURL: auth0callbackUrl
+      connection: 'LDAP',
+      sso: false
     });
   }
 
-  authRun.$inject = ['$rootScope', '$location', 'ApiResource', 'auth', 'TokenService', 'auth0TokenName', 'store'];
+  authRun.$inject = ['$rootScope', 'ApiResource', 'auth', 'TokenService'];
 
-  function authRun($rootScope, $location, ApiResource, auth, TokenService, auth0TokenName, store) {
+  function authRun($rootScope, ApiResource, auth, TokenService) {
     // Setup the resource
     var config = {
       url     : 'authorizations',
@@ -51,23 +50,9 @@
 
     auth.hookEvents();
 
+    // Make sure the token is valid and not expired
     function CheckToken() {
-      if (TokenService.tokenIsValid()) {
-        auth.isAuthenticated = true;
-      } else {
-        auth.isAuthenticated = false;
-        // Add the token to the local store if it's in the url
-        var urlToken = $location.search();
-
-        if (urlToken[auth0TokenName] && urlToken[auth0TokenName] !== 'undefined') {
-          TokenService.setToken(urlToken[auth0TokenName]);
-          $location.search(auth0TokenName, null);
-
-          var authState = store.get('login-state');
-          auth.isAuthenticated = true;
-          $rootScope.$broadcast('loginComplete', authState);
-        }
-      }
+      auth.isAuthenticated = !!TokenService.tokenIsValid();
     }
 
     $rootScope.$on('$locationChangeStart', CheckToken);
