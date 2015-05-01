@@ -10,14 +10,12 @@
   /* @ngInject */
   function NewRelicService($location) {
 
+    var noop = function () {};
+    var actionName = "routeChange";
     var service = {
       reportCurrentRoute: noop
     };
 
-    function noop () {};
-
-    var actionName = "routeChange";
-    
     if (window.newrelic) {
 
       service.reportCurrentRoute = function () {
