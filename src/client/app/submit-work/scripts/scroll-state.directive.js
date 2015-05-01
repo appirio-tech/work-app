@@ -3,9 +3,9 @@
 
   angular.module('app.submit-work').directive('ngScrollState', ScrollStateDirective);
 
-  ScrollStateDirective.$inject = ['$document', 'NewRelicService'];
+  ScrollStateDirective.$inject = ['$document', '$rootScope'];
 
-  function ScrollStateDirective($document, NewRelicService) {
+  function ScrollStateDirective($document, $rootScope) {
     var link = function (scope, element, attrs) {
       var stateElements      = element.find('.state');
       var previousScrollTop  = $document.scrollTop();
@@ -37,7 +37,6 @@
         if (scope.activeState != activeState) {
           isManualScrolling = true;
           scope.activeState = activeState;
-          NewRelicService.reportPseudoRoute(activeState);
           scope.$apply();
         }
       };
@@ -49,7 +48,6 @@
         else if (state) {
           var stateElement = element.find('#starting-line-' + state);
           $document.scrollToElementAnimated(stateElement, -100);
-          NewRelicService.reportPseudoRoute(state);
         }
       };
 

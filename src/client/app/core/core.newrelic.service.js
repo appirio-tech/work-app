@@ -11,7 +11,6 @@
   function NewRelicService($location) {
 
     var service = {
-      reportRoute: noop,
       reportCurrentRoute: noop
     };
 
@@ -27,16 +26,8 @@
         });
       }
 
-      service.reportPseudoRoute = function (route) {
-        var pseudoRoute = [$location.url(), route].join("+");
-        newrelic.addPageAction(actionName, {
-          url: pseudoRoute
-        });
-      }
-
     }
 
-    window.s = service;
     return service;
   }
 })();
