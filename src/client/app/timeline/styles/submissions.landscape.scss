@@ -1,0 +1,11 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.timeline {
+  .submissions {
+    .time, .view-details {
+      display: inline-block;
+    }
+  }
+}
