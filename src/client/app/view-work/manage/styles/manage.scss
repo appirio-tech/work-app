@@ -28,7 +28,7 @@
     }
 
     hr {
-      margin-top: 9px;
+      margin-top: $margin-9;
     }
   }
   
@@ -56,10 +56,12 @@
         padding: $padding-3;
 
         h4 {
+          margin-top: $margin-8;
           float: left;
         }
 
         span.type {
+          margin-top: $margin-10;
           float: right;
           @include source-sans();
           font-size: 12px;
@@ -73,10 +75,26 @@
 
       .bottom {
         height: 35%;
+        font-family: sans-serif;
+        text-align: center;
+        padding: $padding-12;
 
         &.incomplete {
           background: tomato;
         }
+
+        span.status {
+          color: white;
+          display: inline-block;
+          margin-bottom: $margin-8;
+        }
+
+        span.action a {
+          color: whitesmoke;
+          text-decoration: underline;
+          display: inline-block;
+        }
+
       }
 
     }
