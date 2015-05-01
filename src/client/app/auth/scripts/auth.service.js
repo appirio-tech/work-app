@@ -11,7 +11,8 @@
     var service = {
       login: login,
       logout: logout,
-      isAuthenticated: isAuthenticated
+      isAuthenticated: isAuthenticated,
+      exchangeToken: exchangeToken
     };
     return service;
 
@@ -24,8 +25,7 @@
         });
 
       function logoutComplete(data, status, headers, config) {
-        TokenService.deleteToken();
-        return data;
+        auth.signout();
       }
     }
 
@@ -45,9 +45,7 @@
       TokenService.deleteToken();
 
       var defaultOptions = {
-        retUrl: auth0retUrl,
-        error: function() {},
-        success: function(state) {}
+        retUrl: auth0retUrl
       };
 
       var lOptions = angular.extend({}, options, defaultOptions);
@@ -59,30 +57,47 @@
       auth.signin({
         username: lOptions.username,
         password: lOptions.password,
+        sso: false,
+        connection: 'LDAP',
         authParams: {
           scope: 'openid profile offline_access'
         }
-      }, successFunction, lOptions.error);
+      }, successFunction, errorFunction);
+
+      function errorFunction(err) {
+        options.error(err);
+      }
 
       function successFunction(profile, idToken, accessToken, state, refreshToken) {
-        var query = {
-          params: {
-            refreshToken: refreshToken,
-            externalToken: idToken
-          }
-        };
-
-        data.create('auth', query)
-          .then(function(res) {
-            // Save the token
-            TokenService.setToken(res.result.content.token);
-            // set the auth flag to true
-            auth.isAuthenticated = true;
-            lOptions.success(state);
-          }).catch(function(e) {
-            lOptions.error(e);
-          });
+        TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
       }
+    }
+
+    /**
+     * Exchange the Auth0 Token for the real one
+     */
+    function exchangeToken(idToken, refreshToken, success, error) {
+      var query = {
+        param: {
+          refreshToken: refreshToken,
+          externalToken: idToken
+        }
+      };
+
+      data.create('auth', query)
+        .then(function(res) {
+          // Save the token
+          TokenService.setToken(res.result.content.token);
+
+          if (success) {
+            success();
+          }
+
+        }).catch(function(e) {
+          if (error) {
+            error(e);
+          }
+        });
     }
 
     /**

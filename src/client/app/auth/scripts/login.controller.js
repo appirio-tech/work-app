@@ -35,6 +35,7 @@
     }
 
     function loginFailure(error) {
+      console.log(error);
       vm.error = true;
       logger.error(error);
     }

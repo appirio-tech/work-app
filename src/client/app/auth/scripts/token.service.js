@@ -13,40 +13,13 @@
       deleteToken: deleteToken,
       decodeToken: decodeToken,
       setToken: setToken,
-      refreshToken: refreshToken,
-      tokenIsValid: tokenIsValid
+      tokenIsValid: tokenIsValid,
+      getAuth0Tokens: getAuth0Tokens,
+      setAuth0Tokens: setAuth0Tokens,
+      deleteAuth0Tokens: deleteAuth0Tokens
     };
 
     return service;
-
-    function refreshToken() {
-      var idToken = getToken();
-
-      if (idToken && angular.isString(idToken)) {
-        if (jwtHelper.isTokenExpired(idToken)) {
-          // This is a promise of a JWT id_token
-          return $http({
-            url: apiUrl + 'authorizations/1',
-            // This makes it so that this request doesn't send the JWT
-            skipAuthorization: true,
-            method: 'GET',
-            headers: {
-              'Authorization': 'Bearer ' + idToken
-            }
-          }).then(function(response) {
-            var idToken = response.data.result.content.token;
-            setToken(idToken);
-            $rootScope.$broadcast('tokenRefresh');
-
-            return idToken;
-          });
-        } else {
-          return idToken;
-        }
-      } else {
-        return '';
-      }
-    }
 
     function getToken() {
       // the angular-store module takes care of the caching
@@ -59,6 +32,7 @@
 
     function deleteToken() {
       store.remove(auth0TokenName);
+      deleteAuth0Tokens();
     }
 
     function decodeToken() {
@@ -82,6 +56,29 @@
       }
 
       return false;
+    }
+
+    function getAuth0Tokens() {
+      return {
+        idToken: store.get('auth0IdToken'),
+        profile: store.get('auth0Profile'),
+        accessToken: store.get('auth0AccessToken'),
+        refreshToken: store.get('auth0RefreshToken')
+      }
+    }
+
+    function setAuth0Tokens(profile, idToken, accessToken, refreshToken) {
+      store.set('auth0IdToken', idToken);
+      store.set('auth0Profile', profile);
+      store.set('auth0AccessToken', accessToken);
+      store.set('auth0RefreshToken', refreshToken);
+    }
+
+    function deleteAuth0Tokens() {
+      store.remove('auth0IdToken');
+      store.remove('auth0Profile');
+      store.remove('auth0AccessToken');
+      store.remove('auth0RefreshToken');
     }
   }
 })();

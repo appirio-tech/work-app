@@ -13,9 +13,10 @@
       user: user,
       setUser: setUser
     };
-    return service;
 
     var user;
+
+    return service;
 
     function setUser(id) {
       getUser(id)

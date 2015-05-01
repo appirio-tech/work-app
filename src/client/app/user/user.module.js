@@ -30,7 +30,6 @@
     }
 
     // Update User Service on login
-    $rootScope.$on('loginComplete', LoginComplete);
-    $rootScope.$on('tokenRefresh', LoginComplete)
+    $rootScope.$on('$locationChangeStart', LoginComplete);
   }
 })();
