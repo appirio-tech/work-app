@@ -5,9 +5,9 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService'];
+  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService'];
   /* @ngInject */
-  function AuthService(data, exception, auth, auth0retUrl, store, TokenService) {
+  function AuthService($rootScope, data, exception, auth, auth0retUrl, store, TokenService) {
     var service = {
       login: login,
       logout: logout,
@@ -73,6 +73,8 @@
         TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
 
         exchangeToken(idToken, refreshToken, options.success);
+
+        $rootScope.$broadcast('authenticated');
       }
     }
 

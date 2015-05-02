@@ -20,8 +20,6 @@
 
     ApiResource.add(config);
 
-    LoginComplete.$inject = ['UserService', 'decodedToken'];
-
     function LoginComplete() {
       var decodedToken = TokenService.decodeToken();
       if (decodedToken.userId) {
@@ -30,6 +28,6 @@
     }
 
     // Update User Service on login
-    $rootScope.$on('$locationChangeStart', LoginComplete);
+    $rootScope.$on('authenticated', LoginComplete);
   }
 })();
