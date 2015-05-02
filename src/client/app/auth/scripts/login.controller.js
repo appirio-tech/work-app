@@ -52,7 +52,7 @@
       else if(urlToken.retState) {
         $state.go(urlToken.retState);
       } else {
-        $location.path(auth0callbackUrl);
+        $location.path('/');
       }
     }
   }

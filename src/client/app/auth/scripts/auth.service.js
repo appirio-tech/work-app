@@ -12,7 +12,8 @@
       login: login,
       logout: logout,
       isAuthenticated: isAuthenticated,
-      exchangeToken: exchangeToken
+      exchangeToken: exchangeToken,
+      refreshToken: refreshToken
     };
     return service;
 
@@ -70,6 +71,8 @@
 
       function successFunction(profile, idToken, accessToken, state, refreshToken) {
         TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
+
+        exchangeToken(idToken, refreshToken, options.success);
       }
     }
 
@@ -98,6 +101,28 @@
             error(e);
           }
         });
+    }
+
+    /**
+     * Refresh the token with the API
+     */
+    function refreshToken() {
+      data.get('auth', {id: 1}).then(function(data) {
+        var newToken = data.result.content.token;
+
+        TokenService.setToken(newToken);
+
+        var tokens = TokenService.getAuth0Tokens();
+
+        TokenService.setAuth0Tokens(
+          tokens.profile,
+          newToken,
+          tokens.accessToken,
+          tokens.refreshToken
+        );
+
+        auth.authenticate(tokens.profile, newToken);
+      });
     }
 
     /**

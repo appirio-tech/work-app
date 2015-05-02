@@ -36,33 +36,6 @@
       loginState: 'login'
     });
 
-    /* Handle exchanging auth0 token with our auth service token */
-
-    authenticated.$inject = ['$rootScope', 'AuthService', 'logger', 'idToken', 'refreshToken'];
-
-    function loginSuccess($rootScope, AuthService, logger, idToken, refreshToken) {
-      logger.info('Logged In');
-      exchangeToken(AuthService, idToken, refreshToken, logger);
-      // We use a different emit so we do not bind ourselves to auth0
-      // outside of the auth library
-      $rootScope.$emit('loginSuccess');
-    }
-
-    authenticated.$inject = ['$rootScope', 'AuthService', 'logger', 'idToken', 'refreshToken'];
-
-    function authenticated($rootScope, AuthService, logger, idToken, refreshToken) {
-      logger.info('Authenticated');
-      exchangeToken(AuthService, idToken, refreshToken, logger);
-      // We use a different emit so we do not bind ourselves to auth0
-      // outside of the auth library
-      $rootScope.$emit('authenticated');
-    }
-
-    function exchangeToken(AuthService, idToken, refreshToken, logger) {
-      logger.info('Exchanging Token');
-      AuthService.exchangeToken(idToken, refreshToken);
-    }
-
     // Log out handler
     logout.$inject = ['TokenService'];
 
@@ -70,8 +43,6 @@
       TokenService.deleteToken();
     }
 
-    authProvider.on('loginSuccess', loginSuccess);
-    authProvider.on('authenticated', authenticated);
     authProvider.on('logout', logout);
   }
 
@@ -90,26 +61,12 @@
 
     // Make sure the token is valid and not expired
     function CheckToken() {
-      if (!TokenService.tokenIsValid()) {
-        var token = TokenService.getToken();
-
-        if (token) {
-          var tokens = TokenService.getAuth0Tokens();
-          auth.authenticate(tokens.profile, tokens.idToken);
-        }
-      } else {
+      if (!auth.isAuthenticated && TokenService.tokenIsValid()) {
         var tokens = TokenService.getAuth0Tokens();
-        auth.refreshIdToken(tokens.refreshToken)
-          .then(function(newToken) {
-            TokenService.setAuth0Tokens(
-              tokens.profile,
-              newToken,
-              tokens.accessToken,
-              tokens.refreshToken
-            );
+        auth.authenticate(tokens.profile, tokens.idToken);
+      } else if (!TokenService.tokenIsValid()) {
 
-            auth.authenticate(tokens.profile, newToken);
-          });
+        AuthService.refreshToken();
       }
     }
 
