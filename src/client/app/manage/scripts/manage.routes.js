@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.view-work.manage')
+    .module('app.manage')
     .run(runApp);
 
   runApp.$inject = ['routerHelper', '$stateParams', 'data'];
@@ -17,7 +17,7 @@
         state: 'view-work-multiple',
         config: {
           url: '/manage',
-          templateUrl: 'view-work/manage/views/manage.html',
+          templateUrl: '/manage/views/manage.html',
           controller: 'ManageController',
           controllerAs: 'vm',
           title: 'View Work',
@@ -32,4 +32,3 @@
     ];
   }
 })();
-
