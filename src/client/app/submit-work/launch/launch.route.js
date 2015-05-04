@@ -7,11 +7,11 @@
 
   appRun.$inject = ['routerHelper', 'SubmitWorkService'];
   /* @ngInject */
-  function appRun(routerHelper) {
-    routerHelper.configureStates(getStates());
+  function appRun(routerHelper, SubmitWorkService) {
+    routerHelper.configureStates(getStates(SubmitWorkService));
   }
 
-  function getStates() {
+  function getStates(SubmitWorkService) {
     return [
       {
         state: 'launch-estimate',
@@ -32,7 +32,7 @@
           controller: 'SubmitSuccessController',
           controllerAs: 'vm',
           resolve: {
-            work: function(SubmitWorkService) {
+            work: function() {
               return SubmitWorkService.save();
             }
           },
