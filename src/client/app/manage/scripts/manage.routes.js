@@ -7,11 +7,11 @@
 
   runApp.$inject = ['routerHelper', '$stateParams', 'data'];
   /* @ngInject */
-  function runApp(routerHelper) {
-    routerHelper.configureStates(getStates());
+  function runApp(routerHelper, $stateParams, data) {
+    routerHelper.configureStates(getStates($stateParams, data));
   }
 
-  function getStates() {
+  function getStates($stateParams, data) {
     return [
       {
         state: 'view-work-multiple',
@@ -23,7 +23,7 @@
           title: 'View Work',
           settings: {},
           resolve : {
-            workRequests : function ($stateParams, data) {
+            workRequests : function () {
               return data.get('work-request', $stateParams);
             }
           }
