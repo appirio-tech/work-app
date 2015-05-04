@@ -33,7 +33,7 @@
           controllerAs: 'vm',
           resolve: {
             work: function(SubmitWorkService) {
-              return SubmitWorkService.save();
+              return SubmitWorkService.save('Submitted');
             }
           },
           title: 'Success',
