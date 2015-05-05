@@ -10,7 +10,8 @@
     'app.create-account',
     'app.view-work',
     'app.timeline',
-    'app.demo'
+    'app.demo',
+    'newrelic'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);
