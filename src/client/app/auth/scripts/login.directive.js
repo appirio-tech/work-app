@@ -24,6 +24,7 @@
     var vm = this;
 
     vm.loggedInUser = UserService.user;
+    vm.isLoggedIn = AuthService.isAuthenticated();
     $scope.signout = signout;
     $scope.signin = signin;
 
