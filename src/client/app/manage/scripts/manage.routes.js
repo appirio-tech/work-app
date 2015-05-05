@@ -17,7 +17,7 @@
         state: 'view-work-multiple',
         config: {
           url: '/manage',
-          templateUrl: '/manage/views/manage.html',
+          templateUrl: 'manage/views/manage.html',
           controller: 'ManageController',
           controllerAs: 'vm',
           title: 'View Work',
