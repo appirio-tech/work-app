@@ -3,7 +3,6 @@
 
   angular.module('blocks.router', [
     'ui.router',
-    'blocks.logger',
-    'newrelic'
+    'blocks.logger'
   ]);
 })();
