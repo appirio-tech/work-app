@@ -1,5 +1,5 @@
 /* jshint -W117, -W030 */
-describe('ViewWorkMultiController', function () {
+describe('ManageController', function () {
   var controller, scope;
 
   beforeEach(function () {
@@ -9,7 +9,7 @@ describe('ViewWorkMultiController', function () {
   beforeEach(function () {
     scope = $rootScope.$new();
 
-    controller = $controller('ViewWorkMultiController', {
+    controller = $controller('ManageController', {
       $scope: scope,
       workRequests: mockWorkRequest.getResponse('WorkRequests')
     });
