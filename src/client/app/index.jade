@@ -18,8 +18,6 @@
 - scripts.push('/src/client/app/core/config')
 - scripts.push('/src/client/app/core/core.constants')
 - scripts.push('/src/client/app/core/core.route')
-- scripts.push('/src/client/app/demo/demo.module')
-- scripts.push('/src/client/app/demo/demo.route')
 
 - var css = []
 - var landscapeCSS = []
@@ -67,11 +65,13 @@
 //- work request
 - scripts.push("/src/client/app/work-request/work-request.module")
 
-//- view work
-- scripts.push("/src/client/app/view-work/scripts/view-work.module")
-- scripts.push("/src/client/app/view-work/scripts/view-work.routes")
-- scripts.push("/src/client/app/view-work/scripts/view-work-single.controller")
-- scripts.push("/src/client/app/view-work/scripts/view-work-multi.controller")
+//- manage
+include manage/manage-includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
 
 //- features
 - scripts.push("/src/client/app/feature/feature.module")
