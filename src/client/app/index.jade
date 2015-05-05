@@ -20,6 +20,8 @@
 - scripts.push('/src/client/app/core/core.route')
 - scripts.push('/src/client/app/demo/demo.module')
 - scripts.push('/src/client/app/demo/demo.route')
+- scripts.push('/src/client/app/newrelic/newrelic.module')
+- scripts.push('/src/client/app/newrelic/newrelic.service')
 
 - var css = []
 - var landscapeCSS = []
@@ -112,6 +114,9 @@ html(ng-app='app')
     meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
 
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
+
+    script
+      include newrelic/resources/newrelic-init.js
 
     base(href=basePath)
 

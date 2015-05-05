@@ -22,9 +22,9 @@
     };
 
     this.$get = RouterHelper;
-    RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger'];
+    RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'NewRelicService'];
     /* @ngInject */
-    function RouterHelper($location, $rootScope, $state, logger) {
+    function RouterHelper($location, $rootScope, $state, logger, NewRelicService) {
       var handlingStateChangeError = false;
       var hasOtherwise = false;
       var stateCounts = {
@@ -81,22 +81,19 @@
 
       function init() {
         handleRoutingErrors();
-        updateDocTitle();
+        $rootScope.$on('$stateChangeSuccess', onStateChangeSuccess);
       }
 
       function getStates() {
         return $state.get();
       }
 
-      function updateDocTitle() {
-        $rootScope.$on('$stateChangeSuccess',
-          function (event, toState, toParams, fromState, fromParams) {
-            stateCounts.changes++;
-            handlingStateChangeError = false;
-            var title = config.docTitle + ' ' + (toState.title || '');
-            $rootScope.title = title; // data bind to <title>
-          }
-        );
+      function onStateChangeSuccess (event, toState, toParams, fromState, fromParams) {
+        stateCounts.changes++;
+        handlingStateChangeError = false;
+        var title = config.docTitle + ' ' + (toState.title || '');
+        $rootScope.title = title; // data bind to <title>
+        NewRelicService.reportCurrentRoute();
       }
     }
   }
