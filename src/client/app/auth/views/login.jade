@@ -6,11 +6,11 @@ main
   form(ng-submit="vm.submit()")
     p.error(ng-show="vm.error") We can't find an account with the email / password you entered. Please try again.
 
-    label(for="user") Username
+    h3 Username
 
     input(type="text", name="user", ng-model="vm.username", required=true)
 
-    label(for="password") Password
+    h3 Password
 
     input(type="password" name="password" ng-model="vm.password" required=true)
 
