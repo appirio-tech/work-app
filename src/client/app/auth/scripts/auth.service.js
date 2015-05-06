@@ -27,6 +27,7 @@
 
       function logoutComplete(data, status, headers, config) {
         auth.signout();
+        TokenService.deleteToken();
       }
     }
 

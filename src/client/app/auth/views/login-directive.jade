@@ -1,9 +1,7 @@
 a.login(href="#/")
 
-  .icon(ng-hide="vm.loggedInUser")
+  .label(ng-click="vm.signin()" ng-hide="vm.isLoggedIn") Log in
 
-  .label(ng-click="signin()" ng-hide="vm.isLoggedIn") Log in
+  .label(ng-hide="vm.loggedInUser") {{vm.loggedInUser.handle}}
 
-  .label(ng-click="signout()" ng-show="vm.isLoggedIn") {{vm.loggedInUser.handle}}
-
-  .icon(ng-show="vm.loggedInUser")
+  .label(ng-click="vm.signout()" ng-show="vm.isLoggedIn") Log out

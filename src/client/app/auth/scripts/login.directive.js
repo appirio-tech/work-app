@@ -25,15 +25,18 @@
 
     vm.loggedInUser = UserService.user;
     vm.isLoggedIn = AuthService.isAuthenticated();
-    $scope.signout = signout;
-    $scope.signin = signin;
+    vm.signout = signout;
+    vm.signin = signin;
 
     function signin() {
       $state.go('login');
     }
 
     function signout() {
-      AuthService.logout();
+      AuthService.logout()
+        .then(function() {
+          $state.reload();
+        });
     }
   }
 
