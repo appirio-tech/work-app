@@ -5,9 +5,9 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService'];
+  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService', 'logger'];
   /* @ngInject */
-  function AuthService($rootScope, data, exception, auth, auth0retUrl, store, TokenService) {
+  function AuthService($rootScope, data, exception, auth, auth0retUrl, store, TokenService, logger) {
     var service = {
       login: login,
       logout: logout,
@@ -124,6 +124,10 @@
         );
 
         auth.authenticate(tokens.profile, newToken);
+      }, function(err) {
+        // If we are in error: log it, delete the token
+        logger.error("Error refreshing Token: " + err.statusText, err);
+        TokenService.deleteToken();
       });
     }
 

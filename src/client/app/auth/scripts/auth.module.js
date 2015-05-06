@@ -65,8 +65,7 @@
         var tokens = TokenService.getAuth0Tokens();
         auth.authenticate(tokens.profile, tokens.idToken);
         $rootScope.$broadcast('authenticated');
-      } else if (!TokenService.tokenIsValid()) {
-
+      } else if (TokenService.getToken() && !TokenService.tokenIsValid()) {
         AuthService.refreshToken();
       }
     }
