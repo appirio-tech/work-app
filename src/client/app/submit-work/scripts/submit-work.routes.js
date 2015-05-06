@@ -17,10 +17,7 @@
         title: 'Submit Work',
         abstract: true,
         controller: 'SubmitWorkController',
-        templateUrl: 'submit-work/submit-work.html',
-        data: {
-          requiresLogin: true
-        }
+        templateUrl: 'submit-work/submit-work.html'
       }
     }, {
       state: 'submit-work.flow',

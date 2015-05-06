@@ -35,7 +35,7 @@
     function signout() {
       AuthService.logout()
         .then(function() {
-          $state.reload();
+          $state.go('home');
         });
     }
   }

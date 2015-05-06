@@ -46,9 +46,9 @@
     authProvider.on('logout', logout);
   }
 
-  authRun.$inject = ['$rootScope', 'ApiResource', 'auth', 'TokenService', 'AuthService'];
+  authRun.$inject = ['$rootScope', '$injector', 'ApiResource', 'auth', 'TokenService', 'AuthService'];
 
-  function authRun($rootScope, ApiResource, auth, TokenService, AuthService) {
+  function authRun($rootScope, $injector, ApiResource, auth, TokenService, AuthService) {
     // Setup the resource
     var config = {
       url     : 'authorizations',
@@ -71,5 +71,19 @@
     }
 
     $rootScope.$on('$locationChangeStart', CheckToken);
+
+    // check if stat requires auth
+    function checkAuth(event, toState) {
+      console.log(toState);
+      if (!toState.data || (toState.data && !toState.data.noAuthRequired)) {
+        if (!TokenService.tokenIsValid()) {
+          $rootScope.preAuthState = toState.name;
+          event.preventDefault();
+          $injector.get('$state').go('login');
+        }
+      }
+    }
+
+    $rootScope.$on('$stateChangeStart', checkAuth);
   }
 })();

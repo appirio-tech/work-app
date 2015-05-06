@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$location', '$state', 'AuthService', 'logger', 'auth0callbackUrl'];
+  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService', 'logger', 'auth0callbackUrl'];
 
   /* @ngInject */
-  function LoginController($scope, $location, $state, AuthService, logger, auth0callbackUrl) {
+  function LoginController($rootScope, $location, $state, AuthService, logger, auth0callbackUrl) {
     var vm = this;
     vm.title = 'Login';
     vm.username  = '';
@@ -50,9 +50,13 @@
         $location.path(urlToken.retUrl).replace();
       }
       else if(urlToken.retState) {
-        $state.go(urlToken.retState);
+        $state.go(urlToken.retState, {}, {reload: true});
+      } else if ($rootScope.preAuthState) {
+        // Look for a last state.  Redirect if it exists
+        $state.go($rootScope.preAuthState);
       } else {
-        $state.reload();
+        // if all else fails go to the home screen
+        $state.go('home');
       }
     }
   }
