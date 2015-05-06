@@ -10,7 +10,7 @@ ul
         h4 {{project.name}}
         span.type {{project.requestType}}
       .middle
-        img
+        img(src="manage/images/missing-image.svg", class="missing")
       .bottom(ng-class="project.class")
         img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
         span.status {{project.message}}
