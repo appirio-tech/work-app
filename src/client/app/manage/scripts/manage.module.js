@@ -5,6 +5,7 @@
     .module('app.manage', [
       'app.core',
       'app.resource',
-      'app.workRequest'
+      'app.workRequest',
+      'ngSanitize'
     ]);
 })();

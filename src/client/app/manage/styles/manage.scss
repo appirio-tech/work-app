@@ -79,8 +79,20 @@
         text-align: center;
         padding: $padding-12;
 
+        img.checkmark {
+          margin-top: -43px;
+          margin-left: 47px;
+          height: 43px;
+          position: absolute;
+        }
+
         &.incomplete {
-          background: tomato;
+          background: #f25a29;
+        }
+
+        &.submitted {
+          background: #49dcfe;
+          padding-top: 23px;
         }
 
         span.status {
@@ -90,10 +102,12 @@
           margin-bottom: $margin-8;
         }
 
-        span.action a {
+        span.action, span.action a {
           color: whitesmoke;
-          text-decoration: underline;
           display: inline-block;
+          a {
+            text-decoration: underline;
+          }
         }
 
       }

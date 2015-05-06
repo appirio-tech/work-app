@@ -1,6 +1,6 @@
 .heading
   h1 Manage Projects
-  button New Project
+  button(href="/submit-work") New Project
   hr
 
 ul
@@ -11,8 +11,8 @@ ul
         span.type {{project.requestType}}
       .middle
         img
-      .bottom.incomplete
-        span.status PROJECT SUBMISSION INCOMPLETE
+      .bottom(ng-class="project.class")
+        img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
+        span.status {{project.message}}
         br
-        span.action
-          a Continue Setup
+        span.action(ng-bind-html="project.action")
