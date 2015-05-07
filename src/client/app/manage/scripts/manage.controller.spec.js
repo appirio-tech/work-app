@@ -1,6 +1,6 @@
 /* jshint -W117, -W030 */
 describe('ManageController', function () {
-  var controller, scope, service;
+  var controller, scope;
 
   beforeEach(function () {
     bard.inject(this, '$controller', '$log', '$rootScope', '$q', 'ApiResource');
