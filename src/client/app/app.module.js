@@ -9,7 +9,8 @@
     'app.submit-work',
     'app.create-account',
     'app.manage',
-    'app.timeline'
+    'app.timeline',
+    'newrelic'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);
