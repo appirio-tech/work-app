@@ -17,12 +17,12 @@ $header-height: 38px;
   }
 
   .logo {
-    @include span-columns(4);
+    @include span-columns(7);
   }
 
   .login {
     @include span-columns(4);
-    @include shift(4);
+    @include shift(1);
 
     @include font(16);
   }
