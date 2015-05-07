@@ -38,3 +38,5 @@ lib-cov
 
 # scss intermediary step
 .scss
+
+work-api-schema
