@@ -1,0 +1,18 @@
+.heading
+  h1 Manage Projects
+  button New Project
+  hr
+
+ul
+  li(ng-repeat= "project in vm.workRequests")
+    div
+      header
+        h4 {{project.name}}
+        span.type {{project.requestType}}
+      .middle
+        img
+      .bottom.incomplete
+        span.status PROJECT SUBMISSION INCOMPLETE
+        br
+        span.action
+          a Continue Setup

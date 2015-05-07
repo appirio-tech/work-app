@@ -8,10 +8,9 @@
     'app.auth',
     'app.submit-work',
     'app.create-account',
-    'app.view-work',
+    'app.manage',
     'app.timeline',
-    'app.user',
-    'app.demo'
+    'app.user'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);
