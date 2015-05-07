@@ -6,7 +6,7 @@ run = (routerHelper) ->
   states.push
     state : 'timeline'
     config:
-      url         : '/timeline/:workId'
+      url         : '/timeline'
       title       : 'Timeline'
       controller  : 'TimelineController'
       controllerAs: 'vm'
