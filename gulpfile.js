@@ -309,6 +309,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe($.revReplace(replaceOptions))
     // minimize html
     .pipe(htmlFilter)
+    .pipe($.removeCode({ production: true }))
     .pipe($.replace(/\bxlink:href(.+\/\bimages)/g, 'xlink:href="images'))
     .pipe($.htmlmin({ collapseWhitespace: true, removeComments: true }))
     .pipe(htmlFilter.restore())
