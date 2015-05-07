@@ -90,7 +90,7 @@
         }
       };
 
-      data.create('auth', query)
+      return data.create('auth', query)
         .then(function(res) {
           // Save the token
           TokenService.setToken(res.result.content.token);
@@ -110,7 +110,7 @@
      * Refresh the token with the API
      */
     function refreshToken() {
-      data.get('auth', {id: 1}).then(function(data) {
+      return data.get('auth', {id: 1}).then(function(data) {
         var newToken = data.result.content.token;
 
         TokenService.setToken(newToken);
