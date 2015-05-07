@@ -1,6 +1,6 @@
 /* jshint -W117, -W030 */
 describe('ManageController', function () {
-  var controller, scope;
+  var controller, scope, service;
 
   beforeEach(function () {
     bard.inject(this, '$controller', '$log', '$rootScope', '$q', 'ApiResource');
@@ -34,8 +34,7 @@ describe('ManageController', function () {
       });
 
       it('should have an array of Work Requests', function() {
-//        expect(controller.workRequest).to.be.array;
-//        expect(controller.workRequests.length).to.be.eql(mockWorkRequest.getMockWorkRequests().length);
+        expect(controller.workRequest).to.be.array;
       });
     });
   });

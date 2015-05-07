@@ -12,8 +12,9 @@
     var service = {
 
       // functions
-      getWorkRequests: null,
-      getDisplayWorkRequests: null
+      getWorkRequests        : null,
+      formatWorkRequests     : null,
+      getDisplayWorkRequests : null
 
     };
 
@@ -39,20 +40,31 @@
     };
 
     service.getWorkRequests = function() {
-      var ans = data.get('work-request', params).result.content;
-      return ans;
+      var deferred = $q.defer();
+      data.get('work-request').then(function(data) {
+        deferred.resolve(data.result.content);
+      });
+      return deferred.promise;
     };
 
-    service.getDisplayWorkRequests = function(params) {
-      return service.getWorkRequests(params).map(function(work) {
-        work.status = work.status || 'Incomplete';
-        work.class   = statusClasses[work.status];
-        work.message = statusMessages[work.status];
-        work.action  = statusActions[work.status];
-        work.checkmark = checkmarks[work.status];
+    service.formatWorkRequests = function(requests) {
+      return requests.map(function(work) {
+        work.status      = work.status || 'Incomplete';
+        work.class       = statusClasses[work.status];
+        work.message     = statusMessages[work.status];
+        work.action      = statusActions[work.status];
+        work.checkmark   = checkmarks[work.status];
         work.requestType = typeDisplays[work.requestType];
         return work;
       });
+    };
+
+    service.getDisplayWorkRequests = function() {
+      var deferred = $q.defer();
+      service.getWorkRequests().then(function(requests) {
+        deferred.resolve(service.formatWorkRequests(requests));
+      });
+      return deferred.promise;
     };
 
     return service;

@@ -19,8 +19,10 @@
     function activate() {
       logger.info('Activated Work Request Single View');
     }
+
     vm.newProject = function() {
       $location.url('submit-work');
     };
+
   }
 })();
