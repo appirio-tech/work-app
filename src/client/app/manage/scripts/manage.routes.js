@@ -5,13 +5,13 @@
     .module('app.manage')
     .run(runApp);
 
-  runApp.$inject = ['routerHelper', '$stateParams', 'data'];
+  runApp.$inject = ['routerHelper', '$stateParams', 'ManageService'];
   /* @ngInject */
-  function runApp(routerHelper, $stateParams, data) {
-    routerHelper.configureStates(getStates($stateParams, data));
+  function runApp(routerHelper, $stateParams, ManageService) {
+    routerHelper.configureStates(getStates($stateParams, ManageService));
   }
 
-  function getStates($stateParams, data) {
+  function getStates($stateParams, ManageService) {
     return [
       {
         state: 'view-work-multiple',
@@ -24,7 +24,7 @@
           settings: {},
           resolve : {
             workRequests : function () {
-              return data.get('work-request', $stateParams);
+              return ManageService.getDisplayWorkRequests({});
             }
           }
         }
