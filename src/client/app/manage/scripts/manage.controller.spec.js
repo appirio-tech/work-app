@@ -11,7 +11,7 @@ describe('ManageController', function () {
 
     controller = $controller('ManageController', {
       $scope: scope,
-      workRequests: mockWorkRequest.getResponse('WorkRequests')
+      workRequests: mockWorkRequest.getResponse('WorkRequests').result.content
     });
 
     $rootScope.$apply();
@@ -35,7 +35,6 @@ describe('ManageController', function () {
 
       it('should have an array of Work Requests', function() {
         expect(controller.workRequest).to.be.array;
-        expect(controller.workRequests).to.be.eql(mockWorkRequest.getMockWorkRequests());
       });
     });
   });
