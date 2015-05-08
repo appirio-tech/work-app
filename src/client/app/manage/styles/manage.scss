@@ -25,6 +25,10 @@
       margin-left: 10%;
       width: 20%;
       height: 50px;
+      &:hover {
+        cursor: pointer;
+        cursor: hand;
+      }
     }
 
     hr {
