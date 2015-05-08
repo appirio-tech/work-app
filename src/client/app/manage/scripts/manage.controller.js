@@ -11,7 +11,6 @@
     var vm = this;
     vm.title = 'Work Requests';
     vm.workRequests = [];
-    vm.newProject = null;
     vm.formatWorkRequests = null;
 
     vm.activate = function() {
@@ -28,10 +27,6 @@
         'Incomplete': 'PROJECT SUBMISSION INCOMPLETE',
         'Submitted' : 'PROJECT SUBMITTED'
       };
-      var statusActions = {
-        'Incomplete': '<a>Continue setup</a>',
-        'Submitted' : 'Waiting for Project Approval'
-      };
       var checkmarks = {
         'Submitted': 'check-solid-blue.svg',
       };
@@ -45,15 +40,10 @@
         work.status      = work.status || 'Incomplete';
         work.class       = statusClasses[work.status];
         work.message     = statusMessages[work.status];
-        work.action      = statusActions[work.status];
         work.checkmark   = checkmarks[work.status];
         work.requestType = typeDisplays[work.requestType];
         return work;
       });
-    };
-
-    vm.newProject = function() {
-      $state.go('submit-work.flow');
     };
 
     vm.activate();

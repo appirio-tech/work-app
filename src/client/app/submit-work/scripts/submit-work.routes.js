@@ -21,6 +21,9 @@
       }
     }, {
       state: 'submit-work.flow',
+      params: {
+        id: null,
+      },
       config: {
         url: '',
         views: {
