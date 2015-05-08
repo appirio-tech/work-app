@@ -5,9 +5,9 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService', 'logger'];
+  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'store', 'TokenService', 'logger'];
   /* @ngInject */
-  function AuthService($rootScope, data, exception, auth, auth0retUrl, store, TokenService, logger) {
+  function AuthService($rootScope, data, exception, auth, store, TokenService, logger) {
     var service = {
       login: null,
       logout: null,
@@ -47,7 +47,7 @@
       TokenService.deleteToken();
 
       var defaultOptions = {
-        retUrl: auth0retUrl
+        retUrl: '/'
       };
 
       var lOptions = angular.extend({}, options, defaultOptions);
