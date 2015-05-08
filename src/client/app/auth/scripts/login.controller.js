@@ -15,9 +15,11 @@
     vm.password = '';
     vm.error = false;
 
-    vm.submit = submit;
+    vm.submit = null;
 
-    function submit() {
+    activate();
+
+    vm.submit = function() {
       vm.error = false;
       var loginOptions = {
         username: vm.username,
@@ -26,9 +28,7 @@
         success: loginSuccess
       };
       AuthService.login(loginOptions);
-    }
-
-    activate();
+    };
 
     function activate() {
       logger.log('Activated Login View');

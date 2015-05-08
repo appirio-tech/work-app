@@ -9,15 +9,14 @@
   /* @ngInject */
   function AuthService($rootScope, data, exception, auth, auth0retUrl, store, TokenService, logger) {
     var service = {
-      login: login,
-      logout: logout,
-      isAuthenticated: isAuthenticated,
-      exchangeToken: exchangeToken,
-      refreshToken: refreshToken
+      login: null,
+      logout: null,
+      isAuthenticated: null,
+      exchangeToken: null,
+      refreshToken: null
     };
-    return service;
 
-    function logout() {
+    service.logout = function() {
       return data.remove('auth')
         .then(logoutComplete)
         .catch(function (message) {
@@ -29,7 +28,7 @@
         auth.signout();
         TokenService.deleteToken();
       }
-    }
+    };
 
     /**
      * Trigger login
@@ -41,7 +40,7 @@
      * - success:  success callback
      * - error: error callback
      */
-    function login(options) {
+    service.login = function(options) {
 
       // First remove any old tokens
       TokenService.deleteToken();
@@ -77,12 +76,12 @@
 
         $rootScope.$broadcast('authenticated');
       }
-    }
+    };
 
     /**
      * Exchange the Auth0 Token for the real one
      */
-    function exchangeToken(idToken, refreshToken, success, error) {
+    service.exchangeToken = function(idToken, refreshToken, success, error) {
       var query = {
         param: {
           refreshToken: refreshToken,
@@ -104,12 +103,12 @@
             error(e);
           }
         });
-    }
+    };
 
     /**
      * Refresh the token with the API
      */
-    function refreshToken() {
+    service.refreshToken = function() {
       data.get('auth', {id: 1}).then(function(data) {
         var newToken = data.result.content.token;
 
@@ -130,15 +129,17 @@
         logger.error("Error refreshing Token: " + err.statusText, err);
         TokenService.deleteToken();
       });
-    }
+    };
 
     /**
      * Is there a current active session
      *
      * @return bool
      */
-    function isAuthenticated() {
+    service.isAuthenticated = function() {
       return TokenService.tokenIsValid();
-    }
+    };
+
+    return service;
   }
 })();

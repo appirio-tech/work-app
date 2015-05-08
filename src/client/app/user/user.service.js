@@ -9,25 +9,21 @@
   /* @ngInject */
   function UserService(data, logger) {
     var service = {
-      getUser: getUser,
-      user: user,
-      setUser: setUser
+      getUser: null,
+      user: null,
+      setUser: null
     };
 
-    var user;
-
-    return service;
-
-    function setUser(id) {
+    service.setUser = function(id) {
       getUser(id)
         .then(function(data) {
           service.user = data;
         });
-    }
+    };
 
-    function getUser(id) {
+    service.getUser = function(id) {
       if (service.user) {
-        return user;
+        return service.user;
       }
 
       var promise = data.get('user', {id: id});
@@ -45,6 +41,8 @@
       function userError(error) {
         logger.log(error);
       }
-    }
+    };
+
+    return service;
   }
 })();
