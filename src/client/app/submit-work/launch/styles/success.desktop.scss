@@ -1,10 +1,9 @@
 @import "../../../core/styles/combined";
 
 .layout-main.submit-work.launch.success {
-  text-align: center;
 
   main {
-    width: 100%;
-    min-height: 300px;
+    @include main-restricted-desktop();
+    min-height: 620px;
   }
 }
