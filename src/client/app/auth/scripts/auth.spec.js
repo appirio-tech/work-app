@@ -3,10 +3,9 @@ describe('Auth', function() {
   'use strict';
 
   var flush;
-  var LoginController
 
   beforeEach(function() {
-    bard.inject(this, '$q', '$rootScope', 'ApiResource', 'jwtHelper', 'TokenService', 'auth0TokenName', 'AuthService', 'auth', '$controller', '$rootScope');
+    bard.inject(this, '$q', '$rootScope', 'ApiResource', 'auth0TokenName', 'auth',  'TokenService', 'AuthService');
     flush = function() { $rootScope.$apply(); };
   });
 
@@ -23,7 +22,6 @@ describe('Auth', function() {
     });
 
     var scope = $rootScope.$new();
-    LoginController = $controller('SubmitNameController', {$scope: scope});
 
     flush();
   });
@@ -48,7 +46,7 @@ describe('Auth', function() {
       var newToken = localstorage.getItem(auth0TokenName);
 
       expect(newToken).to.be.ok;
-      expect(newToken).to.be.a.('string');
+      expect(newToken).to.be.a('string');
       expect(newToken).to.equal(token);
     });
 
