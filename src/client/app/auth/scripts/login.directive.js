@@ -25,8 +25,8 @@
 
     vm.loggedInUser = UserService.getUser();
     vm.isLoggedIn = AuthService.isAuthenticated();
-    vm.signout = signout;
-    vm.signin = signin;
+    vm.signout = null;
+    vm.signin = null;
 
     activate();
 
@@ -45,11 +45,11 @@
       vm.loggedInUser = UserService.getUser();
     }
 
-    function signin() {
+    vm.signin = function() {
       $state.go('login');
-    }
+    };
 
-    function signout() {
+    vm.signout = function() {
       AuthService.logout()
         .then(function() {
           $state.go('home');
