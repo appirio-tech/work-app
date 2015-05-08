@@ -5,9 +5,9 @@
     .module('app.manage')
     .controller('ManageController', ManageController);
 
-  ManageController.$inject = ['logger', 'workRequests', '$location'];
+  ManageController.$inject = ['logger', 'workRequests', '$state'];
   /* @ngInject */
-  function ManageController(logger, workRequests, $location) {
+  function ManageController(logger, workRequests, $state) {
     var vm = this;
     vm.title = 'Work Requests';
     vm.workRequests = [];
@@ -53,7 +53,7 @@
     };
 
     vm.newProject = function() {
-      $location.url('submit-work');
+      $state.go('submit-work.flow');
     };
 
     vm.activate();
