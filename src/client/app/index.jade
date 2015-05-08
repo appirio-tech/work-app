@@ -17,8 +17,9 @@
 - scripts.push('/src/client/app/core/config')
 - scripts.push('/src/client/app/core/core.constants')
 - scripts.push('/src/client/app/core/core.route')
-- scripts.push('/src/client/app/demo/demo.module')
-- scripts.push('/src/client/app/demo/demo.route')
+- scripts.push('/src/client/app/newrelic/newrelic.module')
+- scripts.push('/src/client/app/newrelic/newrelic.service')
+- scripts.push('/src/client/app/newrelic/newrelic.init')
 
 - var css = []
 - var landscapeCSS = []
@@ -70,11 +71,13 @@
 //- work request
 - scripts.push("/src/client/app/work-request/work-request.module")
 
-//- view work
-- scripts.push("/src/client/app/view-work/scripts/view-work.module")
-- scripts.push("/src/client/app/view-work/scripts/view-work.routes")
-- scripts.push("/src/client/app/view-work/scripts/view-work-single.controller")
-- scripts.push("/src/client/app/view-work/scripts/view-work-multi.controller")
+//- manage
+include manage/manage-includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
 
 //- features
 - scripts.push("/src/client/app/feature/feature.module")
@@ -115,6 +118,9 @@ html(ng-app='app')
     meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
 
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
+
+    script
+      include newrelic/resources/newrelic-init.js
 
     base(href=basePath)
 

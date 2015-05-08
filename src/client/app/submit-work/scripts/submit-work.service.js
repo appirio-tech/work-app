@@ -28,6 +28,7 @@
       requestType      : null,
       usageDescription : null,
       summary          : null,
+      status           : 'Incomplete',
       competitorApps   : [],
       features         : [],
       costEstimate     : { low: 0, high: 0 },
@@ -42,10 +43,11 @@
       'usageDescription',
       'summary',
       'competitorApps',
+      'status',
       'features'
     ];
 
-    service.save = function() {
+    service.save = function(status) {
       var promise = $q.defer();
       var work = {};
 
@@ -54,6 +56,10 @@
         if (submittableFields.indexOf(key) >= 0) {
           work[key] = angular.copy(service.work[key]);
         }
+      }
+
+      if (status) {
+        work.status = status;
       }
 
       // need to filter out stuff used for front-end processing

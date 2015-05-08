@@ -6,12 +6,12 @@
     'app.layout',
     'app.getting-started',
     'app.auth',
+    'app.user',
     'app.submit-work',
     'app.create-account',
-    'app.view-work',
+    'app.manage',
     'app.timeline',
-    'app.user',
-    'app.demo'
+    'newrelic'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);

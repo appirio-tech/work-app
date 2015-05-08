@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.view-work', [
+    .module('app.manage', [
       'app.core',
       'app.resource',
       'app.workRequest'
