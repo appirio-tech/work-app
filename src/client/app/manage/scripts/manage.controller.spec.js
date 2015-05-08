@@ -11,7 +11,7 @@ describe('ManageController', function () {
 
     controller = $controller('ManageController', {
       $scope: scope,
-      workRequests: mockWorkRequest.getResponse('WorkRequests')
+      workRequests: mockWorkRequest.getResponse('WorkRequests').result.content
     });
 
     $rootScope.$apply();

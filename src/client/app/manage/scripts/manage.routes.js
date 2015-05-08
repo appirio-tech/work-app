@@ -24,7 +24,7 @@
           settings: {},
           resolve: {
             workRequests: function() {
-              return ManageService.getDisplayWorkRequests();
+              return ManageService.getWorkRequests();
             }
           }
         }

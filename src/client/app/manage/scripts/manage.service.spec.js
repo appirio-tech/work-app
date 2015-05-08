@@ -18,16 +18,5 @@ describe('ManageService', function () {
       expect(service).to.be.defined;
     });
 
-    it('should be able to format work requests', function() {
-      var reqs = [{'requestType': 'design'}];
-      reqs = service.formatWorkRequests(reqs);
-      var req = reqs[0];
-      expect(req.status).to.equal('Incomplete');
-      expect(req.class).to.equal('incomplete');
-      expect(req.message).to.equal('PROJECT SUBMISSION INCOMPLETE');
-      expect(req.action).to.equal('<a>Continue setup</a>');
-      expect(req.requestType).to.equal('Mobile: Design');
-    });
-
   });
 });
