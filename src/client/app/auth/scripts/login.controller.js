@@ -35,7 +35,6 @@
     }
 
     function loginFailure(error) {
-      console.log(error);
       vm.error = true;
       logger.error(error);
     }
@@ -50,7 +49,7 @@
         $location.path(urlToken.retUrl).replace();
       }
       else if(urlToken.retState) {
-        $state.go(urlToken.retState, {}, {reload: true});
+        $state.go(urlToken.retState);
       } else if ($rootScope.preAuthState) {
         // Look for a last state.  Redirect if it exists
         $state.go($rootScope.preAuthState);

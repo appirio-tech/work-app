@@ -11,11 +11,16 @@
     var service = {
       getUser: null,
       user: null,
-      setUser: null
+      setUser: null,
+      removeUser: null
+    };
+
+    service.removeUser = function() {
+      service.user = null;
     };
 
     service.setUser = function(id) {
-      getUser(id)
+      service.getUser(id)
         .then(function(data) {
           service.user = data;
         });

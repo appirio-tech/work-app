@@ -27,6 +27,7 @@
       function logoutComplete(data, status, headers, config) {
         auth.signout();
         TokenService.deleteToken();
+        $rootScope.$broadcast('logout');
       }
     };
 
@@ -72,9 +73,7 @@
       function successFunction(profile, idToken, accessToken, state, refreshToken) {
         TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
 
-        exchangeToken(idToken, refreshToken, options.success);
-
-        $rootScope.$broadcast('authenticated');
+        service.exchangeToken(idToken, refreshToken, options.success);
       }
     };
 
@@ -93,6 +92,7 @@
         .then(function(res) {
           // Save the token
           TokenService.setToken(res.result.content.token);
+          $rootScope.$broadcast('authenticated');
 
           if (success) {
             success();

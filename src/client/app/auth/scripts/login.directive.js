@@ -18,15 +18,32 @@
     return directive;
   }
 
-  LoginDirectiveController.$inject = ['$scope', '$state', 'UserService', 'AuthService'];
+  LoginDirectiveController.$inject = ['$scope', '$rootScope', '$state', 'UserService', 'AuthService'];
 
-  function LoginDirectiveController($scope, $state, UserService, AuthService) {
+  function LoginDirectiveController($scope, $rootScope, $state, UserService, AuthService) {
     var vm = this;
 
-    vm.loggedInUser = UserService.user;
+    vm.loggedInUser = UserService.getUser();
     vm.isLoggedIn = AuthService.isAuthenticated();
     vm.signout = signout;
     vm.signin = signin;
+
+    activate();
+
+    function activate() {
+      $rootScope.$on('logout', function() {
+        updateDisplay();
+      });
+
+      $rootScope.$on('authenticated', function() {
+        updateDisplay();
+      });
+    }
+
+    function updateDisplay() {
+      vm.isLoggedIn = AuthService.isAuthenticated();
+      vm.loggedInUser = UserService.getUser();
+    }
 
     function signin() {
       $state.go('login');

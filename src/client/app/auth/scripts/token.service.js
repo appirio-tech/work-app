@@ -30,11 +30,11 @@
 
     service.deleteToken = function () {
       store.remove(auth0TokenName);
-      deleteAuth0Tokens();
+      service.deleteAuth0Tokens();
     };
 
     service.decodeToken = function () {
-      var token = getToken();
+      var token = service.getToken();
 
       if (token) {
         return jwtHelper.decodeToken(token);
@@ -44,16 +44,10 @@
     };
 
     service.tokenIsValid = function () {
-      var token = getToken();
+      var token = service.getToken();
 
-      if (token && token !== 'undefined' &&
-          angular.isString(token) &&
-          !jwtHelper.isTokenExpired(token)) {
-
-        return true;
-      }
-
-      return false;
+      return !!(token && token !== 'undefined' &&
+      angular.isString(token) && !jwtHelper.isTokenExpired(token));
     };
 
     service.getAuth0Tokens = function () {
@@ -77,7 +71,7 @@
       store.remove('auth0Profile');
       store.remove('auth0AccessToken');
       store.remove('auth0RefreshToken');
-    }
+    };
 
     return service;
   }
