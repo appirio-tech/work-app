@@ -112,12 +112,9 @@ gulp.task('coffee', function () {
 gulp.task('jade', ['jade-index'], function () {
   log('Compiling Jade --> HTML');
 
-  var stubs = config.useStubs === 'true';
-
   var options = {
     pretty: false,
     locals: {
-      stubs: stubs,
       basePath: config.baseURL
     }
   };

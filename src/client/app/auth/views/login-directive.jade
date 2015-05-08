@@ -1,0 +1,11 @@
+.icon(ng-hide="vm.loggedInUser") &nbsp
+
+.label(ng-click="vm.signin()" ng-hide="vm.isLoggedIn") Log in
+
+.label(ng-hide="vm.loggedInUser") {{vm.loggedInUser.handle}}
+
+.label(ng-click="vm.signout()" ng-show="vm.isLoggedIn") {{vm.loggedInUser.handle}}
+
+.label(ng-click="vm.signout()" ng-show="vm.isLoggedIn") Log out
+
+.icon(ng-show="vm.loggedInUser")
