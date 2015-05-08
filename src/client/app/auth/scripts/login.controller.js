@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService', 'logger', 'auth0callbackUrl'];
+  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService', 'logger'];
 
   /* @ngInject */
-  function LoginController($rootScope, $location, $state, AuthService, logger, auth0callbackUrl) {
+  function LoginController($rootScope, $location, $state, AuthService, logger) {
     var vm = this;
     vm.title = 'Login';
     vm.username  = '';

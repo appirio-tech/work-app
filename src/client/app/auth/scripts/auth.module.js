@@ -13,9 +13,9 @@
     .config(authConfig)
     .run(authRun);
 
-  authConfig.$inject = ['$httpProvider', 'jwtInterceptorProvider', 'authProvider', 'auth0Domain', 'auth0ClientId', 'auth0callbackUrl'];
+  authConfig.$inject = ['$httpProvider', 'jwtInterceptorProvider', 'authProvider', 'auth0Domain', 'auth0ClientId'];
 
-  function authConfig($httpProvider, jwtInterceptorProvider, authProvider, auth0Domain, auth0ClientId, auth0callbackUrl) {
+  function authConfig($httpProvider, jwtInterceptorProvider, authProvider, auth0Domain, auth0ClientId) {
 
     /* Add Token to API Calls */
 
