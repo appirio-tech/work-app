@@ -1,5 +1,15 @@
 'use strict'
 
+window.__karma__.loaded = ->
+  # prevent karma from starting
+  SwaggerFakeServer.init()
+
+  SwaggerFakeServer.fakeServer.respondImmediately = true
+
+  schema = __fixtures__['work-api-schema/work-api-schema']
+
+  SwaggerFakeServer.consume schema, window.__karma__.start
+
 stash = {}
 
 window.stashIt = (obj, key) ->
