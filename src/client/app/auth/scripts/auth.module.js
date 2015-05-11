@@ -59,13 +59,6 @@
 
     auth.hookEvents();
 
-    // Make sure the token is valid and not expired
-    function CheckToken() {
-
-    }
-
-    $rootScope.$on('$locationChangeStart', CheckToken);
-
     // check if stat requires auth
     function checkAuth(event, toState) {
       if (TokenService.getToken() && !TokenService.tokenIsValid()) {
