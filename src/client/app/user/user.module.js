@@ -32,7 +32,7 @@
     }
 
     // Update User Service on login
-    $rootScope.$on('authenticated', LoginComplete);
+    //$rootScope.$on('authenticated', LoginComplete);
 
     // Remove user object
     $rootScope.$on('logout', LogOutComplete);

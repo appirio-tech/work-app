@@ -61,20 +61,29 @@
 
     // Make sure the token is valid and not expired
     function CheckToken() {
-      if (TokenService.getToken() && !TokenService.tokenIsValid()) {
-        AuthService.refreshToken();
-      }
+
     }
 
     $rootScope.$on('$locationChangeStart', CheckToken);
 
     // check if stat requires auth
     function checkAuth(event, toState) {
-      if (!toState.data || (toState.data && !toState.data.noAuthRequired)) {
-        if (!AuthService.isAuthenticated()) {
-          $rootScope.preAuthState = toState.name;
-          event.preventDefault();
-          $state.go('login');
+      if (TokenService.getToken() && !TokenService.tokenIsValid()) {
+        AuthService.refreshToken()
+          .then(function() {
+            checkRedirect();
+          });
+      } else {
+        checkRedirect();
+      }
+
+      function checkRedirect() {
+        if (!toState.data || (toState.data && !toState.data.noAuthRequired)) {
+          if (!AuthService.isAuthenticated()) {
+            $rootScope.preAuthState = toState.name;
+            event.preventDefault();
+            $state.go('login');
+          }
         }
       }
     }

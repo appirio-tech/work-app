@@ -71,8 +71,6 @@
       }
 
       function successFunction(profile, idToken, accessToken, state, refreshToken) {
-        TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
-
         service.exchangeToken(idToken, refreshToken, options.success);
       }
     };
@@ -109,7 +107,7 @@
      * Refresh the token with the API
      */
     service.refreshToken = function() {
-      data.get('auth', {id: 1}).then(function(data) {
+      return data.get('auth', {id: 1}).then(function(data) {
         var newToken = data.result.content.token;
 
         TokenService.setToken(newToken);
