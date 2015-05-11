@@ -61,7 +61,7 @@
 
     // Make sure the token is valid and not expired
     function CheckToken() {
-      if (!auth.isAuthenticated && TokenService.tokenIsValid()) {
+      if (!AuthService.isAuthenticated()) {
         var tokens = TokenService.getAuth0Tokens();
         auth.authenticate(tokens.profile, tokens.idToken);
         $rootScope.$broadcast('authenticated');
@@ -74,9 +74,8 @@
 
     // check if stat requires auth
     function checkAuth(event, toState) {
-      console.log(toState);
       if (!toState.data || (toState.data && !toState.data.noAuthRequired)) {
-        if (!TokenService.tokenIsValid()) {
+        if (!AuthService.isAuthenticated()) {
           $rootScope.preAuthState = toState.name;
           event.preventDefault();
           $injector.get('$state').go('login');

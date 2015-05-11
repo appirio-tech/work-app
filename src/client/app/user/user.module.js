@@ -14,7 +14,7 @@
 
   function UserModule($rootScope, ApiResource, TokenService, UserService) {
     var config = {
-      url: 'user',
+      url: 'users',
       resource: 'user'
     };
 
