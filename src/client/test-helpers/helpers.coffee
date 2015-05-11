@@ -27,6 +27,7 @@ beforeEach ->
   module 'app.submit-work'
   module 'app.core'
   module 'app.manage'
+  module 'app.timeline'
 
 # Mock http request for angular
 getPayload = (method, path) ->
@@ -56,3 +57,15 @@ beforeEach inject ($httpBackend) ->
           clonedPayload
           {}
         ]
+
+# Transfer fakeserver responses to $httpBackend
+beforeEach inject ($httpBackend) ->
+  responses = window.SwaggerFakeServer?.fakeServer?.responses
+
+  if responses
+    for response in responses
+      upperCaseMethod = response.method.toUpperCase()
+      request         = $httpBackend.when upperCaseMethod, response.url
+
+      request.respond response.response[0], response.response[2]
+

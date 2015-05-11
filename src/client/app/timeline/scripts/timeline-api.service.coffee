@@ -1,9 +1,9 @@
-# grunt replace:development
 'use strict'
 
 transformResponse = (response) ->
-  parsed = JSON.parse(response)
-  parsed
+  parsed = JSON.parse response
+
+  parsed?.result?.content || []
 
 srv = ($resource, apiUrl) ->
   url     = apiUrl + 'events'
@@ -11,11 +11,11 @@ srv = ($resource, apiUrl) ->
   actions =
     query:
       method           :'GET'
-      isArray          : false
+      isArray          : true
       transformResponse: transformResponse
 
   $resource url, params, actions
 
 srv.$inject = ['$resource', 'apiUrl']
 
-angular.module('app.timeline').factory 'TimelineAPI', srv
+angular.module('app.timeline').factory 'TimelineAPIService', srv

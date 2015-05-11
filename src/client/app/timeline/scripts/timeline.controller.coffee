@@ -1,7 +1,6 @@
 'use strict'
 
-
-TimelineController = (TimelineAPI, $stateParams) ->
+TimelineController = (TimelineAPIService, $stateParams) ->
   vm        = this
   vm.events = []
   params    =
@@ -18,7 +17,7 @@ TimelineController = (TimelineAPI, $stateParams) ->
   resource.$promise.finally ->
     # need to handle when done
 
-TimelineController.$inject = ['TimelineAPI', '$stateParams']
+TimelineController.$inject = ['TimelineAPIService', '$stateParams']
 
 angular.module('app.timeline').controller 'TimelineController', TimelineController
 

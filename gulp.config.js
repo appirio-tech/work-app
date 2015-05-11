@@ -193,9 +193,9 @@ module.exports = function () {
         './bower_components/swagger-fake-server/dist/swagger-fake-server.js',
         config.specHelpers,
         client    + 'mock-api/*.coffee',
+        client    + 'test-helpers/*.coffee',
         clientApp + '**/*.module.{js,coffee}',
         clientApp + '**/*.{js,coffee}',
-        client    + 'test-helpers/*.coffee',
         temp + 'constants.js',
         temp + 'templates.js',
         {
