@@ -14,8 +14,6 @@
       decodeToken: null,
       setToken: null,
       tokenIsValid: null,
-      getAuth0Tokens: null,
-      setAuth0Tokens: null,
       deleteAuth0Tokens: null
     };
 
@@ -30,7 +28,6 @@
 
     service.deleteToken = function () {
       store.remove(auth0TokenName);
-      service.deleteAuth0Tokens();
     };
 
     service.decodeToken = function () {
@@ -48,29 +45,6 @@
 
       return !!(token && token !== 'undefined' &&
       angular.isString(token) && !jwtHelper.isTokenExpired(token));
-    };
-
-    service.getAuth0Tokens = function () {
-      return {
-        idToken: store.get('auth0IdToken'),
-        profile: store.get('auth0Profile'),
-        accessToken: store.get('auth0AccessToken'),
-        refreshToken: store.get('auth0RefreshToken')
-      }
-    };
-
-    service.setAuth0Tokens = function(profile, idToken, accessToken, refreshToken) {
-      store.set('auth0IdToken', idToken);
-      store.set('auth0Profile', profile);
-      store.set('auth0AccessToken', accessToken);
-      store.set('auth0RefreshToken', refreshToken);
-    };
-
-    service.deleteAuth0Tokens = function() {
-      store.remove('auth0IdToken');
-      store.remove('auth0Profile');
-      store.remove('auth0AccessToken');
-      store.remove('auth0RefreshToken');
     };
 
     return service;

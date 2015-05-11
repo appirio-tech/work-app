@@ -71,8 +71,6 @@
       }
 
       function successFunction(profile, idToken, accessToken, state, refreshToken) {
-        TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
-
         service.exchangeToken(idToken, refreshToken, options.success);
       }
     };
@@ -109,21 +107,11 @@
      * Refresh the token with the API
      */
     service.refreshToken = function() {
-      data.get('auth', {id: 1}).then(function(data) {
+      return data.get('auth', {id: 1}).then(function(data) {
         var newToken = data.result.content.token;
 
         TokenService.setToken(newToken);
-
-        var tokens = TokenService.getAuth0Tokens();
-
-        TokenService.setAuth0Tokens(
-          tokens.profile,
-          newToken,
-          tokens.accessToken,
-          tokens.refreshToken
-        );
-
-        auth.authenticate(tokens.profile, newToken);
+        $rootScope.$broadcast('authenticated');
       }, function(err) {
         // If we are in error: log it, delete the token
         logger.error("Error refreshing Token: " + err.statusText, err);

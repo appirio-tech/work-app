@@ -46,9 +46,9 @@
     authProvider.on('logout', logout);
   }
 
-  authRun.$inject = ['$rootScope', '$injector', 'ApiResource', 'auth', 'TokenService', 'AuthService'];
+  authRun.$inject = ['$rootScope', '$injector', '$state', 'ApiResource', 'auth', 'TokenService', 'AuthService'];
 
-  function authRun($rootScope, $injector, ApiResource, auth, TokenService, AuthService) {
+  function authRun($rootScope, $injector, $state, ApiResource, auth, TokenService, AuthService) {
     // Setup the resource
     var config = {
       url     : 'authorizations',
@@ -61,25 +61,29 @@
 
     // Make sure the token is valid and not expired
     function CheckToken() {
-      if (!auth.isAuthenticated && TokenService.tokenIsValid()) {
-        var tokens = TokenService.getAuth0Tokens();
-        auth.authenticate(tokens.profile, tokens.idToken);
-        $rootScope.$broadcast('authenticated');
-      } else if (TokenService.getToken() && !TokenService.tokenIsValid()) {
-        AuthService.refreshToken();
-      }
+
     }
 
     $rootScope.$on('$locationChangeStart', CheckToken);
 
     // check if stat requires auth
     function checkAuth(event, toState) {
-      console.log(toState);
-      if (!toState.data || (toState.data && !toState.data.noAuthRequired)) {
-        if (!TokenService.tokenIsValid()) {
-          $rootScope.preAuthState = toState.name;
-          event.preventDefault();
-          $injector.get('$state').go('login');
+      if (TokenService.getToken() && !TokenService.tokenIsValid()) {
+        AuthService.refreshToken()
+          .then(function() {
+            checkRedirect();
+          });
+      } else {
+        checkRedirect();
+      }
+
+      function checkRedirect() {
+        if (!toState.data || (toState.data && !toState.data.noAuthRequired)) {
+          if (!AuthService.isAuthenticated()) {
+            $rootScope.preAuthState = toState.name;
+            event.preventDefault();
+            $state.go('login');
+          }
         }
       }
     }
