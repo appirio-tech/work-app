@@ -298,7 +298,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.uglify({ mangle: true, compress: true })) // another option is to override wiredep to use min files
+    .pipe($.uglify({ mangle: true, compress: true }))
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())
