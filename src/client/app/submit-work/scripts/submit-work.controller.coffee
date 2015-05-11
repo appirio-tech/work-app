@@ -35,7 +35,6 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state, $rootScop
       NavService.setActiveState activateState
     else
       NavService.reset()
-      $scope.completed = NavService.completed
       $state.go 'launch-success'
 
 SubmitWorkController.$inject = ['$scope', 'SubmitWorkService', 'NavService', '$state', '$rootScope']
