@@ -4,8 +4,6 @@
 
 .label(ng-hide="vm.loggedInUser") {{vm.loggedInUser.handle}}
 
-.label(ng-click="vm.signout()" ng-show="vm.isLoggedIn") {{vm.loggedInUser.handle}}
-
 .label(ng-click="vm.signout()" ng-show="vm.isLoggedIn") Log out
 
 .icon(ng-show="vm.loggedInUser")

@@ -47,8 +47,7 @@
 
       if (urlToken.retUrl) {
         $location.path(urlToken.retUrl).replace();
-      }
-      else if(urlToken.retState) {
+      } else if (urlToken.retState) {
         $state.go(urlToken.retState);
       } else if ($rootScope.preAuthState) {
         // Look for a last state.  Redirect if it exists
