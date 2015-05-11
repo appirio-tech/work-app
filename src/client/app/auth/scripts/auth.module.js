@@ -46,9 +46,9 @@
     authProvider.on('logout', logout);
   }
 
-  authRun.$inject = ['$rootScope', '$injector', 'ApiResource', 'auth', 'TokenService', 'AuthService'];
+  authRun.$inject = ['$rootScope', '$injector', '$state', 'ApiResource', 'auth', 'TokenService', 'AuthService'];
 
-  function authRun($rootScope, $injector, ApiResource, auth, TokenService, AuthService) {
+  function authRun($rootScope, $injector, $state, ApiResource, auth, TokenService, AuthService) {
     // Setup the resource
     var config = {
       url     : 'authorizations',
@@ -61,11 +61,7 @@
 
     // Make sure the token is valid and not expired
     function CheckToken() {
-      if (!AuthService.isAuthenticated()) {
-        var tokens = TokenService.getAuth0Tokens();
-        auth.authenticate(tokens.profile, tokens.idToken);
-        $rootScope.$broadcast('authenticated');
-      } else if (TokenService.getToken() && !TokenService.tokenIsValid()) {
+      if (TokenService.getToken() && !TokenService.tokenIsValid()) {
         AuthService.refreshToken();
       }
     }
@@ -78,7 +74,7 @@
         if (!AuthService.isAuthenticated()) {
           $rootScope.preAuthState = toState.name;
           event.preventDefault();
-          $injector.get('$state').go('login');
+          $state.go('login');
         }
       }
     }

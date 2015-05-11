@@ -113,17 +113,7 @@
         var newToken = data.result.content.token;
 
         TokenService.setToken(newToken);
-
-        var tokens = TokenService.getAuth0Tokens();
-
-        TokenService.setAuth0Tokens(
-          tokens.profile,
-          newToken,
-          tokens.accessToken,
-          tokens.refreshToken
-        );
-
-        auth.authenticate(tokens.profile, newToken);
+        $rootScope.$broadcast('authenticated');
       }, function(err) {
         // If we are in error: log it, delete the token
         logger.error("Error refreshing Token: " + err.statusText, err);
