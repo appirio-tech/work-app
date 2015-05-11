@@ -19,7 +19,8 @@
       // functions
       setActiveState : null,
       findState      : null,
-      setNextState   : null
+      setNextState   : null,
+      reset          : null
 
     };
 
@@ -30,6 +31,9 @@
       design       : false,
       launch       : false
     };
+
+    // for resetting
+    var defaultCompleted = angular.copy(service.completed);
 
     service.states = [
       { 'key': 'name' },
@@ -110,6 +114,16 @@
       service.setActiveState(nextState);
 
       return service.activeState;
+    };
+
+    service.reset = function() {
+      service.setActiveState('name');
+      service.states.forEach(function(state) {
+        state.form.$setPristine();
+        state.form.$setUntouched();
+      });
+      service.completed = defaultCompleted;
+      defaultCompleted = angular.copy(defaultCompleted);
     };
 
     return service;

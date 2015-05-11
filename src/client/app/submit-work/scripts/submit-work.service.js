@@ -19,7 +19,8 @@
       // functions
       save        : null,
       savePrice   : null,
-      getEstimate : null
+      getEstimate : null,
+      resetWork   : null
 
     };
 
@@ -35,6 +36,9 @@
       acceptedTerms    : false
     };
 
+    // for resetting the object after submit
+    var defaultWork = angular.copy(service.work);
+
     // these are all the fields we'll actually submit on
     // a POST or PUT. everything else is filtered.
     var submittableFields = [
@@ -47,7 +51,7 @@
       'features'
     ];
 
-    service.save = function(status) {
+    service.save = function(status, reset) {
       var promise = $q.defer();
       var work = {};
 
@@ -89,6 +93,9 @@
           $q.reject(e);
         });
       }
+      if (reset) {
+        service.resetWork();
+      }
     };
 
     service.getEstimate = function() {
@@ -116,6 +123,11 @@
       data.get('work-request', {id: service.id}).then(function(data) {
         service.work.costEstimate = data.result.content.costEstimate;
       });
+    };
+
+    service.resetWork = function() {
+      service.work = defaultWork;
+      defaultWork = angular.copy(service.work);
     };
 
     return service;
