@@ -3,7 +3,8 @@
 var mockAuthRequest = (function () {
   return {
     getAuth: getAuth,
-    signin: signin
+    signin: signin,
+    login: login
   };
 
   function signin(options, successCallback, errorCallback, libName) {
@@ -29,5 +30,19 @@ var mockAuthRequest = (function () {
       },
       version: 'v3'
     };
+  }
+
+  function login(optons) {
+    if (optons.username === '1234' && optons.password === '1234') {
+
+      var auth = getAuth();
+
+      localStorage.setItem('userJWTToken', auth.result.content.token);
+
+      optons.success();
+    } else {
+      localStorage.removeItem('userJWTToken');
+      optons.error();
+    }
   }
 })();
