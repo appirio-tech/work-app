@@ -1,23 +1,18 @@
 'use strict'
 
-TimelineController = (TimelineAPIService, $stateParams) ->
+TimelineController = (TimelineService, $stateParams) ->
   vm        = this
-  vm.events = []
   params    =
     workId = $stateParams.workId
 
-  resource = TimelineAPI.query params
+  onSuccess = (timeline) ->
+    vm.submittedDate = timeline.submittedDate
 
-  resource.$promise.then (response) ->
-    vm.events = response
+  TimelineService.getEvents params, onSuccess
 
-  resource.$promise.catch ->
-    # need handle error
+  vm
 
-  resource.$promise.finally ->
-    # need to handle when done
-
-TimelineController.$inject = ['TimelineAPIService', '$stateParams']
+TimelineController.$inject = ['TimelineService', '$stateParams']
 
 angular.module('app.timeline').controller 'TimelineController', TimelineController
 
