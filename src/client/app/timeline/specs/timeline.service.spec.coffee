@@ -1,15 +1,13 @@
 'use strict'
 
-srv       = null
 timeline  = null
 
 describe 'TimelineService', ->
   beforeEach inject (TimelineService, $httpBackend) ->
-    srv = TimelineService
     params =
       workId: 123
 
-    srv.getEvents params, (response) ->
+    TimelineService.getEvents params, (response) ->
       timeline = response
 
     $httpBackend.flush()
