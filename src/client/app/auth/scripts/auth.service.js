@@ -96,7 +96,7 @@
             success();
           }
 
-        }).catch(function(e) {
+        }, function(e) {
           if (error) {
             error(e);
           }
@@ -106,8 +106,8 @@
     /**
      * Refresh the token with the API
      */
-    function refreshToken() {
-      data.get('auth', {id: 1}).then(function(data) {
+    service.refreshToken = function() {
+      return data.get('auth', {id: 1}).then(function(data) {
         var newToken = data.result.content.token;
 
         TokenService.setToken(newToken);

@@ -30,4 +30,4 @@ var mockAuthRequest = (function () {
       version: 'v3'
     };
   }
-});
+})();

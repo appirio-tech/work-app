@@ -5,15 +5,19 @@ describe('Auth', function() {
   var flush;
 
   beforeEach(function() {
-    bard.inject(this, '$q', '$rootScope', 'ApiResource', 'auth0TokenName', 'auth',  'TokenService', 'AuthService');
+    bard.inject(this, '$q', '$rootScope', 'ApiResource', 'data', 'auth0TokenName', 'auth', 'store', 'TokenService', 'AuthService', 'jwtHelper');
     flush = function() { $rootScope.$apply(); };
-  });
 
-  beforeEach(function() {
     bard.mockService(ApiResource['auth'], {
       create: $.when(mockAuthRequest.getAuth()),
       get: $.when(mockAuthRequest.getAuth()),
-      default: $q.when([])
+      remove: $q.when([])
+    });
+
+    bard.mockService(data, {
+      get: $.when(mockAuthRequest.getAuth()),
+      create: $.when(mockAuthRequest.getAuth()),
+      remove: $q.when([])
     });
 
     bard.mockService(auth, {
@@ -21,16 +25,21 @@ describe('Auth', function() {
       signin: mockAuthRequest.signin
     });
 
-    var scope = $rootScope.$new();
-
-    flush();
+    // We fake the decoding of hte token since we dontt have real tokens
+    bard.mockService(jwtHelper, {
+      isTokenExpired: function() { return false }
+    })
   });
 
   bard.verifyNoOutstandingHttpRequests();
 
   describe('Token Service', function() {
     beforeEach(function() {
-      localstorage.removeItem(auth0TokenName);
+      store.remove(auth0TokenName);
+    });
+
+    afterEach(function() {
+      store.remove(auth0TokenName);
     });
 
     it('should be created successfully', function() {
@@ -39,11 +48,11 @@ describe('Auth', function() {
     });
 
     it('should save a token successfully', function() {
-      var token = '123456';
+      var token = '12.34.56';
 
       TokenService.setToken(token);
 
-      var newToken = localstorage.getItem(auth0TokenName);
+      var newToken = store.get(auth0TokenName);
 
       expect(newToken).to.be.ok;
       expect(newToken).to.be.a('string');
@@ -51,35 +60,39 @@ describe('Auth', function() {
     });
 
     it('should get a token successfully', function() {
-      var token = '123456';
+      var token = '12.34.56';
       var gotToken;
 
-      localStorage.setItem(auth0TokenName, token);
+      store.set(auth0TokenName, token);
 
       gotToken = TokenService.getToken();
 
-      expect(newToken).to.be.ok;
+      expect(gotToken).to.be.ok;
       expect(gotToken).to.be.a('string');
       expect(gotToken).to.equal(token);
     });
 
     it('should delete a token successfully', function() {
-      var token = '123456';
+      var token = '12.34.56';
       var gotToken;
 
-      localStorage.setItem(auth0TokenName, token);
+      store.set(auth0TokenName, token);
 
       TokenService.deleteToken();
 
-      gotToken = localStorage.getItem(auth0TokenName);
+      gotToken = store.get(auth0TokenName);
 
-      expect(gotToken).to.be.undefined;
+      expect(gotToken).to.not.be.ok;
     });
   });
 
   describe('Authorization Service', function() {
     beforeEach(function() {
-      localstorage.removeItem(auth0TokenName);
+      store.remove(auth0TokenName);
+    });
+
+    afterEach(function() {
+      store.remove(auth0TokenName);
     });
 
     it('should be created successfully', function() {
@@ -88,10 +101,10 @@ describe('Auth', function() {
     });
 
     it('should refresh an expired token', function() {
-      TokenService.refreshToken().then(function() {
+      AuthService.refreshToken().then(function() {
         var expectedToken = mockAuthRequest.getAuth();
 
-        expect(localStorage.getItem(auth0TokenName))
+        expect(store.get(auth0TokenName))
           .to.equal(expectedToken.result.content.token);
       });
 
@@ -101,11 +114,11 @@ describe('Auth', function() {
     it('should correctly determine if the user is authenticated', function() {
       var loggedIn;
 
-      loggedIn = Auth.isAuthenticated();
+      loggedIn = AuthService.isAuthenticated();
       expect(loggedIn).to.not.be.ok;
 
-      localStorage.setItem(auth0TokenName, '2341');
-      loggedIn = Auth.isAuthenticated();
+      store.set(auth0TokenName, '23.45.67');
+      loggedIn = AuthService.isAuthenticated();
       expect(loggedIn).to.be.ok;
 
       flush();
@@ -115,18 +128,20 @@ describe('Auth', function() {
       var expectedToken = mockAuthRequest.getAuth();
 
       AuthService.exchangeToken('123', '456').then(function() {
-        expect(localStorage.getItem(auth0TokenName))
-          .to.be(expectedToken.result.content.token);
+        expect(store.get(auth0TokenName))
+          .to.equal(expectedToken.result.content.token);
+
+        expect(AuthService.isAuthenticated()).to.be.ok;
       });
 
       flush();
     });
 
     it('should logout successfully', function() {
-      localStorage.setItem(auth0TokenName, '1234');
+      store.set(auth0TokenName, '1234');
 
       AuthService.logout().then(function() {
-        expect(localStorage.getItem(auth0TokenName)).to.be.undefined;
+        expect(store.get(auth0TokenName)).to.not.be.ok;
       });
 
       flush();
@@ -137,13 +152,8 @@ describe('Auth', function() {
         success: function() {
           var expectedToken = mockAuthRequest.getAuth();
 
-          expect(localStorage.getItem(auth0TokenName))
-            .to.be(expectedToken.result.content.token);
-
-          expect(localStorage.getItem('auth0IdToken')).to.equal('idToken');
-          expect(localStorage.getItem('auth0Profile')).to.equal('profileReturn');
-          expect(localStorage.getItem('auth0RefreshToken')).to.equal('refreshToken');
-          expect(localStorage.getItem('auth0AccessToken')).to.equal('accessToken');
+          expect(store.get(auth0TokenName))
+            .to.equal(expectedToken.result.content.token);
         }
       };
 
