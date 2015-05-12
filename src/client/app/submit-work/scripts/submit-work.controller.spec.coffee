@@ -26,6 +26,10 @@ describe 'SubmitWorkController', ->
           '$valid': true
           '$setDirty': ->
             true
+          '$setPristine': ->
+            true
+          '$setUntouched': ->
+            true
 
     $controller 'SubmitWorkController', $scope: scope
 
