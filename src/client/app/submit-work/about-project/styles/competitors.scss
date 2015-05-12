@@ -3,11 +3,13 @@
 .layout-main.submit-work .competitors {
   fieldset {
     overflow: hidden;
+    width: 324px;
   }
 
   input {
-    width: 240px;
+    width: 280px;
     float: left;
+    margin-left: 10px;
   }
 
   .add-competitor {
@@ -30,6 +32,7 @@
       .competitor {
         line-height: 40px;
         float: left;
+        margin-left: 10px;
       }
 
       .remove-competitor {
