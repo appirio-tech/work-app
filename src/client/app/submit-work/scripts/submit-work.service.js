@@ -24,7 +24,8 @@
 
     };
 
-    service.work = {
+    // using a default helps with resetting after submit
+    var defaultWork = {
       name             : null,
       requestType      : null,
       usageDescription : null,
@@ -36,8 +37,7 @@
       acceptedTerms    : false
     };
 
-    // for resetting the object after submit
-    var defaultWork = angular.copy(service.work);
+    service.work = angular.copy(defaultWork);
 
     // these are all the fields we'll actually submit on
     // a POST or PUT. everything else is filtered.
@@ -126,8 +126,7 @@
     };
 
     service.resetWork = function() {
-      service.work = defaultWork;
-      defaultWork = angular.copy(service.work);
+      service.work = angular.copy(defaultWork);
     };
 
     return service;
