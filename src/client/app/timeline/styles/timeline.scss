@@ -41,14 +41,18 @@
       margin-left   : $head-width-big;
 
       // this will be used to hide the extra borders
-      &:first-child::before, &:last-child::after {
+      &::before {
         content         : "";
         position        : absolute;
-        width           : 10px;
-        height          : 10px;
-        margin-top      : -10px;
-        margin-left     : -10px;
-        background-color: white;
+        width           : $timeline-width;
+        margin-left     : -$timeline-width;
+        height          : $point-width;
+        background-color: grey;
+        z-index         : 0;
+      }
+
+      &:first-child::before {
+        background-color: white !important;
       }
 
       &:last-child {
@@ -63,6 +67,8 @@
         margin-left: -$head-width;
         white-space: nowrap;
         overflow   : hidden;
+        z-index    : 1;
+        position   : relative;
 
         > * {
           display       : inline-block;
@@ -129,8 +135,14 @@
         }
       }
 
-      &.completed {
+      &.passed {
         border-color: green;
+      }
+
+      &.completed {
+        &::before {
+          background-color: green;
+        }
 
         .point {
           background-color: green;

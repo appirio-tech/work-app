@@ -23,3 +23,4 @@ describe 'TimelineService', ->
 
   it "should have a copiloted date", ->
     expect(timeline.coPilotedDate).to.be.equal '2015-05-05T20:53:41.467Z'
+

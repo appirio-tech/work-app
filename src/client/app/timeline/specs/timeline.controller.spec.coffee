@@ -17,3 +17,4 @@ describe 'TimelineController', ->
 
   it 'should have coPilotedDate defined', ->
     expect(controller.coPilotedDate).to.be.ok
+
