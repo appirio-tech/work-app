@@ -1,18 +1,18 @@
 .heading
   h1 Manage Projects
-  button New Project
+  button(ng-click="vm.newProject()") New Project
   hr
 
 ul
-  li(ng-repeat= "project in vm.workRequests")
+  li(ng-repeat= "project in vm.workRequests", ng-click="vm.go(project)")
     div
       header
         h4 {{project.name}}
         span.type {{project.requestType}}
       .middle
-        img
-      .bottom.incomplete
-        span.status PROJECT SUBMISSION INCOMPLETE
+        img(src="manage/images/missing-image.svg", class="missing")
+      .bottom(ng-class="project.class")
+        img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
+        span.status {{project.message}}
         br
-        span.action
-          a Continue Setup
+        span.action(ng-bind-html="project.action")

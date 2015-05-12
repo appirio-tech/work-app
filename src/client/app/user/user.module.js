@@ -8,13 +8,13 @@
       'app.constants',
       'app.auth'
     ])
-    .run(WorkRequest);
+    .run(UserModule);
 
-  WorkRequest.$inject = ['$rootScope', 'ApiResource', 'TokenService', 'UserService'];
+  UserModule.$inject = ['$rootScope', 'ApiResource', 'TokenService', 'UserService'];
 
-  function WorkRequest($rootScope, ApiResource, TokenService, UserService) {
+  function UserModule($rootScope, ApiResource, TokenService, UserService) {
     var config = {
-      url: 'user',
+      url: 'users',
       resource: 'user'
     };
 
@@ -27,7 +27,14 @@
       }
     }
 
+    function LogOutComplete() {
+      UserService.removeUser();
+    }
+
     // Update User Service on login
-    $rootScope.$on('authenticated', LoginComplete);
+    //$rootScope.$on('authenticated', LoginComplete);
+
+    // Remove user object
+    $rootScope.$on('logout', LogOutComplete);
   }
 })();

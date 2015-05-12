@@ -19,7 +19,7 @@
       // functions
       setActiveState : null,
       findState      : null,
-      setNextState   : null,
+      setNextState   : null
 
     };
 

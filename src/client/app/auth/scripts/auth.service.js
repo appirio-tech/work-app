@@ -5,19 +5,18 @@
     .module('app.auth')
     .factory('AuthService', AuthService);
 
-  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'auth0retUrl', 'store', 'TokenService', 'logger'];
+  AuthService.$inject = ['$rootScope', 'data', 'exception', 'auth', 'store', 'TokenService', 'logger'];
   /* @ngInject */
-  function AuthService($rootScope, data, exception, auth, auth0retUrl, store, TokenService, logger) {
+  function AuthService($rootScope, data, exception, auth, store, TokenService, logger) {
     var service = {
-      login: login,
-      logout: logout,
-      isAuthenticated: isAuthenticated,
-      exchangeToken: exchangeToken,
-      refreshToken: refreshToken
+      login: null,
+      logout: null,
+      isAuthenticated: null,
+      exchangeToken: null,
+      refreshToken: null
     };
-    return service;
 
-    function logout() {
+    service.logout = function() {
       return data.remove('auth')
         .then(logoutComplete)
         .catch(function (message) {
@@ -28,8 +27,9 @@
       function logoutComplete(data, status, headers, config) {
         auth.signout();
         TokenService.deleteToken();
+        $rootScope.$broadcast('logout');
       }
-    }
+    };
 
     /**
      * Trigger login
@@ -41,13 +41,13 @@
      * - success:  success callback
      * - error: error callback
      */
-    function login(options) {
+    service.login = function(options) {
 
       // First remove any old tokens
       TokenService.deleteToken();
 
       var defaultOptions = {
-        retUrl: auth0retUrl
+        retUrl: '/'
       };
 
       var lOptions = angular.extend({}, options, defaultOptions);
@@ -71,18 +71,14 @@
       }
 
       function successFunction(profile, idToken, accessToken, state, refreshToken) {
-        TokenService.setAuth0Tokens(profile, idToken, accessToken, refreshToken);
-
-        exchangeToken(idToken, refreshToken, options.success);
-
-        $rootScope.$broadcast('authenticated');
+        service.exchangeToken(idToken, refreshToken, options.success);
       }
-    }
+    };
 
     /**
      * Exchange the Auth0 Token for the real one
      */
-    function exchangeToken(idToken, refreshToken, success, error) {
+    service.exchangeToken = function(idToken, refreshToken, success, error) {
       var query = {
         param: {
           refreshToken: refreshToken,
@@ -94,6 +90,7 @@
         .then(function(res) {
           // Save the token
           TokenService.setToken(res.result.content.token);
+          $rootScope.$broadcast('authenticated');
 
           if (success) {
             success();
@@ -104,41 +101,33 @@
             error(e);
           }
         });
-    }
+    };
 
     /**
      * Refresh the token with the API
      */
     function refreshToken() {
-      return data.get('auth', {id: 1}).then(function(data) {
+      data.get('auth', {id: 1}).then(function(data) {
         var newToken = data.result.content.token;
 
         TokenService.setToken(newToken);
-
-        var tokens = TokenService.getAuth0Tokens();
-
-        TokenService.setAuth0Tokens(
-          tokens.profile,
-          newToken,
-          tokens.accessToken,
-          tokens.refreshToken
-        );
-
-        auth.authenticate(tokens.profile, newToken);
+        $rootScope.$broadcast('authenticated');
       }, function(err) {
         // If we are in error: log it, delete the token
         logger.error("Error refreshing Token: " + err.statusText, err);
         TokenService.deleteToken();
       });
-    }
+    };
 
     /**
      * Is there a current active session
      *
      * @return bool
      */
-    function isAuthenticated() {
+    service.isAuthenticated = function() {
       return TokenService.tokenIsValid();
-    }
+    };
+
+    return service;
   }
 })();
