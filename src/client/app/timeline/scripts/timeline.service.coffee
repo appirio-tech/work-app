@@ -5,9 +5,9 @@ srv = (TimelineAPIService) ->
     resource = TimelineAPIService.query params
 
     resource.$promise.then (response) ->
-      submittedDate = getSubmittedDate response
-      quotedDate    = getQuotedDate response
-      coPilotedDate = getCoPilotedDate response
+      submittedDate = getCreatedAt 'submitted', response
+      quotedDate    = getCreatedAt 'quote-created', response
+      coPilotedDate = getCreatedAt 'copilot-assigned', response
 
       timeline =
         events       : response
@@ -29,17 +29,9 @@ srv = (TimelineAPIService) ->
 
     false
 
-  getSubmittedDate = (events) ->
-    submitted = findEvent 'submitted', events
-    submitted?.createdAt
-
-  getQuotedDate = (events) ->
-    quote = findEvent 'quote-created', events
-    quote?.createdAt
-
-  getCoPilotedDate = (events) ->
-    copilot = findEvent 'copilot-assigned', events
-    copilot?.createdAt
+  getCreatedAt = (type, events) ->
+    e = findEvent type, events
+    e?.createdAt
 
   getEvents: getEvents
 
