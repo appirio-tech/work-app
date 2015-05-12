@@ -1,0 +1,17 @@
+header
+  h1 Welcome back to topcoder
+main
+  h3 Let's start building your app.  Login or create an account below to begin.
+
+  form(ng-submit="vm.submit()")
+    p.error(ng-show="vm.error") We can't find an account with the email / password you entered. Please try again.
+
+    h3 Username
+
+    input(type="text", name="user", ng-model="vm.username", required=true)
+
+    h3 Password
+
+    input(type="password" name="password" ng-model="vm.password" required=true)
+
+    button.submit(type="submit") Log in

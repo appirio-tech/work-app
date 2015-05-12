@@ -21,8 +21,11 @@
           controller: 'GettingStartedController',
           controllerAs: 'vm',
           title: 'Getting Started',
+          data: {
+            noAuthRequired: true
+          }
         }
-      },
+      }
     ];
   }
 })();

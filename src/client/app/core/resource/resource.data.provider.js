@@ -51,7 +51,11 @@
         },
 
         remove : function (resource, model) {
-          return data.remove(resource, model).$promise;
+          return ApiResource[resource].remove(model).$promise;
+        },
+
+        delete : function (resource, model) {
+          return ApiResource[resource].delete(model).$promise;
         }
       };
 

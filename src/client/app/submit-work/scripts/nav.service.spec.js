@@ -6,8 +6,13 @@ describe('NavService', function () {
     bard.inject('NavService');
   });
 
-  beforeEach(function () {
+  beforeEach(function() {
     service = NavService;
+    service.states = service.states.map(function(state) {
+      state.$setPristine  = function() {};
+      state.$setUntouched = function() {};
+      return state;
+    });
   });
 
   bard.verifyNoOutstandingHttpRequests();

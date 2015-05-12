@@ -14,7 +14,6 @@ module.exports = function () {
   var bowerFiles     = wiredep({devDependencies: true})['js'];
   var scssBuild      = './.scss';
   var coffeeBuild    = './.coffee';
-  var useStubs       = envConfig.getVal('USE_STUBS', false);
   var nodeModules    = 'node_modules';
 
   var bower = {
@@ -29,12 +28,9 @@ module.exports = function () {
       apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
       auth0ClientId: envConfig.getVal('AUTH0_CLIENT_ID', ''),
       auth0Domain: envConfig.getVal('AUTH0_DOMAIN', 'topcoder-dev.auth0.com'),
-      retUrl: envConfig.getVal('RET_URL', 'http://localhost:3000/#/'),
-      callbackUrl: envConfig.getVal('CALLBACK_URL', 'http://api.topcoder-dev.com/pub/callback.html'),
-      useStubs: useStubs
+      auth0TokenName: envConfig.getVal('AUTH0_TOKEN_NAME', 'userJWTToken')
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
-    useStubs: useStubs,
     // Env Path
     env: envConfig.getVal('NODE_ENV', 'dev'),
     /**

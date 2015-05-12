@@ -16,7 +16,10 @@
         config: {
           url: '/404',
           templateUrl: 'core/404.html',
-          title: '404'
+          title: '404',
+          data: {
+            noAuthRequired: true
+          }
         }
       }
     ];

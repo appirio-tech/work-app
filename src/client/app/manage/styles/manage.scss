@@ -25,6 +25,10 @@
       margin-left: 10%;
       width: 20%;
       height: 50px;
+      &:hover {
+        cursor: pointer;
+        cursor: hand;
+      }
     }
 
     hr {
@@ -39,6 +43,9 @@
     //@include shift(.5);
     height: 245px;
     margin-bottom: $margin-20;
+
+    cursor: pointer;
+    cursor: hand;
 
     div {
 

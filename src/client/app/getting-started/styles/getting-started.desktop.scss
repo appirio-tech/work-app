@@ -6,11 +6,12 @@
   .jumbotron {
     display: block;
 
-    @include bg-cover("../images/jumbo.jpg");
+    @include bg-cover("../images/homeBanner.jpg");
     @include clearfix;
 
     p {
       color     : $white;
+      background: rgba(51, 62, 72, 0.6);
       text-align: center;
       margin: 400px 0 $margin-20 0;
 

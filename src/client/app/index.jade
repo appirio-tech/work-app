@@ -9,7 +9,6 @@
 - scripts.push('/src/client/app/core/resource/resource.data.provider')
 - scripts.push('/src/client/app/core/core.module')
 - scripts.push('/src/client/app/core/ng-enter.directive')
-- scripts.push('/src/client/app/login/scripts/login.module')
 - scripts.push('layout/scripts/layout.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
@@ -57,13 +56,17 @@
 - scripts.push("/src/client/app/create-account/scripts/create-account.controller")
 - scripts.push("/src/client/app/create-account/scripts/create-account.route")
 
-//- Login
-- css.push("login/styles/login")
+//- Auth
+- scripts.push("/src/client/app/auth/scripts/auth.module")
+- scripts.push("/src/client/app/auth/scripts/auth.routes")
+- scripts.push("/src/client/app/auth/scripts/auth.service")
+- scripts.push("/src/client/app/auth/scripts/token.service")
+- scripts.push("/src/client/app/auth/scripts/login.controller")
+- scripts.push("/src/client/app/auth/scripts/login.directive")
 
-- scripts.push("/src/client/app/login/scripts/login.module")
-- scripts.push("/src/client/app/login/scripts/login.controller")
-- scripts.push("/src/client/app/login/scripts/login.route")
-- scripts.push("/src/client/app/login/scripts/login.service")
+//- user
+- scripts.push("/src/client/app/user/user.module")
+- scripts.push("/src/client/app/user/user.service")
 
 //- work request
 - scripts.push("/src/client/app/work-request/work-request.module")

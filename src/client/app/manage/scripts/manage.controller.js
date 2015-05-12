@@ -12,6 +12,7 @@
     vm.title = 'Work Requests';
     vm.workRequests = [];
     vm.formatWorkRequests = null;
+    vm.go = null;
 
     vm.activate = function() {
       logger.info('Activated Work Request Single View');
@@ -44,6 +45,18 @@
         work.requestType = typeDisplays[work.requestType];
         return work;
       });
+    };
+
+    vm.newProject = function() {
+      $state.go('submit-work.flow');
+    };
+
+    vm.go = function(project) {
+      if (project.status == 'Submitted') {
+        $state.go('timeline');
+      } else {
+        $state.go('submit-work.flow');
+      }
     };
 
     vm.activate();

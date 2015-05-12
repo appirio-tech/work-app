@@ -1,13 +1,6 @@
 header.layout-header(role="banner")
   a.clean.logo("href"="#") Appirio Services Platform
+  a.clean.login(href="#/login" login)
 
-  a.clean.login(href="#/" ng-controller="LoginController as vm")
-    .icon(ng-hide="vm.loggedInUser") &nbsp
-
-    .label(ng-click="signin()" ng-hide="vm.loggedInUser") Log in
-
-    .label(ng-click="signout()" ng-show="vm.loggedInUser") {{vm.loggedInUser}}
-
-    .icon(ng-show="vm.loggedInUser")
 
 
