@@ -7,6 +7,8 @@ TimelineController = (TimelineService, $stateParams) ->
 
   onSuccess = (timeline) ->
     vm.submittedDate = timeline.submittedDate
+    vm.quotedDate    = timeline.quotedDate
+    vm.coPilotedDate = timeline.coPilotedDate
 
   TimelineService.getEvents params, onSuccess
 

@@ -2,7 +2,7 @@
 
 controller = null
 
-describe.only 'TimelineController', ->
+describe 'TimelineController', ->
   beforeEach inject ($rootScope, $controller, $httpBackend) ->
     scope      = $rootScope.$new()
     controller = $controller 'TimelineController', $scope: scope
@@ -11,3 +11,9 @@ describe.only 'TimelineController', ->
 
   it 'should have submittedDate defined', ->
     expect(controller.submittedDate).to.be.ok
+
+  it 'should have quotedDate defined', ->
+    expect(controller.quotedDate).to.be.ok
+
+  it 'should have coPilotedDate defined', ->
+    expect(controller.coPilotedDate).to.be.ok

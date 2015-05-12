@@ -6,10 +6,14 @@ srv = (TimelineAPIService) ->
 
     resource.$promise.then (response) ->
       submittedDate = getSubmittedDate response
+      quotedDate    = getQuotedDate response
+      coPilotedDate = getCoPilotedDate response
 
       timeline =
         events       : response
         submittedDate: submittedDate
+        quotedDate   : quotedDate
+        coPilotedDate: coPilotedDate
 
       onSuccess? timeline
 
@@ -29,9 +33,15 @@ srv = (TimelineAPIService) ->
     submitted = findEvent 'submitted', events
     submitted?.createdAt
 
-  findEvent       : findEvent
-  getEvents       : getEvents
-  getSubmittedDate: getSubmittedDate
+  getQuotedDate = (events) ->
+    quote = findEvent 'quote-created', events
+    quote?.createdAt
+
+  getCoPilotedDate = (events) ->
+    copilot = findEvent 'copilot-assigned', events
+    copilot?.createdAt
+
+  getEvents: getEvents
 
 srv.$inject = ['TimelineAPIService']
 
