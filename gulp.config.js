@@ -199,7 +199,7 @@ module.exports = function () {
         temp + 'constants.js',
         temp + 'templates.js',
         {
-          pattern: './work-api-schema/*.json'
+          pattern: './bower_components/work-api-schema/*.json'
         }
       ),
       exclude: [],
