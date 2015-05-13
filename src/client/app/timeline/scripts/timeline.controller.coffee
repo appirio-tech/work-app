@@ -1,10 +1,20 @@
 'use strict'
 
-TimelineController = ->
+TimelineController = (TimelineService, $stateParams) ->
   vm        = this
-  vm.greet = 'Hello World'
+  params    =
+    workId = $stateParams.workId
 
-TimelineController.$inject = []
+  onSuccess = (timeline) ->
+    vm.submittedDate = timeline.submittedDate
+    vm.quotedDate    = timeline.quotedDate
+    vm.coPilotedDate = timeline.coPilotedDate
+
+  TimelineService.getEvents params, onSuccess
+
+  vm
+
+TimelineController.$inject = ['TimelineService', '$stateParams']
 
 angular.module('app.timeline').controller 'TimelineController', TimelineController
 
