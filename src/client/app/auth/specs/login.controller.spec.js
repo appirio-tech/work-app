@@ -65,10 +65,10 @@ describe('LoginController', function () {
       });
 
       it('should be an error with incorrect credentials', function() {
+
         login(wrongAuth);
 
         expect(controller.error).to.be.ok;
-        expect(AuthService.isAuthenticated()).to.not.be.ok;
         flush();
       });
 
