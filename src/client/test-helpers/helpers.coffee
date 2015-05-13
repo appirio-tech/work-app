@@ -17,6 +17,7 @@ beforeEach ->
   module 'app.submit-work'
   module 'app.core'
   module 'app.manage'
+  module 'app.auth'
 
 # Mock http request for angular
 getPayload = (method, path) ->

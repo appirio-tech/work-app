@@ -86,7 +86,7 @@
         }
       };
 
-      data.create('auth', query)
+      return data.create('auth', query)
         .then(function(res) {
           // Save the token
           TokenService.setToken(res.result.content.token);
@@ -96,7 +96,7 @@
             success();
           }
 
-        }).catch(function(e) {
+        }, function(e) {
           if (error) {
             error(e);
           }
