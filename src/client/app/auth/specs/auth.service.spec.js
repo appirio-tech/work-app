@@ -34,7 +34,11 @@ describe('Auth', function() {
   bard.verifyNoOutstandingHttpRequests();
 
   describe('Token Service', function() {
+    var token;
+
     beforeEach(function() {
+      token = '12.34.56';
+
       store.remove(auth0TokenName);
     });
 
@@ -48,8 +52,6 @@ describe('Auth', function() {
     });
 
     it('should save a token successfully', function() {
-      var token = '12.34.56';
-
       TokenService.setToken(token);
 
       var newToken = store.get(auth0TokenName);
@@ -60,7 +62,6 @@ describe('Auth', function() {
     });
 
     it('should get a token successfully', function() {
-      var token = '12.34.56';
       var gotToken;
 
       store.set(auth0TokenName, token);
@@ -73,7 +74,6 @@ describe('Auth', function() {
     });
 
     it('should delete a token successfully', function() {
-      var token = '12.34.56';
       var gotToken;
 
       store.set(auth0TokenName, token);
