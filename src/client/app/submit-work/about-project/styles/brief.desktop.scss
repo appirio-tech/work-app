@@ -1,0 +1,9 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .brief {
+  @include main-restricted-desktop();
+
+  > form {
+    width: 350px;
+  }
+}
