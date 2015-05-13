@@ -35,9 +35,24 @@ describe('LoginController', function () {
     });
 
     describe('Logged In', function() {
+      var wrongAuth;
+      var rightAuth;
+
+      beforeEach(function() {
+        wrongAuth = {
+          username: '1234',
+          password: '12345'
+        };
+
+        rightAuth = {
+          username: '1234',
+          password: '1234'
+        };
+
+      });
       it('should be able to login with the correct credentials', function() {
-        controller.username = '1234';
-        controller.password = '1234';
+        controller.username = rightAuth.username;
+        controller.password = rightAuth.password;
         controller.submit();
 
         expect(controller.error).to.not.be.ok;
@@ -46,8 +61,8 @@ describe('LoginController', function () {
       });
 
       it('should be an error with incorrect credentials', function() {
-        controller.username = '1234';
-        controller.password = '12345';
+        controller.username = wrongAuth.username;
+        controller.password = wrongAuth.password;
         controller.submit();
 
         expect(controller.error).to.be.ok;
