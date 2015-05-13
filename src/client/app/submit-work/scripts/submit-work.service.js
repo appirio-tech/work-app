@@ -14,13 +14,14 @@
     var service = {
 
       // variables
-      work        : {},
+      work           : {},
 
       // functions
-      save        : null,
-      savePrice   : null,
-      getEstimate : null,
-      resetWork   : null
+      save           : null,
+      savePrice      : null,
+      getEstimate    : null,
+      resetWork      : null,
+      initializeWork : null
 
     };
 
@@ -127,6 +128,15 @@
 
     service.resetWork = function() {
       service.work = angular.copy(defaultWork);
+    };
+
+    service.initializeWork = function(id) {
+      var deferred = $q.defer();
+      data.get('work-request', {id: id}).then(function(data) {
+        service.work = data.result.content;
+        deferred.resolve(service.work);
+      });
+      return deferred.promise;
     };
 
     return service;

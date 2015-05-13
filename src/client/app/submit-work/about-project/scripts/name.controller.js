@@ -13,6 +13,7 @@
     vm.title = 'Name';
     vm.work  = SubmitWorkService.work;
     vm.submit;
+    vm.activate;
 
     $scope.$watch('nameForm', function(nameForm) {
       if (nameForm) {
@@ -26,5 +27,6 @@
         NavService.setNextState();
       }
     };
+
   }
 })();

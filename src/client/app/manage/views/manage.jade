@@ -4,7 +4,7 @@
   hr
 
 ul
-  li(ng-repeat= "project in vm.workRequests", ng-click="vm.go(project)")
+  li(ng-repeat= "project in vm.workRequests")
     div
       header
         h4 {{project.name}}

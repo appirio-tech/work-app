@@ -11,6 +11,7 @@
     var vm = this;
     vm.title = 'Work Requests';
     vm.workRequests = [];
+    vm.newProject = null;
     vm.formatWorkRequests = null;
     vm.go = null;
 
