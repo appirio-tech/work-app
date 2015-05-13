@@ -3,12 +3,12 @@ describe('LoginController', function () {
   var controller, scope, flush;
 
   beforeEach(function () {
-    bard.inject(this, '$q', '$controller', '$rootScope', 'AuthService', 'data', 'auth', '$location');
+    bard.inject(this, '$q', '$controller', '$rootScope', 'AuthService', 'data', 'auth', '$location', '$state');
     flush = function() { $rootScope.$apply(); };
 
     bard.mockService(data, {
-      get: $.when(mockAuthRequest.getAuth()),
-      create: $.when(mockAuthRequest.getAuth()),
+      get: $q.when(mockAuthRequest.getAuth()),
+      create: $q.when(mockAuthRequest.getAuth()),
       remove: $q.when([])
     });
 
@@ -38,6 +38,12 @@ describe('LoginController', function () {
       var wrongAuth;
       var rightAuth;
 
+      function login(authVars) {
+        controller.username = authVars.username;
+        controller.password = authVars.password;
+        controller.submit();
+      }
+
       beforeEach(function() {
         wrongAuth = {
           username: '1234',
@@ -48,12 +54,10 @@ describe('LoginController', function () {
           username: '1234',
           password: '1234'
         };
-
       });
+
       it('should be able to login with the correct credentials', function() {
-        controller.username = rightAuth.username;
-        controller.password = rightAuth.password;
-        controller.submit();
+        login(rightAuth);
 
         expect(controller.error).to.not.be.ok;
 
@@ -61,12 +65,52 @@ describe('LoginController', function () {
       });
 
       it('should be an error with incorrect credentials', function() {
-        controller.username = wrongAuth.username;
-        controller.password = wrongAuth.password;
-        controller.submit();
+        login(wrongAuth);
 
         expect(controller.error).to.be.ok;
         expect(AuthService.isAuthenticated()).to.not.be.ok;
+        flush();
+      });
+
+      it('should redirect to default state on login', function() {
+
+        sinon.spy($state, 'go');
+
+        login(rightAuth);
+
+        expect($state.go).to.have.been.calledWith('view-work-multiple');
+        flush();
+      });
+
+      it('should redirect to retState on login', function() {
+        sinon.stub($location, 'search').returns({retState: 'home'});
+        sinon.stub($state, 'go');
+
+        login(rightAuth);
+
+        expect($state.go).to.have.been.calledWith('home');
+        flush();
+      });
+
+      it('should redirect to retUrl on login', function() {
+        sinon.stub($location, 'search').returns({retUrl: 'http://google.com'});
+        sinon.spy($location, 'path');
+
+        login(rightAuth);
+
+        expect($location.path).to.have.been.calledWith('http://google.com');
+        flush();
+      });
+
+      it('should returnt to the last state on login', function() {
+        sinon.stub($location, 'search').returns({});
+
+        $rootScope.preAuthState = 'view-work-multiple';
+        sinon.spy($state, 'go');
+
+        login(rightAuth);
+
+        expect($state.go).to.have.been.calledWith('view-work-multiple');
         flush();
       });
     })
