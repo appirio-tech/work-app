@@ -1,12 +1,12 @@
 'use strict'
 
-navServ = null
-scope = null
-state = null
-activeState = null
-saveSpy = null
+navServ        = null
+scope          = null
+state          = null
+activeState    = null
+saveSpy        = null
 submitWorkServ = null
-nextState = null
+nextState      = null
 defaultCompleted = null
 
 describe.only 'NavService', ->
@@ -46,6 +46,9 @@ describe.only 'NavService', ->
         navServ.setActiveState 'key': 'type'
         activeState = navServ.activeState
 
+      afterEach ->
+        saveSpy.restore()
+
       it 'should call save on submitWorkService', ->
         expect(saveSpy).to.have.been.called
 
@@ -68,14 +71,19 @@ describe.only 'NavService', ->
       it 'should set the next state to "designs"', ->
         expect(nextState).to.equal('designs')
 
-  # describe 'reset', ->
-  #   beforeEach ->
-  #       navServ.reset()
-  #       state  = navServ.activeState
-  #       defaultCompleted = navServ.defaultCompleted
+  describe 'reset', ->
+    beforeEach ->
+        navServ.reset()
+        state  = navServ.activeState
+        defaultCompleted =
+          aboutProject : false
+          users        : false
+          features     : false
+          design       : false
+          launch       : false
 
-  #   it 'should set active state to "name"', ->
-  #     expect(state).to.equal('name')
+    it 'should set active state to "name"', ->
+      expect(state).to.equal('name')
 
-  #   it 'should set  "completed" to default settings', ->
-  #     expect(navServ.completed).to.eql(defaultCompleted)
+    it 'should reset "completed" to "defaultCompleted"', ->
+      expect(navServ.completed).to.eql(defaultCompleted)
