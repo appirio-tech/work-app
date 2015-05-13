@@ -90,7 +90,7 @@
 
       service.findState(key).visited = true;
 
-      setCompleted();
+      // setCompleted();
 
       SubmitWorkService.save();
     };
