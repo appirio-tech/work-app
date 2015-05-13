@@ -1,5 +1,15 @@
 'use strict'
 
+window.__karma__.loaded = ->
+  # prevent karma from starting
+  SwaggerFakeServer.init()
+
+  SwaggerFakeServer.fakeServer.respondImmediately = true
+
+  schema = __fixtures__['bower_components/work-api-schema/work-api-schema']
+
+  SwaggerFakeServer.consume schema, window.__karma__.start
+
 stash = {}
 
 window.stashIt = (obj, key) ->
@@ -18,6 +28,7 @@ beforeEach ->
   module 'app.core'
   module 'app.manage'
   module 'app.auth'
+  module 'app.timeline'
 
 # Mock http request for angular
 getPayload = (method, path) ->
@@ -47,3 +58,15 @@ beforeEach inject ($httpBackend) ->
           clonedPayload
           {}
         ]
+
+# Transfer fakeserver responses to $httpBackend
+beforeEach inject ($httpBackend) ->
+  responses = window.SwaggerFakeServer?.fakeServer?.responses
+
+  if responses
+    for response in responses
+      upperCaseMethod = response.method.toUpperCase()
+      request         = $httpBackend.when upperCaseMethod, response.url
+
+      request.respond response.response[0], response.response[2]
+

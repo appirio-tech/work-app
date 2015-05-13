@@ -111,6 +111,21 @@ html(ng-app='app')
         display: none !important;
       }
 
+    // removeIf(production)
+
+    script(type="text/javascript", src="/bower_components/sinon/index.js")
+
+    script(type="text/javascript", src="/bower_components/swagger-fake-server/dist/swagger-fake-server.js")
+
+    script(type="text/javascript").
+      SwaggerFakeServer.init();
+
+      SwaggerFakeServer.fakeServer.autoRespond = true;
+
+      SwaggerFakeServer.consume('/bower_components/work-api-schema/work-api-schema.json');
+
+    // endRemoveIf(production)
+
     title(ng-bind='title') Appiro Work Platform
 
     meta(charset='utf-8')

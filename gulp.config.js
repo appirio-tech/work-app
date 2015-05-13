@@ -190,13 +190,17 @@ module.exports = function () {
     var options = {
       files: [].concat(
         bowerFiles,
+        './bower_components/swagger-fake-server/dist/swagger-fake-server.js',
         config.specHelpers,
         client    + 'mock-api/*.coffee',
+        client    + 'test-helpers/*.coffee',
         clientApp + '**/*.module.{js,coffee}',
         clientApp + '**/*.{js,coffee}',
-        client    + 'test-helpers/*.coffee',
         temp + 'constants.js',
-        temp + 'templates.js'
+        temp + 'templates.js',
+        {
+          pattern: './bower_components/work-api-schema/*.json'
+        }
       ),
       exclude: [],
       coverage: {
@@ -215,6 +219,8 @@ module.exports = function () {
     options.preprocessors[clientApp + '**/!(*.spec)+(.js)'] = ['coverage'];
 
     options.preprocessors['**/*.coffee'] =  ['coffee'];
+
+    options.preprocessors['**/*.json'] =  ['json_fixtures'];
 
     return options;
   }
