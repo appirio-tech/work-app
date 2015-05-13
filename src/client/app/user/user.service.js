@@ -5,32 +5,28 @@
     .module('app.user')
     .factory('UserService', UserService);
 
-  UserService.$inject = ['data', 'logger'];
+  UserService.$inject = ['data', 'logger', 'TokenService'];
   /* @ngInject */
-  function UserService(data, logger) {
+  function UserService(data, logger, TokenService) {
     var service = {
       getUser: null,
       user: null,
-      setUser: null,
-      removeUser: null
+      removeUser: null,
+      getCurrentUser: null
+    };
+
+    service.getCurrentUser = function() {
+      var decodedToken = TokenService.decodeToken();
+      if (decodedToken.userId) {
+        return service.getUser(decodedToken.userId);
+      }
     };
 
     service.removeUser = function() {
       service.user = null;
     };
 
-    service.setUser = function(id) {
-      service.getUser(id)
-        .then(function(data) {
-          service.user = data;
-        });
-    };
-
     service.getUser = function(id) {
-      if (service.user) {
-        return service.user;
-      }
-
       var promise = data.get('user', {id: id});
 
       promise.then(getUserComplete);
@@ -39,8 +35,7 @@
       return promise;
 
       function getUserComplete(data) {
-        service.user = content;
-        return data.data.result.content;
+        service.user = data.result.content;
       }
 
       function userError(error) {
