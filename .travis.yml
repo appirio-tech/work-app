@@ -4,4 +4,5 @@ node_js:
 before_script:
   - npm install -g gulp
   - npm install -g bower
-script: gulp build
+script:
+  - gulp build
