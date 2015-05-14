@@ -11,6 +11,7 @@ var fixtures2js = require("gulp-fixtures2js");
 var path        = require('path');
 var _           = require('lodash');
 var $           = require('gulp-load-plugins')({lazy: true});
+var coveralls   = require('gulp-coveralls');
 var colors      = $.util.colors;
 var env         = $.util.env;
 var port        = process.env.PORT || config.defaultPort;
@@ -258,12 +259,21 @@ gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants', 'templatecache'],
   //done();
 });
 
+gulp.task('coveralls', function (done) {
+  log('Send coverage reports to coveralls');
+
+  gulp.src('report/coverage/**/lcov.info')
+    .pipe(coveralls());
+
+  //done();
+});
+
 /**
  * Build everything
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['fixtures', 'optimize', 'images', 'fonts'], function () {
+gulp.task('build', ['fixtures', 'optimize', 'images', 'fonts', 'coveralls'], function () {
   log('Building everything');
 
   var msg = {
