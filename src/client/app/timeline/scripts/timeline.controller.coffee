@@ -8,7 +8,7 @@ TimelineController = (TimelineService, $stateParams) ->
 
   activate = ->
     params =
-      workId = $stateParams.workId
+      filter: 'sourceObjectId=' + $stateParams.workId
 
     TimelineService.getEvents params, onSuccess
 

@@ -7,7 +7,7 @@ transformResponse = (response) ->
 
 srv = ($resource, apiUrl) ->
   url     = apiUrl + 'events'
-  params  = filter: 'sourceObjectId%3D@workId'
+  params  = filter: '@filter'
   actions =
     query:
       method           :'GET'

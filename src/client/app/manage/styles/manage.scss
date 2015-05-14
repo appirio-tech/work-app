@@ -5,7 +5,12 @@
 .layout-main.manage {
 
   @include outer-container;
-  @include pad($padding-30);
+
+  padding: $padding-20 $padding-30;
+
+  hr {
+    margin: 20px 0;
+  }
 
   @include roboto();
 
@@ -29,32 +34,29 @@
   }
 
   .heading {
-
-    margin-bottom: $margin-28;
+    > * {
+      vertical-align: middle;
+    }
 
     h1 {
       font-size: 28px;
       display: inline-block;
-      height: 10px;
-      vertical-align: -11px;
     }
 
     button {
       display: inline-block;
-      margin-left: 10%;
-      width: 20%;
-      height: 50px;
+      width  : initial;
+      margin : 0 0 0 30px;
+      height : initial;
+      padding: 8px 10px;
+
       &:hover {
         cursor: pointer;
         cursor: hand;
       }
     }
-
-    hr {
-      margin-top: $margin-9;
-    }
   }
-  
+
   li {
 
     @include span-columns(12);
@@ -142,5 +144,4 @@
 
     }
   }
-  
 }
