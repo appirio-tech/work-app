@@ -1,5 +1,7 @@
 # ap-work-client (River)
 
+[![Build Status](https://magnum.travis-ci.com/appirio-tech/ap-work-client.svg?token=2opeegVgyrFpxakAa2Cb&branch=travis-ci)](https://magnum.travis-ci.com/appirio-tech/ap-work-client)
+
 ![ScreenShot](http://cdn1.ouchpress.com/media/celebrities/404/gina-torres-7565.jpg)
 
 **Generated from [HotTowel Angular](https://github.com/johnpapa/HotTowel-Angular)**
