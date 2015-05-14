@@ -17,4 +17,4 @@ env:
     - secure: "bKZEnyCTX78mUpuENb7BumhWylGygNa71SCeSO6l14G+OzIkxpBWj5Jy12UtlDAcThrVYZeZzN9GyBxDEVGGK6zex3yuGZk5qsGDJeivFBjB6oPeeNh9yl8pT6qD8tesmCaQRKm65E4RiykWuOfRJpyHqYnGbPGcAfNkZEaigNw="
     - BASE_API_URL=https://api.topcoder-dev.com/v3/
 after_success:
-  - coveralls
+  - gulp coveralls

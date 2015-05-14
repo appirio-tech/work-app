@@ -259,13 +259,11 @@ gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants', 'templatecache'],
   //done();
 });
 
-gulp.task('coveralls', function (done) {
+gulp.task('coveralls', function () {
   log('Send coverage reports to coveralls');
 
   gulp.src('report/coverage/**/lcov.info')
     .pipe(coveralls());
-
-  //done();
 });
 
 /**
@@ -273,7 +271,7 @@ gulp.task('coveralls', function (done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['fixtures', 'optimize', 'images', 'fonts', 'coveralls'], function () {
+gulp.task('build', ['fixtures', 'optimize', 'images', 'fonts'], function () {
   log('Building everything');
 
   var msg = {
