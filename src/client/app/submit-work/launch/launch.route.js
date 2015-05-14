@@ -23,22 +23,6 @@
           title: 'Estimate',
           settings: {}
         }
-      },
-      {
-        state: 'launch-success',
-        config: {
-          url: '/submit-work/launch/success',
-          templateUrl: 'submit-work/launch/views/success.html',
-          controller: 'SubmitSuccessController',
-          controllerAs: 'vm',
-          resolve: {
-            work: function() {
-              return SubmitWorkService.save('Submitted', true);
-            }
-          },
-          title: 'Success',
-          settings: {}
-        }
       }
     ];
   }

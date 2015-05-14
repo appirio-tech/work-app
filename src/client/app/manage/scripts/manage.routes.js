@@ -5,13 +5,13 @@
     .module('app.manage')
     .run(runApp);
 
-  runApp.$inject = ['routerHelper', 'ManageService'];
+  runApp.$inject = ['routerHelper', 'ManageService', 'SubmitWorkService'];
   /* @ngInject */
-  function runApp(routerHelper, ManageService) {
-    routerHelper.configureStates(getStates(ManageService));
+  function runApp(routerHelper) {
+    routerHelper.configureStates(getStates());
   }
 
-  function getStates(ManageService) {
+  function getStates() {
     return [
       {
         state: 'view-work-multiple',
@@ -22,10 +22,20 @@
           controllerAs: 'vm',
           title: 'View Work',
           settings: {},
+          params: {
+            save: {}
+          },
           resolve: {
-            workRequests: function() {
+            workRequests: ['ManageService', function(ManageService) {
               return ManageService.getWorkRequests();
-            }
+            }],
+            work: ['SubmitWorkService', '$stateParams', function(SubmitWorkService, $stateParams) {
+              if ($stateParams.save == 'yes') {
+                return SubmitWorkService.save('Submitted', true);
+              } else {
+                return false;
+              }
+            }]
           }
         }
       }

@@ -9,6 +9,25 @@
 
   @include roboto();
 
+  .message {
+    background: #38b449;
+    line-height: 25px;
+    vertical-align: middle;
+    padding-left: 20px;
+    span {
+      color: white;
+      position: relative;
+      bottom: 12px;
+      font-family: sans-serif;
+    }
+    img.checkmark-green {
+      height: 43px;
+      top: 3px;
+      right: 10px;
+      position: relative;
+    }
+  }
+
   .heading {
 
     margin-bottom: $margin-28;
