@@ -7,3 +7,12 @@ before_install:
 script:
   - gulp build
 sudo: false
+env:
+  - AWS_BUCKET=ap-work-client-site-dev
+  - AWS_KEY=AKIAI3M6L3P6LZMGIZ2Q
+  - AWS_REGION=us-east-1
+  - secure: "exQCRO1Krzif4e3Xygn8e/iGo4N1GN3O+3PVweA59M5cfxEvl8pPnuZOEFnxz/FoA6VSxdNwVdDRu6u5ZzPxhbKguXDBC/Iv9wXmZHmvDwyMSIwo+JTD3Nl+wIfgTrztYBL0oHOybHt6ujqld7qPGRamuUWey56JcQFmTzi+Xy4="
+  - AWS_CDN_URL=//ap-work-client-site-dev.s3.amazonaws.com/
+  - BASE_URL=/work/
+  - secure: "bKZEnyCTX78mUpuENb7BumhWylGygNa71SCeSO6l14G+OzIkxpBWj5Jy12UtlDAcThrVYZeZzN9GyBxDEVGGK6zex3yuGZk5qsGDJeivFBjB6oPeeNh9yl8pT6qD8tesmCaQRKm65E4RiykWuOfRJpyHqYnGbPGcAfNkZEaigNw="
+  - BASE_API_URL=https://api.topcoder-dev.com/v3/
