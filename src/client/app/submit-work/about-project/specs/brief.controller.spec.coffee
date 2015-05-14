@@ -3,6 +3,10 @@
 controller        = null
 scope          = null
 state          = null
+navServ = null
+navServBriefState = null
+setNextStateSpy = null
+# navServ.findState 'brief'.form = null
 # activeState    = null
 # saveSpy        = null
 # submitWorkServ = null
@@ -11,8 +15,14 @@ state          = null
 
 describe.only 'SubmitBriefController', ->
 
-  beforeEach inject ($rootScope, $log, $controller) ->
+  beforeEach inject ($rootScope, $log, $controller, NavService) ->
+    navServ = NavService
+    navServBriefState = navServ.findState 'brief'
+    setNextStateSpy = sinon.spy navServ, 'setNextState'
     scope = $rootScope.$new()
+    scope.briefForm = "project brief"
+    scope.elevatorForm = "elevator pitch"
+    scope.questionForm = "question"
     controller = $controller 'SubmitBriefController', $scope: scope
     $rootScope.$apply()
 
@@ -24,9 +34,10 @@ describe.only 'SubmitBriefController', ->
     it 'should have a title of Brief', ->
       expect(controller.title).to.equal('Brief')
 
-  describe 'toggle yes', ->
+  describe 'toggleYes', ->
     beforeEach ->
       controller.toggleYes()
+      scope.$apply()
 
     it 'should set "showYesNo" to false', ->
       expect(controller.showYesNo).to.equal(false)
@@ -36,6 +47,77 @@ describe.only 'SubmitBriefController', ->
 
     it 'should set "showElevator" to false', ->
       expect(controller.showElevator).to.equal(false)
+
+    it 'should set "brief" state form on NavService to "briefForm"', ->
+      expect(navServBriefState.form).to.equal('project brief')
+
+    describe 'toggleNo', ->
+      beforeEach ->
+        controller.toggleNo()
+        scope.$apply()
+
+      it 'should set "showYesNo" to false', ->
+        expect(controller.showYesNo).to.equal(false)
+
+      it 'should set "showBrief" to false', ->
+        expect(controller.showBrief).to.equal(false)
+
+      it 'should set "showElevator" to true', ->
+        expect(controller.showElevator).to.equal(true)
+
+      it 'should set "brief" state form on NavService to "elevatorForm"', ->
+        expect(navServBriefState.form).to.equal('elevator pitch')
+
+    describe 'toggleCancel', ->
+      beforeEach ->
+        controller.toggleCancel()
+        scope.$apply()
+
+      it 'should set "question" to null', ->
+        expect(controller.question).to.equal(null)
+
+      it 'should set "showYesNo" to true', ->
+        expect(controller.showYesNo).to.equal(true)
+
+      it 'should set "showBrief" to false', ->
+        expect(controller.showBrief).to.equal(false)
+
+      it 'should set "showElevator" to false', ->
+        expect(controller.showElevator).to.equal(false)
+
+      it 'should set "brief" state form on NavService to "questionForm"', ->
+        expect(navServBriefState.form).to.equal('question')
+
+    describe 'submitElevator', ->
+      beforeEach ->
+        controller.submitElevator()
+        scope.$apply()
+
+      afterEach ->
+        setNextStateSpy.restore()
+
+      context 'when elevatorForm is valid', ->
+        beforeEach ->
+          scope.elevatorForm =
+            $valid: true
+
+      it 'should call setNextState on NavService', ->
+        expect(setNextStateSpy).to.have.been.called
+
+      context 'when elevatorForm is invalid', ->
+        beforeEach ->
+          scope.elevatorForm =
+            $valid: true
+          setNextStateSpy = sinon.spy navServ, 'setNextState'
+
+        it 'should not call setNextState on NavService'
+        expect(setNextStateSpy).not.to.have.been.called
+
+  # describe 'toggleNo', ->
+  #   beforeEach ->
+  #     scope.elevatorForm = "elevator pitch"
+  #     controller.toggleNo()
+
   #   context 'when state is a string', ->
   #     beforeEach ->
   #       saveSpy = sinon.spy submitWorkServ, 'save'
