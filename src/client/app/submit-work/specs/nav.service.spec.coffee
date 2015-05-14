@@ -9,7 +9,7 @@ submitWorkServ = null
 nextState      = null
 defaultCompleted = null
 
-describe.only 'NavService', ->
+describe 'NavService', ->
 
   beforeEach inject ($rootScope, NavService, SubmitWorkService) ->
     submitWorkServ = SubmitWorkService
