@@ -1,6 +1,6 @@
 # ap-work-client (River)
 
-[![Build Status](https://magnum.travis-ci.com/appirio-tech/ap-work-client.svg?token=2opeegVgyrFpxakAa2Cb&branch=travis-ci)](https://magnum.travis-ci.com/appirio-tech/ap-work-client) [![Coverage Status](https://coveralls.io/repos/appirio-tech/ap-work-client/badge.svg?branch=&t=s1nAzI)](https://coveralls.io/r/appirio-tech/ap-work-client?branch=)
+[![Build Status](https://magnum.travis-ci.com/appirio-tech/ap-work-client.svg?token=2opeegVgyrFpxakAa2Cb&branch=travis-ci)](https://magnum.travis-ci.com/appirio-tech/ap-work-client) [![Coverage Status](https://coveralls.io/repos/appirio-tech/ap-work-client/badge.svg?branch=&t=s1nAzI)](https://coveralls.io/r/appirio-tech/ap-work-client?branch=travis-ci)
 
 ![ScreenShot](http://cdn1.ouchpress.com/media/celebrities/404/gina-torres-7565.jpg)
 
