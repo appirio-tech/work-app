@@ -59,14 +59,14 @@
       angular.forEach(aboutProjectStates, function (aboutProjectState, i) {
         var state = service.findState(aboutProjectState);
 
-        service.completed.aboutProject = service.completed.aboutProject && state && state.form.$valid && state.visited;
+        service.completed.aboutProject = service.completed.aboutProject && state && state.form && state.form.$valid && state.visited;
       });
 
       service.completed.aboutProject = service.completed.aboutProject && userState.visited;
-      service.completed.users        = userState && userState.form.$valid && featureState.visited;
-      service.completed.features     = featureState && featureState.form.$valid && designState.visited;
-      service.completed.design       = designState && designState.form.$valid && estimateState.visited;
-      service.completed.launch       = estimateState && estimateState.form.$valid;
+      service.completed.users        = userState && userState.form && userState.form.$valid && featureState.visited;
+      service.completed.features     = featureState && featureState.form && featureState.form.$valid && designState.visited;
+      service.completed.design       = designState && designState.form && designState.form.$valid && estimateState.visited;
+      service.completed.launch       = estimateState && estimateState.form && estimateState.form.$valid;
     }
 
     function getActiveStateIndex () {
@@ -119,8 +119,10 @@
     service.reset = function() {
       service.setActiveState('name');
       service.states.forEach(function(state) {
+        if (state.form) {
         state.form.$setPristine();
         state.form.$setUntouched();
+        }
       });
       service.completed = defaultCompleted;
       defaultCompleted = angular.copy(defaultCompleted);
