@@ -5,7 +5,7 @@ scope = null
 setNextStateSpy = null
 navServNameState = null
 
-describe.only 'SubmitNameController', ->
+describe 'SubmitNameController', ->
   beforeEach inject ($rootScope, $controller, NavService) ->
     navServ = NavService
     navServNameState = navServ.findState 'name'

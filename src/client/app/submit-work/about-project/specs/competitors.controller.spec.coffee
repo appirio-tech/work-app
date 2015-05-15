@@ -3,7 +3,7 @@
 controller = null
 scope = null
 
-describe.only 'SubmitCompetitorsController', ->
+describe 'SubmitCompetitorsController', ->
   beforeEach inject ($rootScope, $controller) ->
     scope = $rootScope.$new()
     controller = $controller 'SubmitCompetitorsController', $scope: scope
