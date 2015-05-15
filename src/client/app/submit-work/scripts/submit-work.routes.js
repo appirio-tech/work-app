@@ -13,10 +13,19 @@
     return [{
       state: 'submit-work',
       config: {
-        url: '/submit-work',
+        url: '/submit-work/:id?',
         title: 'Submit Work',
         abstract: true,
         controller: 'SubmitWorkController',
+        resolve: {
+          work: ['$stateParams', 'SubmitWorkService', function($stateParams, SubmitWorkService) {
+            if ($stateParams.id) {
+              return SubmitWorkService.initializeWork($stateParams.id);
+            } else {
+              return false;
+            }
+          }]
+        },
         templateUrl: 'submit-work/submit-work.html'
       }
     }, {

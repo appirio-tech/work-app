@@ -1,10 +1,10 @@
 .heading
   h1 Manage Projects
-  button(ng-click="vm.newProject()") New Project
+  button(ui-sref='submit-work.flow') New Project
   hr
 
 ul
-  li(ng-repeat= "project in vm.workRequests", ng-click="vm.go(project)")
+  li(ng-repeat= "project in vm.workRequests")
     div
       header
         h4 {{project.name}}
@@ -15,4 +15,7 @@ ul
         img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
         span.status {{project.message}}
         br
-        span.action(ng-bind-html="project.action")
+        span.action
+          a(ng-if="project.status == 'Incomplete'",
+            ui-sref="submit-work.flow({ id: project.id })") Continue setup
+          span(ng-if="project.status == 'Submitted'") Waiting for Project Approval

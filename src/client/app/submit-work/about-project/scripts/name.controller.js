@@ -26,5 +26,6 @@
         NavService.setNextState();
       }
     };
+
   }
 })();

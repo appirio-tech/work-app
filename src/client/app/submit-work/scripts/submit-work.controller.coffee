@@ -37,6 +37,11 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
       NavService.reset()
       $state.go 'launch-success'
 
+  activate = ->
+    SubmitWorkService.resetWork() unless $scope.work
+
+  activate()
+
 SubmitWorkController.$inject = ['$scope', 'SubmitWorkService', 'NavService', '$state']
 
 angular.module('app.submit-work').controller 'SubmitWorkController', SubmitWorkController
