@@ -19,15 +19,6 @@
  - While inside the repo, run `nvm use`
  - Then run `npm install` and `bower install`.
 
-1.6. Configure a .netrc file to give bower access to our private repos
- - https://www.youtube.com/watch?v=ExU_ZcONHxs
-
-1.7. Configure git to use https
-
-    ```bash
-    git config --global url."https://github".insteadOf git://github
-    ```
-
 2. Install these NPM packages globally
 
     ```bash
