@@ -1,7 +1,7 @@
 'use strict'
 
-controller        = null
-scope          = null
+controller = null
+scope = null
 navServ = null
 navServBriefState = null
 setNextStateSpy = null
