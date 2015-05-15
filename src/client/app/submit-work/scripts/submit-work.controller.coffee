@@ -2,7 +2,7 @@
 
 SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
   $scope.activeState  = NavService.activeState
-  $scope.work         = SubmitWorkService.work; 
+  $scope.work         = SubmitWorkService.work
   $scope.completed    = NavService.completed
   $scope.asideService = getEstimate: SubmitWorkService.getEstimate
 
