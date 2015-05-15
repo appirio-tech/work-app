@@ -1,8 +1,8 @@
 'use strict'
 
-SubmitWorkController = ($scope, SubmitWorkService, NavService, $state, $stateParams, work) ->
+SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
   $scope.activeState  = NavService.activeState
-  $scope.work         = work
+  $scope.work         = SubmitWorkService.work; 
   $scope.completed    = NavService.completed
   $scope.asideService = getEstimate: SubmitWorkService.getEstimate
 
@@ -38,12 +38,11 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state, $statePar
       $state.go 'launch-success'
 
   activate = ->
-    if !work
-      SubmitWorkService.resetWork()
+    SubmitWorkService.resetWork() unless $scope.work
 
   activate()
 
-SubmitWorkController.$inject = ['$scope', 'SubmitWorkService', 'NavService', '$state', '$stateParams', 'work']
+SubmitWorkController.$inject = ['$scope', 'SubmitWorkService', 'NavService', '$state']
 
 angular.module('app.submit-work').controller 'SubmitWorkController', SubmitWorkController
 
