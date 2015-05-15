@@ -2,13 +2,13 @@
 
 window.__karma__.loaded = ->
   # prevent karma from starting
-  SwaggerFakeServer.init()
+  AutoConfigFakeServer.init()
 
-  SwaggerFakeServer.fakeServer.respondImmediately = true
+  AutoConfigFakeServer.fakeServer.respondImmediately = true
 
   schema = __fixtures__['bower_components/work-api-schema/work-api-schema']
 
-  SwaggerFakeServer.consume schema, window.__karma__.start
+  AutoConfigFakeServer.consume schema, window.__karma__.start
 
 stash = {}
 
@@ -61,7 +61,7 @@ beforeEach inject ($httpBackend) ->
 
 # Transfer fakeserver responses to $httpBackend
 beforeEach inject ($httpBackend) ->
-  responses = window.SwaggerFakeServer?.fakeServer?.responses
+  responses = window.AutoConfigFakeServer?.fakeServer?.responses
 
   if responses
     for response in responses
