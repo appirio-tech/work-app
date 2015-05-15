@@ -17,8 +17,8 @@
     "angular-mocks": "~1.3.8",
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
     "bardjs": "~0.0.3",
-    "swagger-fake-server": "~1.0.0",
-    "work-api-schema": "appirio-tech/work-api-schema"
+    "work-api-schema": "appirio-tech/work-api-schema",
+    "auto-config-fake-server": "~1.1.0"
   },
   "dependencies": {
     "angular-scroll": "~0.6.5",
