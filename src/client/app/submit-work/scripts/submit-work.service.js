@@ -97,6 +97,7 @@
       if (reset) {
         service.resetWork();
       }
+      return promise;
     };
 
     service.getEstimate = function() {
