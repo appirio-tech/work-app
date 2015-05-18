@@ -8,6 +8,7 @@
 - scripts.push('/src/client/app/core/resource/resource.api.service')
 - scripts.push('/src/client/app/core/resource/resource.data.provider')
 - scripts.push('/src/client/app/core/core.module')
+- scripts.push('templates')
 - scripts.push('/src/client/app/core/ng-enter.directive')
 - scripts.push('layout/scripts/layout.module')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
@@ -92,7 +93,7 @@ include submit-work/includes
 - desktopCSS   = desktopCSS.concat(desktopFiles)
 
 //- timeline
-include timeline/timeline-includes
+include timeline
 
 - scripts      = scripts.concat(jsFiles)
 - css          = css.concat(cssFiles)

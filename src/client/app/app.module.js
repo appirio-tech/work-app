@@ -10,7 +10,7 @@
     'app.submit-work',
     'app.create-account',
     'app.manage',
-    'app.timeline',
+    'timeline',
     'newrelic'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);

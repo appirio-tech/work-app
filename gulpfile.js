@@ -293,12 +293,16 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
     .pipe(jsAppFilter)
-    .pipe($.uglify({ mangle: true, compress: true }))
+    .pipe($.uglify({ mangle: false, compress: false, output: {
+        beautify: true
+      } }))
     .pipe(getHeader())
     .pipe(jsAppFilter.restore())
     // Get the vendor javascript
     .pipe(jslibFilter)
-    .pipe($.uglify({ mangle: true, compress: true }))
+    .pipe($.uglify({ mangle: false, compress: true, output: {
+        beautify: true
+      } }))
     .pipe(jslibFilter.restore())
     // Take inventory of the file names for future rev numbers
     .pipe($.rev())
