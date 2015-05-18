@@ -58,7 +58,7 @@
 
     vm.go = function(project) {
       if (project.status == 'Submitted') {
-        $state.go('timeline');
+        $state.go('timeline', { workId: project.id } );
       } else {
         $state.go('submit-work.flow');
       }

@@ -3,27 +3,18 @@
 @import "neat";
 
 .layout-main.manage {
-
   .heading {
-    
-    h1 {
-      vertical-align: -3px;
-    }
-
     button {
-      width: 175px;
-      height: 40px;
-      margin-left: 5%;
+      br {
+        display: none;
+      }
     }
   }
 
   li {
-
     @include omega-reset(1n);
     @include span-columns(6);
     @include omega(2n);
     height: 245px;
-
   }
-
 }
