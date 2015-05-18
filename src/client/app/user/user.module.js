@@ -23,7 +23,7 @@
     function LoginComplete() {
       var decodedToken = TokenService.decodeToken();
       if (decodedToken.userId) {
-        UserService.setUser(decodedToken.userId);
+        UserService.getUser(decodedToken.userId);
       }
     }
 
