@@ -23,7 +23,7 @@
   function LoginDirectiveController($scope, $rootScope, $state, UserService, AuthService) {
     var vm = this;
 
-    vm.loggedInUser = UserService.getUser();
+    vm.handle = null;
     vm.isLoggedIn = AuthService.isAuthenticated();
     vm.signout = null;
     vm.signin = null;
@@ -38,11 +38,16 @@
       $rootScope.$on('authenticated', function() {
         updateDisplay();
       });
+
+      updateDisplay();
     }
 
     function updateDisplay() {
       vm.isLoggedIn = AuthService.isAuthenticated();
-      vm.loggedInUser = UserService.getUser();
+      UserService.getCurrentUser()
+        .then(function(data) {
+          vm.handle = data.result.content.handle
+        });
     }
 
     vm.signin = function() {
