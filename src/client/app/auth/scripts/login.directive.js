@@ -45,8 +45,8 @@
     function updateDisplay() {
       vm.isLoggedIn = AuthService.isAuthenticated();
       UserService.getCurrentUser()
-        .then(function(data) {
-          vm.handle = data.result.content.handle
+        .then(function(user) {
+          vm.handle = user.handle
         });
     }
 
