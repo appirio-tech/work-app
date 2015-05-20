@@ -28,7 +28,7 @@
     >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 
 3.  git clone git@github.com:appirio-tech/work-api-schema.git
-
+  
 ## Gulp tasks
 
 ### Linting

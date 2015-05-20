@@ -5,9 +5,9 @@
     .module('app.user')
     .factory('UserService', UserService);
 
-  UserService.$inject = ['data', 'logger', 'TokenService'];
+  UserService.$inject = ['$q', 'data', 'logger', 'TokenService'];
   /* @ngInject */
-  function UserService(data, logger, TokenService) {
+  function UserService($q, data, logger, TokenService) {
     var service = {
       getUser: null,
       user: null,
@@ -16,10 +16,23 @@
     };
 
     service.getCurrentUser = function() {
+      var deferred = $q.defer();
       var decodedToken = TokenService.decodeToken();
+
       if (decodedToken.userId) {
-        return service.getUser(decodedToken.userId);
+        service.getUser(decodedToken.userId).then(function(data) {
+          console.log('data');
+          if (data && data.result) {
+            deferred.resolve(data.result.content);
+          } else {
+            deferred.reject('API Issue');
+          }
+        });
+      } else {
+        deferred.reject('No User Id');
       }
+
+      return deferred.promise;
     };
 
     service.removeUser = function() {
