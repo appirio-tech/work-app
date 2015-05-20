@@ -13,7 +13,8 @@
       logout: null,
       isAuthenticated: null,
       exchangeToken: null,
-      refreshToken: null
+      refreshToken: null,
+      register: null
     };
 
     service.logout = function() {
@@ -126,6 +127,13 @@
      */
     service.isAuthenticated = function() {
       return TokenService.tokenIsValid();
+    };
+
+    /**
+     * Register a User
+     */
+    service.register = function(data) {
+      return data.create('user', data);
     };
 
     return service;
