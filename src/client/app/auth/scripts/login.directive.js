@@ -32,7 +32,7 @@
 
     function activate() {
       $rootScope.$on('logout', function() {
-        updateDisplay();
+        vm.handle = null;
       });
 
       $rootScope.$on('authenticated', function() {
@@ -44,10 +44,18 @@
 
     function updateDisplay() {
       vm.isLoggedIn = AuthService.isAuthenticated();
-      UserService.getCurrentUser()
-        .then(function(user) {
-          vm.handle = user.handle
-        });
+      var promise = UserService.getCurrentUser();
+
+      promise.then(setUser, setUserError);
+    }
+
+    function setUser(user) {
+      console.log(user);
+      vm.handle = user.handle
+    }
+
+    function setUserError(reason) {
+      console.log(reason);
     }
 
     vm.signin = function() {
