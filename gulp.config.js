@@ -54,6 +54,7 @@ module.exports = function () {
     htmltemplates: [
       clientApp + '**/*.html',
       temp + '**/*.html',
+      bower.directory + '/appirio-tech-timeline/dist/**/*.html',
       '!' + temp + '/index.html'
     ],
     images: client + '**/images/**/*.*',
