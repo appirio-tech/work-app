@@ -18,9 +18,9 @@
     return directive;
   }
 
-  LoginDirectiveController.$inject = ['$scope', '$rootScope', '$state', 'UserService', 'AuthService'];
+  LoginDirectiveController.$inject = ['$scope', '$rootScope', '$state', 'UserService', 'AuthService', 'logger'];
 
-  function LoginDirectiveController($scope, $rootScope, $state, UserService, AuthService) {
+  function LoginDirectiveController($scope, $rootScope, $state, UserService, AuthService, logger) {
     var vm = this;
 
     vm.handle = null;
@@ -50,12 +50,12 @@
     }
 
     function setUser(user) {
-      console.log(user);
       vm.handle = user.handle
     }
 
     function setUserError(reason) {
-      console.log(reason);
+      vm.handle = null;
+      logger.error(reason);
     }
 
     vm.signin = function() {

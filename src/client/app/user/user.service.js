@@ -21,7 +21,6 @@
 
       if (decodedToken.userId) {
         service.getUser(decodedToken.userId).then(function(data) {
-          console.log('data');
           if (data && data.result) {
             deferred.resolve(data.result.content);
           } else {
