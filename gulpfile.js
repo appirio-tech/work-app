@@ -7,6 +7,7 @@ var glob        = require('glob');
 var gulp        = require('gulp');
 var sass        = require('gulp-sass');
 var coffee      = require('gulp-coffee');
+var fixtures2js = require("gulp-fixtures2js");
 var path        = require('path');
 var _           = require('lodash');
 var $           = require('gulp-load-plugins')({lazy: true});
@@ -27,6 +28,25 @@ var onError = function (error) {
     );
   }
 };
+
+gulp.task('fixtures', function() {
+  var options = {
+    postProcessors: {
+      "**/*.json": "json"
+    }
+  };
+
+  var fixtures = fixtures2js('json-fixtures.js', {
+    postProcessors: {
+      "**/*.json": "json"
+    }
+  });
+
+  return gulp
+    .src('./bower_components/work-api-schema/work-api-schema.json')
+    .pipe(fixtures)
+    .pipe(gulp.dest(config.temp));
+});
 
 /**
  * yargs variables can be passed in to alter the behavior, when present.
@@ -389,7 +409,7 @@ gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-dev', ['inject'], function () {
+gulp.task('serve-dev', ['inject', 'fixtures'], function () {
   serve(true /*isDev*/);
 });
 
