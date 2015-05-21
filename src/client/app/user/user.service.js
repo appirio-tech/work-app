@@ -58,7 +58,7 @@
     /**
      * Create a User
      *
-     * @param data
+     * @param options
      *   array with the following properties:
      *   - handle
      *   - password
@@ -69,40 +69,40 @@
      *   - utmMedium
      *   - utmCampaign
      */
-    service.createUser = function(data) {
+    service.createUser = function(options) {
       var deferred = $q.defer();
 
-      if (!data.handle || !data.email || !data.password) {
+      if (!options.handle || !options.email || !options.password) {
         deferred.reject('Required Fields not filled out');
       }
 
       var userData = {
         param: {
-          handle: data.handle,
-          email: data.email,
-          utmSource: data.utmSource || 'asp',
-          utmMedium: data.utmMedium || '',
-          utmCampaign: data.utmCampaign || '',
-          firstName: data.firstname,
-          lastName: data.lastname,
+          handle: options.handle,
+          email: options.email,
+          utmSource: options.utmSource || 'asp',
+          utmMedium: options.utmMedium || '',
+          utmCampaign: options.utmCampaign || '',
+          firstName: options.firstname,
+          lastName: options.lastname,
           credential: {
-            password: data.password
+            password: options.password
           }
         }
       };
 
       data.create('user', userData)
-        .then(createUserCompleted)
+        .then(createUserCompleted, createUserError)
         .catch(createError);
 
-      function createUserCompleted(data) {
-        if (data && data.result && data.result.state === 200) {
-          logger.log('user created', data);
-          deferred.resolve(data.result.content);
-        } else {
-          logger.error('User Creation Error', data.result.content);
-          deferred.reject(data.result.content);
-        }
+      function createUserCompleted(res) {
+        logger.log('user created', res);
+        deferred.resolve(res);
+      }
+
+      function createUserError(res) {
+        logger.log('User Creation Error', res);
+        deferred.reject(res.data.result.content);
       }
 
       function createError(error) {

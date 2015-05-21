@@ -129,13 +129,6 @@
       return TokenService.tokenIsValid();
     };
 
-    /**
-     * Register a User
-     */
-    service.register = function(data) {
-      return data.create('user', data);
-    };
-
     return service;
   }
 })();
