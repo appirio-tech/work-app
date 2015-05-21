@@ -262,7 +262,7 @@ gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants', 'templatecache'],
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts'], function () {
+gulp.task('build', ['fixtures', 'optimize', 'images', 'fonts'], function () {
   log('Building everything');
 
   var msg = {
