@@ -37,7 +37,8 @@
     "auth0-angular": "~4.0.4",
     "angular-cookies": "~1.3.14",
     "a0-angular-storage": "~0.0.9",
-    "angular-jwt": "~0.0.6"
+    "angular-jwt": "~0.0.6",
+    "ap-newrelic": "git@github.com:appirio-tech/ap-newrelic#master"
   },
   "resolutions": {
     "angular": "1.3.15"
