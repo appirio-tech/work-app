@@ -198,9 +198,10 @@ module.exports = function () {
         clientApp + '**/*.module.{js,coffee}',
         clientApp + '**/*.{js,coffee}',
         temp + 'constants.js',
+        temp + 'json-fixtures.js',
         temp + 'templates.js',
         {
-          pattern: './bower_components/work-api-schema/*.json'
+          pattern: './bower_components/appirio-tech-api-schemas/v3.json'
         }
       ),
       exclude: [],

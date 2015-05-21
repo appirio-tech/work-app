@@ -43,7 +43,7 @@ gulp.task('fixtures', function() {
   });
 
   return gulp
-    .src('./bower_components/work-api-schema/work-api-schema.json')
+    .src('./bower_components/appirio-tech-api-schemas/v3.json')
     .pipe(fixtures)
     .pipe(gulp.dest(config.temp));
 });
@@ -390,7 +390,7 @@ gulp.task('clean-code', function (done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['ng-constants', 'templatecache'], function (done) {
+gulp.task('test', ['fixtures', 'ng-constants', 'templatecache'], function (done) {
   startTests(true /*singleRun*/, done);
 });
 
@@ -400,7 +400,7 @@ gulp.task('test', ['ng-constants', 'templatecache'], function (done) {
  * To start servers and run midway specs as well:
  *    gulp autotest --startServers
  */
-gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
+gulp.task('autotest', ['fixtures', 'ng-constants', 'templatecache'], function (done) {
   startTests(false /*singleRun*/, done);
 });
 
