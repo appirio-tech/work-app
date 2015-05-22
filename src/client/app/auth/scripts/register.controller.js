@@ -5,12 +5,12 @@
   angular.module('app.auth')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$rootScope', '$location', '$state', 'AuthService', 'UserService', 'logger'];
+  RegisterController.$inject = ['$state', 'AuthService', 'UserService', 'logger'];
 
   /* @ngInject */
-  function RegisterController($rootScope, $location, $state, AuthService, UserService, logger) {
+  function RegisterController($state, AuthService, UserService, logger) {
     var vm = this;
-    vm.title = 'Login';
+    vm.title = 'Register';
     vm.username  = '';
     vm.password = '';
     vm.error = false;

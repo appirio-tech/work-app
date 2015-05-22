@@ -17,7 +17,7 @@ var mockUser = (function () {
         success: true,
         status: 200,
         metadata: null,
-        content: mockWorkRequest[callback]()
+        content: mockUser[callback]()
       }
     };
   }

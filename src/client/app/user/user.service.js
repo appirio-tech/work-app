@@ -42,16 +42,11 @@
     service.getUser = function(id) {
       var promise = data.get('user', {id: id});
       promise.then(getUserComplete);
-      promise.catch(userError);
 
       return promise;
 
       function getUserComplete(data) {
         service.user = data.result.content;
-      }
-
-      function userError(error) {
-        logger.log(error);
       }
     };
 
@@ -92,8 +87,7 @@
       };
 
       data.create('user', userData)
-        .then(createUserCompleted, createUserError)
-        .catch(createError);
+        .then(createUserCompleted, createUserError);
 
       function createUserCompleted(res) {
         logger.log('user created', res);
@@ -103,10 +97,6 @@
       function createUserError(res) {
         logger.log('User Creation Error', res);
         deferred.reject(res.data.result.content);
-      }
-
-      function createError(error) {
-        logger.log(error);
       }
 
       return deferred.promise;
