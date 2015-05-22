@@ -7,6 +7,7 @@ var glob        = require('glob');
 var gulp        = require('gulp');
 var sass        = require('gulp-sass');
 var coffee      = require('gulp-coffee');
+var fixtures2js = require("gulp-fixtures2js");
 var path        = require('path');
 var _           = require('lodash');
 var $           = require('gulp-load-plugins')({lazy: true});
@@ -27,6 +28,25 @@ var onError = function (error) {
     );
   }
 };
+
+gulp.task('fixtures', function() {
+  var options = {
+    postProcessors: {
+      "**/*.json": "json"
+    }
+  };
+
+  var fixtures = fixtures2js('json-fixtures.js', {
+    postProcessors: {
+      "**/*.json": "json"
+    }
+  });
+
+  return gulp
+    .src('./bower_components/appirio-tech-api-schemas/v3.json')
+    .pipe(fixtures)
+    .pipe(gulp.dest(config.temp));
+});
 
 /**
  * yargs variables can be passed in to alter the behavior, when present.
@@ -242,7 +262,7 @@ gulp.task('inject', ['jade', 'scss', 'coffee', 'ng-constants', 'templatecache'],
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts'], function () {
+gulp.task('build', ['fixtures', 'optimize', 'images', 'fonts'], function () {
   log('Building everything');
 
   var msg = {
@@ -370,7 +390,7 @@ gulp.task('clean-code', function (done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['ng-constants', 'templatecache'], function (done) {
+gulp.task('test', ['fixtures', 'ng-constants', 'templatecache'], function (done) {
   startTests(true /*singleRun*/, done);
 });
 
@@ -380,7 +400,7 @@ gulp.task('test', ['ng-constants', 'templatecache'], function (done) {
  * To start servers and run midway specs as well:
  *    gulp autotest --startServers
  */
-gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
+gulp.task('autotest', ['fixtures', 'ng-constants', 'templatecache'], function (done) {
   startTests(false /*singleRun*/, done);
 });
 
@@ -389,7 +409,7 @@ gulp.task('autotest', ['ng-constants', 'templatecache'], function (done) {
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-dev', ['inject'], function () {
+gulp.task('serve-dev', ['inject', 'fixtures'], function () {
   serve(true /*isDev*/);
 });
 
