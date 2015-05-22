@@ -2,24 +2,21 @@
   'use strict';
 
   angular.module('app.layout')
-    .directive('ngHeader', headerDirective);
+  .directive('ngHeader', headerDirective);
 
-    headerDirective.$inject = [];
+  headerDirective.$inject = [];
 
-    function headerDirective() {
-      var directive = {
-        restrict    : 'A',
-        controller: HeaderDirectiveController
-      };
+  function headerDirective() {
+    var directive = {
+      restrict: 'A', controller: HeaderDirectiveController
+    };
 
-      return directive;
-    }
+    return directive;
+  }
 
   HeaderDirectiveController.$inject = ['AuthService', '$scope'];
-  /* @ngInject */
+
   function HeaderDirectiveController(AuthService, $scope) {
-   $scope.getPath = function () {
-      return AuthService.isAuthenticated() ? '/#/manage' : '#/'
-    }
+   $scope.getPath = AuthService.isAuthenticated() ? '/#/manage' : '#/'
   }
 })();
