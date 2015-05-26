@@ -13,7 +13,8 @@
       logout: null,
       isAuthenticated: null,
       exchangeToken: null,
-      refreshToken: null
+      refreshToken: null,
+      register: null
     };
 
     service.logout = function() {

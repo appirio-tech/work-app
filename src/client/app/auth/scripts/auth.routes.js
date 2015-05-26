@@ -15,6 +15,15 @@
         data: {
           noAuthRequired: true
         }
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'auth/views/register.html',
+        controller: 'RegisterController',
+        controllerAs: 'vm',
+        data: {
+          noAuthRequired: true
+        }
       });
   }
 })();

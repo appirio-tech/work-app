@@ -8,7 +8,6 @@
     'app.auth',
     'app.user',
     'app.submit-work',
-    'app.create-account',
     'app.manage',
     'appirio-tech-timeline',
     'newrelic'

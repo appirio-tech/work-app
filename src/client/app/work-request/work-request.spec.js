@@ -2,7 +2,6 @@
 describe('WorkRequest', function() {
   'use strict';
 
-  var service;
   var flush;
 
   beforeEach(function() {
