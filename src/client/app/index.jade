@@ -109,14 +109,17 @@ html(ng-app='app')
 
     script(type="text/javascript", src="/bower_components/sinon/index.js")
 
-    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js")
+    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/scripts/auto-config-fake-server.js")
 
     script(type="text/javascript").
       AutoConfigFakeServer.init();
 
       AutoConfigFakeServer.fakeServer.autoRespond = true;
 
-      AutoConfigFakeServer.consume(FIXTURES['bower_components/appirio-tech-api-schemas/v3.json']);
+      AutoConfigFakeServer.consume([
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
+      ]);
     // endRemoveIf(production)
 
     title(ng-bind='title') Appiro Work Platform

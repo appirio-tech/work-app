@@ -43,9 +43,10 @@ gulp.task('fixtures', function() {
   });
 
   return gulp
-    .src('./bower_components/appirio-tech-api-schemas/v3.json')
-    .pipe(fixtures)
-    .pipe(gulp.dest(config.temp));
+    .src([
+      'bower_components/appirio-tech-api-schemas/v3.json',
+      'bower_components/appirio-tech-api-schemas/v2.json']
+    ).pipe(fixtures).pipe(gulp.dest(config.temp));
 });
 
 /**

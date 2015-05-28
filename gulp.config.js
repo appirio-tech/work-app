@@ -25,10 +25,13 @@ module.exports = function () {
   var config = {
     // angular contants
     ngConstants: {
-      apiUrl: envConfig.getVal('BASE_API_URL', '/v3/'),
-      auth0ClientId: envConfig.getVal('AUTH0_CLIENT_ID', ''),
-      auth0Domain: envConfig.getVal('AUTH0_DOMAIN', 'topcoder-dev.auth0.com'),
-      auth0TokenName: envConfig.getVal('AUTH0_TOKEN_NAME', 'userJWTToken')
+      apiUrl        : envConfig.getVal('BASE_API_URL', '/v3/'),
+      auth0ClientId : envConfig.getVal('AUTH0_CLIENT_ID', ''),
+      auth0Domain   : envConfig.getVal('AUTH0_DOMAIN', 'topcoder-dev.auth0.com'),
+      auth0TokenName: envConfig.getVal('AUTH0_TOKEN_NAME', 'userJWTToken'),
+      API_URL_V2    : envConfig.getVal('API_URL_V2', 'https://api.topcoder-dev.com/v2'),
+      AVATAR_URL    : envConfig.getVal('AVATAR_URL', 'http://www.topcoder.com'),
+      SUBMISSION_URL: envConfig.getVal('SUBMISSION_URL', 'https://studio.topcoder.com')
     },
     baseURL: envConfig.getVal('BASE_URL', '/'),
     // Env Path
