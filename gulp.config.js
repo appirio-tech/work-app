@@ -194,7 +194,7 @@ module.exports = function () {
     var options = {
       files: [].concat(
         bowerFiles,
-        './bower_components/auto-config-fake-server/dist/auto-config-fake-server.js',
+        './bower_components/auto-config-fake-server/dist/scripts/auto-config-fake-server.js',
         config.specHelpers,
         client    + 'mock-api/*.coffee',
         client    + 'test-helpers/*.coffee',

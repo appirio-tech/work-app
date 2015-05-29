@@ -8,7 +8,9 @@ window.__karma__.loaded = ->
 
   schema = FIXTURES['bower_components/appirio-tech-api-schemas/v3.json']
 
-  AutoConfigFakeServer.consume schema, window.__karma__.start
+  AutoConfigFakeServer.consume schema
+
+  window.__karma__.start()
 
 stash = {}
 
