@@ -1,13 +1,13 @@
 language: node_js
 node_js:
   - "0.10.25"
-before_install:
+install:
   - npm install -g gulp
   - npm install -g bower
   - npm install
   - bower install
 script:
-  - gulp build
+  - gulp test
 sudo: false
 env:
   global:
@@ -24,7 +24,6 @@ env:
     - CALLBACK_URL=login_callback_url
     - NEWRELIC_APPLICATION_ID=7374849
     - NEWRELIC_LICENSE_KEY=496af5ee90
-
 after_success:
   - gulp coveralls
 
