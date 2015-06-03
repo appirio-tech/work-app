@@ -1,0 +1,13 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+
+.layout-main.register {
+  .reminder {
+  	text-align: center;
+  	margin-top: 10px;
+  }
+
+  input {
+  	margin-top: 2px;
+  }
+}
