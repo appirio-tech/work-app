@@ -1,10 +1,10 @@
 - links = []
-- links.push({ ui-sref: "#/register", label: 'Sign up'})
-- links.push({ href: "#", label: 'Help'})
-- links.push({ href: "#", label: 'About'})
+- links.push({ 'ui-sref': "#/register", 'ui-sref-active': 'active', label: 'Sign up'})
+- links.push({ 'ui-sref': "#", label: 'Help'})
+- links.push({ 'ui-sref': "#", label: 'About'})
 
 footer.layout-footer
   ul
     each link in links
       li
-        a(href=link.href)!= link.label
+        a(href=link.ui-sref)!=link.label
