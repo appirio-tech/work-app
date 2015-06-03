@@ -1,5 +1,5 @@
 {
-  "name": "np-front-end-reference", 
+  "name": "np-front-end-reference",
   "version": "0.0.1",
   "description": "Appiro Work Platform",
   "authors": [
@@ -19,6 +19,7 @@
     "bardjs": "~0.0.3",
     "appirio-tech-api-schemas": "git@github.com:appirio-tech/api-schemas#0.0.1",
     "appirio-tech-timeline": "git@github.com:appirio-tech/timeline#0.0.6",
+    "appirio-tech-ng-auth": "git@github.com:appirio-tech/ng-auth#0.0.1",
     "auto-config-fake-server": "~1.2.3"
   },
   "dependencies": {
