@@ -5,14 +5,17 @@ main
   form(ng-submit="vm.submit()")
     p.error(ng-show="vm.error") {{ vm.errorMessage }}
 
-    label(for="user") Username
-    input(type="text", name="user", ng-model="vm.username", required=true)
+    label(for="login-user-input") Username
 
-    label(for="password") Password
-    input(type="password" name="password" ng-model="vm.password" required=true)
+    input#login-user-input(type="text", name="user", ng-model="vm.username", required=true)
 
-    label(for="email") Email
-    input(type="email" name="email" ng-model="vm.email" required=true)
+    label(for="login-password-input") Password
+
+    input#login-password-input(type="password" name="password" ng-model="vm.password" required=true)
+
+    label(for="login-email-input") Email
+
+    input#login-email-input(type="email" name="email" ng-model="vm.email" required=true)
 
     button.submit(type="submit") Register
 
