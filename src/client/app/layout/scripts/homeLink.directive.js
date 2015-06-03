@@ -19,7 +19,7 @@ HomeLinkDirectiveController.$inject = ['AuthService', '$scope'];
 
 function HomeLinkDirectiveController(AuthService, $scope) {
    $scope.getPath = function() {
-    return AuthService.isAuthenticated() ? '/#/manage' : '#/'
+    return AuthService.isAuthenticated() ? '#/manage' : '#/'
   }
 }
 })();
