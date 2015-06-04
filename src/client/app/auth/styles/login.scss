@@ -5,9 +5,15 @@
   .reminder {
   	text-align: center;
   	margin-top: 10px;
+  	color: #5F5F5F;
+
+  	a {
+  		color: #0000FF;
+  	}
   }
 
   input {
   	margin-top: 2px;
+  	margin-bottom: 20px;
   }
 }
