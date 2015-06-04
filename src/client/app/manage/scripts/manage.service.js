@@ -20,7 +20,7 @@
     service.getWorkRequests = function() {
       var deferred = $q.defer();
       data.get('work-request').then(function(data) {
-        deferred.resolve(data.result.content);
+        deferred.resolve(data.result.content.reverse());
       });
       return deferred.promise;
     };
