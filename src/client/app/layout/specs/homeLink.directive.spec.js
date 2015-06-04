@@ -15,6 +15,7 @@ describe('HomeLinkDirective', function() {
 
  context('when the user is authenticated', function() {
   beforeEach(function() {
+    // TODO: need to stub and restore
     AuthService.isAuthenticated = function() {
       return true;
     }
@@ -28,6 +29,7 @@ describe('HomeLinkDirective', function() {
 
  context('when the user is not authenticated', function() {
   beforeEach(function() {
+    // TODO: need to stub and restore
     AuthService.isAuthenticated = function() {
       return false;
     }

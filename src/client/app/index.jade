@@ -51,10 +51,8 @@
 - scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
 
 //- Auth
-- scripts.push("/src/client/app/auth/scripts/auth.module")
+- scripts.push("auth/scripts/auth.module")
 - scripts.push("/src/client/app/auth/scripts/auth.routes")
-- scripts.push("/src/client/app/auth/scripts/auth.service")
-- scripts.push("/src/client/app/auth/scripts/token.service")
 - scripts.push("/src/client/app/auth/scripts/login.controller")
 - scripts.push("/src/client/app/auth/scripts/login.directive")
 - scripts.push("/src/client/app/auth/scripts/register.controller")
@@ -93,6 +91,11 @@ include timeline
 - css          = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
 - desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- ng auth
+include ng-auth
+
+- scripts      = scripts.concat(jsFiles)
 
 include bowers
 

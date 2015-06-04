@@ -11,5 +11,5 @@ init = ($rootScope, $location) ->
 
 init.$inject = ['$rootScope', '$location']
 
-angular.module('app.layout', []).run init
+angular.module('app.layout', ['appirio-tech-ng-auth']).run init
 
