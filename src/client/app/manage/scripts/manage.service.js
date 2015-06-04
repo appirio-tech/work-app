@@ -12,7 +12,7 @@
     var service = {
 
       // functions
-      getWorkRequests        : null,
+      getWorkRequests: null,
 
     };
 
