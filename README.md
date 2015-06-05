@@ -1,7 +1,9 @@
-# ap-work-client (River)
+# ap-work-client
 
 [![Build Status](https://magnum.travis-ci.com/appirio-tech/ap-work-client.svg?token=2opeegVgyrFpxakAa2Cb&branch=travis-ci)](https://magnum.travis-ci.com/appirio-tech/ap-work-client) [![Coverage Status](https://coveralls.io/repos/appirio-tech/ap-work-client/badge.svg?branch=dev&t=s1nAzI)](https://coveralls.io/r/appirio-tech/ap-work-client?branch=dev)
-![ScreenShot](http://cdn1.ouchpress.com/media/celebrities/404/gina-torres-7565.jpg)
+
+## Repo mapping
+![ScreenShot](https://www.gliffy.com/go/publish/image/8283283/L.png)
 
 **Generated from [HotTowel Angular](https://github.com/johnpapa/HotTowel-Angular)**
 
@@ -29,7 +31,7 @@
     >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 
 3.  git clone git@github.com:appirio-tech/work-api-schema.git
-  
+
 ## Gulp tasks
 
 ### Linting
