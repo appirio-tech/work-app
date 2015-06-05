@@ -1,6 +1,6 @@
 // spec.js
- var loginPage = require('/Volumes/Data/gitDemand/ap-work-client/test/e2e/pages/loginPage');
- var loginUser = require('/Volumes/Data/gitDemand/ap-work-client/test/e2e/data/loginData');
+ var loginPage = require('loginPage');
+ var loginUser = require('loginData');
 describe('login', function() {
   it('welcomes the user', function() {
     //var loginPage = new LoginPage();

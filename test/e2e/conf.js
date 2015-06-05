@@ -5,8 +5,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 	//specs: ['specs/regression/*Spec.js'],
 	suites: {
-	    regression: 'specs/regression/*Spec.js',
-	    others: 'specs/others/*Spec.js'
+	    regression: '**/*/*.spec.js'
 	  },
     //baseUrl: 'http://qualityshepherd.com/angular',
     //framework: 'jasmine2',
