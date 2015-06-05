@@ -18,10 +18,12 @@
         abstract: true,
         controller: 'SubmitWorkController',
         resolve: {
-          work: ['$stateParams', 'SubmitWorkService', function($stateParams, SubmitWorkService) {
+          work: ['$stateParams', 'SubmitWorkService', 'FeatureService', function($stateParams, SubmitWorkService, FeatureService) {
             if ($stateParams.id) {
               return SubmitWorkService.initializeWork($stateParams.id);
             } else {
+              SubmitWorkService.resetWork();
+              FeatureService.resetFeatures();
               return false;
             }
           }]
