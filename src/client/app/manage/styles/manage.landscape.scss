@@ -1,0 +1,20 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.manage {
+  .heading {
+    button {
+      br {
+        display: none;
+      }
+    }
+  }
+
+  li {
+    @include omega-reset(1n);
+    @include span-columns(6);
+    @include omega(2n);
+    height: 245px;
+  }
+}

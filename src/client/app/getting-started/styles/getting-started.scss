@@ -1,0 +1,33 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.getting-started {
+  .jumbotron {
+    display: none;
+  }
+
+  .learn-more {
+    text-align      : left;
+    background-color: $limed-spruce;
+    @include clearfix();
+
+    article {
+      @include span-columns(12);
+
+      header {
+        a {
+          @include font-line(18);
+          color    : $white;
+        }
+      }
+
+      p {
+        margin-top : $margin-10;
+        color      : $mercury;
+
+        @include font-line(14);
+      }
+    }
+  }
+}

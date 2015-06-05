@@ -3,12 +3,16 @@
 
   angular.module('app', [
     'app.core',
-    'app.widgets',
-    'app.admin',
     'app.layout',
-    'app.project.manage',
-    'app.project.create',
-    'app.project.core'
-  ]);
+    'app.getting-started',
+    'app.auth',
+    'app.user',
+    'app.submit-work',
+    'app.manage',
+    'appirio-tech-timeline',
+    'newrelic'
+  ]).config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode(false);
+  }]);
 
 })();

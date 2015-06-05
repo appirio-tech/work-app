@@ -1,0 +1,18 @@
+@import "../../core/styles/combined";
+
+footer.layout-footer {
+  margin-top: $margin-20;
+  padding: $padding-25;
+
+  ul {
+    li {
+      display: inline-block;
+      margin-right: $margin-20;
+
+      a {
+        color: $white;
+        text-decoration: underline;
+      }
+    }
+  }
+}

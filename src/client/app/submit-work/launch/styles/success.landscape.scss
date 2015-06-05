@@ -1,0 +1,10 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work.launch.success {
+
+  main {
+    @include main-restricted-landscape();
+    width: 100%;
+    min-height: 150px;
+  }
+}

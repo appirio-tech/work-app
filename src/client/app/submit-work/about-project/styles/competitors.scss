@@ -1,0 +1,50 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .competitors {
+  fieldset {
+    overflow: hidden;
+  }
+
+  input {
+    width: 280px;
+  }
+
+  .add-competitor {
+    position: absolute;
+    width           : 15px;
+    background-color: $white;
+    color           : $black;
+    margin-top      : 0;
+  }
+
+  h6 {
+    margin-top: $margin-18;
+  }
+
+  .added-competitors {
+    li {
+      margin: 10px auto;
+      overflow:  hidden;
+      width: 280px;
+
+      .competitor {
+        line-height: 40px;
+        float: left;
+        margin-left: 10px;
+      }
+
+      .remove-competitor {
+        margin-top: 0;
+        float: right;
+        width: 15px;
+        background-color: $white;
+        color: $black;
+      }
+    }
+  }
+
+  > form {
+    @include main-restricted();
+  }
+}
+

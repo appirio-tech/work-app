@@ -1,0 +1,30 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.getting-started {
+  .jumbotron {
+    display: block;
+
+    @include bg-cover("../images/homeBanner.jpg");
+    @include clearfix;
+
+    p {
+      color     : $white;
+      background: rgba(51, 62, 72, 0.6);
+      text-align: center;
+      margin: 400px 0 $margin-20 0;
+
+      @include span-columns(10);
+      @include shift(1);
+      @include font-line(50);
+    }
+  }
+
+  .learn-more {
+    article {
+      @include span-columns(4);
+      margin-top: 0;
+    }
+  }
+}

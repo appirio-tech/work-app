@@ -1,0 +1,42 @@
+@import "../../core/styles/combined";
+
+#modal-overlay {
+  display         : none;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  height          : 100%;
+  width           : 100%;
+  z-index         : 10;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.layout-modal {
+  background-color: $white;
+  position        : fixed;
+  top             : 50%;
+  left            : 50%;
+  z-index         : 11;
+
+  .close {
+    width              : 40px;
+    height             : 40px;
+    position           : absolute;
+    top                : 0;
+    right              : 0;
+    background-position: -155px -211px;
+
+    @include icon-sprite();
+  }
+
+  @include font-line(14);
+
+  h1 {
+    @include font-line(24);
+  }
+
+  a, h1 {
+    color: $orient;
+  }
+}
+

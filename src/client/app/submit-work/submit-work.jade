@@ -1,0 +1,26 @@
+- views = []
+- views.push('name')
+- views.push('type')
+- views.push('brief')
+- views.push('competitors')
+- views.push('users')
+- views.push('features')
+- views.push('designs')
+- views.push('estimate')
+
+- active = 'state-active'
+
+header
+
+main("ng-scroll-state"="activeState")
+  - each view in views
+    .starting-line(id="starting-line-#{view}")
+
+    article.state(ui-view=view, class="#{view} #{active}", state=view)
+
+    - active  = ''
+
+  button.launch(type="button", ng-click="launch()", ng-class="{ active: activeState == 'estimate' }") SUBMIT PROJECT
+
+
+aside#submit-work-aside("ng-submit-work-aside"="work", ng-active-state="activeState", ng-completed="completed", aside-service="asideService")

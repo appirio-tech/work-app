@@ -1,0 +1,42 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .features {
+  > form {
+    @include main-restricted-desktop();
+
+    .features {
+      li {
+        width         : 50%;
+        display       : inline-block;
+        vertical-align: top;
+        margin-top    : $margin-18;
+
+        &:nth-child(1), &:nth-child(2) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    .new-feature {
+      .title, .explanation-n-add {
+        display       : inline-block;
+        width         : 49%;
+        vertical-align: top;
+        padding       : 0 $padding-20;
+        margin-top    : 0;
+      }
+
+      textarea {
+        width         : 79%;
+        vertical-align: top;
+      }
+
+      button {
+        width           : 40px;
+        margin-top      : 0;
+        background-color: inherit;
+        color           : $black;
+      }
+    }
+  }
+}

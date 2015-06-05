@@ -1,0 +1,33 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work article.estimate {
+  h3 {
+    @include font-line(36);
+  }
+
+  p {
+    margin-top: $margin-12;
+  }
+
+  > form {
+    @include main-restricted();
+  }
+
+  .terms-link {
+    text-decoration: underline;
+  }
+
+  .terms {
+    $width     : 320px;
+    $height    : 480px;
+    padding    : $padding-15 $padding-20;
+    width      : $width;
+    height     : $height;
+    margin-left: -$width / 2;
+    margin-top : -$height / 2;
+
+    p {
+      text-align: left;
+    }
+  }
+}

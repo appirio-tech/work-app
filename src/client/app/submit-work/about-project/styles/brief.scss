@@ -1,0 +1,17 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .brief {
+  button.yes, button.no {
+    width: 100px;
+    margin: 30px 10px;
+  }
+
+  > form {
+    @include main-restricted();
+
+
+    .character-count {
+      text-align: right;
+    }
+  }
+}

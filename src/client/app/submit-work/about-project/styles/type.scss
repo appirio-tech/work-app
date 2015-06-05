@@ -1,0 +1,33 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .type {
+  .project-types {
+    li {
+      display       : inline-block;
+      vertical-align: top;
+      width         : 140px;
+      margin        : $margin-10;
+
+      .price {
+        margin-top      : $margin-10;
+      }
+
+      button {
+        height          : 100px;
+        margin-top      : $margin-10;
+        background-color: $silver-sand;
+
+        @include font-line(14);
+
+        &.selected {
+          background-color: $apple;
+        }
+      }
+
+      .description {
+        text-align: left;
+        padding: $padding-4;
+      }
+    }
+  }
+}

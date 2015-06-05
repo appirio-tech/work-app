@@ -1,0 +1,147 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.manage {
+
+  @include outer-container;
+
+  padding: $padding-20 $padding-30;
+
+  hr {
+    margin: 20px 0;
+  }
+
+  @include roboto();
+
+  .message {
+    background: #38b449;
+    line-height: 25px;
+    vertical-align: middle;
+    padding-left: 20px;
+    span {
+      color: white;
+      position: relative;
+      bottom: 12px;
+      font-family: sans-serif;
+    }
+    img.checkmark-green {
+      height: 43px;
+      top: 3px;
+      right: 10px;
+      position: relative;
+    }
+  }
+
+  .heading {
+    > * {
+      vertical-align: middle;
+    }
+
+    h1 {
+      font-size: 28px;
+      display: inline-block;
+    }
+
+    button {
+      display: inline-block;
+      width  : initial;
+      margin : 0 0 0 30px;
+      height : initial;
+      padding: 8px 10px;
+
+      &:hover {
+        cursor: pointer;
+        cursor: hand;
+      }
+    }
+  }
+
+  li {
+
+    @include span-columns(12);
+    @include omega(1n);
+    //@include shift(.5);
+    height: 245px;
+    margin-bottom: $margin-20;
+
+    div {
+
+      margin-left: auto;
+      margin-right: auto;
+
+      width: 220px;
+      height: 100%;
+      background: whitesmoke;
+      box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
+
+      header {
+
+        height: 17%;
+        padding: $padding-3;
+
+        h4 {
+          margin-top: $margin-8;
+          float: left;
+        }
+
+        span.type {
+          margin-top: $margin-10;
+          float: right;
+          @include source-sans();
+          font-size: 12px;
+        }
+      }
+
+      .middle {
+        height: 48%;
+        background: black;
+        img.missing {
+          height: 70px;
+          margin-left: 59px;
+          margin-top: 15px;
+        }
+      }
+
+      .bottom {
+        height: 35%;
+        font-family: sans-serif;
+        text-align: center;
+        padding: $padding-12;
+
+        img.checkmark {
+          margin-top: -43px;
+          margin-left: 47px;
+          height: 43px;
+          position: absolute;
+        }
+
+        &.incomplete {
+          background: #f25a29;
+        }
+
+        &.submitted {
+          background: #49dcfe;
+          padding-top: 23px;
+        }
+
+        span.status {
+          font-weight: bold;
+          color: white;
+          display: inline-block;
+          margin-bottom: $margin-8;
+        }
+
+        span.action, span.action a {
+          color: whitesmoke;
+          display: inline-block;
+          a {
+            text-decoration: underline;
+          }
+        }
+
+      }
+
+    }
+  }
+}

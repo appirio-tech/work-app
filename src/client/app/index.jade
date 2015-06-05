@@ -1,0 +1,177 @@
+- var scripts = []
+- scripts.push('/src/client/app/app.module')
+- scripts.push('constants')
+- scripts.push('/src/client/app/blocks/exception/exception.module')
+- scripts.push('/src/client/app/blocks/logger/logger.module')
+- scripts.push('/src/client/app/blocks/router/router.module')
+- scripts.push('/src/client/app/core/resource/resource.module')
+- scripts.push('/src/client/app/core/resource/resource.api.service')
+- scripts.push('/src/client/app/core/resource/resource.data.provider')
+- scripts.push('/src/client/app/core/core.module')
+- scripts.push('templates')
+- scripts.push('/src/client/app/core/ng-enter.directive')
+- scripts.push('layout/scripts/layout.module')
+- scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
+- scripts.push('/src/client/app/blocks/exception/exception')
+- scripts.push('/src/client/app/blocks/logger/logger')
+- scripts.push('/src/client/app/blocks/router/router-helper.provider')
+- scripts.push('/src/client/app/core/config')
+- scripts.push('/src/client/app/core/core.constants')
+- scripts.push('/src/client/app/core/core.route')
+
+- var css = []
+- var landscapeCSS = []
+- var desktopCSS = []
+
+//- Layout
+- scripts.push('/src/client/app/layout/scripts/modal.directive')
+- scripts.push('/src/client/app/layout/scripts/homeLink.directive')
+
+
+- css.push("layout/styles/reset")
+- css.push("layout/styles/main")
+- css.push("layout/styles/header")
+- css.push("layout/styles/footer")
+- css.push("layout/styles/modal")
+- css.push("layout/styles/form")
+- css.push("layout/styles/roboto-slab")
+- css.push("layout/styles/source-sans-pro")
+
+- landscapeCSS.push("layout/styles/header.landscape")
+- landscapeCSS.push("layout/styles/main.landscape")
+
+- desktopCSS.push("layout/styles/main.desktop")
+- desktopCSS.push("layout/styles/form.desktop")
+
+//- Getting Started
+- css.push("getting-started/styles/getting-started")
+- desktopCSS.push("getting-started/styles/getting-started.desktop")
+- scripts.push('/src/client/app/getting-started/scripts/getting-started.module')
+- scripts.push('/src/client/app/getting-started/scripts/getting-started.route')
+- scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
+
+//- Auth
+- scripts.push("auth/scripts/auth.module")
+- scripts.push("/src/client/app/auth/scripts/auth.routes")
+- scripts.push("/src/client/app/auth/scripts/login.controller")
+- scripts.push("/src/client/app/auth/scripts/login.directive")
+- scripts.push("/src/client/app/auth/scripts/register.controller")
+- css.push("auth/styles/login")
+- css.push("auth/styles/register")
+
+//- user
+- scripts.push("/src/client/app/user/user.module")
+- scripts.push("/src/client/app/user/user.service")
+
+//- work request
+- scripts.push("/src/client/app/work-request/work-request.module")
+
+//- manage
+include manage/manage-includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- features
+- scripts.push("/src/client/app/feature/feature.module")
+- scripts.push("/src/client/app/feature/feature.service")
+
+//- submit work
+include submit-work/includes
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- timeline
+include timeline
+
+- scripts      = scripts.concat(jsFiles)
+- css          = css.concat(cssFiles)
+- landscapeCSS = landscapeCSS.concat(landscapeFiles)
+- desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- ng auth
+- scripts.push('/bower_components/appirio-tech-ng-auth/dist/main')
+
+include bowers
+
+doctype html
+html(ng-app='app')
+  head
+    //- This helps the ng-show/ng-hide animations start at the right place.
+    //- Since Angular has this but needs to load, this gives us the class early.
+    style.
+      .ng-hide {
+        display: none !important;
+      }
+
+    // removeIf(production)
+    script(type="text/javascript", src="/json-fixtures.js")
+
+    script(type="text/javascript", src="/bower_components/sinon/index.js")
+
+    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/scripts/auto-config-fake-server.js")
+
+    script(type="text/javascript").
+      AutoConfigFakeServer.init();
+
+      AutoConfigFakeServer.fakeServer.autoRespond = true;
+
+      AutoConfigFakeServer.consume([
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
+      ]);
+    // endRemoveIf(production)
+
+    title(ng-bind='title') Appiro Work Platform
+
+    meta(charset='utf-8')
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
+
+    include ../../../bower_components/ap-newrelic/browser/script
+
+    base(href=basePath)
+
+    // build:css styles/lib.css
+    each path in bowercss
+      link(href=path + ".css", rel="stylesheet")
+    // endbuild
+
+    // build:css styles/app.css
+    each path in css
+      link(href=path + ".css", rel="stylesheet")
+    // endbuild
+
+    // build:css styles/mobile-landscape.css media="(min-width: 568px)"
+    each path in landscapeCSS
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
+    // endbuild
+
+    // build:css styles/desktop.css media="(min-width: 767px)"
+    each path in desktopCSS
+      link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
+    // endbuild
+
+  body
+    include layout/views/shell.jade
+
+    // build:js js/lib.js
+    each path in bowers
+      script(src= path + ".js", type="text/javascript")
+    // endbuild
+
+    script(src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js", type="text/javascript")
+
+    // build:js js/app.js
+    each path in scripts
+      script(src=path + ".js", type="text/javascript")
+    // inject:templates:js
+    // endinject
+    // endbuild

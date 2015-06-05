@@ -1,0 +1,52 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+$header-height: 50px;
+
+.layout-header {
+  padding         : 0 $padding-20;
+  background-color: $white;
+  border-bottom   : 2px solid $black;
+
+  @include clearfix();
+
+  > * {
+    display    : inline-block;
+    line-height: $header-height;
+  }
+
+  .logo {
+    @include span-columns(8);
+    font-size: 17px;
+  }
+
+  .login {
+    @include span-columns(4);
+
+    @include font(20);
+  }
+
+  .login {
+    text-align: right;
+
+    > * {
+      display: inline-block;
+    }
+
+    .icon {
+      width              : 21px;
+      line-height        : 23px;
+      background-position: -379px 0px;
+
+      @include icon-sprite();
+    }
+
+    .label {
+      margin-left: $margin-10;
+      color      : $pacific-blue;
+
+      @include font-line(20);
+    }
+  }
+}

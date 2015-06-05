@@ -1,0 +1,23 @@
+header
+  h1 Welcome to topcoder
+main
+  h3 Let's start building your app.  Login or create an account below to begin.
+  form(ng-submit="vm.submit()")
+    p.error(ng-show="vm.error") {{ vm.errorMessage }}
+
+    label(for="login-user-input") Username
+
+    input#login-user-input(type="text", name="user", ng-model="vm.username", required=true)
+
+    label(for="login-password-input") Password
+
+    input#login-password-input(type="password" name="password" ng-model="vm.password" required=true)
+
+    label(for="login-email-input") Email
+
+    input#login-email-input(type="email" name="email" ng-model="vm.email" required=true)
+
+    button.submit(type="submit") Register
+
+    p.reminder Already have an acount? 
+      a(ui-sref="login") Log in

@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var fs = require('fs');
 var env = require('node-env-file');
@@ -18,6 +20,6 @@ function getVal(name, defaultVal) {
     return defaultVal;
   }
   else {
-    throw new Error('Env setting: ' + name + ' is not configured!');
+    return null;
   }
 }

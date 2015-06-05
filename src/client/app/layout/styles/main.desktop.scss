@@ -1,0 +1,9 @@
+@import "../../core/styles/combined";
+
+main {
+  min-height: 620px;
+    h2 {
+      @include font-line(52);
+    }
+}
+

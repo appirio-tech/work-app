@@ -1,20 +1,26 @@
-# np-front-end-reference
+# ap-work-client (River)
 
-**Generated from HotTowel Angular**
+[![Build Status](https://magnum.travis-ci.com/appirio-tech/ap-work-client.svg?token=2opeegVgyrFpxakAa2Cb&branch=travis-ci)](https://magnum.travis-ci.com/appirio-tech/ap-work-client) [![Coverage Status](https://coveralls.io/repos/appirio-tech/ap-work-client/badge.svg?branch=dev&t=s1nAzI)](https://coveralls.io/r/appirio-tech/ap-work-client?branch=dev)
+![ScreenShot](http://cdn1.ouchpress.com/media/celebrities/404/gina-torres-7565.jpg)
 
->*Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
+**Generated from [HotTowel Angular](https://github.com/johnpapa/HotTowel-Angular)**
 
->More details about the styles and patterns used in this app can be found in my [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide) and my [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) course at [Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
+- This is the client side code for the new version of appXpress
+-  Make sure to see our [AngularJS style guide](https://github.com/appirio-tech/angularjs-styleguide)
 
 ## Prerequisites
 
-1. Install [Node.js](http://nodejs.org) 
+1. Install [Node.js](http://nodejs.org)
  - on OSX use [homebrew](http://brew.sh) `brew install node`
  - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
 
-2. Install Yeoman `npm install -g yo`
+1.5. For OSX users, we recommend installing [nvm](https://github.com/creationix/nvm). This is due to problems with cross-version compatibility with node for certain packages this project uses.
+ - This will allow you to use versions of node and npm that are compatible with this project without affecting what you use globally
+ - In your `.nvmrc` (which should be at the root of your local version of this repo), list the version number `0.10.25`.
+ - While inside the repo, run `nvm use`
+ - Then run `npm install` and `bower install`.
 
-3. Install these NPM packages globally
+2. Install these NPM packages globally
 
     ```bash
     npm install -g bower gulp nodemon`
@@ -22,7 +28,9 @@
 
     >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 
-## Running HotTowel
+3.  git clone git@github.com:appirio-tech/work-api-schema.git
+  
+## Gulp tasks
 
 ### Linting
  - Run code analysis using `gulp analyze`. This runs jshint, jscs, and plato.
@@ -31,9 +39,7 @@
  - Run the unit tests using `gulp test` (via karma, mocha, sinon).
 
 ### Running in dev mode
- - Run the project with `gulp serve-dev --sync`
-
- - `--sync` opens it in a browser and updates the browser with any files changes.
+ - Run the project with `gulp serve-dev`
 
 ### Building the project
  - Build the optimized project using `gulp build`
@@ -46,36 +52,32 @@
 HotTowel Angular starter project
 
 ### Structure
-The structure also contains a gulpfile.js and a server folder. The server is there just so we can serve the app using node. Feel free to use any server you wish.
+The structure also contains a gulpfile.js and a server folder. The server is there just so we can serve the app using node.
 
-	/src
-		/client
-			/app
-			/content
-	
-### Installing Packages
-When you generate the project it should run these commands, but if you notice missing pavkages, run these again:
-
- - `npm install`
- - `bower install`
+  /src
+    /client
+      /app
+      /content
+  
 
 ### The Modules
-The app has 4 feature modules and depends on a series of external modules and custom but cross-app modules
+The app has several modules and depends on a series of external modules and custom but cross-app modules
 
 ```
 app --> [
-        app.admin,
-        app.dashboard,
+        
+        app.project,
+        app.getting-started,
         app.layout,
         app.widgets,
-		app.core --> [
-			ngAnimate,
-			ngSanitize,
-			ui.router,
-			blocks.exception,
-			blocks.logger,
-			blocks.router
-		]
+    app.core --> [
+      ngAnimate,
+      ngSanitize,
+      ui.router,
+      blocks.exception,
+      blocks.logger,
+      blocks.router
+    ]
     ]
 ```
 
@@ -136,6 +138,64 @@ config = require('./config');
 var value = config.getVal('baseURL', 'http://topcoder.com');
 
 
-
 ```
 
+## Env variables
+
+AWS_BUCKET=
+AWS_KEY=
+AWS_REGION=
+AWS_SECRET=
+BASE_URL=/
+AWS_CDN_URL=
+BASE_API_URL=
+AUTH0_CLIENT_ID=
+AUTH0_DOMAIN=
+RET_URL=
+CALLBACK_URL=
+NODE_ENV=
+
+# Jade
+
+http://jade-lang.com/
+
+Jade is used as the template rendering engine.  Please keep files with relevant angular modules.
+
+## Global Variables:
+
+baseUrl: The base url.  in prod it's /work/.  Uses BASE_URL
+apiUrl: The base url for the API.  Defaults to /v3/.  Uses BASE_API_URL.
+auth0ClientId: The Auth0 Client ID.  
+auth0Domain: The Auth0 domain.  Defaults to topcoder-dev.auth0.com. Uses AUTH0_DOMAIN.
+retUrl: The URL which the Authorization service sends the after login.  Uses RET_URL
+callbackUrl: The callback url for auth0.  Defaults to http://api.topcoder-dev.com/pub/callback.html.  Uses CALLBACK_URL.
+
+# Base API
+
+This is a factory for creating resources. It would be used like this:
+
+First, the individual services would register themselves with the API:
+
+api.add('work');
+
+// OR
+
+api.add({
+  resource: 'work',
+  url: '/work'
+});
+
+// OR
+
+api.add({
+  resource: 'work',
+  url: '/users/:user_id/work',
+  params: {
+    user_id: '@user_id'
+  }
+});
+Then api service would be used like this in a controller:
+
+api.work.get.$promise.then(function () {});
+
+Original concept came from http://www.objectpartners.com/2014/06/03/extending-angulars-resource-service-for-a-consistent-api/.

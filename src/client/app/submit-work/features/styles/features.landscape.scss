@@ -1,0 +1,7 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .features {
+  > form {
+    @include main-restricted-landscape();
+  }
+}

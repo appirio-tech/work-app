@@ -1,0 +1,11 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .users {
+  > form {
+    @include main-restricted();
+
+    .character-count {
+      text-align: right;
+    }
+  }
+}

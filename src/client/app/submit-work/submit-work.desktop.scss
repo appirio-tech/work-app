@@ -1,0 +1,18 @@
+@import "../core/styles/combined";
+
+.layout-main.submit-work {
+  @include main-restricted-desktop();
+
+  main {
+    width: 75%;
+    float: left;
+
+    article {
+      h3 {
+        margin-top: $margin-20;
+      }
+    }
+  }
+
+  @include clearfix();
+}

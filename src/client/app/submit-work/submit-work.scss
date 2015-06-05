@@ -1,0 +1,61 @@
+@import "../core/styles/combined";
+@import "bourbon";
+
+.layout-main.submit-work {
+  background-color: $mercury;
+
+  header {
+    background-color: $black;
+  }
+
+  main {
+    background-color: $white;
+    text-align      : center;
+
+    .starting-line {
+      min-height      : 1px;
+      margin-bottom   : 200px;
+      margin-top      : -100px;
+    }
+
+    article {
+      opacity   : 0;
+
+      > * {
+        margin-top: $margin-30;
+      }
+
+      @include transition(opacity 0.3s ease-in 0s);
+
+      &.state-active {
+        opacity: 1;
+        @include transition(opacity 0.3s ease-in 0s);
+      }
+
+      form {
+        button.submit {
+          width: 280px;
+          // Need to fix this due to button being in next tag
+          margin-top: 30px;
+        }
+      }
+
+      > button {
+        width: 280px;
+      }
+    }
+
+    button.launch {
+      opacity: 0;
+      height: 70px;
+      margin-bottom: 800px; /* allows scrolling for large screens, need a better solution */
+      @include font-line(24);
+      @include transition(opacity 0.3s ease-in 0s);
+
+      &.active {
+        opacity: 1;
+        @include transition(opacity 0.3s ease-in 0s);
+      }
+    }
+  }
+}

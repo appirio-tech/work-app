@@ -1,0 +1,35 @@
+.message(ng-if="vm.showMessage")
+  img.checkmark-green(src="manage/images/check-solid-green.svg")
+  span Your project has been launched.  Your co-pilot will contact you within 1 business day.
+
+.heading
+  h1 Manage Projects
+
+  button(ui-sref='submit-work.flow') New <br /> Project
+
+hr
+
+ul
+  li(ng-repeat= "project in vm.workRequests")
+    div
+      header
+        h4 {{project.name}}
+
+        span.type {{project.requestType}}
+
+      .middle
+        img(src="manage/images/missing-image.svg", class="missing")
+
+      .bottom(ng-class="project.class")
+        img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
+
+        span.status {{project.message}}
+
+        br
+
+        span.action
+
+          a(ng-if="project.status == 'Incomplete'",
+            ui-sref="submit-work.flow({ id: project.id })") Continue setup
+
+          span(ng-if="project.status == 'Submitted'") Waiting for Project Approval

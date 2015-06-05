@@ -1,0 +1,68 @@
+@import "../../core/styles/combined";
+
+#submit-work-aside {
+  background-color: $mercury;
+  min-height      : 1px;
+  padding         : 0;
+
+  .fixed-wrapper {
+    padding: $margin-18;
+  }
+
+  .project {
+    @include roboto-thin();
+
+    .price {
+      margin-top: $margin-15;
+      @include source-sans();
+    }
+
+    border-bottom: 1px solid #A7A9AB;
+    padding-bottom: 4px;
+  }
+
+  nav > ul {
+    > li {
+      margin-top: $margin-30;
+
+      @include font-line(16);
+
+      @include roboto();
+
+      &::before {
+        $diameter: 14px;
+
+        margin-right    : $margin-5;
+        content         : '';
+        background      : no-repeat;
+        background-image: url("../images/check-grey.png");
+        background-size : 12px;
+        height          : $diameter;
+        width           : $diameter;
+        display         : block;
+        margin-top      : 2px;
+        float           : left;
+      }
+
+      &.completed::before {
+        background-image: url("../images/check-green.png");
+      }
+
+      ul {
+        li {
+          margin: $margin-10 0 0 $margin-18;
+
+          @include source-sans-light();
+
+          .completed {
+            color: green;
+          }
+
+          .state-active {
+            @include source-sans();
+          }
+        }
+      }
+    }
+  }
+}

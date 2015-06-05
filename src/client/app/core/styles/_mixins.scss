@@ -1,0 +1,99 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin bg-image-ratio($low, $high) {
+  background-repeat: no-repeat;
+
+  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+    background-image: url($low);
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url($high);
+  }
+}
+
+@mixin bg-cover($src) {
+  background             : url($src) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size   : cover;
+  -o-background-size     : cover;
+  background-size        : cover;
+}
+
+@mixin icon-sprite() {
+  background-size    : 400px 400px;
+  @include bg-image-ratio("../images/sprite.png", "../images/sprite-2x.png");
+}
+
+@mixin font-line($pt) {
+  @include font($pt);
+
+  @include line-height($pt * 1.20);
+}
+
+@mixin font($pt) {
+  font-size: ($pt * 1px);
+}
+
+@mixin line-height($pt) {
+  line-height: ($pt * 1px);
+}
+
+@mixin main-restricted() {
+  width       : 300px;
+  margin-left : auto;
+  margin-right: auto;
+  display     : block;
+}
+
+@mixin main-restricted-landscape() {
+  width       : 548px;
+  margin-left : auto;
+  margin-right: auto;
+  display     : block;
+}
+
+@mixin main-restricted-desktop() {
+  width: 100%;
+}
+
+@mixin roboto-light() {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+}
+
+@mixin roboto-thin() {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+}
+
+@mixin roboto() {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+}
+
+@mixin roboto-bold() {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+
+@mixin source-sans-light() {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+}
+
+@mixin source-sans() {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
+
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}

@@ -1,0 +1,10 @@
+- links = []
+- links.push({ state: "register", 'ui-sref-active': "active", label: 'Sign up'})
+- links.push({ state: "#", label: 'Help'})
+- links.push({ state: "#", label: 'About'})
+
+footer.layout-footer
+  ul
+    each link in links
+      li
+        a(ui-sref=link.state)!=link.label

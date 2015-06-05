@@ -1,0 +1,18 @@
+section.jumbotron
+  p Our Talented 700,000 strong community is ready to work on your project today
+
+header
+  h1 What can we build for you?
+
+- articles = []
+- articles.push({ href:"/speak-with-an-expert", header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ href:"/learn-about-our-process", header: 'Learn about our process', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+- articles.push({ href:"/see-examples", header: 'See examples of our work', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+
+aside.learn-more
+  each article in articles
+    article
+      header
+        a(href=article.href)!= article.header
+
+      p!= article.p

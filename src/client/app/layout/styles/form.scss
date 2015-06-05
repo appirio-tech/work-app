@@ -1,0 +1,97 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+
+form {
+  label {
+    font-weight: bold;
+  }
+
+  .invalid-messages {
+    li {
+      margin-top: $margin-10;
+      color : $punch;
+    }
+  }
+}
+
+p.error {
+  color: $punch;
+}
+
+form, input, textarea, button {
+  margin-top: $margin-12;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+input, textarea {
+  width           : 100%;
+  padding         : $padding-9;
+  border          : 0;
+  background-color: $mercury;
+  color           : $gray-chateau;
+
+  @include font-line(16);
+}
+
+input[type=checkbox] {
+  width: initial;
+}
+
+input {
+  box-shadow: none;
+
+  &:focus {
+    border-color: $celery;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px $celery;
+
+    &.ng-invalid, &:invalid {
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px $punch;
+      border-color: $punch;
+      color: $punch;
+    }
+  }
+
+  @include placeholder {
+    color: $slate-gray;
+  }
+}
+
+textarea {
+  height: 150px;
+}
+
+button {
+  width           : 100%;
+  background-color: $apple;
+  border-radius   : $border-radius-3;
+  border          : none;
+  color           : $white;
+  height          : 40px;
+  max-width       : 300px;
+
+  @include roboto-bold();
+  @include font-line(16);
+
+  &.submit {
+    display     : block;
+    margin-left : auto;
+    margin-right: auto;
+  }
+
+  &.cancel {
+    background-color: initial;
+    color: $black;
+  }
+
+  &.clean {
+    width           : initial;
+    height          : initial;
+    background-color: initial;
+    color           : initial;
+    margin-top      : 0;
+  }
+}

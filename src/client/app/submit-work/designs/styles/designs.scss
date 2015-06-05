@@ -1,0 +1,46 @@
+@import "../../../core/styles/combined";
+
+.layout-main.submit-work .designs {
+
+  > .optional {
+    color: $gray-chateau;
+  }
+
+  form {
+    @include main-restricted();
+
+    input {
+      margin-top: $margin-18;
+      width: 240px;
+      float: left;
+    }
+
+    .add-design-file {
+      width: 34px;
+      float: right;
+      background-color: $white;
+      margin-top: $margin-18;
+      color: $black;
+    }
+
+    .added-design-files {
+      li {
+        margin-top: $margin-10;
+        overflow:  hidden;
+
+        .label {
+          line-height: 40px;
+          float: left;
+        }
+
+        .remove {
+          margin-top: 0;
+          float: right;
+          width: 34px;
+          background-color: $white;
+          color: $black;
+        }
+      }
+    }
+  }
+}

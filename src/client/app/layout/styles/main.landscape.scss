@@ -1,0 +1,8 @@
+@import "../../core/styles/combined";
+
+.layout-main {
+  > main {
+    @include main-restricted-landscape();
+    width: 568px;
+  }
+}
