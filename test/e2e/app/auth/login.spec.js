@@ -1,6 +1,6 @@
 // spec.js
- var loginPage = require('loginPage');
- var loginUser = require('loginData');
+ var loginPage = require('./login.object');
+ var loginUser = require('./login.data');
 describe('login', function() {
   it('welcomes the user', function() {
     //var loginPage = new LoginPage();
