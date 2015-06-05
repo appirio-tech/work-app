@@ -303,7 +303,6 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
   var templateCache  = config.temp + config.templateCache.file;
   var replaceOptions = {};
   var sourcemaps     = $.sourcemaps;
-  var cssRoot = config.aws.cdnUrl ? config.aws.cdnUrl : config.baseURL;
 
   if (config.aws.cdnUrl) {
     replaceOptions.prefix = config.aws.cdnUrl ? config.aws.cdnUrl : config.baseURL;
@@ -318,7 +317,7 @@ gulp.task('optimize', ['inject', 'templatecache'], function () {
     // Get the css
     .pipe(cssLibFilter)
     .pipe(sourcemaps.init())
-    .pipe($.minifyCss({ root: cssRoot }))
+    .pipe($.minifyCss({ rebase: 'false' }))
     .pipe(sourcemaps.write())
     .pipe(cssLibFilter.restore())
     // Get the custom javascript
