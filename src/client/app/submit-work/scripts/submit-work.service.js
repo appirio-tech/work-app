@@ -105,8 +105,6 @@
       if (work.requestType) {
         // this is a calculation of the estimate
         var estimate = work.features.reduce(function(x, y) {
-          console.log('FEAT');
-          console.log(work.features);
           if (y.selected) {
             x.low += 800;
             x.high += 1200;
