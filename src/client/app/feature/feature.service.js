@@ -8,6 +8,12 @@
   FeatureService.$inject = ['$q'];
   /* @ngInject */
   function FeatureService($q) {
+
+    var service = {
+      getFeatures:   null,
+      resetFeatures: null
+    };
+    
     var features = [
       {
         id: 'login',
@@ -52,23 +58,25 @@
         selected: false
       }
     ];
+    var defaultFeatures = angular.copy(features);
 
-    var service = {
-      getFeatures: getFeatures
-    };
-
-    return service;
-
-    function getFeatures() {
+    service.getFeatures = function() {
       var deferred = $q.defer();
 
       _getFeatures(deferred);
 
       return deferred.promise;
-    }
+    };
+
+    service.resetFeatures = function() {
+      features = angular.copy(defaultFeatures);
+    };
 
     function _getFeatures(deferred) {
       deferred.resolve(features);
     }
+
+    return service;
+
   }
 })();
