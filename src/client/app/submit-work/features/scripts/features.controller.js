@@ -59,6 +59,19 @@
         FeatureService.getFeatures().then(function(features) {
           vm.work.features = features;
         });
+      } else {
+        var selectedFeatures = {};
+        vm.work.features.map(function(feature) {
+          selectedFeatures[feature.name] = true;
+        });
+        FeatureService.getFeatures().then(function(features) {
+          vm.work.features = features.map(function(feature) {
+            if (selectedFeatures[feature.name]) {
+              feature.selected = true;
+            }
+            return feature;
+          });
+        });
       }
     }
   }

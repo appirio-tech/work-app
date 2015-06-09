@@ -68,13 +68,13 @@
       }
 
       // need to filter out stuff used for front-end processing
-      work.features = work.features.filter(function(x) {
-        return x.selected;
-      }).map(function(x) {
-        x.id = undefined;
-        x.description = x.explanation;
-        x.explanation = undefined;
-        x.selected = undefined;
+      work.features = work.features.filter(function(feature) {
+        return feature.selected;
+      }).map(function(feature) {
+        return {
+          name        : feature.name,
+          description : feature.description
+        };
       });
 
       if (!created) {
@@ -105,6 +105,8 @@
       if (work.requestType) {
         // this is a calculation of the estimate
         var estimate = work.features.reduce(function(x, y) {
+          console.log('FEAT');
+          console.log(work.features);
           if (y.selected) {
             x.low += 800;
             x.high += 1200;
@@ -135,6 +137,8 @@
       var deferred = $q.defer();
       data.get('work-request', {id: id}).then(function(data) {
         service.work = data.result.content;
+        service.id = id;
+        service.work.created = true;
         deferred.resolve(service.work);
       });
       return deferred.promise;
