@@ -204,3 +204,20 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
 
 
 # ap-work-client ProtractorJS e2e framework
+
+## Prerequisites
+
+1. Install [Node.js](http://nodejs.org)
+ - on OSX use [homebrew](http://brew.sh) `brew install node`
+ - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
+
+2. Run following commands to install protractor, protractor uisref locatator package and selenium webdriver installation.
+  - npm install -g protractor
+  - npm install protractor-uisref-locator
+  - webdriver-manager update
+
+3. start up a server with:
+  - webdriver-manager start  
+
+4. Open another termincal and go to locaiton of your conf.js file and run following command:
+  - protractor conf.js
