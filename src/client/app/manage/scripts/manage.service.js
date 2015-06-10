@@ -16,11 +16,16 @@
 
     };
 
-
     service.getWorkRequests = function() {
       var deferred = $q.defer();
       data.get('work-request').then(function(data) {
-        deferred.resolve(data.result.content.reverse());
+        var requests = data.result.content;
+        if (Array.isArray(requests)) {
+          requests.reverse();
+        } else {
+          requests = [];
+        }
+        deferred.resolve(requests);
       });
       return deferred.promise;
     };
