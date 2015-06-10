@@ -20,7 +20,6 @@
     vm.submit;
     vm.add;
 
-    activate();
 
     vm.clickExample = function () {
       $scope.showExample = true;
@@ -52,27 +51,5 @@
       vm.newFeature            = false;
     }
 
-    function activate() {
-      logger.log('Activated Features View');
-
-      if (vm.work.features.length === 0) {
-        FeatureService.getFeatures().then(function(features) {
-          vm.work.features = features;
-        });
-      } else {
-        var selectedFeatures = {};
-        vm.work.features.map(function(feature) {
-          selectedFeatures[feature.name] = true;
-        });
-        FeatureService.getFeatures().then(function(features) {
-          vm.work.features = features.map(function(feature) {
-            if (selectedFeatures[feature.name]) {
-              feature.selected = true;
-            }
-            return feature;
-          });
-        });
-      }
-    }
   }
 })();
