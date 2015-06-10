@@ -201,3 +201,6 @@ Then api service would be used like this in a controller:
 api.work.get.$promise.then(function () {});
 
 Original concept came from http://www.objectpartners.com/2014/06/03/extending-angulars-resource-service-for-a-consistent-api/.
+
+
+# ap-work-clien ProtractorJS e2e framework
