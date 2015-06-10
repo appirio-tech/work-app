@@ -221,3 +221,5 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
 
 4. Open another termincal and go to locaiton of your conf.js file and run following command:
   - protractor conf.js
+  
+### For more reference on protractorjs, please visit https://angular.github.io/protractor/#/tutorial
