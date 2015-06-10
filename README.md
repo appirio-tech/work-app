@@ -213,13 +213,12 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
 
 2. Run following commands to install protractor, protractor uisref locatator package and selenium webdriver installation.
   - npm install -g protractor
-  - npm install protractor-uisref-locator
   - webdriver-manager update
 
 3. start up a server with:
   - webdriver-manager start  
 
-4. Open another termincal and go to locaiton of your conf.js file and run following command:
+4. Open another terminal and go to location of your conf.js file and run following command:
   - protractor conf.js
   
-### For more reference on protractorjs, please visit https://angular.github.io/protractor/#/tutorial
+### For more reference on protractor.js, please visit https://angular.github.io/protractor/#/tutorial
