@@ -5,9 +5,9 @@
     .module('app.submit-work')
     .factory('SubmitWorkService', SubmitWorkService);
 
-  SubmitWorkService.$inject = ['$q', 'data'];
+  SubmitWorkService.$inject = ['$q', 'data', 'FeatureService'];
   /* @ngInject */
-  function SubmitWorkService($q, data) {
+  function SubmitWorkService($q, data, FeatureService) {
     // local used by "save" function
     var created = false;
 
@@ -68,13 +68,13 @@
       }
 
       // need to filter out stuff used for front-end processing
-      work.features = work.features.filter(function(x) {
-        return x.selected;
-      }).map(function(x) {
-        x.id = undefined;
-        x.description = x.explanation;
-        x.explanation = undefined;
-        x.selected = undefined;
+      work.features = work.features.filter(function(feature) {
+        return feature.selected;
+      }).map(function(feature) {
+        return {
+          name        : feature.name,
+          description : feature.description
+        };
       });
 
       if (!created) {
@@ -129,13 +129,45 @@
 
     service.resetWork = function() {
       service.work = angular.copy(defaultWork);
+      initializeFeatures()
     };
+
+    function initializeFeatures() {
+      var deferred = $q.defer();
+
+      // Get all selectable features
+      FeatureService.getFeatures().then(function(features) {
+
+        // Create a list of saved features
+        var selectedFeatures = {};
+        service.work.features.forEach(function(feature) {
+          selectedFeatures[feature.name] = true;
+        });
+
+        // Set any features that are currently saved to selected
+        features.forEach(function(feature) {
+          if (selectedFeatures[feature.name]) {
+            feature.selected = true;
+          }
+        });
+
+        // Overwrite features from server with our cleaned up list
+        service.work.features = features;
+        deferred.resolve();
+      });
+
+      return deferred.promise;    
+    }
 
     service.initializeWork = function(id) {
       var deferred = $q.defer();
       data.get('work-request', {id: id}).then(function(data) {
         service.work = data.result.content;
-        deferred.resolve(service.work);
+        service.id = id;
+        created = true;
+        initializeFeatures().then(function(){
+          deferred.resolve(service.work);
+        });
       });
       return deferred.promise;
     };
