@@ -13,7 +13,7 @@ var LoginPage = function() {
     var EC = protractor.ExpectedConditions;
     
     this.loginButton.click().then(function(){
-    browser.driver.sleep(1);
+//    browser.driver.sleep(1);
 //browser.waitForAngular();`
     	element.all(by.css('.label')).each(function(element, index) {
     	browser.wait(EC.not(EC.presenceOf(element)), 10000);
@@ -26,20 +26,26 @@ var LoginPage = function() {
     	
 //    	var loggedInUser = element(by.css('div[ng-show=\"vm.isLoggedIn\"]'));
 //    	alert(loggedInUser);
-    	browser.driver.sleep(1);
-    	browser.driver.wait(function() {
-    	    return browser.driver.isElementPresent(by.css('[ng-show=\"vm.isLoggedIn\"]'));
-    	});
-    	var loggedInUser = element(by.css('div[ng-show=\"vm.isLoggedIn\"]'));
+//    	browser.driver.sleep(1);
+//    	browser.driver.wait(function() {
+//    	    return browser.driver.isElementPresent(by.css('[ng-show=\"vm.isLoggedIn\"]'));
+//    	});
+//    	var loggedInUser = element(by.css('.label'));
 //    	alert(loggedInUser);
     	
-    	loggedInUser.click().then(function(){
-    		browser.driver.sleep(3);
-    		console.log('logout');
-//        	browser.wait(10000);
-//        	expect(element(by.model('vm.username')).getText()).
-//            toEqual('');
-    	});
+//    	loggedInUser.click().then(function(){
+//    		browser.driver.sleep(3);
+//    		console.log('logout');
+//    		var elementSref = element(by.uisref('register'));
+//    		
+//    		expect(elementSref.isPresent()).toBeTruthy();
+//    		elementSref.click();
+//    		browser.driver.sleep(3);
+//    		
+////        	browser.wait(10000);
+////        	expect(element(by.model('vm.username')).getText()).
+////            toEqual('');
+//    	});
     	
 //    	element(by.css('[ng-show="vm.isLoggedIn"]')).click().then(function(){
 //    		browser.driver.sleep(3);
@@ -55,13 +61,22 @@ var LoginPage = function() {
   };
   
   this.newProject = function () {
-	var elementList = element.all(by.css('.label'));
-	browser.pause();
-	elementList.get(2).click();
-	browser.pause();
-		//browser.driver.wait(protractor.until.elementIsNotVisible(this.submitWorkFlow));
+	var elementLabel = element.all(by.css('.label'));
+	console.log('elementLabel '+elementLabel);
+	
+//	browser.pause();
+	elementLabel.get(2).click().then(function(){
+//		browser.driver.sleep(3);
+		var EC = protractor.ExpectedConditions;
+		console.log('elementLabel '+elementLabel);
+		var label = element(by.css('.label'));
+		browser.driver.wait(protractor.until.elementIsNotVisible(label));
+		browser.wait(EC.not(EC.presenceOf(label)), 10000);
+	});
+	
+		
 		//this.submitWorkFlow.click();
-	};
+  };
   
 };
 module.exports = new LoginPage();

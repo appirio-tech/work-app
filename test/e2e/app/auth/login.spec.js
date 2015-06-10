@@ -6,5 +6,14 @@ describe('login', function() {
     //var loginPage = new LoginPage();
     loginPage.get();
     loginPage.login(loginUser.testUser);
+    
   });
+  
+  it('welcomes the user for logout', function() {
+	    //var loginPage = new LoginPage();
+	  loginPage.newProject();
+	    
+	  });
+  
+  
 });
