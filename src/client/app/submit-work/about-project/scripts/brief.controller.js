@@ -29,14 +29,14 @@
       vm.showBrief    = true;
       vm.showElevator = false;
       NavService.findState('brief').form = $scope.briefForm;
-    }
+    };
 
     vm.toggleNo = function() {
       vm.showYesNo    = false;
       vm.showBrief    = false;
       vm.showElevator = true;
       NavService.findState('brief').form = $scope.elevatorForm;
-    }
+    };
 
     vm.toggleCancel = function() {
       vm.question     = null;
@@ -44,7 +44,7 @@
       vm.showBrief    = false;
       vm.showElevator = false;
       NavService.findState('brief').form = $scope.questionForm;
-    }
+    };
 
     vm.submitElevator = function () {
       if ($scope.elevatorForm.$valid) {
@@ -59,18 +59,27 @@
     };
 
     vm.questionSubmit = function () {
-      if(vm.question === 1) {
+      if (vm.question === 1) {
         vm.toggleYes();
       }
-      else if(vm.question === 0) {
+      else if (vm.question === 0) {
         vm.toggleNo();
       }
-    }
+    };
 
     $scope.$watch('questionForm', function(questionForm) {
       if (questionForm) {
         NavService.findState('brief').form = $scope.questionForm;
       }
     });
+
+    function activate() {
+      if (vm.work.summary && vm.work.summary.length > 1) {
+        vm.toggleNo();
+      }
+    }
+
+    activate();
+
   }
 })();
