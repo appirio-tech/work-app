@@ -201,3 +201,24 @@ Then api service would be used like this in a controller:
 api.work.get.$promise.then(function () {});
 
 Original concept came from http://www.objectpartners.com/2014/06/03/extending-angulars-resource-service-for-a-consistent-api/.
+
+
+# ap-work-client ProtractorJS e2e framework
+
+## Prerequisites
+
+1. Install [Node.js](http://nodejs.org)
+ - on OSX use [homebrew](http://brew.sh) `brew install node`
+ - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
+
+2. Run following commands to install protractor, protractor uisref locatator package and selenium webdriver installation.
+  - npm install -g protractor
+  - webdriver-manager update
+
+3. start up a server with:
+  - webdriver-manager start  
+
+4. Open another terminal and go to location of your conf.js file and run following command:
+  - protractor conf.js
+  
+### For more reference on protractor.js, please visit https://angular.github.io/protractor/#/tutorial
