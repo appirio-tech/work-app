@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="login" errors="0" tests="3" failures="3" time="21.386" timestamp="2015-06-11T16:49:51">
+  <testcase classname="login" name="welcomes the user" time="21.238"><failure type="expect" message="Error: Wait timed out after 10010ms">Error: Wait timed out after 10010ms
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1630:20
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.Callback_.goog.defineClass.notify (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2464:25)
+    at [object Object].promise.Promise.notify_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:563:12)
+    at Array.forEach (native)
+    at Object.goog.array.forEach (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/array/array.js:203:43)
+    at [object Object].promise.Promise.notifyAll_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:552:16)
+    at [object Object].goog.async.run.processWorkQueue [as _onTimeout] (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:125:21)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
+From: Task: &amp;lt;anonymous wait&amp;gt;
+    at [object Object].promise.ControlFlow.wait (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1617:15)
+    at [object Object].webdriver.WebDriver.wait (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:714:21)
+    at [object Object].to.(anonymous function) [as wait] (/usr/local/lib/node_modules/protractor/lib/protractor.js:63:25)
+    at /Volumes/Data/gitDemand/ap-work-client/test/e2e/app/auth/login.object.js:17:14
+    at /usr/local/lib/node_modules/protractor/lib/element.js:534:23
+    at Array.forEach (native)
+    at /usr/local/lib/node_modules/protractor/lib/element.js:533:9
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.Callback_.goog.defineClass.notify (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2464:25)
+    at [object Object].promise.Promise.notify_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:563:12)
+From: Task: Asynchronous test function: it()
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/jasminewd/index.js:93:33)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/async-callback.js:45:37)
+    at [object Object].jasmine.Block.execute (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:1174:17)
+    at [object Object].jasmine.Queue.next_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2209:31)
+    at [object Object]._onTimeout (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2199:18)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)==== async task ====
+Error
+    at [object Object].&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:6:4)
+    at [object Object].jasmine.Env.describe_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:913:21)
+    at [object Object].jasmine.Env.describe (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:898:15)
+    at describe (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:658:27)
+    at Object.&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:5:1)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)</failure></testcase>
+  <testcase classname="login" name="Click on Project Manage link" time="0.113"><failure type="expect" message="NoSuchElementError: No element found using locator: by.model(&amp;quot;vm.work.name&amp;quot;)">NoSuchElementError: No element found using locator: by.model(&amp;quot;vm.work.name&amp;quot;)
+    at new bot.Error (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:113:18)
+    at /usr/local/lib/node_modules/protractor/lib/element.js:709:15
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.Callback_.goog.defineClass.notify (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2464:25)
+    at [object Object].promise.Promise.notify_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:563:12)
+    at Array.forEach (native)
+    at Object.goog.array.forEach (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/array/array.js:203:43)
+    at [object Object].promise.Promise.notifyAll_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:552:16)
+    at [object Object].goog.async.run.processWorkQueue [as _onTimeout] (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:125:21)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
+Error
+    at [object Object].ElementArrayFinder.applyAction_ (/usr/local/lib/node_modules/protractor/lib/element.js:408:21)
+    at [object Object].self.(anonymous function) [as getText] (/usr/local/lib/node_modules/protractor/lib/element.js:76:19)
+    at [object Object].self.(anonymous function) [as getText] (/usr/local/lib/node_modules/protractor/lib/element.js:736:11)
+    at /Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.object.js:39:34
+    at /usr/local/lib/node_modules/protractor/lib/element.js:698:16
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.Callback_.goog.defineClass.notify (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2464:25)
+    at [object Object].promise.Promise.notify_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:563:12)
+    at Array.forEach (native)
+    at Object.goog.array.forEach (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/array/array.js:203:43)
+From: Task: Asynchronous test function: it()
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/jasminewd/index.js:93:33)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/async-callback.js:45:37)
+    at [object Object].jasmine.Block.execute (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:1174:17)
+    at [object Object].jasmine.Queue.next_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2209:31)
+    at [object Object].jasmine.Queue.start (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2162:8)
+    at [object Object].jasmine.Spec.execute (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2503:14)
+    at [object Object].jasmine.Queue.next_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2209:31)
+    at onComplete (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2205:18)
+    at [object Object].jasmine.Spec.finish (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2477:5)
+    at [object Object].onComplete (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2504:10)==== async task ====
+Error
+    at [object Object].&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:13:4)
+    at [object Object].jasmine.Env.describe_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:913:21)
+    at [object Object].jasmine.Env.describe (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:898:15)
+    at describe (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:658:27)
+    at Object.&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:5:1)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)</failure></testcase>
+  <testcase classname="login" name="Click on Project Manage link 2" time="0.033"><failure type="expect" message="NoSuchElementError: No element found using locator: by.model(&amp;quot;vm.work.name&amp;quot;)">NoSuchElementError: No element found using locator: by.model(&amp;quot;vm.work.name&amp;quot;)
+    at new bot.Error (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:113:18)
+    at /usr/local/lib/node_modules/protractor/lib/element.js:709:15
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.Callback_.goog.defineClass.notify (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2464:25)
+    at [object Object].promise.Promise.notify_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:563:12)
+    at Array.forEach (native)
+    at Object.goog.array.forEach (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/array/array.js:203:43)
+    at [object Object].promise.Promise.notifyAll_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:552:16)
+    at [object Object].goog.async.run.processWorkQueue [as _onTimeout] (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:125:21)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
+Error
+    at [object Object].ElementArrayFinder.applyAction_ (/usr/local/lib/node_modules/protractor/lib/element.js:408:21)
+    at [object Object].self.(anonymous function) [as isDisplayed] (/usr/local/lib/node_modules/protractor/lib/element.js:76:19)
+    at [object Object].self.(anonymous function) [as isDisplayed] (/usr/local/lib/node_modules/protractor/lib/element.js:736:11)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/until.js:285:20
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:718:12
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.ControlFlow.runEventLoop_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1755:8)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2056:12)
+    at [object Object].goog.async.run.processWorkQueue [as _onTimeout] (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:125:21)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
+From: Task: &amp;lt;anonymous&amp;gt;
+    at pollCondition (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1625:14)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1621:7
+    at new promise.Promise (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:355:5)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1619:12
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.ControlFlow.runEventLoop_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1755:8)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2056:12)
+    at [object Object].goog.async.run.processWorkQueue [as _onTimeout] (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:125:21)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
+From: Task: Waiting until element is not visible
+    at [object Object].promise.ControlFlow.wait (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1617:15)
+    at [object Object].webdriver.WebDriver.wait (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:714:21)
+    at [object Object].editProject (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.object.js:90:19)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:24:16)
+    at /usr/local/lib/node_modules/protractor/node_modules/jasminewd/index.js:94:14
+    at [object Object].promise.ControlFlow.runInFrame_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1877:20)
+    at [object Object].promise.ControlFlow.runEventLoop_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:1755:8)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/promise.js:2056:12)
+    at [object Object].goog.async.run.processWorkQueue [as _onTimeout] (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:125:21)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
+From: Task: Asynchronous test function: it()
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/jasminewd/index.js:93:33)
+    at [object Object].&amp;lt;anonymous&amp;gt; (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/async-callback.js:45:37)
+    at [object Object].jasmine.Block.execute (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:1174:17)
+    at [object Object].jasmine.Queue.next_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2209:31)
+    at [object Object].jasmine.Queue.start (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2162:8)
+    at [object Object].jasmine.Spec.execute (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2503:14)
+    at [object Object].jasmine.Queue.next_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2209:31)
+    at onComplete (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2205:18)
+    at [object Object].jasmine.Spec.finish (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2477:5)
+    at [object Object].onComplete (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:2504:10)==== async task ====
+Error
+    at [object Object].&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:21:4)
+    at [object Object].jasmine.Env.describe_ (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:913:21)
+    at [object Object].jasmine.Env.describe (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:898:15)
+    at describe (/usr/local/lib/node_modules/protractor/node_modules/minijasminenode/lib/jasmine-1.3.1.js:658:27)
+    at Object.&amp;lt;anonymous&amp;gt; (/Volumes/Data/gitDemand/ap-work-client/test/e2e/app/manage/manage.spec.js:5:1)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)</failure></testcase>
+</testsuite>
+</testsuites>

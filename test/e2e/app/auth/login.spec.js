@@ -4,7 +4,7 @@
 describe('login', function() {
   it('welcomes the user', function() {
     //var loginPage = new LoginPage();
-    loginPage.get();
+    loginPage.get(loginUser.testUser);
     loginPage.login(loginUser.testUser);
     
   });

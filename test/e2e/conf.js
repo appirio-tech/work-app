@@ -5,16 +5,31 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 	//specs: ['specs/regression/*Spec.js'],
 	suites: {
-	    regression: 'app/manage/*.spec.js'
+		regression1: 'app/manage/login.spec.js',
+		regression2: 'app/manage/newproject.spec.js',
+	    regression3: 'app/manage/manage.spec.js'
 	  },
     //baseUrl: 'http://qualityshepherd.com/angular',
     //framework: 'jasmine2',
 
     onPrepare: function(){
     	require('protractor-linkuisref-locator')(protractor);
+    	require('jasmine-reporters');
+    	var HtmlReporter = require('protractor-html-screenshot-reporter');
         // set implicit wait times in ms...
         //browser.manage().timeouts().pageLoadTimeout(10000);
         browser.manage().timeouts().implicitlyWait(2000);
+        
+        var reporter=new HtmlReporter({
+            baseDirectory: './report', // a location to store screen shots.
+            docTitle: 'Protractor Demo Reporter',
+            docName:    'protractor-demo-tests-report.html'
+        });
+        
+       
+        jasmine.getEnv().addReporter(
+          new jasmine.JUnitXmlReporter('/Volumes/Data/gitDemand/ap-work-client/test/e2e/report', true, true)
+        );
 
         // better jasmine 2 reports...
         // also requires print: function() {} in jasmineNodeOpts section
@@ -22,10 +37,10 @@ exports.config = {
         //jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
         
     },
-
+    
     capabilities: {
-		browserName: 'chrome'
-	},
+    	  'browserName': 'chrome'
+    	},
 
 	jasmineNodeOpts: {
 		isVerbose: true,
