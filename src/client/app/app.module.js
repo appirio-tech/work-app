@@ -10,6 +10,7 @@
     'app.submit-work',
     'app.manage',
     'appirio-tech-timeline',
+    'appirio-tech-messaging',
     'newrelic'
   ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);

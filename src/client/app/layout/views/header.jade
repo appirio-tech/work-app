@@ -1,6 +1,11 @@
 header.layout-header(role="banner")
-  a.clean.logo( "ng-home-link"=true, "href"="{{getPath()}}") Appirio Services Platform
-  a.clean.login(href="#/login" login)
+  a.clean.logo("ng-home-link"=true, "href"="{{getPath()}}") Appirio Services Platform
+
+  .secondary
+    a.clean.login(href="#/login" login)
+
+    button.clean.message-notifcations(type="button" ng-focus-on-click=true) 2
+      threads.tooltip
 
 
 

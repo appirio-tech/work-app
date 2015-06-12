@@ -8,12 +8,13 @@ $header-height: 50px;
   padding         : 0 $padding-20;
   background-color: $white;
   border-bottom   : 2px solid $black;
+  line-height     : $header-height;
 
   @include clearfix();
 
   > * {
-    display    : inline-block;
-    line-height: $header-height;
+    display       : inline-block;
+    vertical-align: middle;
   }
 
   .logo {
@@ -21,32 +22,92 @@ $header-height: 50px;
     font-size: 17px;
   }
 
-  .login {
+  .secondary {
     @include span-columns(4);
-
-    @include font(20);
-  }
-
-  .login {
+    display   : inline-block;
     text-align: right;
 
     > * {
-      display: inline-block;
+      display       : inline-block;
+      vertical-align: middle;
     }
 
-    .icon {
-      width              : 21px;
-      line-height        : 23px;
-      background-position: -379px 0px;
+    button.message-notifcations {
+      padding         : 6px 10px;
+      background-color: red;
+      margin-left     : 20px;
+      position        : relative;
 
-      @include icon-sprite();
+      @include source-sans();
+
+      &:focus {
+        .tooltip {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      .tooltip {
+        @include transition (all 0.2s ease-in-out);
+        @include font-line(12);
+
+        position                  : absolute;
+        text-align                : initial;
+        white-space               : initial;
+        background                : white;
+        box-shadow                : 0 2px 2px silver;
+        color                     : black;
+        width                     : 280px;
+        opacity                   : 0;
+        visibility                : invisible;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius : 2px;
+        z-index                   : 10;
+        top                       : $header-height - 6px;
+        right                     : 0;
+        max-height                : 300px;
+        overflow                  : scroll;
+
+
+        &:hover {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .close {
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding: 6px 10px
+        }
+
+        &.active {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 
-    .label {
-      margin-left: $margin-10;
-      color      : $pacific-blue;
+    .login {
+      > * {
+        display       : inline-block;
+        vertical-align: middle;
+      }
 
-      @include font-line(20);
+      .icon {
+        width              : 21px;
+        line-height        : 23px;
+        background-position: -379px 0px;
+
+        @include icon-sprite();
+      }
+
+      .label {
+        margin-left: $margin-10;
+        color      : $pacific-blue;
+
+        @include font(20);
+      }
     }
   }
 }
