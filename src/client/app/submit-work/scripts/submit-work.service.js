@@ -131,7 +131,6 @@
       created = false;
       if (service.id) delete service.id;
       service.work = angular.copy(defaultWork);
-      service.work.features = [];
       initializeFeatures();
     };
 

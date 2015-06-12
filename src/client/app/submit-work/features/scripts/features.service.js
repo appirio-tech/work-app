@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.feature')
+    .module('app.submit-work')
     .factory('FeatureService', FeatureService);
 
   FeatureService.$inject = ['$q'];
