@@ -15,15 +15,19 @@
   ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
     $locationProvider.html5Mode(false);
 
-    var state = {
+    $stateProvider.state('timeline', {
       url         : '/timeline/:workId',
       title       : 'Timeline',
       controller  : 'TimelineController',
       controllerAs: 'vm',
       templateUrl : 'views/timeline.html'
-    }
+    });
 
-    $stateProvider.state('timeline', state);
+    $stateProvider.state('messaging', {
+      url         : '/messaging/:id',
+      title       : 'Messaging',
+      templateUrl : 'views/messaging.html'
+    });
 
   }]);
 
