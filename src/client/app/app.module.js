@@ -12,8 +12,20 @@
     'appirio-tech-timeline',
     'appirio-tech-messaging',
     'newrelic'
-  ]).config(['$locationProvider', function($locationProvider) {
+  ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
     $locationProvider.html5Mode(false);
+
+    var state = {
+      url         : '/timeline/:workId',
+      title       : 'Timeline',
+      controller  : 'TimelineController',
+      controllerAs: 'vm',
+      templateUrl : 'views/timeline.html'
+    }
+
+    $stateProvider.state('timeline', state);
+
   }]);
+
 
 })();

@@ -83,13 +83,11 @@ include submit-work/includes
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
 - desktopCSS   = desktopCSS.concat(desktopFiles)
 
-//- timeline
-include timeline
 
-- scripts      = scripts.concat(jsFiles)
-- css          = css.concat(cssFiles)
-- landscapeCSS = landscapeCSS.concat(landscapeFiles)
-- desktopCSS   = desktopCSS.concat(desktopFiles)
+//- timeline
+- scripts.push('/bower_components/appirio-tech-timeline/dist/main')
+- css.push('/bower_components/appirio-tech-timeline/dist/main')
+- landscapeCSS.push('/bower_components/appirio-tech-timeline/dist/main.landscape')
 
 //- ng auth
 - scripts.push('/bower_components/appirio-tech-ng-auth/dist/main')
@@ -115,7 +113,7 @@ html(ng-app='app')
 
     script(type="text/javascript", src="/bower_components/sinon/index.js")
 
-    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/scripts/auto-config-fake-server.js")
+    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js")
 
     script(type="text/javascript").
       AutoConfigFakeServer.init();
@@ -124,6 +122,8 @@ html(ng-app='app')
 
       AutoConfigFakeServer.consume([
         FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json'],
         FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
       ]);
     // endRemoveIf(production)

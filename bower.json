@@ -18,7 +18,7 @@
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
     "bardjs": "~0.0.3",
     "appirio-tech-api-schemas": "git@github.com:appirio-tech/api-schemas#0.x.x",
-    "appirio-tech-timeline": "git@github.com:appirio-tech/timeline#0.x.x",
+    "appirio-tech-timeline": "git@github.com:appirio-tech/timeline#1.x.x",
     "auto-config-fake-server": "~1.2.3"
   },
   "dependencies": {
