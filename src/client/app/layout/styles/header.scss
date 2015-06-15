@@ -24,7 +24,9 @@ $header-height: 50px;
 
   .secondary {
     @include span-columns(4);
+
     display   : inline-block;
+    position  : relative;
     text-align: right;
 
     > * {
@@ -40,43 +42,35 @@ $header-height: 50px;
 
       @include source-sans();
 
-      &:focus {
-        .tooltip {
-          display: block;
-        }
+      &:focus + .popup {
+        max-height: 300px;
+      }
+    }
+
+    .popup {
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius : 2px;
+      z-index                   : 10;
+      top                       : $header-height + 5px;
+      right                     : 0;
+      position                  : absolute;
+      box-shadow                : 0 2px 2px silver;
+      width                     : 280px;
+      text-align                : initial;
+      max-height                : 0;
+      overflow                  : hidden;
+
+      &:hover {
+        max-height: 300px;
       }
 
-      .tooltip {
+      threads {
         @include transition (all 0.2s ease-in-out);
         @include font-line(12);
 
-        position                  : absolute;
-        text-align                : initial;
-        white-space               : initial;
-        background                : white;
-        box-shadow                : 0 2px 2px silver;
-        color                     : black;
-        width                     : 280px;
-        display: none;
-        border-bottom-right-radius: 2px;
-        border-bottom-left-radius : 2px;
-        z-index                   : 10;
-        top                       : $header-height - 6px;
-        right                     : 0;
-        max-height                : 300px;
-        overflow                  : scroll;
-
-        .close {
-          position: absolute;
-          right: 0;
-          top: 0;
-          padding: 6px 10px
-        }
-
-        &.active {
-          opacity: 1;
-          visibility: visible;
-        }
+        max-height: 300px;
+        overflow  : scroll;
+        position  : relative;
       }
     }
 
