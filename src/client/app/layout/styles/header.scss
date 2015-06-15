@@ -34,7 +34,9 @@ $header-height: 50px;
       vertical-align: middle;
     }
 
-    button.message-notifcations {
+    $popup-max-height: 300px;
+
+    button.message-notifications {
       padding         : 6px 10px;
       background-color: red;
       margin-left     : 20px;
@@ -43,7 +45,7 @@ $header-height: 50px;
       @include source-sans();
 
       &:focus + .popup {
-        max-height: 300px;
+        max-height: $popup-max-height;
       }
     }
 
@@ -60,15 +62,15 @@ $header-height: 50px;
       max-height                : 0;
       overflow                  : hidden;
 
+      @include transition (all 0.2s ease-in-out);
+      @include font-line(12);
+
       &:hover {
-        max-height: 300px;
+        max-height: $popup-max-height;
       }
 
       threads {
-        @include transition (all 0.2s ease-in-out);
-        @include font-line(12);
-
-        max-height: 300px;
+        max-height: $popup-max-height;
         overflow  : scroll;
         position  : relative;
       }
