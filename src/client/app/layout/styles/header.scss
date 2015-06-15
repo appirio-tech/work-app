@@ -42,8 +42,7 @@ $header-height: 50px;
 
       &:focus {
         .tooltip {
-          opacity: 1;
-          visibility: visible;
+          display: block;
         }
       }
 
@@ -58,8 +57,7 @@ $header-height: 50px;
         box-shadow                : 0 2px 2px silver;
         color                     : black;
         width                     : 280px;
-        opacity                   : 0;
-        visibility                : invisible;
+        display: none;
         border-bottom-right-radius: 2px;
         border-bottom-left-radius : 2px;
         z-index                   : 10;

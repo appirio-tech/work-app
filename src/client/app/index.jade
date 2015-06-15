@@ -12,6 +12,7 @@
 - scripts.push('/src/client/app/core/ng-enter.directive')
 - scripts.push('layout/scripts/layout.module')
 - scripts.push('layout/scripts/focus-on-click.directive')
+- scripts.push('layout/scripts/layout-header.directive')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
 - scripts.push('/src/client/app/blocks/logger/logger')
@@ -27,7 +28,6 @@
 //- Layout
 - scripts.push('/src/client/app/layout/scripts/modal.directive')
 - scripts.push('/src/client/app/layout/scripts/homeLink.directive')
-
 
 - css.push("layout/styles/reset")
 - css.push("layout/styles/main")
@@ -82,7 +82,6 @@ include submit-work/includes
 - css          = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
 - desktopCSS   = desktopCSS.concat(desktopFiles)
-
 
 //- timeline
 - scripts.push('/bower_components/appirio-tech-timeline/dist/main')

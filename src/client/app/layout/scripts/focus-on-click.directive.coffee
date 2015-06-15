@@ -10,5 +10,5 @@ dir = ->
 
 dir.$inject = []
 
-angular.module('app.layout').directive 'ngFocusOnClick', dir
+angular.module('app.layout').directive 'focusOnClick', dir
 
