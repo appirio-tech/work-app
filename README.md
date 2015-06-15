@@ -213,6 +213,10 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
 
 2. Run following commands to install protractor, protractor uisref locatator package and selenium webdriver installation.
   - npm install -g protractor
+  - npm install jasmine-reporters@^1.0.0
+  - npm install jasmine-reporters
+  We have to set NODE_PATH in environment variable.
+  - export NODE_PATH=/usr/local/lib/node_modules/npm/node_modules
   - webdriver-manager update
 
 3. start up a server with:
@@ -222,3 +226,14 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
   - protractor conf.js
   
 ### For more reference on protractor.js, please visit https://angular.github.io/protractor/#/tutorial
+
+### Page Object Pattern is used for testing any particular type of action like login, create new project, manage project etc.
+    There are generally 3 js files for every specific type of test case creation. Suppose you are creating test case for login funcitonality then
+    1.  login.data.js - It contain data needed for testing like user name and password in json format.
+    2.  login.object.js - It is created to follow Page Object Pattern to separate internal logics from main sequence of test case. 
+         It contain all functions needed by particular test case like 
+    	- opening browser and 
+    	- navigate to particular login page url
+    3. login.spec.js - It contain all sequence for particular type of test case.
+    4. conf.js - It contain all configuration needed to setup for protractor js. 
+

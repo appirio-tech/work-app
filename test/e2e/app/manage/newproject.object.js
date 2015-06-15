@@ -1,11 +1,16 @@
-var ManagePage = function() {
+var NewProjectPage = function() {
 	
-	this.actionItem = element(by.css('.action .ng-scope'));
+	this.actionItem = element(by.css('.heading button'));
+//	this.actionItem = element(by.uiSref('submit-work.flow'));
 	
 	console.log('actionItem  '+ this.actionItem);
 	
+	this.get = function() {
+		browser.get('https://www.topcoder-dev.com/work/#/manage');
+	}
+	
  
-	this.continueSetup = function() {
+	this.createNewProject = function() {
 	console.log('click action itemy');
 	
     var EC = protractor.ExpectedConditions;
@@ -17,7 +22,7 @@ var ManagePage = function() {
     	var workNameText = workName.getText();
     	console.log('workNameText '+workNameText);
     	workName.clear();
-    	workName.sendKeys('Test 1234- edit');
+    	workName.sendKeys('Test 1234 - new');
     	var submitButton = element(by.css('.submit'));
     	submitButton.click().then(function(){
     		var projectTypeDesign = element(by.id('project-type-design'));
@@ -61,16 +66,16 @@ var ManagePage = function() {
     });
   };
   
-  this.editProject = function () {
-	  var workLabel = element(by.model('vm.work.name'));
-	  var EC = protractor.ExpectedConditions;
-	  console.log('label item '+workLabel);
-	  browser.driver.wait(protractor.until.elementIsNotVisible(workLabel));
-	  browser.wait(EC.not(EC.presenceOf(workLabel)), 10000);
-	  
-	  workLabel.sendKeys('new name is given');
-	
-  };
+//  this.editProject = function () {
+//	  var workLabel = element(by.model('vm.work.name'));
+//	  var EC = protractor.ExpectedConditions;
+//	  console.log('label item '+workLabel);
+//	  browser.driver.wait(protractor.until.elementIsNotVisible(workLabel));
+//	  browser.wait(EC.not(EC.presenceOf(workLabel)), 10000);
+//	  
+//	  workLabel.sendKeys('new name is given');
+//	
+//  };
   
 };
-module.exports = new ManagePage();
+module.exports = new NewProjectPage();
