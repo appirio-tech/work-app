@@ -32,4 +32,5 @@ ul
           a(ng-if="project.status == 'Incomplete'",
             ui-sref="submit-work.flow({ id: project.id })") Continue setup
 
-          span(ng-if="project.status == 'Submitted'") Waiting for Project Approval
+          span(ng-if="project.status == 'Submitted'")
+            a(href="#/timeline/{{project.id}}") Waiting for Project Approval

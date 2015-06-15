@@ -23,18 +23,18 @@ form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="vm.submitElevato
   textarea(
     name             = "elevator",
     placeholder      = "I have an idea for a mobile app that lets people automatically monitor stocks, with automatic updates and alerts.",
-    ng-model         = "vm.work.elevator",
-    ng-model-options ="{allowInvalid: true}"
+    ng-model         = "vm.work.summary",
+    ng-model-options ="{allowInvalid: true}",
     required         = true,
-    ng-minlength     = "200",
+    ng-minlength     = "200"
   )
 
-  .character-count {{ vm.work.elevator.length || '&nbsp;' }}
+  .character-count {{ vm.work.summary.length || '&nbsp;' }}
 
   ul.invalid-messages(ng-show="elevatorForm.$dirty || elevatorForm.elevator.$dirty")
-    li(ng-show="elevatorForm.elevator.$error.required") This field is required.
+    li(ng-show="elevatorForm.summary.$error.required") This field is required.
 
-    li(ng-show="elevatorForm.elevator.$error.minlength") Help our designers understand your needs, please enter at least 200 characters.
+    li(ng-show="elevatorForm.summary.$error.minlength") Help our designers understand your needs, please enter at least 200 characters.
 
   button.submit(type="submit", ng-show="elevatorForm.$valid") NEXT
 
