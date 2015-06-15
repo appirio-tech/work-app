@@ -1,14 +1,37 @@
 'use strict';
 
-dir = (AuthService) ->
+# TODO: use controller pattern
+# TODO: unit tests
+# TODO: turn this into its own component
+
+dir = (UserService, ThreadsAPIService) ->
   link = (scope, element, attrs) ->
-    scope.showNotification = ->
-      true if AuthService.isAuthenticated()
+    currentUser = ->
+      UserService.user
+
+    onUserChange = (user) ->
+      if user
+        scope.showNotification = true
+
+        getNotificationCount user
+      else
+        scope.showNotification = false
+
+    getNotificationCount = (user) ->
+      queryParams =
+        subscriber: user
+
+      resource = ThreadsAPIService.query queryParams
+
+      resource.$promise.then (response) ->
+        scope.totalUnreadCount = response.totalUnreadCount
+
+    scope.$watch currentUser, onUserChange
 
   restrict: 'A'
   link: link
 
-dir.$inject = ['AuthService']
+dir.$inject = ['UserService', 'ThreadsAPIService']
 
 angular.module('app.layout').directive 'layoutHeader', dir
 

@@ -1,3 +1,4 @@
+// TODO: move this to ng-auth
 (function () {
   'use strict';
 
