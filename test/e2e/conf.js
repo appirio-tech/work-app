@@ -21,15 +21,19 @@ exports.config = {
         browser.manage().timeouts().implicitlyWait(2000);
         
         var reporter=new HtmlReporter({
-            baseDirectory: './report', // a location to store screen shots.
+            baseDirectory: '/Volumes/Data/gitDemand/ap-work-client/test/e2e/report', // a location to store screen shots.
             docTitle: 'Protractor Demo Reporter',
             docName:    'protractor-demo-tests-report.html'
         });
         
-       
         jasmine.getEnv().addReporter(
-          new jasmine.JUnitXmlReporter('/Volumes/Data/gitDemand/ap-work-client/test/e2e/report', true, true)
-        );
+        		reporter
+            );
+        
+       
+//        jasmine.getEnv().addReporter(
+//          new jasmine.JUnitXmlReporter('/Volumes/Data/gitDemand/ap-work-client/test/e2e/report', true, true)
+//        );
 
         // better jasmine 2 reports...
         // also requires print: function() {} in jasmineNodeOpts section
