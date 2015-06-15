@@ -214,11 +214,7 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
 2. Run following commands to install protractor, protractor uisref locatator package and selenium webdriver installation.
   - npm install -g protractor
   - npm install jasmine-reporters@^1.0.0
-<<<<<<< HEAD
-=======
-  - npm install jasmine-reporters
   - npm install protractor-html-screenshot-reporter --save-dev
->>>>>>> 1f6f6ef9bb0879dd8e01a3d2b6479b7f302254ad
   We have to set NODE_PATH in environment variable.
   - export NODE_PATH=/usr/local/lib/node_modules/npm/node_modules
   - webdriver-manager update
