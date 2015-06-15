@@ -13,7 +13,8 @@ ul
   li(ng-repeat= "project in vm.workRequests")
     div
       header
-        h4 {{project.name}}
+        h4 {{project.name | limitTo:13}}
+          span(ng-if="project.name.length > 13") ...
 
         span.type {{project.requestType}}
 
