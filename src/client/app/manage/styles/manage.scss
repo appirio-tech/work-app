@@ -84,6 +84,7 @@
         h4 {
           margin-top: $margin-8;
           float: left;
+          @include ellipsis(140px);
         }
 
         span.type {
