@@ -26,12 +26,18 @@
           margin-left        : $margin-5;
           width              : 16px;
           height             : 13px;
-          background-image   : url("../../images/view-feature.png");
-          background-position: -12px -13px;
+          &.clean {
+            background-image   : url("../../images/view-feature.png");
+            background-position: -12px -13px;
+          }
+
+          &.x {
+            margin-top: 0px;
+          }
 
           @include font-line(10);
 
-          &:hover {
+          &.clean:hover {
             background-position: -44px -13px;
           }
         }
