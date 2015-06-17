@@ -73,7 +73,9 @@
       }).map(function(feature) {
         return {
           name        : feature.name,
-          description : feature.description
+          description : feature.description,
+          explanation : feature.explanation,
+          custom      : feature.custom
         };
       });
 
@@ -143,13 +145,15 @@
         // Create a list of saved features
         var selectedFeatures = {};
         service.work.features.forEach(function(feature) {
-          selectedFeatures[feature.name] = true;
+          selectedFeatures[feature.name] = feature;
         });
 
         // Set any features that are currently saved to selected
         features.forEach(function(feature) {
-          if (selectedFeatures[feature.name]) {
+          var savedFeature = selectedFeatures[feature.name];
+          if (savedFeature) {
             feature.selected = true;
+            feature.explanation = savedFeature.explanation;
           }
         });
 
