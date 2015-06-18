@@ -73,7 +73,9 @@
       }).map(function(feature) {
         return {
           name        : feature.name,
-          description : feature.description
+          description : feature.description,
+          explanation : feature.explanation,
+          custom      : feature.custom
         };
       });
 
@@ -142,16 +144,26 @@
 
         // Create a list of saved features
         var selectedFeatures = {};
+        // ...and a list of custom features
+        var customFeatures = [];
+
         service.work.features.forEach(function(feature) {
-          selectedFeatures[feature.name] = true;
+          selectedFeatures[feature.name] = feature;
+          if (feature.custom) {
+            feature.selected = true;
+            customFeatures.push(feature);
+          }
         });
 
         // Set any features that are currently saved to selected
         features.forEach(function(feature) {
-          if (selectedFeatures[feature.name]) {
+          var savedFeature = selectedFeatures[feature.name];
+          if (savedFeature) {
             feature.selected = true;
+            feature.explanation = savedFeature.explanation;
           }
         });
+        features = features.concat(customFeatures);
 
         // Overwrite features from server with our cleaned up list
         service.work.features = features;
