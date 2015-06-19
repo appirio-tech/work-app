@@ -236,4 +236,6 @@ Original concept came from http://www.objectpartners.com/2014/06/03/extending-an
     	- navigate to particular login page url
     3. login.spec.js - It contain all sequence for particular type of test case.
     4. conf.js - It contain all configuration needed to setup for protractor js. 
+       Replace baseDirectory parameter of HtmlReporter with your local project repo location for report folder.
+       baseDirectory: '/Volumes/Data/gitDemand/ap-work-client/test/e2e/report'
 
