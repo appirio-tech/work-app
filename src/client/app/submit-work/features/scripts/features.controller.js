@@ -36,18 +36,20 @@
     });
 
     vm.add = function() {
-      vm.work.features.push({
-        id         : vm.newFeatureName,
-        name       : vm.newFeatureName,
-        explanation : vm.newFeatureExplanation,
-        description : '',
-        custom      : true,
-        selected    : true
-      });
+      if (vm.newFeatureName.trim().length > 0 && vm.newFeatureExplanation.trim().length > 0) {
+        vm.work.features.push({
+          id         : vm.newFeatureName,
+          name       : vm.newFeatureName,
+          explanation : vm.newFeatureExplanation,
+          description : '',
+          custom      : true,
+          selected    : true
+        });
 
-      vm.newFeatureName        = '';
-      vm.newFeatureExplanation = '';
-      vm.newFeature            = false;
+        vm.newFeatureName        = '';
+        vm.newFeatureExplanation = '';
+        vm.newFeature            = false;
+      }
     };
 
     vm.deleteFeature = function(i) {
