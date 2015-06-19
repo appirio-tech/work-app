@@ -1,9 +1,9 @@
 var NewProjectPage = function() {
 	
-	this.actionItem = element(by.css('.heading button'));
+//	this.actionItem = element(by.css('.heading button'));
 //	this.actionItem = element(by.uiSref('submit-work.flow'));
 	
-	console.log('actionItem  '+ this.actionItem);
+//	console.log('actionItem  '+ this.actionItem);
 	
 	this.get = function() {
 		browser.get('https://www.topcoder-dev.com/work/#/manage');
@@ -11,18 +11,24 @@ var NewProjectPage = function() {
 	
  
 	this.createNewProject = function() {
-	console.log('click action itemy');
+		var actionItem = element(by.css('.heading button'));
+		var EC = protractor.ExpectedConditions;
+		var isClickable = EC.elementToBeClickable(actionItem);
+		browser.wait(isClickable, 10000);
+		
+		console.log('click action item new project');
 	
-    var EC = protractor.ExpectedConditions;
     
-    this.actionItem.click().then(function(){
+    
+    actionItem.click().then(function(){
+//    	browser.waitForAngular();
     	console.log('click action item');
     	var workName = element(by.model('vm.work.name'));
     	console.log('label item'+workName);
     	var workNameText = workName.getText();
     	console.log('workNameText '+workNameText);
     	workName.clear();
-    	workName.sendKeys('Test 1234 - new');
+    	workName.sendKeys('aq11Test 1234 - new');
     	var submitButton = element(by.css('.submit'));
     	submitButton.click().then(function(){
     		var projectTypeDesign = element(by.id('project-type-design'));
@@ -40,7 +46,7 @@ var NewProjectPage = function() {
     							submitButton = element(by.css('.submit'));
     							submitButton.click().then(function(){
     								var featureLogin = element(by.id('feature-login'));
-    								featureLogin.click();
+//    								featureLogin.click();
     								submitButton = element(by.css('.submit'));
     								submitButton.click().then(function(){
     									submitButton = element(by.css('.submit'));

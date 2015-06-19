@@ -8,11 +8,17 @@ var LoginPage = function() {
   };
  
   this.login = function(loginUser) {
+	  
+	expect(browser.getTitle()).toContain('Appiro Work Platform:');
+	console.log('title '+browser.getTitle());
+	
     this.userInput.sendKeys(loginUser.username);
     this.passwordInput.sendKeys(loginUser.password);
-    var EC = protractor.ExpectedConditions;
+//    var EC = protractor.ExpectedConditions;
     
     this.loginButton.click().then(function(){
+//    	browser.waitForAngular();
+    	/*
     	element.all(by.css('.label')).each(function(element, index) {
     	browser.wait(EC.not(EC.presenceOf(element)), 10000);
  	 // Will print 0 First, 1 Second, 2 Third.
@@ -20,19 +26,24 @@ var LoginPage = function() {
  			console.log(index, text);
  		});
     });
-   });
+   */});
   };
   
-  this.newProject = function () {
+  this.logOut = function () {
+	  var EC = protractor.ExpectedConditions;
 	var elementLabel = element.all(by.css('.label'));
-	console.log('elementLabel '+elementLabel);
+	var isClickable = EC.elementToBeClickable(elementLabel.get(2));
+	browser.wait(isClickable, 10000);
+//	console.log('elementLabel '+elementLabel);
 	
 	elementLabel.get(2).click().then(function(){
-		var EC = protractor.ExpectedConditions;
-		console.log('elementLabel '+elementLabel);
-		var label = element(by.css('.label'));
-		browser.driver.wait(protractor.until.elementIsNotVisible(label));
-		browser.wait(EC.not(EC.presenceOf(label)), 10000);
+		
+//		console.log('elementLabel '+elementLabel);
+//		var label = element(by.css('.label'));
+//		var isClickable = EC.elementToBeClickable(label);
+		
+//		browser.driver.wait(protractor.until.elementIsNotVisible(label));
+//		browser.wait(EC.not(EC.presenceOf(label)), 10000);
 	});
   };
   

@@ -6,7 +6,7 @@ var ManagePage = function() {
 	
  
 	this.continueSetup = function() {
-	console.log('click action itemy');
+	console.log('click action item manage project');
 	
     var EC = protractor.ExpectedConditions;
     
