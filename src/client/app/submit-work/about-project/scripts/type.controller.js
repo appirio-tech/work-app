@@ -34,7 +34,7 @@
 
     vm.submit = function () {
       if ($scope.typeForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('type');
       }
     };
   }

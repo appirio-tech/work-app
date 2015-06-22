@@ -48,13 +48,13 @@
 
     vm.submitElevator = function () {
       if ($scope.elevatorForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('brief');
       }
     };
 
     vm.submitBrief = function () {
       if ($scope.briefForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('brief');
       }
     };
 
