@@ -16,6 +16,8 @@
     vm.newFeatureExplanation = '';
     vm.newFeature            = false;
     vm.showExample           = false;
+    vm.add                   = null;
+    vm.deleteFeature         = null;
 
     vm.clickExample = function () {
       $scope.showExample = true;
@@ -34,18 +36,25 @@
     });
 
     vm.add = function() {
-      vm.work.features.push({
-        id         : vm.newFeatureName,
-        name       : vm.newFeatureName,
-        explanation: vm.newFeatureExplanation,
-        description: '',
-        selected   : true
-      });
+      if (vm.newFeatureName.trim().length > 0 && vm.newFeatureExplanation.trim().length > 0) {
+        vm.work.features.push({
+          id         : vm.newFeatureName,
+          name       : vm.newFeatureName,
+          explanation : vm.newFeatureExplanation,
+          description : '',
+          custom      : true,
+          selected    : true
+        });
 
-      vm.newFeatureName        = '';
-      vm.newFeatureExplanation = '';
-      vm.newFeature            = false;
-    }
+        vm.newFeatureName        = '';
+        vm.newFeatureExplanation = '';
+        vm.newFeature            = false;
+      }
+    };
+
+    vm.deleteFeature = function(i) {
+      vm.work.features.splice(i, 1);
+    };
 
   }
 })();

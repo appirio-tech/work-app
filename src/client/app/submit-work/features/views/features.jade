@@ -11,10 +11,17 @@ form(name="featureForm", ng-submit="vm.submit()")
         label(for="{{'feature-' + feature.id}}") {{feature.name}}
 
         button.clean(
-          type="button"
+          ng-if="!feature.custom",
+          type="button",
           ng-click="vm.clickExample()",
           title="View example"
         )
+
+        button.x(
+          ng-if="feature.custom",
+          type="button",
+          ng-click="vm.deleteFeature($index)"
+        ) x
 
       .desc {{feature.description}}
 
