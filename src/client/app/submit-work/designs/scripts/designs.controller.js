@@ -28,7 +28,7 @@
 
     vm.submit = function () {
       if ($scope.designForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('designs');
       }
     };
 
