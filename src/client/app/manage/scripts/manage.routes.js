@@ -38,6 +38,13 @@
             }]
           }
         }
+      },
+      {
+        state: 'view-work-multiple.confirm',
+        config: {
+          url: '/confirm',
+          templateUrl: 'manage/views/confirm.html'
+        }
       }
     ];
   }
