@@ -11,6 +11,8 @@
 - scripts.push('templates')
 - scripts.push('/src/client/app/core/ng-enter.directive')
 - scripts.push('layout/scripts/layout.module')
+- scripts.push('layout/scripts/focus-on-click.directive')
+- scripts.push('layout/scripts/layout-header.directive')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
 - scripts.push('/src/client/app/blocks/logger/logger')
@@ -18,6 +20,7 @@
 - scripts.push('/src/client/app/core/config')
 - scripts.push('/src/client/app/core/core.constants')
 - scripts.push('/src/client/app/core/core.route')
+- scripts.push('scripts/messaging.controller')
 
 - var css = []
 - var landscapeCSS = []
@@ -26,7 +29,6 @@
 //- Layout
 - scripts.push('/src/client/app/layout/scripts/modal.directive')
 - scripts.push('/src/client/app/layout/scripts/homeLink.directive')
-
 
 - css.push("layout/styles/reset")
 - css.push("layout/styles/main")
@@ -83,15 +85,17 @@ include submit-work/includes
 - desktopCSS   = desktopCSS.concat(desktopFiles)
 
 //- timeline
-include timeline
-
-- scripts      = scripts.concat(jsFiles)
-- css          = css.concat(cssFiles)
-- landscapeCSS = landscapeCSS.concat(landscapeFiles)
-- desktopCSS   = desktopCSS.concat(desktopFiles)
+- scripts.push('/bower_components/appirio-tech-timeline/dist/main')
+- css.push('/bower_components/appirio-tech-timeline/dist/main')
+- landscapeCSS.push('/bower_components/appirio-tech-timeline/dist/main.landscape')
 
 //- ng auth
 - scripts.push('/bower_components/appirio-tech-ng-auth/dist/main')
+
+//- messaging
+- scripts.push('/bower_components/appirio-tech-messaging/dist/main')
+- css.push('/bower_components/appirio-tech-messaging/dist/main')
+- css.push('styles/messaging')
 
 include bowers
 
@@ -110,7 +114,7 @@ html(ng-app='app')
 
     script(type="text/javascript", src="/bower_components/sinon/index.js")
 
-    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/scripts/auto-config-fake-server.js")
+    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js")
 
     script(type="text/javascript").
       AutoConfigFakeServer.init();
@@ -119,6 +123,8 @@ html(ng-app='app')
 
       AutoConfigFakeServer.consume([
         FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json'],
         FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
       ]);
     // endRemoveIf(production)

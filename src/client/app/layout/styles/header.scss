@@ -8,12 +8,13 @@ $header-height: 50px;
   padding         : 0 $padding-20;
   background-color: $white;
   border-bottom   : 2px solid $black;
+  line-height     : $header-height;
 
   @include clearfix();
 
   > * {
-    display    : inline-block;
-    line-height: $header-height;
+    display       : inline-block;
+    vertical-align: middle;
   }
 
   .logo {
@@ -21,32 +22,81 @@ $header-height: 50px;
     font-size: 17px;
   }
 
-  .login {
+  .secondary {
     @include span-columns(4);
 
-    @include font(20);
-  }
-
-  .login {
+    display   : inline-block;
+    position  : relative;
     text-align: right;
 
     > * {
-      display: inline-block;
+      display       : inline-block;
+      vertical-align: middle;
     }
 
-    .icon {
-      width              : 21px;
-      line-height        : 23px;
-      background-position: -379px 0px;
+    $popup-max-height: 300px;
 
-      @include icon-sprite();
+    button.message-notifications {
+      padding         : 6px 10px;
+      background-color: red;
+      margin-left     : 20px;
+      position        : relative;
+      color           : white;
+
+      @include source-sans();
+
+      &:focus + .popup {
+        max-height: $popup-max-height;
+      }
     }
 
-    .label {
-      margin-left: $margin-10;
-      color      : $pacific-blue;
+    .popup {
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius : 2px;
+      z-index                   : 10;
+      top                       : $header-height + 5px;
+      right                     : 0;
+      position                  : absolute;
+      box-shadow                : 0 2px 2px silver;
+      width                     : 280px;
+      text-align                : initial;
+      max-height                : 0;
+      overflow                  : hidden;
 
-      @include font-line(20);
+      @include transition (all 0.2s ease-in-out);
+      @include font-line(12);
+
+      &:hover {
+        max-height: $popup-max-height;
+      }
+
+      threads {
+        max-height: $popup-max-height;
+        overflow  : scroll;
+        position  : relative;
+      }
+    }
+
+    .login {
+      > * {
+        display       : inline-block;
+        vertical-align: middle;
+      }
+
+      .icon {
+        width              : 21px;
+        line-height        : 23px;
+        background-position: -379px 0px;
+
+        @include icon-sprite();
+      }
+
+      .label {
+        margin-left: $margin-10;
+        color      : $pacific-blue;
+
+        @include font(20);
+      }
     }
   }
 }
