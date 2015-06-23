@@ -61,7 +61,8 @@ var ManagePage = function() {
     });
   };
   
-  this.editProject = function () {
+  /*
+   this.editProject = function () {
 	  var workLabel = element(by.model('vm.work.name'));
 	  var EC = protractor.ExpectedConditions;
 	  console.log('label item '+workLabel);
@@ -71,6 +72,7 @@ var ManagePage = function() {
 	  workLabel.sendKeys('new name is given');
 	
   };
+  */
   
 };
 module.exports = new ManagePage();
