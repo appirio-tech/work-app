@@ -45,3 +45,6 @@ ul
 
           a(ng-if="project.status == 'Launched'",
             href="#/timeline/{{project.id}}") View project
+
+          a(ng-if="project.status == 'Messaged'",
+            href="#/timeline/{{project.id}}") View 1 unread message
