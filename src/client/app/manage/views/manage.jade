@@ -42,3 +42,6 @@ ul
 
           a(ng-if="project.status == 'Estimate'",
             href="#/timeline/{{project.id}}") View your quote and begin
+
+          a(ng-if="project.status == 'Launched'",
+            href="#/timeline/{{project.id}}") View project

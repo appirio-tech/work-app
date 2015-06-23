@@ -151,7 +151,7 @@
           }
         }
 
-        &.assigned, &.estimate {
+        &.assigned, &.estimate, &.launched {
           background: whitesmoke;
           padding-top: 23px;
           > span {

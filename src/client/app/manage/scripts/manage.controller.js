@@ -54,7 +54,30 @@
         "copilotId":null,
         "quotedAmount":null,
         "tcDirectId":null
+      },
+      {
+        "id":"12347",
+        "modifiedBy":"40135602",
+        "modifiedAt":"2015-0Z",
+        "createdBy":"40135602",
+        "createdAt":"2015-06-10T16:59:58.026Z",
+        "name":"Launched Project",
+        "summary":null,
+        "requestType":"code",
+        "ownerId":"40135602",
+        "version":12,
+        "competitorApps":[],
+        "usageDescription":"afsd",
+        "features":[{"name":"Login","description":"Users can login / register for your app","explanation":null
+          ,"custom":null}],
+        "costEstimate":{"low":"2800","high":"3200"},
+        "status":"Launched",
+        "statusNotes":null,
+        "copilotId":null,
+        "quotedAmount":null,
+        "tcDirectId":null
       }
+
     ];
     vm.newProject = null;
     vm.formatWorkRequests = null;
@@ -74,13 +97,15 @@
         'Incomplete': 'incomplete',
         'Submitted' : 'submitted',
         'Assigned'  : 'assigned',
-        'Estimate'  : 'estimate'
+        'Estimate'  : 'estimate',
+        'Launched'  : 'launched'
       };
       var statusMessages = {
         'Incomplete': 'PROJECT SUBMISSION INCOMPLETE',
         'Submitted' : 'PROJECT SUBMITTED',
         'Assigned'  : 'COPILOT ASSIGNED',
-        'Estimate'  : 'PROJECT APPROVED!'
+        'Estimate'  : 'PROJECT APPROVED!',
+        'Launched'  : 'PROJECT LAUNCHED'
       };
       var checkmarks = {
         'Submitted': 'check-solid-blue.svg',
@@ -93,7 +118,7 @@
 
       return requests.map(function(work) {
         work.status      = work.status || 'Incomplete';
-        if (work.status == 'Assigned' || work.status == 'Estimate') {
+        if (work.status == 'Assigned' || work.status == 'Estimate' || work.status == 'Launched') {
           work.avatar = true;
         }
         work.class       = statusClasses[work.status];
