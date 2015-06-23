@@ -10,6 +10,7 @@
   function ManageController(logger, workRequests, $state, work) {
     var vm = this;
     vm.title = 'Work Requests';
+    // TODO: replace this mock data
     vm.workRequests = [
       {
         "id":"12345%",
@@ -120,7 +121,7 @@
         'Assigned'  : 'assigned',
         'Estimate'  : 'estimate',
         'Launched'  : 'launched',
-        'Messaged'   : 'messaged'
+        'Messaged'  : 'messaged'
       };
       var statusMessages = {
         'Incomplete': 'PROJECT SUBMISSION INCOMPLETE',
@@ -128,7 +129,7 @@
         'Assigned'  : 'COPILOT ASSIGNED',
         'Estimate'  : 'PROJECT APPROVED!',
         'Launched'  : 'PROJECT LAUNCHED',
-        'Messaged'   : 'PROJECT LAUNCHED'
+        'Messaged'  : 'PROJECT LAUNCHED'
       };
       var checkmarks = {
         'Submitted': 'check-solid-blue.svg',
