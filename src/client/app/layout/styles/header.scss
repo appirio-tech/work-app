@@ -38,12 +38,16 @@ $header-height: 50px;
 
     button.message-notifications {
       padding         : 6px 10px;
-      background-color: red;
       margin-left     : 20px;
       position        : relative;
+      background-color: blue;
       color           : white;
 
       @include source-sans();
+
+      &.danger {
+        background-color: red;
+      }
 
       &:focus + .popup {
         max-height: $popup-max-height;
@@ -60,7 +64,7 @@ $header-height: 50px;
       box-shadow                : 0 2px 2px silver;
       width                     : 280px;
       text-align                : initial;
-      max-height                : 0;
+      max-height                : 0px;
       overflow                  : hidden;
 
       @include transition (all 0.2s ease-in-out);
