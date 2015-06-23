@@ -118,6 +118,15 @@
           position: absolute;
         }
 
+        img.avatar {
+          margin-top: -43px;
+          margin-left: 53px;
+          position: absolute;
+          width: 35px;
+          height: 35px;
+          border-radius: 35px;
+        }
+
         &.incomplete {
           background: #f25a29;
         }
@@ -139,6 +148,18 @@
           display: inline-block;
           a {
             text-decoration: underline;
+          }
+        }
+
+        &.assigned {
+          background: whitesmoke;
+          padding-top: 23px;
+          > span {
+            color: black;
+            margin-top: 3px;
+            a {
+              color: #8ce8e9;
+            }
           }
         }
 

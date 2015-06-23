@@ -23,6 +23,7 @@ ul
 
       .bottom(ng-class="project.class")
         img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
+        img.avatar(ng-if="project.avatar", src="http://www.topcoder.com/i/m/cardiboy_big.jpg")
 
         span.status {{project.message}}
 
@@ -35,3 +36,6 @@ ul
 
           span(ng-if="project.status == 'Submitted'")
             a(href="#/timeline/{{project.id}}") Waiting for Project Approval
+
+          a(ng-if="project.status == 'Assigned'",
+            href="#/timeline/{{project.id}}") Meet your copilot
