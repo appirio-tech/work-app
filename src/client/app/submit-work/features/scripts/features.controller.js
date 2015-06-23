@@ -25,7 +25,7 @@
 
     vm.submit = function () {
       if ($scope.featureForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('features');
       }
     };
 

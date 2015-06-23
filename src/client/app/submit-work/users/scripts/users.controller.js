@@ -16,7 +16,7 @@
 
     vm.submit = function () {
       if ($scope.usersForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('users');
       }
     };
 

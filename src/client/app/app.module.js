@@ -10,9 +10,28 @@
     'app.submit-work',
     'app.manage',
     'appirio-tech-timeline',
+    'appirio-tech-messaging',
     'newrelic'
-  ]).config(['$locationProvider', function($locationProvider) {
+  ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
     $locationProvider.html5Mode(false);
+
+    $stateProvider.state('timeline', {
+      url         : '/timeline/:workId',
+      title       : 'Timeline',
+      controller  : 'TimelineController',
+      controllerAs: 'vm',
+      templateUrl : 'views/timeline.html'
+    });
+
+    $stateProvider.state('messaging', {
+      url         : '/messaging/:id',
+      title       : 'Messaging',
+      controller  : 'MessagingPageController',
+      controllerAs: 'vm',
+      templateUrl : 'views/messaging.html'
+    });
+
   }]);
+
 
 })();

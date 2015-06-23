@@ -107,8 +107,23 @@
       return found;
     };
 
-    service.setNextState = function() {
-      var activeIndex = getActiveStateIndex();
+    service.getStateIndex = function(key) {
+      var i;
+      for (i = 0; i < service.states.length; i++) {
+        if (service.states[i].key == key) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    service.setNextState = function(current) {
+      var activeIndex;
+      if (current) {
+        activeIndex = service.getStateIndex(current);
+      } else {
+        activeIndex = getActiveStateIndex();
+      }
       var nextState = service.states[activeIndex + 1];
 
       service.setActiveState(nextState);

@@ -26,7 +26,7 @@
 
     vm.submit = function () {
       if ($scope.competitorForm.$valid) {
-        NavService.setNextState();
+        NavService.setNextState('competitors');
       }
     };
 
