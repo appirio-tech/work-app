@@ -151,7 +151,7 @@
           }
         }
 
-        &.assigned {
+        &.assigned, &.estimate {
           background: whitesmoke;
           padding-top: 23px;
           > span {
@@ -161,6 +161,10 @@
               color: #8ce8e9;
             }
           }
+        }
+
+        &.estimate span.status {
+          color: #4df733;
         }
 
       }
