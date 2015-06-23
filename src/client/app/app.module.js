@@ -26,6 +26,8 @@
     $stateProvider.state('messaging', {
       url         : '/messaging/:id',
       title       : 'Messaging',
+      controller  : 'MessagingPageController',
+      controllerAs: 'vm',
       templateUrl : 'views/messaging.html'
     });
 
