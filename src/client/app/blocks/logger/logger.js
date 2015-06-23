@@ -10,8 +10,6 @@
   /* @ngInject */
   function logger($log) {
     var service = {
-      showToasts: false,
-
       error: error,
       info: info,
       success: success,
