@@ -31,7 +31,6 @@
     "font-awesome": "4.2.x",
     "moment": "2.10.x",
     "angular-ui-router": "0.2.x",
-    "toastr": "2.1.x",
     "auth0-angular": "4.0.x",
     "a0-angular-storage": "0.0.x",
     "angular-jwt": "0.0.x",
