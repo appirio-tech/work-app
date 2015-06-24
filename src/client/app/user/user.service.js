@@ -87,6 +87,10 @@
         }
       };
 
+      if (options.afterActivationUrl) {
+        userData.param.afterActivationUrl = encodeURIComponent(options.afterActivationUrl);
+      }
+
       data.create('user', userData)
         .then(createUserCompleted, createUserError);
 

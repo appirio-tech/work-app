@@ -40,10 +40,10 @@
         }
       },
       {
-        state: 'view-work-multiple.confirm',
+        state: 'view-work-multiple.confirmed',
         config: {
-          url: '/confirm',
-          templateUrl: 'manage/views/confirm.html'
+          url: '/confirmed',
+          templateUrl: 'manage/views/confirmed.html'
         }
       }
     ];
