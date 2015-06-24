@@ -37,16 +37,28 @@ $header-height: 50px;
     $popup-max-height: 300px;
 
     button.message-notifications {
-      padding         : 6px 10px;
-      background-color: red;
       margin-left     : 20px;
       position        : relative;
-      color           : white;
+
+      svg {
+        width: 26px;
+      }
 
       @include source-sans();
 
       &:focus + .popup {
         max-height: $popup-max-height;
+      }
+
+      .notification {
+        background-color: red;
+        color           : white;
+        position: absolute;
+        top: -5px;
+        right: 0;
+        padding: 0px 4px;
+        border-radius: 10px;
+        font-size: 12px;
       }
     }
 
@@ -60,7 +72,7 @@ $header-height: 50px;
       box-shadow                : 0 2px 2px silver;
       width                     : 280px;
       text-align                : initial;
-      max-height                : 0;
+      max-height                : 0px;
       overflow                  : hidden;
 
       @include transition (all 0.2s ease-in-out);
