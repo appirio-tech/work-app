@@ -8,11 +8,12 @@
 
   function loginDirective() {
     var directive = {
-      restrict    : 'EA',
-      templateUrl : 'auth/views/login-directive.html',
-      controller: LoginDirectiveController,
-      controllerAs: 'vm',
-      bindToController: true
+      restrict        : 'EA',
+      templateUrl     : 'auth/views/login-directive.html',
+      controller      : LoginDirectiveController,
+      controllerAs    : 'vm',
+      bindToController: true,
+      scope           : true
     };
 
     return directive;
