@@ -13,13 +13,13 @@ dir = (UserService, ThreadsAPIService) ->
       if user
         scope.showNotification = true
 
-        getNotificationCount user?.handle
+        getNotificationCount user?.id
       else
         scope.showNotification = false
 
-    getNotificationCount = (handle) ->
+    getNotificationCount = (id) ->
       queryParams =
-        subscriber: handle
+        subscriberId: id
 
       resource = ThreadsAPIService.query queryParams
 
