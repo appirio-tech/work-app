@@ -4,10 +4,8 @@ header.layout-header(role="banner" layout-header=true)
   .secondary
     a.clean.login(href="#/login" login)
 
-    button.clean.message-notifications(type="button" focus-on-click=true ng-class="{ 'danger': unreadCount > 0}") {{ unreadCount }}
+    button.clean.message-notifications(type="button" focus-on-click=true ng-class="{ 'danger': unreadCount > 0}" ng-show="showNotification") {{ unreadCount }}
 
     .popup
       threads
-
-
 
