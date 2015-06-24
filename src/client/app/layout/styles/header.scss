@@ -37,20 +37,28 @@ $header-height: 50px;
     $popup-max-height: 300px;
 
     button.message-notifications {
-      padding         : 6px 10px;
       margin-left     : 20px;
       position        : relative;
-      background-color: blue;
-      color           : white;
+
+      svg {
+        width: 26px;
+      }
 
       @include source-sans();
 
-      &.danger {
-        background-color: red;
-      }
-
       &:focus + .popup {
         max-height: $popup-max-height;
+      }
+
+      .notification {
+        background-color: red;
+        color           : white;
+        position: absolute;
+        top: -5px;
+        right: 0;
+        padding: 0px 4px;
+        border-radius: 10px;
+        font-size: 12px;
       }
     }
 
