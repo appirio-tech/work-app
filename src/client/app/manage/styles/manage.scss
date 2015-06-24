@@ -16,18 +16,19 @@
 
   .message {
     background: #38b449;
-    line-height: 43px;
-    vertical-align: middle;
-    padding-left: 20px;
     margin-bottom: 15px;
+    padding-left: 65px;
     color: whitesmoke;
     box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
 
     img.checkmark-green {
-      height: 43px;
-      top: 3px;
-      right: 10px;
-      position: relative;
+      margin-left: -65px;
+      float: left;
+      height: 44px;
+    }
+
+    p {
+      padding: 14px 0;
     }
   }
 
