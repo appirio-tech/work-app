@@ -6,8 +6,6 @@
 
 dir = (UserService, ThreadsAPIService) ->
   link = (scope, element, attrs) ->
-    scope.projects = []
-
     currentUser = ->
       UserService.user
 
