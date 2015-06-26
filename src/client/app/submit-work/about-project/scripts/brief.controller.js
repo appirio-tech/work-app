@@ -74,9 +74,11 @@
     });
 
     function activate() {
-      if (vm.work.summary && vm.work.summary.length > 1) {
-        vm.toggleNo();
-      }
+      // TODO: bring this back in w/ file upload
+      //if (vm.work.summary && vm.work.summary.length > 1) {
+      //  vm.toggleNo();
+      //}
+      vm.toggleNo();
     }
 
     activate();
