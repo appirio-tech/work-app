@@ -24,7 +24,7 @@ describe('login', function() {
 		  it('Click on Project new link 2', function() {
 			    //var loginPage = new LoginPage();
 			  console.log('manage page editProject');
-			  newProject.get();
+			  newProject.get(project.manageProjectUrl);
 	//		  newProject.editProject();
 		  });
 	  

@@ -1,7 +1,7 @@
 var NewProjectPage = function() {
 	
-	this.get = function() {
-		browser.get('https://www.topcoder-dev.com/work/#/manage');
+	this.get = function(browseUrl) {
+		browser.get(browseUrl);
 	}
 
 	
