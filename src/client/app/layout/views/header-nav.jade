@@ -4,7 +4,7 @@ ul.nav(ng-show="projects.length > 0")
   li
     a(href="") Projects
     ul
-      li(ng-repeat="project in projects")
-        a(href="#/timeline/{{project.id}}") {{project.name}}
       li
         a(ui-sref="submit-work.flow") Create New Project
+      li(ng-repeat="project in projects")
+        a(href="#/timeline/{{project.id}}") {{project.name}}

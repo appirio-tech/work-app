@@ -31,40 +31,46 @@ $header-height: 50px;
 
     header-nav {
       text-align: left;
-      ul {
-      }
-      > ul.nav {
-        padding: 0;
-        margin: 0;
+      margin-right: 15px;
+
+      .nav {
 
         li {
-          width: 200px;
           @include ellipsis(90%);
-          & > a:hover {
-          }
-          margin: 0;
+          width: 200px;
           display: inline;
           position: relative;
-          > a {
+
+          a {
             text-decoration: none;
-            margin-right: 30px;
             padding: 20px 15px;
           }
+
           ul {
-            left: 10px;
+            line-height: 1;
+            left: 0;
             position: absolute;
             display: none;
+
             &:hover {
               display: block;
             }
+
             li {
               display: block;
               background: #f1f1f3;
+
               &:hover {
                 background: #ddd;
               }
+
+              a {
+                padding: 10px 15px;
+                display: block;
+              }
             }
           }
+
           &:hover ul {
             display: block;
           }
