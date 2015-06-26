@@ -6,7 +6,7 @@ $header-height: 50px;
 
 .layout-header {
   padding         : 0 $padding-20;
-  background-color: $white;
+  background-color: #f1f1f3;
   border-bottom   : 2px solid $black;
   line-height     : $header-height;
 
@@ -18,16 +18,67 @@ $header-height: 50px;
   }
 
   .logo {
-    @include span-columns(8);
-    font-size: 17px;
+    @include span-columns(7);
+    font-size: 35px;
   }
 
   .secondary {
-    @include span-columns(4);
+    @include span-columns(5);
 
     display   : inline-block;
     position  : relative;
     text-align: right;
+
+    header-nav {
+      text-align: left;
+      margin-right: 15px;
+
+      .nav {
+        position: relative;
+        z-index: 100;
+
+        li {
+          @include ellipsis(90%);
+          width: 200px;
+          display: inline;
+          position: relative;
+
+          a {
+            text-decoration: none;
+            padding: 20px 15px;
+          }
+
+          ul {
+            line-height: 1;
+            left: 0;
+            position: absolute;
+            display: none;
+
+            &:hover {
+              display: block;
+            }
+
+            li {
+              display: block;
+              background: #f1f1f3;
+
+              &:hover {
+                background: #ddd;
+              }
+
+              a {
+                padding: 10px 15px;
+                display: block;
+              }
+            }
+          }
+
+          &:hover ul {
+            display: block;
+          }
+        }
+      }
+    }
 
     > * {
       display       : inline-block;

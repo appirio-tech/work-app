@@ -1,7 +1,9 @@
 header.layout-header(role="banner" layout-header=true)
-  a.clean.logo("ng-home-link"=true, "href"="{{getPath()}}") Appirio Services Platform
+  a.clean.logo("ng-home-link"=true, "href"="{{getPath()}}") ASP
 
   .secondary
+    header-nav
+      
     a.clean.login(href="#/login" login)
 
     button.clean.message-notifications(type="button" focus-on-click=true ng-show="showNotification")
