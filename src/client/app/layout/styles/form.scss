@@ -76,6 +76,14 @@ button {
   @include roboto-bold();
   @include font-line(16);
 
+  &.success {
+    background-color: green;
+  }
+
+  &.danger {
+    background-color: #C00003;
+  }
+
   &.submit {
     display     : block;
     margin-left : auto;
