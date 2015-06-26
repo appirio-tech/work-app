@@ -3,7 +3,7 @@ header.layout-header(role="banner" layout-header=true)
 
   .secondary
     header-nav
-      
+
     a.clean.login(href="#/login" login)
 
     button.clean.message-notifications(type="button" focus-on-click=true ng-show="showNotification")
@@ -14,5 +14,5 @@ header.layout-header(role="banner" layout-header=true)
       .notification(ng-show="unreadCount > 0") {{ unreadCount }}
 
     .popup
-      threads
+      threads(subscriber-id="{{ subscriberId }}")
 
