@@ -10,21 +10,21 @@ dir = (UserService, ThreadsAPIService) ->
       UserService.user
 
     onUserChange = (user) ->
-      if user
+      if user?.id
         scope.showNotification = true
 
-        getNotificationCount user?.handle
+        getNotificationCount user.id
       else
         scope.showNotification = false
 
-    getNotificationCount = (handle) ->
+    getNotificationCount = (id) ->
       queryParams =
-        subscriber: handle
+        subscriberId: id
 
       resource = ThreadsAPIService.query queryParams
 
       resource.$promise.then (response) ->
-        scope.unreadCount = response.unreadCount
+        scope.unreadCount = response.totalUnreadCount
 
     scope.$watch currentUser, onUserChange
 

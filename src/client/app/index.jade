@@ -13,6 +13,7 @@
 - scripts.push('layout/scripts/layout.module')
 - scripts.push('layout/scripts/focus-on-click.directive')
 - scripts.push('layout/scripts/layout-header.directive')
+- scripts.push('layout/scripts/header-nav.directive')
 - scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
 - scripts.push('/src/client/app/blocks/exception/exception')
 - scripts.push('/src/client/app/blocks/logger/logger')
@@ -123,8 +124,6 @@ html(ng-app='app')
 
       AutoConfigFakeServer.consume([
         FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json'],
         FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
       ]);
     // endRemoveIf(production)
