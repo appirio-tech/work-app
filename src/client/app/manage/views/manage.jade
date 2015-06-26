@@ -36,7 +36,7 @@ ul
             ui-sref="submit-work.flow({ id: project.id })") Continue setup
 
           span(ng-if="project.status == 'Submitted'")
-            a(href="#/timeline/{{project.id}}") Waiting for Project Approval
+            a(href="#/timeline/{{project.id}}") Awaiting Estimate
 
           a(ng-if="project.status == 'Assigned'",
             href="#/timeline/{{project.id}}") Meet your copilot
