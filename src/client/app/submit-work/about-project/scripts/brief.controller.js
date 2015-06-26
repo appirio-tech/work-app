@@ -78,6 +78,7 @@
       //if (vm.work.summary && vm.work.summary.length > 1) {
       //  vm.toggleNo();
       //}
+      vm.question = 0;
       vm.toggleNo();
     }
 
