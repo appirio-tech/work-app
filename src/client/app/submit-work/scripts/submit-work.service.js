@@ -53,7 +53,7 @@
     ];
 
     service.save = function(status, reset) {
-      var promise = $q.defer();
+      var deferred = $q.defer();
       var work = {};
 
       // copy only submittable fields
@@ -84,14 +84,14 @@
           created = true;
           service.id = data.result.content;
           service.savePrice();
-          promise.resolve(data);
+          deferred.resolve(data);
         }).catch(function(e) {
           $q.reject(e);
         });
       } else {
         work.id = service.id;
         data.update('work-request', work).then(function(data) {
-          // do nothing
+          deferred.resolve(data);
         }).catch(function(e) {
           $q.reject(e);
         });
@@ -99,7 +99,7 @@
       if (reset) {
         service.resetWork();
       }
-      return promise;
+      return deferred.promise;
     };
 
     service.getEstimate = function() {
