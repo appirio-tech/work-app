@@ -1,9 +1,12 @@
 'use strict'
 
-MessagingPageController = ($stateParams) ->
+MessagingPageController = ($stateParams, $window) ->
   vm = this
   vm.threadId = $stateParams.id
 
-MessagingPageController.$inject = ['$stateParams']
+  vm.back = ->
+    $window.history.back();
+
+MessagingPageController.$inject = ['$stateParams', '$window']
 
 angular.module('app').controller 'MessagingPageController', MessagingPageController
