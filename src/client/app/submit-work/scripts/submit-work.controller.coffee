@@ -36,9 +36,10 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
     else
       NavService.reset()
 
-      options = save: 'yes'
+      options = saved: true
 
-      $state.go 'view-work-multiple' , options
+      SubmitWorkService.save('Submitted', true).then ->
+        $state.go 'view-work-multiple' , options
 
   activate = ->
     SubmitWorkService.resetWork() unless $scope.work
