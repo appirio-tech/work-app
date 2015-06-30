@@ -15,20 +15,17 @@
   @include roboto();
 
   .message {
-    background: #38b449;
+    background   : #38b449;
     margin-bottom: 15px;
-    padding-left: 65px;
-    color: whitesmoke;
-    box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.35);
+    padding      : 5px 10px;
+    display      : flex;
+    color        : whitesmoke;
+    box-shadow   : 3px 3px 14px 1px rgba(0,0,0,0.35);
+    align-items  : center;
 
     img.checkmark-green {
-      margin-left: -65px;
-      float: left;
-      height: 44px;
-    }
-
-    p {
-      padding: 14px 0;
+      height      : 44px;
+      margin-right: 10px;
     }
   }
 
