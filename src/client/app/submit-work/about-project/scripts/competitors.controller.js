@@ -17,7 +17,7 @@
     vm.submit;
 
     vm.add = function() {
-      if (!(vm.appName.trim().length === 0)) {
+      if (!(vm.appName.trim().length === 0) && vm.work.competitorApps.indexOf(vm.appName.trim()) === -1) {
         vm.work.competitorApps.push(vm.appName);
         vm.appName = '';
         vm.placeholder = ' ';
