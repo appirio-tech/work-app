@@ -17,8 +17,11 @@
     vm.submit;
 
     vm.add = function() {
-      if (!(vm.appName.trim().length === 0) && vm.work.competitorApps.indexOf(vm.appName.trim()) === -1) {
-        vm.work.competitorApps.push(vm.appName);
+      var appName = vm.appName.trim();
+      var isBlank = appName.length === 0;
+      var isDuplicate = vm.work.competitorApps.indexOf(appName) > -1;
+      if (!isBlank && !isDuplicate) {
+        vm.work.competitorApps.push(appName);
         vm.appName = '';
         vm.placeholder = ' ';
       }
