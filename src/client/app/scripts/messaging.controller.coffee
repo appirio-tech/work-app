@@ -5,7 +5,9 @@ MessagingPageController = ($stateParams, $window) ->
   vm.threadId = $stateParams.id
 
   vm.back = ->
-    $window.history.back();
+    $window.history.back()
+
+  vm
 
 MessagingPageController.$inject = ['$stateParams', '$window']
 
