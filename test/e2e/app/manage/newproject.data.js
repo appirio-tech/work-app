@@ -14,8 +14,18 @@ var NewProjectData = function() {
                         	'type' :'Design',
                         	'upload' : 'yes',
                         	'description' : 'This is demo project for testing manage project',
-                        	'featureList' : ['login'],
-                        	'acceptTerms' :'Y'
+                        	'featureList' : [ 
+                        	    { 'featureName' : 'login', 'explanation' : 'it is login feature'},
+                        	    {'featureName' : 'profiles', 'explanation' : 'it is profiles feature'},
+                        	    {'featureName' : 'forms', 'explanation' : 'it is forms feature'},
+                        	    {'featureName' :'social', 'explanation' : 'it is social login feature'},
+                        	    {'featureName' : 'map', 'explanation' : 'it is map feature'},
+                        	    {'featureName' : 'listing', 'explanation' : 'it is listing feature'},
+                        	    {'featureName' : 'new-feature', 'name' : 'Awsome Name', 'explanation' : 'Awsome explanation'}
+                        		],
+                        
+                        	'acceptTerms' :'Y',
+                        	'workSummary' : '12345678901234567890'
                         },
                         {
                         	'name' : 'Test Project -Aq22',

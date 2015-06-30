@@ -1,7 +1,7 @@
 var NewProjectPage = function() {
 	
-	this.get = function(browseUrl) {
-		browser.get(browseUrl);
+	this.get = function(baseUrl) {
+		browser.get(baseUrl);
 	}
 
 	
@@ -23,32 +23,34 @@ var NewProjectPage = function() {
 	    	workName.sendKeys(project.name);
 	    	var submitButton = element(by.css('.submit'));
 	    	submitButton.click().then(function() {
-	    		var projectTypeDesign = null;
+	    		var projectType = null;
 	    		if(project.type == 'Design') {
-	    			projectTypeDesign = element(by.id('project-type-design'));
-	    		} else {
-	    			projectTypeDesign = element(by.id('project-type-design'));
+	    			projectType = element(by.id('project-type-design'));
+	    		} else if(project.type == 'Code') {
+	    			projectType = element(by.id('project-type-code'));
+	    		} else if(project.type == 'Design-Code') {
+	    			projectType = element(by.id('project-type-design-code'));
 	    		}
-	    		projectTypeDesign.click().then(function() {
-	    			console.log('projectTypeDesign'+projectTypeDesign);
+	    		projectType.click().then(function() {
+	    			console.log('projectType '+projectType);
 	    			submitButton = element(by.css('.submit'));
 	    			console.log('submitButton'+submitButton);
 	    			submitButton.click().then(function() {
 	    				var yesNoUpload = null;
 	    				var cancelButton = element(by.css('.cancel'));
 	//    				cancelButton.click().then(function() {
-	    				if(project.upload == 'yes') {
-	    					yesNoUpload = element(by.css('.yes'));
-	    				} else {
-	    					yesNoUpload = element(by.css('.no'));
-	    				}
-	    				yesNoUpload.click().then(function(){
+//	    				if(project.upload == 'yes') {
+//	    					yesNoUpload = element(by.css('.yes'));
+//	    				} else {
+//	    					yesNoUpload = element(by.css('.no'));
+//	    				}
+//	    				yesNoUpload.click().then(function(){
 	    					
-	    					if(project.upload != 'yes') {
+//	    					if(project.upload != 'yes') {
 	    						var workSummary = element(by.model('vm.work.summary'));
 	    						workSummary.clear();
 	    						workSummary.sendKeys(project.workSummary);
-	    					}
+//	    					}
 	    					submitButton.click().then(function(){
 	    						submitButton = element(by.css('.submit'));
 	    						submitButton.click().then(function(){
@@ -59,12 +61,44 @@ var NewProjectPage = function() {
 	    							submitButton.click().then(function(){
 	    								
 	    								for(var j=0; j < project.featureList.length; j++) {
-	    									if(project.featureList[j] == 'login') {
+	    									if(project.featureList[j].featureName == 'login') {
 	    										var featureLogin = element(by.id('feature-login'));
 	    	    								featureLogin.click();
-	    									} else if(project.featureList[j] == 'login') {
-	    										
-	    									}
+	    	    								var explanation = element(by.model('feature.explanation'));
+	    	    								explanation.sendKeys(project.featureList[j].explanation);
+	    									} else if(project.featureList[j].featureName == 'profiles') {
+	    										var featureProfiles = element(by.id('feature-profiles'));
+	    										featureProfiles.click();
+	    										var explanation = element(by.model('feature.explanation'));
+	    	    								explanation.sendKeys(project.featureList[j].explanation);
+	    									} else if(project.featureList[j].featureName == 'forms') {
+	    										var featureForms = element(by.id('feature-forms'));
+	    										featureForms.click();
+	    										var explanation = element(by.model('feature.explanation'));
+	    	    								explanation.sendKeys(project.featureList[j].explanation);
+	    									}  else if(project.featureList[j].featureName == 'social') {
+	    										var featureSocial = element(by.id('feature-social-login'));
+	    										featureSocial.click();
+	    										var explanation = element(by.model('feature.explanation'));
+	    	    								explanation.sendKeys(project.featureList[j].explanation);
+	    									} else if(project.featureList[j].featureName == 'map') {
+	    										var featureMap = element(by.id('feature-map'));
+	    										featureMap.click();
+	    										var explanation = element(by.model('feature.explanation'));
+	    	    								explanation.sendKeys(project.featureList[j].explanation);
+	    									} else if(project.featureList[j].featureName == 'listing') {
+	    										var featureListing = element(by.id('feature-listing'));
+	    										featureListing.click();
+	    										var explanation = element(by.model('feature.explanation'));
+	    	    								explanation.sendKeys(project.featureList[j].explanation);
+	    									} else if(project.featureList[j].featureName == 'new-feature') {
+	    										var newFeature = element(by.model('vm.newFeature'));
+	    										newFeature.click();
+	    										var newFeatureName = element(by.model('vm.newFeatureName'));
+	    										newFeatureName.sendKeys(project.featureList[j].name);
+	    										var newFeatureExplanation = element(by.model('vm.newFeatureExplanation'));
+	    										newFeatureExplanation.sendKeys(project.featureList[j].explanation);
+	    									} 
 	    									
 	    								}
 	    								submitButton = element(by.css('.submit'));
@@ -83,8 +117,8 @@ var NewProjectPage = function() {
 	    							});
 	    							
 	    						});
-	    					})
-	    				});
+	    					});
+//	    				});
 	    			});
 	    		});
 	    	});

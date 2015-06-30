@@ -21,8 +21,8 @@ var LoginPage = function() {
     	
     	element.all(by.css('.label')).each(function(element, index) {
     		
-    		var isClickable = EC.elementToBeClickable(element);
-    		browser.wait(isClickable, 10000);
+    	var isClickable = EC.elementToBeClickable(element);
+    	browser.wait(isClickable, 10000);
 //    	browser.wait(EC.not(EC.presenceOf(element)), 10000);
  	 // Will print 0 First, 1 Second, 2 Third.
  		element.getText().then(function (text) {

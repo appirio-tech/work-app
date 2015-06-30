@@ -5,8 +5,8 @@ var RegistrationPage = function() {
   this.userEmail = element(by.model('vm.email'));
   this.registerButton = element(by.css('.submit'));
  
-  this.get = function() {
-    browser.get('http://www.topcoder-dev.com/work/#/register');
+  this.get = function(bashUrl) {
+    browser.get(baseUrl);
   };
  
   this.register = function(regUser) {
@@ -17,12 +17,13 @@ var RegistrationPage = function() {
     
     this.registerButton.click().then(function(){
       element.all(by.css('.label')).each(function(element, index) {
-        browser.wait(EC.not(EC.presenceOf(element)), 10000);
- 		    element.getText().then(function (text) {
- 			    console.log(index, text);
- 		    });
+    	var isClickable = EC.elementToBeClickable(element);
+      	browser.wait(isClickable, 10000);
+      	element.getText().then(function (text) {
+      		console.log(index, text);
+      	});
       });   	   	
-	  });
+	});
   };
 
 };
