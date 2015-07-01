@@ -39,14 +39,17 @@
     }
 
     function updateDisplay() {
-      vm.isLoggedIn = AuthService.isAuthenticated();
       $scope.$watch(UserV3Service.getCurrentUser, function() {
-        setUser(UserV3Service.getCurrentUser);
+        var user = UserV3Service.getCurrentUser();
+        if (user) {
+          vm.handle     = user.handle;
+          vm.isLoggedIn = true;
+        }
+        else {
+          vm.isLoggedIn = false;
+          vm.handle     = null;
+        }
       });
-    }
-
-    function setUser(user) {
-      vm.handle = user.handle
     }
 
     vm.signin = function() {
