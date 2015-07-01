@@ -1,7 +1,5 @@
-ul.project-nav
-  li(ui-sref-active="active")
-    a(ui-sref="timeline") Timeline
+ul.project-nav(ng-if="show")
   li
-    a Submissions
+    a(ui-sref="timeline({ id: id })") Timeline
   li
-    a Messaging
+    a(ui-sref="messaging({ id: id })") Messaging

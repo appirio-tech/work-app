@@ -5,9 +5,17 @@
 # TODO: turn this into its own component
 
 dir = () ->
-  controller: ($state) ->
-      console.log 'SP'
-      console.log $state.current
+  controller: ($scope, $state, $stateParams, $rootScope) ->
+    # using $rootScope because layout stuff happens outside
+    # of the ui-view
+    $rootScope.$on '$stateChangeSuccess', () ->
+      if $state.current.name in ['timeline', 'messaging']
+        $scope.show = true
+      else
+        $scope.show = false
+
+    $scope.show = false
+
   restrict: 'E'
   scope:
     stateTitle: '&'
