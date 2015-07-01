@@ -6,10 +6,9 @@
 
 dir = (UserV3Service, ThreadsAPIService) ->
   link = (scope, element, attrs) ->
-    currentUser = ->
-      UserV3Service.getCurrentUser()
+    onUserChange = ->
+      user = UserV3Service.getCurrentUser()
 
-    onUserChange = (user) ->
       if user?.id
         scope.showNotification = true
         scope.subscriberId     = user.id
@@ -27,7 +26,7 @@ dir = (UserV3Service, ThreadsAPIService) ->
       resource.$promise.then (response) ->
         scope.unreadCount = response.totalUnreadCount
 
-    scope.$watch currentUser, onUserChange
+    scope.$watch UserV3Service.getCurrentUser, onUserChange
 
   restrict: 'A'
   link: link
