@@ -6,11 +6,11 @@
     'app.layout',
     'app.getting-started',
     'app.auth',
-    'app.user',
     'app.submit-work',
     'app.manage',
     'appirio-tech-timeline',
     'appirio-tech-messaging',
+    'appirio-tech-ng-auth',
     'newrelic'
   ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
     $locationProvider.html5Mode(false);

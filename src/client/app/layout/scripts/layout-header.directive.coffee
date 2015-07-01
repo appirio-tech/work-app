@@ -4,10 +4,10 @@
 # TODO: unit tests
 # TODO: turn this into its own component
 
-dir = (UserService, ThreadsAPIService) ->
+dir = (UserV3Service, ThreadsAPIService) ->
   link = (scope, element, attrs) ->
     currentUser = ->
-      UserService.user
+      UserV3Service.getCurrentUser()
 
     onUserChange = (user) ->
       if user?.id
@@ -32,7 +32,7 @@ dir = (UserService, ThreadsAPIService) ->
   restrict: 'A'
   link: link
 
-dir.$inject = ['UserService', 'ThreadsAPIService']
+dir.$inject = ['UserV3Service', 'ThreadsAPIService']
 
 angular.module('app.layout').directive 'layoutHeader', dir
 
