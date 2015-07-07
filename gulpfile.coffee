@@ -52,6 +52,8 @@ configs.cleanFiles = [
   'build'
 ]
 
+configs.awsPublishFiles = 'build/**/*'
+
 configs.fingerPrint =
   files       : 'build/**/*'
   destPath    : 'build'
