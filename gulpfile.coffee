@@ -6,7 +6,6 @@ configs =
   tempFolder      : '.tmp'
   appFolder       : 'src/client/app'
   distFolder      : 'build'
-  buildFiles      : buildFiles
   envFile         : __dirname + '/.env'
 
 # TODO: upgrade api schemas in order to use default configs instead of below
@@ -20,6 +19,23 @@ configs.fixture.files = [
   'bower_components/appirio-tech-api-schemas/v3-threads.json'
   'bower_components/appirio-tech-api-schemas/v3-users.json'
 ]
+
+configs.cdnifyFiles = [
+  'build/**/*.css'
+  'build/**/*.html'
+]
+
+configs.copyFiles =
+  files:
+    'build': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
+  base: 'src/client/app/'
+
+configs.removeCode =
+  files: 'build/index.html'
+  destPath: 'build'
+
+configs.useref =
+  destPath: 'build'
 
 # TODO:  use default settings
 configs.ngConstants =
@@ -35,6 +51,14 @@ configs.cleanFiles = [
   '.tmp'
   'build'
 ]
+
+configs.fingerPrint =
+  files       : 'build/**/*'
+  destPath    : 'build'
+
+configs.fingerPrintReplace =
+  files   : 'build/**/*'
+  destPath: 'build'
 
 #TODO: remove using wiredep
 wiredep    = require 'wiredep'
@@ -60,17 +84,6 @@ configs.karma =
     __dirname + '/.tmp/constants.js'
     __dirname + '/.tmp/templates.js'
   ])
-
-buildFiles =
-  concat:
-    'main.js': [
-      '.tmp/scripts/ng-auth.module.js',
-      '.tmp/scripts/authorizations-api.service.js',
-      '.tmp/scripts/token.service.js',
-      '.tmp/scripts/auth.service.js',
-      '.tmp/scripts/user-v3-api.service.js',
-      '.tmp/scripts/user-v3.service.js'
-    ]
 
 
 ### END CONFIG ###

@@ -1,5 +1,6 @@
 - var scripts = []
 - scripts.push('/app.module')
+- scripts.push('/templates')
 - scripts.push('/constants')
 - scripts.push('/blocks/exception/exception.module')
 - scripts.push('/blocks/logger/logger.module')
@@ -143,39 +144,67 @@ html(ng-app='app')
 
     base(href=basePath)
 
+    = "\n"
     // build:css styles/lib.css
+    = "\n"
     each path in bowercss
+      = "\n"
       link(href=path + ".css", rel="stylesheet")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
+    = "\n"
     // build:css styles/app.css
+    = "\n"
     each path in css
+      = "\n"
       link(href=path + ".css", rel="stylesheet")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
+    = "\n"
     // build:css styles/mobile-landscape.css media="(min-width: 568px)"
+    = "\n"
     each path in landscapeCSS
+      = "\n"
       link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
+    = "\n"
     // build:css styles/desktop.css media="(min-width: 767px)"
+    = "\n"
     each path in desktopCSS
+      = "\n"
       link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
   body
     include layout/views/shell.jade
 
+    = "\n"
     // build:js js/lib.js
+    = "\n"
     each path in bowers
+      = "\n"
       script(src= path + ".js", type="text/javascript")
+      = "\n"
+    = "\n"
     // endbuild
+    = "\n"
 
-    script(src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js", type="text/javascript")
-
+    = "\n"
     // build:js js/app.js
+    = "\n"
     each path in scripts
+      = "\n"
       script(src=path + ".js", type="text/javascript")
-    // inject:templates:js
-    // endinject
+      = "\n"
+    = "\n"
     // endbuild
+    = "\n"
