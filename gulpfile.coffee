@@ -20,6 +20,10 @@ configs.fixture.files = [
   'bower_components/appirio-tech-api-schemas/v3-users.json'
 ]
 
+# TODO: CORS for https://topcoder-dev.auth0.com/oauth/ro is hard coded to allow http://localhost:3000/
+configs.serve =
+  port: 3000
+
 configs.cdnifyFiles = [
   'build/**/*.css'
   'build/**/*.html'
