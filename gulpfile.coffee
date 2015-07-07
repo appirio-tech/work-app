@@ -1,5 +1,4 @@
-console.log("dir name:" + __dirname)
-console.log("cwd:" + process.cwd())
+
 
 configs =
   coffeeFiles     : 'src/client/app/**/*.coffee'
@@ -10,6 +9,7 @@ configs =
   appFolder       : 'src/client/app'
   distFolder      : 'build'
   envFile         : __dirname + '/.env'
+  taskPath        : __dirname + '/node_modules/appirio-gulp-tasks'
 
 # TODO: upgrade api schemas in order to use default configs instead of below
 configs.fixture =
