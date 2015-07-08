@@ -17,6 +17,6 @@ dir = () ->
 
 
 
-dir.$inject = ['$state', '$stateParams']
+dir.$inject = ['$scope', '$state', '$rootScope']
 
 angular.module('app.layout').directive 'projectNav', dir
