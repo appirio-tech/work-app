@@ -1,9 +1,5 @@
 'use strict'
 
-# TODO: use controller pattern
-# TODO: unit tests
-# TODO: turn this into its own component
-
 dir = () ->
   controller: ($scope, $state, $rootScope) ->
     # using $rootScope because layout stuff happens outside
