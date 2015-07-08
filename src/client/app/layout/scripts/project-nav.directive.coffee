@@ -5,7 +5,7 @@
 # TODO: turn this into its own component
 
 dir = () ->
-  controller: ($scope, $state, $stateParams, $rootScope) ->
+  controller: ($scope, $state, $rootScope) ->
     # using $rootScope because layout stuff happens outside
     # of the ui-view
     $rootScope.$on '$stateChangeSuccess', () ->
@@ -17,8 +17,6 @@ dir = () ->
     $scope.show = false
 
   restrict: 'E'
-  scope:
-    stateTitle: '&'
   templateUrl: 'layout/views/project-nav.html'
 
 
