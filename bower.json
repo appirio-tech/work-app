@@ -35,8 +35,8 @@
     "a0-angular-storage": "0.0.x",
     "angular-jwt": "0.0.x",
     "ap-newrelic": "git@github.com:appirio-tech/ap-newrelic#master",
-    "appirio-tech-messaging": "git@github.com:appirio-tech/messaging#1.x.x",
-    "appirio-tech-timeline": "git@github.com:appirio-tech/timeline#1.x.x",
+    "appirio-tech-messaging": "git@github.com:appirio-tech/messaging#DEM-766",
+    "appirio-tech-timeline": "git@github.com:appirio-tech/timeline#DEM-766",
     "appirio-tech-ng-auth": "git@github.com:appirio-tech/ng-auth#DEM-657"
   },
   "resolutions": {
