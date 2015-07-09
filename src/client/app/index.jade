@@ -64,10 +64,6 @@
 - css.push("auth/styles/login")
 - css.push("auth/styles/register")
 
-//- user
-- scripts.push("/src/client/app/user/user.module")
-- scripts.push("/src/client/app/user/user.service")
-
 //- work request
 - scripts.push("/src/client/app/work-request/work-request.module")
 
@@ -126,7 +122,10 @@ html(ng-app='app')
 
       AutoConfigFakeServer.consume([
         FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
+        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json']
+
       ]);
     // endRemoveIf(production)
 
