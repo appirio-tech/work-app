@@ -23,7 +23,7 @@ env:
   - AWS_BUCKET=work.topcoder-dev.com
   - AWS_REGION=us-east-1
   - BASE_URL=/work/
-  - AUTH0_DOMAIN=topcoder-domain.auth0.com
+  - AUTH0_DOMAIN=topcoder-dev.auth0.com
   - BASE_API_URL=https://api.topcoder-dev.com/v3/
   - NEWRELIC_APPLICATION_ID=7374849
   - NEWRELIC_LICENSE_KEY=496af5ee90
