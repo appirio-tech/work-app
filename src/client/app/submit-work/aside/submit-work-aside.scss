@@ -35,7 +35,7 @@
         margin-right    : $margin-5;
         content         : '';
         background      : no-repeat;
-        background-image: url("../images/check-grey.png");
+        background-image: url("/submit-work/images/check-grey.png");
         background-size : 12px;
         height          : $diameter;
         width           : $diameter;
@@ -45,7 +45,7 @@
       }
 
       &.completed::before {
-        background-image: url("../images/check-green.png");
+        background-image: url("/submit-work/images/check-green.png");
       }
 
       ul {

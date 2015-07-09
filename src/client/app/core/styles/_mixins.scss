@@ -28,7 +28,7 @@
 
 @mixin icon-sprite() {
   background-size    : 400px 400px;
-  @include bg-image-ratio("../images/sprite.png", "../images/sprite-2x.png");
+  @include bg-image-ratio("/layout/images/sprite.png", "/layout/images/sprite-2x.png");
 }
 
 @mixin font-line($pt) {
