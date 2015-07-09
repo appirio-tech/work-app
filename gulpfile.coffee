@@ -28,6 +28,9 @@ configs.serve =
 configs.cdnify =
   url: '//work.topcoder-dev.com'
 
+configs.useref =
+  defaultSearchPath = ['.tmp', 'src/client/app', '.']
+
 configs.copyFiles =
   files:
     'dist': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
