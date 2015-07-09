@@ -70,10 +70,12 @@ a.clean {
   text-decoration: none;
 }
 
-.layout-main {
-  background-color: $white;
-
+.outer-container {
   @include outer-container;
+  background-color: $white;
+}
+
+.layout-main {
 
   header {
     h1 {
