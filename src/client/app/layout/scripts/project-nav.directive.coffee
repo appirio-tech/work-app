@@ -16,7 +16,4 @@ dir = () ->
   templateUrl: 'layout/views/project-nav.html'
 
 
-
-dir.$inject = ['$scope', '$state', '$rootScope']
-
 angular.module('app.layout').directive 'projectNav', dir
