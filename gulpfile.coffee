@@ -5,7 +5,7 @@ configs =
   scssIncludePaths: require('node-neat').includePaths
   tempFolder      : '.tmp'
   appFolder       : 'src/client/app'
-  distFolder      : 'build'
+  distFolder      : 'dist'
   envFile         : __dirname + '/.env'
   taskPath        : __dirname + '/node_modules/appirio-gulp-tasks'
 
@@ -25,22 +25,13 @@ configs.fixture.files = [
 configs.serve =
   port: 3000
 
-configs.cdnifyFiles = [
-  'build/**/*.css'
-  'build/**/*.html'
-]
+configs.cdnify =
+  url: '//work.topcoder-dev.com'
 
 configs.copyFiles =
   files:
-    'build': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
+    'dist': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
   base: 'src/client/app/'
-
-configs.removeCode =
-  files: 'build/index.html'
-  destPath: 'build'
-
-configs.useref =
-  destPath: 'build'
 
 # TODO:  use default settings
 configs.ngConstants =
@@ -51,21 +42,6 @@ configs.templateCache =
   module  : 'app.core'
   destPath: '.tmp'
   # root  : '/views'
-
-configs.cleanFiles = [
-  '.tmp'
-  'build'
-]
-
-configs.awsPublishFiles = 'build/**/*'
-
-configs.fingerPrint =
-  files       : 'build/**/*'
-  destPath    : 'build'
-
-configs.fingerPrintReplace =
-  files   : 'build/**/*'
-  destPath: 'build'
 
 #TODO: remove using wiredep
 wiredep    = require 'wiredep'

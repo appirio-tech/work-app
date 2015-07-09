@@ -22,7 +22,6 @@ env:
   global:
   - AWS_BUCKET=work.topcoder-dev.com
   - AWS_REGION=us-east-1
-  - AWS_CDN_URL=//work.topcoder-dev.com
   - BASE_URL=/work/
   - AUTH0_DOMAIN=topcoder-domain.auth0.com
   - BASE_API_URL=https://api.topcoder-dev.com/v3/
