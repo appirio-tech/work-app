@@ -9,7 +9,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "appirio-gulp-tasks": "^1.0.101",
+    "appirio-gulp-tasks": "git@github.com:appirio-tech/gulp-tasks#master",
     "gulp": "^3.8.11",
     "node-bourbon": "^4.2.1-beta1",
     "node-neat": "^1.7.1-beta1",
