@@ -29,6 +29,8 @@ beforeEach ->
   module 'app.submit-work'
   module 'app.core'
   module 'app.manage'
+  module 'app.project-details'
+  module 'app.projects'
   module 'app.auth'
   module 'app.user'
 

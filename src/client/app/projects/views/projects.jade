@@ -1,0 +1,24 @@
+dropdown.dropdown(ng-hide="!vm.workRequests.length")
+  .dropdown-container
+    p.dropdown-button.type(ng-click="vm.toggleTypeFilterMenu()", ng-bind="vm.typeFilterValue || 'All Project Types'")
+      ul.dropdown-menu.dropdown-select.type(ng-class="{'show-menu': vm.showTypeFilterMenu}")
+        li(ng-repeat="typeFilter in vm.typeFilters", ng-click="vm.selectType(typeFilter)") {{typeFilter}}
+
+ul
+  li(class='projectLi', ng-repeat= "project in filteredWorkRequests=(vm.workRequests | orderBy:'createdAt':true | filter: vm.typeFilter)",
+    ng-mouseenter="vm.hoverSelect($index)", ng-mouseleave="vm.hoverDeselect($index)")
+
+    div(class="tile", ng-class="{'hovered': $index === vm.active, 'grey': project.requestType === 'code'}")
+      h5 {{project.name | cutOff}}
+      br
+      img(src="projects/images/dev-project-icon.png", ng-class="{'faded': $index === vm.active}")
+      br
+      span.type {{project.requestType | requestType | uppercase}}
+      br
+      br
+      span.created(ng-show="vm.showDetailSpan('view-projects.open')") Project Created - {{project.createdAt | date:'MM/dd/yyyy'}}
+      span.created(ng-show="vm.showDetailSpan('view-projects.assigned')") {{project.status | status}}
+      br
+      button(ng-show="$index === vm.active", ng-click="vm.viewProjectDetails(project)") {{project.status | statusButton}}
+.noProjectsMessage(ng-show="!filteredWorkRequests.length")
+  h1 Sorry, there are no available {{vm.selectedType}} projects at this time.

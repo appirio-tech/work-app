@@ -1,0 +1,45 @@
+
+div(class="challengesContainer", ng-hide="vm.showAddedChallenges()")
+  h5(ng-hide="vm.showAddedChallenges()") Create Project Estimate
+  dropdown.dropdown
+    .dropdown-container
+      p.dropdown-button.type(ng-click="vm.toggleMenu('showTypeMenu')", ng-bind="vm.challenge.challengeType.charAt(0).toUpperCase() +  vm.challenge.challengeType.slice(1) || 'Type of Challenge'")
+
+        ul.dropdown-menu.dropdown-select.type(ng-class="{'show-menu': vm.showTypeMenu}")
+          li(ng-repeat="type in vm.challengeTypes", ng-click="vm.selectType(type)") {{type}}
+
+      p.dropdown-button.count(ng-click="vm.toggleMenu('showCountMenu')", ng-bind="vm.challenge.count || 'How Many'")
+
+      ul.dropdown-menu.dropdown-select.count(ng-class="{'show-menu': vm.showCountMenu}")
+        li(ng-repeat="number in vm.challengeCounts", ng-click="vm.selectCount(number)") {{number}}
+
+      button(type="button", class="addButton", ng-click="vm.addChallenge(challenge)") +
+  br
+  h1
+
+  hr
+  .addedChallenges(ng-show="vm.challenges.length > 0")
+    ul
+      li(ng-repeat = "challenge in vm.challenges track by challenge.id") {{challenge.count}} {{challenge.challengeType | capitalize}} Challenges
+        a(ng-click="vm.removeChallenge($index)") remove
+  br
+  .projectDifficulty
+  h5 Overall Project Difficulty
+  .dropdown
+    .dropdown-container.difficulty
+      p.dropdown-button.difficulty(ng-click="vm.toggleMenu('showDifficultyMenu')", ng-bind="vm.overallDifficulty.charAt(0).toUpperCase() +  vm.overallDifficulty.slice(1) || 'Difficulty Level'")
+
+        ul.dropdown-menu.dropdown-select.difficulty(ng-class="{'show-menu': vm.showDifficultyMenu}")
+          li(ng-repeat="difficulty in vm.challengeDifficulties", ng-click="vm.selectDifficulty(difficulty)") {{difficulty | capitalize}}
+
+  br
+  br
+  h5 Explain Complexity
+  br
+  textarea(name="difficultyExplanation", ng-model="vm.difficultyExplanation")
+  button(class="submitEstimates", ng-click="vm.submit()") Create Estimates
+
+div(class="projectEstimate", ng-show="vm.showAddedChallenges()")
+  h5 Project Estimate
+  ul
+    li(ng-repeat = "challenge in vm.challenges track by challenge.id") {{challenge.count}} {{challenge.challengeType | capitalize}} Challenges

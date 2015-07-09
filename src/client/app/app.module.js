@@ -9,6 +9,8 @@
     'app.user',
     'app.submit-work',
     'app.manage',
+    'app.projects',
+    'app.project-details',
     'appirio-tech-timeline',
     'appirio-tech-messaging',
     'newrelic'
