@@ -12,6 +12,7 @@ dir = (UserService, ThreadsAPIService) ->
     onUserChange = (user) ->
       if user?.id
         scope.showNotification = true
+        scope.subscriberId     = user.id
 
         getNotificationCount user.id
       else

@@ -34,6 +34,7 @@
     function activate() {
       $rootScope.$on('logout', function() {
         vm.handle = null;
+        updateDisplay();
       });
 
       $rootScope.$on('authenticated', function() {
