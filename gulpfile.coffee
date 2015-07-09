@@ -29,7 +29,7 @@ configs.cdnify =
   url: '//work.topcoder-dev.com'
 
 configs.useref =
-  defaultSearchPath = ['.tmp', 'src/client/app', '.']
+  searchPath: ['.tmp', 'src/client/app/', '.']
 
 configs.copyFiles =
   files:
