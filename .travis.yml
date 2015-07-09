@@ -32,6 +32,6 @@ env:
   - API_URL_V2=https://api.topcoder-dev.com/v2
   - AVATAR_URL=http://www.topcoder.com
   - SUBMISSION_URL=https://studio.topcoder.com
-  - secure: BpbPpCsUddsvz43GCHdKZpAVeN6pF4BV6Li/L8CviF4tT089fRHSc6VKSR2iLyNGPn+Sfmh7TSQ8+dBNL7xvbcZSE9v4qqx/6KMqTamLdf6gRwopirRZULgXr6Itg1o2+bQBu9xZKKQLMA2lJIasFADB9xIpXZLVn6U09Ztb/2I=
+  - secure: ALEXBpbPpCsUddsvz43GCHdKZpAVeN6pF4BV6Li/L8CviF4tT089fRHSc6VKSR2iLyNGPn+Sfmh7TSQ8+dBNL7xvbcZSE9v4qqx/6KMqTamLdf6gRwopirRZULgXr6Itg1o2+bQBu9xZKKQLMA2lJIasFADB9xIpXZLVn6U09Ztb/2I=
   - secure: a3MImI1SYRMi+H/RAL7NWFBKbLtZwQiRWhHieW5ZklSN2xK5+pwE6JRpJHvDBk6EdXO2ZDmVGfWsXrGXPmVxYx4Sc6vnIDGlVnZBFzHm7EmnmDV2yjtHO/PBoMm2vEdWS5QmTy37arUdVNN/aZKm6YR8Vlo7jYkAE9bWxvhbiSg=
   - secure: PESHEn26LQ3mn8E8twqvMb0lbbyzoznlID8TSQyWRdOAcWAnEsq29FOoYR4Lfbmy+nPzytQfTh6GY0cxou8TORshHwh2tD3cAbKhAf2OrNX1OHXeKCvFu3petbRJmYFgHNgr+Drc5LSF0zcwd6b50DkLtzZqG5GtxAfvEfypdQc=

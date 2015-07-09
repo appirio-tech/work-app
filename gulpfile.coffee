@@ -1,6 +1,3 @@
-console.log("dir name:" + __dirname)
-console.log("cwd:" + process.cwd())
-
 configs =
   coffeeFiles     : 'src/client/app/**/*.coffee'
   jadeFiles       : 'src/client/app/**/*.jade'
