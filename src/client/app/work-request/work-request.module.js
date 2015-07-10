@@ -20,7 +20,7 @@
 
     // assigned projects
     var configCopilot = {
-      url: 'app-work-requests/:id',
+      url: 'app-work-requests',
       resource: 'copilot-work-request'
     }
 
