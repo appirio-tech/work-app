@@ -117,7 +117,7 @@ button {
   }
 }
 
-.projects .project-details {
+.projects, .project-details {
   textarea {
     height: 80px;
     background-color: $white;
