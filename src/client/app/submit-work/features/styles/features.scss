@@ -1,4 +1,4 @@
-@import "../../../core/styles/combined";
+@import "work-styles";
 
 .layout-main.submit-work .features {
   textarea {
@@ -10,20 +10,20 @@
     display   : inline-block;
 
     li {
-      margin-top: $margin-18;
-      padding   : 0 $padding-20;
+      margin-top: 18px;
+      padding   : 0 20px;
 
       input[type="checkbox"]{
         position   : absolute;
-        margin-left: -$margin-20;
-        margin-top : $margin-2;
+        margin-left: -20px;
+        margin-top : 2px;
       }
 
       .label-example {
         button {
           float              : right;
           display            : inline-block;
-          margin-left        : $margin-5;
+          margin-left        : 5px;
           width              : 16px;
           height             : 13px;
           &.clean {
@@ -44,7 +44,7 @@
       }
 
       .desc{
-        margin: $margin-5 0 0 0;
+        margin: 5px 0 0 0;
       }
     }
   }
@@ -53,10 +53,10 @@
     display   : inline-block;
     width     : 100%;
     text-align: left;
-    margin-top: $margin-18;
+    margin-top: 18px;
 
     .explanation-n-add {
-      margin-top: $margin-18;
+      margin-top: 18px;
     }
   }
 
@@ -68,7 +68,7 @@
     height     : $height;
     margin-left: -$width / 2;
     margin-top : -$height / 2;
-    padding    : $padding-15 $padding-20;
+    padding    : 15px 20px;
 
     h2 {
       margin-top: 0;
@@ -80,7 +80,7 @@
     }
 
     img {
-      margin-top: $margin-18;
+      margin-top: 18px;
     }
   }
 }

@@ -1,19 +1,19 @@
-@import "../../core/styles/combined";
+@import "work-styles";
 
 #submit-work-aside {
-  background-color: $mercury;
+  background-color: #e6e6e6;
   min-height      : 1px;
   padding         : 0;
 
   .fixed-wrapper {
-    padding: $margin-18;
+    padding: 18px;
   }
 
   .project {
     @include roboto-thin();
 
     .price {
-      margin-top: $margin-15;
+      margin-top: 15px;
       @include source-sans();
     }
 
@@ -23,7 +23,7 @@
 
   nav > ul {
     > li {
-      margin-top: $margin-30;
+      margin-top: 30px;
 
       @include font-line(16);
 
@@ -32,7 +32,7 @@
       &::before {
         $diameter: 14px;
 
-        margin-right    : $margin-5;
+        margin-right    : 5px;
         content         : '';
         background      : no-repeat;
         background-image: url("/submit-work/images/check-grey.png");
@@ -50,7 +50,7 @@
 
       ul {
         li {
-          margin: $margin-10 0 0 $margin-18;
+          margin: 10px 0 0 18px;
 
           @include source-sans-light();
 
