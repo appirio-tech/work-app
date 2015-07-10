@@ -9,10 +9,9 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "appirio-gulp-tasks": "^1.0.102",
+    "appirio-work-styles": "git@github.com:appirio-tech/work-styles#master",
+    "appirio-gulp-tasks": "1.x.x",
     "gulp": "^3.8.11",
-    "node-bourbon": "^4.2.1-beta1",
-    "node-neat": "^1.7.1-beta1",
     "wiredep": "^3.0.0-beta"
   }
 }
