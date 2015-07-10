@@ -3,8 +3,8 @@
   "description": "Appirio Work App",
   "version": "0.0.0",
   "devDependencies": {
-    "ap-work-styles": "git@github.com:appirio-tech/work-styles.git#^0.0.104",
-    "ap-gulp-tasks": "git@github.com:appirio-tech/gulp-tasks.git#^1.0.107",
+    "appirio-work-styles": "git@github.com:appirio-tech/work-styles.git#^0.0.104",
+    "appirio-gulp-tasks": "git@github.com:appirio-tech/gulp-tasks.git#^1.0.107",
     "gulp": "^3.8.11",
     "wiredep": "^3.0.0-beta"
   }
