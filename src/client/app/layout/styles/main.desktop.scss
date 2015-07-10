@@ -8,3 +8,9 @@
       }
   }
 }
+
+.layout-main.projects, .layout-main.project-details {
+  > main {
+    min-height: 720px;
+  }
+}
