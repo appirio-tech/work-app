@@ -64,12 +64,6 @@ textarea {
   height: 150px;
 }
 
-.projects button {
-  float: left;
-  background-color: $metallic-gray;
-  max-width: 150px;
-  margin: 0 5px 0 0;
-}
 
 button {
   width           : 100%;
@@ -120,5 +114,18 @@ button {
     background-color: initial;
     color           : initial;
     margin-top      : 0;
+  }
+}
+
+.projects .project-details {
+  textarea {
+    height: 80px;
+    background-color: $white;
+  }
+  button {
+    float: left;
+    background-color: $metallic-gray;
+    max-width: 150px;
+    margin: 0 5px 0 0;
   }
 }

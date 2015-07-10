@@ -51,6 +51,16 @@ h4, h5, h6 {
   @include font-line(16);
 }
 
+.projects, .project-details {
+  h2 {
+    @include source-sans-light();
+    @include font-line(15);
+  }
+  h4, h5, h6 {
+    @include font-line(20);
+  }
+}
+
 hr {
   border: none;
   margin: $margin-15 0;
@@ -81,6 +91,7 @@ a.clean {
     background-color: $olive-gray;
     button {
       @include source-sans();
+      font-size: 18px;
     }
   }
 
