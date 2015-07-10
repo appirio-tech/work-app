@@ -1,16 +1,10 @@
 {
-  "name": "ap-work-item",
-  "description": "Appirio Work Item Platform",
+  "name": "appirio-work-app",
+  "description": "Appirio Work App",
   "version": "0.0.0",
-  "scripts": {
-    "init": "npm install",
-    "install": "bower install",
-    "start": "node src/server/app.js",
-    "test": "gulp test"
-  },
   "devDependencies": {
-    "appirio-work-styles": "git+ssh://git@github.com:appirio-tech/work-styles.git#^0.0.1",
-    "appirio-gulp-tasks": "1.x.x",
+    "appirio-work-styles": "git@github.com:appirio-tech/work-styles.git#master",
+    "appirio-gulp-tasks": "git@github.com:appirio-tech/gulp-tasks.git#^1.0.0",
     "gulp": "^3.8.11",
     "wiredep": "^3.0.0-beta"
   }
