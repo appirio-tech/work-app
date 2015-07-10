@@ -9,7 +9,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "appirio-work-styles": "0.x.x",
+    "appirio-work-styles": "git+ssh://git@github.com:appirio-tech/work-styles.git#^0.0.1",
     "appirio-gulp-tasks": "1.x.x",
     "gulp": "^3.8.11",
     "wiredep": "^3.0.0-beta"
