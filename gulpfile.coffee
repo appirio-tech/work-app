@@ -2,7 +2,7 @@ configs =
   coffeeFiles     : 'src/client/app/**/*.coffee'
   jadeFiles       : 'src/client/app/**/*.jade'
   scssFiles       : 'src/client/app/**/*.scss'
-  scssIncludePaths: require('node-neat').includePaths
+  scssIncludePaths: require('appirio-work-styles').includePaths
   tempFolder      : '.tmp'
   appFolder       : 'src/client/app'
   distFolder      : 'dist'

@@ -1,4 +1,4 @@
-@import "../../../core/styles/combined";
+@import "work-styles";
 
 .layout-main.submit-work .brief {
   button.yes, button.no {
@@ -7,7 +7,10 @@
   }
 
   > form {
-    @include main-restricted();
+    width       : 300px;
+    margin-left : auto;
+    margin-right: auto;
+    display     : block;
 
 
     .character-count {

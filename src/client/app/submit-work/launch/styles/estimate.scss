@@ -1,4 +1,4 @@
-@import "../../../core/styles/combined";
+@import "work-styles";
 
 .layout-main.submit-work article.estimate {
   h3 {
@@ -6,11 +6,14 @@
   }
 
   p {
-    margin-top: $margin-12;
+    margin-top: 12px;
   }
 
   > form {
-    @include main-restricted();
+    width       : 300px;
+    margin-left : auto;
+    margin-right: auto;
+    display     : block;
   }
 
   .terms-link {
@@ -20,7 +23,7 @@
   .terms {
     $width     : 320px;
     $height    : 480px;
-    padding    : $padding-15 $padding-20;
+    padding    : 15px 20px;
     width      : $width;
     height     : $height;
     margin-left: -$width / 2;

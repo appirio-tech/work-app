@@ -1,13 +1,13 @@
-@import "../../core/styles/combined";
-@import "bourbon";
+@import "work-styles";
+
 @import "neat";
 
 $header-height: 50px;
 
 .layout-header {
-  padding         : 0 $padding-20;
+  padding         : 0 20px;
   background-color: #f1f1f3;
-  border-bottom   : 2px solid $black;
+  border-bottom   : 2px solid #000;
   line-height     : $header-height;
 
   @include clearfix();
@@ -150,20 +150,20 @@ $header-height: 50px;
         width              : 21px;
         line-height        : 23px;
         background-position: -379px 0px;
-
-        @include icon-sprite();
+        background-size    : 400px 400px;
+        @include bg-image-ratio("/layout/images/sprite.png", "/layout/images/sprite-2x.png");
       }
 
       .handle {
-        margin-left: $margin-10;
+        margin-left: 10px;
         color: black;
         @include font(20);
         text-decoration: none;
       }
 
       .label {
-        margin-left: $margin-10;
-        color      : $pacific-blue;
+        margin-left: 10px;
+        color      : #009bcd;
 
         @include font(20);
       }
