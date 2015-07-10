@@ -1,0 +1,47 @@
+main
+  status-modal(ng-if="vm.showClaimedModal", type="statusModal", next-state="project-details.challenges", next-step="Create Estimates")
+    span Congratulations! You have claimed this project.
+
+  status-modal(class="success", type="successModal", ng-if="vm.showStatusComponent('Estimate')")
+    h3 Project estimate complete. Awaiting client approval.
+
+  status-modal(class="success", type="successModal", ng-if="vm.showStatusComponent('Launched')")
+    h3 Your project has been launched!
+
+  .detailsContainer
+    h2{{ vm.work.name | cutOff}}
+    h3 {{vm.work.requestType | requestType}} Project
+    br
+    button(ng-if="vm.projectAvailable()", ng-click="vm.submitClaim()") Claim Project
+    button(ng-if="vm.showStatusComponent('Assigned')" || "vm.showEstimateButton", ui-sref="project-details.challenges") Create Estimates
+    button(ng-if="vm.showStatusComponent('Approved')", ng-click="vm.openCreateChallenges()") Create Challenges
+    button(ng-if="vm.showStatusComponent('awaiting_launch')", ng-click="vm.launchProject()") Launch Project
+    button(ng-if="!vm.projectAvailable()", ui-sref="messaging-copilot({ id: vm.threadId })") Message Client
+    br
+    br
+    br
+    hr
+    .summary
+        h5 Project Description
+        p {{vm.work.summary}}
+
+    .similarApps
+        h5 Similar Apps
+        ul
+        p(ng-repeat="competitor in vm.work.competitorApps") {{competitor}}
+
+    .usersDescription
+        h5 Description of Users
+        p {{vm.work.usageDescription}}
+
+    .features
+        h5 Features
+        ul
+        p(ng-repeat="feature in vm.work.features") {{feature.name}}: {{feature.description}}
+
+    .visualElements
+        h5 Visual Elements
+
+  aside(ui-view="")
+
+

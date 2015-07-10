@@ -1,0 +1,12 @@
+//- span Congratulations! You have claimed this project.
+//- br
+//- button(class="modalButton", ng-click="vm.hideModal()", ui-sref="project-details.challenges") Create Estimates
+//- br
+//- a(ng-click="vm.hideModal()") I'll do it later
+
+.statusModal
+  .messageContainer(ng-transclude)
+  br
+  button(class="modalButton", ng-click="nextState()") {{nextStep}}
+  br
+  a(ng-click="hideModal()") I'll do it later

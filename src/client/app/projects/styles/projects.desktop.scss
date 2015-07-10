@@ -1,0 +1,21 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.projects {
+  .projectLi {
+    @include span-columns(3);
+    @include omega(4n);
+    height: 220px;
+    margin-bottom: $margin-15;
+    div.hovered {
+      background-color: $charcoal-gray;
+    }
+    button {
+      border: 1px solid white;
+      background-color: $charcoal-gray;
+      border-radius: 10px;
+      color: white
+    }
+  }
+}

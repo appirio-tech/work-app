@@ -8,6 +8,8 @@
     'app.auth',
     'app.submit-work',
     'app.manage',
+    'app.projects',
+    'app.project-details',
     'appirio-tech-timeline',
     'appirio-tech-messaging',
     'appirio-tech-ng-auth',

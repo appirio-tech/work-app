@@ -1,0 +1,313 @@
+@import "../../core/styles/combined";
+@import "bourbon";
+@import "neat";
+
+.layout-main.project-details {
+
+.challengesContainer {
+  width: 100%;
+  margin-top: 33%;
+  padding: 10px;
+    .submitEstimates {
+    margin-top: 10px;
+  }
+  textarea {
+    background-color: $mercury;
+    margin-top: 0;
+  }
+}
+.projectEstimate {
+  h5 {
+    @include font-line(24)
+  }
+  p {
+    @include font-line(24)
+  }
+}
+h2 {
+@include source-sans-light();
+@include font-line(37);
+}
+
+h3 {
+  @include font-line(22)
+}
+
+p {
+  color: $text-gray;
+  @include font-line(15)
+}
+
+.detailsContainer {
+  height: 700px;
+  padding-left: 10px;
+}
+
+  .awaitingApproval, .launchMessage {
+      color: $apple;
+      font-size: 20px;
+      line-height: 53px;
+  }
+
+  .summary {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    width: 100%
+  }
+
+  .similarApps {
+    margin-bottom: 10px;
+    width: 100%
+  }
+  .usersDescription{
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .features{
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .visualElements {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .statusModal {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    top: 50px;
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    z-index: 999;
+    vertical-align: middle;
+    line-height: 44px;
+    &.success {
+      background: rgba(56, 180, 73, 0.8);
+    }
+    span, h3 {
+      color: white;
+      width: 100%
+    }
+    a {
+      color: white;
+    }
+    .imageContainer, .messageContainer {
+      width: 100%;
+    }
+    .exit {
+      height: 30px;
+      width: 30px;
+      a {
+        text-decoration: none;
+        @include font-line(30);
+      }
+    }
+    button {
+      background-color: white;
+      color: $black
+    }
+    img{
+    height: 43px;
+    top: 15px;
+    right: 10px;
+  }
+  }
+
+  .message {
+    background: #38b449;
+    line-height: 25px;
+    vertical-align: middle;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    span {
+      color: white;
+      position: relative;
+      bottom: 12px;
+    }
+    img.checkmark-green {
+      height: 43px;
+      top: 3px;
+      right: 10px;
+      position: relative;
+    }
+  }
+
+  header {
+    background-color: $black;
+  }
+
+  main {
+    background-color: $white;
+  }
+  div {
+    @include outer-container;
+    @include span-columns(6);
+  }
+  aside {
+    @include shift(1);
+    @include span-columns(5);
+  }
+  .dropdown {
+    $base-border-color: gainsboro !default;
+    $base-border-radius: 3px !default;
+    $base-line-height: 1.5em !default;
+    $base-background-color: white !default;
+    $dark-gray: #333 !default;
+    $large-screen: em(860) !default;
+    $base-font-color: $dark-gray !default;
+    $dropdown-color: $base-font-color;
+    $dropdown-description-color: lighten($dropdown-color, 40%);
+    $dropdown-border: 1px solid silver;
+    $dropdown-background: $base-background-color;
+    $dropdown-background-hover: darken($dropdown-background, 3%);
+    $dropdown-inner-border: 1px solid silver;
+    $dropdown-height: 40px;
+    $dropdown-padding: 1em;
+    $dropdown-distance-from-menu: 50px;
+    $dropdown-arrow-top-distance: 0;
+
+    line-height: $base-line-height;
+    width: 100%;
+
+    .dropdown-container {
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      &.difficulty {
+        margin-bottom: 10px;
+      }
+    }
+
+    .dropdown-button {
+      background: $dropdown-background;
+      border-bottom-right-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      border-top: $dropdown-border;
+      border-right: $dropdown-border;
+      border-bottom: $dropdown-border;
+      border-left: $dropdown-border;
+      cursor: pointer;
+      float: right;
+      font-size: 0.7em;
+      font-weight: 800;
+      line-height: $dropdown-height;
+      margin-top: 5px;
+      padding: 0 ($dropdown-padding * 2.5) 0 ($dropdown-padding / 2);
+      position: relative;
+
+      @include media($large-screen) {
+        font-size: 1em;
+        padding: 0 ($dropdown-padding * 2.5) 0 ($dropdown-padding / 2);
+      }
+
+      &.type {
+        float: left;
+        margin-right: 10px;
+        width: 150px;
+      }
+      &.count {
+        float: left;
+        width: 110px;
+      }
+      &.difficulty {
+        width: 150px;
+        float: left;
+      }
+    }
+
+    .dropdown-button:hover {
+      background-color: $dropdown-background-hover;
+    }
+
+    .dropdown-button:after {
+      color: $base-font-color;
+      content: "\25BE";
+      display: block;
+      position: absolute;
+      right: $dropdown-padding;
+      top: $dropdown-arrow-top-distance;
+    }
+
+    .dropdown-menu {
+      @include transition (all 0.2s ease-in-out);
+      background: $dropdown-background;
+      border-radius: $base-border-radius;
+      border: $dropdown-border;
+      box-shadow: 0 2px 2px transparentize(black, 0.8);
+      color: $dropdown-color;
+      cursor: pointer;
+      display: none;
+      margin: 0 auto;
+      overflow: show;
+      padding: 0;
+      position: absolute;
+      top: $dropdown-distance-from-menu;
+      width: 228px;
+      z-index: 5;
+
+      &:before {
+        @include position(absolute, 0 1em 0 0);
+        color: $dropdown-background;
+        font-size: 1.4em;
+        pointer-events: none;
+        text-shadow: 0 -2px 2px transparentize(black, 0.7);
+        top: -0.7em;
+      }
+
+      &.type {
+        width: 150px;
+      }
+      &.count {
+        width: 110px;
+        right: 58px;
+      }
+      &.difficulty {
+        width: 150px;
+      }
+    }
+
+    .dropdown-menu li {
+      border-bottom: $dropdown-inner-border;
+      color: $dropdown-color; 
+      list-style: none;
+      padding: $dropdown-padding / 2;
+    }
+
+    .dropdown-menu li:hover {
+      background: $dropdown-background-hover;
+    }
+
+    .dropdown-menu li:first-child {
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+    }
+
+    .dropdown-menu li:last-child {
+      border: none;
+      border-bottom-left-radius: $base-border-radius;
+      border-bottom-right-radius: $base-border-radius;
+    }
+
+    .show-menu {
+      display: block;
+    }
+  }
+
+  .addedChallenges {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    a {
+      text-decoration: underline;
+      float: right;
+    }
+  }
+
+
+}

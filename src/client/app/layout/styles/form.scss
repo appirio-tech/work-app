@@ -64,6 +64,7 @@ textarea {
   height: 150px;
 }
 
+
 button {
   width           : 100%;
   background-color: $apple;
@@ -75,6 +76,18 @@ button {
 
   @include roboto-bold();
   @include font-line(16);
+
+  &.addButton {
+    height: 42px;
+    max-width: 42px;
+    float: right;
+    margin-top: 5px;
+  }
+
+  &.modalButton {
+    float: none;
+    margin: 5px;
+  }
 
   &.success {
     background-color: green;
@@ -101,5 +114,18 @@ button {
     background-color: initial;
     color           : initial;
     margin-top      : 0;
+  }
+}
+
+.projects .project-details {
+  textarea {
+    height: 80px;
+    background-color: $white;
+  }
+  button {
+    float: left;
+    background-color: $metallic-gray;
+    max-width: 150px;
+    margin: 0 5px 0 0;
   }
 }
