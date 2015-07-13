@@ -22,7 +22,7 @@
             if ($stateParams.id && $stateParams.status) {
               return ProjectDetailsService.initializeCopilotWork($stateParams.id, $stateParams.status);
             } else if ($stateParams.id) {
-                return ProjectDetailsService.initializeCopilotWork();
+                return ProjectDetailsService.initializeCopilotWork($stateParams.id);
             } else {
               return false;
             }
