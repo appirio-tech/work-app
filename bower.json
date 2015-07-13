@@ -37,6 +37,7 @@
     "ap-newrelic": "git@github.com:appirio-tech/ap-newrelic#master",
     "appirio-tech-messaging": "git@github.com:appirio-tech/messaging#2.x.x",
     "appirio-tech-timeline": "git@github.com:appirio-tech/timeline#2.x.x",
+    "appirio-tech-copilot": "git@github.com:appirio-tech/ap-work-copilot-flow#DEM-merge",
     "appirio-tech-ng-auth": "git@github.com:appirio-tech/ng-auth#1.x.x"
   },
   "resolutions": {
