@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
+  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'Uploader'];
   /* @ngInject */
-  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService) {
+  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService, Uploader) {
     var vm           = this;
     vm.title         = 'Brief';
     vm.work          = SubmitWorkService.work;
