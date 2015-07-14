@@ -61,7 +61,6 @@
 
         service.completed.aboutProject = service.completed.aboutProject && state && state.form && state.form.$valid && state.visited;
       });
-
       service.completed.aboutProject = service.completed.aboutProject && userState.visited;
       service.completed.users        = userState && userState.form && userState.form.$valid && featureState.visited;
       service.completed.features     = featureState && featureState.form && featureState.form.$valid && designState.visited;

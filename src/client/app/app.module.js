@@ -6,6 +6,7 @@
     'app.layout',
     'app.getting-started',
     'app.auth',
+    'ap-file-upload',
     'app.submit-work',
     'app.manage',
     'appirio-tech-timeline',
