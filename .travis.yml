@@ -8,9 +8,9 @@ install:
 - npm install
 - bower install
 before_script:
+- gulp clean
 - gulp test
 script:
-- gulp clean
 - gulp preprocessors
 - gulp useref
 - gulp copy-files
