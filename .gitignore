@@ -11,7 +11,7 @@ logs
 bower_components
 node_modules
 dist
-report
+coverage
 .sass-cache
 test-results.xml
 

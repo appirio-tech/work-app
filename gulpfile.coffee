@@ -59,13 +59,14 @@ configs.karma =
   ]
   files: karmaFiles.concat([
     __dirname + '/.tmp/json-fixtures.js'
-    __dirname + '/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js'
-    __dirname + '/bower_components/appirio-tech-ng-auth/dist/main.js'
     __dirname + '/src/client/test-helpers/*.js'
     __dirname + '/src/client/app/**/*.stubs.js'
     __dirname + '/src/client/mock-api/*.coffee'
     __dirname + '/src/client/test-helpers/*.coffee'
     __dirname + '/src/client/app/**/*.module.{js,coffee}'
+    __dirname + '/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js'
+    __dirname + '/bower_components/appirio-tech-ng-auth/dist/main.js'
+    __dirname + '/bower_components/appirio-tech-copilot/build/js/copilot-app.js'
     __dirname + '/src/client/app/**/*.{js,coffee}'
     __dirname + '/.tmp/constants.js'
     __dirname + '/.tmp/templates.js'
