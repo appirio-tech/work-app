@@ -5,7 +5,6 @@
     'app.core',
     'app.constants',
     'app.resource',
-    'ap-file-upload',
     'app.workRequest',
     'duScroll'
   ]);
