@@ -6,14 +6,7 @@ h3 Upload any files you may have that can help us understand your design prefere
 
 form(name="designForm", ng-submit="vm.submit()")
   fieldset
-    input#project-design-file(type="file", ng-model="vm.filename")
 
-    button.add-design-file(type="button", ng-click="vm.add()") +
+    ap-uploader(multiple="true", url-presigner="http://api.topcoder-dev.com/v3/workrequestfiles/uploadurl?filter=workRequestId%3D1436372805000-66d14ff5-ec15-410f-8c51-98e18e75f0fe%26assetType%3Dspecs", status="vm.uploaderStatus")
 
-  ul.added-design-files
-    li(ng-repeat="filename in vm.imageFilenames")
-      .label {{filename}}
-
-      button.remove(type="button", ng-click="vm.imageFilenames.splice($index, 1)") x
-
-  button.submit(type="submit", ng-show="designForm.$valid") NEXT
+  button.submit(type="submit", ng-show="vm.uploaderStatus != 'started' ") NEXT

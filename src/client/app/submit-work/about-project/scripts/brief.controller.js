@@ -48,7 +48,7 @@
     };
 
     vm.submitElevator = function () {
-      if ($scope.elevatorForm) {
+      if ($scope.elevatorForm.$valid) {
         NavService.setNextState('brief');
       }
     };
@@ -68,9 +68,9 @@
       }
     };
 
-    $scope.$watch('vm.uploaderStatus', function(newStatus) {
-      if (newStatus) {
-       NavService.fileUploadStatus = newStatus;
+    $scope.$watch('vm.uploaderStatus', function(status) {
+      if (status) {
+       NavService.findState('brief').uploaderStatus = status;
       }
     });
 
@@ -81,12 +81,9 @@
     });
 
     function activate() {
-      // TODO: bring this back in w/ file upload
       if (vm.work.summary && vm.work.summary.length > 1) {
        vm.toggleNo();
       }
-      // vm.question = 0;
-      // vm.toggleNo();
     }
 
     activate();
