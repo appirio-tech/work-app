@@ -1,30 +1,48 @@
 language: node_js
 node_js:
-  - "0.10.25"
+- 0.10.25
 install:
-  - npm install -g gulp
-  - npm install -g bower
-  - npm install
-  - bower install
+- npm install -g npm
+- npm install -g gulp
+- npm install -g bower
+- npm install
+- bower install
+before_script:
+- gulp clean
+- gulp test
 script:
-  - gulp test
+- gulp preprocessors
+- gulp useref
+- gulp copy-files
+- gulp optimize-build
+- gulp finger-print
+- gulp finger-print-replace
 sudo: false
+deploy:
+  provider: s3
+  access_key_id: "$AWS_KEY"
+  secret_access_key: "$AWS_SECRET"
+  bucket: "$AWS_BUCKET"
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: dev
 env:
   global:
-    - AWS_BUCKET=foo
-    - AWS_KEY=foo
-    - AWS_REGION=bar
-    - AWS_SECRET=bar
-    - AWS_CDN_URL=
-    - VERSION=1
-    - USE_STUBS=true
-    - AUTH0_CLIENT_ID=Auth0_Client_Id
-    - AUTH0_DOMAIN=topcoder-domain.auth0.com
-    - RET_URL=login_return_url
-    - CALLBACK_URL=login_callback_url
-    - NEWRELIC_APPLICATION_ID=7374849
-    - NEWRELIC_LICENSE_KEY=496af5ee90
-after_success:
-  - gulp coveralls
-
-
+  - AWS_BUCKET=work.topcoder-dev.com
+  - AWS_REGION=us-east-1
+  - BASE_URL=/work/
+  - AUTH0_DOMAIN=topcoder-dev.auth0.com
+  - BASE_API_URL=https://api.topcoder-dev.com/v3/
+  - NEWRELIC_APPLICATION_ID=7374849
+  - NEWRELIC_LICENSE_KEY=496af5ee90
+  - API_URL=https://api.topcoder-dev.com/v3
+  - API_URL_V2=https://api.topcoder-dev.com/v2
+  - AVATAR_URL=http://www.topcoder.com
+  - SUBMISSION_URL=https://studio.topcoder.com
+  # AWS_KEY
+  - secure: PB3qb6Xn6SRuIWJP/s87OH4b7cD1Ip+UngooEoP5GO8w0/fiBFjmSkFCqG+SdvSWTXIq9UTOFBsnTWk4Tl3vIet7t/LX5kj3ZtnYrMDzW6B96tQLn+wOSU2aOodOzhil7gLIyiXK59bv0zWdZ+o7/DDh984XmZO3dOh3Q1rvwhU=
+  # AUTH0_CLIENT_ID
+  - secure: ALJsoMpptigQNAbBSSaKikOrRcN3Cnxyoo9KN0MaY45OQojX7205Y0GXzbt/JxyTMq0j4gJcZids6pL26D8xySLP233iHozBEzCLzy2m5JwjbtI9o3DLqns1J/bOHVLEPmLbMK8/YYjSm/Yx6gEwskNiHiJAx1ayCzhvV3QumQ4=
+  # AWS_SECRET
+  - secure: KGm3qKs3vCxnIuvi0ALWrfxpKc6qws9DmnKAQdqBXsq0iO+7Y11JMqpPb584XscyOGm7jgU9/3ed7EVvuP0IxwhgfDbMo66nyb7TlrdY6V5SlkMgNEQb5CUt2og9LhYbgdmlYzGzcdFx3jcC6st9JkC03ZoJP/V3Vv6zZlo8thA=

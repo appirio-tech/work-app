@@ -1,73 +1,65 @@
 - var scripts = []
-- scripts.push('/src/client/app/app.module')
-- scripts.push('constants')
-- scripts.push('/src/client/app/blocks/exception/exception.module')
-- scripts.push('/src/client/app/blocks/logger/logger.module')
-- scripts.push('/src/client/app/blocks/router/router.module')
-- scripts.push('/src/client/app/core/resource/resource.module')
-- scripts.push('/src/client/app/core/resource/resource.api.service')
-- scripts.push('/src/client/app/core/resource/resource.data.provider')
-- scripts.push('/src/client/app/core/core.module')
-- scripts.push('templates')
-- scripts.push('/src/client/app/core/ng-enter.directive')
-- scripts.push('layout/scripts/layout.module')
-- scripts.push('layout/scripts/focus-on-click.directive')
-- scripts.push('layout/scripts/layout-header.directive')
-- scripts.push('layout/scripts/header-nav.directive')
-- scripts.push('/src/client/app/blocks/exception/exception-handler.provider')
-- scripts.push('/src/client/app/blocks/exception/exception')
-- scripts.push('/src/client/app/blocks/logger/logger')
-- scripts.push('/src/client/app/blocks/router/router-helper.provider')
-- scripts.push('/src/client/app/core/config')
-- scripts.push('/src/client/app/core/core.constants')
-- scripts.push('/src/client/app/core/core.route')
-- scripts.push('scripts/messaging.controller')
+- scripts.push('/app.module')
+- scripts.push('/blocks/exception/exception.module')
+- scripts.push('/blocks/logger/logger.module')
+- scripts.push('/blocks/router/router.module')
+- scripts.push('/core/resource/resource.module')
+- scripts.push('/core/core.module')
+- scripts.push('/layout/scripts/layout.module')
+- scripts.push('/core/resource/resource.api.service')
+- scripts.push('/core/resource/resource.data.provider')
+- scripts.push('/templates')
+- scripts.push('/constants')
+- scripts.push('/core/ng-enter.directive')
+- scripts.push('/layout/scripts/focus-on-click.directive')
+- scripts.push('/layout/scripts/layout-header.directive')
+- scripts.push('/layout/scripts/header-nav.directive')
+- scripts.push('/layout/scripts/project-nav.directive')
+- scripts.push('/blocks/exception/exception-handler.provider')
+- scripts.push('/blocks/exception/exception')
+- scripts.push('/blocks/logger/logger')
+- scripts.push('/blocks/router/router-helper.provider')
+- scripts.push('/core/config')
+- scripts.push('/core/core.constants')
+- scripts.push('/core/core.route')
+- scripts.push('/scripts/messaging.controller')
 
 - var css = []
 - var landscapeCSS = []
 - var desktopCSS = []
 
 //- Layout
-- scripts.push('/src/client/app/layout/scripts/modal.directive')
-- scripts.push('/src/client/app/layout/scripts/homeLink.directive')
+- scripts.push('/layout/scripts/modal.directive')
+- scripts.push('/layout/scripts/homeLink.directive')
 
-- css.push("layout/styles/reset")
-- css.push("layout/styles/main")
-- css.push("layout/styles/header")
-- css.push("layout/styles/footer")
-- css.push("layout/styles/modal")
-- css.push("layout/styles/form")
-- css.push("layout/styles/roboto-slab")
-- css.push("layout/styles/source-sans-pro")
+- css.push("/layout/styles/project-nav")
+- css.push("/layout/styles/main")
+- css.push("/layout/styles/header")
+- css.push("/layout/styles/footer")
+- css.push("/layout/styles/modal")
 
-- landscapeCSS.push("layout/styles/header.landscape")
-- landscapeCSS.push("layout/styles/main.landscape")
+- landscapeCSS.push("/layout/styles/main.landscape")
 
-- desktopCSS.push("layout/styles/main.desktop")
-- desktopCSS.push("layout/styles/form.desktop")
+- desktopCSS.push("/layout/styles/main.desktop")
 
 //- Getting Started
-- css.push("getting-started/styles/getting-started")
-- desktopCSS.push("getting-started/styles/getting-started.desktop")
-- scripts.push('/src/client/app/getting-started/scripts/getting-started.module')
-- scripts.push('/src/client/app/getting-started/scripts/getting-started.route')
-- scripts.push('/src/client/app/getting-started/scripts/getting-started.controller')
+- css.push("/getting-started/styles/getting-started")
+- desktopCSS.push("/getting-started/styles/getting-started.desktop")
+- scripts.push('/getting-started/scripts/getting-started.module')
+- scripts.push('/getting-started/scripts/getting-started.route')
+- scripts.push('/getting-started/scripts/getting-started.controller')
 
 //- Auth
-- scripts.push("auth/scripts/auth.module")
-- scripts.push("/src/client/app/auth/scripts/auth.routes")
-- scripts.push("/src/client/app/auth/scripts/login.controller")
-- scripts.push("/src/client/app/auth/scripts/login.directive")
-- scripts.push("/src/client/app/auth/scripts/register.controller")
-- css.push("auth/styles/login")
-- css.push("auth/styles/register")
-
-//- user
-- scripts.push("/src/client/app/user/user.module")
-- scripts.push("/src/client/app/user/user.service")
+- scripts.push("/auth/scripts/auth.module")
+- scripts.push("/auth/scripts/auth.routes")
+- scripts.push("/auth/scripts/login.controller")
+- scripts.push("/auth/scripts/login.directive")
+- scripts.push("/auth/scripts/register.controller")
+- css.push("/auth/styles/login")
+- css.push("/auth/styles/register")
 
 //- work request
-- scripts.push("/src/client/app/work-request/work-request.module")
+- scripts.push("/work-request/work-request.module")
 
 //- manage
 include manage/manage-includes
@@ -76,6 +68,9 @@ include manage/manage-includes
 - css          = css.concat(cssFiles)
 - landscapeCSS = landscapeCSS.concat(landscapeFiles)
 - desktopCSS   = desktopCSS.concat(desktopFiles)
+
+//- ng-file-upload
+- scripts.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
 
 //- submit work
 include submit-work/includes
@@ -96,7 +91,15 @@ include submit-work/includes
 //- messaging
 - scripts.push('/bower_components/appirio-tech-messaging/dist/main')
 - css.push('/bower_components/appirio-tech-messaging/dist/main')
-- css.push('styles/messaging')
+- css.push('/styles/messaging')
+
+//- copilot
+- scripts.push('/bower_components/appirio-tech-copilot/build/js/copilot-app')
+- css.push('/bower_components/appirio-tech-copilot/build/styles/co-pilot-app')
+- landscapeCSS.push('/bower_components/appirio-tech-copilot/build/styles/co-pilot-mobile-landscape')
+- desktopCSS.push('/bower_components/appirio-tech-copilot/build/styles/desktop')
+- scripts.push('/scripts/projects.routes')
+- scripts.push('/scripts/project-details.routes')
 
 include bowers
 
@@ -124,7 +127,10 @@ html(ng-app='app')
 
       AutoConfigFakeServer.consume([
         FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json']
+        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json']
+
       ]);
     // endRemoveIf(production)
 
@@ -140,39 +146,67 @@ html(ng-app='app')
 
     base(href=basePath)
 
+    = "\n"
     // build:css styles/lib.css
+    = "\n"
     each path in bowercss
+      = "\n"
       link(href=path + ".css", rel="stylesheet")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
+    = "\n"
     // build:css styles/app.css
+    = "\n"
     each path in css
+      = "\n"
       link(href=path + ".css", rel="stylesheet")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
+    = "\n"
     // build:css styles/mobile-landscape.css media="(min-width: 568px)"
+    = "\n"
     each path in landscapeCSS
+      = "\n"
       link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
+    = "\n"
     // build:css styles/desktop.css media="(min-width: 767px)"
+    = "\n"
     each path in desktopCSS
+      = "\n"
       link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
+      = "\n"
+    = "\n"
     // endbuild
-
+    = "\n"
   body
     include layout/views/shell.jade
 
+    = "\n"
     // build:js js/lib.js
+    = "\n"
     each path in bowers
+      = "\n"
       script(src= path + ".js", type="text/javascript")
+      = "\n"
+    = "\n"
     // endbuild
+    = "\n"
 
-    script(src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js", type="text/javascript")
-
+    = "\n"
     // build:js js/app.js
+    = "\n"
     each path in scripts
+      = "\n"
       script(src=path + ".js", type="text/javascript")
-    // inject:templates:js
-    // endinject
+      = "\n"
+    = "\n"
     // endbuild
+    = "\n"

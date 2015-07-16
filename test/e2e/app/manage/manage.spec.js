@@ -15,7 +15,6 @@ var managePage = require('./manage.object');
 	  for(;i < manageData.projectList.length; i++) {
 		  (function(project) {
 			  it('Click on Project Manage link', function() {
-				  
 				  managePage.createNewProject();
 				  console.log('manage page'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);

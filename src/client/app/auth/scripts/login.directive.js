@@ -19,45 +19,37 @@
     return directive;
   }
 
-  LoginDirectiveController.$inject = ['$scope', '$rootScope', '$state', 'UserService', 'AuthService', 'logger'];
+  LoginDirectiveController.$inject = ['$scope', '$rootScope', '$state', 'UserV3Service', 'AuthService', 'logger'];
 
-  function LoginDirectiveController($scope, $rootScope, $state, UserService, AuthService, logger) {
+  function LoginDirectiveController($scope, $rootScope, $state, UserV3Service, AuthService, logger) {
     var vm = this;
 
-    vm.handle = null;
+    vm.handle     = null;
     vm.isLoggedIn = AuthService.isAuthenticated();
-    vm.signout = null;
-    vm.signin = null;
+    vm.signout    = null;
+    vm.signin     = null;
 
     activate();
 
     function activate() {
-      $rootScope.$on('logout', function() {
+      if (!AuthService.isLoggedIn()) {
         vm.handle = null;
-        updateDisplay();
-      });
-
-      $rootScope.$on('authenticated', function() {
-        updateDisplay();
-      });
-
+      }
       updateDisplay();
     }
 
     function updateDisplay() {
-      vm.isLoggedIn = AuthService.isAuthenticated();
-      var promise = UserService.getCurrentUser();
-
-      promise.then(setUser, setUserError);
-    }
-
-    function setUser(user) {
-      vm.handle = user.handle
-    }
-
-    function setUserError(reason) {
-      vm.handle = null;
-      logger.error(reason);
+      $scope.$watch(UserV3Service.getCurrentUser, function() {
+        var user = UserV3Service.getCurrentUser();
+        if (user) {
+          vm.handle     = user.handle;
+          vm.isLoggedIn = true;
+        }
+        else {
+          vm.isLoggedIn = false;
+          vm.handle     = null;
+        }
+      });
     }
 
     vm.signin = function() {

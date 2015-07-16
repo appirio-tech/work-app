@@ -5,12 +5,11 @@ var NewProjectPage = function() {
 	}
 
 	
-	
 	this.createNewProject = function(project) {
 		var actionItem = element(by.css('.heading button'));
 		var EC = protractor.ExpectedConditions;
 		var isClickable = EC.elementToBeClickable(actionItem);
-		browser.wait(isClickable, 10000);
+		browser.wait(isClickable, 20000);
 		
 		console.log('click action item new project');
     

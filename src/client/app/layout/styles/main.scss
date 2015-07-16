@@ -1,104 +1,38 @@
-@import "../../core/styles/combined";
-@import "bourbon";
-@import "neat";
+@import "work-styles";
 
-html {
-  min-height: 100%;
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  position           : relative;
-  min-height         : 100%;
-  margin             : 0;
-  padding            : 0;
-  overflow-x         : hidden;
-  overflow-y         : auto;
-  -webkit-text-stroke: 1px transparent;
-  background-color   : $limed-spruce;
-
-  @include font-line(14);
-  @include source-sans();
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  margin-top: $margin-10;
-
-  &:first-child {
-    margin-top: 0;
-  }
-}
-
-h1 {
-  @include font-line(20);
-}
-
-h2 {
-  color: $ship-gray;
-  @include roboto-light();
-}
-
-h3 {
-  color: $mine-shaft;
-}
-
-h4, h5, h6 {
-  @include font-line(16);
-}
-
-hr {
-  border: none;
-  margin: $margin-15 0;
-  border-bottom: 2px solid $mercury;
-}
-
-time, em {
-  font-style: italic;
-}
-
-a {
-  color: black;
-  cursor: pointer;
-}
-
-a.clean {
-  text-decoration: none;
+.outer-container {
+  @include outer-container;
+  background-color: #fff;
 }
 
 .layout-main {
-  background-color: $white;
-
-  @include outer-container;
 
   header {
     h1 {
-      background-color: $all-ports;
-      color           : $white;
-      padding         : $padding-10 0;
+      background-color: #006c9e;
+      color           : #fff;
+      padding         : 10px 0;
       text-align      : center;
     }
   }
 
   main {
-    padding: $padding-18 $padding-10;
+    padding: 18px 10px;
   }
 
   aside {
-    padding: $padding-18;
+    padding: 18px;
   }
 
   > main {
-    @include main-restricted();
-    width: 320px;
+    width       : 320px;
+    margin-left : auto;
+    margin-right: auto;
+    display     : block;
   }
 
   footer {
-    margin: $margin-18;
+    margin: 18px;
   }
 }
 

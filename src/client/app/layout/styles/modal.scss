@@ -1,4 +1,4 @@
-@import "../../core/styles/combined";
+@import "work-styles";
 
 #modal-overlay {
   display         : none;
@@ -12,7 +12,7 @@
 }
 
 .layout-modal {
-  background-color: $white;
+  background-color: #fff;
   position        : fixed;
   top             : 50%;
   left            : 50%;
@@ -26,7 +26,8 @@
     right              : 0;
     background-position: -155px -211px;
 
-    @include icon-sprite();
+    background-size    : 400px 400px;
+    @include bg-image-ratio("/layout/images/sprite.png", "/layout/images/sprite-2x.png");
   }
 
   @include font-line(14);
@@ -36,7 +37,7 @@
   }
 
   a, h1 {
-    color: $orient;
+    color: #005b7f;
   }
 }
 

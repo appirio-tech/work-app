@@ -14,10 +14,9 @@ form(name="questionForm", ng-submit="vm.questionSubmit()")
   ul.invalid-messages(ng-show="questionForm.$dirty")
     li(ng-show="questionForm.question.$error.required") Please tell us if you have a brief to upload.
 
-form(name="briefForm", ng-show="vm.showBrief", ng-submit="vm.submitBrief()")
-  input(type="file", placeholder="My Project", ng-model="vm.briefFilename")
-
-  button.submit(type="submit", ng-show="briefForm.$valid") NEXT
+form(name="briefForm", ng-show="vm.showBrief", ng-submit="vm.submitBrief()" required="true")
+  ap-uploader(config="vm.uploaderConfig", status="vm.uploaderStatus")
+  button.submit(type="submit", ng-hide="vm.uploaderStatus == 'started'") NEXT
 
 form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="vm.submitElevator()")
   textarea(
@@ -38,5 +37,4 @@ form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="vm.submitElevato
 
   button.submit(type="submit", ng-show="elevatorForm.$valid") NEXT
 
-// TODO: add back in w/ file upload
-//button.cancel(ng-hide="vm.showYesNo", ng-click="vm.toggleCancel()") Cancel
+button.cancel(ng-hide="vm.showYesNo", ng-click="vm.toggleCancel()") Cancel

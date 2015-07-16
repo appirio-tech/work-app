@@ -44,7 +44,7 @@ exports.config = {
     },
     
     capabilities: {
-    	  'browserName': 'chrome'
+    	  'browserName': 'safari'
     	},
 
 	jasmineNodeOpts: {

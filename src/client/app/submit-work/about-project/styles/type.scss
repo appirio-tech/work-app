@@ -1,4 +1,4 @@
-@import "../../../core/styles/combined";
+@import "work-styles";
 
 .layout-main.submit-work .type {
   .project-types {
@@ -6,27 +6,27 @@
       display       : inline-block;
       vertical-align: top;
       width         : 140px;
-      margin        : $margin-10;
+      margin        : 10px;
 
       .price {
-        margin-top      : $margin-10;
+        margin-top      : 10px;
       }
 
       button {
         height          : 100px;
-        margin-top      : $margin-10;
-        background-color: $silver-sand;
+        margin-top      : 10px;
+        background-color: #b3bbbf;
 
         @include font-line(14);
 
         &.selected {
-          background-color: $apple;
+          background-color: #38B449;
         }
       }
 
       .description {
         text-align: left;
-        padding: $padding-4;
+        padding: 4px;
       }
     }
   }

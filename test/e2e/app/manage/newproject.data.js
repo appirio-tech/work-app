@@ -10,7 +10,7 @@ var NewProjectData = function() {
     
     this.projectList = [
                         {
-                        	'name' : 'Test Project -Aq11',
+                        	'name' : 'Test Project -Aq311',
                         	'type' :'Design',
                         	'upload' : 'yes',
                         	'description' : 'This is demo project for testing manage project',
@@ -28,7 +28,7 @@ var NewProjectData = function() {
                         	'workSummary' : '12345678901234567890'
                         },
                         {
-                        	'name' : 'Test Project -Aq22',
+                        	'name' : 'Test Project -Aq322',
                         	'type' :'Design',
                         	'upload' : 'yes',
                         	'description' : 'This is demo project for testing manage project',
