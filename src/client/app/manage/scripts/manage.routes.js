@@ -30,6 +30,13 @@
             }]
           }
         }
+      },
+      {
+        state: 'view-work-multiple.confirmed',
+        config: {
+          url: '/confirmed',
+          templateUrl: 'manage/views/confirmed.html'
+        }
       }
     ];
   }
