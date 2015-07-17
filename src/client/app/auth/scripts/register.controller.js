@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$state', 'AuthService', 'UserService', 'logger'];
+  RegisterController.$inject = ['$state', 'AuthService', 'UserV3Service', 'logger'];
 
   /* @ngInject */
-  function RegisterController($state, AuthService, UserService, logger) {
+  function RegisterController($state, AuthService, UserV3Service, logger) {
     var vm = this;
     vm.title = 'Register';
     vm.username  = '';
@@ -32,9 +32,7 @@
         email: vm.email,
         afterActivationUrl: afterActivationUrl
       };
-
-      UserService.createUser(registerOptions)
-        .then(registerSuccess, registerError);
+      UserV3Service.createUser(registerOptions, registerSuccess, registerError);
     };
 
     function activate() {
@@ -44,7 +42,6 @@
     function registerError(error) {
       vm.error = true;
       vm.errorMessage = error;
-      logger.error(error);
     }
 
     function registerSuccess() {

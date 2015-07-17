@@ -25,12 +25,11 @@ window.unstashIt = (obj, key) ->
 window.context = window.describe
 
 beforeEach ->
-  module 'app.layout'
-  module 'app.submit-work'
   module 'app.core'
-  module 'app.manage'
+  module 'app.layout'
   module 'app.auth'
-  module 'app.user'
+  module 'app.submit-work'
+  module 'app.manage'
 
 # Mock http request for angular
 getPayload = (method, path) ->

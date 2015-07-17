@@ -14,6 +14,7 @@
     vm.work           = SubmitWorkService.work;
     vm.imageFilenames = [];
     vm.filename       = '';
+    vm.uploaderStatus = 'pristine';
     vm.add;
     vm.submit;
 
@@ -31,6 +32,12 @@
         NavService.setNextState('designs');
       }
     };
+
+    $scope.$watch('vm.uploaderStatus', function(status) {
+      if (status) {
+       NavService.findState('designs').uploaderStatus = status;
+      }
+    });
 
     $scope.$watch('designForm', function(designForm) {
       if (designForm) {

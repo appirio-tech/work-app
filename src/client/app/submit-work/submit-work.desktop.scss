@@ -1,7 +1,7 @@
-@import "../core/styles/combined";
+@import "work-styles";
 
 .layout-main.submit-work {
-  @include main-restricted-desktop();
+  width: 100%;
 
   main {
     width: 75%;
@@ -9,7 +9,7 @@
 
     article {
       h3 {
-        margin-top: $margin-20;
+        margin-top: 20px;
       }
     }
   }

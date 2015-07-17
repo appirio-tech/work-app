@@ -1,12 +1,12 @@
-@import "../../core/styles/combined";
-@import "bourbon";
+@import "work-styles";
+
 @import "neat";
 
 .layout-main.manage {
 
   @include outer-container;
 
-  padding: $padding-20 $padding-30;
+  padding: 20px 30px;
 
   hr {
     margin: 20px 0;
@@ -62,7 +62,7 @@
     @include omega(1n);
     //@include shift(.5);
     height: 245px;
-    margin-bottom: $margin-20;
+    margin-bottom: 20px;
 
     div {
 
@@ -77,16 +77,16 @@
       header {
 
         height: 17%;
-        padding: $padding-3;
+        padding: 3px;
 
         h4 {
-          margin-top: $margin-8;
+          margin-top: 8px;
           float: left;
           @include ellipsis(140px);
         }
 
         span.type {
-          margin-top: $margin-10;
+          margin-top: 10px;
           float: right;
           @include source-sans();
           font-size: 12px;
@@ -107,13 +107,22 @@
         height: 35%;
         font-family: sans-serif;
         text-align: center;
-        padding: $padding-12;
+        padding: 12px;
 
         img.checkmark {
           margin-top: -43px;
           margin-left: 47px;
           height: 43px;
           position: absolute;
+        }
+
+        img.avatar {
+          margin-top: -43px;
+          margin-left: 53px;
+          position: absolute;
+          width: 35px;
+          height: 35px;
+          border-radius: 35px;
         }
 
         &.incomplete {
@@ -129,7 +138,7 @@
           font-weight: bold;
           color: white;
           display: inline-block;
-          margin-bottom: $margin-8;
+          margin-bottom: 8px;
         }
 
         span.action, span.action a {
@@ -138,6 +147,22 @@
           a {
             text-decoration: underline;
           }
+        }
+
+        &.assigned, &.estimate, &.launched, &.messaged {
+          background: whitesmoke;
+          padding-top: 23px;
+          > span {
+            color: black;
+            margin-top: 3px;
+            a {
+              color: #8ce8e9;
+            }
+          }
+        }
+
+        &.estimate span.status {
+          color: #4df733;
         }
 
       }

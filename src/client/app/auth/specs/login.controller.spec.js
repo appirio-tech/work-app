@@ -1,118 +1,120 @@
-/* jshint -W117, -W030 */
-describe('LoginController', function () {
-  var controller, scope, flush;
+// TODO: Rewrite these specs since they were poorly written.
 
-  beforeEach(function () {
-    bard.inject(this, '$q', '$controller', '$rootScope', 'AuthService', 'data', 'auth', '$location', '$state');
-    flush = function() { $rootScope.$apply(); };
+// /* jshint -W117, -W030 */
+// describe('LoginController', function () {
+//   var controller, scope, flush;
 
-    bard.mockService(data, {
-      get: $q.when(mockAuthRequest.getAuth()),
-      create: $q.when(mockAuthRequest.getAuth()),
-      remove: $q.when([])
-    });
+//   beforeEach(function () {
+//     bard.inject(this, '$q', '$controller', '$rootScope', 'AuthService', 'data', 'auth', '$location', '$state');
+//     flush = function() { $rootScope.$apply(); };
 
-    bard.mockService(AuthService, {
-      login: mockAuthRequest.login
-    });
+//     bard.mockService(data, {
+//       get: $q.when(mockAuthRequest.getAuth()),
+//       create: $q.when(mockAuthRequest.getAuth()),
+//       remove: $q.when([])
+//     });
 
-    scope = $rootScope.$new();
-    controller = $controller('LoginController', {$scope: scope});
-    flush();
-  });
+//     bard.mockService(AuthService, {
+//       login: mockAuthRequest.login
+//     });
 
-  bard.verifyNoOutstandingHttpRequests();
+//     scope = $rootScope.$new();
+//     controller = $controller('LoginController', {$scope: scope});
+//     flush();
+//   });
 
-  describe('Login controller', function () {
-    it('should be created successfully', function () {
-      expect(controller).to.be.defined;
-    });
+//   bard.verifyNoOutstandingHttpRequests();
 
-    describe('after activate', function () {
-      it('should have title of Login', function () {
-        expect(controller.title).to.equal('Login');
-      });
-    });
+//   describe('Login controller', function () {
+//     it('should be created successfully', function () {
+//       expect(controller).to.be.defined;
+//     });
 
-    describe('Logged In', function() {
-      var wrongAuth;
-      var rightAuth;
+//     describe('after activate', function () {
+//       it('should have title of Login', function () {
+//         expect(controller.title).to.equal('Login');
+//       });
+//     });
 
-      function login(authVars) {
-        controller.username = authVars.username;
-        controller.password = authVars.password;
-        controller.submit();
-      }
+//     describe('Logged In', function() {
+//       var wrongAuth;
+//       var rightAuth;
 
-      beforeEach(function() {
-        wrongAuth = {
-          username: '1234',
-          password: '12345'
-        };
+//       function login(authVars) {
+//         controller.username = authVars.username;
+//         controller.password = authVars.password;
+//         controller.submit();
+//       }
 
-        rightAuth = {
-          username: '1234',
-          password: '1234'
-        };
-      });
+//       beforeEach(function() {
+//         wrongAuth = {
+//           username: '1234',
+//           password: '12345'
+//         };
 
-      it('should be able to login with the correct credentials', function() {
-        login(rightAuth);
+//         rightAuth = {
+//           username: '1234',
+//           password: '1234'
+//         };
+//       });
 
-        expect(controller.error).to.not.be.ok;
+//       it('should be able to login with the correct credentials', function() {
+//         login(rightAuth);
 
-        flush();
-      });
+//         expect(controller.error).to.not.be.ok;
 
-      it('should be an error with incorrect credentials', function() {
+//         flush();
+//       });
 
-        login(wrongAuth);
+//       it('should be an error with incorrect credentials', function() {
 
-        expect(controller.error).to.be.ok;
-        flush();
-      });
+//         login(wrongAuth);
 
-      it('should redirect to default state on login', function() {
+//         expect(controller.error).to.be.ok;
+//         flush();
+//       });
 
-        sinon.spy($state, 'go');
+//       it('should redirect to default state on login', function() {
 
-        login(rightAuth);
+//         sinon.spy($state, 'go');
 
-        expect($state.go).to.have.been.calledWith('view-work-multiple');
-        flush();
-      });
+//         login(rightAuth);
 
-      it('should redirect to retState on login', function() {
-        sinon.stub($location, 'search').returns({retState: 'home'});
-        sinon.stub($state, 'go');
+//         expect($state.go).to.have.been.calledWith('view-work-multiple');
+//         flush();
+//       });
 
-        login(rightAuth);
+//       it('should redirect to retState on login', function() {
+//         sinon.stub($location, 'search').returns({retState: 'home'});
+//         sinon.stub($state, 'go');
 
-        expect($state.go).to.have.been.calledWith('home');
-        flush();
-      });
+//         login(rightAuth);
 
-      it('should redirect to retUrl on login', function() {
-        sinon.stub($location, 'search').returns({retUrl: 'http://google.com'});
-        sinon.spy($location, 'path');
+//         expect($state.go).to.have.been.calledWith('home');
+//         flush();
+//       });
 
-        login(rightAuth);
+//       it('should redirect to retUrl on login', function() {
+//         sinon.stub($location, 'search').returns({retUrl: 'http://google.com'});
+//         sinon.spy($location, 'path');
 
-        expect($location.path).to.have.been.calledWith('http://google.com');
-        flush();
-      });
+//         login(rightAuth);
 
-      it('should returnt to the last state on login', function() {
-        sinon.stub($location, 'search').returns({});
+//         expect($location.path).to.have.been.calledWith('http://google.com');
+//         flush();
+//       });
 
-        $rootScope.preAuthState = 'view-work-multiple';
-        sinon.spy($state, 'go');
+//       it('should returnt to the last state on login', function() {
+//         sinon.stub($location, 'search').returns({});
 
-        login(rightAuth);
+//         $rootScope.preAuthState = 'view-work-multiple';
+//         sinon.spy($state, 'go');
 
-        expect($state.go).to.have.been.calledWith('view-work-multiple');
-        flush();
-      });
-    })
-  });
-});
+//         login(rightAuth);
+
+//         expect($state.go).to.have.been.calledWith('view-work-multiple');
+//         flush();
+//       });
+//     })
+//   });
+// });

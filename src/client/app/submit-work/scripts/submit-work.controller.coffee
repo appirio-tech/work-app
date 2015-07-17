@@ -26,9 +26,9 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
 
   $scope.launch = ->
     for state in NavService.states
-      unless state.form?.$valid
-        state.form.$setDirty()
 
+      unless state.form?.$valid && state.uploaderStatus != 'started'
+        state.form.$setDirty()
         activateState = state unless activateState
 
     if activateState
@@ -36,9 +36,10 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
     else
       NavService.reset()
 
-      options = save: 'yes'
+      options = saved: true
 
-      $state.go 'view-work-multiple' , options
+      SubmitWorkService.save('Submitted', true).then ->
+        $state.go 'view-work-multiple' , options
 
   activate = ->
     SubmitWorkService.resetWork() unless $scope.work

@@ -21,20 +21,12 @@
           controller: 'ManageController',
           controllerAs: 'vm',
           title: 'View Work',
-          settings: {},
           params: {
-            save: {}
+            saved: false
           },
           resolve: {
             workRequests: ['ManageService', function(ManageService) {
               return ManageService.getWorkRequests();
-            }],
-            work: ['SubmitWorkService', '$stateParams', function(SubmitWorkService, $stateParams) {
-              if ($stateParams.save == 'yes') {
-                return SubmitWorkService.save('Submitted', true);
-              } else {
-                return false;
-              }
             }]
           }
         }

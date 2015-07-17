@@ -1,13 +1,18 @@
 header.layout-header(role="banner" layout-header=true)
-  a.clean.logo("ng-home-link"=true, "href"="{{getPath()}}") Appirio Services Platform
+  a.clean.logo("ng-home-link"=true, "href"="{{getPath()}}") ASP
 
   .secondary
+    header-nav
+
     a.clean.login(href="#/login" login)
 
-    button.clean.message-notifications(type="button" focus-on-click=true ng-show="unreadCount > 0") {{ unreadCount }}
+    button.clean.message-notifications(type="button" focus-on-click=true ng-show="showNotification")
+
+      | <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 19.6 13.6" enable-background="new 0 0 19.6 13.6" xml:space="preserve"> <path fill="#676767" d="M19.6,1.6V1.4c0-0.8-0.6-1.4-1.4-1.4H1.4C0.6,0,0,0.6,0,1.4v0.2l9.8,4.6L19.6,1.6z"/><path fill="#676767" d="M9.8,7.4L0,2.7v9.4c0,0.8,0.6,1.4,1.4,1.4h16.7c0.8,0,1.4-0.6,1.4-1.4V2.7L9.8,7.4z"/></svg>
+
+
+      .notification(ng-show="unreadCount > 0") {{ unreadCount }}
 
     .popup
-      threads
-
-
+      threads(subscriber-id="{{ subscriberId }}")
 

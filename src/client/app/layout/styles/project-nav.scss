@@ -1,0 +1,28 @@
+project-nav {
+  float: right;
+  margin: 30px;
+  position: relative;
+  z-index: 1;
+  ul {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+
+    li {
+      border-top: 1px solid #ccc;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      a {
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        cursor: pointer;
+
+      }
+    }
+  }
+}

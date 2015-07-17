@@ -1,7 +1,10 @@
-@import "../../../core/styles/combined";
+@import "work-styles";
 
 .layout-main.submit-work .elevator-pitch {
   > form {
-    @include main-restricted();
+    width       : 300px;
+    margin-left : auto;
+    margin-right: auto;
+    display     : block;
   }
 }

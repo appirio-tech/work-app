@@ -1,16 +1,16 @@
-@import "../../core/styles/combined";
+@import "work-styles";
 
 footer.layout-footer {
-  margin-top: $margin-20;
-  padding: $padding-25;
+  margin-top: 20px;
+  padding: 25px;
 
   ul {
     li {
       display: inline-block;
-      margin-right: $margin-20;
+      margin-right: 20px;
 
       a {
-        color: $white;
+        color: #fff;
         text-decoration: underline;
       }
     }

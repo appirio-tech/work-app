@@ -25,6 +25,8 @@ ul
 
       .bottom(ng-class="project.class")
         img.checkmark(ng-if="project.checkmark", src="manage/images/{{project.checkmark}}")
+        // TODO: replace default avatar image
+        img.avatar(ng-if="project.avatar", src="http://www.topcoder.com/i/m/cardiboy_big.jpg")
 
         span.status {{project.message}}
 
@@ -36,4 +38,16 @@ ul
             ui-sref="submit-work.flow({ id: project.id })") Continue setup
 
           span(ng-if="project.status == 'Submitted'")
-            a(href="#/timeline/{{project.id}}") Waiting for Project Approval
+            a(href="#/timeline/{{project.id}}") Awaiting Estimate
+
+          a(ng-if="project.status == 'Assigned'",
+            href="#/timeline/{{project.id}}") Meet your copilot
+
+          a(ng-if="project.status == 'Estimate'",
+            href="#/timeline/{{project.id}}") View your quote and begin
+
+          a(ng-if="project.status == 'Launched'",
+            href="#/timeline/{{project.id}}") View project
+
+          a(ng-if="project.status == 'Messaged'",
+            href="#/timeline/{{project.id}}") View 1 unread message

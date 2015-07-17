@@ -5,33 +5,38 @@
     .module('app.manage')
     .controller('ManageController', ManageController);
 
-  ManageController.$inject = ['logger', 'workRequests', '$state', 'work'];
+  ManageController.$inject = ['logger', 'workRequests', '$state', '$stateParams'];
   /* @ngInject */
-  function ManageController(logger, workRequests, $state, work) {
+  function ManageController(logger, workRequests, $state, $stateParams) {
     var vm = this;
     vm.title = 'Work Requests';
     vm.workRequests = [];
     vm.newProject = null;
     vm.formatWorkRequests = null;
     vm.go = null;
-    vm.showMessage = false;
+    vm.showMessage = $stateParams.saved
 
     vm.activate = function() {
       logger.info('Activated Work Request Single View');
-      vm.workRequests = vm.formatWorkRequests(workRequests);
-      if (work) {
-        vm.showMessage = true;
-      }
+      vm.workRequests = vm.formatWorkRequests(vm.workRequests.concat(workRequests));
     };
 
     vm.formatWorkRequests = function(requests) {
       var statusClasses = {
         'Incomplete': 'incomplete',
-        'Submitted' : 'submitted'
+        'Submitted' : 'submitted',
+        'Assigned'  : 'assigned',
+        'Estimate'  : 'estimate',
+        'Launched'  : 'launched',
+        'Messaged'  : 'messaged'
       };
       var statusMessages = {
         'Incomplete': 'PROJECT SUBMISSION INCOMPLETE',
-        'Submitted' : 'PROJECT SUBMITTED'
+        'Submitted' : 'PROJECT SUBMITTED',
+        'Assigned'  : 'COPILOT ASSIGNED',
+        'Estimate'  : 'PROJECT APPROVED!',
+        'Launched'  : 'PROJECT LAUNCHED',
+        'Messaged'  : 'PROJECT LAUNCHED'
       };
       var checkmarks = {
         'Submitted': 'check-solid-blue.svg',
@@ -44,6 +49,9 @@
 
       return requests.map(function(work) {
         work.status      = work.status || 'Incomplete';
+        if (work.status == 'Assigned' || work.status == 'Estimate' || work.status == 'Launched' || work.status == 'Messaged') {
+          work.avatar = true;
+        }
         work.class       = statusClasses[work.status];
         work.message     = statusMessages[work.status];
         work.checkmark   = checkmarks[work.status];
