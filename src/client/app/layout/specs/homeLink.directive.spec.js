@@ -22,8 +22,8 @@ describe('HomeLinkDirective', function() {
     $rootScope.$digest();
   });
 
-  it('should set the ASP path to manage page "#/manage"', function() {
-    expect(element.attr('href')).to.equal("#/manage")
+  it('should set the ASP path to manage page "/manage"', function() {
+    expect(element.attr('href')).to.equal("/manage")
   });
  });
 
@@ -36,8 +36,8 @@ describe('HomeLinkDirective', function() {
     $rootScope.$digest();
   });
 
-  it('should set the ASP path to landing page "#/"', function() {
-    expect(element.attr('href')).to.equal("#/")
+  it('should set the ASP path to landing page "/"', function() {
+    expect(element.attr('href')).to.equal("/")
   });
 });
 });
