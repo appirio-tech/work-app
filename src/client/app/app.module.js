@@ -15,7 +15,7 @@
     'ap-copilot-flow',
     'newrelic'
   ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
-    $locationProvider.html5Mode(false);
+    $locationProvider.html5Mode(true)
 
     $stateProvider.state('timeline', {
       url         : '/timeline/:workId',
