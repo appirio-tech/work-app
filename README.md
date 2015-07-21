@@ -1,6 +1,6 @@
 # ap-work-client
 
-[![Build Status](https://travis-ci.org/appirio-tech/gulp-tasks.svg?branch=master)](https://travis-ci.org/appirio-tech/gulp-tasks)
+[![Build Status](https://travis-ci.org/appirio-tech/work-app.svg?branch=dev)](https://travis-ci.org/appirio-tech/work-app)
 
 [![Coverage Status](https://coveralls.io/repos/appirio-tech/ap-work-client/badge.svg?branch=dev&t=s1nAzI)](https://coveralls.io/r/appirio-tech/ap-work-client?branch=dev)
 
