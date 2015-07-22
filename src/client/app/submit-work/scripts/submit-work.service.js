@@ -28,6 +28,7 @@
     // using a default helps with resetting after submit
     var defaultWork = {
       name             : null,
+      modelType        : 'app-project',
       requestType      : null,
       usageDescription : null,
       summary          : null,
@@ -49,7 +50,8 @@
       'summary',
       'competitorApps',
       'status',
-      'features'
+      'features',
+      'modelType'
     ];
 
     service.save = function(status, reset) {
