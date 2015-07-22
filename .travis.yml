@@ -17,30 +17,30 @@ script:
 - gulp optimize-build
 - gulp finger-print
 - gulp finger-print-replace
-# sudo: false
-# deploy:
-#   provider: s3
-#   access_key_id: "$AWS_KEY"
-#   secret_access_key: "$AWS_SECRET"
-#   bucket: "$AWS_BUCKET"
-#   skip_cleanup: true
-#   local_dir: dist
-#   on:
-#     branch: dev
-# env:
-#   global:
-#   - AWS_BUCKET=work.topcoder-dev.com
-#   - AWS_REGION=us-east-1
-#   - BASE_URL=/work/
-#   - AUTH0_DOMAIN=topcoder-dev.auth0.com
-#   - BASE_API_URL=https://api.topcoder-dev.com/v3/
-#   - NEWRELIC_APPLICATION_ID=7374849
-#   - NEWRELIC_LICENSE_KEY=496af5ee90
-#   - API_URL=https://api.topcoder-dev.com/v3
-#   - API_URL_V2=https://api.topcoder-dev.com/v2
-#   - AVATAR_URL=http://www.topcoder.com
-#   - SUBMISSION_URL=https://studio.topcoder.com
-#   - AUTH0_CLIENT_ID=JFDo7HMkf0q2CkVFHojy3zHWafziprhT
-#   - secure: bde7qf1G8SUAFlW1frW/KS5bsiTfkjnnTtpZKuqItDnj6oJ/sNsBlU8x/n4hsvl7ziOfn1bPt8LpJLtQFU3IoMsCxuWQMim9vk88+nmgjYebC+76b3UDwgZfNwoQD9l4jvRHXmdxixStv3y5doul5dx/AXe7e+RdWyDEynvi+0E=
-#   - secure: RT17TuPmyiLZiQpfHC7xUzxmMsnEZY+A+b96D+XHj5LNOmXFmMB4JaUaOmX5veWU4Lxk6Mw2IzvfJwjmKSmHZhaeERA4QljM2Sqm5/k5bKJkNVocGvLP1Gm0ARwJJ0I572aJQdWvEVgHXID1HjuCjrDrxPv8UoxLKb8SlmB2krc=
+sudo: false
+deploy:
+  provider: s3
+  access_key_id: "$AWS_KEY"
+  secret_access_key: "$AWS_SECRET"
+  bucket: "$AWS_BUCKET"
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: dev
+env:
+  global:
+  - AWS_BUCKET=work.topcoder-dev.com
+  - AWS_REGION=us-east-1
+  - BASE_URL=/work/
+  - AUTH0_DOMAIN=topcoder-dev.auth0.com
+  - BASE_API_URL=https://api.topcoder-dev.com/v3/
+  - NEWRELIC_APPLICATION_ID=7374849
+  - NEWRELIC_LICENSE_KEY=496af5ee90
+  - API_URL=https://api.topcoder-dev.com/v3
+  - API_URL_V2=https://api.topcoder-dev.com/v2
+  - AVATAR_URL=http://www.topcoder.com
+  - SUBMISSION_URL=https://studio.topcoder.com
+  - AUTH0_CLIENT_ID=JFDo7HMkf0q2CkVFHojy3zHWafziprhT
+  - secure: bde7qf1G8SUAFlW1frW/KS5bsiTfkjnnTtpZKuqItDnj6oJ/sNsBlU8x/n4hsvl7ziOfn1bPt8LpJLtQFU3IoMsCxuWQMim9vk88+nmgjYebC+76b3UDwgZfNwoQD9l4jvRHXmdxixStv3y5doul5dx/AXe7e+RdWyDEynvi+0E=
+  - secure: RT17TuPmyiLZiQpfHC7xUzxmMsnEZY+A+b96D+XHj5LNOmXFmMB4JaUaOmX5veWU4Lxk6Mw2IzvfJwjmKSmHZhaeERA4QljM2Sqm5/k5bKJkNVocGvLP1Gm0ARwJJ0I572aJQdWvEVgHXID1HjuCjrDrxPv8UoxLKb8SlmB2krc=
 
