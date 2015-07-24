@@ -4,10 +4,10 @@ h3.optional (optional)
 
 h3 Upload any files you may have that can help us understand your design preferences.
 
-form(name="designForm", ng-submit="vm.submit()")
+form(name="designForm")
   fieldset
     ap-uploader(
       config="vm.uploaderMultipleConfig",
       status="vm.uploaderMultipleStatus"
     )
-  button.submit(type="submit", ng-show="vm.uploaderStatus != 'started' ") NEXT
+  button.submit(type="button" ng-click="vm.submit()" ng-show="vm.uploaderStatus != 'started' ") NEXT
