@@ -14,8 +14,7 @@
     vm.work           = SubmitWorkService.work;
     vm.submit;
 
-    logger.log('Activated Designs View');
-
+    //file upload configs
     var domain = 'http://api.topcoder-dev.com';
     var workId = vm.work.id
     var assetType = 'specs';
