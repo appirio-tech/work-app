@@ -6,7 +6,8 @@ h3 Upload any files you may have that can help us understand your design prefere
 
 form(name="designForm", ng-submit="vm.submit()")
   fieldset
-
-    ap-uploader(config="vm.uploaderConfig", status="vm.uploaderStatus")
-
+    ap-uploader(
+      config="vm.uploaderMultipleConfig",
+      status="vm.uploaderMultipleStatus"
+    )
   button.submit(type="submit", ng-show="vm.uploaderStatus != 'started' ") NEXT
