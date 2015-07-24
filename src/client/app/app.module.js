@@ -12,6 +12,7 @@
     'appirio-tech-timeline',
     'appirio-tech-messaging',
     'appirio-tech-ng-auth',
+    'appirio-tech-ng-ui-components',
     'ap-copilot-flow',
     'newrelic'
   ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
