@@ -24,14 +24,6 @@ describe('SubmitDesignsController', function () {
         expect(controller.title).to.equal('Designs');
       });
 
-      it('should be able to add filenames', function() {
-        expect(controller.imageFilenames.length).to.equal(0);
-        controller.filename = 'foo';
-        controller.add();
-        expect(controller.filename).to.equal('');
-        expect(controller.imageFilenames.length).to.equal(1);
-      });
-
     });
   });
 });
