@@ -16,7 +16,7 @@
         state: 'view-projects',
         config: {
           url: '/projects',
-          templateUrl: 'projects/views/projectTabs.html',
+          templateUrl: 'views/projectTabs.html',
           controller: 'ProjectsTabController',
           controllerAs: 'vm',
           title: 'View Projects',
@@ -26,27 +26,17 @@
         state: 'view-projects.assigned',
         config: {
         url: '/assigned',
-        templateUrl: 'projects/views/projects.html',
+        templateUrl: 'views/projects.html',
         controller: 'ProjectsController',
-        controllerAs: 'vm',
-        resolve: {
-          workRequests: ['ProjectsService', function(ProjectsService) {
-            return ProjectsService.getAssignedProjects();
-          }]
-        }
+        controllerAs: 'vm'
         }
       }, {
         state: 'view-projects.open',
         config: {
           url: '/open',
-          templateUrl: 'projects/views/projects.html',
+          templateUrl: 'views/projects.html',
           controller: 'ProjectsController',
-          controllerAs: 'vm',
-          resolve: {
-            workRequests: ['ProjectsService', function(ProjectsService) {
-              return ProjectsService.getWorkRequests();
-            }]
-          }
+          controllerAs: 'vm'
           }
         }
     ];
