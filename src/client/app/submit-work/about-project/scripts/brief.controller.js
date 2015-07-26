@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
+  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'apiUrl'];
   /* @ngInject */
-  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService) {
+  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService, apiUrl) {
     var vm           = this;
     vm.title         = 'Brief';
     vm.work          = SubmitWorkService.work;
@@ -25,17 +25,17 @@
     vm.questionSubmit;
 
     //file upload configs
-    var domain = 'http://api.topcoder-dev.com';
     var workId = vm.work.id
     var assetType = 'brief';
+    var domain = apiUrl;
 
-     vm.uploaderSingleStatus = 'pristine';
-     vm.uploaderSingleConfig = {
-       name: 'singleBriefUploader',
+     vm.briefUploaderStatus = 'pristine';
+     vm.briefUploaderConfig = {
+       name: 'briefUploader',
        allowMultiple: false,
-       queryUrl: domain + '/v3/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
-       urlPresigner: domain + '/v3/work-files/uploadurl',
-       fileEndpoint: domain + '/v3/work-files/:fileId',
+       queryUrl: domain + 'work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
+       urlPresigner: domain + 'work-files/uploadurl',
+       fileEndpoint: domain + 'work-files/:fileId',
        saveParams: {
          workId: workId,
          assetType: assetType
@@ -85,7 +85,7 @@
       }
     };
 
-    $scope.$watch('vm.uploaderSingleStatus', function(status) {
+    $scope.$watch('vm.briefUploaderStatus', function(status) {
       if (status) {
        NavService.findState('brief').uploaderStatus = status;
       }

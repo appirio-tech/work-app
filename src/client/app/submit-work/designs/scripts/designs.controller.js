@@ -6,26 +6,26 @@
     .module('app.submit-work')
     .controller('SubmitDesignsController', SubmitDesignsController);
 
-  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
+  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'apiUrl'];
   /* @ngInject */
-  function SubmitDesignsController($scope, logger, $state, SubmitWorkService, NavService) {
+  function SubmitDesignsController($scope, logger, $state, SubmitWorkService, NavService, apiUrl) {
     var vm            = this;
     vm.title          = 'Designs';
     vm.work           = SubmitWorkService.work;
     vm.submit;
 
     //file upload configs
-    var domain = 'http://api.topcoder-dev.com';
+    var domain = apiUrl;
     var workId = vm.work.id
     var assetType = 'specs';
 
-    vm.uploaderMultipleStatus = 'pristine';
-    vm.uploaderMultipleConfig = {
-      name: 'multipleUploader',
+    vm.designsUploaderStatus = 'pristine';
+    vm.designsUploaderConfig = {
+      name: 'designsUploader',
       allowMultiple: true,
-      queryUrl: domain + '/v3/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
-      urlPresigner: domain + '/v3/work-files/uploadurl',
-      fileEndpoint: domain + '/v3/work-files/:fileId',
+      queryUrl: domain + 'work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
+      urlPresigner: domain + 'work-files/uploadurl',
+      fileEndpoint: domain + 'work-files/:fileId',
       saveParams: {
         workId: workId,
         assetType: assetType
@@ -38,7 +38,7 @@
       }
     };
 
-    $scope.$watch('vm.uploaderMultipleStatus', function(status) {
+    $scope.$watch('vm.designsUploaderStatus', function(status) {
       if (status) {
        NavService.findState('designs').uploaderStatus = status;
       }
