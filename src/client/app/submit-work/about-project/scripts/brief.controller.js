@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'apiUrl'];
+  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'API_URL'];
   /* @ngInject */
-  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService, apiUrl) {
+  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService, API_URL) {
     var vm           = this;
     vm.title         = 'Brief';
     vm.work          = SubmitWorkService.work;
@@ -27,15 +27,15 @@
     //file upload configs
     var workId = vm.work.id
     var assetType = 'brief';
-    var domain = apiUrl;
+    var domain = API_URL;
 
      vm.briefUploaderStatus = 'pristine';
      vm.briefUploaderConfig = {
        name: 'briefUploader',
        allowMultiple: false,
-       queryUrl: domain + 'work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
-       urlPresigner: domain + 'work-files/uploadurl',
-       fileEndpoint: domain + 'work-files/:fileId',
+       queryUrl: domain + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
+       urlPresigner: domain + '/work-files/uploadurl',
+       fileEndpoint: domain + '/work-files/:fileId',
        saveParams: {
          workId: workId,
          assetType: assetType

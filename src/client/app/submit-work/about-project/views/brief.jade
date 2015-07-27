@@ -1,4 +1,4 @@
-  h2 About your project
+h2 About your project
 
 h3(ng-show="vm.showYesNo || vm.showBrief") Do you have a project brief to upload?
 
@@ -14,7 +14,7 @@ form(name="questionForm", ng-submit="vm.questionSubmit()")
   ul.invalid-messages(ng-show="questionForm.$dirty")
     li(ng-show="questionForm.question.$error.required") Please tell us if you have a brief to upload.
 
-form(name="briefForm", ng-show="vm.showBrief")
+form(name="briefForm" ng-show="vm.showBrief")
   ap-uploader(
       config="vm.briefUploaderConfig",
       status="vm.briefUploaderStatus"
