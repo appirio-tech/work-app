@@ -1,5 +1,14 @@
 ul.nav(ng-show="projects.length > 0")
   li
+    a(ui-sref="submissions({id: 123})") Submissions
+
+  li
+    a(ui-sref="submission-slides({id: 123})") Slides
+
+  li
+    a(ui-sref="submission-details({id: 123})") Details
+
+  li
     a(ui-sref="view-work-multiple") Dashboard
 
   li
@@ -7,6 +16,7 @@ ul.nav(ng-show="projects.length > 0")
 
   li
     a(href="") Projects
+
 
     ul
       li

@@ -23,6 +23,8 @@
 - scripts.push('/core/core.constants')
 - scripts.push('/core/core.route')
 - scripts.push('/scripts/messaging.controller')
+- scripts.push('/scripts/submissions.controller')
+- scripts.push('/scripts/slides-details.controller')
 
 - var css = []
 - var landscapeCSS = []
@@ -93,8 +95,8 @@ include submit-work/includes
 - css.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
 
 //- ng submissions
-//- - scripts.push('/bower_components/appirio-tech-ng-submissions/dist/main')
-//- - css.push('/bower_components/appirio-tech-ng-submissions/dist/main')
+- scripts.push('/bower_components/appirio-tech-ng-submissions/dist/main')
+- css.push('/bower_components/appirio-tech-ng-submissions/dist/main')
 
 //- messaging
 - scripts.push('/bower_components/appirio-tech-ng-messaging/dist/main')
@@ -137,8 +139,9 @@ html(ng-app='app')
         FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-events.json'],
         FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v2.json'],
         FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-threads.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-messages.json']
-        ]);
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-messages.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-submissions.json']
+      ]);
 
     // endRemoveIf(production)
 

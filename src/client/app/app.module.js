@@ -13,6 +13,7 @@
     'appirio-tech-messaging',
     'appirio-tech-ng-auth',
     'appirio-tech-ng-ui-components',
+    'appirio-tech-submissions',
     'ap-copilot-flow',
     'newrelic'
   ]).config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
@@ -32,6 +33,30 @@
       controller  : 'MessagingPageController',
       controllerAs: 'vm',
       templateUrl : 'views/messaging.html'
+    });
+
+    $stateProvider.state('submissions', {
+      url         : '/submissions/:id',
+      title       : 'Submissions',
+      controller  : 'SubmissionsPageController',
+      controllerAs: 'vm',
+      templateUrl : 'views/submissions.html'
+    });
+
+    $stateProvider.state('submission-slides', {
+      url         : '/submissions/slides/:id',
+      title       : 'Submissions Slides',
+      controller  : 'SlidesDetailsPageController',
+      controllerAs: 'vm',
+      templateUrl : 'views/submission-slides.html'
+    });
+
+    $stateProvider.state('submission-details', {
+      url         : '/submissions/details/:id',
+      title       : 'Submissions Details',
+      controller  : 'SlidesDetailsPageController',
+      controllerAs: 'vm',
+      templateUrl : 'views/submission-details.html'
     });
 
   }]);

@@ -40,7 +40,8 @@
     "appirio-tech-copilot": "0.x.x",
     "appirio-tech-ng-auth": "1.x.x",
     "appirio-tech-ng-file-upload": "0.x.x",
-    "appirio-tech-ng-ui-components": "0.x.x"
+    "appirio-tech-ng-ui-components": "0.x.x",
+    "appirio-tech-ng-submissions": "master"
   },
   "resolutions": {
     "angular": "1.3.15"
