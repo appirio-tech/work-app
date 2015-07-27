@@ -28,7 +28,12 @@
         url: '/assigned',
         templateUrl: 'views/projects.html',
         controller: 'ProjectsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          workRequests: ['ProjectsService', function(ProjectsService) {
+            return ProjectsService.getAssignedProjects();
+          }]
+        }
         }
       }, {
         state: 'view-projects.open',
@@ -36,7 +41,12 @@
           url: '/open',
           templateUrl: 'views/projects.html',
           controller: 'ProjectsController',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          resolve: {
+            workRequests: ['ProjectsService', function(ProjectsService) {
+              return ProjectsService.getWorkRequests();
+            }]
+          }
           }
         }
     ];
