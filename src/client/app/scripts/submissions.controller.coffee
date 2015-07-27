@@ -1,11 +1,11 @@
 'use strict'
 
-SubmissionsPageController = ($stateParams, $scope) ->
+SubmissionsPageController = ($scope) ->
   vm        = this
-  vm.workId = $stateParams.id
+  vm.workId = $scope.workId
 
   vm
 
-SubmissionsPageController.$inject = ['$stateParams', '$scope']
+SubmissionsPageController.$inject = ['$scope']
 
 angular.module('app').controller 'SubmissionsPageController', SubmissionsPageController

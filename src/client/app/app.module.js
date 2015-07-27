@@ -28,7 +28,7 @@
     });
 
     $stateProvider.state('messaging', {
-      url         : '/messaging/:id',
+      url         : '/messaging/:workId',
       title       : 'Messaging',
       controller  : 'MessagingPageController',
       controllerAs: 'vm',
@@ -36,7 +36,7 @@
     });
 
     $stateProvider.state('submissions', {
-      url         : '/submissions/:id',
+      url         : '/submissions',
       title       : 'Submissions',
       controller  : 'SubmissionsPageController',
       controllerAs: 'vm',
@@ -44,7 +44,7 @@
     });
 
     $stateProvider.state('submission-slides', {
-      url         : '/submissions/slides/:id',
+      url         : '/submissions/slides',
       title       : 'Submissions Slides',
       controller  : 'SlidesDetailsPageController',
       controllerAs: 'vm',
@@ -52,7 +52,7 @@
     });
 
     $stateProvider.state('submission-details', {
-      url         : '/submissions/details/:id',
+      url         : '/submissions/details',
       title       : 'Submissions Details',
       controller  : 'SlidesDetailsPageController',
       controllerAs: 'vm',
