@@ -21,7 +21,7 @@
 
     vm.designsUploaderStatus = 'pristine';
     vm.designsUploaderConfig = {
-      name: 'designsUploader',
+      name: 'designsUploader' + workId,
       allowMultiple: true,
       queryUrl: domain + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
       urlPresigner: domain + '/work-files/uploadurl',

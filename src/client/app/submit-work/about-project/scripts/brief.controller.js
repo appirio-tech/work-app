@@ -31,7 +31,7 @@
 
      vm.briefUploaderStatus = 'pristine';
      vm.briefUploaderConfig = {
-       name: 'briefUploader',
+       name: 'briefUploader' + workId,
        allowMultiple: false,
        queryUrl: domain + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
        urlPresigner: domain + '/work-files/uploadurl',
