@@ -20,7 +20,7 @@ var ManageData = function() {
                         	'description' : 'This is demo project for testing manage project 23',
                         	'featureList' : ['login'],
                         	'acceptTerms' :'Y'
-                        },
+                        }/*,
                         
                         {
                         	'name' : 'Test Project -Aq45',
@@ -30,10 +30,10 @@ var ManageData = function() {
                         	'featureList' : ['login'],
                         	'acceptTerms' :'Y',
                         	'workSummary' : '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
-                        }
+                        }*/
                        ],
     
-    this.baseUrl = 'https://www.topcoder-dev.com/work/#/login',
-    this.manageProjectUrl =  'https://www.topcoder-dev.com/work/#/manage';
+    this.baseUrl = 'http://work.topcoder-dev.com/#/login',
+    this.manageProjectUrl =  'http://work.topcoder-dev.com/#/manage';
 };
 module.exports = new ManageData;

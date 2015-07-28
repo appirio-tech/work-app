@@ -25,6 +25,13 @@ describe('login', function() {
 			    //var loginPage = new LoginPage();
 			  console.log('manage page editProject'+newProjectData.manageProjectUrl);
 			  newProject.get(newProjectData.manageProjectUrl);
+			  var actionItem = element(by.css('.heading button'));
+			  console.log('this.actionItem '+actionItem);
+			  var EC = protractor.ExpectedConditions;
+			  var isClickable = EC.elementToBeClickable(actionItem);
+			  browser.wait(isClickable, 20000);
+			  expect(true).toEqual(true);
+//			  expect(actionItem.getText(), 'New Projec');
 	//		  newProject.editProject();
 		  });
 	  

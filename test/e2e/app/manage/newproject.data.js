@@ -10,9 +10,9 @@ var NewProjectData = function() {
     
     this.projectList = [
                         {
-                        	'name' : 'Test Project -Aq311',
+                        	'name' : 'Test Project -Aq1009',
                         	'type' :'Design',
-                        	'upload' : 'yes',
+                        	'upload' : 'no',
                         	'description' : 'This is demo project for testing manage project',
                         	'featureList' : [ 
                         	    { 'featureName' : 'login', 'explanation' : 'it is login feature'},
@@ -25,12 +25,12 @@ var NewProjectData = function() {
                         		],
                         
                         	'acceptTerms' :'Y',
-                        	'workSummary' : '12345678901234567890'
+                        	'workSummary' : '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678900'
                         },
                         {
                         	'name' : 'Test Project -Aq322',
                         	'type' :'Design',
-                        	'upload' : 'yes',
+                        	'upload' : 'no',
                         	'description' : 'This is demo project for testing manage project',
                         	'featureList' : ['login'],
                         	'acceptTerms' :'Y',
@@ -38,7 +38,7 @@ var NewProjectData = function() {
                         }
                        ],
     
-    this.baseUrl = 'https://www.topcoder-dev.com/work/#/login',
-    this.manageProjectUrl = 'https://www.topcoder-dev.com/work/#/manage';
+    this.baseUrl = 'http://work.topcoder-dev.com/#/login',
+    this.manageProjectUrl = 'http://work.topcoder-dev.com/#/manage';
 };
 module.exports = new NewProjectData;
