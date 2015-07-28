@@ -14,9 +14,12 @@ form(name="questionForm", ng-submit="vm.questionSubmit()")
   ul.invalid-messages(ng-show="questionForm.$dirty")
     li(ng-show="questionForm.question.$error.required") Please tell us if you have a brief to upload.
 
-form(name="briefForm", ng-show="vm.showBrief", ng-submit="vm.submitBrief()" required="true")
-  ap-uploader(config="vm.uploaderConfig", status="vm.uploaderStatus")
-  button.submit(type="submit", ng-hide="vm.uploaderStatus == 'started'") NEXT
+form(name="briefForm" ng-show="vm.showBrief")
+  ap-uploader(
+      config="vm.briefUploaderConfig",
+      status="vm.briefUploaderStatus"
+    )
+  button.submit(type="button" ng-click="vm.submitBrief()" ng-hide="!vm.showBrief || vm.uploaderSingleStatus == 'started' ") NEXT
 
 form(name="elevatorForm", ng-show="vm.showElevator", ng-submit="vm.submitElevator()")
   textarea(
