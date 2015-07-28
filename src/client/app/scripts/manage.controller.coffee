@@ -2,7 +2,6 @@
 
 ManageController = ->
   vm       = this
-  vm.title = 'Work Requests'
 
   activate = ->
     vm
