@@ -17,7 +17,7 @@
 
       header {
         a {
-          @include font-line(18);
+          @include font-line(18px);
           color    : #fff;
         }
       }
@@ -26,7 +26,7 @@
         margin-top : 10px;
         color      : #e6e6e6;
 
-        @include font-line(14);
+        @include font-line(14px);
       }
     }
   }
