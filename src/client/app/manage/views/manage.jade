@@ -1,6 +1,8 @@
+div(ui-view="")
+
 .message(ng-if="vm.showMessage")
   img.checkmark-green(src="manage/images/check-solid-green.svg")
-  span Your project has been launched.  Your co-pilot will contact you within 1 business day.
+  p Your project has been launched.  Your co-pilot will contact you within 1 business day.
 
 .heading
   h1 Manage Projects
@@ -36,16 +38,16 @@ ul
             ui-sref="submit-work.flow({ id: project.id })") Continue setup
 
           span(ng-if="project.status == 'Submitted'")
-            a(href="#/timeline/{{project.id}}") Awaiting Estimate
+            a(href="/timeline/{{project.id}}") Awaiting Estimate
 
           a(ng-if="project.status == 'Assigned'",
-            href="#/timeline/{{project.id}}") Meet your copilot
+            href="/timeline/{{project.id}}") Meet your copilot
 
           a(ng-if="project.status == 'Estimate'",
-            href="#/timeline/{{project.id}}") View your quote and begin
+            href="/timeline/{{project.id}}") View your quote and begin
 
           a(ng-if="project.status == 'Launched'",
-            href="#/timeline/{{project.id}}") View project
+            href="/timeline/{{project.id}}") View project
 
           a(ng-if="project.status == 'Messaged'",
-            href="#/timeline/{{project.id}}") View 1 unread message
+            href="/timeline/{{project.id}}") View 1 unread message

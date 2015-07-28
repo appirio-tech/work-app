@@ -14,11 +14,12 @@ configs.fixture =
   destPath: configs.tempFolder
 
 configs.fixture.files = [
-  'bower_components/appirio-tech-api-schemas/v3.json'
-  'bower_components/appirio-tech-api-schemas/v2.json'
-  'bower_components/appirio-tech-api-schemas/v3-messages.json'
-  'bower_components/appirio-tech-api-schemas/v3-threads.json'
-  'bower_components/appirio-tech-api-schemas/v3-users.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v3-events.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v2.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v3-messages.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v3-threads.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v3-users.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v3-submissions.json'
 ]
 
 # TODO: CORS for https://topcoder-dev.auth0.com/oauth/ro is hard coded to allow http://localhost:3000/
@@ -77,3 +78,4 @@ configs.karma =
 loadTasksModule = require __dirname + '/node_modules/appirio-gulp-tasks/load-tasks.coffee'
 
 loadTasksModule.loadTasks configs
+

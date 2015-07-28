@@ -13,13 +13,13 @@
 
   function WorkRequest(ApiResource) {
     var config = {
-      url: 'app-work-requests',
+      url: 'work',
       resource: 'work-request'
     };
 
         //assigned projects
     var configCopilot = {
-      url: 'app-work-requests/:id',
+      url: 'work/:id',
       resource: 'copilot-work-request'
     }
 

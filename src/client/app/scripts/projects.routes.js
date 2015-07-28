@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.projects').run(runApp);
+    .module('ap-copilot-flow.projects').run(runApp);
 
   runApp.$inject = ['routerHelper', 'ProjectsService', 'ProjectDetailsService'];
   /* @ngInject */

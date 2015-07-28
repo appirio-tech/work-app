@@ -1,5 +1,14 @@
 ul.nav(ng-show="projects.length > 0")
   li
+    a(ui-sref="submissions") Submissions
+
+  li
+    a(ui-sref="submission-slides") Slides
+
+  li
+    a(ui-sref="submission-details") Details
+
+  li
     a(ui-sref="view-work-multiple") Dashboard
 
   li
@@ -8,9 +17,10 @@ ul.nav(ng-show="projects.length > 0")
   li
     a(href="") Projects
 
+
     ul
       li
         a(ui-sref="submit-work.flow") Create New Project
 
       li(ng-repeat="project in projects")
-        a(href="#/timeline/{{project.id}}") {{project.name}}
+        a(href="/timeline/{{project.id}}") {{project.name}}

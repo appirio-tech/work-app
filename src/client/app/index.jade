@@ -23,6 +23,8 @@
 - scripts.push('/core/core.constants')
 - scripts.push('/core/core.route')
 - scripts.push('/scripts/messaging.controller')
+- scripts.push('/scripts/submissions.controller')
+- scripts.push('/scripts/slides-details.controller')
 
 - var css = []
 - var landscapeCSS = []
@@ -81,23 +83,29 @@ include submit-work/includes
 - desktopCSS   = desktopCSS.concat(desktopFiles)
 
 //- timeline
-- scripts.push('/bower_components/appirio-tech-timeline/dist/main')
-- css.push('/bower_components/appirio-tech-timeline/dist/main')
-- landscapeCSS.push('/bower_components/appirio-tech-timeline/dist/main.landscape')
+- scripts.push('/bower_components/appirio-tech-ng-timeline/dist/main')
+- css.push('/bower_components/appirio-tech-ng-timeline/dist/main')
+- landscapeCSS.push('/bower_components/appirio-tech-ng-timeline/dist/main.landscape')
 
 //- ng auth
 - scripts.push('/bower_components/appirio-tech-ng-auth/dist/main')
 
+//- ng ui components
+- scripts.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
+- css.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
+
+//- ng submissions
+- scripts.push('/bower_components/appirio-tech-ng-submissions/dist/main')
+- css.push('/bower_components/appirio-tech-ng-submissions/dist/main')
+
 //- messaging
-- scripts.push('/bower_components/appirio-tech-messaging/dist/main')
-- css.push('/bower_components/appirio-tech-messaging/dist/main')
+- scripts.push('/bower_components/appirio-tech-ng-messaging/dist/main')
+- css.push('/bower_components/appirio-tech-ng-messaging/dist/main')
 - css.push('/styles/messaging')
 
 //- copilot
-- scripts.push('/bower_components/appirio-tech-copilot/build/js/copilot-app')
-- css.push('/bower_components/appirio-tech-copilot/build/styles/co-pilot-app')
-- landscapeCSS.push('/bower_components/appirio-tech-copilot/build/styles/co-pilot-mobile-landscape')
-- desktopCSS.push('/bower_components/appirio-tech-copilot/build/styles/desktop')
+- scripts.push('/bower_components/appirio-tech-copilot/dist/main')
+- css.push('/bower_components/appirio-tech-copilot/dist/main')
 - scripts.push('/scripts/projects.routes')
 - scripts.push('/scripts/project-details.routes')
 
@@ -106,6 +114,8 @@ include bowers
 doctype html
 html(ng-app='app')
   head
+    base(href="/")
+    script(history.pushState({}, "entry page", location.hash.substring(1)))
     //- This helps the ng-show/ng-hide animations start at the right place.
     //- Since Angular has this but needs to load, this gives us the class early.
     style.
@@ -126,12 +136,13 @@ html(ng-app='app')
       AutoConfigFakeServer.fakeServer.autoRespond = true;
 
       AutoConfigFakeServer.consume([
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json']
-
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-events.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v2.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-threads.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-messages.json'],
+        FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-submissions.json']
       ]);
+
     // endRemoveIf(production)
 
     title(ng-bind='title') Appiro Work Platform

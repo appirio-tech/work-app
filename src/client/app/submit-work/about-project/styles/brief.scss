@@ -12,6 +12,12 @@
     margin-right: auto;
     display     : block;
 
+    ap-uploader {
+      button {
+        margin: 5px;
+      }
+    }
+
 
     .character-count {
       text-align: right;

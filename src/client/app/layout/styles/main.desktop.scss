@@ -4,7 +4,7 @@
   > main {
     min-height: 620px;
       h2 {
-        @include font-line(52);
+        @include font-line(52px);
       }
   }
 }

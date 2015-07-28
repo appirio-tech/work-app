@@ -22,10 +22,15 @@
 
     vm.submit = function() {
       vm.error = false;
+
+      // Get the absolute url to our the confirmation page
+      var afterActivationURL = $state.href('view-work-multiple.confirmed',[], { absolute: true });
+
       var registerOptions = {
         handle: vm.username,
         password: vm.password,
-        email: vm.email
+        email: vm.email,
+        afterActivationURL: afterActivationURL
       };
       UserV3Service.createUser(registerOptions, registerSuccess, registerError);
     };

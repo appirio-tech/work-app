@@ -127,7 +127,7 @@ $header-height: 50px;
       overflow                  : hidden;
 
       @include transition (all 0.2s ease-in-out);
-      @include font-line(12);
+      @include font-line(12px);
 
       &:hover {
         max-height: $popup-max-height;
