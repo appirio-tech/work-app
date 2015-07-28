@@ -14,24 +14,6 @@
   function getStates() {
     return [
       {
-        state: 'view-work-multiple',
-        config: {
-          url: '/manage',
-          templateUrl: 'manage/views/manage.html',
-          controller: 'ManageController',
-          controllerAs: 'vm',
-          title: 'View Work',
-          params: {
-            saved: false
-          },
-          resolve: {
-            workRequests: ['ManageService', function(ManageService) {
-              return ManageService.getWorkRequests();
-            }]
-          }
-        }
-      },
-      {
         state: 'view-work-multiple.confirmed',
         config: {
           url: '/confirmed',
