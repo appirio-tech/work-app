@@ -17,7 +17,7 @@
 
       @include span-columns(10);
       @include shift(1);
-      @include font-line(50);
+      @include font-line(50px);
     }
   }
 
