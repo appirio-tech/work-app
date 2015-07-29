@@ -1,0 +1,82 @@
+- var css          = []
+- var landscapeCSS = []
+- var desktopCSS   = []
+- var bowercss     = []
+
+- css.push("/layout/styles/project-nav")
+- css.push("/layout/styles/main")
+- css.push("/layout/styles/header")
+- css.push("/layout/styles/footer")
+- css.push("/layout/styles/modal")
+- css.push("/auth/styles/login")
+- css.push("/auth/styles/register")
+- css.push("/getting-started/styles/getting-started")
+- css.push("/manage/styles/manage")
+- css.push("/submit-work/submit-work")
+- css.push("/submit-work/aside/submit-work-aside")
+- css.push("/submit-work/about-project/styles/name")
+- css.push("/submit-work/about-project/styles/type")
+- css.push("/submit-work/about-project/styles/brief")
+- css.push("/submit-work/about-project/styles/elevator-pitch")
+- css.push("/submit-work/about-project/styles/competitors")
+- css.push("/submit-work/users/styles/users")
+- css.push("/submit-work/features/styles/features")
+- css.push("/submit-work/launch/styles/success")
+- css.push("/submit-work/launch/styles/estimate")
+- css.push("/submit-work/designs/styles/designs")
+- css.push("/submit-work/launch/styles/success")
+- css.push('/bower_components/appirio-tech-ng-timeline/dist/main')
+- css.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
+- css.push('/bower_components/appirio-tech-ng-submissions/dist/main')
+- css.push('/bower_components/appirio-tech-ng-messaging/dist/main')
+- css.push('/styles/messaging')
+- css.push('/bower_components/appirio-tech-copilot/dist/main')
+
+- landscapeCSS.push("/layout/styles/main.landscape")
+- landscapeCSS.push("/manage/styles/manage.landscape")
+- landscapeCSS.push("/submit-work/features/styles/features.landscape")
+- landscapeCSS.push("/submit-work/launch/styles/success.landscape")
+- landscapeCSS.push('/bower_components/appirio-tech-ng-timeline/dist/main.landscape')
+
+- desktopCSS.push("/layout/styles/main.desktop")
+- desktopCSS.push("/getting-started/styles/getting-started.desktop")
+- desktopCSS.push("/manage/styles/manage.desktop")
+- desktopCSS.push("/submit-work/submit-work.desktop")
+- desktopCSS.push("/submit-work/features/styles/features.desktop")
+- desktopCSS.push("/submit-work/aside/submit-work-aside.desktop")
+- desktopCSS.push("/submit-work/about-project/styles/brief.desktop")
+
+- bowercss.push('/bower_components/font-awesome/css/font-awesome')
+
+= "\n"
+// build:css styles/lib.css
+= "\n"
+each path in bowercss
+  link(href=path + ".css", rel="stylesheet")
+  = "\n"
+// endbuild
+= "\n"
+
+// build:css styles/app.css
+= "\n"
+each path in css
+  link(href=path + ".css", rel="stylesheet")
+  = "\n"
+// endbuild
+= "\n"
+
+// build:css styles/mobile-landscape.css media="(min-width: 568px)"
+= "\n"
+each path in landscapeCSS
+  link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
+  = "\n"
+// endbuild
+= "\n"
+
+// build:css styles/desktop.css media="(min-width: 767px)"
+= "\n"
+each path in desktopCSS
+  link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
+  = "\n"
+// endbuild
+= "\n"
