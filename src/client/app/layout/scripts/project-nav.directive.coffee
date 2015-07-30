@@ -5,7 +5,13 @@ dir = () ->
     # using $rootScope because layout stuff happens outside
     # of the ui-view
     $rootScope.$on '$stateChangeSuccess', () ->
-      if $state.current.name in ['timeline', 'messaging']
+      states= ['timeline',
+               'messaging',
+               'submissions',
+               'submission-slides',
+               'submission-details']
+
+      if $state.current.name in states
         $scope.show = true
       else
         $scope.show = false
