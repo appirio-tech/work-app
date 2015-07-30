@@ -8,6 +8,7 @@ form(name="designForm")
   fieldset
     ap-uploader(
       config="vm.designsUploaderConfig",
-      status="vm.designsUploaderStatus"
+      uploading="vm.designsUploaderUploading",
+      has-errors="vm.designsUploaderHasErrors"
     )
   button.submit(type="button" ng-click="vm.submit()" ng-show="vm.uploaderStatus != 'started' ") NEXT

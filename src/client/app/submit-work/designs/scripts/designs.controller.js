@@ -19,7 +19,9 @@
     var workId = vm.work.id
     var assetType = 'specs';
 
-    vm.designsUploaderStatus = 'pristine';
+    vm.designsUploaderUploading = null;
+    vm.designsUploaderHasErrors = null;
+
     vm.designsUploaderConfig = {
       name: 'designsUploader' + workId,
       allowMultiple: true,
@@ -38,10 +40,14 @@
       }
     };
 
-    $scope.$watch('vm.designsUploaderStatus', function(status) {
-      if (status) {
-       NavService.findState('designs').uploaderStatus = status;
-      }
+    $scope.$watch('vm.designsUploaderUploading', function(newValue) {
+      console.log('designs uploading', newValue)
+       NavService.findState('designs').uploading= newValue;
+    });
+
+    $scope.$watch('vm.designsUploaderHasErrors', function(newValue) {
+      console.log('designs has errors', newValue)
+       NavService.findState('designs').hasErrors= newValue;
     });
 
     $scope.$watch('designForm', function(designForm) {
