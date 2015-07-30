@@ -19,7 +19,7 @@ describe('registration', function() {
 
 					 for(i; i <= browserLog.length-1; i++){
 						 if(browserLog[i].level.name === 'SEVERE'){
-//							 console.log('\n' + browserLog[i].level.name);
+							 console.log('\n' + browserLog[i].level.name);
 							 //uncomment to see the error
 							 console.log('(Possibly exception) \n' + browserLog[i].message);
 

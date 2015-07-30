@@ -5,14 +5,13 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 	//specs: ['specs/regression/*Spec.js'],
 	suites: {
-		regression1: 'app/auth/login.spec.js',
+//        regresiion0: 'app/auth/reg.spec.js',
+//		regression1: 'app/auth/login.spec.js',
 		regression2: 'app/manage/newproject.spec.js'//,
-	    regression3: 'app/manage/manage.spec.js'
+//	    regression3: 'app/manage/manage.spec.js'
 	  },
     //baseUrl: 'http://qualityshepherd.com/angular',
     //framework: 'jasmine2',
-	  
-//	  allScriptsTimeout: 500000,
 
     onPrepare: function(){
     	require('protractor-linkuisref-locator')(protractor);
@@ -24,8 +23,7 @@ exports.config = {
         
         var reporter=new HtmlReporter({
             baseDirectory: '/Volumes/Data/gitDemand/ap-work-client/test/e2e/report', // a location to store screen shots.
-//            baseDirectory:'report',
-        	docTitle: 'Protractor Demo Reporter',
+            docTitle: 'Protractor Demo Reporter',
             docName:    'protractor-demo-tests-report.html'
         });
         
@@ -46,7 +44,7 @@ exports.config = {
     },
     
     capabilities: {
-    	  'browserName': 'chrome'
+    	  'browserName': 'safari'
     	},
 
 	jasmineNodeOpts: {

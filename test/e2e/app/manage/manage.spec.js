@@ -24,7 +24,6 @@ var managePage = require('./manage.object');
 			  it('Go back to manage project link', function() {
 				  console.log('manage page'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);
-				  expect(true).toEqual(true);
 //				  managePage.continueSetup(project);
 			  });
 	  
