@@ -7,8 +7,8 @@ h3 Upload any files you may have that can help us understand your design prefere
 form(name="designForm")
   fieldset
     ap-uploader(
-      config="vm.designsUploaderConfig",
-      uploading="vm.designsUploaderUploading",
+      config="vm.designsUploaderConfig"
+      uploading="vm.designsUploaderUploading"
       has-errors="vm.designsUploaderHasErrors"
     )
   button.submit(type="button" ng-click="vm.submit()" ng-show="vm.uploaderStatus != 'started' ") NEXT
