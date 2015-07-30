@@ -27,7 +27,7 @@ SubmitWorkController = ($scope, SubmitWorkService, NavService, $state) ->
   $scope.launch = ->
     for state in NavService.states
 
-      unless state.form?.$valid && state.uploaderStatus != 'started'
+      unless state.form?.$valid && !state.uploading && !state.hasErrors
         state.form.$setDirty()
         activateState = state unless activateState
 
