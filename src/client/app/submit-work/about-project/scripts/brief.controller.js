@@ -72,7 +72,7 @@
     };
 
     vm.submitBrief = function () {
-      if (vm.uploaderSingleStatus != 'started') {
+      if (!vm.briefUploaderUploading && !vm.briefUploaderHasErrors) {
         NavService.setNextState('brief');
       }
     };
@@ -87,12 +87,10 @@
     };
 
     $scope.$watch('vm.briefUploaderUploading', function(newValue) {
-      console.log('new uploading', newValue)
        NavService.findState('brief').uploading = newValue;
     });
 
     $scope.$watch('vm.briefUploaderHasErrors', function(newValue) {
-      console.log('new errors', newValue)
        NavService.findState('brief').hasErrors = newValue;
     });
 

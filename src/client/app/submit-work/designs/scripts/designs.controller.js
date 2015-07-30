@@ -35,18 +35,16 @@
     };
 
     vm.submit = function () {
-      if ($scope.designForm.$valid) {
+      if (!vm.designsUploaderUploading && !vm.designsUploaderHasErrors) {
         NavService.setNextState('designs');
       }
     };
 
     $scope.$watch('vm.designsUploaderUploading', function(newValue) {
-      console.log('designs uploading', newValue)
        NavService.findState('designs').uploading= newValue;
     });
 
     $scope.$watch('vm.designsUploaderHasErrors', function(newValue) {
-      console.log('designs has errors', newValue)
        NavService.findState('designs').hasErrors= newValue;
     });
 
