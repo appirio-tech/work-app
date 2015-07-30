@@ -9,20 +9,14 @@ var ManagePage = function() {
 		browser.wait(isClickable, 20000);
 		
 		actionItemButton.click().then(function(){
-//	    	browser.waitForAngular();
 	    	console.log('click action item');
 	    	var workName = element(by.model('vm.work.name'));
-//	    	isClickable = EC.elementToBeClickable(actionItemButton);
-//	    	browser.wait(isClickable, 10000);
 	    	console.log('label item'+workName);
 	    	var workNameText = workName.getText();
 	    	console.log('workNameText '+workNameText);
 	    	workName.clear();
 	    	workName.sendKeys('Dummy Project');
 	    	
-//	    	element(by.id('submit-work-nav')).all(by.css('ul .estimate')).first();
-	    	
-//	    	var estimateLink = element(by.css('.estimate'));
 	    	var estimateLink = element(by.id('submit-work-nav')).all(by.css('ul .estimate')).first();
 	    	var isClickable = EC.elementToBeClickable(estimateLink);
 			browser.wait(isClickable, 20000);
@@ -45,38 +39,6 @@ var ManagePage = function() {
 
 	
 	this.continueSetup = function(project) {
-//		var actionItemButton = element(by.css('.heading button'));
-//		console.log('this.actionItem '+actionItemButton);
-//		var EC = protractor.ExpectedConditions;
-//		var isClickable = EC.elementToBeClickable(actionItemButton);
-//		browser.wait(isClickable, 10000);
-//		
-//		actionItemButton.click().then(function(){
-////	    	browser.waitForAngular();
-//	    	console.log('click action item');
-//	    	var workName = element(by.model('vm.work.name'));
-////	    	isClickable = EC.elementToBeClickable(actionItemButton);
-////	    	browser.wait(isClickable, 10000);
-//	    	console.log('label item'+workName);
-//	    	var workNameText = workName.getText();
-//	    	console.log('workNameText '+workNameText);
-//	    	workName.clear();
-//	    	workName.sendKeys('Dummy Project');
-//	    	
-//	    	var estimateLink = element(by.css('.estimate'));
-//	    	
-//	    	estimateLink.click().then(function() {
-//	    		var submitWork = element(by.id('submit-work-accept-terms'));
-//				submitWork.click();
-//				submitButton = element(by.css('.launch'));
-//				submitButton.click().then(function(){
-//					//console.log('hii testing complete');
-//				})
-//	    	});
-//		});
-		
-		
-//		var actionItemList = element.all(by.css('.action .ng-scope'));
 		var actionItem = element.all(by.css('.action .ng-scope')).get(0);
 		console.log('actionItem  '+ actionItem);
 		var EC = protractor.ExpectedConditions;
@@ -117,7 +79,6 @@ var ManagePage = function() {
     			submitButton.click().then(function() {
     				var yesNoUpload = null;
     				var cancelButton = element(by.css('.cancel'));
-//    				cancelButton.click().then(function() {
     				if(project.upload == 'yes') {
     					yesNoUpload = element(by.css('.yes'));
     				} else {
@@ -142,7 +103,6 @@ var ManagePage = function() {
     					}
     					
     					submitButton.click().then(function(){
-//    						submitButton = element(by.css('.submit'));
     						submitButton = element(by.name('competitorForm')).all(by.css('.submit')).first();
     						var isClickable = EC.elementToBeClickable(submitButton);
 	    			    	browser.wait(isClickable, 20000);
@@ -228,12 +188,10 @@ var ManagePage = function() {
     									} 
     									
     								}
-//    								submitButton = element(by.css('.submit'));
     								submitButton = element(by.name('featureForm')).all(by.css('.submit')).first();
     								var isClickable = EC.elementToBeClickable(submitButton);
 			    			    	browser.wait(isClickable, 20000);
     								submitButton.click().then(function(){
-//    									submitButton = element(by.css('.submit'));
     									submitButton = element(by.name('designForm')).all(by.css('.submit')).first();
     									var isClickable = EC.elementToBeClickable(submitButton);
     			    			    	browser.wait(isClickable, 20000);
@@ -265,18 +223,6 @@ var ManagePage = function() {
     });
   };
   
-  /*
-   this.editProject = function () {
-	  var workLabel = element(by.model('vm.work.name'));
-	  var EC = protractor.ExpectedConditions;
-	  console.log('label item '+workLabel);
-	  browser.driver.wait(protractor.until.elementIsNotVisible(workLabel));
-	  browser.wait(EC.not(EC.presenceOf(workLabel)), 10000);
-	  
-	  workLabel.sendKeys('new name is given');
-	
-  };
-  */
   
 };
 module.exports = new ManagePage();

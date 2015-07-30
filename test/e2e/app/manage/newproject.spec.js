@@ -17,22 +17,17 @@ describe('login', function() {
 		  (function(project) {
 	  
 		  it('Click on Project new link', function() {
-			    //var loginPage = new LoginPage();
 			  newProject.createNewProject(project);
 		  });
 		  
 		  it('Click on Project new link 2', function() {
-			    //var loginPage = new LoginPage();
 			  console.log('manage page editProject'+newProjectData.manageProjectUrl);
 			  newProject.get(newProjectData.manageProjectUrl);
 			  var actionItem = element(by.css('.heading button'));
-			  console.log('this.actionItem '+actionItem);
 			  var EC = protractor.ExpectedConditions;
 			  var isClickable = EC.elementToBeClickable(actionItem);
 			  browser.wait(isClickable, 20000);
 			  expect(true).toEqual(true);
-//			  expect(actionItem.getText(), 'New Projec');
-	//		  newProject.editProject();
 		  });
 	  
 		  afterEach(function() {  
@@ -42,9 +37,9 @@ describe('login', function() {
 	
 			        for(i; i<=browserLog.length-1; i++){
 			            if(browserLog[i].level.name === 'SEVERE'){
-//			                console.log('\n' + browserLog[i].level.name);
+			                console.log('\n' + browserLog[i].level.name);
 			                //uncomment to see the error
-//			                console.log('(Possibly exception) \n' + browserLog[i].message);
+			                console.log('(Possibly exception) \n' + browserLog[i].message);
 	
 			                severWarnings = true;
 			            }

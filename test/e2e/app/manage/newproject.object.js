@@ -49,8 +49,6 @@ var NewProjectPage = function() {
 	    			console.log('submitButton'+submitButton);
 	    			submitButton.click().then(function() {
 	    				var yesNoUpload = null;
-//	    				var cancelButton = element(by.css('.cancel'));
-//	    				cancelButton.click().then(function() {
 	    				if(project.upload == 'yes') {
 	    					yesNoUpload = element(by.css('.yes'));
 	    				} else {
@@ -67,7 +65,6 @@ var NewProjectPage = function() {
 	    					}
 	    					console.log('yesNoupload'+submitButton);
 	    					submitButton = element(by.name('elevatorForm')).all(by.css('.submit')).first();
-//	    					submitButton = element.all(by.css('.submit')).get(1);
 	    					console.log('competitorsLink '+submitButton);
 	    			    	var isClickable = EC.elementToBeClickable(submitButton);
 	    			    	browser.wait(isClickable,20000);

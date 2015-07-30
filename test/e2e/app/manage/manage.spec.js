@@ -25,16 +25,8 @@ var managePage = require('./manage.object');
 				  console.log('manage page'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);
 				  expect(true).toEqual(true);
-//				  managePage.continueSetup(project);
 			  });
 	  
-			  /*it('Click on Project Manage link 2', function() {
-		    	//var loginPage = new LoginPage();
-		  			console.log('manage page editProject');
-		  			managePage.editProject();
-		  			console.log('manage page editProjectrpp');
-		    
-	  			});*/
 	  
 			  afterEach(function() {  
 				  browser.manage().logs().get('browser').then(function(browserLog) {
