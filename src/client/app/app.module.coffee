@@ -38,39 +38,32 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/messaging.html'
 
   states['submissions'] =
-    url         : '/submissions'
+    url         : '/:workId/submissions/:phase'
     title       : 'Submissions'
     controller  : 'SubmissionsPageController'
     controllerAs: 'vm'
     templateUrl : 'views/submissions.html'
 
   states['submission-slides'] =
-    url         : '/submissions/slides'
+    url         : '/:workId/submissions/slides/:submissionId/:fileId'
     title       : 'Submissions Slides'
     controller  : 'SlidesDetailsPageController'
     controllerAs: 'vm'
     templateUrl : 'views/submission-slides.html'
 
-  states['submission-details'] =
-    url         : '/submissions/details'
-    title       : 'Submissions Details'
+  states['submission-detail'] =
+    url         : '/:workId/submissions/detail/:submissionId'
+    title       : 'Submissions Detail'
     controller  : 'SlidesDetailsPageController'
     controllerAs: 'vm'
-    templateUrl : 'views/submission-details.html'
-
-  states['manage'] =
-    url         : '/submissions/details'
-    title       : 'Submissions Details'
-    controller  : 'SlidesDetailsPageController'
-    controllerAs: 'vm'
-    templateUrl : 'views/submission-details.html'
+    templateUrl : 'views/submission-detail.html'
 
   states['view-work-multiple'] =
     url         : '/manage'
-    templateUrl : 'views/manage.html'
+    title       : 'View Work'
     controller  : 'ManageController'
     controllerAs: 'vm'
-    title       : 'View Work'
+    templateUrl : 'views/manage.html'
 
   for key, state of states
     $stateProvider.state key, state
