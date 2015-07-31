@@ -9,7 +9,7 @@ dir = () ->
                'messaging',
                'submissions',
                'submission-slides',
-               'submission-details']
+               'submission-detail']
 
       if $state.current.name in states
         $scope.show = true

@@ -1,8 +1,8 @@
 'use strict'
 
 MessagingPageController = ($stateParams, $window, UserV3Service, $scope) ->
-  vm = this
-  vm.threadId = $stateParams.id
+  vm              = this
+  vm.threadId     = $stateParams.id
   vm.subscriberId = null
 
   vm.back = ->
