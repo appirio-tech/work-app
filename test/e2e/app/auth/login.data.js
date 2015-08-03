@@ -10,7 +10,7 @@ var LoginData = function() {
                             		'password' : 'appirio123'
                             	}
                            ],
-    this.baseUrl = 'https://www.topcoder-dev.com/work/#/login';
+    this.baseUrl = 'https://work.topcoder-dev.com/#/login';
     
 };
 module.exports = new LoginData;
