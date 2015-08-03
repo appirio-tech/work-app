@@ -8,6 +8,6 @@ var RegData = function() {
   {'username': 'reg'+rand+'3', 'password': 'Appirio123', 'email':'rjain'+rand+'3'+'@appirio.com'}
   
   ],
-  this.registerUrl = 'http://work.topcoder-dev.com/#/register';
+  this.registerUrl = 'http://www.topcoder-dev.com/work/#/register';
 };
 module.exports = new RegData;

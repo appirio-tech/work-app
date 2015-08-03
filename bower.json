@@ -41,7 +41,7 @@
     "appirio-tech-ng-auth": "1.x.x",
     "appirio-tech-ng-file-upload": "0.x.x",
     "appirio-tech-ng-ui-components": "0.x.x",
-    "appirio-tech-ng-submissions": "0.x.x",
+    "appirio-tech-ng-submissions": "demo-v1",
     "appirio-tech-ng-projects": "0.x.x"
   },
   "resolutions": {

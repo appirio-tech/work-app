@@ -29,7 +29,8 @@
     var assetType = 'brief';
     var domain = API_URL;
 
-     vm.briefUploaderStatus = 'pristine';
+     vm.briefUploaderUploading = null;
+     vm.briefUploaderHasErrors = null;
      vm.briefUploaderConfig = {
        name: 'briefUploader' + workId,
        allowMultiple: false,
@@ -71,7 +72,7 @@
     };
 
     vm.submitBrief = function () {
-      if (vm.uploaderSingleStatus != 'started') {
+      if (!vm.briefUploaderUploading && !vm.briefUploaderHasErrors) {
         NavService.setNextState('brief');
       }
     };
@@ -85,10 +86,12 @@
       }
     };
 
-    $scope.$watch('vm.briefUploaderStatus', function(status) {
-      if (status) {
-       NavService.findState('brief').uploaderStatus = status;
-      }
+    $scope.$watch('vm.briefUploaderUploading', function(newValue) {
+       NavService.findState('brief').uploading = newValue;
+    });
+
+    $scope.$watch('vm.briefUploaderHasErrors', function(newValue) {
+       NavService.findState('brief').hasErrors = newValue;
     });
 
     $scope.$watch('questionForm', function(questionForm) {

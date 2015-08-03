@@ -1,12 +1,12 @@
 'use strict'
 
-SlidesDetailsPageController = ($scope) ->
+SlidesDetailsPageController = ($stateParams) ->
   vm              = this
-  vm.workId       = $scope.workId
-  vm.submissionId = $scope.submissionId
+  vm.workId       = $stateParams.workId
+  vm.submissionId = $stateParams.submissionId
 
   vm
 
-SlidesDetailsPageController.$inject = ['$scope']
+SlidesDetailsPageController.$inject = ['$stateParams']
 
 angular.module('app').controller 'SlidesDetailsPageController', SlidesDetailsPageController
