@@ -28,13 +28,13 @@
             }
           }]
         },
-        templateUrl: 'project-details/project-details.html'
+        templateUrl: 'views/project-details.html'
       }
     },{
       state: 'project-details.challenges',
       config: {
         url: '/challengeEstimates',
-        templateUrl: 'project-details/details-features/views/challenges.html',
+        templateUrl: 'views/challenges.html',
         controller: 'ChallengesController',
         controllerAs: 'vm'
       }

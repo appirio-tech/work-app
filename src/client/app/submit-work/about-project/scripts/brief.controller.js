@@ -6,9 +6,9 @@
     .module('app.submit-work')
     .controller('SubmitBriefController', SubmitBriefController);
 
-  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
+  SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'API_URL'];
   /* @ngInject */
-  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService) {
+  function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService, API_URL) {
     var vm           = this;
     vm.title         = 'Brief';
     vm.work          = SubmitWorkService.work;
@@ -17,13 +17,31 @@
     vm.showYesNo     = true;
     vm.showBrief     = false;
     vm.showElevator  = false;
-    vm.uploaderStatus = 'pristine';
     vm.toggleYes;
     vm.toggleNo;
     vm.toggleCancel;
     vm.submitElevator;
     vm.submitBrief;
     vm.questionSubmit;
+
+    //file upload configs
+    var workId = vm.work.id
+    var assetType = 'brief';
+    var domain = API_URL;
+
+     vm.briefUploaderUploading = null;
+     vm.briefUploaderHasErrors = null;
+     vm.briefUploaderConfig = {
+       name: 'briefUploader' + workId,
+       allowMultiple: false,
+       queryUrl: domain + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
+       urlPresigner: domain + '/work-files/uploadurl',
+       fileEndpoint: domain + '/work-files/:fileId',
+       saveParams: {
+         workId: workId,
+         assetType: assetType
+       }
+     };
 
     vm.toggleYes = function() {
       vm.showYesNo    = false;
@@ -54,7 +72,7 @@
     };
 
     vm.submitBrief = function () {
-      if ($scope.briefForm.$valid &&vm.uploaderStatus !== 'started') {
+      if (!vm.briefUploaderUploading && !vm.briefUploaderHasErrors) {
         NavService.setNextState('brief');
       }
     };
@@ -68,13 +86,15 @@
       }
     };
 
-    $scope.$watch('vm.uploaderStatus', function(status) {
-      if (status) {
-       NavService.findState('brief').uploaderStatus = status;
-      }
+    $scope.$watch('vm.briefUploaderUploading', function(newValue) {
+       NavService.findState('brief').uploading = newValue;
     });
 
-       $scope.$watch('questionForm', function(questionForm) {
+    $scope.$watch('vm.briefUploaderHasErrors', function(newValue) {
+       NavService.findState('brief').hasErrors = newValue;
+    });
+
+    $scope.$watch('questionForm', function(questionForm) {
       if (questionForm) {
         NavService.findState('brief').form = $scope.questionForm;
       }

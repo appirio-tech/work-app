@@ -30,10 +30,10 @@
     @include bg-image-ratio("/layout/images/sprite.png", "/layout/images/sprite-2x.png");
   }
 
-  @include font-line(14);
+  @include font-line(14px);
 
   h1 {
-    @include font-line(24);
+    @include font-line(24px);
   }
 
   a, h1 {

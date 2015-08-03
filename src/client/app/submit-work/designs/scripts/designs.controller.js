@@ -6,37 +6,46 @@
     .module('app.submit-work')
     .controller('SubmitDesignsController', SubmitDesignsController);
 
-  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService'];
+  SubmitDesignsController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'API_URL'];
   /* @ngInject */
-  function SubmitDesignsController($scope, logger, $state, SubmitWorkService, NavService) {
+  function SubmitDesignsController($scope, logger, $state, SubmitWorkService, NavService, API_URL) {
     var vm            = this;
     vm.title          = 'Designs';
     vm.work           = SubmitWorkService.work;
-    vm.imageFilenames = [];
-    vm.filename       = '';
-    vm.uploaderStatus = 'pristine';
-    vm.add;
     vm.submit;
 
-    var i = 1;
+    //file upload configs
+    var domain = API_URL;
+    var workId = vm.work.id
+    var assetType = 'specs';
 
-    logger.log('Activated Designs View');
+    vm.designsUploaderUploading = null;
+    vm.designsUploaderHasErrors = null;
 
-    vm.add = function() {
-      vm.imageFilenames.push('file ' + i++);
-      vm.filename = '';
-    }
+    vm.designsUploaderConfig = {
+      name: 'designsUploader' + workId,
+      allowMultiple: true,
+      queryUrl: domain + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
+      urlPresigner: domain + '/work-files/uploadurl',
+      fileEndpoint: domain + '/work-files/:fileId',
+      saveParams: {
+        workId: workId,
+        assetType: assetType
+      }
+    };
 
     vm.submit = function () {
-      if ($scope.designForm.$valid) {
+      if (!vm.designsUploaderUploading && !vm.designsUploaderHasErrors) {
         NavService.setNextState('designs');
       }
     };
 
-    $scope.$watch('vm.uploaderStatus', function(status) {
-      if (status) {
-       NavService.findState('designs').uploaderStatus = status;
-      }
+    $scope.$watch('vm.designsUploaderUploading', function(newValue) {
+       NavService.findState('designs').uploading= newValue;
+    });
+
+    $scope.$watch('vm.designsUploaderHasErrors', function(newValue) {
+       NavService.findState('designs').hasErrors= newValue;
     });
 
     $scope.$watch('designForm', function(designForm) {

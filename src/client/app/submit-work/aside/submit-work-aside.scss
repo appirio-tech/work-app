@@ -25,7 +25,7 @@
     > li {
       margin-top: 30px;
 
-      @include font-line(16);
+      @include font-line(16px);
 
       @include roboto();
 

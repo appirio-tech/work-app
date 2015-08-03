@@ -1,106 +1,3 @@
-- var scripts = []
-- scripts.push('/app.module')
-- scripts.push('/blocks/exception/exception.module')
-- scripts.push('/blocks/logger/logger.module')
-- scripts.push('/blocks/router/router.module')
-- scripts.push('/core/resource/resource.module')
-- scripts.push('/core/core.module')
-- scripts.push('/layout/scripts/layout.module')
-- scripts.push('/core/resource/resource.api.service')
-- scripts.push('/core/resource/resource.data.provider')
-- scripts.push('/templates')
-- scripts.push('/constants')
-- scripts.push('/core/ng-enter.directive')
-- scripts.push('/layout/scripts/focus-on-click.directive')
-- scripts.push('/layout/scripts/layout-header.directive')
-- scripts.push('/layout/scripts/header-nav.directive')
-- scripts.push('/layout/scripts/project-nav.directive')
-- scripts.push('/blocks/exception/exception-handler.provider')
-- scripts.push('/blocks/exception/exception')
-- scripts.push('/blocks/logger/logger')
-- scripts.push('/blocks/router/router-helper.provider')
-- scripts.push('/core/config')
-- scripts.push('/core/core.constants')
-- scripts.push('/core/core.route')
-- scripts.push('/scripts/messaging.controller')
-
-- var css = []
-- var landscapeCSS = []
-- var desktopCSS = []
-
-//- Layout
-- scripts.push('/layout/scripts/modal.directive')
-- scripts.push('/layout/scripts/homeLink.directive')
-
-- css.push("/layout/styles/project-nav")
-- css.push("/layout/styles/main")
-- css.push("/layout/styles/header")
-- css.push("/layout/styles/footer")
-- css.push("/layout/styles/modal")
-
-- landscapeCSS.push("/layout/styles/main.landscape")
-
-- desktopCSS.push("/layout/styles/main.desktop")
-
-//- Getting Started
-- css.push("/getting-started/styles/getting-started")
-- desktopCSS.push("/getting-started/styles/getting-started.desktop")
-- scripts.push('/getting-started/scripts/getting-started.module')
-- scripts.push('/getting-started/scripts/getting-started.route')
-- scripts.push('/getting-started/scripts/getting-started.controller')
-
-//- Auth
-- scripts.push("/auth/scripts/auth.module")
-- scripts.push("/auth/scripts/auth.routes")
-- scripts.push("/auth/scripts/login.controller")
-- scripts.push("/auth/scripts/login.directive")
-- scripts.push("/auth/scripts/register.controller")
-- css.push("/auth/styles/login")
-- css.push("/auth/styles/register")
-
-//- work request
-- scripts.push("/work-request/work-request.module")
-
-//- manage
-include manage/manage-includes
-
-- scripts      = scripts.concat(jsFiles)
-- css          = css.concat(cssFiles)
-- landscapeCSS = landscapeCSS.concat(landscapeFiles)
-- desktopCSS   = desktopCSS.concat(desktopFiles)
-
-//- ng-file-upload
-- scripts.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
-
-//- submit work
-include submit-work/includes
-
-- scripts      = scripts.concat(jsFiles)
-- css          = css.concat(cssFiles)
-- landscapeCSS = landscapeCSS.concat(landscapeFiles)
-- desktopCSS   = desktopCSS.concat(desktopFiles)
-
-//- timeline
-- scripts.push('/bower_components/appirio-tech-ng-timeline/dist/main')
-- css.push('/bower_components/appirio-tech-ng-timeline/dist/main')
-- landscapeCSS.push('/bower_components/appirio-tech-ng-timeline/dist/main.landscape')
-
-//- ng auth
-- scripts.push('/bower_components/appirio-tech-ng-auth/dist/main')
-
-//- messaging
-- scripts.push('/bower_components/appirio-tech-ng-messaging/dist/main')
-- css.push('/bower_components/appirio-tech-ng-messaging/dist/main')
-- css.push('/styles/messaging')
-
-//- copilot
-- scripts.push('/bower_components/appirio-tech-copilot/dist/main')
-- css.push('/bower_components/appirio-tech-copilot/dist/main')
-- scripts.push('/scripts/projects.routes')
-- scripts.push('/scripts/project-details.routes')
-
-include bowers
-
 doctype html
 html(ng-app='app')
   head
@@ -120,18 +17,7 @@ html(ng-app='app')
 
     script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js")
 
-    script(type="text/javascript").
-      AutoConfigFakeServer.init();
-
-      AutoConfigFakeServer.fakeServer.autoRespond = true;
-
-      AutoConfigFakeServer.consume([
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v2.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3-threads.json'],
-        FIXTURES['bower_components/appirio-tech-api-schemas/v3-messages.json']
-
-      ]);
+    script(type="text/javascript", src="/scripts/mock.js")
     // endRemoveIf(production)
 
     title(ng-bind='title') Appiro Work Platform
@@ -146,67 +32,9 @@ html(ng-app='app')
 
     base(href=basePath)
 
-    = "\n"
-    // build:css styles/lib.css
-    = "\n"
-    each path in bowercss
-      = "\n"
-      link(href=path + ".css", rel="stylesheet")
-      = "\n"
-    = "\n"
-    // endbuild
-    = "\n"
-    = "\n"
-    // build:css styles/app.css
-    = "\n"
-    each path in css
-      = "\n"
-      link(href=path + ".css", rel="stylesheet")
-      = "\n"
-    = "\n"
-    // endbuild
-    = "\n"
-    = "\n"
-    // build:css styles/mobile-landscape.css media="(min-width: 568px)"
-    = "\n"
-    each path in landscapeCSS
-      = "\n"
-      link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
-      = "\n"
-    = "\n"
-    // endbuild
-    = "\n"
-    = "\n"
-    // build:css styles/desktop.css media="(min-width: 767px)"
-    = "\n"
-    each path in desktopCSS
-      = "\n"
-      link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")
-      = "\n"
-    = "\n"
-    // endbuild
-    = "\n"
+    include css-files
   body
     include layout/views/shell.jade
 
-    = "\n"
-    // build:js js/lib.js
-    = "\n"
-    each path in bowers
-      = "\n"
-      script(src= path + ".js", type="text/javascript")
-      = "\n"
-    = "\n"
-    // endbuild
-    = "\n"
+    include js-files
 
-    = "\n"
-    // build:js js/app.js
-    = "\n"
-    each path in scripts
-      = "\n"
-      script(src=path + ".js", type="text/javascript")
-      = "\n"
-    = "\n"
-    // endbuild
-    = "\n"

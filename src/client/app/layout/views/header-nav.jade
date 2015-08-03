@@ -1,12 +1,22 @@
 ul.nav(ng-show="projects.length > 0")
   li
+    a(ui-sref="submissions({workId: 123, phase: 1})") Submissions
+
+  li
+    a(ui-sref="submission-slides({workId: 123, submissionId: 123, fileId: 321})") Slides
+
+  li
+    a(ui-sref="submission-detail({workId: 123, submissionId: 123})") Details
+
+  li
     a(ui-sref="view-work-multiple") Dashboard
 
   li
-    a(ui-sref="view-projects.open") Copilot
+    a(ui-sref="view-projects.assigned") Copilot
 
   li
     a(href="") Projects
+
 
     ul
       li

@@ -22,11 +22,11 @@
 
   .project {
     .name {
-      @include font-line(24);
+      @include font-line(24px);
     }
 
     .price {
-      @include font-line(20);
+      @include font-line(20px);
     }
   }
 }

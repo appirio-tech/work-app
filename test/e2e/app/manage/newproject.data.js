@@ -38,7 +38,7 @@ var NewProjectData = function() {
                         }
                        ],
     
-    this.baseUrl = 'https://www.topcoder-dev.com/work/login',
-    this.manageProjectUrl = 'https://www.topcoder-dev.com/work/manage';
+    this.baseUrl = 'https://www.topcoder-dev.com/work/#/login',
+    this.manageProjectUrl = 'https://www.topcoder-dev.com/work/#/manage';
 };
 module.exports = new NewProjectData;
