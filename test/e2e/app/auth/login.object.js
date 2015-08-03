@@ -1,7 +1,4 @@
 var LoginPage = function() {
-  this.userInput = element(by.model('vm.username'));
-  this.passwordInput = element(by.model('vm.password'));
-  this.loginButton = element(by.css('.submit'));
  
   this.get = function(baseUrl) {
     browser.get(baseUrl);
@@ -9,18 +6,34 @@ var LoginPage = function() {
  
   this.login = function(loginUser) {
 	  
-	expect(browser.getTitle()).toContain('Appiro Work Platform:');
+	  var EC = protractor.ExpectedConditions;
 	
-    this.userInput.sendKeys(loginUser.username);
-    this.passwordInput.sendKeys(loginUser.password);
-    var EC = protractor.ExpectedConditions;
+	  var userInput = element(by.model('vm.username'));
+	  var isClickable = EC.elementToBeClickable(userInput);
+	  browser.wait(isClickable, 30000);
+	  userInput.sendKeys(loginUser.username);
+	  
+  	
+  	
+	  var passwordInput = element(by.model('vm.password'));
+	  isClickable = EC.elementToBeClickable(passwordInput);
+	  browser.wait(isClickable, 30000);
+	  passwordInput.sendKeys(loginUser.password);
+    	 
+	  var loginButton = element(by.css('.submit'));
+	  isClickable = EC.elementToBeClickable(loginButton);
+	  browser.wait(isClickable, 30000);
+	  console.log('userInput');
+   
     
-    this.loginButton.click().then(function(){
+    
+	  loginButton.click().then(function() {
     	
     	element.all(by.css('.label')).each(function(element, index) {
     		
-    	var isClickable = EC.elementToBeClickable(element);
-    	browser.wait(isClickable, 10000);
+    	isClickable = EC.elementToBeClickable(element);
+    	browser.wait(isClickable, 30000);
+ 	 // Will print 0 First, 1 Second, 2 Third.
  		element.getText().then(function (text) {
  			console.log(index, text);
  		});

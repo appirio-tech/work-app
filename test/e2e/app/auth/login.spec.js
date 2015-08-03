@@ -11,6 +11,7 @@
 			 console.log('user creds :'+loginUser.userCredentials[i].username);
 			 (function(loginUserCred) {
 				 it('welcomes the user', function() {
+					 console.log('user creds :'+loginUserCred.username);
 					 loginPage.get(loginUser.baseUrl);
 					 loginPage.login(loginUserCred);
 				 });
@@ -38,7 +39,6 @@
 					 });
 				 });
 		        })(loginUser.userCredentials[i]);
-			 
 			 
 		 }
   
