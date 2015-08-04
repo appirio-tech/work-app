@@ -5,26 +5,18 @@
 $header-height: 50px;
 
 .layout-header {
+  @include flex-center(space-between);
+
   padding         : 0 20px;
   background-color: #f1f1f3;
   border-bottom   : 2px solid #000;
   line-height     : $header-height;
 
-  @include clearfix();
-
-  > * {
-    display       : inline-block;
-    vertical-align: middle;
-  }
-
   .logo {
-    @include span-columns(7);
     font-size: 35px;
   }
 
   .secondary {
-    @include span-columns(5);
-
     display   : inline-block;
     position  : relative;
     text-align: right;
