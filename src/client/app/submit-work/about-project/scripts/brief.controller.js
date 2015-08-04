@@ -9,14 +9,16 @@
   SubmitBriefController.$inject = ['$scope', 'logger', '$state', 'SubmitWorkService', 'NavService', 'API_URL'];
   /* @ngInject */
   function SubmitBriefController($scope, logger, $state, SubmitWorkService, NavService, API_URL) {
-    var vm           = this;
-    vm.title         = 'Brief';
-    vm.work          = SubmitWorkService.work;
-    vm.briefFilename = null;
-    vm.question      = null;
-    vm.showYesNo     = true;
-    vm.showBrief     = false;
-    vm.showElevator  = false;
+    var vm                    = this;
+    vm.title                  = 'Brief';
+    vm.work                   = SubmitWorkService.work;
+    vm.briefFilename          = null;
+    vm.question               = null;
+    vm.showYesNo              = true;
+    vm.showBrief              = false;
+    vm.showElevator           = false;
+    vm.briefUploaderUploading = null;
+    vm.briefUploaderHasErrors = null;
     vm.toggleYes;
     vm.toggleNo;
     vm.toggleCancel;
@@ -24,24 +26,30 @@
     vm.submitBrief;
     vm.questionSubmit;
 
-    //file upload configs
-    var workId = vm.work.id
-    var assetType = 'brief';
-    var domain = API_URL;
+    function configureUploader() {
+      var workId = vm.work.id
+      var assetType = 'brief';
 
-     vm.briefUploaderUploading = null;
-     vm.briefUploaderHasErrors = null;
-     vm.briefUploaderConfig = {
-       name: 'briefUploader' + workId,
-       allowMultiple: false,
-       queryUrl: domain + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
-       urlPresigner: domain + '/work-files/uploadurl',
-       fileEndpoint: domain + '/work-files/:fileId',
-       saveParams: {
-         workId: workId,
-         assetType: assetType
-       }
-     };
+      vm.briefUploaderConfig = {
+        name: 'briefUploader' + workId,
+        allowMultiple: false,
+        queryUrl: API_URL + '/work-files/assets?filter=workId%3D' + workId + '%26assetType%3D' + assetType,
+        urlPresigner: API_URL + '/work-files/uploadurl',
+        fileEndpoint: API_URL + '/work-files/:fileId',
+        saveParams: {
+          workId: workId,
+          assetType: assetType
+        }
+      };
+    }
+
+    // Configure uploader initially so the view can render
+    configureUploader();
+
+    // Update the uploader configuration once we have a work id
+    $scope.$watch('vm.work.id', function(newValue) {
+      configureUploader();
+    });
 
     vm.toggleYes = function() {
       vm.showYesNo    = false;
@@ -87,11 +95,11 @@
     };
 
     $scope.$watch('vm.briefUploaderUploading', function(newValue) {
-       NavService.findState('brief').uploading = newValue;
+      NavService.findState('brief').uploading = newValue;
     });
 
     $scope.$watch('vm.briefUploaderHasErrors', function(newValue) {
-       NavService.findState('brief').hasErrors = newValue;
+      NavService.findState('brief').hasErrors = newValue;
     });
 
     $scope.$watch('questionForm', function(questionForm) {
