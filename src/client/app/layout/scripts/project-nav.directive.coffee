@@ -1,5 +1,7 @@
 'use strict'
 
+#TODO: get rid of this directive
+
 dir = ($state, $rootScope) ->
   link: (scope, element, attrs) ->
     # using $rootScope because layout stuff happens outside
@@ -16,7 +18,7 @@ dir = ($state, $rootScope) ->
       else
         scope.show = false
 
-      scope.workId = $state.params?.workId
+      scope.workId = $state.params?.workId || $state.params?.id
 
     scope.show = false
 
