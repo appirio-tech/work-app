@@ -73,6 +73,19 @@ configs.karma =
     __dirname + '/.tmp/templates.js'
   ])
 
+env = process.env.TRAVIS_BRANCH || 'dev'
+
+if env == 'dev'
+  configs.ngConstants.constants =
+    apiUrl     : 'https://api.topcoder-dev.com/v3/'
+    API_URL    : 'https://api.topcoder-dev.com/v3'
+    API_URL_V2 : 'https://api.topcoder-dev.com/v2'
+
+if env == 'qa'
+  configs.ngConstants.constants =
+    apiUrl     : 'https://api.topcoder-qa.com/v3/'
+    API_URL    : 'https://api.topcoder-qa.com/v3'
+    API_URL_V2 : 'https://api.topcoder-qa.com/v2'
 
 ### END CONFIG ###
 loadTasksModule = require __dirname + '/node_modules/appirio-gulp-tasks/load-tasks.coffee'
