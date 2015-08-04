@@ -43,7 +43,7 @@
       state: 'copilot-messaging',
       config: {
         url: '/copilot-messaging/:id',
-        templateUrl: 'views/copilot-messaging.html',
+        templateUrl: 'views/copilot-messaging-view.html',
         controller: 'CopilotMessagingController',
         controllerAs: 'vm'
       }
