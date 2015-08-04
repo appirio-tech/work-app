@@ -31,11 +31,11 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/timeline.html'
 
   states['messaging'] =
-    url         : '/messaging/:workId'
+    url         : '/messaging/:id'
     title       : 'Messaging'
     controller  : 'MessagingPageController'
     controllerAs: 'vm'
-    templateUrl : 'views/messaging.html'
+    templateUrl : 'views/messaging-copilot.html'
 
   states['submissions'] =
     url         : '/:workId/submissions/:phase'
