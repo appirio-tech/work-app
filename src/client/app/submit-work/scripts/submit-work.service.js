@@ -85,13 +85,14 @@
         data.create('work-request', work).then(function(data) {
           created = true;
           service.id = data.result.content;
+          service.work.id = service.id;
           service.savePrice();
           deferred.resolve(data);
         }).catch(function(e) {
           $q.reject(e);
         });
       } else {
-        work.id = service.id;
+        service.work.id = service.id;
         data.update('work-request', work).then(function(data) {
           deferred.resolve(data);
         }).catch(function(e) {
