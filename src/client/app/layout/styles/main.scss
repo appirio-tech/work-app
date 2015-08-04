@@ -10,6 +10,13 @@
   margin-right: 120px;
 }
 
+// TODO: remove this
+.layout-main.messaging {
+  textarea {
+    background-color: $primary-color-lightest;
+  }
+}
+
 .layout-main {
 
   header {
