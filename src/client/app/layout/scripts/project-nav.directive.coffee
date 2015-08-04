@@ -1,7 +1,7 @@
 'use strict'
 
-dir = () ->
-  controller: ($scope, $state, $rootScope) ->
+dir = ($state, $rootScope) ->
+  link: (scope, element, attrs) ->
     # using $rootScope because layout stuff happens outside
     # of the ui-view
     $rootScope.$on '$stateChangeSuccess', () ->
@@ -12,14 +12,19 @@ dir = () ->
                'submission-detail']
 
       if $state.current.name in states
-        $scope.show = true
+        scope.show = true
       else
-        $scope.show = false
+        scope.show = false
 
-    $scope.show = false
+      scope.workId = $state.params?.workId
+
+    scope.show = false
+
 
   restrict: 'E'
   templateUrl: 'layout/views/project-nav.html'
 
+
+dir.$inject = ['$state', '$rootScope']
 
 angular.module('app.layout').directive 'projectNav', dir
