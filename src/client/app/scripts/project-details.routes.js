@@ -38,6 +38,15 @@
         controller: 'ChallengesController',
         controllerAs: 'vm'
       }
+    },
+    {
+      state: 'copilot-messaging',
+      config: {
+        url: '/copilot-messaging/:id',
+        templateUrl: 'views/copilot-messaging.html',
+        controller: 'CopilotMessagingController',
+        controllerAs: 'vm'
+      }
     }
     ];
   }
