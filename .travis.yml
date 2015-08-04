@@ -17,9 +17,12 @@ script:
 - gulp optimize-build
 - gulp finger-print
 - gulp finger-print-replace
+- gulp uglify
 sudo: false
 deploy:
   provider: s3
+  cache_control: "max-age=31536000"
+  detect_encoding: true
   access_key_id: "$AWS_KEY"
   secret_access_key: "$AWS_SECRET"
   bucket: "$AWS_BUCKET"
