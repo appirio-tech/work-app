@@ -20,16 +20,24 @@ script:
 - gulp uglify
 sudo: false
 deploy:
-  provider: s3
-  cache_control: "max-age=31536000"
-  detect_encoding: true
-  access_key_id: "$AWS_KEY"
-  secret_access_key: "$AWS_SECRET"
-  bucket: "$AWS_BUCKET"
-  skip_cleanup: true
-  local_dir: dist
-  on:
-    branch: dev
+  - provider: s3
+    cache_control: "max-age=31536000"
+    access_key_id: "$AWS_KEY"
+    secret_access_key: "$AWS_SECRET"
+    bucket: "$AWS_BUCKET"
+    skip_cleanup: true
+    local_dir: dist
+    on:
+      branch: dev
+  - provider: s3
+    cache_control: "max-age=31536000"
+    access_key_id: "$AWS_KEY"
+    secret_access_key: "$AWS_SECRET"
+    bucket: work.topcoder-qa.com
+    skip_cleanup: true
+    local_dir: dist
+    on:
+      branch: qa
 env:
   global:
   - AWS_BUCKET=work.topcoder-dev.com
