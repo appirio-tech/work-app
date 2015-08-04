@@ -38,12 +38,12 @@
         controller: 'ChallengesController',
         controllerAs: 'vm'
       }
-    }
+    },
     {
       state: 'copilot-messaging',
       config: {
         url: '/copilot-messaging/:id',
-        templateUrl: 'project-details/details-features/views/messaging.html',
+        templateUrl: 'views/copilot-messaging.html',
         controller: 'CopilotMessagingController',
         controllerAs: 'vm'
       }
