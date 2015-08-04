@@ -92,6 +92,7 @@
           $q.reject(e);
         });
       } else {
+        work.id = service.id;
         service.work.id = service.id;
         data.update('work-request', work).then(function(data) {
           deferred.resolve(data);
