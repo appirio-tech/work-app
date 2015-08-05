@@ -26,9 +26,6 @@ configs.fixture.files = [
 configs.serve =
   port: 3000
 
-configs.cdnify =
-  url: '//work.topcoder-dev.com'
-
 configs.useref =
   searchPath: ['.tmp', 'src/client/app/', '.']
 
@@ -76,12 +73,20 @@ configs.karma =
 env = process.env.TRAVIS_BRANCH || 'dev'
 
 if env == 'dev'
+
+  configs.cdnify =
+    url: '//work.topcoder-dev.com'
+
   configs.ngConstants.constants =
     apiUrl     : 'https://api.topcoder-dev.com/v3/'
     API_URL    : 'https://api.topcoder-dev.com/v3'
     API_URL_V2 : 'https://api.topcoder-dev.com/v2'
 
 if env == 'qa'
+
+  configs.cdnify =
+    url: '//work.topcoder-qa.com'
+
   configs.ngConstants.constants =
     apiUrl     : 'https://api.topcoder-qa.com/v3/'
     API_URL    : 'https://api.topcoder-qa.com/v3'
