@@ -13,16 +13,14 @@
     return [{
       state: 'project-details',
       config: {
-        url: '/project-details/:id?/:status?',
+        url: '/project-details/:id',
         title: 'Claim Project',
         controller: 'ProjectDetailsController',
         controllerAs: 'vm',
         resolve: {
           copilotWork: ['$stateParams', 'ProjectDetailsService', function($stateParams, ProjectDetailsService) {
-            if ($stateParams.id && $stateParams.status) {
-              return ProjectDetailsService.initializeCopilotWork($stateParams.id, $stateParams.status);
-            } else if ($stateParams.id) {
-                return ProjectDetailsService.initializeCopilotWork($stateParams.id);
+            if ($stateParams.id) {
+              return ProjectDetailsService.initializeCopilotWork($stateParams.id);
             } else {
               return false;
             }
