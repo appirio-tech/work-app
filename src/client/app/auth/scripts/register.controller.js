@@ -41,7 +41,7 @@
 
     function registerError(error) {
       vm.error = true;
-      vm.errorMessage = error;
+      vm.errorMessage = error.data.result.content;
     }
 
     function registerSuccess() {

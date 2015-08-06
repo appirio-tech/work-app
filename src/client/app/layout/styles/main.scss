@@ -10,6 +10,13 @@
   margin-right: 120px;
 }
 
+// TODO: remove this
+.layout-main.messaging, .layout-main.copilot-messaging {
+  textarea {
+    background-color: $primary-color-lightest;
+  }
+}
+
 .layout-main {
 
   header {
