@@ -24,9 +24,9 @@ config = ($locationProvider, $stateProvider) ->
   $locationProvider.html5Mode true
 
   states['timeline'] =
-    url         : '/timeline/:workId'
+    url         : '/work/:workId/timeline'
     title       : 'Timeline'
-    controller  : 'TimelineController'
+    controller  : 'TimelinePageController'
     controllerAs: 'vm'
     templateUrl : 'views/timeline.html'
 
