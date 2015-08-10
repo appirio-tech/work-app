@@ -8,7 +8,7 @@ dependencies = [
   'ap-file-upload'
   'app.submit-work'
   'app.manage'
-  'appirio-tech-timeline'
+  'appirio-tech-ng-timeline'
   'appirio-tech-messaging'
   'appirio-tech-ng-auth'
   'appirio-tech-ng-ui-components'
