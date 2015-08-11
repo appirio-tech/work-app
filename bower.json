@@ -17,7 +17,7 @@
     "angular-mocks": "1.4.x",
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
     "bardjs": "~0.0.3",
-    "appirio-tech-api-schemas": "3.x.x",
+    "appirio-tech-api-schemas": "master",
     "auto-config-fake-server": "1.x.x"
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     "angular-jwt": "0.0.x",
     "ap-newrelic": "0.x.x",
     "appirio-tech-ng-messaging": "3.x.x",
-    "appirio-tech-ng-timeline": "demo-august",
+    "appirio-tech-ng-timeline": "3.x.x",
     "appirio-tech-copilot": "1.x.x",
     "appirio-tech-ng-auth": "1.x.x",
     "appirio-tech-ng-file-upload": "0.x.x",

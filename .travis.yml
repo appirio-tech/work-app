@@ -7,17 +7,15 @@ install:
 - npm install -g bower
 - npm install
 - bower install
-before_script:
-- gulp clean
-- gulp test
 script:
+- gulp clean
 - gulp preprocessors
+- gulp test
 - gulp useref
 - gulp copy-files
 - gulp optimize-build
 - gulp finger-print
 - gulp finger-print-replace
-- gulp uglify
 sudo: false
 deploy:
 - provider: s3
