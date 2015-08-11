@@ -16,7 +16,13 @@ configs.copyFiles =
   base: 'src/client/app/'
 
 configs.templateCache.push
-  files   : ['src/client/app/**/*.html', '.tmp/**/*.html', '!.tmp/index.html']
+  files   : [
+    'src/client/app/**/*.html'
+    '.tmp/**/*.html'
+    '!.tmp/index.html'
+    '!.tmp/css-files.html'
+    '!.tmp/js-files.html'
+  ]
   module  : 'app.core'
 
 env = process.env.TRAVIS_BRANCH || 'dev'
