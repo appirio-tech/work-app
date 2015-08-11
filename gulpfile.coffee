@@ -7,9 +7,6 @@ configs.templateCache = []
 configs.serve =
   port: 3000
 
-configs.useref =
-  searchPath: ['.tmp', 'src/client/app/', '.']
-
 configs.copyFiles =
   files:
     'dist': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
