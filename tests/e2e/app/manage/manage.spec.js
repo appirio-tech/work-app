@@ -5,24 +5,24 @@ var managePage = require('./manage.object');
 	describe('login', function() {
 		
 		
-	  it('welcomes the user again', function() {
+	  it('Welcomes the user to Manage Project', function() {
 	    //var loginPage = new LoginPage();
 	    loginPage.get(manageData.baseUrl);
-	    loginPage.login(manageData.userCredentials[0]);
+	    loginPage.login(manageData.userCredentials[1]);
 	  });
 	  
 	  var i=0;
 	  for(;i < manageData.projectList.length; i++) {
 		  (function(project) {
 			  it('Click on Project Manage link', function() {
-				  managePage.createNewProject();
-				  console.log('manage page'+managePage);
+//				  managePage.createNewProject(project.oldProjectName);
+				  console.log('click on project manage link spec'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);
 				  managePage.continueSetup(project);
 			  });
 			  
 			  it('Go back to manage project link', function() {
-				  console.log('manage page'+managePage);
+				  console.log('go back to manage project link'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);
 				  expect(true).toEqual(true);
 			  });
@@ -49,6 +49,10 @@ var managePage = require('./manage.object');
 	  
 	  })(manageData.projectList[i]);
 	  }
+	  
+	  it('logout user', function() {
+			 loginPage.logOut();
+		 });
 	  
 	  
 	  

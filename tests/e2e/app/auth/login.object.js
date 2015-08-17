@@ -44,7 +44,7 @@ var LoginPage = function() {
   this.logOut = function () {
 	  var EC = protractor.ExpectedConditions;
 	var elementLabel = element.all(by.css('.label'));
-	var isClickable = EC.elementToBeClickable(elementLabel.get(2));
+	var isClickable = EC.elementToBeClickable(elementLabel.get(1));
 	browser.wait(isClickable, 10000);
 	
 	elementLabel.get(2).click().then(function() {

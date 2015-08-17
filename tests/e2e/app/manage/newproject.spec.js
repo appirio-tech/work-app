@@ -10,6 +10,7 @@ describe('login', function() {
 	    //var loginPage = new LoginPage();
 	    loginPage.get(newProjectData.baseUrl);
 	    loginPage.login(newProjectData.userCredentials[0]);
+	    expect(true).toEqual(true);
 	  });
 	  
 	  var i=0;
@@ -23,7 +24,7 @@ describe('login', function() {
 		  it('Click on Project new link 2', function() {
 			  console.log('manage page editProject'+newProjectData.manageProjectUrl);
 			  newProject.get(newProjectData.manageProjectUrl);
-			  var actionItem = element(by.css('.heading button'));
+			  var actionItem = element(by.css('.manage button'));
 			  var EC = protractor.ExpectedConditions;
 			  var isClickable = EC.elementToBeClickable(actionItem);
 			  browser.wait(isClickable, 20000);
@@ -37,9 +38,9 @@ describe('login', function() {
 	
 			        for(i; i<=browserLog.length-1; i++){
 			            if(browserLog[i].level.name === 'SEVERE'){
-			                console.log('\n' + browserLog[i].level.name);
+//			                console.log('\n' + browserLog[i].level.name);
 			                //uncomment to see the error
-			                console.log('(Possibly exception) \n' + browserLog[i].message);
+//			                console.log('(Possibly exception) \n' + browserLog[i].message);
 	
 			                severWarnings = true;
 			            }

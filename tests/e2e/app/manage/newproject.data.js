@@ -3,7 +3,7 @@ var NewProjectData = function() {
 //    this.testUser = {'baseUrl': 'https://www.topcoder-dev.com/work/#/login', 'username': 'DhananjayKumar1', 'password': 'appirio123'}
     this.userCredentials = [ 
                              {	
-                            	 'username' : 'DhananjayKumar1',
+                            	 'username' : 'aqmansuri',
                             	 'password' : 'appirio123' 
                              }
                            ],
@@ -12,8 +12,13 @@ var NewProjectData = function() {
                         {
                         	'name' : 'Test Project -Aq311',
                         	'type' :'Design',
-                        	'upload' : 'yes',
+                        	'upload' : 'no',
                         	'description' : 'This is demo project for testing manage project',
+                        	'competitorAppList' :[{
+                        		'appName' : 'Login App',
+                        	},{
+                        		'appName' : 'WhatsApp'
+                        	}],
                         	'featureList' : [ 
                         	    { 'featureName' : 'login', 'explanation' : 'it is login feature'},
                         	    {'featureName' : 'profiles', 'explanation' : 'it is profiles feature'},
@@ -25,16 +30,23 @@ var NewProjectData = function() {
                         		],
                         
                         	'acceptTerms' :'Y',
-                        	'workSummary' : '12345678901234567890'
+                        	'workSummary' : 'This summary should be at least of 200 words, otherwise we will not able to see next button. so keep typing whether you like it or not, you have to put some text here for our reference. please do not hesitate to ask question'
                         },
                         {
                         	'name' : 'Test Project -Aq322',
                         	'type' :'Design',
-                        	'upload' : 'yes',
+                        	'upload' : 'no',
                         	'description' : 'This is demo project for testing manage project',
-                        	'featureList' : ['login'],
+                        	'competitorAppList' :[{
+                        		'appName' : 'Login App',
+                        	},{
+                        		'appName' : 'WhatsApp'
+                        	}],
+                        	'featureList' : [
+                        	                 { 'featureName' : 'login', 'explanation' : 'it is login feature'}
+                        	                 ],
                         	'acceptTerms' :'Y',
-                        	'workSummary' : '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
+                        	'workSummary' : 'This summary should be at least of 200 words, otherwise we will not able to see next button. so keep typing whether you like it or not, you have to put some text here for our reference. please do not hesitate to ask question'
                         }
                        ],
     

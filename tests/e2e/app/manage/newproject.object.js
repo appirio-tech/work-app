@@ -7,7 +7,7 @@ var NewProjectPage = function() {
 	
 	this.createNewProject = function(project) {
 		browser.ignoreSynchronization = true;
-		var actionItem = element(by.css('.heading button'));
+		var actionItem = element(by.css('.manage button'));
 		console.log('actionItem '+actionItem);
 		var EC = protractor.ExpectedConditions;
 		var isClickable = EC.elementToBeClickable(actionItem);
@@ -72,7 +72,16 @@ var NewProjectPage = function() {
 	    			    		console.log('in competitors click');
 	    						submitButton = element(by.name('competitorForm')).all(by.css('.submit')).first();
 	    						var isClickable = EC.elementToBeClickable(submitButton);
-		    			    	browser.wait(isClickable, 20000);
+	    						browser.wait(isClickable, 20000);
+	    						var appNameModel = element(by.model('vm.appName'));
+	    						var addCompetitor = element(by.css('.add-competitor'));
+//	    						var appCounter = 0;
+	    						for(var appCounter = 0; appCounter < project.competitorAppList.length; appCounter++) {
+	    							appNameModel.clear();
+	        						appNameModel.sendKeys(project.competitorAppList[appCounter].appName);
+	        						addCompetitor.click();
+	    						}
+		    			    	
 	    						submitButton.click().then(function(){
 	    							console.log('in competitors click'+submitButton);
 	    							var isClickable = EC.elementToBeClickable(submitButton);

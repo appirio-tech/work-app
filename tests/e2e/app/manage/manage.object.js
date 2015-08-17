@@ -1,8 +1,8 @@
 var ManagePage = function() {
 	
-	this.createNewProject = function() {
+	this.createNewProject = function(projectName) {
 		browser.ignoreSynchronization = true;
-		var actionItemButton = element(by.css('.heading button'));
+		var actionItemButton = element(by.css('.manage button'));
 		console.log('this.actionItem '+actionItemButton);
 		var EC = protractor.ExpectedConditions;
 		var isClickable = EC.elementToBeClickable(actionItemButton);
@@ -15,7 +15,7 @@ var ManagePage = function() {
 	    	var workNameText = workName.getText();
 	    	console.log('workNameText '+workNameText);
 	    	workName.clear();
-	    	workName.sendKeys('Dummy Project');
+	    	workName.sendKeys(projectName);
 	    	
 	    	var estimateLink = element(by.id('submit-work-nav')).all(by.css('ul .estimate')).first();
 	    	var isClickable = EC.elementToBeClickable(estimateLink);
@@ -39,11 +39,16 @@ var ManagePage = function() {
 
 	
 	this.continueSetup = function(project) {
-		var actionItem = element.all(by.css('.action .ng-scope')).get(0);
-		console.log('actionItem  '+ actionItem);
+		var actionItemList = element.all(by.partialLinkText('Continue'));
+		var actionItemCount = actionItemList.count();
+		console.log('total item'+actionItemCount);
+//		expect(actionItemCount).toEqual(9);
+		actionItemCount = actionItemCount - 1;
+		var actionItem = actionItemList.last();
+		console.log('actionItem  '+ actionItem.getText());
 		var EC = protractor.ExpectedConditions;
-		var isClickable = EC.elementToBeClickable(actionItem);
-    	browser.wait(isClickable, 20000);
+//		var isClickable = EC.elementToBeClickable(actionItem);
+//    	browser.wait(isClickable, 20000);
     
     	actionItem.click().then(function() {
     	console.log('edit project now');
@@ -103,6 +108,14 @@ var ManagePage = function() {
     					}
     					
     					submitButton.click().then(function(){
+    						var appNameModel = element(by.model('vm.appName'));
+    						var addCompetitor = element(by.css('.add-competitor'));
+//    						var appCounter = 0;
+    						for(var appCounter = 0; appCounter < project.competitorAppList.length; appCounter++) {
+    							appNameModel.clear();
+        						appNameModel.sendKeys(project.competitorAppList[appCounter].appName);
+        						addCompetitor.click();
+    						}
     						submitButton = element(by.name('competitorForm')).all(by.css('.submit')).first();
     						var isClickable = EC.elementToBeClickable(submitButton);
 	    			    	browser.wait(isClickable, 20000);
@@ -122,61 +135,82 @@ var ManagePage = function() {
     										var featureLogin = element(by.id('feature-login'));
     										var isClickable = EC.elementToBeClickable(featureLogin);
     				    			    	browser.wait(isClickable, 20000);
-    	    								featureLogin.click();
-    	    								var explanation = element(by.model('feature.explanation'));
+    				    			    	if(! featureLogin.isSelected()) {
+    				    			    		featureLogin.click();
+    				    			    	}
+    				    			    	var explanation = element.all(by.model('feature.explanation')).get(0);
     	    								var isClickable = EC.elementToBeClickable(explanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	explanation.clear();
     	    								explanation.sendKeys(project.featureList[j].explanation);
+    	    								
     									} else if(project.featureList[j].featureName == 'profiles') {
     										var featureProfiles = element(by.id('feature-profiles'));
     										var isClickable = EC.elementToBeClickable(featureProfiles);
     				    			    	browser.wait(isClickable, 20000);
-    										featureProfiles.click();
+    				    			    	if(! featureProfiles.isSelected()) {
+    				    			    		featureProfiles.click();
+    				    			    	}
     										var explanation = element.all(by.model('feature.explanation')).get(2);
     										var isClickable = EC.elementToBeClickable(explanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	explanation.clear();
     	    								explanation.sendKeys(project.featureList[j].explanation);
     									} else if(project.featureList[j].featureName == 'forms') {
     										var featureForms = element(by.id('feature-forms'));
     										var isClickable = EC.elementToBeClickable(featureForms);
     				    			    	browser.wait(isClickable, 20000);
-    										featureForms.click();
+    				    			    	if(! featureForms.isSelected()) {
+    				    			    		featureForms.click();
+    				    			    	}
     										var explanation = element.all(by.model('feature.explanation')).get(4);
     										var isClickable = EC.elementToBeClickable(explanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	explanation.clear();
     	    								explanation.sendKeys(project.featureList[j].explanation);
     									}  else if(project.featureList[j].featureName == 'social') {
     										var featureSocial = element(by.id('feature-social-login'));
     										var isClickable = EC.elementToBeClickable(featureSocial);
     				    			    	browser.wait(isClickable, 20000);
-    										featureSocial.click();
+    				    			    	if(! featureSocial.isSelected()) {
+    				    			    		featureSocial.click();
+    				    			    	}
     										var explanation = element.all(by.model('feature.explanation')).get(1);
     										var isClickable = EC.elementToBeClickable(explanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	explanation.clear();
     	    								explanation.sendKeys(project.featureList[j].explanation);
     									} else if(project.featureList[j].featureName == 'map') {
     										var featureMap = element(by.id('feature-map'));
     										var isClickable = EC.elementToBeClickable(featureMap);
     				    			    	browser.wait(isClickable, 20000);
-    										featureMap.click();
+    				    			    	if(! featureMap.isSelected()) {
+    				    			    		featureMap.click();
+    				    			    	}
     										var explanation = element.all(by.model('feature.explanation')).get(3);
     										var isClickable = EC.elementToBeClickable(explanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	explanation.clear();
     	    								explanation.sendKeys(project.featureList[j].explanation);
     									} else if(project.featureList[j].featureName == 'listing') {
     										var featureListing = element(by.id('feature-listing'));
     										var isClickable = EC.elementToBeClickable(featureListing);
     				    			    	browser.wait(isClickable, 20000);
-    										featureListing.click();
+    				    			    	if(! featureListing.isSelected()) {
+    				    			    		featureListing.click();
+    				    			    	}
     										var explanation = element.all(by.model('feature.explanation')).get(5);
     										var isClickable = EC.elementToBeClickable(explanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	explanation.clear();
     	    								explanation.sendKeys(project.featureList[j].explanation);
     									} else if(project.featureList[j].featureName == 'new-feature') {
     										var newFeature = element(by.model('vm.newFeature'));
     										var isClickable = EC.elementToBeClickable(newFeature);
     				    			    	browser.wait(isClickable, 20000);
-    										newFeature.click();
+//    				    			    	if(! newFeature.isSelected()) {
+    				    			    		newFeature.click();
+//    				    			    	}
     										var newFeatureName = element(by.model('vm.newFeatureName'));
     										var isClickable = EC.elementToBeClickable(newFeatureName);
     				    			    	browser.wait(isClickable, 20000);
@@ -184,6 +218,7 @@ var ManagePage = function() {
     										var newFeatureExplanation = element(by.model('vm.newFeatureExplanation'));
     										var isClickable = EC.elementToBeClickable(newFeatureExplanation);
     				    			    	browser.wait(isClickable, 20000);
+    				    			    	newFeatureExplanation.clear();
     										newFeatureExplanation.sendKeys(project.featureList[j].explanation);
     									} 
     									
