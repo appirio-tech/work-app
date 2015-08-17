@@ -1,0 +1,11 @@
+@import "work-includes";
+
+.layout-main.messaging {
+  padding: 1em;
+
+  .messaging-page-header {
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
+    border-bottom: 1px solid #ccc;
+  }
+}

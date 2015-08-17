@@ -1,0 +1,164 @@
+@import "work-includes";
+
+@import "neat";
+
+$header-height: 50px;
+
+.layout-header {
+  @include flex-center(space-between);
+
+  padding         : 0 20px;
+  background-color: #f1f1f3;
+  border-bottom   : 2px solid #000;
+  line-height     : $header-height;
+
+  .logo {
+    font-size: 35px;
+  }
+
+  .secondary {
+    display   : inline-block;
+    position  : relative;
+    text-align: right;
+
+    header-nav {
+      text-align: left;
+      margin-right: 15px;
+
+      .nav {
+        position: relative;
+        z-index: 100;
+
+        li {
+          @include ellipsis(90%);
+          width: 200px;
+          display: inline;
+          position: relative;
+
+          a {
+            text-decoration: none;
+            padding: 20px 15px;
+          }
+
+          ul {
+            line-height: 1;
+            left: 0;
+            position: absolute;
+            display: none;
+
+            &:hover {
+              display: block;
+            }
+
+            li {
+              display: block;
+              background: #f1f1f3;
+
+              &:hover {
+                background: #ddd;
+              }
+
+              a {
+                padding: 10px 15px;
+                display: block;
+              }
+            }
+          }
+
+          &:hover ul {
+            display: block;
+          }
+        }
+      }
+    }
+
+    > * {
+      display       : inline-block;
+      vertical-align: middle;
+    }
+
+    $popup-max-height: 300px;
+
+    button.message-notifications {
+      margin-left     : 20px;
+      position        : relative;
+
+      svg {
+        width: 26px;
+      }
+
+      @include source-sans();
+
+      &:focus + .popup {
+        max-height: $popup-max-height;
+      }
+
+      .notification {
+        background-color: red;
+        color           : white;
+        position: absolute;
+        top: -5px;
+        right: 0;
+        padding: 0px 4px;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+    }
+
+    .popup {
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius : 2px;
+      z-index                   : 10;
+      top                       : $header-height + 5px;
+      right                     : 0;
+      position                  : absolute;
+      box-shadow                : 0 2px 2px silver;
+      width                     : 280px;
+      text-align                : initial;
+      max-height                : 0px;
+      overflow                  : hidden;
+
+      @include transition (all 0.2s ease-in-out);
+      @include font-line(12px);
+
+      &:hover {
+        max-height: $popup-max-height;
+      }
+
+      threads {
+        max-height: $popup-max-height;
+        overflow  : scroll;
+        position  : relative;
+      }
+    }
+
+    .login {
+      > * {
+        display       : inline-block;
+        vertical-align: middle;
+      }
+
+      .icon {
+        width              : 21px;
+        line-height        : 23px;
+        background-position: -379px 0px;
+        background-size    : 400px 400px;
+        @include bg-image-ratio("/layout/images/sprite.png", "/layout/images/sprite-2x.png");
+      }
+
+      .handle {
+        margin-left: 10px;
+        color: black;
+        @include font(20);
+        text-decoration: none;
+      }
+
+      .label {
+        margin-left: 10px;
+        color      : #009bcd;
+
+        @include font(20);
+      }
+    }
+  }
+}

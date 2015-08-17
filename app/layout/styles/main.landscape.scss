@@ -1,0 +1,10 @@
+@import "work-includes";
+
+.layout-main {
+  > main {
+    width       : 568px;
+    margin-left : auto;
+    margin-right: auto;
+    display     : block;
+  }
+}

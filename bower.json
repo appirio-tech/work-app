@@ -17,7 +17,7 @@
     "angular-mocks": "1.4.x",
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
     "bardjs": "~0.0.3",
-    "appirio-tech-api-schemas": "3.x.x",
+    "appirio-tech-api-schemas": "master",
     "auto-config-fake-server": "1.x.x"
   },
   "dependencies": {

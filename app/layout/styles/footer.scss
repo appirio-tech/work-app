@@ -1,0 +1,18 @@
+@import "work-includes";
+
+footer.layout-footer {
+  margin-top: 20px;
+  padding: 25px;
+
+  ul {
+    li {
+      display: inline-block;
+      margin-right: 20px;
+
+      a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+}
