@@ -1,7 +1,7 @@
 'use strict'
 
 ManageController = ->
-  vm       = this
+  vm = this
 
   activate = ->
     vm
@@ -10,4 +10,4 @@ ManageController = ->
 
 ManageController.$inject = []
 
-angular.module('app.manage').controller 'ManageController', ManageController
+angular.module('app').controller 'ManageController', ManageController

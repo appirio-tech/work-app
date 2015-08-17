@@ -6,7 +6,6 @@ dependencies = [
   'app.getting-started'
   'app.auth'
   'ap-file-upload'
-  'app.manage'
   'appirio-tech-ng-timeline'
   'appirio-tech-messaging'
   'appirio-tech-ng-auth'
@@ -71,6 +70,10 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'SubmitWorkPageController'
     controllerAs: 'vm'
     templateUrl : 'views/submit-work.html'
+
+  states['verified-email-address'] =
+    url        : '/verified-email-address'
+    templateUrl: 'views/verified-email-address.html'
 
   for key, state of states
     $stateProvider.state key, state
