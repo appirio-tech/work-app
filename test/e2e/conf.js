@@ -6,9 +6,9 @@ exports.config = {
 	//specs: ['specs/regression/*Spec.js'],
 	suites: {
 //		regression0: 'app/auth/reg.spec.js'
-		regression1: 'app/auth/login.spec.js',
-//		regression2: 'app/manage/newproject.spec.js'//,
-//	    regression3: 'app/manage/manage.spec.js'
+//		regression1: 'app/auth/login.spec.js',
+//		regression2: 'app/manage/newproject.spec.js',
+	    regression3: 'app/manage/manage.spec.js'
 	  },
     //baseUrl: 'http://qualityshepherd.com/angular',
     //framework: 'jasmine2',
