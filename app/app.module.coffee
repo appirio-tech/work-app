@@ -6,13 +6,13 @@ dependencies = [
   'app.getting-started'
   'app.auth'
   'ap-file-upload'
-  'app.submit-work'
   'app.manage'
   'appirio-tech-ng-timeline'
   'appirio-tech-messaging'
   'appirio-tech-ng-auth'
   'appirio-tech-ng-ui-components'
   'appirio-tech-ng-projects'
+  'appirio-tech-ng-submit-work'
   'appirio-tech-submissions'
   'ap-copilot-flow'
   'newrelic'
@@ -64,6 +64,13 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'ManageController'
     controllerAs: 'vm'
     templateUrl : 'views/manage.html'
+
+  states['submit-work'] =
+    url         : '/submit-work/:id'
+    title       : 'Submit Work'
+    controller  : 'SubmitWorkPageController'
+    controllerAs: 'vm'
+    templateUrl : 'views/submit-work.html'
 
   for key, state of states
     $stateProvider.state key, state
