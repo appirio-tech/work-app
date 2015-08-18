@@ -20,7 +20,7 @@ configs.templateCache.push
     '!.tmp/css-files.html'
     '!.tmp/js-files.html'
   ]
-  module  : 'app.core'
+  module  : 'app'
 
 env = process.env.TRAVIS_BRANCH || 'dev'
 

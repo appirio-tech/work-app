@@ -4,15 +4,16 @@
 # TODO: unit tests
 # TODO: turn this into its own component
 
-dir = (ManageService, UserV3Service) ->
+dir = (WorkAPIService, UserV3Service) ->
   link = (scope, element, attrs) ->
     getProjects = ->
       user = UserV3Service.getCurrentUser()
 
       if user?.handle
-        ManageService.getWorkRequests().then (projects) ->
-          scope.projects = projects
+        resource = WorkAPIService.get()
 
+        resource.$promise.then (response) ->
+          scope.projects = response
       else
         scope.projects = []
 
@@ -24,6 +25,6 @@ dir = (ManageService, UserV3Service) ->
 
 
 
-dir.$inject = ['ManageService', 'UserV3Service']
+dir.$inject = ['WorkAPIService', 'UserV3Service']
 
 angular.module('app.layout').directive 'headerNav', dir

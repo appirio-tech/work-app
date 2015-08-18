@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$state', 'AuthService', 'UserV3Service', 'logger'];
+  RegisterController.$inject = ['$state', 'AuthService', 'UserV3Service'];
 
   /* @ngInject */
-  function RegisterController($state, AuthService, UserV3Service, logger) {
+  function RegisterController($state, AuthService, UserV3Service) {
     var vm = this;
     vm.title = 'Register';
     vm.username  = '';
@@ -36,7 +36,6 @@
     };
 
     function activate() {
-      logger.log('Activated Registration View');
     }
 
     function registerError(error) {
