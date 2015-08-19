@@ -11,31 +11,31 @@ describe 'Check permission during a state change', ->
     stateService = $state
     authService  = AuthService
 
+  afterEach ->
+    spy.restore()
+    isLoggedInStub?.restore?()
+
   context 'when going to a protected state', ->
     context 'when a user is logged in', ->
       beforeEach ->
+        isLoggedInStub = sinon.stub authService, 'isLoggedIn', ->
+          true
+
         stateService.go 'messaging', id: 123
 
         true
-
-      afterEach ->
-        spy.restore()
 
       it 'should have called state go once', ->
         expect(spy.calledOnce).to.be.ok
 
     context 'when a user is not logged in', ->
-      beforeEach inject (AuthService) ->
-        isLoggedInStub = sinon.stub AuthService, 'isLoggedIn', ->
+      beforeEach inject ->
+        isLoggedInStub = sinon.stub authService, 'isLoggedIn', ->
           false
 
         stateService.go 'messaging', id: 123
 
         true
-
-      afterEach ->
-        spy.restore()
-        isLoggedInStub.restore()
 
       it 'should have called state go with login', ->
         wentToLogin = spy.calledWith 'login'
