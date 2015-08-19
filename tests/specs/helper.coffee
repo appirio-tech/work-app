@@ -16,14 +16,13 @@ window.__karma__.loaded = ->
 
   AutoConfigFakeServer.fakeServer.respondImmediately = true
 
-  schemas = [
-    FIXTURES['bower_components/appirio-tech-api-schemas/swagger/v3-work.json']
-  ]
+  fixtures = []
 
-  for path, fixture of FIXTURES
-    schemas.push fixture
+  for key, fixture of window.FIXTURES
+    # apiary/messaging14.json needs to be updated on apiary
+    fixtures.push fixture unless key == 'apiary/messaging14.json'
 
-  AutoConfigFakeServer.consume schemas
+  AutoConfigFakeServer.consume fixtures
 
   window.__karma__.start()
 
