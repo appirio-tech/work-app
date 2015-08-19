@@ -18,7 +18,6 @@ config = ($locationProvider, $stateProvider) ->
     persmission:
       groups: ['any']
 
-
   states['messaging'] =
     url         : '/messaging/:id'
     title       : 'Messaging'
