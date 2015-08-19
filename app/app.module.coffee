@@ -13,6 +13,7 @@ dependencies = [
   'appirio-tech-submissions'
   'ap-copilot-flow'
   'newrelic'
+  angularDragula(angular)
 ]
 
 angular.module 'app', dependencies
