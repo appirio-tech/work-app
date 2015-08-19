@@ -3,7 +3,7 @@
 SubmissionsPageController = ($stateParams) ->
   vm        = this
   vm.workId = $stateParams.workId
-  vm.phase  = $stateParams.phase
+  vm.phase = $stateParams.phase
 
   vm
 
