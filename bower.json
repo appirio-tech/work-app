@@ -18,7 +18,7 @@
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
     "bardjs": "~0.0.3",
     "appirio-tech-api-schemas": "master",
-    "auto-config-fake-server": "~2.0.4"
+    "auto-config-fake-server": "1.x.x"
   },
   "dependencies": {
     "angular": "1.4.x",
