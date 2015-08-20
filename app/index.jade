@@ -11,6 +11,18 @@ html(ng-app='app')
         display: none !important;
       }
 
+    = "\n"
+    // removeIf(production)
+    = "\n"
+
+    script(type="text/javascript", src="/bower_components/sinon/index.js")
+
+    script(type="text/javascript", src="/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js")
+
+    = "\n"
+    // endRemoveIf(production)
+    = "\n"
+
     title(ng-bind='title') Appiro Work Platform
 
     meta(charset='utf-8')
