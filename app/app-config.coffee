@@ -27,26 +27,30 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['submissions'] =
-    url         : '/:workId/submissions/:phase'
-    title       : 'Submissions'
-    controller  : 'SubmissionsPageController as vm'
+    url         : '/project/:workId/submissions/:phase'
     templateUrl : 'views/submissions.html'
+    controller: 'SubmissionsPageController as vm'
     persmission:
       groups: ['any']
 
-  states['submission-slides'] =
-    url         : '/:workId/submissions/slides/:submissionId/:fileId'
-    title       : 'Submissions Slides'
-    controller  : 'SlidesDetailsPageController as vm'
-    templateUrl : 'views/submission-slides.html'
+  states['final-fixes'] =
+    url         : '/project/:workId/submissions/final-fixes'
+    templateUrl : 'views/submissions.html'
+    controller: 'FinalFixesController as vm'
     persmission:
       groups: ['any']
 
   states['submission-detail'] =
-    url         : '/:workId/submissions/detail/:submissionId'
-    title       : 'Submissions Detail'
-    controller  : 'SlidesDetailsPageController as vm'
+    url         : '/project/:workId/submissions/:submissionId/detail'
     templateUrl : 'views/submission-detail.html'
+    controller: 'SubmissionDetailsPageController as vm'
+    persmission:
+      groups: ['any']
+
+  states['submission-slides'] =
+    url         : '/project/:workId/submissions/:submissionId/slides/:fileId'
+    templateUrl : 'views/submission-slides.html'
+    controller: 'SlidesPageController as vm'
     persmission:
       groups: ['any']
 
