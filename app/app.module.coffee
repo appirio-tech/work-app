@@ -1,9 +1,9 @@
 'use strict'
 
 dependencies = [
-  'app.layout'
   'app.auth'
   'ap-file-upload'
+  'appirio-tech-ng-work-layout'
   'appirio-tech-ng-timeline'
   'appirio-tech-messaging'
   'appirio-tech-ng-auth'
