@@ -37,7 +37,7 @@
     "ap-newrelic": "0.x.x",
     "appirio-tech-ng-messaging": "5.x.x",
     "appirio-tech-ng-timeline": "5.x.x",
-    "appirio-tech-copilot": "1.x.x",
+    "appirio-tech-copilot": "dev",
     "appirio-tech-ng-auth": "3.x.x",
     "appirio-tech-ng-file-upload": "0.x.x",
     "appirio-tech-ng-submit-work": "1.x.x",
