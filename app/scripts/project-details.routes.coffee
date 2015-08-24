@@ -14,8 +14,6 @@
       controller  : 'ProjectDetailsController'
       templateUrl : 'views/project-details.html'
       controllerAs: 'vm'
-      resolve:
-        copilotWork: ['$stateParams', 'ProjectDetailsService', initializeCopilotWork]
 
     states['project-details.challenges'] =
       url        : '/challengeEstimates'

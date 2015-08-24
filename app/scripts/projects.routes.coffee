@@ -19,8 +19,6 @@ config = ($stateProvider) ->
     templateUrl : 'views/projects.html'
     controller  : 'ProjectsController'
     controllerAs: 'vm'
-    resolve:
-      workRequests: ['ProjectsService', getAssignedProjects]
 
   getWorkRequests = (ProjectsService) ->
     ProjectsService.getWorkRequests()
@@ -30,8 +28,6 @@ config = ($stateProvider) ->
     templateUrl : 'views/projects.html'
     controller  : 'ProjectsController'
     controllerAs: 'vm'
-    resolve:
-      workRequests: ['ProjectsService', getWorkRequests]
 
   for key, state of states
     $stateProvider.state key, state
