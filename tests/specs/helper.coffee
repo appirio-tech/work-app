@@ -10,22 +10,6 @@ window.unstashIt = (obj, key) ->
 
   delete stash[key]
 
-window.__karma__.loaded = ->
-  # prevent karma from starting
-  AutoConfigFakeServer.init()
-
-  AutoConfigFakeServer.fakeServer.respondImmediately = true
-
-  fixtures = []
-
-  for key, fixture of window.FIXTURES
-    # apiary/messaging14.json needs to be updated on apiary
-    fixtures.push fixture unless key == 'apiary/messaging14.json'
-
-  AutoConfigFakeServer.consume fixtures
-
-  window.__karma__.start()
-
 beforeEach ->
   module 'app'
 

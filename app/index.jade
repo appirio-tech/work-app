@@ -22,7 +22,11 @@ html(ng-app='app')
 
     include css-files
   body
-    include layout/views/shell.jade
+    layout-header(role="banner")
+
+    layout-main
+
+    layout-footer
 
     include js-files
 

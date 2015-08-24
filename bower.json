@@ -30,6 +30,7 @@
     "appirio-tech-ng-submit-work": "1.x.x",
     "appirio-tech-ng-submissions": "1.x.x",
     "appirio-tech-ng-projects": "2.x.x",
+    "appirio-tech-ng-work-layout": "0.x.x",
     "angular-dragula.js": "~1.0.6"
   },
   "resolutions": {
