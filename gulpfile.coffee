@@ -20,20 +20,21 @@ configs.templateCache.push
     '!.tmp/css-files.html'
     '!.tmp/js-files.html'
   ]
-  module  : 'app.core'
+  module  : 'app'
 
 env = process.env.TRAVIS_BRANCH || 'dev'
+
+configs.ngConstants = {}
 
 if env == 'dev'
   configs.cdnify =
     url: '//work.topcoder-dev.com'
 
-  # configs.ngConstants.constants =
-  #   apiUrl          : 'https://api.topcoder-dev.com/v3/'
-  #   API_URL         : 'https://api.topcoder-dev.com/v3'
-  #   API_URL_V2      : 'https://api.topcoder-dev.com/v2'
-  #   AUTH0_DOMAIN    : 'topcoder-dev.auth0.com'
-  #   AUTH0_CLIENT_ID : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT'
+  configs.ngConstants.constants =
+    API_URL         : 'https://api.topcoder-dev.com'
+    API_URL_V2      : 'https://api.topcoder-dev.com'
+    AUTH0_DOMAIN    : 'topcoder-dev.auth0.com'
+    AUTH0_CLIENT_ID : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT'
 
 if env == 'qa'
   configs.cdnify =

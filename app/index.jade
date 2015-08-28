@@ -20,11 +20,13 @@ html(ng-app='app')
 
     include ../bower_components/ap-newrelic/browser/script
 
-    base(href=basePath)
-
     include css-files
   body
-    include layout/views/shell.jade
+    layout-header(role="banner")
+
+    layout-main
+
+    layout-footer
 
     include js-files
 

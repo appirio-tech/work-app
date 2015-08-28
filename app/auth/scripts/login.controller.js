@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService', 'logger'];
+  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService'];
 
   /* @ngInject */
-  function LoginController($rootScope, $location, $state, AuthService, logger) {
+  function LoginController($rootScope, $location, $state, AuthService) {
     var vm = this;
     vm.title = 'Login';
     vm.username  = '';
@@ -31,12 +31,10 @@
     };
 
     function activate() {
-      logger.log('Activated Login View');
     }
 
     function loginFailure(error) {
       vm.error = true;
-      logger.error(error);
     }
 
     function loginSuccess() {
