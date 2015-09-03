@@ -1,11 +1,12 @@
 'use strict'
 
-FinalFixesController = ($stateParams) ->
-  vm              = this
-  vm.workId       = $stateParams.workId
+FinalFixesPageController = ($stateParams) ->
+  vm           = this
+  vm.projectId = $stateParams.projectId
+  vm.stepId    = $stateParams.stepId
 
   vm
 
-FinalFixesController.$inject = ['$stateParams']
+FinalFixesPageController.$inject = ['$stateParams']
 
-angular.module('app').controller 'FinalFixesController', FinalFixesController
+angular.module('app').controller 'FinalFixesPageController', FinalFixesPageController
