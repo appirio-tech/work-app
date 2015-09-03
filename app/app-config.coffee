@@ -26,34 +26,43 @@ config = ($locationProvider, $stateProvider) ->
     persmission:
       groups: ['any']
 
-  states['submissions'] =
-    url         : '/project/:workId/submissions/:phase'
-    templateUrl : 'views/submissions.html'
-    controller: 'SubmissionsPageController as vm'
+  states['design-concepts'] =
+    url        : '/projects/:projectId/:stepId/design-concepts'
+    templateUrl: 'views/submissions.html'
+    controller : 'SubmissionsPageController as vm'
+    stepType   : 'designConcepts'
+    persmission:
+      groups: ['any']
+
+  states['complete-designs'] =
+    url        : '/projects/:projectId/:stepId/complete-designs'
+    templateUrl: 'views/submissions.html'
+    controller : 'SubmissionsPageController as vm'
+    stepType   : 'completeDesigns'
     persmission:
       groups: ['any']
 
   states['final-fixes'] =
-    url         : '/project/:workId/submissions/final-fixes'
-    templateUrl : 'views/submissions.html'
-    controller: 'FinalFixesController as vm'
+    url        : '/projects/:projectId/:stepId/final-fixes'
+    templateUrl: 'views/final-fixes.html'
+    controller : 'FinalFixesPageController as vm'
     persmission:
       groups: ['any']
 
   states['submission-detail'] =
-    url         : '/project/:workId/submissions/:submissionId/detail'
-    templateUrl : 'views/submission-detail.html'
-    controller: 'SubmissionDetailsPageController as vm'
+    url        : '/projects/:projectId/:stepId/:submissionId'
+    templateUrl: 'views/submission-detail.html'
+    controller : 'SubmissionDetailPageController as vm'
     persmission:
       groups: ['any']
 
-  states['submission-slides'] =
-    url         : '/project/:workId/submissions/:submissionId/slides/:fileId'
-    templateUrl : 'views/submission-slides.html'
-    controller: 'SlidesPageController as vm'
+  states['file-detail'] =
+    url        : '/projects/:projectId/:stepId/:submissionId/:fileId'
+    templateUrl: 'views/file-detail.html'
+    controller : 'FileDetailPageController as vm'
     persmission:
       groups: ['any']
-
+ 
   states['view-work-multiple'] =
     url         : '/manage'
     title       : 'View Work'
