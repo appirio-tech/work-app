@@ -17,7 +17,7 @@
     "angular-mocks": "1.4.x",
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
     "bardjs": "~0.0.3",
-    "appirio-tech-api-schemas": "master",
+    "appirio-tech-api-schemas": "timelineUpdates",
     "auto-config-fake-server": "2.x.x"
   },
   "dependencies": {
@@ -25,7 +25,7 @@
     "jquery": "2.1.x",
     "angular-ui-router": "0.2.x",
     "ap-newrelic": "0.x.x",
-    "appirio-tech-ng-timeline": "5.x.x",
+    "appirio-tech-ng-timeline": "DEM-1173",
     "appirio-tech-copilot": "2.x.x",
     "appirio-tech-ng-submit-work": "1.x.x",
     "appirio-tech-ng-submissions": "2.x.x",
