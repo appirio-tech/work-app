@@ -27,10 +27,10 @@
     "ap-newrelic": "0.x.x",
     "appirio-tech-ng-timeline": "5.x.x",
     "appirio-tech-copilot": "2.x.x",
-    "appirio-tech-ng-submit-work": "1.x.x",
+    "appirio-tech-ng-submit-work": "2.x.x",
     "appirio-tech-ng-submissions": "2.x.x",
     "appirio-tech-ng-projects": "2.x.x",
-    "appirio-tech-ng-work-layout": "0.x.x",
+    "appirio-tech-ng-work-layout": "1.x.x",
     "appirio-tech-ng-api-services": "0.x.x",
     "angular-dragula.js": "~1.0.6"
   },

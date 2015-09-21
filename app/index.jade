@@ -21,12 +21,13 @@ html(ng-app='app')
     include ../bower_components/ap-newrelic/browser/script
 
     include css-files
+
+    script(src="//use.typekit.net/jjo6pal.js")
+
+    script.
+      try{Typekit.load({ async: true });}catch(e){}
   body
-    layout-header(role="banner")
-
-    layout-main
-
-    layout-footer
+    ui-view
 
     include js-files
 

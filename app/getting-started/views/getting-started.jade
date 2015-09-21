@@ -1,18 +1,23 @@
-section.jumbotron
-  p Our Talented 700,000 strong community is ready to work on your project today
+layout-header(role="banner")
 
-header
-  h1 What can we build for you?
+main.layout-main("role"="main" layout-main=true)
+  section.jumbotron
+    p Our Talented 700,000 strong community is ready to work on your project today
 
-- articles = []
-- articles.push({ href:"/speak-with-an-expert", header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
-- articles.push({ href:"/learn-about-our-process", header: 'Learn about our process', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
-- articles.push({ href:"/see-examples", header: 'See examples of our work', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+  header
+    h1 What can we build for you?
 
-aside.learn-more
-  each article in articles
-    article
-      header
-        a(href=article.href)!= article.header
+  - articles = []
+  - articles.push({ href:"/speak-with-an-expert", header: 'Speak with an expert', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+  - articles.push({ href:"/learn-about-our-process", header: 'Learn about our process', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
+  - articles.push({ href:"/see-examples", header: 'See examples of our work', p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' })
 
-      p!= article.p
+  aside.learn-more
+    each article in articles
+      article
+        header
+          a(href=article.href)!= article.header
+
+        p!= article.p
+
+layout-footer

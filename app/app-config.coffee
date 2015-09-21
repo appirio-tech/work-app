@@ -62,7 +62,7 @@ config = ($locationProvider, $stateProvider) ->
     controller : 'FileDetailPageController as vm'
     persmission:
       groups: ['any']
- 
+
   states['view-work-multiple'] =
     url         : '/manage'
     title       : 'View Work'
