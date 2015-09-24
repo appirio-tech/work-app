@@ -72,10 +72,34 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['submit-work'] =
-    url         : '/submit-work/:id'
+    url         : '/submit-work'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
     templateUrl : 'views/submit-work.html'
+    persmission:
+      groups: ['any']
+
+  states['submit-work-features'] =
+    url         : '/submit-work/features/:id'
+    title       : 'Submit Work'
+    controller  : 'SubmitWorkPageController as vm'
+    templateUrl : 'views/submit-work-features.html'
+    persmission:
+      groups: ['any']
+
+  states['submit-work-visuals'] =
+    url         : '/submit-work/visuals/:id'
+    title       : 'Submit Work'
+    controller  : 'SubmitWorkPageController as vm'
+    templateUrl : 'views/submit-work-visuals.html'
+    persmission:
+      groups: ['any']
+
+  states['submit-work-development'] =
+    url         : '/submit-work/development/:id'
+    title       : 'Submit Work'
+    controller  : 'SubmitWorkPageController as vm'
+    templateUrl : 'views/submit-work-development.html'
     persmission:
       groups: ['any']
 
