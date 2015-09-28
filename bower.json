@@ -25,7 +25,7 @@
     "jquery": "2.1.x",
     "angular-ui-router": "0.2.x",
     "ap-newrelic": "0.x.x",
-    "appirio-tech-ng-timeline": "timelineTest",
+    "appirio-tech-ng-timeline": "6.x.x",
     "appirio-tech-copilot": "2.x.x",
     "appirio-tech-ng-submit-work": "2.x.x",
     "appirio-tech-ng-submissions": "2.x.x",
