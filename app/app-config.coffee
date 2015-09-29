@@ -72,7 +72,7 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['submit-work'] =
-    url         : '/submit-work'
+    url         : '/submit-work/:id'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
     templateUrl : 'views/submit-work.html'
