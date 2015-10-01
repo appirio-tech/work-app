@@ -27,7 +27,7 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['submissions'] =
-    url        : '/projects/:projectId/:stepId/submissions/:stepType'
+    url        : '/projects/:projectId/submissions'
     templateUrl: 'views/submissions-generic.html'
     controller : 'GenericSubmissionsPageController as vm'
     persmission:

@@ -1,15 +1,28 @@
 'use strict'
 
-GenericSubmissionsPageController = ($stateParams, $state) ->
+GenericSubmissionsPageController = ($stateParams, $state, StepsAPIService) ->
   vm           = this
   vm.projectId = $stateParams.projectId
-  vm.stepId    = $stateParams.stepId
-  vm.stepType  = $statParams.stepType
-  vm.showSubmissions = vm.stepType == 'designConcepts' || vm.stepType == 'finalDesigns'
-  vm.showFinalFixes = vm.stepType == 'finalFixes'
+  vm.stepId    = null
+  vm.stepType  = null
 
-  vm
+  onStepsChange = (resource) ->
+    resource.$promise.then (response) ->
+      response.forEach (step) ->
+        if (Date.now() < new Date(step.endsAt))
+          vm.stepId = step.id
+          vm.stepType = step.stepType
 
-GenericSubmissionsPageController.$inject = ['$stateParams', '$state']
+  activate = ->
+    params =
+      projectId: vm.projectId
+
+    StepsAPIService.query params, onStepsChange
+
+    vm
+
+  activate()
+
+GenericSubmissionsPageController.$inject = ['$stateParams', '$state', 'StepsAPIService']
 
 angular.module('app').controller 'GenericSubmissionsPageController', GenericSubmissionsPageController
