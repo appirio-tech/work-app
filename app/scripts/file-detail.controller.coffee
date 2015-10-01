@@ -6,6 +6,7 @@ FileDetailPageController = ($stateParams) ->
   vm.stepId       = $stateParams.stepId
   vm.submissionId = $stateParams.submissionId
   vm.fileId       = $stateParams.fileId
+  vm.isModal      = $stateParams.modal
 
   vm
 

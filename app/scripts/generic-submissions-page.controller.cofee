@@ -5,8 +5,8 @@ GenericSubmissionsPageController = ($stateParams, $state) ->
   vm.projectId = $stateParams.projectId
   vm.stepId    = $stateParams.stepId
   vm.stepType  = $statParams.stepType
-  vm.showSubmissions = vm.stepType == 'design-concepts' || vm.stepType == 'final-designs'
-  vm.showFinalFixes = vm.stepType == 'final-fixes'
+  vm.showSubmissions = vm.stepType == 'designConcepts' || vm.stepType == 'finalDesigns'
+  vm.showFinalFixes = vm.stepType == 'finalFixes'
 
   vm
 

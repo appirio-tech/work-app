@@ -64,7 +64,7 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['file-detail'] =
-    url        : '/projects/:projectId/:stepId/:submissionId/:fileId'
+    url        : '/projects/:projectId/:stepId/:submissionId/:fileId?modal'
     templateUrl: 'views/file-detail.html'
     controller : 'FileDetailPageController as vm'
     persmission:
