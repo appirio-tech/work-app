@@ -6,8 +6,7 @@ GenericSubmissionsPageController = ($stateParams, $state, StepsAPIService) ->
   vm.stepId    = null
   vm.stepType  = null
 
-  onStepsChange = (resource) ->
-    resource.$promise.then (response) ->
+  onStepsChange = (response) ->
       response.forEach (step) ->
         # TODO: activate to currently open step
         if (step.stepType == 'designConcepts')
