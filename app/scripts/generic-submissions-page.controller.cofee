@@ -1,0 +1,15 @@
+'use strict'
+
+GenericSubmissionsPageController = ($stateParams, $state) ->
+  vm           = this
+  vm.projectId = $stateParams.projectId
+  vm.stepId    = $stateParams.stepId
+  vm.stepType  = $statParams.stepType
+  vm.showSubmissions = vm.stepType == 'design-concepts' || vm.stepType == 'final-designs'
+  vm.showFinalFixes = vm.stepType == 'final-fixes'
+
+  vm
+
+GenericSubmissionsPageController.$inject = ['$stateParams', '$state']
+
+angular.module('app').controller 'GenericSubmissionsPageController', GenericSubmissionsPageController

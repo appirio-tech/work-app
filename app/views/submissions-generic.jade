@@ -1,0 +1,8 @@
+layout-header(role="banner")
+
+main.layout-main("role"="main" layout-main=true)
+  submissions(ng-if="vm.showSubmissions" project-id="{{ vm.projectId }}", step-id="{{ vm.stepId }}", step-type="{{ vm.stepType }}")
+
+  final-fixes(ng-if="vm.showFinalFixes" project-id="{{ vm.projectId }}", step-id="{{ vm.stepId }}")
+
+layout-footer
