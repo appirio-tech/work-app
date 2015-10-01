@@ -26,6 +26,13 @@ config = ($locationProvider, $stateProvider) ->
     persmission:
       groups: ['any']
 
+  states['submissions'] =
+    url        : '/projects/:projectId/submissions'
+    templateUrl: 'views/submissions-generic.html'
+    controller : 'GenericSubmissionsPageController as vm'
+    persmission:
+      groups: ['any']
+
   states['design-concepts'] =
     url        : '/projects/:projectId/:stepId/design-concepts'
     templateUrl: 'views/submissions.html'
@@ -57,7 +64,7 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['file-detail'] =
-    url        : '/projects/:projectId/:stepId/:submissionId/:fileId'
+    url        : '/projects/:projectId/:stepId/:submissionId/:fileId?modal'
     templateUrl: 'views/file-detail.html'
     controller : 'FileDetailPageController as vm'
     persmission:
