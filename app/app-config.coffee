@@ -7,7 +7,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['home'] =
     url        : '/'
-    templateUrl: 'getting-started/views/getting-started.html'
+    templateUrl: 'views/getting-started.html'
     title      : 'Getting Started'
 
   states['timeline'] =

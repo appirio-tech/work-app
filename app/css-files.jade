@@ -6,7 +6,7 @@
 - css.push("/styles/main")
 - css.push("/auth/styles/login")
 - css.push("/auth/styles/register")
-- css.push("/getting-started/styles/getting-started")
+- css.push("/styles/getting-started")
 - css.push("/styles/manage")
 - css.push('/bower_components/appirio-tech-ng-timeline/dist/main')
 - css.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
@@ -19,12 +19,12 @@
 - css.push('/bower_components/appirio-tech-ng-projects/dist/main')
 - css.push('/bower_components/appirio-tech-ng-submit-work/dist/main')
 
-- desktopCSS.push("/getting-started/styles/getting-started.desktop")
+- desktopCSS.push("/styles/getting-started.desktop")
 
 - bowercss.push('/bower_components/font-awesome/css/font-awesome')
 
 = "\n"
-// build:css styles/lib.css
+// build:css /styles/lib.css
 = "\n"
 each path in bowercss
   link(href=path + ".css", rel="stylesheet")
@@ -32,7 +32,7 @@ each path in bowercss
 // endbuild
 = "\n"
 
-// build:css styles/app.css
+// build:css /styles/app.css
 = "\n"
 each path in css
   link(href=path + ".css", rel="stylesheet")
@@ -40,7 +40,7 @@ each path in css
 // endbuild
 = "\n"
 
-// build:css styles/mobile-landscape.css media="(min-width: 568px)"
+// build:css /styles/mobile-landscape.css media="(min-width: 568px)"
 = "\n"
 each path in landscapeCSS
   link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
@@ -48,7 +48,7 @@ each path in landscapeCSS
 // endbuild
 = "\n"
 
-// build:css styles/desktop.css media="(min-width: 767px)"
+// build:css /styles/desktop.css media="(min-width: 767px)"
 = "\n"
 each path in desktopCSS
   link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")

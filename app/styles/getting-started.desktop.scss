@@ -6,7 +6,7 @@
   .jumbotron {
     display: block;
 
-    @include bg-cover("../images/homeBanner.jpg");
+    @include bg-cover("/images/homeBanner.jpg");
     @include clearfix;
 
     p {

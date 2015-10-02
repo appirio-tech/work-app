@@ -9,12 +9,12 @@ configs.serve =
 
 configs.copyFiles =
   files:
-    'dist': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
-  base: 'src/client/app/'
+    'dist': 'app/**/*.{gif,png,jpg,jpeg,svg}'
+  base: 'app/'
 
 configs.templateCache.push
   files   : [
-    'src/client/app/**/*.html'
+    'app/**/*.html'
     '.tmp/**/*.html'
     '!.tmp/index.html'
     '!.tmp/css-files.html'
