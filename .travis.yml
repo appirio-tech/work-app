@@ -12,7 +12,10 @@ script:
 - gulp test
 - gulp useref
 - gulp copy-files
-- gulp optimize-build
+- gulp cdnify
+- gulp uglify
+- gulp minify-css
+- gulp remove-code
 - gulp finger-print
 - gulp finger-print-replace
 sudo: false
