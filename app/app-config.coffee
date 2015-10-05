@@ -3,7 +3,7 @@
 config = ($locationProvider, $stateProvider) ->
   states = {}
 
-  $locationProvider.html5Mode true
+  $locationProvider.html5Mode false
 
   states['home'] =
     url        : '/'
@@ -117,9 +117,14 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/verified-email-address'
     templateUrl: 'views/verified-email-address.html'
 
+  states['otherwise'] =
+    url        : '*path',
+    templateUrl: 'views/404.html'
+
   for key, state of states
     $stateProvider.state key, state
 
 config.$inject = ['$locationProvider', '$stateProvider']
 
 angular.module('app').config config
+
