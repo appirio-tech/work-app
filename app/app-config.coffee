@@ -7,8 +7,11 @@ config = ($locationProvider, $stateProvider) ->
 
   states['home'] =
     url        : '/'
-    templateUrl: 'views/getting-started.html'
-    title      : 'Getting Started'
+    title       : 'View Work'
+    controller  : 'ManageController as vm'
+    templateUrl : 'views/manage.html'
+    persmission:
+      groups: ['any']
 
   states['timeline'] =
     url         : '/work/:workId/timeline'
