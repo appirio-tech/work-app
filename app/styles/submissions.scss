@@ -1,11 +1,2 @@
 @import "work-includes";
 
-main.layout-main.submissions {
-  @include flex-center();
-  @include flex-direction(column);
-  padding: $spacing-big;
-
-  submission-slides {
-    width: 100%;
-  }
-}

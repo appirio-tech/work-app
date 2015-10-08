@@ -1,5 +1,7 @@
 layout-header(role="banner")
 
+layout-project-nav(work-id="{{ vm.workId }}")
+
 main.layout-main("role"="main" layout-main=true)
   submissions(project-id="{{ vm.projectId }}", step-id="{{ vm.stepId }}", step-type="{{ vm.stepType }}")
 
