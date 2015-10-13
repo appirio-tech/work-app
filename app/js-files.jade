@@ -1,79 +1,90 @@
-- var scripts = []
-- var bowers  = []
-- var modules = []
+- var appAFiles = []
+- var appBFiles = []
+- var libAFiles = []
+- var libBFiles = []
 
-- scripts.push('/app.module')
-- scripts.push('/app-config')
-- scripts.push('/app-run')
-- scripts.push('/scripts/templates')
-- scripts.push('/scripts/constants')
-- scripts.push('/scripts/messaging.controller')
-- scripts.push('/scripts/timeline.controller')
-- scripts.push('/scripts/submissions.controller')
-- scripts.push('/scripts/submission-detail.controller')
-- scripts.push('/scripts/file-detail.controller')
-- scripts.push('/scripts/final-fixes.controller')
-- scripts.push('/scripts/submit-work-page.controller')
-- scripts.push('/scripts/generic-submissions-page.controller')
-- scripts.push("/auth/scripts/auth.module")
-- scripts.push("/auth/scripts/auth.routes")
-- scripts.push("/auth/scripts/login.controller")
-- scripts.push("/auth/scripts/login.directive")
-- scripts.push("/auth/scripts/register.controller")
-- scripts.push("/scripts/manage.controller")
+- appAFiles.push('/app.module')
+- appAFiles.push('/app-config')
+- appAFiles.push('/app-run')
+- appAFiles.push('/scripts/templates')
+- appAFiles.push('/scripts/constants')
+- appAFiles.push('/scripts/messaging.controller')
+- appAFiles.push('/scripts/timeline.controller')
+- appAFiles.push('/scripts/submissions.controller')
+- appAFiles.push('/scripts/submission-detail.controller')
+- appAFiles.push('/scripts/file-detail.controller')
+- appAFiles.push('/scripts/final-fixes.controller')
+- appAFiles.push('/scripts/submit-work-page.controller')
+- appAFiles.push('/scripts/generic-submissions-page.controller')
+- appAFiles.push("/auth/scripts/auth.module")
+- appAFiles.push("/auth/scripts/auth.routes")
+- appAFiles.push("/auth/scripts/login.controller")
+- appAFiles.push("/auth/scripts/login.directive")
+- appAFiles.push("/auth/scripts/register.controller")
+- appAFiles.push("/scripts/manage.controller")
+- appAFiles.push('/bower_components/appirio-tech-ng-work-layout/dist/main')
+- appAFiles.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
+- appAFiles.push('/bower_components/appirio-tech-ng-timeline/dist/main')
+- appAFiles.push('/bower_components/appirio-tech-ng-auth/dist/main')
+- appAFiles.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
+- appAFiles.push('/bower_components/appirio-tech-ng-messaging/dist/main')
 
-- modules.push('/bower_components/appirio-tech-ng-work-layout/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-timeline/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-auth/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-submissions/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-messaging/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-projects/dist/main')
-- modules.push('/bower_components/appirio-tech-copilot/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-submit-work/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-api-services/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-api-services/dist/main')
-- modules.push('/bower_components/appirio-tech-ng-optimist/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-ng-projects/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-copilot/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-ng-submit-work/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-ng-api-services/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-ng-api-services/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-ng-optimist/dist/main')
+- appBFiles.push('/bower_components/appirio-tech-ng-submissions/dist/main')
 
-- bowers.push('/bower_components/zepto/zepto')
-- bowers.push('/bower_components/angular/angular')
-- bowers.push('/bower_components/angular-resource/angular-resource')
-- bowers.push('/bower_components/angular-sanitize/angular-sanitize')
-- bowers.push('/bower_components/moment/moment')
-- bowers.push('/bower_components/angular-ui-router/release/angular-ui-router')
-- bowers.push("/bower_components/angular-scroll/angular-scroll")
-- bowers.push('/bower_components/auth0.js/build/auth0')
-- bowers.push('/bower_components/angular-animate/angular-animate')
-- bowers.push('/bower_components/angular-cookies/angular-cookies')
-- bowers.push('/bower_components/a0-angular-storage/dist/angular-storage')
-- bowers.push('/bower_components/auth0-angular/build/auth0-angular')
-- bowers.push('/bower_components/ap-newrelic/ng-route-timing/dist/newrelic')
-- bowers.push('/bower_components/angular-jwt/dist/angular-jwt')
-- bowers.push('/bower_components/angular-dragula.js/dist/angular-dragula')
+- libAFiles.push('/bower_components/zepto/zepto')
+- libAFiles.push('/bower_components/angular/angular')
+- libAFiles.push('/bower_components/angular-resource/angular-resource')
+- libAFiles.push('/bower_components/angular-sanitize/angular-sanitize')
+- libAFiles.push('/bower_components/angular-ui-router/release/angular-ui-router')
+- libAFiles.push("/bower_components/angular-scroll/angular-scroll")
+- libAFiles.push('/bower_components/angular-animate/angular-animate')
+- libAFiles.push('/bower_components/angular-cookies/angular-cookies')
+
+- libBFiles.push('/bower_components/a0-angular-storage/dist/angular-storage')
+- libBFiles.push('/bower_components/angular-jwt/dist/angular-jwt')
+- libBFiles.push('/bower_components/angular-dragula.js/dist/angular-dragula')
+- libBFiles.push('/bower_components/auth0-angular/build/auth0-angular')
+- libBFiles.push('/bower_components/auth0.js/build/auth0')
+- libBFiles.push('/bower_components/moment/moment')
+- libBFiles.push('/bower_components/ap-newrelic/ng-route-timing/dist/newrelic')
 
 = "\n"
-// build:js /js/lib.js
+// build:js /js/liba.js
 = "\n"
-each path in bowers
+each path in libAFiles
   script(src= path + ".js", type="text/javascript")
   = "\n"
 // endbuild
 = "\n"
 
 = "\n"
-// build:js /js/modules.js
+// build:js /js/libb.js
 = "\n"
-each path in modules
+each path in libBFiles
+  script(src= path + ".js", type="text/javascript")
+  = "\n"
+// endbuild
+= "\n"
+
+= "\n"
+// build:js /js/appa.js
+= "\n"
+each path in appAFiles
   script(src=path + ".js", type="text/javascript")
   = "\n"
 // endbuild
 = "\n"
 
 = "\n"
-// build:js /js/app.js
+// build:js /js/appb.js
 = "\n"
-each path in scripts
+each path in appBFiles
   script(src=path + ".js", type="text/javascript")
   = "\n"
 // endbuild
