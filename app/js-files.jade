@@ -1,5 +1,6 @@
 - var scripts = []
-- var bowers = []
+- var bowers  = []
+- var modules = []
 
 - scripts.push('/app.module')
 - scripts.push('/app-config')
@@ -20,19 +21,20 @@
 - scripts.push("/auth/scripts/login.directive")
 - scripts.push("/auth/scripts/register.controller")
 - scripts.push("/scripts/manage.controller")
-- scripts.push('/bower_components/appirio-tech-ng-work-layout/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-timeline/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-auth/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-submissions/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-messaging/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-projects/dist/main')
-- scripts.push('/bower_components/appirio-tech-copilot/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-submit-work/dist/main')
-- scripts.push('/bower_components/appirio-tech-ng-api-services/dist/main')
-- scripts.push('/scripts/projects.routes')
-- scripts.push('/scripts/project-details.routes')
+
+- modules.push('/bower_components/appirio-tech-ng-work-layout/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-timeline/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-auth/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-submissions/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-messaging/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-projects/dist/main')
+- modules.push('/bower_components/appirio-tech-copilot/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-submit-work/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-api-services/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-api-services/dist/main')
+- modules.push('/bower_components/appirio-tech-ng-optimist/dist/main')
 
 - bowers.push('/bower_components/zepto/zepto')
 - bowers.push('/bower_components/angular/angular')
@@ -49,17 +51,22 @@
 - bowers.push('/bower_components/ap-newrelic/ng-route-timing/dist/newrelic')
 - bowers.push('/bower_components/angular-jwt/dist/angular-jwt')
 - bowers.push('/bower_components/angular-dragula.js/dist/angular-dragula')
-- bowers.push('/bower_components/appirio-tech-ng-api-services/dist/main')
-- bowers.push('/bower_components/appirio-tech-ng-optimist/dist/main')
 
 = "\n"
 // build:js /js/lib.js
 = "\n"
 each path in bowers
-  = "\n"
   script(src= path + ".js", type="text/javascript")
   = "\n"
+// endbuild
 = "\n"
+
+= "\n"
+// build:js /js/modules.js
+= "\n"
+each path in modules
+  script(src=path + ".js", type="text/javascript")
+  = "\n"
 // endbuild
 = "\n"
 
@@ -67,9 +74,8 @@ each path in bowers
 // build:js /js/app.js
 = "\n"
 each path in scripts
-  = "\n"
   script(src=path + ".js", type="text/javascript")
   = "\n"
-= "\n"
 // endbuild
 = "\n"
+
