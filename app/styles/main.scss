@@ -3,3 +3,9 @@
 ui-view {
   display: block;
 }
+
+.layout-main {
+  > submissions {
+    padding: $padding;
+  }
+}
