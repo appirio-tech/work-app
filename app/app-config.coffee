@@ -113,6 +113,14 @@ config = ($locationProvider, $stateProvider) ->
     persmission:
       groups: ['any']
 
+  states['submit-work-complete'] =
+    url         : '/submit-work/complete/:id'
+    title       : 'Submit Work'
+    controller  : 'SubmitWorkPageController as vm'
+    templateUrl : 'views/submit-work-complete.html'
+    persmission:
+      groups: ['any']
+
   states['verified-email-address'] =
     url        : '/verified-email-address'
     templateUrl: 'views/verified-email-address.html'
