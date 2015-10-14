@@ -23,6 +23,7 @@ after_success:
 - gulp coveralls
 deploy:
 - provider: s3
+  cache_control: "private, no-store, no-cache, must-revalidate, max-age=0"
   detect_encoding: true
   access_key_id: $AWS_KEY
   secret_access_key: $AWS_SECRET
@@ -32,6 +33,7 @@ deploy:
   on:
     branch: dev
 - provider: s3
+  cache_control: "private, no-store, no-cache, must-revalidate, max-age=0"
   detect_encoding: true
   access_key_id: $QA_AWS_KEY
   secret_access_key: $QA_AWS_SECRET
