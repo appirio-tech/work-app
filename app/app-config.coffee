@@ -22,7 +22,7 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['messaging'] =
-    url         : '/messaging/:id'
+    url         : '/messaging/:id/thread/:threadId'
     title       : 'Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'

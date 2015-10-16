@@ -3,6 +3,6 @@ layout-header(role="banner")
 layout-project-nav(work-id="{{ vm.workId }}")
 
 main.layout-main("role"="main" layout-main=true)
-  messaging(flush-height=true work-id="{{ vm.workId }}" subscriber-id="{{ vm.subscriberId }}")
+  messaging(flush-height=true work-id="{{ vm.workId }}" thread-id="{{vm.threadId}}" subscriber-id="{{ vm.subscriberId }}")
 
 layout-footer

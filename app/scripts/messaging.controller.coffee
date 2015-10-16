@@ -2,7 +2,8 @@
 
 MessagingPageController = ($stateParams, $window, UserV3Service, $scope) ->
   vm              = this
-  vm.workId     = $stateParams.id
+  vm.workId       = $stateParams.id
+  vm.threadId     = $stateParams.threadId
   vm.subscriberId = null
 
   vm.back = ->
