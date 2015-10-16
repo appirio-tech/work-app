@@ -2,7 +2,9 @@ layout-header(role="banner" work-id="{{ vm.workId }}")
 
 layout-project-nav(work-id="{{ vm.workId }}")
 
-main.layout-main("role"="main" layout-main=true)
+main.layout-main.timeline("role"="main" layout-main=true flush-height=true)
+  h1 timeline
+
   timeline(work-id="{{ vm.workId }}")
 
 layout-footer
