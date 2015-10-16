@@ -26,7 +26,7 @@
     "ap-newrelic": "0.x.x",
     "appirio-tech-ng-timeline": "6.x.x",
     "appirio-tech-ng-messaging": "messageTest",
-    "appirio-tech-copilot": "4.x.x",
+    "appirio-tech-copilot": "dev",
     "appirio-tech-ng-submit-work": "appLayer",
     "appirio-tech-ng-submissions": "2.x.x",
     "appirio-tech-ng-projects": "3.x.x",
