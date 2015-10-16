@@ -8,4 +8,21 @@ ui-view {
   > submissions {
     padding: $padding;
   }
+
+  &.manage {
+    background-color: $neutral-color-lightest;
+    text-align: center;
+
+    > a {
+      margin-top: $margin-small;
+    }
+
+    > hr {
+      background-color: $neutral-color-light;
+    }
+
+    ng-projects {
+      text-align: left;
+    }
+  }
 }
