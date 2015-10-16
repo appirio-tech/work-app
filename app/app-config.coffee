@@ -29,6 +29,14 @@ config = ($locationProvider, $stateProvider) ->
     persmission:
       groups: ['any']
 
+  states['copilot-messaging'] =
+  url         : '/copilot-messaging/:id/thread/:threadId'
+  title       : 'Copilot Messaging'
+  controller  : 'MessagingPageController as vm'
+  templateUrl : 'views/messaging-copilot.html'
+  persmission:
+    groups: ['any']
+
   states['submissions'] =
     url        : '/projects/:projectId/submissions'
     templateUrl: 'views/submissions-generic.html'

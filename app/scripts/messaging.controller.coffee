@@ -1,9 +1,10 @@
 'use strict'
 
-MessagingPageController = ($stateParams, $window, UserV3Service, $scope) ->
+MessagingPageController = ($stateParams, $state, $window, UserV3Service, $scope) ->
   vm              = this
   vm.workId       = $stateParams.id
   vm.threadId     = $stateParams.threadId
+  vm.isClient     = $state.current.name == 'messaging'
   vm.subscriberId = null
 
   vm.back = ->
@@ -15,6 +16,6 @@ MessagingPageController = ($stateParams, $window, UserV3Service, $scope) ->
 
   vm
 
-MessagingPageController.$inject = ['$stateParams', '$window', 'UserV3Service', '$scope']
+MessagingPageController.$inject = ['$stateParams', '$state', '$window', 'UserV3Service', '$scope']
 
 angular.module('app').controller 'MessagingPageController', MessagingPageController

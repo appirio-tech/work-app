@@ -1,6 +1,6 @@
-layout-header(role="banner")
+layout-header(role="banner" ng-if="vm.isClient")
 
-layout-project-nav(work-id="{{ vm.workId }}")
+layout-project-nav(work-id="{{ vm.workId }}" ng-if="vm.isClient")
 
 main.layout-main("role"="main" layout-main=true)
   messaging(flush-height=true work-id="{{ vm.workId }}" thread-id="{{vm.threadId}}" subscriber-id="{{ vm.subscriberId }}")

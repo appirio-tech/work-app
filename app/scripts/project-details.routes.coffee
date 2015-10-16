@@ -20,11 +20,6 @@
       templateUrl: 'views/challenges.html'
       controller : 'ChallengesController as vm'
 
-    states['copilot-messaging'] =
-      url        : '/copilot-messaging/:id'
-      templateUrl: 'views/copilot-messaging.html'
-      controller : 'CopilotMessagingController as vm'
-
     for key, state of states
       $stateProvider.state key, state
 
