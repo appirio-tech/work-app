@@ -11,7 +11,8 @@ ui-view {
 
   &.manage, &.home {
     background-color: $neutral-color-lightest;
-    text-align: center;
+    text-align      : center;
+    padding         : $padding;
 
     > a {
       margin-top: $margin-small;
