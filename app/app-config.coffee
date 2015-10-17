@@ -133,6 +133,43 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/verified-email-address'
     templateUrl: 'views/verified-email-address.html'
 
+  states['view-projects'] =
+    url         : '/projects'
+    templateUrl : 'views/projectTabs.html'
+    controller  : 'ProjectsTabController'
+    controllerAs: 'vm'
+    title       : 'View Projects'
+    abstract    : true
+
+  states['view-projects.assigned'] =
+    url         : '/assigned'
+    templateUrl : 'views/projects.html'
+    controller  : 'ProjectsController'
+    controllerAs: 'vm'
+
+  states['view-projects.open'] =
+    url         : '/open'
+    templateUrl : 'views/projects.html'
+    controller  : 'ProjectsController'
+    controllerAs: 'vm'
+
+  states['project-details'] =
+    url         : '/project-details/:id'
+    title       : 'Claim Project'
+    controller  : 'ProjectDetailsController'
+    templateUrl : 'views/project-details.html'
+    controllerAs: 'vm'
+
+  states['project-details.challenges'] =
+    url        : '/challengeEstimates'
+    templateUrl: 'views/challenges.html'
+    controller : 'ChallengesController as vm'
+
+  states['copilot-messaging'] =
+    url        : '/copilot-messaging/:id'
+    templateUrl: 'views/copilot-messaging.html'
+    controller : 'CopilotMessagingController as vm'
+
   states['otherwise'] =
     url        : '*path',
     templateUrl: 'views/404.html'

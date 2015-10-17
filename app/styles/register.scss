@@ -1,0 +1,38 @@
+@import "work-includes";
+
+.layout-main.register {
+  background-color: $neutral-color-lightest;
+  padding         : $padding-big;
+
+  .subheader {
+    font-size: $font-size;
+  }
+
+  .first-name, .last-name {
+    width: 50%;
+    float: left;
+  }
+
+  .first-name {
+    padding-right: $padding-smallest;
+  }
+
+  .last-name {
+    padding-left: $padding-smallest;
+  }
+
+  hr {
+    margin-top: $margin;
+  }
+
+  form {
+    text-align: left;
+    margin-top: $margin;
+    max-width : 350px;
+    text-align: center;
+  }
+
+  .reminder {
+    margin-top: $margin;
+  }
+}

@@ -6,6 +6,33 @@ ui-view {
 
 .layout-main {
   > submissions {
-    padding: $padding;
+    padding: $padding-big;
+  }
+
+  &.timeline {
+    background-color: $neutral-color-lightest;
+    padding: $padding-big;
+
+    > h1 {
+      text-align: center;
+    }
+  }
+
+  &.manage, &.home {
+    background-color: $neutral-color-lightest;
+    text-align      : center;
+    padding         : $padding-big;
+
+    > a {
+      margin-top: $margin-small;
+    }
+
+    > hr {
+      background-color: $neutral-color-light;
+    }
+
+    ng-projects {
+      text-align: left;
+    }
   }
 }

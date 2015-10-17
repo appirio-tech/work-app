@@ -7,11 +7,6 @@ configs.templateCache = []
 configs.serve =
   port: 3000
 
-configs.copyFiles =
-  files:
-    'dist': 'app/**/*.{gif,png,jpg,jpeg,svg}'
-  base: 'app/'
-
 configs.templateCache.push
   files   : [
     'app/**/*.html'
