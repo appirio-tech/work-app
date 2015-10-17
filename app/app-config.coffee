@@ -165,11 +165,6 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl: 'views/challenges.html'
     controller : 'ChallengesController as vm'
 
-  states['copilot-messaging'] =
-    url        : '/copilot-messaging/:id'
-    templateUrl: 'views/copilot-messaging.html'
-    controller : 'CopilotMessagingController as vm'
-
   states['otherwise'] =
     url        : '*path',
     templateUrl: 'views/404.html'
