@@ -1,8 +1,15 @@
-layout-header(role="banner")
+layout-header.elevated-bottom(role="banner")
 
 layout-project-nav(work-id="{{ vm.workId }}")
 
-main.layout-main("role"="main" layout-main=true)
+main.messaging.layout-main("role"="main" layout-main=true)
+  h1 Messaging
+
   messaging(flush-height=true work-id="{{ vm.workId }}" subscriber-id="{{ vm.subscriberId }}")
+
+  main.no-copilot
+    p Your Co-Pilot has not yet been assigned.
+
+    p Once your Co-Pilot joins the project, you will be able to exchange messages with them here.
 
 layout-footer

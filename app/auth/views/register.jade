@@ -1,20 +1,21 @@
-layout-header(role="banner")
+layout-header.elevated-bottom(role="banner")
 
 main.layout-main.register.flex.column.center.middle("role"="main" layout-main=true flush-height=true)
   h1 Welcome to Appirio
 
   p.subheader.secondary Let's start building your app.  Login or create an account below to begin.
 
-  form(ng-submit="vm.submit()")
-    p.error(ng-show="vm.error") {{ vm.errorMessage }}
+  p.error(ng-show="vm.error") {{ vm.errorMessage }}
 
+  form(ng-submit="vm.submit()")
     .first-name
       input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="first name")
 
     .last-name
       input.widest(type="text" name="last-name" ng-model="vm.lastName" required=true placeholder="last name")
 
-    input.wide(type="text" name="organization" ng-model="vm.organization" required=true placeholder="organization")
+    .organization
+      input.wide(type="text" name="organization" ng-model="vm.organization" required=true placeholder="organization")
 
     hr
 
