@@ -18,10 +18,18 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/timeline.html'
 
   states['messaging'] =
-    url         : '/messaging/:id'
+    url         : '/messaging/:id/thread/:threadId'
     title       : 'Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'
+
+  states['copilot-messaging'] =
+    url         : '/copilot-messaging/:id/thread/:threadId'
+    title       : 'Copilot Messaging'
+    controller  : 'MessagingPageController as vm'
+    templateUrl : 'views/messaging-copilot.html'
+    persmission:
+      groups: ['any']
 
   states['submissions'] =
     url        : '/projects/:projectId/submissions'
@@ -96,6 +104,38 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl: 'views/verified-email-address.html'
     data:
       public: true
+
+  states['view-projects'] =
+    url         : '/projects'
+    templateUrl : 'views/projectTabs.html'
+    controller  : 'ProjectsTabController'
+    controllerAs: 'vm'
+    title       : 'View Projects'
+    abstract    : true
+
+  states['view-projects.assigned'] =
+    url         : '/assigned'
+    templateUrl : 'views/projects.html'
+    controller  : 'ProjectsController'
+    controllerAs: 'vm'
+
+  states['view-projects.open'] =
+    url         : '/open'
+    templateUrl : 'views/projects.html'
+    controller  : 'ProjectsController'
+    controllerAs: 'vm'
+
+  states['project-details'] =
+    url         : '/project-details/:id'
+    title       : 'Claim Project'
+    controller  : 'ProjectDetailsController'
+    templateUrl : 'views/project-details.html'
+    controllerAs: 'vm'
+
+  states['project-details.challenges'] =
+    url        : '/challengeEstimates'
+    templateUrl: 'views/challenges.html'
+    controller : 'ChallengesController as vm'
 
   states['otherwise'] =
     url        : '*path',
