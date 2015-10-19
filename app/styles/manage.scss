@@ -1,6 +1,6 @@
 @import "work-includes";
 
-.layout-main.manage {
+.layout-main.manage, .layout-main.home {
   > hr {
     margin-top: $margin;
   }
