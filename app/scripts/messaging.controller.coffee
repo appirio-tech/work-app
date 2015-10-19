@@ -1,21 +1,45 @@
 'use strict'
 
-MessagingPageController = ($stateParams, $state, $window, UserV3Service, $scope) ->
+MessagingPageController = (
+  $stateParams
+  $state
+  UserV3Service
+  $scope
+  ProjectsAPIService
+) ->
   vm              = this
   vm.workId       = $stateParams.id
   vm.threadId     = $stateParams.threadId
   vm.isClient     = $state.current.name == 'messaging'
   vm.subscriberId = null
-
-  vm.back = ->
-    $window.history.back()
+  vm.hasCoilot    = false
+  vm.working      = false
 
   $scope.$watch UserV3Service.getCurrentUser, ->
     user            = UserV3Service.getCurrentUser()
     vm.subscriberId = user.id if user
 
-  vm
+  activate = ->
+    vm.working = true
 
-MessagingPageController.$inject = ['$stateParams', '$state', '$window', 'UserV3Service', '$scope']
+    resource = ProjectsAPIService.get(id: $stateParams.id).$promise
+
+    resource.then (project) ->
+      vm.hasCoilot = project.copilotId
+
+    resource.finally ->
+      vm.working = false
+
+    vm
+
+  activate()
+
+MessagingPageController.$inject = [
+  '$stateParams'
+  '$state'
+  'UserV3Service'
+  '$scope'
+  'ProjectsAPIService'
+]
 
 angular.module('app').controller 'MessagingPageController', MessagingPageController

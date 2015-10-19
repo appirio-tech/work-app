@@ -2,14 +2,21 @@ layout-header.elevated-bottom(role="banner" work-id="{{ vm.workId }}" ng-if="vm.
 
 layout-project-nav(work-id="{{ vm.workId }}" ng-if="vm.isClient")
 
-main.messaging.layout-main("role"="main" layout-main=true)
+main.messaging.layout-main("role"="main" layout-main=true flush-height=true)
   h1 Messaging
 
-  messaging(flush-height=true work-id="{{ vm.workId }}" thread-id="{{ vm.threadId }}" subscriber-id="{{ vm.subscriberId }}")
+  messaging(
+    ng-if="vm.hasCoilot"
+    flush-height=true work-id="{{ vm.workId }}"
+    thread-id="{{ vm.threadId }}"
+    subscriber-id="{{ vm.subscriberId }}"
+  )
 
-  main.no-copilot
+  main.no-copilot(ng-if="!vm.hasCoilot")
     p Your Co-Pilot has not yet been assigned.
 
     p Once your Co-Pilot joins the project, you will be able to exchange messages with them here.
+
+  loader(ng-show="vm.working")
 
 layout-footer

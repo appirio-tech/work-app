@@ -1,5 +1,7 @@
 @import "work-includes";
 
 .layout-main.manage {
-  padding: $spacing-big;
+  > hr {
+    margin-top: $margin;
+  }
 }
