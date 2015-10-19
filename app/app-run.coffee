@@ -1,15 +1,5 @@
-run = ($rootScope, $state, AuthService) ->
-  checkPermission = (event, nextState) ->
-    if nextState.persmission
-      unless AuthService.isLoggedIn()
-        # TODO: save requested state to redirect after login
-        # $rootScope.preAuthState = toState.name
-        event.preventDefault()
+run = () ->
 
-        $state.go 'login'
-
-  $rootScope.$on '$stateChangeStart', checkPermission
-
-run.$inject = ['$rootScope', '$state', 'AuthService']
+run.$inject = []
 
 angular.module('app').run run
