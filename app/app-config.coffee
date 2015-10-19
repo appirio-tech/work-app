@@ -22,8 +22,16 @@ config = ($locationProvider, $stateProvider) ->
       groups: ['any']
 
   states['messaging'] =
-    url         : '/messaging/:id'
+    url         : '/messaging/:id/thread/:threadId'
     title       : 'Messaging'
+    controller  : 'MessagingPageController as vm'
+    templateUrl : 'views/messaging-copilot.html'
+    persmission:
+      groups: ['any']
+
+  states['copilot-messaging'] =
+    url         : '/copilot-messaging/:id/thread/:threadId'
+    title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'
     persmission:
@@ -156,11 +164,6 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/challengeEstimates'
     templateUrl: 'views/challenges.html'
     controller : 'ChallengesController as vm'
-
-  states['copilot-messaging'] =
-    url        : '/copilot-messaging/:id'
-    templateUrl: 'views/copilot-messaging.html'
-    controller : 'CopilotMessagingController as vm'
 
   states['otherwise'] =
     url        : '*path',
