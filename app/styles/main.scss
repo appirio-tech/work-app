@@ -7,6 +7,11 @@ ui-view {
 .layout-main {
   > submissions {
     padding: $padding-big;
+
+    .submissions {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
   }
 
   ng-projects {
@@ -21,7 +26,6 @@ ui-view {
     margin-left: $margin-biggest;
     margin-right: $margin-biggest;
   }
-
 
   &.timeline, &.manage, &.home, &.messaging, &.login, &.register {
     background-color: $neutral-color-lightest;
