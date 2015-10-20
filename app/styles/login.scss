@@ -1,10 +1,6 @@
 @import "work-includes";
 
 .layout-main.login {
-  background-color: $neutral-color-lightest;
-  text-align      : center;
-  padding         : $padding-big;
-
   .subheader {
     font-size: $font-size;
   }
@@ -15,6 +11,14 @@
     margin-top: $margin;
     max-width : 400px;
     text-align: center;
+
+    input, button {
+      margin-top: $margin-small;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 
   .reminder {

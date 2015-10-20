@@ -1,9 +1,6 @@
 @import "work-includes";
 
 .layout-main.register {
-  background-color: $neutral-color-lightest;
-  padding         : $padding-big;
-
   .subheader {
     font-size: $font-size;
   }
@@ -15,10 +12,23 @@
 
   .first-name {
     padding-right: $padding-smallest;
+
+    input {
+      margin-top: 0px;
+    }
   }
 
   .last-name {
     padding-left: $padding-smallest;
+
+    input {
+      margin-top: 0px;
+    }
+  }
+
+  .organization {
+    clear: both;
+    padding: 1px;
   }
 
   hr {
@@ -30,6 +40,10 @@
     margin-top: $margin;
     max-width : 350px;
     text-align: center;
+
+    input, button {
+      margin-top: $margin-small;
+    }
   }
 
   .reminder {

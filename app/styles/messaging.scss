@@ -1,0 +1,8 @@
+@import "work-includes";
+
+.no-copilot {
+  p:first-child {
+    font-size: $font-size;
+    margin-top: $margin;
+  }
+}
