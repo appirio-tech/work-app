@@ -2,6 +2,8 @@ layout-header.elevated-bottom(role="banner" work-id="{{ vm.workId }}" ng-if="vm.
 
 layout-project-nav(work-id="{{ vm.workId }}" ng-if="vm.isClient")
 
+button(ng-if="!vm.isClient" ng-click="vm.back()") back to project
+
 main.messaging.layout-main("role"="main" layout-main=true flush-height=true)
   h1 Messaging
 

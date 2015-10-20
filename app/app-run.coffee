@@ -1,12 +1,10 @@
 run = ($rootScope, $state, AuthService) ->
-  checkPermission = (event, nextState) ->
-    if nextState.persmission
-      unless AuthService.isLoggedIn()
-        # TODO: save requested state to redirect after login
-        # $rootScope.preAuthState = toState.name
-        event.preventDefault()
+  checkPermission = (event, toState) ->
+    unless toState.public || AuthService.isLoggedIn()
+      $rootScope.preAuthState = toState.name
+      event.preventDefault()
 
-        $state.go 'login'
+      $state.go 'login'
 
   $rootScope.$on '$stateChangeStart', checkPermission
 
