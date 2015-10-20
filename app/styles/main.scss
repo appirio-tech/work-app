@@ -17,6 +17,11 @@ ui-view {
     margin-top: $margin;
   }
 
+  timeline {
+    margin-left: $margin-biggest;
+    margin-right: $margin-biggest;
+  }
+
 
   &.timeline, &.manage, &.home, &.messaging, &.login, &.register {
     background-color: $neutral-color-lightest;
