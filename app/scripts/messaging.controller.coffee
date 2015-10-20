@@ -3,6 +3,7 @@
 MessagingPageController = (
   $stateParams
   $state
+  $window
   UserV3Service
   $scope
   ProjectsAPIService
@@ -18,6 +19,9 @@ MessagingPageController = (
   $scope.$watch UserV3Service.getCurrentUser, ->
     user            = UserV3Service.getCurrentUser()
     vm.subscriberId = user.id if user
+
+  vm.back = ->
+    $window.history.back()
 
   activate = ->
     vm.working = true
@@ -37,6 +41,7 @@ MessagingPageController = (
 MessagingPageController.$inject = [
   '$stateParams'
   '$state'
+  '$window'
   'UserV3Service'
   '$scope'
   'ProjectsAPIService'
