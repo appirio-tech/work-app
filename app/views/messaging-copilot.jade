@@ -2,6 +2,8 @@ layout-header(role="banner" work-id="{{ vm.workId }}" ng-if="vm.isClient")
 
 layout-project-nav(work-id="{{ vm.workId }}" ng-if="vm.isClient")
 
+button(ng-if="!vm.isClient" ng-click="vm.back()") back to project
+
 main.layout-main("role"="main" layout-main=true)
   messaging(flush-height=true work-id="{{ vm.workId }}" thread-id="{{ vm.threadId }}" subscriber-id="{{ vm.subscriberId }}")
 
