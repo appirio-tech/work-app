@@ -5,6 +5,10 @@ ui-view {
 }
 
 .layout-main {
+  background-color: $neutral-color-lightest;
+  padding         : $padding-big;
+  text-align      : center;
+
   > submissions {
     padding: $padding-big;
 
@@ -25,12 +29,6 @@ ui-view {
   timeline {
     margin-left: $margin-biggest;
     margin-right: $margin-biggest;
-  }
-
-  &.timeline, &.manage, &.home, &.messaging, &.login, &.register {
-    background-color: $neutral-color-lightest;
-    padding         : $padding-big;
-    text-align      : center;
   }
 
   &.manage, &.home {
