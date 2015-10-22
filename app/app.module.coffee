@@ -11,7 +11,6 @@ dependencies = [
   'appirio-tech-ng-projects'
   'appirio-tech-ng-submit-work'
   'appirio-tech-submissions'
-  'ap-copilot-flow'
   'newrelic'
   'appirio-tech-ng-api-services'
 ]

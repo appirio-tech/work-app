@@ -123,10 +123,9 @@ config = ($locationProvider, $stateProvider) ->
 
   states['project-details'] =
     url         : '/project-details/:id'
-    title       : 'Claim Project'
-    controller  : 'ProjectDetailsController'
-    templateUrl : 'views/project-details.html'
-    controllerAs: 'vm'
+    title       : 'Project Details'
+    controller  : 'ProjectDetailsPageController as vm'
+    templateUrl : 'views/project-details-page.html'
 
   states['project-details.challenges'] =
     url        : '/challengeEstimates'

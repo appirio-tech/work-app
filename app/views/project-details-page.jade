@@ -1,0 +1,8 @@
+layout-header.elevated(role="banner" project-id="{{ vm.id }}")
+
+layout-project-nav(project-id="{{ vm.id }}")
+
+main.layout-main.project-details("role"="main" layout-main=true flush-height=true)
+  project-details(project-id="{{ vm.id }}")
+
+layout-footer
