@@ -5,13 +5,13 @@ ui-view {
 }
 
 .layout-main {
-  > submissions {
-    padding: $padding-big;
+  background-color: $neutral-color-lightest;
+  padding         : $padding-big;
+  text-align      : center;
 
-    .submissions {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+  > submissions {
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   ng-projects {
@@ -25,12 +25,6 @@ ui-view {
   timeline {
     margin-left: $margin-biggest;
     margin-right: $margin-biggest;
-  }
-
-  &.timeline, &.manage, &.home, &.messaging, &.login, &.register {
-    background-color: $neutral-color-lightest;
-    padding         : $padding-big;
-    text-align      : center;
   }
 
   &.manage, &.home {
