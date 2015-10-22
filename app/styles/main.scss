@@ -10,12 +10,8 @@ ui-view {
   text-align      : center;
 
   > submissions {
-    padding: $padding-big;
-
-    .submissions {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   ng-projects {
