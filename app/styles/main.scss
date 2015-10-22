@@ -5,17 +5,28 @@ ui-view {
 }
 
 .layout-main {
-  > submissions {
-    padding: $padding-big;
+  background-color: $neutral-color-lightest;
+  padding         : $padding-big;
+  text-align      : center;
 
-    .submissions {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+  > submissions {
+    max-width: 1000px;
+    min-height: 200px;
+    margin: 0 auto;
   }
 
   ng-projects {
     text-align: left;
+    margin-top: $margin;
+  }
+
+  project-details {
+    text-align: left;
+    max-width: 960px;
+    padding: $padding;
+    margin: 0 auto;
+    margin-top: $margin;
+    background-color: $white;
   }
 
   timeline, messaging {
@@ -25,16 +36,6 @@ ui-view {
   timeline {
     margin-left: $margin-biggest;
     margin-right: $margin-biggest;
-  }
-
-  &.timeline, &.manage, &.home, &.messaging, &.login, &.register, &.final-fixes, &.project-details {
-    background-color: $neutral-color-lightest;
-    padding         : $padding-big;
-    text-align      : center;
-  }
-
-  &.project-details {
-    text-align: left;
   }
 
   &.manage, &.home {
