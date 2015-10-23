@@ -1,0 +1,10 @@
+layout-header.elevated(role="banner" work-id="{{ vm.id }}")
+
+layout-project-nav(work-id="{{ vm.id }}" user-type="copilot")
+
+main.layout-main.project-details("role"="main" layout-main=true flush-height=true)
+  h1 Project requirements
+
+  project-details(project-id="{{ vm.id }}")
+
+layout-footer

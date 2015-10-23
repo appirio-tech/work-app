@@ -1,0 +1,15 @@
+layout-header.elevated(role="banner")
+
+main.layout-main.copilot-projects("role"="main" layout-main=true flush-height=true)
+  h2 Open Projects
+
+  ul.nav.flex.center
+    li
+      a.button.action.wider.inactive(ui-sref='copilot-projects') My Projects
+
+    li
+      a.button.action.wider(ui-sref='copilot-open-projects') Available Projects
+
+  claimed-projects
+
+layout-footer

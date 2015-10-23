@@ -5,11 +5,13 @@ config = ($locationProvider, $stateProvider) ->
 
   $locationProvider.html5Mode true
 
+  # customer routes
+
   states['home'] =
     url         : '/'
     title       : 'View Work'
-    controller  : 'CustomerMyProjectsController as vm'
-    templateUrl : 'views/customer/my-projects.html'
+    controller  : 'CustomerProjectsController as vm'
+    templateUrl : 'views/customer/customer-projects.html'
 
   states['timeline'] =
     url         : '/customer/projects/:workId/timeline'
@@ -56,10 +58,10 @@ config = ($locationProvider, $stateProvider) ->
     controller : 'FileDetailPageController as vm'
 
   states['view-work-multiple'] =
-    url         : '/customer/my-projects'
+    url         : '/customer/projects'
     title       : 'View Work'
-    controller  : 'CustomerMyProjectsController as vm'
-    templateUrl : 'views/customer/my-projects.html'
+    controller  : 'CustomerProjectsController as vm'
+    templateUrl : 'views/customer/customer-projects.html'
 
   states['submit-work'] =
     url         : '/submit-work/:id'
@@ -101,24 +103,38 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'CustomerProjectDetailsPageController as vm'
     templateUrl : 'views/customer/project-details.html'
 
-  states['copilot-my-projects'] =
-    url         : '/copilot/my-projects'
+  # copilot routes
+  states['copilot-projects'] =
+    url         : '/copilot/projects'
     title       : 'My Projects'
-    controller  : 'CopilotMyProjectsController as vm'
-    templateUrl : 'views/copilot/my-projects.html'
+    controller  : 'CopilotProjectsController as vm'
+    templateUrl : 'views/copilot/copilot-projects.html'
+
+  states['copilot-open-projects'] =
+    url         : '/copilot/open-projects'
+    title       : 'Available Projects'
+    controller  : 'CopilotOpenProjectsController as vm'
+    templateUrl : 'views/copilot/open-projects.html'
 
   states['copilot-messaging'] =
     url         : '/copilot/projects/:id/messaging/thread/:threadId'
     title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
-    templateUrl : 'views/messaging-copilot.html'
+    templateUrl : 'views/copilot/copilot-messaging.html'
+
+  states['copilot-submission'] =
+    url         : '/copilot/projects/:id/submissions'
+    title       : 'Copilot Submission'
+    controller  : 'GenericSubmissionsPageController as vm'
+    templateUrl : 'views/submissions-generic.html'
 
   states['copilot-project-details'] =
     url         : '/copilot/projects/:id/details'
     title       : 'Project Details'
     controller  : 'CopilotProjectDetailsPageController as vm'
-    templateUrl : 'views/copilot/project-details.html'
+    templateUrl : 'views/copilot/copilot-project-details.html'
 
+  # general routes
   states['login'] =
     url: '/login'
     templateUrl: 'auth/views/login.html'

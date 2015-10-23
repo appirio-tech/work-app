@@ -1,0 +1,28 @@
+@import "work-styles";
+
+.layout-main.copilot-projects {
+  .nav {
+    margin-top: $margin;
+    border-bottom: 2px solid $neutral-color-light;
+
+    li {
+      margin-left: $margin-smallest;
+
+      a {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        font-weight: bold;
+
+        &.inactive {
+          border-color: $neutral-color;
+          background-color: $neutral-color;
+        }
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
