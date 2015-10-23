@@ -6,10 +6,10 @@ config = ($locationProvider, $stateProvider) ->
   $locationProvider.html5Mode true
 
   states['home'] =
-    url        : '/'
+    url         : '/customer/my-projects'
     title       : 'View Work'
-    controller  : 'ManageController as vm'
-    templateUrl : 'views/manage.html'
+    controller  : 'CustomerMyProjectsController as vm'
+    templateUrl : 'views/customer/my-projects.html'
 
   states['timeline'] =
     url         : '/customer/projects/:workId/timeline'
@@ -20,12 +20,6 @@ config = ($locationProvider, $stateProvider) ->
   states['messaging'] =
     url         : '/customer/projects/:id/messaging/thread/:threadId'
     title       : 'Messaging'
-    controller  : 'MessagingPageController as vm'
-    templateUrl : 'views/messaging-copilot.html'
-
-  states['copilot-messaging'] =
-    url         : '/copilot/projects/:id/messaging/thread/:threadId'
-    title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'
 
@@ -64,8 +58,8 @@ config = ($locationProvider, $stateProvider) ->
   states['view-work-multiple'] =
     url         : '/customer/my-projects'
     title       : 'View Work'
-    controller  : 'ManageController as vm'
-    templateUrl : 'views/manage.html'
+    controller  : 'CustomerMyProjectsController as vm'
+    templateUrl : 'views/customer/my-projects.html'
 
   states['submit-work'] =
     url         : '/submit-work/:id'
@@ -104,8 +98,26 @@ config = ($locationProvider, $stateProvider) ->
   states['project-details'] =
     url         : '/customer/projects/:id/details'
     title       : 'Project Details'
-    controller  : 'ProjectDetailsPageController as vm'
-    templateUrl : 'views/project-details-page.html'
+    controller  : 'CustomerProjectDetailsPageController as vm'
+    templateUrl : 'views/customer/project-details.html'
+
+  states['copilot-my-projects'] =
+    url         : '/copilot/my-projects'
+    title       : 'My Projects'
+    controller  : 'CopilotMyProjectsController as vm'
+    templateUrl : 'views/copilot/my-projects.html'
+
+  states['copilot-messaging'] =
+    url         : '/copilot/projects/:id/messaging/thread/:threadId'
+    title       : 'Copilot Messaging'
+    controller  : 'MessagingPageController as vm'
+    templateUrl : 'views/messaging-copilot.html'
+
+  states['copilot-project-details'] =
+    url         : '/copilot/projects/:id/details'
+    title       : 'Project Details'
+    controller  : 'CopilotProjectDetailsPageController as vm'
+    templateUrl : 'views/copilot/project-details.html'
 
   states['login'] =
     url: '/login'
