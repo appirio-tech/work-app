@@ -12,57 +12,57 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/manage.html'
 
   states['timeline'] =
-    url         : '/work/:workId/timeline'
+    url         : '/customer/projects/:workId/timeline'
     title       : 'Timeline'
     controller  : 'TimelinePageController as vm'
     templateUrl : 'views/timeline.html'
 
   states['messaging'] =
-    url         : '/messaging/:id/thread/:threadId'
+    url         : '/customer/projects/:id/messaging/thread/:threadId'
     title       : 'Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'
 
   states['copilot-messaging'] =
-    url         : '/copilot-messaging/:id/thread/:threadId'
+    url         : '/copilot/projects/:id/messaging/thread/:threadId'
     title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'
 
   states['submissions'] =
-    url        : '/projects/:projectId/submissions'
+    url        : '/customer/projects/:projectId/submissions'
     templateUrl: 'views/submissions-generic.html'
     controller : 'GenericSubmissionsPageController as vm'
 
   states['design-concepts'] =
-    url        : '/projects/:projectId/:stepId/design-concepts'
+    url        : '/customer/projects/:projectId/:stepId/design-concepts'
     templateUrl: 'views/submissions.html'
     controller : 'SubmissionsPageController as vm'
     stepType   : 'designConcepts'
 
   states['complete-designs'] =
-    url        : '/projects/:projectId/:stepId/complete-designs'
+    url        : '/customer/projects/:projectId/:stepId/complete-designs'
     templateUrl: 'views/submissions.html'
     controller : 'SubmissionsPageController as vm'
     stepType   : 'completeDesigns'
 
   states['final-fixes'] =
-    url        : '/projects/:projectId/:stepId/final-fixes'
+    url        : '/customer/projects/:projectId/:stepId/final-fixes'
     templateUrl: 'views/final-fixes.html'
     controller : 'FinalFixesPageController as vm'
 
   states['submission-detail'] =
-    url        : '/projects/:projectId/:stepId/:submissionId'
+    url        : '/customer/projects/:projectId/:stepId/:submissionId'
     templateUrl: 'views/submission-detail.html'
     controller : 'SubmissionDetailPageController as vm'
 
   states['file-detail'] =
-    url        : '/projects/:projectId/:stepId/:submissionId/:fileId?modal'
+    url        : '/customer/projects/:projectId/:stepId/:submissionId/:fileId?modal'
     templateUrl: 'views/file-detail.html'
     controller : 'FileDetailPageController as vm'
 
   states['view-work-multiple'] =
-    url         : '/manage'
+    url         : '/customer/my-projects'
     title       : 'View Work'
     controller  : 'ManageController as vm'
     templateUrl : 'views/manage.html'
@@ -101,36 +101,11 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/verified-email-address'
     templateUrl: 'views/verified-email-address.html'
 
-  states['view-projects'] =
-    url         : '/projects'
-    templateUrl : 'views/projectTabs.html'
-    controller  : 'ProjectsTabController'
-    controllerAs: 'vm'
-    title       : 'View Projects'
-    abstract    : true
-
-  states['view-projects.assigned'] =
-    url         : '/assigned'
-    templateUrl : 'views/projects.html'
-    controller  : 'ProjectsController'
-    controllerAs: 'vm'
-
-  states['view-projects.open'] =
-    url         : '/open'
-    templateUrl : 'views/projects.html'
-    controller  : 'ProjectsController'
-    controllerAs: 'vm'
-
   states['project-details'] =
-    url         : '/project-details/:id'
+    url         : '/customer/projects/:id/details'
     title       : 'Project Details'
     controller  : 'ProjectDetailsPageController as vm'
     templateUrl : 'views/project-details-page.html'
-
-  states['project-details.challenges'] =
-    url        : '/challengeEstimates'
-    templateUrl: 'views/challenges.html'
-    controller : 'ChallengesController as vm'
 
   states['login'] =
     url: '/login'
