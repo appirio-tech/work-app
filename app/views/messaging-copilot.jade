@@ -8,13 +8,13 @@ main.messaging.layout-main("role"="main" layout-main=true flush-height=true)
   h1 Messaging
 
   messaging(
-    ng-if="vm.hasCoilot"
+    ng-if="vm.hasCopilot"
     flush-height=true work-id="{{ vm.workId }}"
     thread-id="{{ vm.threadId }}"
     subscriber-id="{{ vm.subscriberId }}"
   )
 
-  main.no-copilot(ng-if="!vm.hasCoilot")
+  main.no-copilot(ng-if="!vm.hasCopilot")
     p Your Copilot has not yet been assigned.
 
     p Once your Copilot joins the project, you will be able to exchange messages with them here.
