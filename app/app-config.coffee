@@ -25,27 +25,10 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/messaging-copilot.html'
 
-  states['submissions'] =
-    url        : '/customer/projects/:projectId/submissions'
-    templateUrl: 'views/submissions-generic.html'
-    controller : 'GenericSubmissionsPageController as vm'
-
-  states['design-concepts'] =
-    url        : '/customer/projects/:projectId/:stepId/design-concepts'
-    templateUrl: 'views/submissions.html'
-    controller : 'SubmissionsPageController as vm'
-    stepType   : 'designConcepts'
-
-  states['complete-designs'] =
-    url        : '/customer/projects/:projectId/:stepId/complete-designs'
-    templateUrl: 'views/submissions.html'
-    controller : 'SubmissionsPageController as vm'
-    stepType   : 'completeDesigns'
-
-  states['final-fixes'] =
-    url        : '/customer/projects/:projectId/:stepId/final-fixes'
-    templateUrl: 'views/final-fixes.html'
-    controller : 'FinalFixesPageController as vm'
+  states['step'] =
+    url        : '/customer/projects/:projectId/:stepId'
+    templateUrl: 'views/step.html'
+    controller : 'StepController as vm'
 
   states['submission-detail'] =
     url        : '/customer/projects/:projectId/:stepId/:submissionId'
