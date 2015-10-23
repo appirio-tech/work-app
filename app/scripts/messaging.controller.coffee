@@ -29,7 +29,7 @@ MessagingPageController = (
     resource = ProjectsAPIService.get(id: $stateParams.id).$promise
 
     resource.then (project) ->
-      vm.hasCopilot = project.copilotId
+      vm.hasCopilot = project.copilotId != "unassigned"
 
     resource.finally ->
       vm.working = false
