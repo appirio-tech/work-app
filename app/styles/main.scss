@@ -15,6 +15,10 @@ ui-view {
     margin: 0 auto;
   }
 
+  &.submit-work {
+    padding: 0;
+  }
+
   ng-projects {
     text-align: left;
     margin-top: $margin;
