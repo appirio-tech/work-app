@@ -6,7 +6,7 @@ config = ($locationProvider, $stateProvider) ->
   $locationProvider.html5Mode true
 
   states['home'] =
-    url         : '/customer/my-projects'
+    url         : '/'
     title       : 'View Work'
     controller  : 'CustomerMyProjectsController as vm'
     templateUrl : 'views/customer/my-projects.html'
