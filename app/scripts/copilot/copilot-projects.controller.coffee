@@ -1,11 +1,19 @@
 'use strict'
 
-CopilotProjectsController = ($stateParams) ->
+CopilotProjectsController = ($scope, $stateParams, UserV3Service) ->
   vm = this
   vm.id = $stateParams.id
 
-  vm
+  activate = ->
+    $scope.$watch UserV3Service.getCurrentUser, ->
+      user = UserV3Service.getCurrentUser()
 
-CopilotProjectsController.$inject = ['$stateParams']
+      vm.copilotId = user.id if user
+
+    vm
+
+  activate()
+
+CopilotProjectsController.$inject = ['$scope', '$stateParams', 'UserV3Service']
 
 angular.module('app').controller 'CopilotProjectsController', CopilotProjectsController

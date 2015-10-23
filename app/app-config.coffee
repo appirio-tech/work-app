@@ -11,7 +11,7 @@ config = ($locationProvider, $stateProvider) ->
     url         : '/'
     title       : 'View Work'
     controller  : 'CustomerProjectsController as vm'
-    templateUrl : 'views/customer/customer-projects.html'
+    templateUrl : 'views/customer/projects.html'
 
   states['timeline'] =
     url         : '/customer/projects/:workId/timeline'
@@ -23,7 +23,7 @@ config = ($locationProvider, $stateProvider) ->
     url         : '/customer/projects/:id/messaging/thread/:threadId'
     title       : 'Messaging'
     controller  : 'MessagingPageController as vm'
-    templateUrl : 'views/messaging-copilot.html'
+    templateUrl : 'views/customer/messaging.html'
 
   states['step'] =
     url        : '/customer/projects/:projectId/:stepId'
@@ -44,7 +44,7 @@ config = ($locationProvider, $stateProvider) ->
     url         : '/customer/projects'
     title       : 'View Work'
     controller  : 'CustomerProjectsController as vm'
-    templateUrl : 'views/customer/customer-projects.html'
+    templateUrl : 'views/customer/projects.html'
 
   states['submit-work'] =
     url         : '/submit-work/:id'

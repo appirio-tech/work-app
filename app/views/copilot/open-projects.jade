@@ -1,7 +1,7 @@
 layout-header.elevated(role="banner")
 
-main.layout-main.copilot-projects("role"="main" layout-main=true flush-height=true)
-  h2 Open Projects
+main.layout-main.open-projects("role"="main" layout-main=true flush-height=true)
+  h2 Available Projects
 
   ul.nav.flex.center
     li
@@ -10,6 +10,6 @@ main.layout-main.copilot-projects("role"="main" layout-main=true flush-height=tr
     li
       a.button.action.wider(ui-sref='copilot-open-projects') Available Projects
 
-  claimed-projects
+  open-projects(copilot-id="{{ vm.copilotId }}")
 
 layout-footer
