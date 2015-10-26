@@ -26,17 +26,17 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/customer/messaging.html'
 
   states['step'] =
-    url        : '/customer/projects/:projectId/:stepId'
+    url        : '/customer/projects/:projectId/steps/:stepId'
     templateUrl: 'views/step.html'
     controller : 'StepController as vm'
 
   states['submission-detail'] =
-    url        : '/customer/projects/:projectId/:stepId/:submissionId'
+    url        : '/customer/projects/:projectId/steps/:stepId/submissions/:submissionId'
     templateUrl: 'views/submission-detail.html'
     controller : 'SubmissionDetailPageController as vm'
 
   states['file-detail'] =
-    url        : '/customer/projects/:projectId/:stepId/:submissionId/:fileId?modal'
+    url        : '/customer/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
     templateUrl: 'views/file-detail.html'
     controller : 'FileDetailPageController as vm'
 

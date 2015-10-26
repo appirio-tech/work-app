@@ -9,37 +9,25 @@ ui-view {
   padding         : $padding-big;
   text-align      : center;
 
-  > submissions {
-    max-width: 1000px;
+  > submissions, timeline, project-details {
+    max-width: 960px;
     min-height: 200px;
-    margin: 0 auto;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   &.submit-work {
     padding: 0;
   }
 
-  ng-projects, claimed-projects, open-projects {
+  timeline, messaging, ng-projects, claimed-projects, open-projects, project-details {
     text-align: left;
     margin-top: $margin;
   }
 
   project-details {
-    text-align: left;
-    max-width: 960px;
     padding: $padding;
-    margin: 0 auto;
-    margin-top: $margin;
     background-color: $white;
-  }
-
-  timeline, messaging {
-    margin-top: $margin;
-  }
-
-  timeline {
-    margin-left: $margin-biggest;
-    margin-right: $margin-biggest;
   }
 
   &.manage, &.home {
