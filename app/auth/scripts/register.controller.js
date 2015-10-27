@@ -24,7 +24,7 @@
       vm.error = false;
 
       // Get the absolute url to our the confirmation page
-      var afterActivationURL = $state.href('view-work-multiple.confirmed',[], { absolute: true });
+      var afterActivationURL = $state.href('view-work-multiple',[], { absolute: true });
 
       var registerOptions = {
         handle: vm.username,

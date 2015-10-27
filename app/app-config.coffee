@@ -92,30 +92,35 @@ config = ($locationProvider, $stateProvider) ->
     title       : 'My Projects'
     controller  : 'CopilotProjectsController as vm'
     templateUrl : 'views/copilot/copilot-projects.html'
+    rolesAllowed: [ 'copilot' ]
 
   states['copilot-open-projects'] =
     url         : '/copilot/open-projects'
     title       : 'Available Projects'
     controller  : 'CopilotOpenProjectsController as vm'
     templateUrl : 'views/copilot/open-projects.html'
+    rolesAllowed: [ 'copilot' ]
 
   states['copilot-messaging'] =
     url         : '/copilot/projects/:id/messaging/thread/:threadId'
     title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/copilot/copilot-messaging.html'
+    rolesAllowed: [ 'copilot' ]
 
   states['copilot-submission'] =
     url         : '/copilot/projects/:id/submissions'
     title       : 'Copilot Submission'
     controller  : 'GenericSubmissionsPageController as vm'
     templateUrl : 'views/submissions-generic.html'
+    rolesAllowed: [ 'copilot' ]
 
   states['copilot-project-details'] =
     url         : '/copilot/projects/:id/details'
     title       : 'Project Details'
     controller  : 'CopilotProjectDetailsPageController as vm'
     templateUrl : 'views/copilot/copilot-project-details.html'
+    rolesAllowed: [ 'copilot' ]
 
   # general routes
   states['login'] =
@@ -137,6 +142,9 @@ config = ($locationProvider, $stateProvider) ->
     public: true
 
   for key, state of states
+    unless state.rolesAllowed
+      state.rolesAllowed = [ 'customer' ]
+
     $stateProvider.state key, state
 
 config.$inject = ['$locationProvider', '$stateProvider']
