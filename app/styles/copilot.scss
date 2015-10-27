@@ -11,7 +11,7 @@
       a {
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
-        font-weight: bold;
+        font-weight: $font-weight-bold;
 
         &.inactive {
           border-color: $neutral-color;
