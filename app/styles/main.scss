@@ -10,10 +10,10 @@ ui-view {
   text-align      : center;
 
   > submissions, timeline, project-details {
-    max-width: 960px;
-    min-height: 200px;
+    max-width   : 960px;
+    min-height  : 200px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left : auto;
   }
 
   &.submit-work {

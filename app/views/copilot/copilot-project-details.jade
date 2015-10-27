@@ -5,6 +5,6 @@ layout-project-nav(work-id="{{ vm.id }}" user-type="copilot")
 main.layout-main.project-details("role"="main" layout-main=true flush-height=true)
   h1 Project requirements
 
-  project-details(project-id="{{ vm.id }}" user-type="copilot")
+  project-details(project-id="{{ vm.id }}" copilot-id="{{ vm.copilotId }}")
 
 layout-footer
