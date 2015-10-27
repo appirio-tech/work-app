@@ -7,7 +7,7 @@ run = ($rootScope, $state, AuthService) ->
       $state.go 'login'
 
   addFileDetailHistoryHook = (event, toState, toParams, fromState, fromParams) ->
-    if toState.name == 'file-detail' && fromState.name != 'file-detail'
+    if toState.name == 'file-detail' && fromState.name && fromState.name != 'file-detail'
       $rootScope.preFileDetailState = fromState
       $rootScope.preFileDetailParams = fromParams
 

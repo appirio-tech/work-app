@@ -8,10 +8,18 @@ FileDetailPageController = ($scope, $stateParams, $state, $rootScope) ->
   vm.fileId       = $stateParams.fileId
   vm.showModal    = $stateParams.modal != null
 
+
   $scope.$watch 'vm.showModal', (newVal) ->
     if newVal == false
-      if $rootScope.preFileDetailState.name
-        $state.go $rootScope.preFileDetailState.name, $rootScope.preFileDetailParams
+      defaultCloseParams =
+        projectId: vm.projectId
+        stepId: vm.stepId
+        submissionId: vm.submissionId
+
+      closeState  = $rootScope.preFileDetailState?.name || 'submission-detail'
+      closeParams = $rootScope.preFileDetailParams || defaultCloseParams
+
+      $state.go closeState, closeParams
 
   vm
 
