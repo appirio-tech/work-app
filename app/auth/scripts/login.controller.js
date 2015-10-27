@@ -5,10 +5,10 @@
   angular.module('app.auth')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService'];
+  LoginController.$inject = ['$rootScope', '$location', '$state', 'AuthService', 'UserV3Service'];
 
   /* @ngInject */
-  function LoginController($rootScope, $location, $state, AuthService) {
+  function LoginController($rootScope, $location, $state, AuthService, UserV3Service) {
     var vm = this;
     vm.title = 'Login';
     vm.username  = '';
@@ -40,20 +40,25 @@
     function loginSuccess() {
       vm.error = false;
 
-      // Redirect to a url sent in
-      var urlToken = $location.search();
+      UserV3Service.loadUser().then(function(currentUser) {
+        var urlToken = $location.search();
 
-      if (urlToken.retUrl) {
-        $location.path(urlToken.retUrl).replace();
-      } else if (urlToken.retState) {
-        $state.go(urlToken.retState);
-      } else if ($rootScope.preAuthState) {
-        // Look for a last state.  Redirect if it exists
-        $state.go($rootScope.preAuthState);
-      } else {
-        // if all else fails go to the home screen
-        $state.go('view-work-multiple');
-      }
+        if (urlToken.retUrl) {
+          $location.path(urlToken.retUrl).replace();
+        } else if (urlToken.retState) {
+          $state.go(urlToken.retState);
+        } else if ($rootScope.preAuthState) {
+          var preAuthState = $rootScope.preAuthState
+          delete $rootScope.preAuthState
+          $state.go(preAuthState);
+        } else if (currentUser.role == 'customer') {
+          $state.go('view-work-multiple');
+        } else if (currentUser.role == 'copilot') {
+          $state.go('copilot-projects');
+        } else {
+          $state.go('home');
+        }
+      });
     }
   }
 })();
