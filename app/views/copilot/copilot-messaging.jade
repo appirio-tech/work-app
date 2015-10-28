@@ -6,9 +6,12 @@ main.messaging.layout-main.flex.column("role"="main" layout-main=true flush-heig
   h1 Messaging
 
   messaging.flex.column.flex-grow.middle(
+    flush-height=true
     work-id="{{ vm.workId }}"
     thread-id="{{ vm.threadId }}"
     subscriber-id="{{ vm.subscriberId }}"
   )
+
+  loader(ng-show="vm.working")
 
 layout-footer
