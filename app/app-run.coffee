@@ -26,7 +26,7 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
       event.preventDefault()
 
       # TODO: Notify user that route was protected
-      return $state.go 'home'
+      return $state.go 'forbidden'
 
   addFileDetailHistoryHook = (event, toState, toParams, fromState, fromParams) ->
     if toState.name == 'file-detail' && fromState.name && fromState.name != 'file-detail'

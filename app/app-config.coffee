@@ -135,6 +135,11 @@ config = ($locationProvider, $stateProvider) ->
     controller: 'RegisterController as vm'
     public: true
 
+  states['forbidden'] =
+    url: '/forbidden',
+    templateUrl: 'views/forbidden.html'
+    public: true
+
   # This must be the last one in the list
   states['otherwise'] =
     url: '*path',
