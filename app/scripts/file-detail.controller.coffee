@@ -1,13 +1,13 @@
 'use strict'
 
-FileDetailPageController = ($scope, $stateParams, $state, $rootScope) ->
+FileDetailPageController = ($scope, $stateParams, $state, $rootScope, UserV3Service) ->
   vm              = this
   vm.projectId    = $stateParams.projectId
   vm.stepId       = $stateParams.stepId
   vm.submissionId = $stateParams.submissionId
   vm.fileId       = $stateParams.fileId
   vm.showModal    = $stateParams.modal != null
-
+  vm.userRole     = UserV3Service.getCurrentUser().role
 
   $scope.$watch 'vm.showModal', (newVal) ->
     if newVal == false
@@ -23,6 +23,6 @@ FileDetailPageController = ($scope, $stateParams, $state, $rootScope) ->
 
   vm
 
-FileDetailPageController.$inject = ['$scope', '$stateParams', '$state', '$rootScope']
+FileDetailPageController.$inject = ['$scope', '$stateParams', '$state', '$rootScope', 'UserV3Service']
 
 angular.module('app').controller 'FileDetailPageController', FileDetailPageController

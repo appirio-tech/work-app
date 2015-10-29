@@ -25,21 +25,6 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/customer/messaging.html'
 
-  states['step'] =
-    url        : '/customer/projects/:projectId/steps/:stepId'
-    templateUrl: 'views/step.html'
-    controller : 'StepController as vm'
-
-  states['submission-detail'] =
-    url        : '/customer/projects/:projectId/steps/:stepId/submissions/:submissionId'
-    templateUrl: 'views/submission-detail.html'
-    controller : 'SubmissionDetailPageController as vm'
-
-  states['file-detail'] =
-    url        : '/customer/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
-    templateUrl: 'views/file-detail.html'
-    controller : 'FileDetailPageController as vm'
-
   states['view-work-multiple'] =
     url         : '/customer/projects'
     title       : 'View Work'
@@ -121,6 +106,25 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'CopilotProjectDetailsPageController as vm'
     templateUrl : 'views/copilot/copilot-project-details.html'
     rolesAllowed: [ 'copilot' ]
+
+  # Shared routes
+  states['step'] =
+    url        : '/projects/:projectId/steps/:stepId'
+    templateUrl: 'views/step.html'
+    controller : 'StepController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+
+  states['submission-detail'] =
+    url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
+    templateUrl: 'views/submission-detail.html'
+    controller : 'SubmissionDetailPageController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+
+  states['file-detail'] =
+    url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
+    templateUrl: 'views/file-detail.html'
+    controller : 'FileDetailPageController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
 
   # general routes
   states['login'] =
