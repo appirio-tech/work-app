@@ -140,8 +140,8 @@ config = ($locationProvider, $stateProvider) ->
     public: true
 
   states['forbidden'] =
-    url: '/forbidden',
-    templateUrl: 'views/forbidden.html'
+    url: '/403',
+    templateUrl: 'views/403.html'
     public: true
 
   # This must be the last one in the list

@@ -1,10 +1,5 @@
 @import "work-includes";
 
-#header-404 {
-  text-align: center;
-  margin: $margin;
-}
-
 #fun-404 {
   text-align: center;
 
@@ -21,30 +16,20 @@
     cursor: pointer;
   }
 
-  div.container:hover div {
-    border-color: #5ba753;
-    color: #5ba753;
-    animation: jump-404 0.5s infinite alternate;
-    -o-animation: jump-404 0.5s infinite alternate;
-    -ms-animation: jump-404 0.5s infinite alternate;
-    -moz-animation: jump-404 0.5s infinite alternate;
-    -webkit-animation: jump-404 0.5s infinite alternate;
-  }
-
   div.container div {
-    position: absolute;
-    right: 0;
-    min-height: 40px;
-    line-height: 30px;
-    min-width: 38px;
-    border: 3px solid #333;
-    color: #333;
-    padding: 0 0 8px;
-    background-color: yellow;
-    border-radius: 50%;
-    margin: 100px auto;
-    font-size: 24px;
-    font-family: "comic sans ms";
+    position        : absolute;
+    right           : 0;
+    min-height      : 40px;
+    line-height     : 30px;
+    min-width       : 38px;
+    border          : 2px solid $black;
+    color           : $black;
+    padding         : 0 0 8px;
+    background-color: $danger-color;
+    border-radius   : 50%;
+    margin          : 100px auto;
+    font-size       : 24px;
+    font-family     : "comic sans ms";
 
     transition: color .25s linear;
     transition: border-color .25s linear;
@@ -72,29 +57,6 @@
     -webkit-animation: jump-404 0.5s infinite alternate;
   }
 
-  div.container div.one {
-      animation-delay: 0s;
-      -o-animation-delay: 0s;
-      -ms-animation-delay: 0s;
-      -moz-animation-delay: 0s;
-      -webkit-animation-delay: 0s;
-  }
-
-  div.container div.two {
-      animation-delay: 0.1s;
-      -o-animation-delay: 0.1s;
-      -ms-animation-delay: 0.1s;
-      -moz-animation-delay: 0.1s;
-      -webkit-animation-delay: 0.1s;
-  }
-
-  div.container div.three {
-      animation-delay: 0.2s;
-      -o-animation-delay: 0.2s;
-      -ms-animation-delay: 0.2s;
-      -moz-animation-delay: 0.2s;
-      -webkit-animation-delay: 0.2s;
-  }
 
   div.container div.four {
       animation-delay: 0.3s;
@@ -102,14 +64,6 @@
       -ms-animation-delay: 0.3s;
       -moz-animation-delay: 0.3s;
       -webkit-animation-delay: 0.3s;
-  }
-
-  div.container div.five {
-      animation-delay: 0.4s;
-      -o-animation-delay: 0.4s;
-      -ms-animation-delay: 0.4s;
-      -moz-animation-delay: 0.4s;
-      -webkit-animation-delay: 0.4s;
   }
 }
 
