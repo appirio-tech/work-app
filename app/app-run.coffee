@@ -1,6 +1,5 @@
 run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
   checkPermission = (event, toState, toParams, fromState, fromParams) ->
-
     # Route is public, ignore the rest of the permission logic
     if toState.public
       return true
@@ -24,6 +23,10 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
     # Check if the user is the right role to this access route
     unless toState.rolesAllowed.indexOf(currentUser.role) > -1
       event.preventDefault()
+
+      # If copilot was trying to access home, take them to copilot projects page
+      if currentUser.role == 'copilot' && toState.name == 'home'
+        return $state.go 'copilot-projects'
 
       # TODO: Notify user that route was protected
       return $state.go 'forbidden'
