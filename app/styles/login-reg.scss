@@ -1,0 +1,18 @@
+@import "work-includes";
+
+.layout-main {
+  &.login, &.registration, &.forgot-password, &.reset-password {
+
+    login, registration, forgot-password, reset-password {
+      margin-top: $margin-small;
+    }
+
+    .reminders {
+      margin-top: $margin;
+
+      li {
+        margin-top: $margin-smallest;
+      }
+    }
+  }
+}

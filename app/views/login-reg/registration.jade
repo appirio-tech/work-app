@@ -1,0 +1,17 @@
+layout-header.elevated(role="banner")
+
+main.layout-main.registration.flex.column.center.middle("role"="main" layout-main=true flush-height=true)
+  h1 Welcome to Appirio
+
+  p.subheader.secondary Let's start building your app.  Login or create an account below to begin.
+
+  registration
+
+  ul.reminders
+    li
+      p Already have an acount? <a ui-sref="login">Log in</a>
+
+    li
+      p Forgot your password? <a ui-sref="FORGOT_PASSWORD">Reset It</a>
+
+layout-footer

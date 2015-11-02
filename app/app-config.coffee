@@ -129,14 +129,22 @@ config = ($locationProvider, $stateProvider) ->
   # general routes
   states['login'] =
     url: '/login'
-    templateUrl: 'auth/views/login.html'
-    controller: 'LoginController as vm'
+    templateUrl: 'views/login-reg/login.html'
     public: true
 
   states['register'] =
-    url: '/register'
-    templateUrl: 'auth/views/register.html'
-    controller: 'RegisterController as vm'
+    url: '/registration'
+    templateUrl: 'views/login-reg/registration.html'
+    public: true
+
+  states['FORGOT_PASSWORD'] =
+    url: '/forgot-password'
+    templateUrl: 'views/login-reg/forgot-password.html'
+    public: true
+
+  states['RESET_PASSWORD'] =
+    url: '/reset-password'
+    templateUrl: 'views/login-reg/reset-password.html'
     public: true
 
   states['forbidden'] =

@@ -1,7 +1,6 @@
 'use strict'
 
 dependencies = [
-  'app.auth'
   'ap-file-upload'
   'appirio-tech-ng-work-layout'
   'appirio-tech-ng-timeline'
@@ -11,8 +10,9 @@ dependencies = [
   'appirio-tech-ng-projects'
   'appirio-tech-ng-submit-work'
   'appirio-tech-submissions'
-  'newrelic'
   'appirio-tech-ng-api-services'
+  'appirio-tech-ng-login-reg'
+  'newrelic'
 ]
 
 angular.module 'app', dependencies
