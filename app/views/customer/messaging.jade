@@ -5,7 +5,7 @@ layout-project-nav(work-id="{{ vm.workId }}")
 button(ng-if="!vm.isClient" ng-click="vm.back()") back to project
 
 main.messaging.layout-main.flex.column("role"="main" layout-main=true flush-height='lock')
-  h1 Messaging
+  h2 Messaging
 
   messaging.flex.column.flex-grow.middle(
     ng-if="vm.hasCopilot"
