@@ -11,6 +11,7 @@ dependencies = [
   'appirio-tech-ng-projects'
   'appirio-tech-ng-submit-work'
   'appirio-tech-submissions'
+  'appirio-tech-ng-status-report'
   'newrelic'
   'appirio-tech-ng-api-services'
 ]

@@ -122,6 +122,21 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/copilot/copilot-project-details.html'
     rolesAllowed: [ 'copilot' ]
 
+  states['copilot-status-reports'] =
+    url         : '/copilot/status-reports/:id'
+    title       : 'Status Reports'
+    controller  : 'StatusReportsController as vm'
+    templateUrl : 'views/copilot/status-reports.html'
+    rolesAllowed: [ 'copilot' ]
+
+  states['copilot-status-report-details'] =
+    url         : '/copilot/status-reports/:id/report/:reportId'
+    title       : 'Status Report Details'
+    controller  : 'StatusReportDetailsController as vm'
+    templateUrl : 'views/copilot/status-report-details.html'
+    rolesAllowed: [ 'copilot' ]
+
+
   # general routes
   states['login'] =
     url: '/login'
