@@ -25,21 +25,6 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'MessagingPageController as vm'
     templateUrl : 'views/customer/messaging.html'
 
-  states['step'] =
-    url        : '/customer/projects/:projectId/steps/:stepId'
-    templateUrl: 'views/step.html'
-    controller : 'StepController as vm'
-
-  states['submission-detail'] =
-    url        : '/customer/projects/:projectId/steps/:stepId/submissions/:submissionId'
-    templateUrl: 'views/submission-detail.html'
-    controller : 'SubmissionDetailPageController as vm'
-
-  states['file-detail'] =
-    url        : '/customer/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
-    templateUrl: 'views/file-detail.html'
-    controller : 'FileDetailPageController as vm'
-
   states['view-work-multiple'] =
     url         : '/customer/projects'
     title       : 'View Work'
@@ -136,23 +121,58 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl : 'views/copilot/status-report-details.html'
     rolesAllowed: [ 'copilot' ]
 
+  # Shared routes
+  states['step'] =
+    url        : '/projects/:projectId/steps/:stepId'
+    templateUrl: 'views/step.html'
+    controller : 'SubmissionsPagesController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: (SubmitWorkService, $stateParams) ->
+        SubmitWorkService.getPromise $stateParams.projectId
+
+  states['submission-detail'] =
+    url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
+    templateUrl: 'views/submission-detail.html'
+    controller : 'SubmissionsPagesController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: (SubmitWorkService, $stateParams) ->
+        SubmitWorkService.getPromise $stateParams.projectId
+
+  states['file-detail'] =
+    url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
+    templateUrl: 'views/file-detail.html'
+    controller : 'SubmissionsPagesController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: (SubmitWorkService, $stateParams) ->
+        SubmitWorkService.getPromise $stateParams.projectId
 
   # general routes
   states['login'] =
     url: '/login'
-    templateUrl: 'auth/views/login.html'
-    controller: 'LoginController as vm'
+    templateUrl: 'views/login-reg/login.html'
     public: true
 
   states['register'] =
-    url: '/register'
-    templateUrl: 'auth/views/register.html'
-    controller: 'RegisterController as vm'
+    url: '/registration'
+    templateUrl: 'views/login-reg/registration.html'
+    public: true
+
+  states['FORGOT_PASSWORD'] =
+    url: '/forgot-password'
+    templateUrl: 'views/login-reg/forgot-password.html'
+    public: true
+
+  states['RESET_PASSWORD'] =
+    url: '/reset-password'
+    templateUrl: 'views/login-reg/reset-password.html'
     public: true
 
   states['forbidden'] =
-    url: '/forbidden',
-    templateUrl: 'views/forbidden.html'
+    url: '/403',
+    templateUrl: 'views/403.html'
     public: true
 
   # This must be the last one in the list

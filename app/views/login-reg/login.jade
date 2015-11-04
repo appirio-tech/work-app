@@ -1,0 +1,18 @@
+layout-header.elevated(role="banner")
+
+main.layout-main.login("role"="main" layout-main=true flush-height=true)
+  h2 Welcome back to appirio
+
+  main
+    p Let's start building your app.  Login or create an account below to begin.
+
+    login
+
+    ul.reminders
+      li
+        p Don't have an account? <a ui-sref="register">Sign Up</a>
+
+      li
+        p Forgot your password? <a ui-sref="FORGOT_PASSWORD">Reset It</a>
+
+layout-footer
