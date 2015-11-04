@@ -111,20 +111,29 @@ config = ($locationProvider, $stateProvider) ->
   states['step'] =
     url        : '/projects/:projectId/steps/:stepId'
     templateUrl: 'views/step.html'
-    controller : 'StepController as vm'
+    controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: (SubmitWorkService, $stateParams) ->
+        SubmitWorkService.getPromise $stateParams.projectId
 
   states['submission-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
     templateUrl: 'views/submission-detail.html'
-    controller : 'SubmissionDetailPageController as vm'
+    controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: (SubmitWorkService, $stateParams) ->
+        SubmitWorkService.getPromise $stateParams.projectId
 
   states['file-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
     templateUrl: 'views/file-detail.html'
-    controller : 'FileDetailPageController as vm'
+    controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: (SubmitWorkService, $stateParams) ->
+        SubmitWorkService.getPromise $stateParams.projectId
 
   # general routes
   states['login'] =

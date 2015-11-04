@@ -1,8 +1,8 @@
-layout-header.elevated(role="banner" work-id="{{ vm.projectId }}" user-type="{{ vm.userRole }}")
+layout-header.elevated(role="banner" work-id="{{ vm.projectId }}" user-type="{{ vm.userType }}")
 
-layout-project-nav(work-id="{{ vm.projectId }}" user-type="{{ vm.userRole }}")
+layout-project-nav(ng-if="vm.userType != 'member'" work-id="{{ vm.projectId }}" user-type="{{ vm.userType }}")
 
 main.layout-main("role"="main" layout-main=true flush-height=true)
-  submission-detail(project-id="{{ vm.projectId }}", step-id="{{ vm.stepId }}", submission-id="{{ vm.submissionId }}" user-type="{{ vm.userRole }}")
+  submission-detail(project-id="{{ vm.projectId }}", step-id="{{ vm.stepId }}", submission-id="{{ vm.submissionId }}" user-type="{{ vm.userType }}")
 
 layout-footer
