@@ -31,6 +31,7 @@
     "appirio-tech-ng-projects": "3.x.x",
     "appirio-tech-ng-work-layout": "1.x.x",
     "appirio-tech-ng-api-services": "0.x.x",
+    "appirio-tech-ng-status-report":"0.x.x",
     "appirio-tech-ng-login-reg": "0.x.x",
     "angular-dragula.js": "~1.0.6"
   }
