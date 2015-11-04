@@ -160,6 +160,18 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl: 'views/login-reg/registration.html'
     public: true
 
+  states['SSO_LOGIN'] =
+    url: '/sso-login/:org'
+    templateUrl: 'views/login-reg/sso-login.html'
+    controller : 'SSOLoginPageController as vm'
+    public: true
+
+  states['SSO_CALLBACK'] =
+    url: '/sso-callback?userJWTToken&status&message'
+    templateUrl: 'views/login-reg/sso-callback.html'
+    controller : 'SSOCallbackPageController as vm'
+    public: true
+
   states['FORGOT_PASSWORD'] =
     url: '/forgot-password'
     templateUrl: 'views/login-reg/forgot-password.html'
