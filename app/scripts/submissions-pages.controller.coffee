@@ -20,8 +20,6 @@ SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, StepsSer
     else
       vm.userType = 'member'
 
-    vm.userType = 'member'
-
     step = StepsService.getStepById vm.projectId, vm.stepId
 
     if step
