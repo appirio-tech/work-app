@@ -1,8 +1,32 @@
 @import "work-includes";
+@import "variables";
 
-.no-copilot {
-  p:first-child {
-    font-size: $font-size;
-    margin-top: $margin;
+.layout-main.messaging {
+  messaging {
+    > p {
+      font-size: $font-size-biggest;
+      font-weight: $font-weight;
+    }
+
+    .messages, .respond {
+      background-color: $white;
+      max-width       : 768px;
+      padding         : $horizontal-big;
+    }
+
+    .messages {
+      margin-top: $vertical-big;
+    }
+
+    .respond {
+      margin-top: 0;
+    }
+  }
+
+  .no-copilot {
+    p:first-child {
+      font-size: $font-size;
+      margin-top: $margin;
+    }
   }
 }

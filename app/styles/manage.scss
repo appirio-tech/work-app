@@ -3,9 +3,14 @@
 
 .layout-main.manage {
   > hr {
-    height       : 1px;
-    margin       : $vertical-small $horizontal-big;
-    margin-bottom: 0;
-    max-width    : $max-page-width;
+    height          : 1px;
+    margin          : $vertical-small auto;
+    margin-bottom   : 0;
+    max-width       : $max-page-width;
+    background-color: $neutral-color-light;
+  }
+
+  > .button {
+    margin-top: $vertical-smallest;
   }
 }
