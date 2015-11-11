@@ -1,7 +1,11 @@
 @import "work-includes";
+@import "variables";
 
-.layout-main.manage, .layout-main.home {
+.layout-main.manage {
   > hr {
-    margin-top: $margin;
+    height       : 1px;
+    margin       : $vertical-small $horizontal-big;
+    margin-bottom: 0;
+    max-width    : $max-page-width;
   }
 }

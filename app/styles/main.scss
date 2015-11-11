@@ -1,4 +1,5 @@
 @import "work-styles";
+@import "variables";
 
 ui-view {
   display: block;
@@ -9,7 +10,7 @@ ui-view {
   text-align      : center;
 
   > h2 {
-    margin-top : 50px;
+    margin-top : $vertical-big;
     color      : $neutral-color-dark;
     font-weight: $font-weight-light;
   }
@@ -20,7 +21,7 @@ ui-view {
   }
 
   &.project-page {
-    padding: 50px;
+    padding: $vertical-big;
 
     > h2 {
       margin-top: 0;
@@ -28,7 +29,7 @@ ui-view {
   }
 
   > submissions, timeline, project-details {
-    max-width   : 1226px;
+    max-width   : $max-page-width;
     min-height  : 200px;
     margin-right: auto;
     margin-left : auto;
@@ -44,7 +45,7 @@ ui-view {
 
   timeline, ng-projects, claimed-projects, open-projects, project-details {
     text-align: left;
-    margin-top: 50px;
+    margin-top: $vertical-big;
   }
 
   project-details {
