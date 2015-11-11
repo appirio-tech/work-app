@@ -6,11 +6,29 @@ ui-view {
 
 .layout-main {
   background-color: $neutral-color-lightest;
-  padding         : $padding-big $padding;
   text-align      : center;
 
+  > h2 {
+    margin-top : 50px;
+    color      : $neutral-color-dark;
+    font-weight: $font-weight-light;
+  }
+
+  > p {
+    font-size: $font-size-biggest;
+    font-weight: $font-weight;
+  }
+
+  &.project-page {
+    padding: 50px;
+
+    > h2 {
+      margin-top: 0;
+    }
+  }
+
   > submissions, timeline, project-details {
-    max-width   : 960px;
+    max-width   : 1226px;
     min-height  : 200px;
     margin-right: auto;
     margin-left : auto;
@@ -20,9 +38,13 @@ ui-view {
     padding: 0;
   }
 
-  timeline, messaging, ng-projects, claimed-projects, open-projects, project-details {
+  &.login-reg {
+    padding-top: 0;
+  }
+
+  timeline, ng-projects, claimed-projects, open-projects, project-details {
     text-align: left;
-    margin-top: $margin;
+    margin-top: 50px;
   }
 
   project-details {

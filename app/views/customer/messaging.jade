@@ -4,12 +4,13 @@ layout-project-nav(work-id="{{ vm.workId }}")
 
 button(ng-if="!vm.isClient" ng-click="vm.back()") back to project
 
-main.messaging.layout-main.flex.column("role"="main" layout-main=true flush-height='lock')
-  h2 Messaging
+main.layout-main.project-page.flex.column("role"="main" layout-main=true flush-height='lock')
+  h2 messaging with copilot
 
   messaging.flex.column.flex-grow.middle(
+    flush-height=true
     ng-if="vm.hasCopilot"
-    flush-height=true work-id="{{ vm.workId }}"
+    work-id="{{ vm.workId }}"
     thread-id="{{ vm.threadId }}"
     subscriber-id="{{ vm.subscriberId }}"
   )

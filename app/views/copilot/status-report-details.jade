@@ -2,7 +2,7 @@ layout-header.elevated(role="banner" work-id="{{ vm.workId }}" user-type="copilo
 
 layout-project-nav(work-id="{{ vm.workId }}" user-type="copilot")
 
-main.layout-main.status-reports("role"="main" layout-main=true flush-height=true)
+main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
   h1 Status Report
 
   detail-status-report(work-id="{{ vm.workId }}" report-id="{{vm.reportId}}")
