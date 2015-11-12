@@ -16,9 +16,11 @@ ui-view {
   }
 
   > p {
-    font-size  : $font-size-biggest;
+    font-size  : 18px;
+    line-height: 22px;
     font-weight: $font-weight;
     margin-top : 10px;
+    color      : $neutral-color-dark;
   }
 
   &.project-page {
