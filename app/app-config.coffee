@@ -160,6 +160,11 @@ config = ($locationProvider, $stateProvider) ->
     templateUrl: 'views/login-reg/registration.html'
     public: true
 
+  states['registration-success'] =
+    url: '/registration-success'
+    templateUrl: 'views/login-reg/registration-success.html'
+    public: true
+
   states['SSO_LOGIN'] =
     url: '/sso-login/:org'
     templateUrl: 'views/login-reg/sso-login.html'
