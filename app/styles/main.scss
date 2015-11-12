@@ -16,8 +16,9 @@ ui-view {
   }
 
   > p {
-    font-size: $font-size-biggest;
+    font-size  : $font-size-biggest;
     font-weight: $font-weight;
+    margin-top : 10px;
   }
 
   &.project-page {
@@ -28,7 +29,7 @@ ui-view {
     }
   }
 
-  > submissions, timeline, project-details, status-reports, detail-status-report {
+  > submissions, timeline, project-details, status-reports, detail-status-report, final-fixes {
     max-width   : $max-page-width;
     min-height  : 200px;
     margin-right: auto;
@@ -52,4 +53,8 @@ ui-view {
     padding: 40px;
     background-color: $white;
   }
+}
+
+layout-footer {
+  display: none;
 }
