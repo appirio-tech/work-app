@@ -16,9 +16,16 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
     # Check if the user has loaded
     unless currentUser
       event.preventDefault()
-      return UserV3Service.loadUser().then ->
+
+      success = ->
         # Retry the state change once user has loaded
         $urlRouter.sync()
+
+      failure = ->
+        AuthService.logout()
+        $state.go 'login'
+
+      return UserV3Service.loadUser().then(success).catch(failure)
 
     # Check if the user is the right role to this access route
     unless toState.rolesAllowed.indexOf(currentUser.role) > -1
