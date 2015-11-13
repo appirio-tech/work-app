@@ -39,6 +39,13 @@ if env == 'qa'
     AUTH0_DOMAIN    : 'topcoder-qa.auth0.com'
     AUTH0_CLIENT_ID : 'EVOgWZlCtIFlbehkq02treuRRoJk12UR'
 
+configs.uglify =
+  options:
+    mangle  : false
+    compress: false
+    output  :
+      beautify: true
+
 ### END CONFIG ###
 loadTasksModule = require __dirname + '/node_modules/appirio-gulp-tasks/load-tasks.coffee'
 
