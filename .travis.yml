@@ -56,7 +56,7 @@ env:
   - AUTH0_DOMAIN=topcoder.auth0.com
   - NEWRELIC_APPLICATION_ID=7374849
   - NEWRELIC_LICENSE_KEY=496af5ee90
-  - API_URL=https://api.topcoder.com
+  - API_URL=https://api-work.topcoder.com
   # AUTH0_CLIENT_ID
   - secure: bde7qf1G8SUAFlW1frW/KS5bsiTfkjnnTtpZKuqItDnj6oJ/sNsBlU8x/n4hsvl7ziOfn1bPt8LpJLtQFU3IoMsCxuWQMim9vk88+nmgjYebC+76b3UDwgZfNwoQD9l4jvRHXmdxixStv3y5doul5dx/AXe7e+RdWyDEynvi+0E=
   # AUTH0_CLIENT_ID
