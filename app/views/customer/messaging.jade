@@ -4,13 +4,13 @@ layout-project-nav(work-id="{{ vm.workId }}")
 
 button(ng-if="!vm.isClient" ng-click="vm.back()") back to project
 
-main.layout-main.messaging.project-page.flex.column("role"="main" layout-main=true flush-height='lock')
+main.layout-main.messaging.project-page("role"="main" layout-main=true)
   h2 messaging with copilot
 
   p(ng-if="!vm.hasCopilot") Your Copilot has not yet been assigned. <br />Once your Copilot joins the project, you will be able to exchange messages with them here.
 
-  messaging.flex.column.flex-grow.middle(
-    flush-height=true
+  messaging.flex.column.middle(
+    flush-height="lock"
     ng-if="vm.hasCopilot"
     work-id="{{ vm.workId }}"
     thread-id="{{ vm.threadId }}"
