@@ -38,13 +38,17 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
       # TODO: Notify user that route was protected
       return $state.go 'forbidden'
 
-  addFileDetailHistoryHook = (event, toState, toParams, fromState, fromParams) ->
+  addFileDetailHistory = (event, toState, toParams, fromState, fromParams) ->
     if toState.name == 'file-detail' && fromState.name && fromState.name != 'file-detail'
       $rootScope.preFileDetailState = fromState
       $rootScope.preFileDetailParams = fromParams
 
-  $rootScope.$on '$stateChangeStart', addFileDetailHistoryHook
+  updateTitle = (event, toState) ->
+    document.title = toState.title || 'ASP'
+
+  $rootScope.$on '$stateChangeStart', addFileDetailHistory
   $rootScope.$on '$stateChangeStart', checkPermission
+  $rootScope.$on '$stateChangeSuccess', updateTitle
 
 run.$inject = ['$rootScope', '$state', '$urlRouter', 'AuthService', 'UserV3Service']
 
