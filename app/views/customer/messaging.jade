@@ -2,8 +2,6 @@ layout-header.elevated-bottom(role="banner" work-id="{{ vm.workId }}")
 
 layout-project-nav(work-id="{{ vm.workId }}")
 
-button(ng-if="!vm.isClient" ng-click="vm.back()") back to project
-
 main.layout-main.messaging.project-page("role"="main" layout-main=true)
   h2 messaging with copilot
 
