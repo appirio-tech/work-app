@@ -7,6 +7,7 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
     # Check if the user is logged in
     unless AuthService.isLoggedIn()
       $rootScope.preAuthState = toState.name
+      $rootScope.preAuthParams = toParams
       event.preventDefault()
 
       return $state.go 'login'
