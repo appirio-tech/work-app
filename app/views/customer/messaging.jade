@@ -8,7 +8,6 @@ main.layout-main.messaging.project-page("role"="main" layout-main=true)
   p(ng-if="!vm.hasCopilot") Your Copilot has not yet been assigned. <br />Once your Copilot joins the project, you will be able to exchange messages with them here.
 
   messaging.flex.column.middle(
-    flush-height="lock"
     ng-if="vm.hasCopilot"
     work-id="{{ vm.workId }}"
     thread-id="{{ vm.threadId }}"
