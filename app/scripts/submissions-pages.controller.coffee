@@ -1,16 +1,15 @@
 'use strict'
 
 # This is a shared controller for all submissions pages
-SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, StepsService, UserV3Service, project) ->
+SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, UserV3Service, project) ->
   vm              = this
   vm.projectId    = $stateParams.projectId
   vm.stepId       = $stateParams.stepId
   vm.submissionId = $stateParams.submissionId
   vm.fileId       = $stateParams.fileId
   vm.showModal    = $stateParams.modal != null
-  vm.stepType     = null
 
-  onChange = ->
+  activate = ->
     userId  = UserV3Service.getCurrentUser().userId
 
     if userId == project.ownerId
@@ -19,15 +18,6 @@ SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, StepsSer
       vm.userType = 'copilot'
     else
       vm.userType = 'member'
-
-    step = StepsService.getStepById vm.projectId, vm.stepId
-
-    if step
-      vm.stepId   = step.id
-      vm.stepType = step.stepType
-
-  activate = ->
-    StepsService.subscribe $scope, onChange
 
     # For file detail only
     $scope.$watch 'vm.showModal', (newVal) ->
@@ -46,6 +36,6 @@ SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, StepsSer
 
   vm
 
-SubmissionsPagesController.$inject = ['$scope', '$state', '$stateParams', '$rootScope', 'StepsService', 'UserV3Service', 'project']
+SubmissionsPagesController.$inject = ['$scope', '$state', '$stateParams', '$rootScope', 'UserV3Service', 'project']
 
 angular.module('app').controller 'SubmissionsPagesController', SubmissionsPagesController
