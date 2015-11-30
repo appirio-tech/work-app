@@ -8,6 +8,7 @@ main.project-page.messaging.layout-main("role"="main" layout-main=true)
   p(ng-if="!vm.hasCopilot") You cannot message a customer before claiming a project.
 
   messaging.flex.column.flex-grow.middle(
+    flush-height="flush-height"
     ng-if="vm.hasCopilot"
     work-id="{{ vm.workId }}"
     thread-id="{{ vm.threadId }}"
