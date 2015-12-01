@@ -1,5 +1,16 @@
 @import "work-includes";
+@import "variables";
 
 .layout-main.manage {
-  padding: $spacing-big;
+  > hr {
+    height          : 1px;
+    margin          : $vertical-small auto;
+    margin-bottom   : 0;
+    max-width       : $max-page-width;
+    background-color: $neutral-color-light;
+  }
+
+  > .button {
+    margin-top: $vertical-smallest;
+  }
 }

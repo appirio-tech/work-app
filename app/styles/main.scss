@@ -1,1 +1,58 @@
 @import "work-styles";
+@import "variables";
+
+ui-view {
+  display: block;
+}
+
+.layout-main {
+  background-color: $neutral-color-lightest;
+  text-align      : center;
+
+  > h2 {
+    margin-top : $vertical-big;
+    color      : $neutral-color-dark;
+    font-weight: $font-weight-light;
+  }
+
+  > p {
+    font-size  : 18px;
+    line-height: 22px;
+    font-weight: $font-weight;
+    margin-top : 10px;
+    color      : $neutral-color-dark;
+  }
+
+  &.project-page {
+    padding: $vertical-big;
+
+    > h2 {
+      margin-top: 0;
+    }
+  }
+
+  > submissions, timeline, project-details, status-reports, detail-status-report, final-fixes {
+    max-width   : $max-page-width;
+    min-height  : 200px;
+    margin-right: auto;
+    margin-left : auto;
+  }
+
+  &.login-reg {
+    padding-top: 0;
+  }
+
+  timeline, ng-projects, claimed-projects, open-projects, project-details, status-reports {
+    text-align: left;
+    margin-top: $vertical-big;
+  }
+
+  project-details, status-reports, detail-status-report {
+    padding: 40px;
+    background-color: $white;
+  }
+}
+
+layout-footer {
+  display: none;
+}

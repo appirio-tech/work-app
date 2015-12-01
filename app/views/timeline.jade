@@ -1,6 +1,10 @@
-layout-header(role="banner")
+layout-header.elevated(role="banner" work-id="{{ vm.workId }}")
 
-main.layout-main("role"="main" layout-main=true)
+layout-project-nav(work-id="{{ vm.workId }}")
+
+main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
+  h2 project timeline
+
   timeline(work-id="{{ vm.workId }}")
 
 layout-footer

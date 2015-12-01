@@ -7,14 +7,9 @@ configs.templateCache = []
 configs.serve =
   port: 3000
 
-configs.copyFiles =
-  files:
-    'dist': 'src/client/app/**/*.{gif,png,jpg,jpeg,svg}'
-  base: 'src/client/app/'
-
 configs.templateCache.push
   files   : [
-    'src/client/app/**/*.html'
+    'app/**/*.html'
     '.tmp/**/*.html'
     '!.tmp/index.html'
     '!.tmp/css-files.html'
@@ -32,7 +27,6 @@ if env == 'dev'
 
   configs.ngConstants.constants =
     API_URL         : 'https://api.topcoder-dev.com'
-    API_URL_V2      : 'https://api.topcoder-dev.com'
     AUTH0_DOMAIN    : 'topcoder-dev.auth0.com'
     AUTH0_CLIENT_ID : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT'
 
@@ -41,11 +35,16 @@ if env == 'qa'
     url: '//work.topcoder-qa.com'
 
   configs.ngConstants.constants =
-    apiUrl          : 'https://api.topcoder-qa.com/v3/'
-    API_URL         : 'https://api.topcoder-qa.com/v3'
-    API_URL_V2      : 'https://api.topcoder-qa.com/v2'
+    API_URL         : 'https://api.topcoder-qa.com'
     AUTH0_DOMAIN    : 'topcoder-qa.auth0.com'
     AUTH0_CLIENT_ID : 'EVOgWZlCtIFlbehkq02treuRRoJk12UR'
+
+configs.uglify =
+  options:
+    mangle  : false
+    compress: false
+    output  :
+      beautify: true
 
 ### END CONFIG ###
 loadTasksModule = require __dirname + '/node_modules/appirio-gulp-tasks/load-tasks.coffee'

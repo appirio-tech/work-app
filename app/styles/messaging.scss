@@ -1,11 +1,27 @@
 @import "work-includes";
+@import "variables";
 
 .layout-main.messaging {
-  padding: 1em;
+  messaging {
+    margin-top: 10px;
 
-  .messaging-page-header {
-    padding-bottom: 0.3em;
-    margin-bottom: 0.3em;
-    border-bottom: 1px solid #ccc;
+    > p {
+      font-size: $font-size-biggest;
+      font-weight: $font-weight;
+    }
+
+    .messages {
+      background-color: $white;
+      max-width       : 768px;
+      padding         : $horizontal-big;
+    }
+
+    .messages {
+      margin-top: $vertical-big;
+    }
+
+    .respond {
+      margin-top: 0;
+    }
   }
 }

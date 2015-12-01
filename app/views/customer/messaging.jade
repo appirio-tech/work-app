@@ -1,0 +1,20 @@
+layout-header.elevated-bottom(role="banner" work-id="{{ vm.workId }}")
+
+layout-project-nav(work-id="{{ vm.workId }}")
+
+main.layout-main.messaging.project-page("role"="main" layout-main=true)
+  h2 messaging with copilot
+
+  p(ng-if="!vm.hasCopilot") Your Copilot has not yet been assigned. <br />Once your Copilot joins the project, you will be able to exchange messages with them here.
+
+  messaging.flex.column.middle(
+    flush-height="flush-height"
+    ng-if="vm.hasCopilot"
+    work-id="{{ vm.workId }}"
+    thread-id="{{ vm.threadId }}"
+    subscriber-id="{{ vm.subscriberId }}"
+  )
+
+  loader(ng-show="vm.working")
+
+layout-footer

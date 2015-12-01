@@ -1,0 +1,20 @@
+layout-header.elevated(role="banner" work-id="{{ vm.workId }}" user-type="copilot")
+
+layout-project-nav(work-id="{{ vm.workId }}" user-type="copilot")
+
+main.project-page.messaging.layout-main("role"="main" layout-main=true)
+  h2 Customer Messages
+
+  p(ng-if="!vm.hasCopilot") You cannot message a customer before claiming a project.
+
+  messaging.flex.column.flex-grow.middle(
+    flush-height="flush-height"
+    ng-if="vm.hasCopilot"
+    work-id="{{ vm.workId }}"
+    thread-id="{{ vm.threadId }}"
+    subscriber-id="{{ vm.subscriberId }}"
+  )
+
+  loader(ng-show="vm.working")
+
+layout-footer

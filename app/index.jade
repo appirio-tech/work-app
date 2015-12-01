@@ -2,7 +2,7 @@ doctype html
 html(ng-app='app')
   head
     base(href="/")
-    script(history.pushState({}, "entry page", location.hash.substring(1)))
+
     //- This helps the ng-show/ng-hide animations start at the right place.
     //- Since Angular has this but needs to load, this gives us the class early.
     style.
@@ -10,7 +10,7 @@ html(ng-app='app')
         display: none !important;
       }
 
-    title(ng-bind='title') Appiro Work Platform
+    title Topcoder Connect
 
     meta(charset='utf-8')
 
@@ -21,13 +21,13 @@ html(ng-app='app')
     include ../bower_components/ap-newrelic/browser/script
 
     include css-files
+  body
+    ui-view
 
-    script(src="//use.typekit.net/jjo6pal.js")
+    script(src="https://use.typekit.net/jjo6pal.js")
 
     script.
       try{Typekit.load({ async: true });}catch(e){}
-  body
-    ui-view
 
     include js-files
 

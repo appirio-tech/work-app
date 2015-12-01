@@ -1,11 +1,8 @@
 @import "work-includes";
+@import "variables";
 
-main.layout-main.submissions {
-  @include flex-center();
-  @include flex-direction(column);
-  padding: $spacing-big;
-
-  submission-slides {
-    width: 100%;
+.layout-main.submissions {
+  .header h1 {
+    color: $neutral-color-dark;
   }
 }

@@ -1,0 +1,113 @@
+@import "work-includes";
+
+#fun-404 {
+  text-align: center;
+
+  p {
+    margin: 50px 0 20px;
+  }
+
+  div.container {
+    position: relative;
+    height: 100px;
+    width: 50px;
+    display: inline-block;
+    margin: 0 5px 10px;
+    cursor: pointer;
+  }
+
+  div.container div {
+    position        : absolute;
+    right           : 0;
+    min-height      : 40px;
+    line-height     : 30px;
+    min-width       : 38px;
+    border          : 2px solid $black;
+    color           : $black;
+    padding         : 0 0 8px;
+    background-color: $danger-color;
+    border-radius   : 50%;
+    margin          : 100px auto;
+    font-size       : 24px;
+    font-family     : "comic sans ms";
+
+    transition: color .25s linear;
+    transition: border-color .25s linear;
+    transform: rotate(90deg);
+    animation: jump-404 0.5s infinite alternate;
+
+    -o-transition: color .25s linear;
+    -o-transition: border-color .25s linear;
+    -o-transform: rotate(90deg);
+    -o-animation: jump-404 0.5s infinite alternate;
+
+    -ms-transition: color .25s linear;
+    -ms-transition: border-color .25s linear;
+    -ms-transform: rotate(90deg);
+    -ms-animation: jump-404 0.5s infinite alternate;
+
+    -moz-transition: color .25s linear;
+    -moz-transition: border-color .25s linear;
+    -moz-transform: rotate(90deg);
+    -moz-animation: jump-404 0.5s infinite alternate;
+
+    -webkit-transition: color .25s linear;
+    -webkit-transition: border-color .25s linear;
+    -webkit-transform: rotate(90deg);
+    -webkit-animation: jump-404 0.5s infinite alternate;
+  }
+
+
+  div.container div.four {
+      animation-delay: 0.3s;
+      -o-animation-delay: 0.3s;
+      -ms-animation-delay: 0.3s;
+      -moz-animation-delay: 0.3s;
+      -webkit-animation-delay: 0.3s;
+  }
+}
+
+@keyframes jump-404 {
+    0% {
+      top: -40px;
+          -moz-transform: scale(1,0.7) rotate(90deg);
+    }
+    30% {-moz-transform: scale(1,1) rotate(90deg);}
+    100% {top: -70px;}
+  }
+
+  @-o-keyframes jump-404 {
+    0% {
+      top: -40px;
+          -moz-transform: scale(1,0.7) rotate(90deg);
+    }
+    30% {-moz-transform: scale(1,1) rotate(90deg);}
+    100% {top: -70px;}
+  }
+
+  @-ms-keyframes jump-404 {
+    0% {
+      top: -40px;
+          -moz-transform: scale(1,0.7) rotate(90deg);
+    }
+    30% {-moz-transform: scale(1,1) rotate(90deg);}
+    100% {top: -70px;}
+  }
+
+  @-moz-keyframes jump-404 {
+    0% {
+      top: -40px;
+          -moz-transform: scale(1,0.7) rotate(90deg);
+    }
+    30% {-moz-transform: scale(1,1) rotate(90deg);}
+    100% {top: -70px;}
+  }
+
+  @-webkit-keyframes jump-404 {
+    0% {
+        top: -40px;
+        -webkit-transform: scale(1,0.7) rotate(90deg);
+    }
+    30% {-webkit-transform: scale(1,1) rotate(90deg);}
+    100% {top: -70px;}
+  }

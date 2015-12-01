@@ -4,31 +4,25 @@
 - var bowercss     = []
 
 - css.push("/styles/main")
-- css.push("/auth/styles/login")
-- css.push("/auth/styles/register")
-- css.push("/getting-started/styles/getting-started")
 - css.push("/styles/manage")
+- css.push("/styles/messaging")
+- css.push("/styles/copilot")
+- css.push("/styles/404")
+- css.push("/styles/submissions")
+
 - css.push('/bower_components/appirio-tech-ng-timeline/dist/main')
 - css.push('/bower_components/appirio-tech-ng-ui-components/dist/main')
 - css.push('/bower_components/appirio-tech-ng-submissions/dist/main')
 - css.push('/bower_components/appirio-tech-ng-messaging/dist/main')
 - css.push('/bower_components/appirio-tech-ng-work-layout/dist/main')
-- css.push('/styles/messaging')
-- css.push('/styles/submissions')
-- css.push('/bower_components/appirio-tech-copilot/dist/main')
 - css.push('/bower_components/appirio-tech-ng-projects/dist/main')
 - css.push('/bower_components/appirio-tech-ng-submit-work/dist/main')
-
-- landscapeCSS.push('/bower_components/appirio-tech-ng-timeline/dist/landscape')
-- landscapeCSS.push('/bower_components/appirio-tech-ng-submit-work/dist/landscape')
-
-- desktopCSS.push("/getting-started/styles/getting-started.desktop")
-- desktopCSS.push('/bower_components/appirio-tech-ng-submit-work/dist/desktop')
-
-- bowercss.push('/bower_components/font-awesome/css/font-awesome')
+- css.push('/bower_components/appirio-tech-ng-status-report/dist/main')
+- css.push('/bower_components/appirio-tech-ng-login-reg/dist/main')
+- css.push('/bower_components/appirio-tech-ng-file-upload/dist/main')
 
 = "\n"
-// build:css styles/lib.css
+// build:css /styles/lib.css
 = "\n"
 each path in bowercss
   link(href=path + ".css", rel="stylesheet")
@@ -36,7 +30,7 @@ each path in bowercss
 // endbuild
 = "\n"
 
-// build:css styles/app.css
+// build:css /styles/app.css
 = "\n"
 each path in css
   link(href=path + ".css", rel="stylesheet")
@@ -44,7 +38,7 @@ each path in css
 // endbuild
 = "\n"
 
-// build:css styles/mobile-landscape.css media="(min-width: 568px)"
+// build:css /styles/mobile-landscape.css media="(min-width: 568px)"
 = "\n"
 each path in landscapeCSS
   link(href=path + ".css", rel="stylesheet", media="(min-width: 568px)")
@@ -52,7 +46,7 @@ each path in landscapeCSS
 // endbuild
 = "\n"
 
-// build:css styles/desktop.css media="(min-width: 767px)"
+// build:css /styles/desktop.css media="(min-width: 767px)"
 = "\n"
 each path in desktopCSS
   link(href=path + ".css", rel="stylesheet", media="(min-width: 767px)")

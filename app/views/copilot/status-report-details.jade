@@ -1,0 +1,8 @@
+layout-header.elevated(role="banner" work-id="{{ vm.workId }}" user-type="copilot")
+
+layout-project-nav(work-id="{{ vm.workId }}" user-type="copilot")
+
+main.layout-main.project-page.detail-status-report("role"="main" layout-main=true flush-height=true)
+  detail-status-report(work-id="{{ vm.workId }}" report-id="{{vm.reportId}}" flush-height=true)
+
+layout-footer
