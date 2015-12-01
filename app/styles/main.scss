@@ -31,7 +31,7 @@ ui-view {
     }
   }
 
-  > submissions, timeline, project-details, status-reports, detail-status-report, final-fixes {
+  > submissions, submission-detail, timeline, project-details, status-reports, detail-status-report {
     max-width   : $max-page-width;
     min-height  : 200px;
     margin-right: auto;
