@@ -190,6 +190,7 @@ config = ($locationProvider, $stateProvider) ->
   states['forbidden'] =
     url: '/403',
     templateUrl: 'views/403.html'
+    controller: '403Controller as vm'
     public: true
 
   # This must be the last one in the list
