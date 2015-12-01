@@ -1,4 +1,6 @@
-layout-header.elevated(role="banner")
+layout-header.elevated(ng-if="vm.userType == 'customer'" role="banner")
+
+layout-header.elevated(ng-if="vm.userType == 'copilot'" role="banner" user-type="copilot")
 
 main.layout-main("role"="main" flush-height=true)
   h1 403 - Page is forbidden
