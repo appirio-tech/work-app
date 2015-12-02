@@ -183,7 +183,7 @@ config = ($locationProvider, $stateProvider) ->
     public: true
 
   states['RESET_PASSWORD'] =
-    url: '/reset-password'
+    url: '/reset-password?token&handle'
     templateUrl: 'views/login-reg/reset-password.html'
     public: true
 
