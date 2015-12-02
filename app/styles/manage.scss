@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 @import "variables";
 
 .layout-main.manage {
@@ -7,7 +7,7 @@
     margin          : $vertical-small auto;
     margin-bottom   : 0;
     max-width       : $max-page-width;
-    background-color: $neutral-color-light;
+    background-color: $grey-light;
   }
 
   > .button {

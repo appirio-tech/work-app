@@ -1,4 +1,4 @@
-@import "work-styles";
+@import "work/work-styles";
 @import "variables";
 
 ui-view {
@@ -6,21 +6,21 @@ ui-view {
 }
 
 .layout-main {
-  background-color: $neutral-color-lightest;
+  background-color: $grey-lighter;
   text-align      : center;
 
   > h2 {
     margin-top : $vertical-big;
-    color      : $neutral-color-dark;
-    font-weight: $font-weight-light;
+    color      : $grey-dark;
+    font-weight: 300;
   }
 
   > p {
     font-size  : 18px;
     line-height: 22px;
-    font-weight: $font-weight;
+    font-weight: 400;
     margin-top : 10px;
-    color      : $neutral-color-dark;
+    color      : $grey-dark;
   }
 
   &.project-page {
