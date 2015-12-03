@@ -35,7 +35,7 @@ if env == 'qa'
     url: '//work.topcoder-qa.com'
 
   configs.ngConstants.constants =
-    API_URL         : 'https://api.topcoder-qa.com'
+    API_URL         : 'https://api-work.topcoder-qa.com'
     AUTH0_DOMAIN    : 'topcoder-qa.auth0.com'
     AUTH0_CLIENT_ID : 'EVOgWZlCtIFlbehkq02treuRRoJk12UR'
 
