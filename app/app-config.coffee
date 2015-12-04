@@ -122,14 +122,27 @@ config = ($locationProvider, $stateProvider) ->
     rolesAllowed: [ 'copilot' ]
 
   # Shared routes
+
+  resolveProject = (ProjectsAPIService, $stateParams) ->
+    ProjectsAPIService.query().$promise.then (projects) ->
+      projects.filter((p) -> p.id == $stateParams.projectId)[0]
+
   states['step'] =
     url        : '/projects/:projectId/steps/:stepId'
     templateUrl: 'views/step.html'
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
-      project: (SubmitWorkService, $stateParams) ->
-        SubmitWorkService.getPromise $stateParams.projectId
+      project: resolveProject
+
+  # Shared routes
+  states['current-step'] =
+    url        : '/projects/:projectId/current-step'
+    templateUrl: 'views/step.html'
+    controller : 'SubmissionsPagesController as vm'
+    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    resolve:
+      project: resolveProject
 
   states['submission-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
@@ -137,8 +150,7 @@ config = ($locationProvider, $stateProvider) ->
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
-      project: (SubmitWorkService, $stateParams) ->
-        SubmitWorkService.getPromise $stateParams.projectId
+      project: resolveProject
 
   states['file-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
@@ -146,8 +158,7 @@ config = ($locationProvider, $stateProvider) ->
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
-      project: (SubmitWorkService, $stateParams) ->
-        SubmitWorkService.getPromise $stateParams.projectId
+      project: resolveProject
 
   # general routes
   states['login'] =
