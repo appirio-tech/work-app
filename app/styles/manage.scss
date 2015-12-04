@@ -6,11 +6,12 @@
     height          : 1px;
     margin          : $vertical-small auto;
     margin-bottom   : 0;
+    width           : 90%;
     max-width       : $max-page-width;
     background-color: $grey-light;
   }
 
   > .button {
-    margin-top: $vertical-smallest;
+    margin-top: 30px;
   }
 }

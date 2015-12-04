@@ -5,27 +5,27 @@ ui-view {
   display: block;
 }
 
-.layout-main {
+main.layout-main {
   background-color: $grey-lighter;
   text-align      : center;
+  padding-right   : 40px;
+  padding-left    : 40px;
 
-  > h2 {
-    margin-top : $vertical-big;
+  > h1 {
     color      : $grey-dark;
     font-weight: 300;
+    margin-top : 40px;
   }
 
   > p {
-    font-size  : 18px;
-    line-height: 22px;
+    @include font-line(18px);
+
     font-weight: 400;
     margin-top : 10px;
     color      : $grey-dark;
   }
 
   &.project-page {
-    padding: $vertical-big;
-
     > h2 {
       margin-top: 0;
     }
