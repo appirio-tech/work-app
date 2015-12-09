@@ -10,6 +10,7 @@
 ## setup work space
 ### Run the following commands to create a work space in your home directory.  The commands will clone repos that are important for this app.  There are also commands that will create sym links to ease development between multiple repos.
 
+```shell
 mkdir ~/tc-workspace
 
 git clone https://github.com/appirio-tech/styles.git ~/tc-workspace
@@ -74,6 +75,7 @@ rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/di
 ln -s ~/tc-workspace/ng-status-report/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
 
 gulp serve
+```
 
 ## Build
 gulp clean; gulp preprocessors; gulp useref; gulp copy-files; gulp optimize-build; gulp finger-print; gulp finger-print-replace;
