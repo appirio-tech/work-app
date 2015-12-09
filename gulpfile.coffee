@@ -23,7 +23,7 @@ configs.ngConstants = {}
 
 if env == 'dev'
   configs.cdnify =
-    url: '//work.topcoder-dev.com'
+    url: '//connect.topcoder-dev.com'
 
   configs.ngConstants.constants =
     API_URL         : 'https://api.topcoder-dev.com'
@@ -32,7 +32,7 @@ if env == 'dev'
 
 if env == 'qa'
   configs.cdnify =
-    url: '//work.topcoder-qa.com'
+    url: '//connect.topcoder-qa.com'
 
   configs.ngConstants.constants =
     API_URL         : 'https://api-work.topcoder-qa.com'

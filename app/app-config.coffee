@@ -124,8 +124,7 @@ config = ($locationProvider, $stateProvider) ->
   # Shared routes
 
   resolveProject = (ProjectsAPIService, $stateParams) ->
-    ProjectsAPIService.query().$promise.then (projects) ->
-      projects.filter((p) -> p.id == $stateParams.projectId)[0]
+    ProjectsAPIService.get({id: $stateParams.projectId}).$promise
 
   states['step'] =
     url        : '/projects/:projectId/steps/:stepId'
