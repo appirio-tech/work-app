@@ -8,6 +8,8 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/55d4acfb265ff60022000e13/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55d4acfb265ff60022000e13)
 
 ## setup work space
+### Run the following commands to create a work space in your home directory.  The commands will clone repos that are important for this app.  There are also commands that will create sym links to ease development between multiple repos.
+
 mkdir ~/tc-workspace
 
 git clone https://github.com/appirio-tech/styles.git ~/tc-workspace
