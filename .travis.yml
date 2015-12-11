@@ -37,7 +37,7 @@ deploy:
   detect_encoding: true
   access_key_id: $QA_AWS_KEY
   secret_access_key: $QA_AWS_SECRET
-  bucket: connect.topcoder-qa.com
+  bucket: work.topcoder-qa.com
   skip_cleanup: true
   local_dir: dist
   on:
