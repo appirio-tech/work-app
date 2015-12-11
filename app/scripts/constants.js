@@ -1,0 +1,6 @@
+angular.module("app.constants", [])
+.constant("API_URL", "https://api.topcoder-qa.com")
+.constant("AUTH0_CLIENT_ID", "EVOgWZlCtIFlbehkq02treuRRoJk12UR")
+.constant("AUTH0_DOMAIN", "topcoder-qa.auth0.com")
+.constant("AUTH0_TOKEN_NAME", "userJWTToken")
+.constant("AUTH0_REFRESH_TOKEN_NAME", "userRefreshJWTToken")

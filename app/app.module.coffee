@@ -1,4 +1,4 @@
-'use strict'
+angular = require('angular');
 
 dependencies = [
   'ap-file-upload'
@@ -13,7 +13,6 @@ dependencies = [
   'appirio-tech-ng-api-services'
   'appirio-tech-ng-login-reg'
   'appirio-tech-ng-status-report'
-  'newrelic'
 ]
 
 angular.module 'app', dependencies
