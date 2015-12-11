@@ -26,7 +26,7 @@ if env == 'dev'
     url: '//connect.topcoder-dev.com'
 
   configs.ngConstants.constants =
-    API_URL         : 'https://api.topcoder-dev.com'
+    API_URL         : 'https://api-work.topcoder-dev.com'
     AUTH0_DOMAIN    : 'topcoder-dev.auth0.com'
     AUTH0_CLIENT_ID : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT'
 
