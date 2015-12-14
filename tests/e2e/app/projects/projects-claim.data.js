@@ -3,7 +3,7 @@ var ProjectClaimData = function() {
 //    this.testUser = {'baseUrl': 'https://www.topcoder-dev.com/work/#/login', 'username': 'DhananjayKumar1', 'password': 'appirio123'}
     this.userCredentials = [ 
                              {	
-                            	 'username' : 'DhananjayKumar1',
+                            	 'username' : 'aqmansuri',
                             	 'password' : 'appirio123' 
                              }
     
@@ -27,7 +27,8 @@ var ProjectClaimData = function() {
     	
                                 ],
     
-    this.baseUrl = 'http://work.topcoder-dev.com/#/login',
-    this.manageProjectUrl = 'http://work.topcoder-dev.com/#/manage';
+    this.baseUrl = 'http://work.topcoder-qa.com/login',
+    this.manageProjectUrl = 'http://work.topcoder-qa.com/manage';
+    this.openProjectsUrl = 'http://work.topcoder-qa.com/projects/open';
 };
 module.exports = new ProjectClaimData;

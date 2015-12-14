@@ -27,7 +27,7 @@ var ProjectData = function() {
     	
                                 ],
     
-    this.baseUrl = 'http://work.topcoder-dev.com/#/login',
-    this.manageProjectUrl = 'http://work.topcoder-dev.com/#/manage';
+    this.baseUrl = 'http://work.topcoder-dev.com/login',
+    this.manageProjectUrl = 'http://work.topcoder-dev.com/manage';
 };
 module.exports = new ProjectData;

@@ -6,20 +6,23 @@ exports.config = {
 	//specs: ['specs/regression/*Spec.js'],
 	suites: {
 //		regression0: 'app/auth/reg.spec.js'
-		regression1: 'app/auth/login.spec.js',
-//		regression2: 'app/manage/newproject.spec.js',//,
+//		regression1: 'app/auth/login.spec.js'//,
+		regression2: 'app/manage/newproject.spec.js'//,
 //	    regression3: 'app/manage/manage.spec.js'
-//	    regression4: 'app/projects/projects-claim.spec.js',
+//	    regression4: 'app/projects/projects-claim.spec.js'//,
 //	    regression5: 'app/projects/projects.spec.js'
+//		regression6: 'app/messagingFlow/messaging.spec.js'
 	  },
     //baseUrl: 'http://qualityshepherd.com/angular',
     //framework: 'jasmine2',
 	  
-//	  allScriptsTimeout: 500000,
+	  allScriptsTimeout: 500000,
 
     onPrepare: function(){
+    	browser.manage().window().setSize(1280, 1080);
+    	require('./waitReady.js');
     	require('protractor-linkuisref-locator')(protractor);
-    	require('jasmine-reporters');
+//    	require('jasmine-reporters');
     	var HtmlReporter = require('protractor-html-screenshot-reporter');
         // set implicit wait times in ms...
         //browser.manage().timeouts().pageLoadTimeout(10000);
@@ -56,7 +59,7 @@ exports.config = {
 		isVerbose: true,
 		includeStackTrace: true,
 		showColors: true,
-		defaultTimeoutInterval: 30000,
+		defaultTimeoutInterval: 600000,
         print: function() {}
 	}
 };

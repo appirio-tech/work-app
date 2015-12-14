@@ -16,8 +16,13 @@ describe('login', function() {
 		  (function(project) {
 			  it('Click on open project button', function () {
 				  newProject.get(projectList.manageProjectUrl);
-				  newProject.viewOpenProjectList(project);
+				  newProject.claimAnyOpenProject(project, projectList.openProjectsUrl);
 			  });
+			  /**
+			  it('Click on open project button', function () {
+				  newProject.get(projectList.manageProjectUrl);
+				  newProject.estimateAnyClaimedProject(project);
+			  });**/
 		  })(projectList.estimateProjectList[i]);
 	  }
 	
