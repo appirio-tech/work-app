@@ -4,10 +4,16 @@
 SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, UserV3Service, project) ->
   vm              = this
   vm.projectId    = $stateParams.projectId
-  vm.stepId       = $stateParams.stepId
   vm.submissionId = $stateParams.submissionId
   vm.fileId       = $stateParams.fileId
   vm.showModal    = $stateParams.modal != null
+
+  if $stateParams.stepId
+    vm.stepId = $stateParams.stepId
+  else if project.activeWorkStep
+    vm.stepId = project.activeWorkStep.id
+  else
+    vm.stepId = null
 
   activate = ->
     userId  = UserV3Service.getCurrentUser().userId

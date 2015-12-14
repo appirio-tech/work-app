@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 @import "variables";
 
 .layout-main.messaging {
@@ -6,14 +6,12 @@
     margin-top: 10px;
 
     > p {
-      font-size: $font-size-biggest;
-      font-weight: $font-weight;
+      font-size: 18px;
+      font-weight: 400;
     }
 
     .messages {
-      background-color: $white;
-      max-width       : 768px;
-      padding         : $horizontal-big;
+      max-width: 768px;
     }
 
     .messages {

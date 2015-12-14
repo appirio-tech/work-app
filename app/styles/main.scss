@@ -1,37 +1,40 @@
-@import "work-styles";
+@import "work/work-styles";
 @import "variables";
 
 ui-view {
   display: block;
 }
 
-.layout-main {
-  background-color: $neutral-color-lightest;
+main.layout-main {
+  background-color: $grey-lighter;
   text-align      : center;
+  padding-right   : 40px;
+  padding-left    : 40px;
+  padding-bottom  : 40px;
 
-  > h2 {
-    margin-top : $vertical-big;
-    color      : $neutral-color-dark;
-    font-weight: $font-weight-light;
+  > h1 {
+    color      : $grey-dark;
+    font-weight: 300;
+    margin-top : 40px;
   }
 
   > p {
-    font-size  : 18px;
-    line-height: 22px;
-    font-weight: $font-weight;
+    @include font-line(18px);
+
+    font-weight: 400;
     margin-top : 10px;
-    color      : $neutral-color-dark;
+    color      : $grey-dark;
   }
 
   &.project-page {
-    padding: $vertical-big;
+    padding-top: 40px;
 
-    > h2 {
+    > h1 {
       margin-top: 0;
     }
   }
 
-  > submissions, timeline, project-details, status-reports, detail-status-report, final-fixes {
+  > submissions, submission-detail, timeline, project-details, status-reports, detail-status-report {
     max-width   : $max-page-width;
     min-height  : 200px;
     margin-right: auto;

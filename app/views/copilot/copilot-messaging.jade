@@ -1,9 +1,9 @@
-layout-header.elevated(role="banner" work-id="{{ vm.workId }}" user-type="copilot")
+layout-header(role="banner" work-id="{{ vm.workId }}" user-type="copilot")
 
 layout-project-nav(work-id="{{ vm.workId }}" user-type="copilot")
 
 main.project-page.messaging.layout-main("role"="main" layout-main=true)
-  h2 Customer Messages
+  h1 Customer Messages
 
   p(ng-if="!vm.hasCopilot") You cannot message a customer before claiming a project.
 

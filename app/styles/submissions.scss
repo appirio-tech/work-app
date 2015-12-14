@@ -1,8 +1,8 @@
-@import "work-includes";
+@import "work/work-includes";
 @import "variables";
 
 .layout-main.submissions {
   .header h1 {
-    color: $neutral-color-dark;
+    color: $grey-dark;
   }
 }
