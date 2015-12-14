@@ -73,29 +73,8 @@ var NewProjectPage = function() {
 	    				return false;
 	    			}
 	    			else {
-	    				if(project.allType == 'y'){
-	    					element.all(by.repeater('projectType in vm.projectTypes')).each(function(projectTypeCont, index){
-			    				isClickable = EC.elementToBeClickable(projectTypeCont);
-			    				browser.wait(isClickable, 20000);
-			    				projectTypeCont.all(by.model('vm.projectType')).get(0).click();
-		    				}).then(function(){
-		    					return true;
-//		    					var firstElem = element.all(by.repeater('projectType in vm.projectTypes')).get(0);
-//		    					firstElem.all(by.css('button')).get(0).getAttribute('class').then(function(classNames){
-//		    						if(classNames.indexOf('checked') != -1){
-//		    							return false;
-//		    						}
-//		    					}).then(function(returnValue){
-//		    						if(returnValue != false){
-//		    							var lastSelected = element.all(by.repeater('projectType in vm.projectTypes')).last();
-//			    						lastSelected.all(by.model('vm.projectType')).first().click();
-//			    						return true;
-//		    						}
-//		    					});
-		    				});
-	    				} else{
-		    				element.all(by.repeater('projectType in vm.projectTypes')).filter(function(projectTypeCont, index){
-		    				isClickable = EC.elementToBeClickable(projectTypeCont);
+	    				element.all(by.repeater('projectType in vm.projectTypes')).filter(function(projectTypeCont, index){
+	    					isClickable = EC.elementToBeClickable(projectTypeCont);
 		    				browser.wait(isClickable, 20000);
 		    				var projectTypeHeader = projectTypeCont.all(by.css('.ng-binding')).get(0);
 		    				return projectTypeHeader.getText().then(function(text){
@@ -112,16 +91,11 @@ var NewProjectPage = function() {
 		    						filteredElements[0].all(by.model('vm.projectType')).get(0).click();
 		    					}
 		    				});
-	    				}
 	    			}
 	    		}).then(function(returnValue){
-	    			console.log('return value ---'+returnValue);
 	    			if(returnValue == false) {
 	    				return false;
-	    			} else if(returnValue == true){
-	    				console.log('hi i am here---');
-	    				return true;
-	    			}
+	    			} 
 	    			
 	    			var continueBtn = element.all(by.css('.continue-buttons button')).get(2);
 	    			continueBtn.click().then(function(){ 
@@ -140,11 +114,19 @@ var NewProjectPage = function() {
 	    	    		brief.sendKeys(project.brief);
 	    	    		var createProject = element(by.id('brief-details')).all(by.css('.continue-buttons .action')).get(0);
 	    	    		createProject.click().then(function(){
-	    	    			var choices = element(by.css('.selectable-choices'));
-	    	    			var featureSelect = choices.all(by.css('li .action')).get(0);
-	    	    			isClickable = EC.elementToBeClickable(featureSelect);
-		    				browser.wait(isClickable, 20000);
-		    				browser.pause();
+	    	    			if(project.brief == ''){
+	    	    				var noBriefErr = element(by.id('brief-details')).all(by.css('.error')).get(0);
+	    	    				isClickable = EC.elementToBeClickable(noBriefErr);
+			    				browser.wait(isClickable, 20000);
+	    	    				expect(noBriefErr.isDisplayed()).toBeTruthy();
+	    	    				expect(noBriefErr.getText()).toEqual(errMsg.briefErrMsg);
+	    	    			} else {
+	    	    				var choices = element(by.css('.selectable-choices'));
+		    	    			var featureSelect = choices.all(by.css('li .action')).get(0);
+		    	    			isClickable = EC.elementToBeClickable(featureSelect);
+			    				browser.wait(isClickable, 20000);
+	    	    			}
+	    	    			
 	    	    		});
 	    			});
 	    		});

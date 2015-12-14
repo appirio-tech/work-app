@@ -154,10 +154,18 @@ var NewProjectData = function() {
     	'allType' : 'y'
 //    	'type' : ['','']
     }], 
+    this.noOverviewProjectList = [{
+    	'name' : 'aqytesting',
+    	'deviceTypes' : [ 'IPhone'],
+    	'orientations' : ['Landscape'],
+    	'type' : 'DESIGN',
+    	'brief' : ''
+    }], 
     this.errMsg = {
     					'deviceErrMsg' : 'Please choose a device.',
     					'orientationErrMsg' :'Please choose an orientation.',
-    					'typeErrMsg' : 'Please choose a type of work.'
+    					'typeErrMsg' : 'Please choose a type of work.',
+    					'briefErrMsg' : 'Please enter project details.'
     			  },
     this.baseUrl = 'http://work.topcoder-qa.com/login',
     this.manageProjectUrl = 'http://work.topcoder-qa.com/manage';

@@ -113,15 +113,26 @@ describe('login', function() {
 //	  }
 	  
 	  
+//	  i = 0;
+//	  for(;i < newProjectData.allWorkTypeProjectList.length; i++) {
+//		  (function(project) {
+//	  
+//		  it('Create Project - All work type', function() {
+//			  newProject1.allWorkTypeProject(project, newProjectData.errMsg);
+//		  });
+//	  
+//		  })(newProjectData.allWorkTypeProjectList[i]);
+//	  }
+	  
 	  i = 0;
-	  for(;i < newProjectData.allWorkTypeProjectList.length; i++) {
+	  for(;i < newProjectData.noOverviewProjectList.length; i++) {
 		  (function(project) {
 	  
-		  it('Create Project - All work type', function() {
-			  newProject1.allWorkTypeProject(project, newProjectData.errMsg);
+		  it('Create Project - No overview', function() {
+			  newProject1.createNewProject(project, newProjectData.errMsg);
 		  });
 	  
-		  })(newProjectData.allWorkTypeProjectList[i]);
+		  })(newProjectData.noOverviewProjectList[i]);
 	  }
 	  
 	  
