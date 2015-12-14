@@ -5,7 +5,9 @@
   "devDependencies": {
     "appirio-styles": "0.x.x",
     "appirio-gulp-tasks": "3.x.x",
+    "appirio-work-styles": "2.x.x",
     "gulp": "^3.8.11",
+    "protractor-html-screenshot-reporter": "0.0.21",
     "wiredep": "^3.0.0-beta"
   }
 }

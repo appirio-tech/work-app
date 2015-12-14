@@ -5,25 +5,33 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 	//specs: ['specs/regression/*Spec.js'],
 	suites: {
-//        regresiion0: 'app/auth/reg.spec.js',
-//		regression1: 'app/auth/login.spec.js',
+//		regression0: 'app/auth/reg.spec.js'
+//		regression1: 'app/auth/login.spec.js'//,
 		regression2: 'app/manage/newproject.spec.js'//,
 //	    regression3: 'app/manage/manage.spec.js'
+//	    regression4: 'app/projects/projects-claim.spec.js'//,
+//	    regression5: 'app/projects/projects.spec.js'
+//		regression6: 'app/messagingFlow/messaging.spec.js'
 	  },
     //baseUrl: 'http://qualityshepherd.com/angular',
     //framework: 'jasmine2',
+	  
+	  allScriptsTimeout: 500000,
 
     onPrepare: function(){
+    	browser.manage().window().setSize(1280, 1080);
+    	require('./waitReady.js');
     	require('protractor-linkuisref-locator')(protractor);
-    	require('jasmine-reporters');
+//    	require('jasmine-reporters');
     	var HtmlReporter = require('protractor-html-screenshot-reporter');
         // set implicit wait times in ms...
         //browser.manage().timeouts().pageLoadTimeout(10000);
         browser.manage().timeouts().implicitlyWait(2000);
         
         var reporter=new HtmlReporter({
-            baseDirectory: '/Volumes/Data/gitDemand/ap-work-client/test/e2e/report', // a location to store screen shots.
-            docTitle: 'Protractor Demo Reporter',
+            baseDirectory: '/Volumes/Data/gitDemand/ap-work-client/tests/e2e/report', // a location to store screen shots.
+//            baseDirectory:'report',
+        	docTitle: 'Protractor Demo Reporter',
             docName:    'protractor-demo-tests-report.html'
         });
         
@@ -44,14 +52,14 @@ exports.config = {
     },
     
     capabilities: {
-    	  'browserName': 'safari'
+    	  'browserName': 'chrome'
     	},
 
 	jasmineNodeOpts: {
 		isVerbose: true,
 		includeStackTrace: true,
 		showColors: true,
-		defaultTimeoutInterval: 30000,
+		defaultTimeoutInterval: 600000,
         print: function() {}
 	}
 };

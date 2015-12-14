@@ -8,8 +8,10 @@ describe('registration', function() {
 		 (function(userInfo) {
   
 			 it('register the user', function() {
+				 console.log('url '+regUser.registerUrl);
 				 registrationPage.get(regUser.registerUrl);
-				 registrationPage.register(userInfo);   
+				 registrationPage.register(userInfo);  
+				 expect(true).toEqual(true);
 			 });
 			 
 			 afterEach(function() {  

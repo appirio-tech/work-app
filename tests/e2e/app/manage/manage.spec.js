@@ -5,35 +5,28 @@ var managePage = require('./manage.object');
 	describe('login', function() {
 		
 		
-	  it('welcomes the user again', function() {
+	  it('Welcomes the user to Manage Project', function() {
 	    //var loginPage = new LoginPage();
 	    loginPage.get(manageData.baseUrl);
-	    loginPage.login(manageData.userCredentials[0]);
+	    loginPage.login(manageData.userCredentials[1]);
 	  });
 	  
 	  var i=0;
 	  for(;i < manageData.projectList.length; i++) {
 		  (function(project) {
 			  it('Click on Project Manage link', function() {
-				  managePage.createNewProject();
-				  console.log('manage page'+managePage);
+//				  managePage.createNewProject(project.oldProjectName);
+				  console.log('click on project manage link spec'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);
 				  managePage.continueSetup(project);
 			  });
 			  
 			  it('Go back to manage project link', function() {
-				  console.log('manage page'+managePage);
+				  console.log('go back to manage project link'+managePage);
 				  loginPage.get(manageData.manageProjectUrl);
-//				  managePage.continueSetup(project);
+				  expect(true).toEqual(true);
 			  });
 	  
-			  /*it('Click on Project Manage link 2', function() {
-		    	//var loginPage = new LoginPage();
-		  			console.log('manage page editProject');
-		  			managePage.editProject();
-		  			console.log('manage page editProjectrpp');
-		    
-	  			});*/
 	  
 			  afterEach(function() {  
 				  browser.manage().logs().get('browser').then(function(browserLog) {
@@ -42,9 +35,9 @@ var managePage = require('./manage.object');
 
 			        for(i; i<=browserLog.length-1; i++){
 			            if(browserLog[i].level.name === 'SEVERE'){
-			                console.log('\n' + browserLog[i].level.name);
+//			                console.log('\n' + browserLog[i].level.name);
 			                //uncomment to see the error
-			                console.log('(Possibly exception) \n' + browserLog[i].message);
+//			                console.log('(Possibly exception) \n' + browserLog[i].message);
 	
 			                severWarnings = true;
 			            }
@@ -56,6 +49,10 @@ var managePage = require('./manage.object');
 	  
 	  })(manageData.projectList[i]);
 	  }
+	  
+	  it('logout user', function() {
+			 loginPage.logOut();
+		 });
 	  
 	  
 	  
