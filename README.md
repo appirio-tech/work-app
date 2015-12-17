@@ -30,7 +30,7 @@ git clone https://github.com/appirio-tech/ng-api-services.git
 git clone https://github.com/appirio-tech/ng-optimist.git
 git clone https://github.com/appirio-tech/ng-submissions.git
 git clone https://github.com/appirio-tech/ng-status-report.git
-git clone https://github.com/appirio-tech/ng-manage-phases.git
+git clone https://github.com/appirio-tech/ng-manage-steps.git
 
 cd ~/tc-workspace/work-app
 npm install
@@ -76,8 +76,8 @@ ln -s ~/tc-workspace/ng-submissions/dist ~/tc-workspace/work-app/bower_component
 rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
 ln -s ~/tc-workspace/ng-status-report/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-phases/dist
-ln -s ~/tc-workspace/ng-manage-phases/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-phases/dist
+rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-steps/dist
+ln -s ~/tc-workspace/ng-manage-steps/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-steps/dist
 
 gulp serve
 ```
