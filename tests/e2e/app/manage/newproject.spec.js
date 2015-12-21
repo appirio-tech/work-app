@@ -132,62 +132,62 @@ describe('login', function() {
 	  
 	  
 	  
-//	  i = 0;
-//	  for(;i < newProjectData.noDeviceTypeProjectList.length; i++) {
-//		  (function(project) {
-//	  
-//		  it('Create Project - No Device', function() {
-//			  newProject1.createNewProject(project);
-//		  });
-//		  
-//	  
-//		  })(newProjectData.noDeviceTypeProjectList[i]);
-//	  }
+	  i = 0;
+	  for(;i < newProjectData.noDeviceTypeProjectList.length; i++) {
+		  (function(project) {
 	  
-//	  i = 0;
-//	  for(;i < newProjectData.noOrientationProjectList.length; i++) {
-//		  (function(project) {
-//	  
-//		  it('Create Project - No Orientation', function() {
-//			  newProject1.createNewProject(project, newProjectData.errMsg);
-//		  });
-//	  
-//		  })(newProjectData.noOrientationProjectList[i]);
-//	  }
+		  it('Create Project - No Device', function() {
+			  newProject1.createNewProject(project);
+		  });
+		  
 	  
-//	  i = 0;
-//	  for(;i < newProjectData.noWorkTypeProjectList.length; i++) {
-//		  (function(project) {
-//	  
-//		  it('Create Project - No work type', function() {
-//			  newProject1.createNewProject(project, newProjectData.errMsg);
-//		  });
-//	  
-//		  })(newProjectData.noWorkTypeProjectList[i]);
-//	  }
+		  })(newProjectData.noDeviceTypeProjectList[i]);
+	  }
+	  
+	  i = 0;
+	  for(;i < newProjectData.noOrientationProjectList.length; i++) {
+		  (function(project) {
+	  
+		  it('Create Project - No Orientation', function() {
+			  newProject1.createNewProject(project, newProjectData.errMsg);
+		  });
+	  
+		  })(newProjectData.noOrientationProjectList[i]);
+	  }
+	  
+	  i = 0;
+	  for(;i < newProjectData.noWorkTypeProjectList.length; i++) {
+		  (function(project) {
+	  
+		  it('Create Project - No work type', function() {
+			  newProject1.createNewProject(project, newProjectData.errMsg);
+		  });
+	  
+		  })(newProjectData.noWorkTypeProjectList[i]);
+	  }
 	  
 	  
-//	  i = 0;
-//	  for(;i < newProjectData.allWorkTypeProjectList.length; i++) {
-//		  (function(project) {
-//	  
-//		  it('Create Project - All work type', function() {
-//			  newProject1.allWorkTypeProject(project, newProjectData.errMsg);
-//		  });
-//	  
-//		  })(newProjectData.allWorkTypeProjectList[i]);
-//	  }
-//	  
-//	  i = 0;
-//	  for(;i < newProjectData.noOverviewProjectList.length; i++) {
-//		  (function(project) {
-//	  
-//		  it('Create Project - No overview', function() {
-//			  newProject1.createNewProject(project, newProjectData.errMsg);
-//		  });
-//	  
-//		  })(newProjectData.noOverviewProjectList[i]);
-//	  }
+	  i = 0;
+	  for(;i < newProjectData.allWorkTypeProjectList.length; i++) {
+		  (function(project) {
+	  
+		  it('Create Project - All work type', function() {
+			  newProject1.allWorkTypeProject(project, newProjectData.errMsg);
+		  });
+	  
+		  })(newProjectData.allWorkTypeProjectList[i]);
+	  }
+	  
+	  i = 0;
+	  for(;i < newProjectData.noOverviewProjectList.length; i++) {
+		  (function(project) {
+	  
+		  it('Create Project - No overview', function() {
+			  newProject1.createNewProject(project, newProjectData.errMsg);
+		  });
+	  
+		  })(newProjectData.noOverviewProjectList[i]);
+	  }
 	  
 	  
 	  
