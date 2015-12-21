@@ -6,29 +6,43 @@ var newProjectData = require('./newproject.data');
 
 describe('login', function() {
 	  
-	it('Start a new project', function() {
+	it('Login', function() {
 	    loginPage.get(newProjectData.baseUrl);
 	    loginPage.login(newProjectData.userCredentials[0]);
 	 });
 	  
-	  var i=0;/*
+	  var i=0;
 	  for(;i < newProjectData.projectList.length; i++) {
 		  (function(project) {
 	  
-//		  it('Click on Project new link', function() {
-//			  newProject1.createNewProject(project);
-//		  });
+		  it('Click on Project new link', function() {
+			  newProject1.createNewProject(project);
+		  });
 		  
-//		  it('Click on Project new link', function() {
-//			  newProject1.finishRequirementsAgainNew(project, newProjectData.featureList);
-//		  });
+		  it('Define Features', function() {
+			  newProject1.finishRequirementsAgainNew(project, newProjectData.featureList, newProjectData.selectedFeatureColor);
+		  });
 		  
-//		  it('Go to Design', function() {
-//			  newProject1.goToDesign(project, newProjectData.design);
-//		  });
+		  it('Upload Requirements', function() {
+			  newProject1.uploadRequirements(project);
+		  });
+		  
+		  
+		  it('Define My Design Validations', function() {
+			  newProject1.defineMyDesignValidations(project, newProjectData.design);
+		  });
+		  
 		  
 		  it('Go to Design', function() {
+			  newProject1.goToDesign(project, newProjectData.design);
+		  });
+		  
+		  it('Use/Upload Brand GuideLine', function() {
 			  newProject1.useBrandGuideline(project, newProjectData.design);
+		  });
+		  
+		  it('Wrong Style Url', function() {
+			  newProject1.getStyleFromWrongUrl(project, newProjectData.errMsg.wrongUrlErrMsg);
 		  });
 		  
 		  it('Get Style from Url', function() {
@@ -37,22 +51,60 @@ describe('login', function() {
 		  
 		  if(project.type == 'DESIGN & DEVELOPMENT') {
 			  it('Define Requirements', function() {
-				  newProject1.defineDevRequirements(project);
+				  newProject1.defineDevRequirements(project, newProjectData.develop);
+			  });
+			  
+			  it('Upload Technical Requirements', function() {
+				  newProject1.uploadTechnicalRequirements(project, newProjectData.develop);
 			  });
 		  }
 		  
-		  
-		  
-		  
-//		  it('Click on Project new link 2', function() {
-//			  console.log('manage page editProject'+newProjectData.manageProjectUrl);
-//			  newProject.get(newProjectData.manageProjectUrl);
-//			  var actionItem = element(by.partialButtonText('New Project'));
-//			  var EC = protractor.ExpectedConditions;
-//			  var isClickable = EC.elementToBeClickable(actionItem);
-//			  browser.wait(isClickable, 20000);
-//			  expect(true).toEqual(true);
+		  afterEach(function() {  
+			    browser.manage().logs().get('browser').then(function(browserLog) {
+			        var i = 0,
+			        severWarnings = false;
+	
+			        for(i; i<=browserLog.length-1; i++){
+			            if(browserLog[i].level.name === 'SEVERE'){
+//			                console.log('\n' + browserLog[i].level.name);
+			                //uncomment to see the error
+//			                console.log('(Possibly exception) \n' + browserLog[i].message);
+	
+			                severWarnings = true;
+			            }
+			        }
+	
+	//		        expect(severWarnings).toBe(false);
+			    });
+			});
+		  })(newProjectData.projectList[i]);
+	  }
+	  
+	  
+	  
+	  
+	  /*
+	  i = 0;
+	  for(;i < newProjectData.projectList.length; i++) {
+		  (function(project) {
+	  
+//		  it('Click on Project new link', function() {
+//			  newProject1.createNewProject(project);
 //		  });
+		  
+//		  it('Add Remove Feature', function() {
+//			  newProject1.addRemoveFeature(project, newProjectData.featureList, newProjectData.selectedFeatureColor);
+//		  });
+		  
+		  it('Define and add Feature', function() {
+			  newProject1.finishRequirementsAgainNew(project, newProjectData.featureList, newProjectData.selectedFeatureColor);
+		  });
+		  
+		  it('Upload Requirements', function() {
+			  newProject1.finishRequirementsAgainNew(project, newProjectData.featureList, newProjectData.selectedFeatureColor);
+		  });
+		  
+		  
 	  
 		  afterEach(function() {  
 			    browser.manage().logs().get('browser').then(function(browserLog) {
@@ -73,7 +125,9 @@ describe('login', function() {
 			    });
 			});
 		  })(newProjectData.projectList[i]);
-	  }*/
+	  }
+	  */
+	  
 	  
 	  
 	  
@@ -123,20 +177,17 @@ describe('login', function() {
 //	  
 //		  })(newProjectData.allWorkTypeProjectList[i]);
 //	  }
-	  
-	  i = 0;
-	  for(;i < newProjectData.noOverviewProjectList.length; i++) {
-		  (function(project) {
-	  
-		  it('Create Project - No overview', function() {
-			  newProject1.createNewProject(project, newProjectData.errMsg);
-		  });
-	  
-		  })(newProjectData.noOverviewProjectList[i]);
-	  }
-	  
-	  
-	  
+//	  
+//	  i = 0;
+//	  for(;i < newProjectData.noOverviewProjectList.length; i++) {
+//		  (function(project) {
+//	  
+//		  it('Create Project - No overview', function() {
+//			  newProject1.createNewProject(project, newProjectData.errMsg);
+//		  });
+//	  
+//		  })(newProjectData.noOverviewProjectList[i]);
+//	  }
 	  
 	  
 	  

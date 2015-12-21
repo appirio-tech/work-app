@@ -31,8 +31,8 @@ exports.config = {
         var reporter=new HtmlReporter({
             baseDirectory: '/Volumes/Data/gitDemand/ap-work-client/tests/e2e/report', // a location to store screen shots.
 //            baseDirectory:'report',
-        	docTitle: 'Protractor Demo Reporter',
-            docName:    'protractor-demo-tests-report.html'
+        	docTitle: 'Topcoder Connect Reporter',
+            docName:    'Topcoder-Connect-Report.html'
         });
         
         jasmine.getEnv().addReporter(
