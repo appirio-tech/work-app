@@ -13,13 +13,6 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "angular-mocks": "1.4.x",
-    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
-    "bardjs": "~0.0.3",
-    "appirio-tech-api-schemas": "5.x.x",
-    "auto-config-fake-server": "2.x.x"
-  },
   "dependencies": {
     "angular-sanitize": "1.4.x",
     "ap-newrelic": "0.x.x",

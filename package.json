@@ -57,7 +57,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail --progress -p",
+    "build": "webpack --bail --progress -p --build",
     "dev": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
     "test:live": "karma start --auto-watch --no-single-run"
