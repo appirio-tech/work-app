@@ -12,23 +12,25 @@ Run the following commands to create a work space in your home directory.  The c
 
 ```shell
 mkdir ~/tc-workspace
+cd ~/tc-workspace/
 
-git clone https://github.com/appirio-tech/styles.git ~/tc-workspace
-git clone https://github.com/appirio-tech/gulp-tasks.git ~/tc-workspace
-git clone https://github.com/appirio-tech/work-app.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-work-layout.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-file-upload.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-timeline.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-auth.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-ui-components.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-messaging.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-login-reg.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-projects.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-submit-work.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-api-services.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-optimist.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-submissions.git ~/tc-workspace
-git clone https://github.com/appirio-tech/ng-status-report.git ~/tc-workspace
+git clone https://github.com/appirio-tech/styles.git
+git clone https://github.com/appirio-tech/gulp-tasks.git
+git clone https://github.com/appirio-tech/work-app.git
+git clone https://github.com/appirio-tech/ng-work-layout.git
+git clone https://github.com/appirio-tech/ng-file-upload.git
+git clone https://github.com/appirio-tech/ng-timeline.git
+git clone https://github.com/appirio-tech/ng-auth.git
+git clone https://github.com/appirio-tech/ng-ui-components.git
+git clone https://github.com/appirio-tech/ng-messaging.git
+git clone https://github.com/appirio-tech/ng-login-reg.git
+git clone https://github.com/appirio-tech/ng-projects.git
+git clone https://github.com/appirio-tech/ng-submit-work.git
+git clone https://github.com/appirio-tech/ng-api-services.git
+git clone https://github.com/appirio-tech/ng-optimist.git
+git clone https://github.com/appirio-tech/ng-submissions.git
+git clone https://github.com/appirio-tech/ng-status-report.git
+git clone https://github.com/appirio-tech/ng-manage-steps.git
 
 cd ~/tc-workspace/work-app
 npm install
@@ -73,6 +75,9 @@ ln -s ~/tc-workspace/ng-submissions/dist ~/tc-workspace/work-app/bower_component
 
 rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
 ln -s ~/tc-workspace/ng-status-report/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
+
+rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-steps/dist
+ln -s ~/tc-workspace/ng-manage-steps/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-steps/dist
 
 gulp serve
 ```

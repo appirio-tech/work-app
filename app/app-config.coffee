@@ -161,7 +161,7 @@ config = ($locationProvider, $stateProvider) ->
 
   # general routes
   states['login'] =
-    url: '/login'
+    url: '/login?activated'
     templateUrl: 'views/login-reg/login.html'
     public: true
 
