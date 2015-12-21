@@ -1,3 +1,5 @@
+require('./env') // Must be first script required
+
 require('zepto/zepto')
 require('angular')
 require('angular-resource/angular-resource')
@@ -69,3 +71,4 @@ require('appirio-tech-ng-status-report/dist/main.css')
 require('appirio-tech-ng-login-reg/dist/main.css')
 require('appirio-tech-ng-file-upload/dist/main.css')
 require('react-select/dist/react-select.css')
+
