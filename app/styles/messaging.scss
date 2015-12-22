@@ -3,7 +3,6 @@
 
 .layout-main.messaging {
   messaging {
-    margin-top: 10px;
 
     > p {
       font-size: 18px;
@@ -15,7 +14,7 @@
     }
 
     .messages {
-      margin-top: $vertical-big;
+      margin-top: 40px;
     }
 
     .respond {
