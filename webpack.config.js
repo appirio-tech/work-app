@@ -1,16 +1,20 @@
 'use strict';
 
 // Modules
+var _ = require('lodash');
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var BUILD = false;
 var TEST = false;
+var env = 'dev'
 
 process.argv.forEach(function(arg) {
   if (arg === '--test') { TEST = true; }
   if (arg === '--build') { BUILD = true; }
+  if (arg === '--qa') { env = 'qa'; }
+  if (arg === '--prod') { env = 'prod'; }
 });
 
 /**
@@ -46,10 +50,6 @@ if (TEST) {
   config.output = {
     // Absolute output directory
     path: __dirname + '/dist',
-
-    // Output path from the view of the page
-    // Uses webpack-dev-server in development
-    publicPath: BUILD ? '/' : 'http://localhost:8080/',
 
     // Filename for entry points
     // Only adds hash in build mode
@@ -112,7 +112,7 @@ config.module = {
     { test: /\.coffee$/, loader: "coffee" },
     { test: /\.(coffee\.md|litcoffee)$/, loader: "coffee?literate" },
     { test: /\.jade$/, loader: "jade" },
-    { test: /\.css$/, loader: "style-loader!css" },
+    { test: /\.css$/, loader: "style!css?sourceMap" },
     { test: /\.scss$/, loader: "style!css!sass" },
     { test: /\.json$/, loader: "json" }
   ]
@@ -129,7 +129,7 @@ config.sassLoader = {
 
 config.resolve = {
   modulesDirectories: ['node_modules', 'bower_components'],
-  extensions: ['', '.js', '.json', '.coffee', '.jade', '.scss'] 
+  extensions: ['', '.js', '.json', '.coffee', '.jade', '.scss', '.png', '.jpg', '.jpeg', '.gif', '.svg']
 }
 
 // ISPARTA LOADER
@@ -153,6 +153,56 @@ if (TEST) {
  * List: http://webpack.github.io/docs/list-of-plugins.html
  */
 config.plugins = [];
+
+var globals = {
+  __ENV__: env
+};
+
+if (env == 'dev') {
+  Object.assign(globals, {
+    __API_URL__ : 'https://api-work.topcoder-dev.com',
+    __AUTH0_CLIENT_ID__ : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT',
+    __AUTH0_DOMAIN__ : 'topcoder-dev.auth0.com',
+    __NEWRELIC_APPLICATION_ID__ : '7374849',
+    __NEWRELIC_LICENSE_KEY__ : '496af5ee90',
+  });
+}
+
+if (env == 'qa') {
+  Object.assign(globals, {
+    __API_URL__: 'https://api-work.topcoder-qa.com',
+    __AUTH0_CLIENT_ID__: 'EVOgWZlCtIFlbehkq02treuRRoJk12UR',
+    __AUTH0_DOMAIN__: 'topcoder-qa.auth0.com',
+  });
+}
+
+if (env == 'prod') {
+  Object.assign(globals, {
+    __API_URL__: 'https://api-work.topcoder.com',
+    __AUTH0_CLIENT_ID__: 'abc',
+    __AUTH0_DOMAIN__: 'topcoder.auth0.com',
+  });
+}
+
+var envVars = [
+  'AUTH0_TOKEN_NAME',
+  'AUTH0_CLIENT_ID',
+  'AUTH0_DOMAIN',
+  'NEWRELIC_APPLICATION_ID',
+  'NEWRELIC_LICENSE_KEY',
+];
+
+envVars.forEach(function(key) {
+  if (process.env[key]) {
+    globals['__' + key + '__'] = process.env[key]
+  }
+})
+
+for (var key in globals) {
+  globals[key] = '"' + globals[key] + '"';
+}
+
+config.plugins.push(new webpack.DefinePlugin(globals))
 
 // Skip rendering index.html in test mode
 if (!TEST) {

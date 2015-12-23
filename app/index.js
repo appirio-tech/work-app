@@ -1,4 +1,8 @@
-require('./env') // Must be first script required
+const scripts    = document.getElementsByTagName('script');
+const src        = scripts[scripts.length - 1].getAttribute('src');
+const publicPath = src.substr(0, src.lastIndexOf('/') + 1);
+
+__webpack_public_path__ = publicPath
 
 require('zepto/zepto')
 require('angular')
@@ -21,7 +25,6 @@ window.Select = require('react-select')
 require('./app.module')
 require('./app-config')
 require('./app-run')
-require('./scripts/constants')
 require('./scripts/messaging.controller')
 require('./scripts/timeline.controller')
 require('./scripts/submissions-pages.controller')
@@ -37,20 +40,20 @@ require('./scripts/copilot/status-report-details.controller')
 require('./scripts/login-reg/sso-callback.controller')
 require('./scripts/login-reg/sso-login.controller')
 
-require('appirio-tech-ng-work-layout/dist/main')
 require('appirio-tech-ng-file-upload/dist/main')
 require('appirio-tech-ng-timeline/dist/main')
 require('appirio-tech-ng-auth/dist/main')
-require('appirio-tech-ng-ui-components/dist/main')
-require('appirio-tech-ng-messaging/dist/main')
-require('appirio-tech-ng-login-reg/dist/main')
-require('appirio-tech-ng-projects/dist/main')
 require('appirio-tech-ng-submit-work/dist/main')
 require('appirio-tech-ng-api-services/dist/main')
 require('appirio-tech-ng-api-services/dist/main')
 require('appirio-tech-ng-optimist/dist/main')
 require('appirio-tech-ng-submissions/dist/main')
 require('appirio-tech-ng-status-report/dist/main')
+require('appirio-tech-ng-work-layout/dist/main')
+
+require('appirio-tech-ng-projects')
+require('appirio-tech-ng-messaging')
+require('appirio-tech-ng-login-reg')
 
 require('./styles/main')
 require('./styles/manage')
@@ -61,14 +64,10 @@ require('./styles/submissions')
 require('./styles/submit-work')
 
 require('appirio-tech-ng-timeline/dist/main.css')
-require('appirio-tech-ng-ui-components/dist/main.css')
 require('appirio-tech-ng-submissions/dist/main.css')
-require('appirio-tech-ng-messaging/dist/main.css')
 require('appirio-tech-ng-work-layout/dist/main.css')
-require('appirio-tech-ng-projects/dist/main.css')
 require('appirio-tech-ng-submit-work/dist/main.css')
 require('appirio-tech-ng-status-report/dist/main.css')
-require('appirio-tech-ng-login-reg/dist/main.css')
 require('appirio-tech-ng-file-upload/dist/main.css')
 require('react-select/dist/react-select.css')
 
