@@ -1,21 +1,45 @@
 'use strict';
 
 // Modules
-var _ = require('lodash');
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var BUILD = false;
 var TEST = false;
-var env = 'dev'
+var ENV = 'dev'
 
 process.argv.forEach(function(arg) {
   if (arg === '--test') { TEST = true; }
   if (arg === '--build') { BUILD = true; }
-  if (arg === '--qa') { env = 'qa'; }
-  if (arg === '--prod') { env = 'prod'; }
+  if (arg === '--qa') { ENV = 'qa'; }
+  if (arg === '--prod') { ENV = 'prod'; }
 });
+
+if (ENV == 'dev') {
+  Object.assign(process.env, {
+    API_URL : 'https://api-work.topcoder-dev.com',
+    AUTH0_CLIENT_ID : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT',
+    AUTH0_DOMAIN : 'topcoder-dev.auth0.com',
+    NEWRELIC_APPLICATION_ID : '7374849',
+    NEWRELIC_LICENSE_KEY : '496af5ee90',
+  });
+}
+
+if (ENV == 'qa') {
+  Object.assign(process.env, {
+    API_URL: 'https://api-work.topcoder-qa.com',
+    AUTH0_CLIENT_ID: 'EVOgWZlCtIFlbehkq02treuRRoJk12UR',
+    AUTH0_DOMAIN: 'topcoder-qa.auth0.com',
+  });
+}
+
+if (ENV == 'prod') {
+  Object.assign(process.env, {
+    API_URL: 'https://api-work.topcoder.com',
+    AUTH0_DOMAIN: 'topcoder.auth0.com',
+  });
+}
 
 /**
  * Config
@@ -115,6 +139,12 @@ config.module = {
     { test: /\.css$/, loader: "style!css?sourceMap" },
     { test: /\.scss$/, loader: "style!css!sass" },
     { test: /\.json$/, loader: "json" }
+  ],
+  postLoaders: [
+    {
+      test: /\.js|\.coffee$/,
+      loader: 'transform?envify'
+    },
   ]
 }
 
@@ -132,77 +162,12 @@ config.resolve = {
   extensions: ['', '.js', '.json', '.coffee', '.jade', '.scss', '.png', '.jpg', '.jpeg', '.gif', '.svg']
 }
 
-// ISPARTA LOADER
-// Reference: https://github.com/ColCh/isparta-instrumenter-loader
-// Instrument JS files with Isparta for subsequent code coverage reporting
-// Skips node_modules and files that end with .test.js
-if (TEST) {
-  config.module.preLoaders.push({
-    test: /\.js$/,
-    exclude: [
-      /node_modules/,
-      /\.test\.js$/
-    ],
-    loader: 'isparta-instrumenter'
-  })
-}
-
 /**
  * Plugins
  * Reference: http://webpack.github.io/docs/configuration.html#plugins
  * List: http://webpack.github.io/docs/list-of-plugins.html
  */
 config.plugins = [];
-
-var globals = {
-  __ENV__: env
-};
-
-if (env == 'dev') {
-  Object.assign(globals, {
-    __API_URL__ : 'https://api-work.topcoder-dev.com',
-    __AUTH0_CLIENT_ID__ : 'JFDo7HMkf0q2CkVFHojy3zHWafziprhT',
-    __AUTH0_DOMAIN__ : 'topcoder-dev.auth0.com',
-    __NEWRELIC_APPLICATION_ID__ : '7374849',
-    __NEWRELIC_LICENSE_KEY__ : '496af5ee90',
-  });
-}
-
-if (env == 'qa') {
-  Object.assign(globals, {
-    __API_URL__: 'https://api-work.topcoder-qa.com',
-    __AUTH0_CLIENT_ID__: 'EVOgWZlCtIFlbehkq02treuRRoJk12UR',
-    __AUTH0_DOMAIN__: 'topcoder-qa.auth0.com',
-  });
-}
-
-if (env == 'prod') {
-  Object.assign(globals, {
-    __API_URL__: 'https://api-work.topcoder.com',
-    __AUTH0_CLIENT_ID__: 'abc',
-    __AUTH0_DOMAIN__: 'topcoder.auth0.com',
-  });
-}
-
-var envVars = [
-  'AUTH0_TOKEN_NAME',
-  'AUTH0_CLIENT_ID',
-  'AUTH0_DOMAIN',
-  'NEWRELIC_APPLICATION_ID',
-  'NEWRELIC_LICENSE_KEY',
-];
-
-envVars.forEach(function(key) {
-  if (process.env[key]) {
-    globals['__' + key + '__'] = process.env[key]
-  }
-})
-
-for (var key in globals) {
-  globals[key] = '"' + globals[key] + '"';
-}
-
-config.plugins.push(new webpack.DefinePlugin(globals))
 
 // Skip rendering index.html in test mode
 if (!TEST) {
@@ -239,7 +204,6 @@ if (BUILD) {
  * Reference: http://webpack.github.io/docs/webpack-dev-server.html
  */
 config.devServer = {
-  contentBase: './public',
   stats: {
     modules: false,
     cached: false,
