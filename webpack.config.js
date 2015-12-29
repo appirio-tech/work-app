@@ -151,8 +151,6 @@ config.module = {
 config.sassLoader = {
   includePaths: [
     path.join(__dirname, '/node_modules/bourbon/app/assets/stylesheets'),
-    path.join(__dirname, '/node_modules/bourbon-neat/app/assets/stylesheets'),
-    path.join(__dirname, '/node_modules/appirio-work-styles/styles'),
     path.join(__dirname, '/node_modules/appirio-styles/styles')
   ]
 }
