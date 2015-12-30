@@ -36,7 +36,47 @@ deploy:
   local_dir: dist
   on:
     branch: master
+env:language: node_js
+node_js:
+- 5.3.0
+install:
+- npm install
+script:
+- webpack --bail --progress -p --build
+sudo: false
+deploy:
+- provider: s3
+  cache_control: private, no-store, no-cache, must-revalidate, max-age=0
+  detect_encoding: true
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET
+  bucket: connect.topcoder-dev.com
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: dev
+- provider: s3
+  cache_control: private, no-store, no-cache, must-revalidate, max-age=0
+  detect_encoding: true
+  access_key_id: $QA_AWS_KEY
+  secret_access_key: $QA_AWS_SECRET
+  bucket: connect.topcoder-qa.com
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: qa
+- provider: s3
+  cache_control: private, no-store, no-cache, must-revalidate, max-age=0
+  access_key_id: $MASTER_AWS_KEY
+  secret_access_key: $MASTER_AWS_SECRET
+  bucket: connect.topcoder.com
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: master
 env:
+  matrix:
+  - CXX=g++-4.8
   global:
   # DEV_AWS_KEY
   - secure: bde7qf1G8SUAFlW1frW/KS5bsiTfkjnnTtpZKuqItDnj6oJ/sNsBlU8x/n4hsvl7ziOfn1bPt8LpJLtQFU3IoMsCxuWQMim9vk88+nmgjYebC+76b3UDwgZfNwoQD9l4jvRHXmdxixStv3y5doul5dx/AXe7e+RdWyDEynvi+0E=
@@ -50,3 +90,9 @@ env:
   - secure: gpEtWMYBfF8NvC+nfLKw6OtONISssGMyzJ7qyXPIviaaRasnVD9nArlEozBw/qrhcYA0TPFMg7ZQq5NipkOIw2RZUgEtpKHD+hmaO7/apE3RtX85QY44wFat/VydQWl2U9EodS9XcdsKEDSghgnehbB0mO6piuvnC6reQwo1Z/0=
   # MASTER_AWS_SECRET
   - secure: Oxu8D8CFk6EDLi/RPXRM3Peb0SVzVWApz3IKvROXWD8IbOfVBgvyaOdhhh2q10V085kkcAMayYNSifRd4ZhpTOJdQF/UoaczFIekhNDq/zPZLEf9j/EgJD9oWGkgIP9ct3KWSphtUChcNTvNHAlC+4kGMo3djZBe/BCkgyiwlZE=
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
