@@ -153,7 +153,7 @@ config = ($locationProvider, $stateProvider) ->
   # general routes
   states['login'] =
     url: '/login?activated'
-    templateUrl: require('./views/login-reg/login')()
+    template: require('./views/login-reg/login')()
     public: true
 
   states['register'] =
