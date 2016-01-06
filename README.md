@@ -15,7 +15,7 @@ mkdir ~/tc-workspace
 cd ~/tc-workspace/
 
 git clone https://github.com/appirio-tech/styles.git
-git clone https://github.com/appirio-tech/gulp-tasks.git
+git clone https://github.com/appirio-tech/webpack-config.git
 git clone https://github.com/appirio-tech/work-app.git
 git clone https://github.com/appirio-tech/ng-work-layout.git
 git clone https://github.com/appirio-tech/ng-file-upload.git
@@ -34,57 +34,54 @@ git clone https://github.com/appirio-tech/ng-manage-steps.git
 
 cd ~/tc-workspace/work-app
 npm install
-bower install
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-work-layout/dist
-ln -s ~/tc-workspace/ng-work-layout/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-work-layout/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-work-layout/src
+ln -s ~/tc-workspace/ng-work-layout/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-work-layout/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-file-upload/dist
-ln -s ~/tc-workspace/ng-file-upload/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-file-upload/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-file-upload/src
+ln -s ~/tc-workspace/ng-file-upload/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-file-upload/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-timeline/dist
-ln -s ~/tc-workspace/ng-timeline/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-timeline/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-timeline/src
+ln -s ~/tc-workspace/ng-timeline/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-timeline/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-auth/dist
-ln -s ~/tc-workspace/ng-auth/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-auth
-/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-auth/src
+ln -s ~/tc-workspace/ng-auth/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-auth
+/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-ui-components/dist
-ln -s ~/tc-workspace/ng-ui-components/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-ui-components/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-ui-components/src
+ln -s ~/tc-workspace/ng-ui-components/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-ui-components/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-messaging/dist
-ln -s ~/tc-workspace/ng-messaging/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-messaging/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-messaging/src
+ln -s ~/tc-workspace/ng-messaging/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-messaging/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-login-reg/dist
-ln -s ~/tc-workspace/ng-login-reg/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-login-reg/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-login-reg/src
+ln -s ~/tc-workspace/ng-login-reg/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-login-reg/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-projects/dist
-ln -s ~/tc-workspace/ng-projects/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-projects/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-projects/src
+ln -s ~/tc-workspace/ng-projects/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-projects/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-submit-work/dist
-ln -s ~/tc-workspace/ng-submit-work/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-submit-work/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submit-work/src
+ln -s ~/tc-workspace/ng-submit-work/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submit-work/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-api-services/dist
-ln -s ~/tc-workspace/ng-api-services/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-api-services/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-api-services/src
+ln -s ~/tc-workspace/ng-api-services/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-api-services/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-optimist/dist
-ln -s ~/tc-workspace/ng-optimist/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-optimist/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-optimist/src
+ln -s ~/tc-workspace/ng-optimist/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-optimist/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-submissions/dist
-ln -s ~/tc-workspace/ng-submissions/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-submissions/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submissions/src
+ln -s ~/tc-workspace/ng-submissions/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submissions/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
-ln -s ~/tc-workspace/ng-status-report/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-status-report/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-status-report/src
+ln -s ~/tc-workspace/ng-status-report/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-status-report/src
 
-rm -rf ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-steps/dist
-ln -s ~/tc-workspace/ng-manage-steps/dist ~/tc-workspace/work-app/bower_components/appirio-tech-ng-manage-steps/dist
+rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-manage-steps/src
+ln -s ~/tc-workspace/ng-manage-steps/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-manage-steps/src
 
-gulp serve
+npm run dev
 ```
 
 ## Build
 checkout the .travis.yml file
 
-## Gulp tasks
-checkout https://github.com/appirio-tech/gulp-tasks.git
 
