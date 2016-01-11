@@ -1,26 +1,11 @@
 language: node_js
 node_js:
-- 0.12.7
+- 5.3.0
 install:
-- npm install -g gulp
-- npm install -g bower
 - npm install
-- bower install
 script:
-- gulp clean
-- gulp preprocessors
-- gulp test
-- gulp useref
-- gulp copy-files
-- gulp cdnify
-- gulp uglify
-- gulp minify-css
-- gulp remove-code
-- gulp finger-print
-- gulp finger-print-replace
+- webpack --bail --progress --build
 sudo: false
-after_success:
-- gulp coveralls
 deploy:
 - provider: s3
   cache_control: private, no-store, no-cache, must-revalidate, max-age=0
@@ -52,14 +37,12 @@ deploy:
   on:
     branch: master
 env:
+  matrix:
+  - CXX=g++-4.8
   global:
-  - AUTH0_DOMAIN=topcoder.auth0.com
-  - NEWRELIC_APPLICATION_ID=7374849
-  - NEWRELIC_LICENSE_KEY=496af5ee90
-  - API_URL=https://api-work.topcoder.com
-  # AUTH0_CLIENT_ID
+  # DEV_AWS_KEY
   - secure: bde7qf1G8SUAFlW1frW/KS5bsiTfkjnnTtpZKuqItDnj6oJ/sNsBlU8x/n4hsvl7ziOfn1bPt8LpJLtQFU3IoMsCxuWQMim9vk88+nmgjYebC+76b3UDwgZfNwoQD9l4jvRHXmdxixStv3y5doul5dx/AXe7e+RdWyDEynvi+0E=
-  # AUTH0_CLIENT_ID
+  # DEV_AWS_SECRET
   - secure: RT17TuPmyiLZiQpfHC7xUzxmMsnEZY+A+b96D+XHj5LNOmXFmMB4JaUaOmX5veWU4Lxk6Mw2IzvfJwjmKSmHZhaeERA4QljM2Sqm5/k5bKJkNVocGvLP1Gm0ARwJJ0I572aJQdWvEVgHXID1HjuCjrDrxPv8UoxLKb8SlmB2krc=
   # QA_AWS_KEY
   - secure: lpdUndFkKU1MbQZ7pT7ke4XWItHNYCDSt8vInYqiBHByK42//DzUoUQhP3B8QVf8teKBnXnbbJGl01SpUgd1+ZdepI1ksa06KOfeyRrZ3cmFh3UBR5RWDYmxZxnJFgzmL3tMTEfzImO2Khd0CLIdIOAwhRXtI2Z5Ipwqnu295X8=
@@ -69,5 +52,9 @@ env:
   - secure: gpEtWMYBfF8NvC+nfLKw6OtONISssGMyzJ7qyXPIviaaRasnVD9nArlEozBw/qrhcYA0TPFMg7ZQq5NipkOIw2RZUgEtpKHD+hmaO7/apE3RtX85QY44wFat/VydQWl2U9EodS9XcdsKEDSghgnehbB0mO6piuvnC6reQwo1Z/0=
   # MASTER_AWS_SECRET
   - secure: Oxu8D8CFk6EDLi/RPXRM3Peb0SVzVWApz3IKvROXWD8IbOfVBgvyaOdhhh2q10V085kkcAMayYNSifRd4ZhpTOJdQF/UoaczFIekhNDq/zPZLEf9j/EgJD9oWGkgIP9ct3KWSphtUChcNTvNHAlC+4kGMo3djZBe/BCkgyiwlZE=
-  # AUTH0_CLIENT_ID
-  - secure: CtgzNTQ5IUie9id0L+lDIiWnBrHK3iVNGMBv/BUCnUeJIvpmu5bdEfgXPICBBmdUNqYzGvTpeEc1S4k/dWEItBcZQSju+64sur563lNfnp8KopAJhFcyqyhvK2DoNElqYPa/YAwcOD8TUADSnUH/GgLZXeY01efP0LgluTsX3zc=
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8

@@ -1,5 +1,3 @@
-'use strict'
-
 config = ($locationProvider, $stateProvider) ->
   states = {}
 
@@ -11,114 +9,107 @@ config = ($locationProvider, $stateProvider) ->
     url         : '/'
     title       : 'View Work'
     controller  : 'CustomerProjectsController as vm'
-    templateUrl : 'views/customer/projects.html'
+    template    : require('./views/customer/projects')()
 
   states['timeline'] =
     url         : '/customer/projects/:workId/timeline'
     title       : 'Timeline'
     controller  : 'TimelinePageController as vm'
-    templateUrl : 'views/timeline.html'
+    template    : require('./views/timeline')()
 
   states['messaging'] =
     url         : '/customer/projects/:id/messaging/thread/:threadId'
     title       : 'Messaging'
     controller  : 'MessagingPageController as vm'
-    templateUrl : 'views/customer/messaging.html'
+    template    : require('./views/customer/messaging')()
 
   states['view-work-multiple'] =
     url         : '/customer/projects'
     title       : 'View Work'
     controller  : 'CustomerProjectsController as vm'
-    templateUrl : 'views/customer/projects.html'
+    template    : require('./views/customer/projects')()
 
   states['submit-work'] =
     url         : '/submit-work/:id'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
-    templateUrl : 'views/submit-work.html'
+    template    : require('./views/submit-work')()
 
   states['submit-work-features'] =
     url         : '/submit-work/features/:id'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
-    templateUrl : 'views/submit-work-features.html'
+    template    : require('./views/submit-work-features')()
 
   states['submit-work-visuals'] =
     url         : '/submit-work/visuals/:id'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
-    templateUrl : 'views/submit-work-visuals.html'
+    template    : require('./views/submit-work-visuals')()
 
   states['submit-work-development'] =
     url         : '/submit-work/development/:id'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
-    templateUrl : 'views/submit-work-development.html'
+    template    : require('./views/submit-work-development')()
 
   states['submit-work-complete'] =
     url         : '/submit-work/complete/:id'
     title       : 'Submit Work'
     controller  : 'SubmitWorkPageController as vm'
-    templateUrl : 'views/submit-work-complete.html'
+    template    : require('./views/submit-work-complete')()
 
   states['verified-email-address'] =
     url        : '/verified-email-address'
-    templateUrl: 'views/verified-email-address.html'
+    template   : require('./views/verified-email-address')()
 
   states['project-details'] =
     url         : '/customer/projects/:id/details'
     title       : 'Project Details'
     controller  : 'CustomerProjectDetailsPageController as vm'
-    templateUrl : 'views/customer/project-details.html'
+    template    : require('./views/customer/project-details')()
 
   # copilot routes
   states['copilot-projects'] =
     url         : '/copilot/projects'
     title       : 'My Projects'
     controller  : 'CopilotProjectsController as vm'
-    templateUrl : 'views/copilot/copilot-projects.html'
+    template    : require('./views/copilot/copilot-projects')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-open-projects'] =
     url         : '/copilot/open-projects'
     title       : 'Available Projects'
     controller  : 'CopilotOpenProjectsController as vm'
-    templateUrl : 'views/copilot/open-projects.html'
+    template    : require('./views/copilot/open-projects')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-messaging'] =
     url         : '/copilot/projects/:id/messaging/thread/:threadId'
     title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
-    templateUrl : 'views/copilot/copilot-messaging.html'
-    rolesAllowed: [ 'copilot' ]
-
-  states['copilot-submission'] =
-    url         : '/copilot/projects/:id/submissions'
-    title       : 'Copilot Submission'
-    controller  : 'GenericSubmissionsPageController as vm'
-    templateUrl : 'views/submissions-generic.html'
+    template    : require('./views/copilot/copilot-messaging')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-project-details'] =
     url         : '/copilot/projects/:id/details'
     title       : 'Project Details'
     controller  : 'CopilotProjectDetailsPageController as vm'
-    templateUrl : 'views/copilot/copilot-project-details.html'
+    template    : require('./views/copilot/copilot-project-details')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-status-reports'] =
     url         : '/copilot/status-reports/:id'
     title       : 'Status Reports'
     controller  : 'StatusReportsController as vm'
-    templateUrl : 'views/copilot/status-reports.html'
+    template    : require('./views/copilot/status-reports')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-status-report-details'] =
     url         : '/copilot/status-reports/:id/report/:reportId'
     title       : 'Status Report Details'
     controller  : 'StatusReportDetailsController as vm'
-    templateUrl : 'views/copilot/status-report-details.html'
+    template    : require('./views/copilot/status-report-details')()
     rolesAllowed: [ 'copilot' ]
 
   # Shared routes
@@ -128,7 +119,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['step'] =
     url        : '/projects/:projectId/steps/:stepId'
-    templateUrl: 'views/step.html'
+    template   : require('./views/step')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
@@ -137,7 +128,7 @@ config = ($locationProvider, $stateProvider) ->
   # Shared routes
   states['current-step'] =
     url        : '/projects/:projectId/current-step'
-    templateUrl: 'views/step.html'
+    template   : require('./views/step')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
@@ -145,7 +136,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['submission-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
-    templateUrl: 'views/submission-detail.html'
+    template   : require('./views/submission-detail')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
@@ -153,7 +144,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['file-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
-    templateUrl: 'views/file-detail.html'
+    template   : require('./views/file-detail')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member' ]
     resolve:
@@ -162,51 +153,51 @@ config = ($locationProvider, $stateProvider) ->
   # general routes
   states['login'] =
     url: '/login?activated'
-    templateUrl: 'views/login-reg/login.html'
+    template: require('./views/login-reg/login')()
     public: true
 
   states['register'] =
     url: '/registration'
-    templateUrl: 'views/login-reg/registration.html'
+    template   : require('./views/login-reg/registration')()
     public: true
 
   states['registration-success'] =
     url: '/registration-success'
-    templateUrl: 'views/login-reg/registration-success.html'
+    template   : require('./views/login-reg/registration-success')()
     public: true
 
   states['SSO_LOGIN'] =
     url: '/sso-login/:org'
-    templateUrl: 'views/login-reg/sso-login.html'
+    template   : require('./views/login-reg/sso-login')()
     controller : 'SSOLoginPageController as vm'
     public: true
 
   states['SSO_CALLBACK'] =
     url: '/sso-callback?userJWTToken&status&message'
-    templateUrl: 'views/login-reg/sso-callback.html'
+    template   : require('./views/login-reg/sso-callback')()
     controller : 'SSOCallbackPageController as vm'
     public: true
 
   states['FORGOT_PASSWORD'] =
     url: '/forgot-password'
-    templateUrl: 'views/login-reg/forgot-password.html'
+    template   : require('./views/login-reg/forgot-password')()
     public: true
 
   states['RESET_PASSWORD'] =
     url: '/reset-password?token&handle'
-    templateUrl: 'views/login-reg/reset-password.html'
+    template   : require('./views/login-reg/reset-password')()
     public: true
 
   states['forbidden'] =
     url: '/403',
-    templateUrl: 'views/403.html'
+    template   : require('./views/403')()
     controller: '403Controller as vm'
     public: true
 
   # This must be the last one in the list
   states['otherwise'] =
     url: '*path',
-    templateUrl: 'views/404.html'
+    template   : require('./views/404')()
     public: true
 
   for key, state of states
