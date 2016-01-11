@@ -1,6 +1,6 @@
 layout-header(role="banner" work-id="{{ vm.projectId }}" user-type="{{ vm.userType }}")
 
-layout-project-nav(ng-if="vm.userType != 'member'" work-id="{{ vm.projectId }}" user-type="{{ vm.userType }}")
+layout-project-nav(work-id="{{ vm.projectId }}" user-type="{{ vm.userType }}")
 
 main.layout-main.project-page.submissions("role"="main" layout-main=true flush-height=true)
   submissions(project-id="{{ vm.projectId }}" step-id="{{ vm.stepId }}" user-type="{{ vm.userType }}")
