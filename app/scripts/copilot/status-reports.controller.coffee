@@ -3,6 +3,7 @@
 StatusReportsController = ($stateParams) ->
   vm        = this
   vm.workId = $stateParams.id
+  vm.stepId = $stateParams.stepId
 
   vm
 

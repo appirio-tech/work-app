@@ -99,7 +99,7 @@ config = ($locationProvider, $stateProvider) ->
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-status-reports'] =
-    url         : '/copilot/status-reports/:id'
+    url         : '/copilot/status-reports/:id/steps/:stepId'
     title       : 'Status Reports'
     controller  : 'StatusReportsController as vm'
     template    : require('./views/copilot/status-reports')()
