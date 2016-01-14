@@ -1,8 +1,2 @@
-layout-header(role="banner")
-
-main.layout-main.login("role"="main" layout-main=true flush-height=true)
-  h2 Welcome back to appirio
-
-  sso-login(org="{{ vm.org }}" callback-state="SSO_CALLBACK")
-
-layout-footer
+main.layout-main.login-reg.flex.center.middle("role"="main" flush-height="lock")
+  login-reg-shell(flow="SSO_LOGIN")
