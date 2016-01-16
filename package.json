@@ -41,7 +41,7 @@
     "appirio-styles": "0.x.x",
     "appirio-tech-ng-api-services": "^1.0.0",
     "appirio-tech-ng-auth": "^4.0.0",
-    "appirio-tech-ng-login-reg": "appirio-tech/ng-login-reg#profile",
+    "appirio-tech-ng-login-reg": "^2.0.0",
     "appirio-tech-ng-messaging": "^9.0.0",
     "appirio-tech-ng-projects": "^4.0.0",
     "appirio-tech-ng-status-report": "^1.0.0",
