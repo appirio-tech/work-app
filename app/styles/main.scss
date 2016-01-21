@@ -34,7 +34,7 @@ main.layout-main {
     }
   }
 
-  > submissions, submission-detail, timeline, project-details, status-reports, detail-status-report {
+  > submissions, submission-detail, account-page, timeline, project-details, status-reports, detail-status-report {
     max-width   : $max-page-width;
     min-height  : 200px;
     margin-right: auto;
@@ -45,12 +45,12 @@ main.layout-main {
     padding-top: 0;
   }
 
-  timeline, ng-projects, claimed-projects, open-projects, project-details, status-reports {
+  timeline, account-page, ng-projects, claimed-projects, open-projects, project-details, status-reports {
     text-align: left;
     margin-top: $vertical-big;
   }
 
-  project-details, status-reports, detail-status-report {
+  project-details, status-reports, detail-status-report, account-page {
     padding: 40px;
     background-color: $white;
   }
