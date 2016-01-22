@@ -125,7 +125,6 @@ config = ($locationProvider, $stateProvider) ->
     resolve:
       project: resolveProject
 
-  # Shared routes
   states['current-step'] =
     url        : '/projects/:projectId/current-step'
     template   : require('./views/step')()
@@ -151,6 +150,12 @@ config = ($locationProvider, $stateProvider) ->
       project: resolveProject
 
   # general routes
+  states['profile'] =
+    url: '/profile'
+    template: require('./views/login-reg/profile')()
+    controller : 'ProfilePageController as vm'
+    rolesAllowed: [ 'customer', 'copilot' ]
+
   states['login'] =
     url: '/login?activated'
     template: require('./views/login-reg/login')()
