@@ -41,12 +41,18 @@ npm run dev
 First go into the folder where the node modules are installed, then run any of the following commands
 
 ```shell
-rm -rf node_modules/appirio-tech-api-schemas/swagger
+mv node_modules/appirio-tech-api-schemas/swagger node_modules/appirio-tech-api-schemas/swagger-backup
 ln -s ~/tc-workspace/api-schemas/swagger/ ./node_modules/appirio-tech-api-schemas/swagger
 
-rm -rf node_modules/appirio-tech-api-schemas/apiary
+mv node_modules/appirio-tech-api-schemas/apiary node_modules/appirio-tech-api-schemas/apiary-backup
 ln -s ~/tc-workspace/api-schemas/apiary/ ./node_modules/appirio-tech-api-schemas/apiary
 
+mv node_modules/appirio-tech-api-schemas/main.coffee node_modules/appirio-tech-api-schemas/main.coffee-backup
+ln -s ~/tc-workspace/api-schemas/main.coffee ./node_modules/appirio-tech-api-schemas/main.coffee
+
+
+mv node_modules/appirio-tech-client-app-layer/src node_modules/appirio-tech-client-app-layer/backup
+ln -s ~/tc-workspace/client-app-layer/src/ ./node_modules/appirio-tech-client-app-layer/src
 ```
 
 ## Build
