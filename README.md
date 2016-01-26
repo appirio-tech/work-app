@@ -34,51 +34,25 @@ git clone https://github.com/appirio-tech/ng-manage-steps.git
 
 cd ~/tc-workspace/work-app
 npm install
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-work-layout/src
-ln -s ~/tc-workspace/ng-work-layout/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-work-layout/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-file-upload/src
-ln -s ~/tc-workspace/ng-file-upload/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-file-upload/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-timeline/src
-ln -s ~/tc-workspace/ng-timeline/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-timeline/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-auth/src
-ln -s ~/tc-workspace/ng-auth/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-auth
-/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-ui-components/src
-ln -s ~/tc-workspace/ng-ui-components/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-ui-components/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-messaging/src
-ln -s ~/tc-workspace/ng-messaging/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-messaging/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-login-reg/src
-ln -s ~/tc-workspace/ng-login-reg/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-login-reg/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-projects/src
-ln -s ~/tc-workspace/ng-projects/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-projects/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submit-work/src
-ln -s ~/tc-workspace/ng-submit-work/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submit-work/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-api-services/src
-ln -s ~/tc-workspace/ng-api-services/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-api-services/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-optimist/src
-ln -s ~/tc-workspace/ng-optimist/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-optimist/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submissions/src
-ln -s ~/tc-workspace/ng-submissions/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-submissions/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-status-report/src
-ln -s ~/tc-workspace/ng-status-report/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-status-report/src
-
-rm -rf ~/tc-workspace/work-app/node_modules/appirio-tech-ng-manage-steps/src
-ln -s ~/tc-workspace/ng-manage-steps/src ~/tc-workspace/work-app/node_modules/appirio-tech-ng-manage-steps/src
-
 npm run dev
+```
+
+## sym link to work with multiple repos
+First go into the folder where the node modules are installed, then run any of the following commands
+
+```shell
+mv node_modules/appirio-tech-api-schemas/swagger node_modules/appirio-tech-api-schemas/swagger-backup
+ln -s ~/tc-workspace/api-schemas/swagger/ ./node_modules/appirio-tech-api-schemas/swagger
+
+mv node_modules/appirio-tech-api-schemas/apiary node_modules/appirio-tech-api-schemas/apiary-backup
+ln -s ~/tc-workspace/api-schemas/apiary/ ./node_modules/appirio-tech-api-schemas/apiary
+
+mv node_modules/appirio-tech-api-schemas/main.coffee node_modules/appirio-tech-api-schemas/main.coffee-backup
+ln -s ~/tc-workspace/api-schemas/main.coffee ./node_modules/appirio-tech-api-schemas/main.coffee
+
+
+mv node_modules/appirio-tech-client-app-layer/src node_modules/appirio-tech-client-app-layer/backup
+ln -s ~/tc-workspace/client-app-layer/src/ ./node_modules/appirio-tech-client-app-layer/src
 ```
 
 ## Build
