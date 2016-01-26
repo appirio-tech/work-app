@@ -23,3 +23,4 @@ beforeEach inject ($httpBackend) ->
       request         = $httpBackend.when upperCaseMethod, response.url
 
       request.respond response.response[0], response.response[2]
+
