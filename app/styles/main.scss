@@ -34,7 +34,7 @@ main.layout-main {
     }
   }
 
-  > submissions, submission-detail, account-page, timeline, project-details, status-reports, detail-status-report {
+  > submissions, submission-detail, account-page, timeline, project-details, status-reports, detail-status-report, manage-steps {
     max-width   : $max-page-width;
     min-height  : 200px;
     margin-right: auto;

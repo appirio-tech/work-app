@@ -29,7 +29,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "build": "webpack --bail --progress --build",
+    "build": "webpack -p --bail --progress --build",
     "dev": "webpack-dev-server --history-api-fallback --dev --inline --progress"
   },
   "dependencies": {
@@ -39,10 +39,11 @@
     "angular-storage": "0.0.13",
     "angular-ui-router": "^0.2.15",
     "appirio-styles": "0.x.x",
-    "appirio-tech-client-app-layer": "^0.0.9",
+    "appirio-tech-client-app-layer": "^0.1.0",
     "appirio-tech-ng-api-services": "^1.0.0",
     "appirio-tech-ng-auth": "^4.0.0",
     "appirio-tech-ng-login-reg": "^2.0.0",
+    "appirio-tech-manage-steps": "appirio-tech/manage-steps",
     "appirio-tech-ng-messaging": "^9.0.0",
     "appirio-tech-ng-projects": "^4.0.0",
     "appirio-tech-ng-status-report": "^1.0.0",

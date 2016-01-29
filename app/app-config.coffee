@@ -112,6 +112,13 @@ config = ($locationProvider, $stateProvider) ->
     template    : require('./views/copilot/status-report-details')()
     rolesAllowed: [ 'copilot' ]
 
+  states['copilot-manage-steps'] =
+    url         : '/copilot/manage-steps/:projectId'
+    title       : 'Status Report Details'
+    controller  : 'ManageStepsController as vm'
+    template    : require('./views/copilot/manage-steps')()
+    rolesAllowed: [ 'copilot' ]
+
   # Shared routes
 
   resolveProject = (ProjectsAPIService, $stateParams) ->
