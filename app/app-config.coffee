@@ -124,6 +124,8 @@ config = ($locationProvider, $stateProvider) ->
   resolveProject = (ProjectsAPIService, $stateParams) ->
     ProjectsAPIService.get({id: $stateParams.projectId}).$promise
 
+  resolveProject.$inject = ['ProjectsAPIService', '$stateParams']
+
   states['step'] =
     url        : '/projects/:projectId/steps/:stepId'
     template   : require('./views/step')()
