@@ -1,0 +1,24 @@
+layout-header(role="banner")
+
+main.layout-main.manage(ng-if="vm.userRole == 'customer'" "role"="main" layout-main=true flush-height=true)
+  h1 Your Projects
+
+  a.button.action.wider(ui-sref='submit-work') Start a new project
+
+  hr
+
+  ng-projects
+
+main.layout-main.copilot-projects(ng-if="vm.userRole == 'copilot'" "role"="main" layout-main=true flush-height=true)
+  h1 My Projects
+
+  ul.nav.flex.center
+    li
+      a.button.action.wider(ui-sref='copilot-projects') My Projects
+
+    li
+      a.button.action.wider.inactive(ui-sref='copilot-open-projects') Available Projects
+
+  claimed-projects(copilot-id="{{ vm.userId }}")
+
+layout-footer

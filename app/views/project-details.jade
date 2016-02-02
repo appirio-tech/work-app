@@ -1,0 +1,23 @@
+layout-header(role="banner" work-id="{{ vm.id }}" user-type="{{ vm.userRole }}")
+
+layout-project-nav(work-id="{{ vm.id }}" user-type="{{ vm.userRole }}")
+
+main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
+  h1 Project requirements
+
+  p(ng-if="vm.userRole == 'customer'") To make changes, please <a ui-sref="messaging({id: vm.id})"> send a message </a> to your copilot.
+
+  project-details(
+    ng-if="vm.userRole == 'customer' || vm.userRole == 'admin'"
+    project-id="{{ vm.id }}"
+    user-role="{{ vm.userRole }}"
+  )
+
+  project-details(
+    ng-if="vm.userRole == 'copilot'"
+    project-id="{{ vm.id }}"
+    copilot-id="{{ vm.userId }}"
+    user-role="{{ vm.userRole }}"
+  )
+
+layout-footer

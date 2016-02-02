@@ -34,7 +34,7 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
 
       # If copilot was trying to access home, take them to copilot projects page
       if currentUser.role == 'copilot' && toState.name == 'home'
-        return $state.go 'copilot-projects'
+        return $state.go 'projects'
 
       # TODO: Notify user that route was protected
       return $state.go 'forbidden'

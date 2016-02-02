@@ -15,10 +15,8 @@ MessagingPageController = (
   vm.subscriberId = null
   vm.hasCoilot    = false
   vm.working      = false
-
-  $scope.$watch UserV3Service.getCurrentUser, ->
-    user            = UserV3Service.getCurrentUser()
-    vm.subscriberId = user.id if user
+  vm.userRole     = UserV3Service.getCurrentUser().role
+  vm.subscriberId = UserV3Service.getCurrentUser().id
 
   vm.back = ->
     $window.history.back()
