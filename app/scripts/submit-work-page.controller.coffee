@@ -1,8 +1,11 @@
 'use strict'
 
+store = require '../store'
+
 SubmitWorkPageController = ($stateParams) ->
-  vm    = this
-  vm.id = $stateParams.id
+  vm       = this
+  vm.id    = $stateParams.id
+  vm.store = store
 
   vm
 

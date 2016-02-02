@@ -50,9 +50,16 @@ ln -s ~/tc-workspace/api-schemas/apiary/ ./node_modules/appirio-tech-api-schemas
 mv node_modules/appirio-tech-api-schemas/main.coffee node_modules/appirio-tech-api-schemas/main.coffee-backup
 ln -s ~/tc-workspace/api-schemas/main.coffee ./node_modules/appirio-tech-api-schemas/main.coffee
 
-
-mv node_modules/appirio-tech-client-app-layer/src node_modules/appirio-tech-client-app-layer/backup
+mv node_modules/appirio-tech-client-app-layer/src node_modules/appirio-tech-client-app-layer/src-backup
 ln -s ~/tc-workspace/client-app-layer/src/ ./node_modules/appirio-tech-client-app-layer/src
+
+mv node_modules/appirio-tech-file-uploader/components/ node_modules/appirio-tech-file-uploader/components-backup/
+
+ln -s ~/tc-workspace/file-uploader/components/ ./node_modules/appirio-tech-file-uploader/components
+
+mv node_modules/appirio-tech-ng-ui-components/components/ node_modules/appirio-tech-ng-ui-components/components-backup/
+
+ln -s ~/tc-workspace/ng-ui-components/components/ ./node_modules/appirio-tech-ng-ui-components/components
 ```
 
 ## Build
