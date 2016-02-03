@@ -3,8 +3,8 @@ layout-header(role="banner" work-id="{{ vm.id }}" user-type="copilot")
 layout-project-nav(work-id="{{ vm.id }}" user-type="copilot")
 
 main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
-  h1 Project requirements
+  h1 Status Reports
 
-  project-details(project-id="{{ vm.id }}" copilot-id="{{ vm.copilotId }}")
+  status-reports(work-id="{{ vm.id }}" step-id="{{vm.stepId}}" flush-height=true user-role="{{ vm.userRole }}")
 
 layout-footer

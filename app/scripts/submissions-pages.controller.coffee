@@ -19,11 +19,11 @@ SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, UserV3Se
     userId  = UserV3Service.getCurrentUser().userId
 
     if userId == project.ownerId
-      vm.userType = 'customer'
+      vm.userRole = 'customer'
     else if userId == project.copilotId
-      vm.userType = 'copilot'
+      vm.userRole = 'copilot'
     else
-      vm.userType = 'member'
+      vm.userRole = 'member'
 
     # For file detail only
     $scope.$watch 'vm.showModal', (newVal) ->
