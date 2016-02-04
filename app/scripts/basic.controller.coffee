@@ -9,9 +9,12 @@ BasicController = ($state, $stateParams, UserV3Service) ->
   angular.extend vm, $stateParams
   angular.extend vm, $state.current.data || {}
 
-  vm.store    = store
-  vm.userId   = UserV3Service.getCurrentUser().id
-  vm.userRole = UserV3Service.getCurrentUser().role
+  vm.store = store
+  user     = UserV3Service.getCurrentUser()
+
+  if user
+    vm.userId   = user.id
+    vm.userRole = user.role
 
   vm
 
