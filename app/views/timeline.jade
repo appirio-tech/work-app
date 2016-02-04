@@ -5,6 +5,6 @@ layout-project-nav(work-id="{{ vm.workId }}")
 main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
   h1 project timeline
 
-  timeline(work-id="{{ vm.workId }}" user-role="{{ vm.userRole }}")
+  timeline(work-id="{{ vm.workId }}" user-role="{{ vm.userRole }}" permissions="vm.permissions")
 
 layout-footer
