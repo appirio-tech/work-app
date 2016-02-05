@@ -29,6 +29,7 @@ deploy:
     branch: qa
 - provider: s3
   cache_control: private, no-store, no-cache, must-revalidate, max-age=0
+  detect_encoding: true
   access_key_id: $MASTER_AWS_KEY
   secret_access_key: $MASTER_AWS_SECRET
   bucket: connect.topcoder.com
