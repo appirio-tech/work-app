@@ -18,6 +18,7 @@ main.project-page.messaging.layout-main("role"="main" layout-main=true)
     thread-id="{{ vm.threadId }}"
     subscriber-id="{{ vm.subscriberId }}"
     user-role="{{ vm.userRole }}"
+    permissions="vm.permissions"
   )
 
   loader(ng-show="vm.working")
