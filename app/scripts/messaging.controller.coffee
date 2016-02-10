@@ -1,5 +1,7 @@
 'use strict'
 
+permissions = require './permissions'
+
 MessagingPageController = (
   $stateParams
   $state
@@ -15,8 +17,11 @@ MessagingPageController = (
   vm.subscriberId = null
   vm.hasCoilot    = false
   vm.working      = false
-  vm.userRole     = UserV3Service.getCurrentUser().role
-  vm.subscriberId = UserV3Service.getCurrentUser().id
+
+  user            = UserV3Service.getCurrentUser()
+  vm.userRole     = user?.role
+  vm.subscriberId = user?.id
+  vm.permissions  = permissions user?.role
 
   vm.back = ->
     $window.history.back()

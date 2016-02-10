@@ -12,7 +12,7 @@ BasicController = ($state, $stateParams, UserV3Service) ->
   angular.extend vm, $state.current.data || {}
 
   vm.store = store
-  vm.permissions = permissions user
+  vm.permissions = permissions user?.role
 
   if user
     vm.userId   = user.id
