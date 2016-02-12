@@ -13,7 +13,7 @@ MessagingPageController = (
   vm.threadId     = $stateParams.threadId
   vm.isClient     = $state.current.name == 'messaging'
   vm.subscriberId = null
-  vm.hasCoilot    = false
+  vm.hasCopilot   = false
   vm.working      = false
   vm.userRole     = UserV3Service.getCurrentUser().role
   vm.subscriberId = UserV3Service.getCurrentUser().id

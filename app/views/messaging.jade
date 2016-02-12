@@ -7,9 +7,9 @@ main.project-page.messaging.layout-main("role"="main" layout-main=true)
 
   h1(ng-if="vm.userRole == 'copilot'") Customer Messages
 
-  p(ng-if="vm.userRole == 'copilot' && !vm.hasCopilot") You cannot message a customer before claiming a project.
+  p(ng-if="vm.userRole == 'copilot' && !vm.hasCopilot && !vm.working") You cannot message a customer before claiming a project.
 
-  p(ng-if="vm.userRole == 'customer' && !vm.hasCopilot") Your Copilot has not yet been assigned. <br />Once your Copilot joins the project, you will be able to exchange messages with them here.
+  p(ng-if="vm.userRole == 'customer' && !vm.hasCopilot && !vm.working ") Your Copilot has not yet been assigned. <br />Once your Copilot joins the project, you will be able to exchange messages with them here.
 
   messaging.flex.column.flex-grow.middle(
     flush-height="flush-height"
