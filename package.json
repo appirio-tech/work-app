@@ -30,7 +30,8 @@
   },
   "scripts": {
     "build": "webpack -p --bail --progress --build",
-    "dev": "webpack-dev-server --history-api-fallback --dev --inline --progress"
+    "dev": "webpack-dev-server --history-api-fallback --dev --inline --progress",
+    "prod": "webpack-dev-server --history-api-fallback --prod --inline --progress"
   },
   "dependencies": {
     "angular": "^1.4.8",
