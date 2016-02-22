@@ -1,6 +1,6 @@
 layout-header(role="banner")
 
 main.layout-main.submit-work("role"="main" layout-main=true)
-  submit-work-complete(work-id="{{ vm.id }}")
+  submit-work-complete(work-id="{{ vm.id }}" permissions="vm.permissions")
 
 layout-footer

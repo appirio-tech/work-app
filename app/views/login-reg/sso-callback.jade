@@ -3,6 +3,11 @@ layout-header(role="banner")
 main.layout-main.login("role"="main" layout-main=true flush-height=true)
   h2 Welcome back to appirio
 
-  sso-callback(token="{{ vm.userJWTToken }}" status="{{ vm.status }}" message="{{ vm.message }}")
+  sso-callback(
+    token="{{ vm.userJWTToken }}"
+    status="{{ vm.status }}"
+    message="{{ vm.message }}"
+    permissions="vm.permissions"
+  )
 
 layout-footer

@@ -1,16 +1,18 @@
 'use strict'
 
 store = require '../store'
+permissions = require './permissions'
 
 # This is a shared controller for all submissions pages
 BasicController = ($state, $stateParams, UserV3Service) ->
-  vm = this
+  vm   = this
+  user = UserV3Service.getCurrentUser()
 
   angular.extend vm, $stateParams
   angular.extend vm, $state.current.data || {}
 
   vm.store = store
-  user     = UserV3Service.getCurrentUser()
+  vm.permissions = permissions user?.role
 
   if user
     vm.userId   = user.id

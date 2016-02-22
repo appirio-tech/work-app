@@ -7,7 +7,7 @@ main.layout-main.manage(ng-if="vm.userRole == 'customer'" "role"="main" layout-m
 
   hr
 
-  ng-projects
+  ng-projects(permissions="vm.permissions")
 
 main.layout-main.copilot-projects(ng-if="vm.userRole == 'copilot'" "role"="main" layout-main=true flush-height=true)
   h1 My Projects
@@ -19,6 +19,6 @@ main.layout-main.copilot-projects(ng-if="vm.userRole == 'copilot'" "role"="main"
     li
       a.button.action.wider.inactive(ui-sref='copilot-open-projects') Available Projects
 
-  claimed-projects(copilot-id="{{ vm.userId }}")
+  claimed-projects(copilot-id="{{ vm.userId }}" permissions="vm.permissions")
 
 layout-footer

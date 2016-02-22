@@ -1,5 +1,7 @@
 'use strict'
 
+permissions = require './permissions'
+
 # This is a shared controller for all submissions pages
 SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, UserV3Service, project) ->
   vm              = this
@@ -24,6 +26,8 @@ SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, UserV3Se
       vm.userRole = 'copilot'
     else
       vm.userRole = 'member'
+
+    vm.permissions = permissions vm.userRole
 
     # For file detail only
     $scope.$watch 'vm.showModal', (newVal) ->

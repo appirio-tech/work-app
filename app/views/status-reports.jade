@@ -5,6 +5,12 @@ layout-project-nav(work-id="{{ vm.id }}" user-type="copilot")
 main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
   h1 Status Reports
 
-  status-reports(work-id="{{ vm.id }}" step-id="{{vm.stepId}}" flush-height=true user-role="{{ vm.userRole }}")
+  status-reports(
+    work-id="{{ vm.id }}"
+    step-id="{{vm.stepId}}"
+    flush-height=true
+    user-role="{{ vm.userRole }}"
+    permissions="vm.permissions"
+  )
 
 layout-footer
