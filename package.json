@@ -44,7 +44,7 @@
     "appirio-tech-ng-api-services": "^1.0.0",
     "appirio-tech-ng-auth": "^4.0.0",
     "appirio-tech-ng-login-reg": "^2.0.0",
-    "appirio-tech-manage-steps": "appirio-tech/manage-steps",
+    "appirio-tech-react-components": "^0.0.10",
     "appirio-tech-ng-messaging": "^9.0.0",
     "appirio-tech-ng-projects": "^4.0.0",
     "appirio-tech-ng-status-report": "^1.0.0",
