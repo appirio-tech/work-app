@@ -1,4 +1,4 @@
-layout-header(role="banner")
+layout-header(role="banner" user-type="{{ vm.userRole }}")
 
 main.layout-main.submit-work("role"="main" layout-main=true)
   submit-work-visuals(work-id="{{ vm.id }}" store="vm.store" permissions="vm.permissions")

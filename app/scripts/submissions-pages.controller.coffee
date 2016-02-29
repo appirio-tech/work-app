@@ -18,12 +18,14 @@ SubmissionsPagesController = ($scope, $state, $stateParams, $rootScope, UserV3Se
     vm.stepId = null
 
   activate = ->
-    userId  = UserV3Service.getCurrentUser().userId
+    user = UserV3Service.getCurrentUser()
 
-    if userId == project.ownerId
+    if user.userId == project.ownerId
       vm.userRole = 'customer'
-    else if userId == project.copilotId
+    else if user.userId == project.copilotId
       vm.userRole = 'copilot'
+    else if user.role == 'admin'
+      vm.userRole = 'admin'
     else
       vm.userRole = 'member'
 

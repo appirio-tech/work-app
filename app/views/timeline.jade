@@ -1,6 +1,6 @@
-layout-header(role="banner" work-id="{{ vm.workId }}")
+layout-header(role="banner" work-id="{{ vm.workId }}" user-type="{{ vm.userRole }}")
 
-layout-project-nav(work-id="{{ vm.workId }}")
+layout-project-nav(work-id="{{ vm.workId }}" user-type="{{ vm.userRole }}")
 
 main.layout-main.project-page("role"="main" layout-main=true flush-height=true)
   h1 project timeline

@@ -1,6 +1,6 @@
-layout-header(role="banner" work-id="{{ vm.id }}" user-type="copilot")
+layout-header(role="banner" work-id="{{ vm.id }}" user-type="{{ vm.userRole }}")
 
-layout-project-nav(work-id="{{ vm.id }}" user-type="copilot")
+layout-project-nav(work-id="{{ vm.id }}" user-type="{{ vm.userRole }}")
 
 main.layout-main.project-page.detail-status-report("role"="main" layout-main=true flush-height=true)
   detail-status-report(

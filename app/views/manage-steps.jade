@@ -1,6 +1,6 @@
-layout-header(role="banner" work-id="{{ vm.projectId }}" user-type="copilot")
+layout-header(role="banner" work-id="{{ vm.projectId }}" user-type="{{ vm.userRole }}")
 
-layout-project-nav(work-id="{{ vm.projectId }}" user-type="copilot")
+layout-project-nav(work-id="{{ vm.projectId }}" user-type="{{ vm.userRole }}")
 
 main.layout-main("role"="main" layout-main=true)
   h1 Manage Project Steps

@@ -103,21 +103,21 @@ config = ($locationProvider, $stateProvider) ->
     title       : 'Status Reports'
     controller  : 'BasicController as vm'
     template    : require('./views/status-reports')()
-    rolesAllowed: [ 'copilot' ]
+    rolesAllowed: [ 'copilot', 'admin' ]
 
   states['copilot-status-report-details'] =
     url         : '/status-reports/:id/report/:reportId'
     title       : 'Status Report Details'
     controller  : 'BasicController as vm'
     template    : require('./views/status-report-detail')()
-    rolesAllowed: [ 'copilot' ]
+    rolesAllowed: [ 'copilot', 'admin' ]
 
   states['copilot-manage-steps'] =
     url         : '/manage-steps/:projectId'
     title       : 'Status Report Details'
     controller  : 'BasicController as vm'
     template    : require('./views/manage-steps')()
-    rolesAllowed: [ 'copilot' ]
+    rolesAllowed: [ 'copilot', 'admin' ]
 
   # Shared routes
 
@@ -130,7 +130,7 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/projects/:projectId/steps/:stepId'
     template   : require('./views/step')()
     controller : 'SubmissionsPagesController as vm'
-    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
       project: resolveProject
 
@@ -138,7 +138,7 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/projects/:projectId/current-step'
     template   : require('./views/step')()
     controller : 'SubmissionsPagesController as vm'
-    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
       project: resolveProject
 
@@ -146,7 +146,7 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
     template   : require('./views/submission-detail')()
     controller : 'SubmissionsPagesController as vm'
-    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
       project: resolveProject
 
@@ -154,7 +154,7 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
     template   : require('./views/file-detail')()
     controller : 'SubmissionsPagesController as vm'
-    rolesAllowed: [ 'customer', 'copilot', 'member' ]
+    rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
       project: resolveProject
 
