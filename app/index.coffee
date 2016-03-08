@@ -28,5 +28,7 @@ requireContextFiles = (files) ->
   for path in paths
     files path
 
-requireContextFiles require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
-requireContextFiles require.context './scripts/', true, /^(.*\.(coffee$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(scss$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(js$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(jsx$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(coffee$))[^.]*$/igm
