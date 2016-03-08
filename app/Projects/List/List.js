@@ -1,18 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import { createElement, Component, PropTypes } from 'react'
+import ListView from './ListView.jsx'
 
-import Card from '../Card/Card.js'
-
-export default class ProjectsControls extends Component {
+export default class List extends Component {
   render() {
-    return <ul>
-      <li>List</li>
-      <li><Card /></li>
-      <li><Card /></li>
-      <li><Card /></li>
-    </ul>
+    return createElement(ListView)
   }
 }
 
-ProjectsControls.propTypes = {
-
-}
+List.propTypes = {}

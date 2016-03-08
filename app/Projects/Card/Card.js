@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react'
+import { createElement, Component, PropTypes } from 'react'
 
-export default class ProjectsControls extends Component {
+import CardView from './CardView.jsx'
+
+export default class Card extends Component {
   render() {
-    return <p>Card</p>
+    return createElement(CardView)
   }
 }
 
-ProjectsControls.propTypes = {
+Card.propTypes = {}
 
-}

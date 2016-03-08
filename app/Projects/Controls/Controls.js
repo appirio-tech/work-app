@@ -1,11 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import { createElement, Component, PropTypes } from 'react'
+import ControlsView from './ControlsView.jsx'
 
-export default class ProjectsControls extends Component {
+export default class Controls extends Component {
   render() {
-    return <p>Controls</p>
+    return createElement(ControlsView)
   }
 }
 
-ProjectsControls.propTypes = {
-
-}
+Controls.propTypes = {}

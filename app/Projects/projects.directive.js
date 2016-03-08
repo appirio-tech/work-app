@@ -1,5 +1,5 @@
 import Provider from 'appirio-tech-ng-ui-components/components/Provider/Provider'
-import Projects from './Projects.js'
+import Projects from './Projects.jsx'
 
 const directive = (reactDirective) => reactDirective(Provider(Projects))
 
