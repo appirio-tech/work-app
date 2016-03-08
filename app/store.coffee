@@ -1,3 +1,3 @@
-configureStore = require('appirio-tech-client-app-layer').default
+configureStore = require('./store/index.js').default
 
 module.exports = configureStore()
