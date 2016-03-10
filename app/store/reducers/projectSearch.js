@@ -1,7 +1,9 @@
-import merge from 'lodash/merge'
-import values from 'lodash/values'
-import union from 'lodash/union'
+const defaultState = {
+  items: []
+}
 
-export default function projectSearch(state = {}, action) {
-  return state
+export default function projectSearch(state = defaultState) {
+  return Object.assign({}, state, {
+    lastUpdated: (new Date()).toISOString()
+  })
 }
