@@ -1,21 +1,27 @@
 import projectSearch from './projectSearch.js'
 import freeze from 'deep-freeze-node'
 
-describe('Projects Search Reducer --', () => {
-  describe('PROJECTS_CLEAR', () => {
+import { CLEAR_PROJECT_SEARCH,
+  PROJECT_SEARCH_REQUEST,
+  PROJECT_SEARCH_SUCCESS,
+  PROJECT_SEARCH_FAILURE,
+  SET_PROJECT_SEARCH_FILTERS } from '../constants.js'
+
+xdescribe('projectSearch Reducer --', () => {
+  describe(CLEAR_PROJECT_SEARCH, () => {
     const before = freeze({
       items: ['1', '2', '3'],
       error: 'oops'
     })
 
     const action = {
-      type: 'PROJECTS_CLEAR'
+      type: CLEAR_PROJECT_SEARCH
     }
 
     const after = projectSearch(before, action)
 
     it('should clear the current items', () => {
-      after.items.should.an('array')
+      after.items.should.be.an('array')
       after.items.length.should.equal(0)
     })
 
@@ -24,14 +30,14 @@ describe('Projects Search Reducer --', () => {
     })
   })
 
-  describe('PROJECTS_FETCH_REQUEST', () => {
+  describe(PROJECT_SEARCH_REQUEST, () => {
     const before = freeze({
       isFetching: false,
       error: 'oops'
     })
 
     const action = {
-      type: 'PROJECTS_FETCH_REQUEST'
+      type: PROJECT_SEARCH_REQUEST
     }
 
     const after = projectSearch(before, action)
@@ -45,7 +51,7 @@ describe('Projects Search Reducer --', () => {
     })
   })
 
-  describe('PROJECTS_FETCH_SUCCESS', () => {
+  describe(PROJECT_SEARCH_SUCCESS, () => {
     const yesterday = new Date()
     yesterday.setDate(yesterday.getDate() - 1)
 
@@ -59,7 +65,7 @@ describe('Projects Search Reducer --', () => {
     })
 
     const action = {
-      type: 'PROJECTS_FETCH_SUCCESS',
+      type: PROJECT_SEARCH_SUCCESS,
       response: {
         totalItems: 500,
         result: ['2', '3']
@@ -89,14 +95,14 @@ describe('Projects Search Reducer --', () => {
     })
   })
 
-  describe('PROJECTS_FETCH_FAILURE', () => {
+  describe(PROJECT_SEARCH_FAILURE, () => {
     const before = freeze({
       isFetching: true,
       error: ''
     })
 
     const action = {
-      type: 'PROJECTS_FETCH_FAILURE',
+      type: PROJECT_SEARCH_FAILURE,
       error: 'oops'
     }
 
@@ -111,11 +117,11 @@ describe('Projects Search Reducer --', () => {
     })
   })
 
-  describe('PROJECTS_SET_FILTERS', () => {
+  describe(SET_PROJECT_SEARCH_FILTERS, () => {
     const before = freeze({})
 
     const action = {
-      type: 'PROJECTS_SET_FILTERS',
+      type: SET_PROJECT_SEARCH_FILTERS,
       filters: {
         projectType: 'DESIGN'
       }
