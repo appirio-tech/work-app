@@ -7,10 +7,11 @@ import { CLEAR_PROJECT_SEARCH,
   PROJECT_SEARCH_FAILURE,
   SET_PROJECT_SEARCH_FILTERS } from '../constants.js'
 
-xdescribe('projectSearch Reducer --', () => {
+describe('projectSearch Reducer:', () => {
   describe(CLEAR_PROJECT_SEARCH, () => {
     const before = freeze({
       items: ['1', '2', '3'],
+      moreResultsAvailable: false,
       error: 'oops'
     })
 
@@ -28,11 +29,15 @@ xdescribe('projectSearch Reducer --', () => {
     it('should clear the error message', () => {
       after.error.should.equal('')
     })
+
+    it('should reset moreResultsAvailable', () => {
+      after.moreResultsAvailable.should.equal(true)
+    })
   })
 
   describe(PROJECT_SEARCH_REQUEST, () => {
     const before = freeze({
-      isFetching: false,
+      fetching: false,
       error: 'oops'
     })
 
@@ -43,7 +48,7 @@ xdescribe('projectSearch Reducer --', () => {
     const after = projectSearch(before, action)
 
     it('should set fetching to true', () => {
-      after.isFetching.should.equal(true)
+      after.fetching.should.equal(true)
     })
 
     it('should clear the error message', () => {
@@ -57,19 +62,23 @@ xdescribe('projectSearch Reducer --', () => {
 
     const before = freeze({
       items: ['1'],
-      isFetching: true,
+      fetching: true,
       lastUpdated: yesterday.toISOString(),
       filters: {
         projectType: 'DESIGN'
-      }
+      },
+      moreResultsAvailable: true
     })
 
     const action = {
       type: PROJECT_SEARCH_SUCCESS,
       response: {
-        totalItems: 500,
         result: ['2', '3']
-      }
+      },
+      filters: {
+        projectType: 'DESIGN'
+      },
+      limit: 3
     }
 
     const after = projectSearch(before, action)
@@ -79,25 +88,25 @@ xdescribe('projectSearch Reducer --', () => {
     })
 
     it('should set fetching to false', () => {
-      after.isFetching.should.equal(false)
-    })
-
-    it('should set totalItems', () => {
-      after.totalItems.should.equal(500)
+      after.fetching.should.equal(false)
     })
 
     it('should update lastUpdated', () => {
       after.lastUpdated.should.be.above(yesterday.toISOString())
     })
 
-    it('should cache the last filter set', () => {
-      after.previousFilters.should.deep.equal(after.filters)
+    it('should cache the last used filter set', () => {
+      after.previousFilters.should.deep.equal(action.filters)
+    })
+
+    it('should set moreResultsAvailable to false if the result set is less than the limit', () => {
+      after.moreResultsAvailable.should.equal(false)
     })
   })
 
   describe(PROJECT_SEARCH_FAILURE, () => {
     const before = freeze({
-      isFetching: true,
+      fetching: true,
       error: ''
     })
 
@@ -109,7 +118,7 @@ xdescribe('projectSearch Reducer --', () => {
     const after = projectSearch(before, action)
 
     it('should set fetching to false', () => {
-      after.isFetching.should.equal(false)
+      after.fetching.should.equal(false)
     })
 
     it('should set error', () => {
