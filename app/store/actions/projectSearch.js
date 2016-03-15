@@ -1,5 +1,6 @@
 import callApi from '../middleware/api'
 import Schemas from '../middleware/schemas'
+import isEqual from 'lodash/isEqual'
 
 import {
   CLEAR_PROJECT_SEARCH,
@@ -20,12 +21,26 @@ export function setProjectSeachFilters(filters) {
   }
 }
 
-export function loadProjectSearch(limit) {
+export function loadProjectSearch() {
   return (dispatch, getState) => {
+    const state = getState().projectSearch
+
+    if (!isEqual(state.filters, state.currentFilters)) {
+      dispatch({ type: CLEAR_PROJECT_SEARCH })
+    }
+
+    if (!state.moreResultsAvailable) {
+      return Promise.resolve()
+    }
+
     dispatch({ type: PROJECT_SEARCH_REQUEST })
 
     const success = () => {
-      dispatch({ type: PROJECT_SEARCH_SUCCESS })
+      dispatch({
+        type: PROJECT_SEARCH_SUCCESS,
+        filters: state.filters,
+        limit: state.limit
+      })
     }
 
     const failure = () => {

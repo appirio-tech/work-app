@@ -2,6 +2,7 @@ import configureMockStore from 'redux-mock-store'
 import find from 'lodash/find'
 import thunk from 'redux-thunk'
 import nock from 'nock'
+import { defaults } from '../reducers/projectSearch.js'
 
 import {
   clearProjectSearch,
@@ -19,6 +20,7 @@ import {
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
+const API_ROOT = process.env.API_URL || 'https://api.topcoder.com'
 
 describe('projectSearch Actions:', () => {
   afterEach(() => {
@@ -55,7 +57,8 @@ describe('projectSearch Actions:', () => {
       const store = mockStore({
         projectSearch: {
           previousFilters: { projectType: 'DESIGN' },
-          filters: { projectType: 'DESIGN_AND_CODE' }
+          filters: { projectType: 'DESIGN_AND_CODE' },
+          moreResultsAvailable: true
         }
       })
 
@@ -82,42 +85,53 @@ describe('projectSearch Actions:', () => {
           filters: {
             query: 'foo'
           },
-          limit: 20
+          limit: 20,
+          moreResultsAvailable: true
         }
       })
 
       return store.dispatch(loadProjectSearch()).then( () => {
-        find(store.getActions(), (a) => a.type === PROJECT_SEARCH_SUCCESS)
+        const successAction = find(store.getActions(), (a) => a.type === PROJECT_SEARCH_SUCCESS)
 
-        successAction.limit.should.equal(store.projectSearch.limit)
-        successAction.filters.should.deep.equal(store.projectSearch.filters)
+        successAction.limit.should.equal(store.getState().projectSearch.limit)
+        successAction.filters.should.deep.equal(store.getState().projectSearch.filters)
       })
     })
 
     it(`should dispatch ${PROJECT_SEARCH_REQUEST} when invoked`, () => {
-      const store = mockStore({})
+      const store = mockStore({ projectSearch: defaults })
 
       return store.dispatch(loadProjectSearch()).then( () => {
-        store.getActions()[0].should.deep.equal({ type: PROJECT_SEARCH_REQUEST })
+        store.getActions()[1].should.deep.equal({ type: PROJECT_SEARCH_REQUEST })
       })
     })
 
     it(`should dispatch ${PROJECT_SEARCH_SUCCESS} when invoked`, () => {
-      const store = mockStore({})
+      const store = mockStore({ projectSearch: defaults })
+
+      nock(API_ROOT)
+        .get(/\/v3\/projects.*/)
+        .reply(200, 'success, yay!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
-        store.getActions()[1].should.deep.equal({ type: PROJECT_SEARCH_SUCCESS })
+        store.getActions()[2].should.deep.equal({
+          type: PROJECT_SEARCH_SUCCESS,
+          filters: {},
+          limit: 20
+        })
       })
     })
 
     it(`should dispatch ${PROJECT_SEARCH_FAILURE} when the request fails`, () => {
-      const store = mockStore({})
+      const store = mockStore({ projectSearch: defaults })
+
+      nock(API_ROOT)
+        .get(/\/v3\/projects.*/)
+        .reply(404, 'failure, boo!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
         store.getActions()[1].should.deep.equal({ type: PROJECT_SEARCH_FAILURE })
       })
     })
-
-    it(`should not refetch if the filters and page haven't changed`, () => {})
   })
 })
