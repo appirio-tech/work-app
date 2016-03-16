@@ -21,6 +21,10 @@ export function setProjectSeachFilters(filters) {
   }
 }
 
+export function formatProjectSearchCall() {
+
+}
+
 export function loadProjectSearch() {
   return (dispatch, getState) => {
     const state = getState().projectSearch
@@ -35,8 +39,15 @@ export function loadProjectSearch() {
 
     dispatch({ type: PROJECT_SEARCH_REQUEST })
 
-    const success = () => {
+    const config = {
+      method: 'GET',
+      endpoint: '/v3/projects/',
+      schema: Schemas.PROJECT_ARRAY,
+    }
+
+    const success = (response) => {
       dispatch({
+        response,
         type: PROJECT_SEARCH_SUCCESS,
         filters: state.filters,
         limit: state.limit
@@ -47,6 +58,6 @@ export function loadProjectSearch() {
       dispatch({ type: PROJECT_SEARCH_FAILURE })
     }
 
-    return Promise.resolve().then(success, failure)
+    return callApi(config).then(success).catch(failure)
   }
 }

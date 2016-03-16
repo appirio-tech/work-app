@@ -8,7 +8,7 @@ import { CLEAR_PROJECT_SEARCH,
 
 export const defaults = {
   items: [],
-  isFetching: false,
+  fetching: false,
   lastUpdated: (new Date()).toISOString(),
   error: '',
   moreResultsAvailable: true,
