@@ -1,6 +1,6 @@
 {
   "rules": {
-    "indent": [2, 2],
+    "indent": [2, 2, {"SwitchCase": 1}],
     "quotes": [2, "single"],
     "linebreak-style": [2, "unix"],
     "semi": [2, "never"],
@@ -31,6 +31,7 @@
     "react/no-is-mounted": 2
   },
   "globals": {
+    "__MOCK__": false,
     "React": true,
     "_": true
   },

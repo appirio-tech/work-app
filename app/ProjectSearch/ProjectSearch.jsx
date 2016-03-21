@@ -17,7 +17,7 @@ class ProjectSearch extends Component {
       <div>
         <Controls />
         <ul>
-          { this.props.projects.map( project => <Card project={project} />) }
+          { this.props.projects.map( project => <Card key={project.id} project={project} />) }
         </ul>
       </div>
     )

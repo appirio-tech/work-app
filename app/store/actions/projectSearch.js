@@ -1,6 +1,16 @@
-import callApi from '../middleware/api'
 import Schemas from '../middleware/schemas'
 import isEqual from 'lodash/isEqual'
+
+import realApi from '../middleware/api'
+import mockApi from './projectSearch.mock.js'
+
+let callApi = function(){}
+
+if (__MOCK__) {
+  callApi = mockApi
+} else {
+  callApi = realApi
+}
 
 import {
   CLEAR_PROJECT_SEARCH,
@@ -42,7 +52,7 @@ export function loadProjectSearch() {
     const config = {
       method: 'GET',
       endpoint: '/v3/projects/',
-      schema: Schemas.PROJECT_ARRAY,
+      schema: Schemas.PROJECT_ARRAY
     }
 
     const success = (response) => {
