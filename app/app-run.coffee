@@ -45,7 +45,7 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
       $rootScope.preFileDetailParams = fromParams
 
   updateTitle = (event, toState) ->
-    document.title = toState.title || 'ASP'
+    document.title = toState.title || 'Topcoder Connect'
 
   $rootScope.$on '$stateChangeStart', addFileDetailHistory
   $rootScope.$on '$stateChangeStart', checkPermission
