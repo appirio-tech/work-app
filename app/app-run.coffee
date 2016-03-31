@@ -1,43 +1,49 @@
-run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
+{ getToken } = require('appirio-accounts-app/connector/connector-wrapper.js')
+{ isTokenExpired } = require('appirio-accounts-app/core/token.js')
+
+currentUser = null
+
+run = ($rootScope, $state, $urlRouter, UserV3Service) ->
   checkPermission = (event, toState, toParams, fromState, fromParams) ->
     # Route is public, ignore the rest of the permission logic
     if toState.public
       return true
 
-    # Check if the user is logged in
-    unless AuthService.isLoggedIn()
-      $rootScope.preAuthState = toState.name
-      $rootScope.preAuthParams = toParams
+    # No user has been loaded yet
+    if !currentUser
+
+      # Kill the current request
+      # https://github.com/angular-ui/ui-router/wiki#state-change-events
       event.preventDefault()
 
-      return $state.go 'login'
-
-    currentUser = UserV3Service.getCurrentUser()
-
-    # Check if the user has loaded
-    unless currentUser
-      event.preventDefault()
-
-      success = ->
-        # Retry the state change once user has loaded
+      loadUserSuccess = (user) ->
+        currentUser = user
         $urlRouter.sync()
 
-      failure = ->
-        AuthService.logout()
-        $state.go 'login'
+      loadUserFailure = ->
+        returnUrl = $state.href toState.name, toParams, { absolute: true }
 
-      return UserV3Service.loadUser().then(success).catch(failure)
+        # accountsUrl = constants.ACCOUNTS_LOGIN_URL + '?retUrl=' + encodeURIComponent(constants.LOGIN_RETURN_URL) 
+        accountsUrl = 'http://localhost:8000/#connect' + '?retUrl=' + encodeURIComponent(returnUrl) 
+        console.log 'redirect to '　+ accountsUrl
+        window.location = accountsUrl
 
-    # Check if the user is the right role to this access route
-    unless toState.rolesAllowed.indexOf(currentUser.role) > -1
-      event.preventDefault()
+      UserV3Service.loadUser().then(loadUserSuccess, loadUserFailure)
 
-      # If copilot was trying to access home, take them to copilot projects page
+      return false
+    else
+      # If the user has the correct role for this route, complete the transition
+      if toState.rolesAllowed.indexOf(currentUser.role) > -1
+        return true
+
+      # If the user is a copilot and was trying to access home, take them to
+      # copilot projects page
       if currentUser.role == 'copilot' && toState.name == 'home'
         return $state.go 'projects'
 
-      # TODO: Notify user that route was protected
-      return $state.go 'forbidden'
+      # If we've made it all the way here, the user is logged in, but not
+      # allowed to access this route
+      $state.go 'forbidden'
 
   addFileDetailHistory = (event, toState, toParams, fromState, fromParams) ->
     if toState.name == 'file-detail' && fromState.name && fromState.name != 'file-detail'
@@ -51,6 +57,6 @@ run = ($rootScope, $state, $urlRouter, AuthService, UserV3Service) ->
   $rootScope.$on '$stateChangeStart', checkPermission
   $rootScope.$on '$stateChangeSuccess', updateTitle
 
-run.$inject = ['$rootScope', '$state', '$urlRouter', 'AuthService', 'UserV3Service']
+run.$inject = ['$rootScope', '$state', '$urlRouter', 'UserV3Service']
 
 angular.module('app').run run

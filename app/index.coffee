@@ -6,13 +6,13 @@ __webpack_public_path__ = publicPath
 
 require 'angular'
 require 'angular-ui-router'
+require 'appirio-accounts-app'
 
 require './app.module'
 require './app-config'
 require './app-run'
 
 require 'appirio-tech-ng-api-services'
-require 'appirio-tech-ng-auth'
 require 'appirio-tech-ng-login-reg'
 require 'appirio-tech-ng-messaging'
 require 'appirio-tech-ng-projects'
@@ -21,6 +21,7 @@ require 'appirio-tech-ng-submissions'
 require 'appirio-tech-ng-submit-work'
 require 'appirio-tech-ng-timeline'
 require 'appirio-tech-ng-work-layout'
+require './auth/auth.module.js'
 
 requireContextFiles = (files) ->
   paths = files.keys()
@@ -29,4 +30,5 @@ requireContextFiles = (files) ->
     files path
 
 requireContextFiles require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
-requireContextFiles require.context './scripts/', true, /^(.*\.(coffee$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(coffee$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(?:(?!\.spec\.js$).)*\.js$/igm
