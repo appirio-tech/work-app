@@ -10,8 +10,8 @@ deploy:
 - provider: s3
   cache_control: private, no-store, no-cache, must-revalidate, max-age=0
   detect_encoding: true
-  access_key_id: $AWS_KEY
-  secret_access_key: $AWS_SECRET
+  access_key_id: $DEV_AWS_KEY
+  secret_access_key: $DEV_AWS_SECRET
   bucket: connect.topcoder-dev.com
   skip_cleanup: true
   local_dir: dist
