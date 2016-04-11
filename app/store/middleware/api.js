@@ -10,7 +10,7 @@ export const API_ROOT = process.env.API_URL || 'https://api.topcoder.com'
 // This makes every API response have the same shape, regardless of how nested it was.
 export default function callApi({ schema, endpoint, ignoreResult, method, data }) {
   const executeRequest = () => {
-    const token = trim(localStorage.userJWTToken)
+    const token = typeof window !== 'undefined' ? trim(localStorage.userJWTToken) : ''
 
     const config = {
       url: API_ROOT + endpoint,
