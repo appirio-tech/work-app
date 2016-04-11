@@ -1,9 +1,6 @@
-import { normalize, Schema } from 'normalizr'
-import Schemas from './schemas'
+import { normalize } from 'normalizr'
 import axios from 'axios'
-import decode from 'jwt-decode'
 import checkAuth from './check-auth'
-import merge from 'lodash/merge'
 
 const trim = (token) => token.substring(1, token.length - 1)
 
@@ -19,7 +16,7 @@ export default function callApi({ schema, endpoint, ignoreResult, method, data }
       url: API_ROOT + endpoint,
       method: method || 'GET',
       headers: {
-        'Authorization': 'Bearer ' + token,
+        Authorization: 'Bearer ' + token,
         'Content-Type': 'application/json;charset=UTF-8'
       }
     }

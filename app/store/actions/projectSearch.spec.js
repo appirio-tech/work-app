@@ -67,7 +67,7 @@ describe('projectSearch Actions:', () => {
       })
     })
 
-    it(`should not proceed if there are not more results available`, () => {
+    it('should not proceed if there are not more results available', () => {
       const store = mockStore({
         projectSearch: {
           moreResultsAvailable: false
@@ -79,18 +79,15 @@ describe('projectSearch Actions:', () => {
       })
     })
 
-    it(`should include metadata(filters, limit) in the action bodies`, () => {
-      const store = mockStore({
-        projectSearch: {
-          filters: {
-            query: 'foo'
-          },
-          limit: 20,
-          moreResultsAvailable: true
-        }
-      })
+    it('should include metadata(filters, limit) in the action bodies', () => {
+      const store = mockStore({ projectSearch: defaults })
+
+      nock(API_ROOT)
+        .get(/\/v3\/projects.*/)
+        .reply(200, 'success, yay!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
+        console.log(store.getActions())
         const successAction = find(store.getActions(), (a) => a.type === PROJECT_SEARCH_SUCCESS)
 
         successAction.limit.should.equal(store.getState().projectSearch.limit)
@@ -106,7 +103,7 @@ describe('projectSearch Actions:', () => {
       })
     })
 
-    it(`should dispatch ${PROJECT_SEARCH_SUCCESS} when invoked`, () => {
+    it(`should dispatch ${PROJECT_SEARCH_SUCCESS} when the request succeeds`, () => {
       const store = mockStore({ projectSearch: defaults })
 
       nock(API_ROOT)
@@ -130,7 +127,7 @@ describe('projectSearch Actions:', () => {
         .reply(404, 'failure, boo!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
-        store.getActions()[1].should.deep.equal({ type: PROJECT_SEARCH_FAILURE })
+        store.getActions()[2].should.deep.equal({ type: PROJECT_SEARCH_FAILURE })
       })
     })
   })

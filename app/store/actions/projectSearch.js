@@ -6,7 +6,7 @@ import mockApi from './projectSearch.mock.js'
 
 let callApi = function(){}
 
-if (__MOCK__) {
+if (process.env.MOCK) {
   callApi = mockApi
 } else {
   callApi = realApi
