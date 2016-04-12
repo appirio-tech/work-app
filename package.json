@@ -40,13 +40,15 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "build": "webpack -p --bail --progress --build",
-    "dev": "webpack-dev-server --history-api-fallback --dev --inline --progress",
-    "dev:mock": "npm run dev -- --mock",
-    "prod": "webpack-dev-server --history-api-fallback --prod --inline --progress",
-    "test": "cross-env NODE_ENV=test mocha --reporter nyan --compilers js:babel-core/register --require ignore-styles --recursive -t 10 \"./app/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch",
-    "lint": "eslint --ext .js,.jsx ."
+    "serve"      : "webpack-dev-server --history-api-fallback --inline --progress",
+    "dev"        : "npm run serve -- --dev",
+    "dev:mock"   : "npm run dev -- --mock",
+    "qa"         : "npm run serve -- --qa",
+    "prod"       : "npm run serve -- --prod",
+    "build"      : "webpack -p --bail --progress --build",
+    "test:watch" : "npm run test -- --watch",
+    "lint"       : "eslint --ext .js,.jsx .",
+    "test"       : "cross-env NODE_ENV=test mocha --reporter nyan --compilers js:babel-core/register --require ignore-styles --recursive -t 10 \"./app/**/*.spec.js\""
   },
   "dependencies": {
     "angular": "^1.4.8",
