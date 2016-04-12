@@ -1,6 +1,6 @@
 'use strict'
 
-transform = require('./transform.js').default
+{ transform } = require './transform.js'
 
 transformIdOnlyResponse = (response) ->
   parsed = transform(response)
