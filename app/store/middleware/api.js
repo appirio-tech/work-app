@@ -1,9 +1,6 @@
-import { normalize, Schema } from 'normalizr'
-import Schemas from './schemas'
+import { normalize } from 'normalizr'
 import axios from 'axios'
-import decode from 'jwt-decode'
 import checkAuth from './check-auth'
-import merge from 'lodash/merge'
 
 const trim = (token) => token.substring(1, token.length - 1)
 
@@ -13,13 +10,13 @@ export const API_ROOT = process.env.API_URL || 'https://api.topcoder.com'
 // This makes every API response have the same shape, regardless of how nested it was.
 export default function callApi({ schema, endpoint, ignoreResult, method, data }) {
   const executeRequest = () => {
-    const token = trim(localStorage.userJWTToken)
+    const token = typeof window !== 'undefined' ? trim(localStorage.userJWTToken) : ''
 
     const config = {
       url: API_ROOT + endpoint,
       method: method || 'GET',
       headers: {
-        'Authorization': 'Bearer ' + token,
+        Authorization: 'Bearer ' + token,
         'Content-Type': 'application/json;charset=UTF-8'
       }
     }

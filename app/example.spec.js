@@ -1,5 +1,4 @@
 import chai from 'chai'
-import cheerio from 'cheerio'
 
 chai.should()
 

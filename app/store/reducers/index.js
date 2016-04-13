@@ -6,6 +6,7 @@ import user from './user'
 import { reducer as form } from 'redux-form'
 import attachments from './attachments'
 import fileUploader from './fileUploader'
+import projectSearch from './projectSearch'
 
 const rootReducer = combineReducers({
   entities,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   user,
   form,
   attachments,
-  fileUploader
+  fileUploader,
+  projectSearch
 })
 
 export default rootReducer

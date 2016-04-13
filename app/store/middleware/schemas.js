@@ -16,6 +16,7 @@ const uploadUrlSchema = new Schema('uploadUrls', {
 export default {
   PROFILE         : profileSchema,
   PROJECT         : projectSchema,
+  PROJECT_ARRAY   : arrayOf(projectSchema),
   STEP            : stepSchema,
   STEP_ARRAY      : arrayOf(stepSchema),
   ATTACHMENT      : attachmentSchema,

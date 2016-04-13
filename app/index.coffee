@@ -12,7 +12,10 @@ require './app.module'
 require './app-config'
 require './app-run'
 
-require 'appirio-tech-ng-api-services'
+require './api-services/api-services.module.js'
+require 'appirio-tech-ng-auth'
+require 'appirio-tech-ng-optimist'
+require 'appirio-tech-ng-file-upload'
 require 'appirio-tech-ng-login-reg'
 require 'appirio-tech-ng-messaging'
 require 'appirio-tech-ng-projects'
@@ -29,6 +32,7 @@ requireContextFiles = (files) ->
   for path in paths
     files path
 
-requireContextFiles require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
-requireContextFiles require.context './', true, /^(.*\.(coffee$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(scss$))[^.]*$/igm
 requireContextFiles require.context './', true, /^(?:(?!\.spec\.js$).)*\.js$/igm
+requireContextFiles require.context './', true, /^(.*\.(jsx$))[^.]*$/igm
+requireContextFiles require.context './', true, /^(.*\.(coffee$))[^.]*$/igm
