@@ -1,16 +1,7 @@
 import Schemas from '../middleware/schemas'
 import isEqual from 'lodash/isEqual'
 
-import realApi from '../middleware/api'
-import mockApi from './projectSearch.mock.js'
-
-let callApi = function(){}
-
-if (process.env.MOCK) {
-  callApi = mockApi
-} else {
-  callApi = realApi
-}
+import callApi from '../middleware/api'
 
 import {
   CLEAR_PROJECT_SEARCH,
