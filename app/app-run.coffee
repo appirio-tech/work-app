@@ -1,6 +1,3 @@
-{ getToken } = require('appirio-accounts-app/connector/connector-wrapper.js')
-{ isTokenExpired } = require('appirio-accounts-app/core/token.js')
-
 currentUser = null
 
 run = ($rootScope, $state, $urlRouter, UserV3Service) ->
@@ -21,11 +18,9 @@ run = ($rootScope, $state, $urlRouter, UserV3Service) ->
         $urlRouter.sync()
 
       loadUserFailure = ->
-        returnUrl = $state.href toState.name, toParams, { absolute: true }
+        returnUrl   = $state.href toState.name, toParams, { absolute: true }
+        accountsUrl = process.env.ACCOUNTS_URL + '?retUrl=' + encodeURIComponent(returnUrl) 
 
-        # accountsUrl = constants.ACCOUNTS_LOGIN_URL + '?retUrl=' + encodeURIComponent(constants.LOGIN_RETURN_URL) 
-        accountsUrl = 'http://localhost:8000/#connect' + '?retUrl=' + encodeURIComponent(returnUrl) 
-        console.log 'redirect to '　+ accountsUrl
         window.location = accountsUrl
 
       UserV3Service.loadUser().then(loadUserSuccess, loadUserFailure)

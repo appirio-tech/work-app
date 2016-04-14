@@ -6,7 +6,6 @@ __webpack_public_path__ = publicPath
 
 require 'angular'
 require 'angular-ui-router'
-require 'appirio-accounts-app'
 
 require './app.module'
 require './app-config'

@@ -36,11 +36,12 @@
     "_": true
   },
   "env": {
-    "es6": true,
+    "angular": true,
     "browser": true,
-    "node": true,
+    "es6": true,
+    "jquery": true,
     "mocha": true,
-    "jquery": true
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": 6,

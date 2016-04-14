@@ -2,8 +2,7 @@
 
 require('angular-jwt')
 
-import { getToken, refreshToken } from 'appirio-accounts-app/connector/connector-wrapper.js'
-import { isTokenExpired } from 'appirio-accounts-app/core/token.js'
+import { getToken, refreshToken, isTokenExpired } from 'tc-accounts'
 
 const dependencies = ['angular-jwt']
 

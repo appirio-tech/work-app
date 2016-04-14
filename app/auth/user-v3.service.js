@@ -2,9 +2,9 @@
 
 import includes from 'lodash/includes'
 import merge from 'lodash/merge'
-import { registerUser} from 'appirio-accounts-app/core/auth.js'
-import { decodeToken } from 'appirio-accounts-app/core/token.js'
-import { getToken } from 'appirio-accounts-app/connector/connector-wrapper.js'
+// TODO: Move registration to accounts.topcoder.com
+import { registerUser} from 'tc-accounts/core/auth.js'
+import { decodeToken, getToken } from 'tc-accounts'
 
 const UserV3Service = function() {
   let currentUser = null
