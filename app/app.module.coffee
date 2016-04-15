@@ -11,7 +11,6 @@ dependencies = [
   'appirio-tech-ng-submit-work'
   'appirio-tech-submissions'
   'appirio-tech-ng-api-services'
-  'appirio-tech-ng-login-reg'
   'appirio-tech-ng-status-report'
 ]
 

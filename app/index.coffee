@@ -15,7 +15,6 @@ require './app-run'
 require './auth/auth.module.js'
 require './api-services/api-services.module.js'
 require './layout/src.coffee'
-require './login-reg/src.coffee'
 
 require 'appirio-tech-ng-optimist'
 require 'appirio-tech-ng-ui-components'
