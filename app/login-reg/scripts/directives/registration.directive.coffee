@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/registration.directive.html'
+  template    : require('../../views/registration.directive.jade')()
   controller  : 'RegistrationController as vm'
   scope       : true
 

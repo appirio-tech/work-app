@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/reset-password.directive.html'
+  template    : require('../../views/reset-password.directive.jade')()
   controller  : 'ResetPasswordController as vm'
   scope       : true
 

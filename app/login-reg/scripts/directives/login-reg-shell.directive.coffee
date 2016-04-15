@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/login-reg-shell.directive.html'
+  template    : require('../../views/login-reg-shell.directive.jade')()
   controller  : 'LoginRegShellController as vm'
   scope       :
     flow: '@'

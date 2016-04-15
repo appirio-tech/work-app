@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/login.directive.html'
+  template    : require('../../views/login.directive.jade')()
   controller  : 'LoginController as vm'
   scope       : true
 

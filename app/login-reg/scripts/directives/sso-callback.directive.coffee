@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/sso-callback.directive.html'
+  template    : require('../../views/sso-callback.directive.jade')()
   controller  : 'SSOCallbackController as vm'
   scope       :
     token     : '@'

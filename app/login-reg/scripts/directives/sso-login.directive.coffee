@@ -2,7 +2,7 @@
 
 directive = ->
   restrict        : 'E'
-  templateUrl     : 'views/sso-login.directive.html'
+  template        : require('../../views/sso-login.directive.jade')()
   controller      : 'SSOLoginController as vm'
   scope           : true
 
