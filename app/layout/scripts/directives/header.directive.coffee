@@ -2,7 +2,7 @@
 
 directive = ->
   restrict   : 'E'
-  templateUrl: 'views/layout-header.directive.html'
+  template   : require('../../views/layout-header.directive.jade')()
   controller : 'LayoutHeaderController as vm'
   scope      : {}
   bindToController:

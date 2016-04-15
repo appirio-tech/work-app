@@ -2,7 +2,7 @@
 
 dir = ->
   restrict   : 'E'
-  templateUrl: 'views/project-drop-down.directive.html'
+  template   : require('../../views/project-drop-down.directive.jade')()
   controller : 'ProjectDropDownController as vm'
   scope:
     userType: '@userType'

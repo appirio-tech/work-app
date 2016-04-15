@@ -2,7 +2,7 @@
 
 dir = ->
   restrict: 'E'
-  templateUrl: 'views/layout-project-nav.directive.html'
+  template   : require('../../views/layout-project-nav.directive.jade')()
   controller: 'ProjectNavController as vm'
   scope:
     workId  : '@workId'
