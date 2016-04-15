@@ -2,38 +2,13 @@
 
 require('angular-jwt')
 
-import { getToken, refreshToken, isTokenExpired } from 'tc-accounts'
+import { getFreshToken } from 'tc-accounts'
 
 const dependencies = ['angular-jwt']
 
 const config = function($httpProvider, jwtInterceptorProvider) {
-  let tokenPromise = null
-
   function jwtInterceptor() {
-    if (tokenPromise) {
-      return tokenPromise
-    }
-
-    tokenPromise = getToken()
-      .then( token => {
-        if (token === null) {
-          return token
-        }
-
-        if (!isTokenExpired(token, 60)) {
-          return token
-        }
-
-        return refreshToken()
-      })
-      .then( token => {
-        tokenPromise = null
-        return token
-      })
-      .catch( (e) => {
-        tokenPromise = null
-        return token
-      })
+    return getFreshToken()
   }
 
   jwtInterceptorProvider.tokenGetter = jwtInterceptor

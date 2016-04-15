@@ -6,7 +6,7 @@ import includes from 'lodash/includes'
 import merge from 'lodash/merge'
 // TODO: Move registration to accounts.topcoder.com
 import { registerUser} from 'tc-accounts/core/auth.js'
-import { decodeToken, getToken, logout as doLogout } from 'tc-accounts'
+import { decodeToken, getFreshToken, logout as doLogout } from 'tc-accounts'
 
 let currentUser = null
 
@@ -31,7 +31,7 @@ export function loadUser() {
     return currentUser
   }
 
-  return getToken().then(loadUserSuccess)
+  return getFreshToken().then(loadUserSuccess)
 }
 
 export function getCurrentUser() {
