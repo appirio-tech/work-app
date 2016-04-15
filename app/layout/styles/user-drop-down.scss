@@ -1,0 +1,12 @@
+@import "work/work-includes";
+@import "variables";
+
+user-drop-down {
+  display: block;
+  top    : 54px;
+  width  : 324px;
+
+  &:hover {
+    max-height: 250px;
+  }
+}

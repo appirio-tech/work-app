@@ -1,0 +1,49 @@
+header.flex.center.middle
+  img(src=require("../images/tc-connect-logo.svg"))
+
+
+main.light-bg.elevated-bottom(ng-if="vm.flow == 'LOGIN'")
+  h1 welcome back to topcoder
+
+  p.secondary Let's start building your app.  Login or create your account below to begin.
+
+  login
+
+footer(ng-if="vm.flow == 'LOGIN'")
+  p Don't have an account? <a ui-sref="register">Register Now</a>
+
+
+main.light-bg.elevated-bottom(ng-if="vm.flow == 'REGISTRATION'")
+  h1 welcome to topcoder
+
+  p.secondary Let's start building your app.  Create your account below to begin.
+
+  registration
+
+footer(ng-if="vm.flow == 'REGISTRATION'")
+  p Already have an account? <a ui-sref="login">Login Here</a>
+
+
+main.light-bg.elevated-bottom(ng-if="vm.flow == 'REGISTRATION_SUCCESS'")
+  p Thanks for creating an account.  We've sent you a confirmation link.  Please check your email and click the link to activate your account. If you can't find the message please contact <a href="mailto:support@topcoder.com">support@topcoder.com</a>
+
+
+main.light-bg.elevated-bottom(ng-if="vm.flow == 'FORGOT'")
+  forgot-password
+
+footer(ng-if="vm.flow == 'FORGOT'")
+  p <a ui-sref="login">Back to Login</a>
+
+
+main.light-bg.elevated-bottom(ng-if="vm.flow == 'RESET'")
+  reset-password
+
+footer(ng-if="vm.flow == 'RESET'")
+  p <a ui-sref="login">Back to Login</a>
+
+
+main.light-bg.elevated-bottom(ng-if="vm.flow == 'SSO_LOGIN'")
+  sso-login
+
+footer(ng-if="vm.flow == 'SSO_LOGIN'")
+  p <a ui-sref="login">Back to Login</a>

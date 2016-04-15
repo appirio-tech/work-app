@@ -1,0 +1,34 @@
+@import "work/work-includes";
+@import "variables";
+
+login {
+  display: block;
+  text-align: center;
+
+  .forgot {
+    width     : 380px;
+    text-align: left;
+    margin-top: 10px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  hr {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .thankyou {
+    background-color: $primary-color;
+    margin: 1em 0;
+    padding: 1em;
+
+    p {
+      color: $white;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+}

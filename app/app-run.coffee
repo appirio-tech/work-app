@@ -1,10 +1,12 @@
-currentUser = null
+{ getCurrentUser, loadUser } = require './auth/user-v3.service.js'
 
 run = ($rootScope, $state, $urlRouter, UserV3Service) ->
   checkPermission = (event, toState, toParams, fromState, fromParams) ->
     # Route is public, ignore the rest of the permission logic
     if toState.public
       return true
+
+    currentUser = getCurrentUser()
 
     # No user has been loaded yet
     if !currentUser
@@ -13,17 +15,19 @@ run = ($rootScope, $state, $urlRouter, UserV3Service) ->
       # https://github.com/angular-ui/ui-router/wiki#state-change-events
       event.preventDefault()
 
-      loadUserSuccess = (user) ->
-        currentUser = user
+      loadUserSuccess = ->
+        # Retry the state transition
+        # https://github.com/angular-ui/ui-router/wiki/Quick-Reference#urlroutersync
         $urlRouter.sync()
 
       loadUserFailure = ->
         returnUrl   = $state.href toState.name, toParams, { absolute: true }
         accountsUrl = process.env.ACCOUNTS_URL + '?retUrl=' + encodeURIComponent(returnUrl) 
 
+        # Redirect to Topcoder's unified login site
         window.location = accountsUrl
 
-      UserV3Service.loadUser().then(loadUserSuccess, loadUserFailure)
+      loadUser().then(loadUserSuccess, loadUserFailure)
 
       return false
     else

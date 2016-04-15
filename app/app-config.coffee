@@ -168,7 +168,6 @@ config = ($locationProvider, $stateProvider) ->
   states['login'] =
     url: '/login?activated'
     template: require('./views/login-reg/login')()
-    public: true
 
   states['register'] =
     url: '/registration'

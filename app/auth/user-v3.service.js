@@ -1,45 +1,52 @@
 'use strict'
 
+require('./auth.module.js')
+
 import includes from 'lodash/includes'
 import merge from 'lodash/merge'
 // TODO: Move registration to accounts.topcoder.com
 import { registerUser} from 'tc-accounts/core/auth.js'
-import { decodeToken, getToken } from 'tc-accounts'
+import { decodeToken, getToken, logout as doLogout } from 'tc-accounts'
 
-const UserV3Service = function() {
-  let currentUser = null
+let currentUser = null
 
-  const loadUser = function() {
-    return getToken()
-      .then( token => {
-        const decodedToken = decodeToken( token )
+export function loadUser() {
+  function loadUserSuccess(token) {
+    const decodedToken = decodeToken( token )
 
-        if (decodedToken.userId) {
-          currentUser = decodedToken
-          currentUser.id = currentUser.userId
-          currentUser.role = 'customer'
+    if (decodedToken.userId) {
+      currentUser = decodedToken
+      currentUser.id = currentUser.userId
+      currentUser.role = 'customer'
 
-          if (includes(decodedToken.roles, 'Connect Copilot')) {
-            currentUser.role = 'copilot'
-          }
+      if (includes(decodedToken.roles, 'Connect Copilot')) {
+        currentUser.role = 'copilot'
+      }
 
-          if (includes(decodedToken.roles, 'Connect Support')) {
-            currentUser.role = 'admin'
-          }
-        }
+      if (includes(decodedToken.roles, 'Connect Support')) {
+        currentUser.role = 'admin'
+      }
+    }
 
-        return currentUser
-      })
-  }
-
-  const getCurrentUser = function() {
     return currentUser
   }
 
-  const createUser = function(body) {
-    return registerUser(body)
-  }
+  return getToken().then(loadUserSuccess)
+}
 
+export function getCurrentUser() {
+  return currentUser
+}
+
+export function createUser(body) {
+  return registerUser(body)
+}
+
+export function logout() {
+  return doLogout().then( () => currentUser = null )
+}
+
+const UserV3Service = function() {
   return {
     getCurrentUser: getCurrentUser,
     createUser: createUser,

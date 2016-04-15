@@ -1,0 +1,22 @@
+p.error.transition(ng-class="{ hide: !vm.error }") We can't find an account with the email / password you entered. Please try again.
+
+.thankyou(ng-if="vm.activated")
+  p Thank you for activating your account. Please sign in below.
+
+loader(ng-if="vm.loading")
+
+form.flex.column.middle(ng-submit="vm.submit()" method="post")
+  input.widest(type="text" ng-model="vm.username" required=true placeholder="username" autofocus=true)
+
+  input.widest(type="password" ng-model="vm.password" required=true placeholder="password")
+
+  .forgot
+    a(ui-sref="FORGOT_PASSWORD") Forgot Password?
+
+  button.action(type="submit") login
+
+  hr
+
+  p Or use your enterprise account
+
+  a.button(ui-sref="SSO_LOGIN") Single Sign On

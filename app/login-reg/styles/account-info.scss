@@ -1,0 +1,50 @@
+@import "work/work-includes";
+
+account-info {
+  display: block;
+
+  h4 {
+    font-weight: bold;
+  }
+
+  header {
+    p {
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    hr {
+      height: 8px;
+      margin-top: 15px;
+    }
+  }
+
+  main {
+    margin-top: 30px;
+
+    hr {
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+  }
+
+  input[type="password"] {
+    width: 275px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .email-address {
+    margin-top: 40px
+  }
+
+  button {
+    width: 140px;
+  }
+
+}

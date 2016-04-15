@@ -1,0 +1,16 @@
+@import "work/work-includes";
+
+forgot-password {
+  display: block;
+  text-align: center;
+
+  form {
+    input {
+      margin: 0 auto;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}

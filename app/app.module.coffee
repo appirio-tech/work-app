@@ -1,8 +1,8 @@
 angular = require('angular');
 
 dependencies = [
-  'ap-file-upload'
   'appirio-tech-ng-auth'
+  'ap-file-upload'
   'appirio-tech-ng-work-layout'
   'appirio-tech-ng-timeline'
   'appirio-tech-ng-messaging'

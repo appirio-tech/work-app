@@ -1,0 +1,72 @@
+@import "work/work-includes";
+@import "variables";
+
+message-drop-down {
+  display: block;
+  top    : 51px;
+  width  : 325px;
+
+  &:hover {
+    max-height: 522px;
+  }
+
+  .app-name {
+    @include ellipsis;
+
+    color: $primary-color;
+  }
+
+  avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sender {
+    @include vertical-align-middle;
+
+    margin-top: 5px;
+
+    .name, time {
+      margin-left: $horizontal-smallest;
+    }
+
+    .name {
+      @include ellipsis(160px);
+
+      color      : $black;
+      font-weight: 400;
+      font-size  : 16px;
+      line-height: 20px;
+    }
+  }
+
+  time {
+    font-size: 14px;
+    color: $grey;
+  }
+
+  ul li a {
+    border-left: 5px solid $white;
+
+    padding-left: 10px;
+
+    &:hover {
+      border-left-color: $primary-color-light;
+    }
+
+    &.unread {
+      border-left-color: $primary-color;
+    }
+  }
+
+  .message {
+    color      : $grey-dark;
+    white-space: normal;
+    margin-left: 42px;
+    margin-top : 0;
+  }
+
+  .no-messages {
+    padding: 20px;
+  }
+}

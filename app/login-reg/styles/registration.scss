@@ -1,0 +1,68 @@
+@import "work/work-includes";
+@import "variables";
+
+registration {
+  display: block;
+
+  .error {
+    width       : 380px;
+    margin-right: auto;
+    margin-left : auto;
+  }
+
+  .first-name, .last-name {
+    width: 50%;
+    float: left;
+  }
+
+  .first-name {
+    padding-right: 5px;
+  }
+
+  .last-name {
+    padding-left: 5px;
+  }
+
+  .organization {
+    clear: both;
+    padding: 1px;
+  }
+
+  hr {
+    margin: $vertical 0;
+  }
+
+  .username, .password {
+    position: relative;
+
+    .header {
+      font-weight: 500;
+    }
+
+    p {
+      line-height: 24px;
+    }
+  }
+
+  .tooltip {
+    display: none;
+  }
+
+  ul.use {
+    list-style: circle;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+
+  input {
+    &:focus + .tooltip {
+      display: block;
+    }
+  }
+
+  .thanks {
+    text-align : center;
+    max-width  : 380px;
+    margin     : 0 auto;
+  }
+}

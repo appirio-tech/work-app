@@ -1,0 +1,49 @@
+ul.flex.center.middle
+  li.logo
+    a.clean(ng-if="!vm.member" "ng-home-link"=true, ui-sref="view-work-multiple")
+      img(ng-src=require("./../images/tc-connect-logo.svg"))
+
+    img(ng-if="vm.member" ng-src=require("./../images/tc-connect-logo.svg"))
+
+    img.org(ng-if="vm.org == 'sfdc-prodtest'" ng-src=require("./../images/booz-allen-logo.jpg"))
+
+  li.app-name
+    a(ng-if="vm.showAppName && (vm.customer || vm.admin)" ui-sref="timeline({workId: vm.workId})")
+      h4 {{vm.appName}}
+
+    a(ng-if="vm.showAppName && vm.copilot" ui-sref="copilot-project-details({ id: vm.workId })")
+      h4 {{vm.appName}}
+
+    a(ng-if="vm.showAppName && vm.member")
+      h4 Design Collaboration
+
+  li
+    ul.links(ng-show="vm.loggedIn")
+      li.dashboard(ng-if="!vm.member")
+        a(ui-sref="view-work-multiple") Dashboard
+
+      li.projects(ng-if="vm.customer || vm.copilot")
+        button.clean(focus-on-click=true) Projects <span class="caret">&dtrif;</span>
+
+        project-drop-down.drop-down.transition.elevated(user-type="{{ vm.userType }}")
+
+      li.profile
+        button.clean(focus-on-click=true)
+          avatar(avatar-url="{{vm.userAvatar}}")
+
+        user-drop-down.drop-down.transition.elevated
+
+      li.notifications(ng-if="vm.customer || vm.copilot")
+        button.clean(type="button" focus-on-click=true)
+          .notification(ng-class="{ danger: vm.unreadCount > 0 }") {{ vm.unreadCount || 0 }}
+
+        message-drop-down.drop-down.transition.elevated(
+          subscriber-id="{{ vm.subscriberId }}"
+          user-type="{{ vm.userType }}"
+        )
+
+    ul.links(ng-hide="vm.loggedIn")
+      li.login
+        a.button.hollow(ui-sref="login") Log in
+
+
