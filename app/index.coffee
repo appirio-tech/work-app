@@ -1,3 +1,5 @@
+require 'babel-polyfill'
+
 scripts    = document.getElementsByTagName 'script'
 src        = scripts[scripts.length - 1].getAttribute 'src'
 publicPath = src.substr 0, src.lastIndexOf('/' + 1)
