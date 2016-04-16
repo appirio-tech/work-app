@@ -6,23 +6,26 @@ __webpack_public_path__ = publicPath
 
 require 'angular'
 require 'angular-ui-router'
+require 'angular-resource'
 
 require './app.module'
 require './app-config'
 require './app-run'
 
+require './auth/auth.module.js'
 require './api-services/api-services.module.js'
-require 'appirio-tech-ng-auth'
+require './layout/src.coffee'
+
 require 'appirio-tech-ng-optimist'
+require 'appirio-tech-ng-ui-components'
+require 'appirio-tech-ng-work-constants'
 require 'appirio-tech-ng-file-upload'
-require 'appirio-tech-ng-login-reg'
 require 'appirio-tech-ng-messaging'
 require 'appirio-tech-ng-projects'
 require 'appirio-tech-ng-status-report'
 require 'appirio-tech-ng-submissions'
 require 'appirio-tech-ng-submit-work'
 require 'appirio-tech-ng-timeline'
-require 'appirio-tech-ng-work-layout'
 
 requireContextFiles = (files) ->
   paths = files.keys()

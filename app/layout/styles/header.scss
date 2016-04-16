@@ -1,0 +1,131 @@
+@import "work/work-includes";
+@import "variables";
+
+layout-header {
+  display         : block;
+  position        : fixed;
+  top             : 0;
+  width           : 100%;
+  padding         : 15px;
+  background-color: $black;
+  z-index         : 100;
+  min-height      : $header-height;
+  max-height      : $header-height;
+  border-bottom   : 1px solid $grey-darker;
+
+  > ul {
+    > li {
+      width: 33.33%;
+      float: left;
+    }
+  }
+
+  li.app-name {
+    margin     : 0;
+    text-align : center;
+    color      : $white;
+    min-height : 1px; /* fix to take up space */
+
+    h4 {
+      @include ellipsis;
+
+      color: $grey;
+      padding: 5px; /* help centers due to line height from style guide */
+      font-size: 22px;
+    }
+  }
+
+  .logo {
+    img {
+      max-width: 180px;
+      max-height: 37px;
+
+      &.org {
+        padding-left: 20px;
+        border-left: 2px solid #ddd;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .links {
+    @include vertical-align-middle();
+
+    text-align: right;
+
+    > * {
+      text-align: left;
+    }
+
+    .caret {
+      margin-left: 4px;
+    }
+
+    .dashboard a, .projects > button {
+      font-family: "sofia-pro";
+      font-weight: 500;
+    }
+
+    > li {
+      margin-left: 25px;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      > a, > button {
+        color: $white;
+        text-transform: uppercase;
+      }
+    }
+
+    .projects, .profile {
+      position: relative;
+
+      >  button {
+        &:focus + user-drop-down {
+          max-height: 250px;
+        }
+
+        &:focus + project-drop-down {
+          max-height: 504px;
+        }
+      }
+    }
+
+    .notifications {
+      position: relative;
+      margin-left: 0;
+
+      > button {
+        margin-left: $horizontal-smallest;
+        line-height: initial;
+
+        &:focus + message-drop-down {
+          max-height: 522px;
+        }
+
+        .notification {
+          $diameter: 30px;
+
+          background-color: $primary-color;
+          color           : white;
+          padding         : 4px;
+          font-size       : 16px;
+          min-width       : $diameter;
+          height          : $diameter;
+          border-radius   : $diameter/2;
+
+          &.danger {
+            background-color: $danger-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

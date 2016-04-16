@@ -1,0 +1,18 @@
+header messages
+
+ul
+  li(ng-repeat="thread in vm.threads track by $index")
+    a(ui-sref="{{vm.threadHref}}({ id: thread.projectId, threadId: thread.id })" ng-class="{unread: thread.unreadCount > 0}")
+      .app-name {{thread.subject}}
+
+      .sender
+        avatar(avatar-url="{{ thread.messages[thread.messages.length -1].publisher.avatar }}")
+
+        .name {{thread.messages[thread.messages.length -1].publisher.handle}}
+
+        time {{ thread.messages[thread.messages.length -1].createdAt | timeLapse }}
+
+      p.message {{ thread.messages[thread.messages.length -1].body }}
+
+  li.no-messages(ng-if="vm.threads.length == 0")
+    p You have no messages.

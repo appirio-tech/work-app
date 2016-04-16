@@ -1,0 +1,13 @@
+header projects
+
+ul
+  li(ng-if="vm.userType == 'customer'")
+    a(ui-sref="submit-work") Create New Project
+
+  li(ng-if="vm.userType == 'customer' " ng-repeat="project in vm.projects")
+    a(ng-if="project.status != 'INCOMPLETE'" ui-sref="timeline({ workId: project.id })") {{ project.name }}
+
+    a(ng-if="project.status == 'INCOMPLETE'" ui-sref="submit-work({ id: project.id })") {{ project.name }}
+
+  li(ng-if="vm.userType != 'customer' " ng-repeat="project in vm.copilotProjects")
+    a(ui-sref="copilot-project-details({ id: project.id })") {{ project.name }}

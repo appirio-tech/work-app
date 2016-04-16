@@ -5,4 +5,4 @@ const directive = (reactDirective) => reactDirective(Provider(ProjectSearch))
 
 directive.$inject = ['reactDirective']
 
-angular.module('appirio-tech-ng-login-reg').directive('projectSearch', directive)
+angular.module('app').directive('projectSearch', directive)

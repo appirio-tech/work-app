@@ -1,0 +1,25 @@
+@import "work/work-includes";
+@import "variables";
+
+project-drop-down {
+  display: block;
+  top    : 43px;
+  width  : 324px;
+
+  header {
+    background-color: $grey-lighter;
+    padding         : 15px $horizontal-small 8px $horizontal-small;
+    text-transform  : uppercase;
+    font-weight     : 400;
+    color           : $grey-darker;
+  }
+
+  &:hover {
+    max-height: 504px;
+  }
+
+  li:first-child a {
+    font-weight: 500;
+    color: $primary-color;
+  }
+}

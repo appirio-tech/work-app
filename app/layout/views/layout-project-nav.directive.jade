@@ -1,0 +1,18 @@
+ul
+  li(ng-if="vm.customer || vm.admin" ng-class="{active: vm.activeLink == 'timeline'}")
+    a(ui-sref="timeline({ workId: vm.workId })") Timeline
+
+  li(ng-class="{active: vm.activeLink == 'submissions'}")
+    a(ui-sref="step({ projectId: vm.workId, stepId: vm.currentStepId })") Submissions
+
+  li(ng-if="!vm.member" ng-class="{active: vm.activeLink == 'messaging'}")
+    a(ui-sref="messaging({ id: vm.workId, threadId: vm.threadId })") Messaging
+
+  li(ng-if="!vm.member" ng-class="{active: vm.activeLink == 'project-details'}")
+    a(ui-sref="project-details({ id: vm.workId })") Project details
+
+  li(ng-if="vm.copilot || vm.admin" ng-class="{active: vm.activeLink == 'copilot-manage-steps'}")
+    a(ui-sref="copilot-manage-steps({ projectId: vm.workId })") Manage Steps
+
+  li(ng-if="vm.copilot || vm.admin" ng-class="{active: vm.activeLink == 'copilot-status-reports'}")
+    a(ui-sref="copilot-status-reports({ id: vm.workId, stepId: vm.currentStepId})") Status Reports

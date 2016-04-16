@@ -1,0 +1,8 @@
+@import "work/work-includes";
+@import "variables";
+
+.layout-main {
+  /* due to header fixed position */
+  /* has to be padding due to flush height */
+  padding-top: $header-height;
+}

@@ -159,48 +159,6 @@ config = ($locationProvider, $stateProvider) ->
       project: resolveProject
 
   # general routes
-  states['profile'] =
-    url: '/profile'
-    template: require('./views/login-reg/profile')()
-    controller : 'BasicController as vm'
-    rolesAllowed: [ 'customer', 'copilot' ]
-
-  states['login'] =
-    url: '/login?activated'
-    template: require('./views/login-reg/login')()
-    public: true
-
-  states['register'] =
-    url: '/registration'
-    template   : require('./views/login-reg/registration')()
-    public: true
-
-  states['registration-success'] =
-    url: '/registration-success'
-    template   : require('./views/login-reg/registration-success')()
-    public: true
-
-  states['SSO_LOGIN'] =
-    url: '/sso-login/:org'
-    template   : require('./views/login-reg/sso-login')()
-    controller : 'BasicController as vm'
-    public: true
-
-  states['SSO_CALLBACK'] =
-    url: '/sso-callback?userJWTToken&status&message'
-    template   : require('./views/login-reg/sso-callback')()
-    controller : 'BasicController as vm'
-    public: true
-
-  states['FORGOT_PASSWORD'] =
-    url: '/forgot-password'
-    template   : require('./views/login-reg/forgot-password')()
-    public: true
-
-  states['RESET_PASSWORD'] =
-    url: '/reset-password?token&handle'
-    template   : require('./views/login-reg/reset-password')()
-    public: true
 
   states['forbidden'] =
     url: '/403',

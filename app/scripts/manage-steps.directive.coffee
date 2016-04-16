@@ -8,4 +8,4 @@ directive = (reactDirective) ->
 
 directive.$inject = ['reactDirective']
 
-angular.module('appirio-tech-ng-login-reg').directive 'manageSteps', directive
+angular.module('app').directive 'manageSteps', directive
