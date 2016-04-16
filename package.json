@@ -40,15 +40,15 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "serve"      : "webpack-dev-server --history-api-fallback --inline --progress",
-    "dev"        : "npm run serve -- --dev",
-    "dev:mock"   : "npm run dev -- --mock",
-    "qa"         : "npm run serve -- --qa",
-    "prod"       : "npm run serve -- --prod",
-    "build"      : "webpack -p --bail --progress --build",
-    "test:watch" : "npm run test -- --watch",
-    "lint"       : "eslint --ext .js,.jsx .",
-    "test"       : "cross-env NODE_ENV=test mocha --reporter nyan --compilers js:babel-core/register --require ignore-styles --recursive -t 10 \"./app/**/*.spec.js\""
+    "serve": "webpack-dev-server --history-api-fallback --inline --progress",
+    "dev": "npm run serve -- --dev",
+    "dev:mock": "npm run dev -- --mock",
+    "qa": "npm run serve -- --qa",
+    "prod": "npm run serve -- --prod",
+    "build": "webpack -p --bail --progress --build",
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint --ext .js,.jsx .",
+    "test": "cross-env NODE_ENV=test mocha --reporter nyan --compilers js:babel-core/register --require ignore-styles --recursive -t 10 \"./app/**/*.spec.js\""
   },
   "dependencies": {
     "angular": "^1.4.8",
@@ -72,6 +72,7 @@
     "appirio-tech-ng-ui-components": "^2.2.4",
     "appirio-tech-ng-work-constants": "0.0.1",
     "appirio-tech-react-components": "^0.0.10",
+    "babel-polyfill": "^6.7.4",
     "moment": "^2.10.6",
     "react-input-autosize": "^0.6.6",
     "tc-accounts": "https://github.com/appirio-tech/accounts-app.git#dev"
