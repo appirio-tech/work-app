@@ -5,6 +5,7 @@
 UserDropDownController = ($scope, $state, UserV3Service) ->
   vm = this
   vm.handle = ''
+  vm.loggingOut = false
 
   onUserChange = ->
     user = UserV3Service.getCurrentUser()
@@ -12,6 +13,8 @@ UserDropDownController = ($scope, $state, UserV3Service) ->
     vm.handle = user?.handle
 
   vm.logout = ->
+    vm.loggingOut = true
+
     logout().then ->
       $state.go 'home', {}, reload: true
 
