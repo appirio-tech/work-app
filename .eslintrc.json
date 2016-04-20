@@ -36,7 +36,6 @@
     "_": true
   },
   "env": {
-    "angular": true,
     "browser": true,
     "es6": true,
     "jquery": true,
