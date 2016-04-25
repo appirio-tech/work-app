@@ -5,6 +5,7 @@ import './auth.module.js'
 import store from '../store.coffee'
 import includes from 'lodash/includes'
 import { decodeToken, getFreshToken, logout as doLogout } from 'tc-accounts'
+import { setUser } from '../store/actions/user.js'
 
 let currentUser = null
 
@@ -25,10 +26,7 @@ export function loadUser() {
         currentUser.role = 'admin'
       }
 
-      store.dispatch({
-        type: 'SET_USER',
-        user: currentUser
-      })
+      store.dispatch(setUser(currentUser))
     }
 
     return currentUser

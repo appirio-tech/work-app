@@ -1,8 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import checkUser from '../middleware/check-user'
-import checkAuth from '../middleware/check-auth'
-import api from '../middleware/api'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 

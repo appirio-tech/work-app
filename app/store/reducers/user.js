@@ -1,7 +1,7 @@
-import { SET_USER } from '../middleware/check-user'
+import { SET_USER } from '../actions/user.js'
 
 export default function user(state = {}, action) {
-  if (action.type == SET_USER) {
+  if (action.type === SET_USER) {
     state = action.user
   }
 
