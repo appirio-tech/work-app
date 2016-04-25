@@ -1,11 +1,9 @@
 'use strict'
 
-require('./auth.module.js')
+import './auth.module.js'
 
+import store from '../store.coffee'
 import includes from 'lodash/includes'
-import merge from 'lodash/merge'
-// TODO: Move registration to accounts.topcoder.com
-import { registerUser} from 'tc-accounts/core/auth.js'
 import { decodeToken, getFreshToken, logout as doLogout } from 'tc-accounts'
 
 let currentUser = null
@@ -26,6 +24,11 @@ export function loadUser() {
       if (includes(decodedToken.roles, 'Connect Support')) {
         currentUser.role = 'admin'
       }
+
+      store.dispatch({
+        type: 'SET_USER',
+        user: currentUser
+      })
     }
 
     return currentUser
@@ -38,19 +41,14 @@ export function getCurrentUser() {
   return currentUser
 }
 
-export function createUser(body) {
-  return registerUser(body)
-}
-
 export function logout() {
   return doLogout().then( () => currentUser = null )
 }
 
 const UserV3Service = function() {
   return {
-    getCurrentUser: getCurrentUser,
-    createUser: createUser,
-    loadUser: loadUser
+    getCurrentUser,
+    loadUser
   }
 }
 

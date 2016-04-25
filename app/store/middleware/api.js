@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr'
 import axios from 'axios'
-import checkAuth from './check-auth'
+import { getFreshToken } from 'tc-accounts'
 
 const trim = (token) => token.substring(1, token.length - 1)
 
@@ -36,7 +36,7 @@ export default function callApi({ schema, endpoint, ignoreResult, method, data }
     }
   }
 
-  return checkAuth()
+  return getFreshToken()
     .then(executeRequest)
     .then(handleResponse)
 }
