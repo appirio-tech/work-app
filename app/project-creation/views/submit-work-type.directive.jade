@@ -1,0 +1,30 @@
+header.flex.column.center
+  h1 Let's Start Creating Your App
+
+  p Welcome to our step-by-step guide for gathering  your requirements. Tell us about your feature requirements and design preferences, and we’ll start creating your app.
+
+form(ng-submit="vm.validateAllSections()")
+  include parts/type-form/name
+
+  include parts/type-form/platforms
+
+  include parts/type-form/devices
+
+  include parts/type-form/orientations
+
+  include parts/type-form/type
+
+  include parts/type-form/brief
+
+modal(show="vm.showSuccessModal" background-click-close=true)
+  .success
+    h2 Awesome!
+
+    p Your {{ vm.name }} is set up now
+
+    p Share your email to signup and we'll be sure to send a project link.
+
+    form
+      input(type="email" required=true)
+
+      button(type="submit") Submit

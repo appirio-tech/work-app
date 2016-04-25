@@ -1,0 +1,11 @@
+modal.full(show="vm.show")
+  main.flex.column.middle.center.flex-grow
+    .icon-house
+      .icon.biggest.checkmark-white
+
+    h1 Project submitted!
+
+    p Your project has been submitted for review. A copilot from our community will look over your requirements and be in touch shortly with updates or questions. Please keep an eye out for an email.
+
+    button.action(ui-sref="view-work-multiple" ng-click="vm.show = false") Go to your dashboard
+

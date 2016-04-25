@@ -1,0 +1,28 @@
+@import "work/work-includes";
+
+submit-work-complete {
+  main {
+    > * {
+      margin-top: 15px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      max-width: 400px;
+    }
+
+    .app-name {
+      color: $primary-color;
+    }
+
+    .icon-house {
+      background-color: $primary-color;
+      padding         : 15px;
+      border-radius   : 50%;
+    }
+  }
+}

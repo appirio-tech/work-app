@@ -8,7 +8,7 @@ dependencies = [
   'appirio-tech-ng-messaging'
   'appirio-tech-ng-ui-components'
   'appirio-tech-ng-projects'
-  'appirio-tech-ng-submit-work'
+  'project-creation'
   'appirio-tech-submissions'
   'appirio-tech-ng-api-services'
   'appirio-tech-ng-status-report'

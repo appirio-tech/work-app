@@ -1,0 +1,11 @@
+modal.slide.upload-documents(show="vm.showUploadModal" background-click-close=true)
+  main
+    img.upload-icon(src=require("./../../images/upload.svg"))
+
+    h2 Upload <strong>Requirements</strong>
+
+    p Upload a brief, requirements, specs, or feature list.
+
+    file-uploader(store="vm.store" disable-click="vm.readOnly" drag-and-drop="vm.dragAndDrop")
+
+    button(ng-click="vm.hideUpload()") Done

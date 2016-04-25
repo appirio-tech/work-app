@@ -17,6 +17,7 @@ require './app-run'
 require './auth/auth.module.js'
 require './api-services/api-services.module.js'
 require './layout/src.coffee'
+require './project-creation/src.coffee'
 
 require 'appirio-tech-ng-optimist'
 require 'appirio-tech-ng-ui-components'
@@ -26,7 +27,6 @@ require 'appirio-tech-ng-messaging'
 require 'appirio-tech-ng-projects'
 require 'appirio-tech-ng-status-report'
 require 'appirio-tech-ng-submissions'
-require 'appirio-tech-ng-submit-work'
 require 'appirio-tech-ng-timeline'
 
 requireContextFiles = (files) ->

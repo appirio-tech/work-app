@@ -1,0 +1,136 @@
+@import "work/work-includes";
+
+$card-max-width: 180px;
+
+submit-work-visuals {
+  p.error {
+    @include block-center();
+
+    max-height: 0px;
+    overflow: hidden;
+
+    &.show {
+      max-height: 30px;
+      padding-top: 10px;
+    }
+  }
+
+  .enter-url {
+    input {
+      width       : 375px;
+      margin-top  : 10px;
+      margin-right: auto;
+      margin-left : auto;
+    }
+
+    button {
+      margin-top: 30px;
+    }
+  }
+
+  .fonts {
+    button {
+      margin-top: 40px;
+
+      &.clean {
+        margin-top: 0px;
+      }
+    }
+
+    .serif {
+      .header {
+        width: 85px;
+      }
+    }
+
+    .sans-serif {
+      .header {
+        width: 156px;
+      }
+    }
+
+    h2 {
+      font-weight: 300px;
+    }
+
+    hr {
+      margin: 10px 0 30px 0;
+    }
+
+    > ul {
+      > li {
+        &:first-child, &:last-child {
+          margin: 0 30px;
+        }
+      }
+    }
+
+    img {
+      width: 300px;
+    }
+  }
+
+  .choose-styles {
+    .nav {
+      @include vertical-align-middle;
+
+      text-align    : center;
+      text-transform: uppercase;
+      width         : 100%;
+      padding       : 30px;
+
+      > li {
+        margin: 0 15px;
+      }
+    }
+
+    button {
+      &.clean {
+        color: $primary-color;
+
+        &.active {
+          color: $grey-darkest;
+        }
+      }
+    }
+
+    > main {
+      width           : 100%;
+      border-top      : 1px solid $grey;
+
+      &.icons h6 {
+        margin-top: 25px;
+      }
+    }
+
+    .colors {
+      img {
+        width: 150px;
+        display: block;
+      }
+    }
+
+    .icons, .colors {
+      > ul {
+        margin: 30px;
+
+        li {
+          margin: 0 30px;
+          max-width: 190px;
+
+          button {
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+
+    .notes {
+      textarea {
+        max-width : 550px;
+        height    : 160px;
+        margin    : 25px auto 0 auto;
+      }
+    }
+  }
+}

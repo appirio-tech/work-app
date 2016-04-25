@@ -1,0 +1,228 @@
+header
+  include parts/nav
+
+  img(ng-src=require("./../images/development-active.svg"))
+
+  h1 Let's build your app!
+
+  p Help define the technical requirements for your app
+
+.flush-height.flex.column(flush-height="lock")
+  ul.dark-bg.flex.center.middle.flex-grow.selectable-choices
+    li
+      button.clean(ng-click="vm.showDefineSpecs()")
+        img.icon.biggest(ng-if="!vm.specsDefined" ng-src=require("./../images/define-dev-specs.svg"))
+
+        img.icon.biggest(ng-if="vm.specsDefined" ng-src=require("./../images/define-dev-specs-selected.svg"))
+
+      h4 Define Requirements
+
+      p Answer questions to help us estimate cost and time.
+
+      button.action(type="button" ng-click="vm.showDefineSpecs()") select
+
+    li
+      button.clean(ng-click="vm.uploadSpecs()")
+        img.icon.biggest(ng-if="!vm.uploaderHasFiles || vm.uploaderHasErrors || vm.uploaderUploading" src=require("./../images/upload.svg"))
+
+        img.icon.biggest(ng-if="vm.uploaderHasFiles && !vm.uploaderHasErrors && !vm.uploaderUploading" ng-src=require("./../images/upload-selected.svg"))
+
+      h4 Upload Requirements
+
+      p Please upload any technical requirements.
+
+      button.action(ng-click="vm.uploadSpecs()") select
+
+  .continue-buttons
+    button.save(ng-click="vm.save(true, false)") save
+
+    button.kick-off.action(ng-click="vm.save(true, true)" ng-disabled="vm.readOnly") kick off project
+
+modal.slide.full.define-development(show="vm.showDefineSpecsModal" background-click-close=true)
+  ul.nav
+    li
+      button.clean(ng-click="vm.viewPrevious()")
+        .icon.arrow.smallest
+
+    li
+      button.clean(ng-click="vm.activateModal('buildMethod')" ng-class="{active: vm.activeDevelopmentModal == 'buildMethod'}") build method
+
+    li
+      button.clean(ng-click="vm.activateModal('offlineAccess')" ng-class="{active: vm.activeDevelopmentModal == 'offlineAccess'}") offline access
+
+    li
+      button.clean(ng-click="vm.activateModal('personalInformation')" ng-class="{active: vm.activeDevelopmentModal == 'personalInformation'}") personal information
+
+    li
+      button.clean(ng-click="vm.activateModal('security')" ng-class="{active: vm.activeDevelopmentModal == 'security'}") security level
+
+    li
+      button.clean(ng-click="vm.activateModal('thirdPartyIntegrations')" ng-class="{active: vm.activeDevelopmentModal == 'thirdPartyIntegrations'}") third party integrations
+
+    li
+      button.clean(ng-click="vm.viewNext()")
+        .icon.arrow.smallest.right
+
+  main.dark-bg.build-method.flex.column.center.middle.flex-grow(ng-show= "vm.activeDevelopmentModal == 'buildMethod'")
+    h2 How do you want your app to be built?
+
+    ul.selectable-choices.flex.space-between
+      li.flex.column
+        button.clean.method(ng-click="vm.toggleSelection('buildMethod', vm.buildMethods.native)" ng-disabled="vm.readOnly")
+          .icon-container.flex.center
+            img(ng-if="vm.work.buildMethod == 'native'" ng-src=require("./../images/Phone-selected.svg"))
+
+            img(ng-if="vm.work.buildMethod != 'native'" ng-src=require("./../images/Phone.svg"))
+
+        h6 native app
+
+        button.action(selectable=true type="button" ng-model="vm.work.buildMethod" value="vm.buildMethods.native" ng-disabled="vm.readOnly")
+
+      li.flex.column
+        button.clean.method(ng-disabled="vm.readOnly" ng-click="vm.toggleSelection('buildMethod', vm.buildMethods.html5)")
+          .icon-container.flex.center
+            img(ng-if="vm.work.buildMethod == 'html5'" ng-src=require("./../images/Html5-selected.svg"))
+
+            img.html5(ng-if="vm.work.buildMethod != 'html5'" ng-src=require("./../images/Html5.svg"))
+
+        h6 html5 app
+
+        button.action(selectable=true type="button" ng-model="vm.work.buildMethod" value="vm.buildMethods.html5" ng-disabled="vm.readOnly")
+
+      li.flex.column
+        button.clean.method(ng-disabled="vm.readOnly" ng-click="vm.toggleSelection('buildMethod', vm.buildMethods.hybrid)")
+          .icon-container.flex.center
+            img(ng-if="vm.work.buildMethod == 'hybrid'" ng-src=require("./../images/Hybrid-selected.svg"))
+
+            img(ng-if="vm.work.buildMethod != 'hybrid'" ng-src=require("./../images/Hybrid.svg"))
+
+        h6 hybrid
+
+        button.action(selectable=true type="button" ng-model="vm.work.buildMethod" value="vm.buildMethods.hybrid" ng-disabled="vm.readOnly")
+
+  main.dark-bg.flex.column.center.flex-grow(ng-show="vm.activeDevelopmentModal == 'offlineAccess'")
+    h2 Does your application need offline access? 
+
+    p Do your users need to be able to interact with the application when they are unable to connect to the internet (over the air or via wifi)?
+
+    ul.or-choices.flex.center
+      li
+        button.big(
+          ng-model="vm.work.offlineAccess"
+          label="yes"
+          value="true"
+          selectable="action"
+          type="button"
+          ng-disabled="vm.readOnly"
+        )
+
+        p Users will need to use the app even when they’re offline. This feature increases complexity and cost.
+
+      li.or
+        .house OR
+
+      li
+        button.big(
+          ng-model="vm.work.offlineAccess"
+          label="no"
+          value="false"
+          selectable="action"
+          type="button"
+          ng-disabled="vm.readOnly"
+        )
+
+        p The application will gracefully present a message to users to please connect to the internet.
+
+  main.dark-bg.flex.column.center.flex-grow(ng-show= "vm.activeDevelopmentModal == 'personalInformation'")
+    h2 Personal information
+
+    p Is there any personal user information that is stored or transmitted?
+
+    ul.or-choices.flex.center
+      li
+        button.big(
+          ng-model="vm.work.usesPersonalInformation"
+          label="yes"
+          value="true"
+          selectable="action"
+          type="button"
+          ng-disabled="vm.readOnly"
+        )
+
+        p Storing or transmitting personal information requires security and encryption, adding complexity and cost.
+
+      li.or
+        .house OR
+
+      li
+        button.big(
+          ng-model="vm.work.usesPersonalInformation"
+          label="no"
+          value="false"
+          selectable="action"
+          type="button"
+          ng-disabled="vm.readOnly"
+        )
+
+        p The app is not transferring or storing personal information.
+
+  main.dark-bg.security.flex.column.center.flex-grow(ng-show= "vm.activeDevelopmentModal == 'security'")
+    h2 What level of security do you need?
+
+    ul.selectable-choices.flex.center
+      li
+        button.clean(ng-click="vm.toggleSelection('securityLevel', vm.securityLevels.none)" ng-disabled="vm.readOnly")
+          img(ng-src=require("./../images/security-none.svg"))
+
+        h6 Standard
+
+        p Standard measures, including https, that are sufficient for the majority of the apps.
+
+        button.action(selectable=true type="button" ng-model="vm.work.securityLevel" value="vm.securityLevels.none" ng-disabled="vm.readOnly")
+
+      li
+        button.clean(ng-disabled="vm.readOnly" ng-click="vm.toggleSelection('securityLevel', vm.securityLevels.minimal)")
+          img(ng-src=require("./../images/security-minimal.svg"))
+
+        h6 Enhanced
+
+        p Includes encrypting data stored on devices and other precautions needed when viewing sensitive data in an app.
+
+        button.action(selectable=true type="button" ng-model="vm.work.securityLevel" value="vm.securityLevels.minimal" ng-disabled="vm.readOnly")
+
+      li
+        button.clean(ng-disabled="vm.readOnly" ng-click="vm.toggleSelection('securityLevel', vm.securityLevels.complete)")
+          img(ng-src=require("./../images/security-complete.svg"))
+
+        h6 Maximum security
+
+        p Includes custom certificates for all service calls and other measures needed for highly-secure apps.
+
+        button.action(selectable=true type="button" ng-model="vm.work.securityLevel" value="vm.securityLevels.complete" ng-disabled="vm.readOnly")
+
+  main.dark-bg.third-party-integrations.flex.column.center.flex-grow(ng-show="vm.activeDevelopmentModal == 'thirdPartyIntegrations'")
+    h2 3rd party <strong>integrations?</strong>
+
+    p Enter the 3rd party integrations you'll need for this app. Ex: Facebook, Google Maps.
+
+    .api-input.flex.center.column
+      form.flex.center.middle(ng-submit="vm.addCurrentApiIntegration()")
+        input(type="text" ng-model="vm.currentApiIntegration" ng-disabled="vm.readOnly")
+
+        button.action(ng-click="vm.addCurrentApiIntegration()" ng-disabled="vm.readOnly") Add
+
+      ul.api-list.flex.middle.column
+        li.api-name.flex.space-between(ng-repeat="api in vm.work.apiIntegrations track by $index")
+          strong {{api}}
+
+          button.clean(ng-click="vm.removeApiIntegration($index)" ng-disabled="vm.readOnly")
+            p &times;
+
+  footer
+    button(ng-hide="vm.backButtonDisabled" ng-click="vm.viewPrevious()") back
+
+    button.action.action(ng-hide="vm.nextButtonDisabled" ng-click="vm.viewNext()") next
+
+    button.action(ng-show="vm.showFinishDevelopmentButton" ng-click="vm.save()" ng-disabled="vm.readOnly") Save
+
+include parts/upload-requirements

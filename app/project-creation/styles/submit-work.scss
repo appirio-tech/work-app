@@ -1,0 +1,251 @@
+@import "work/work-includes";
+
+submit-work-type,
+submit-work-features,
+submit-work-visuals,
+submit-work-development,
+submit-work-complete {
+  display         : block;
+  text-align      : center;
+  background-color: $white;
+
+  h1, h5 {
+    font-weight: 500;
+  }
+
+  .uploaderWrapper {
+    margin-top: 15px;
+
+    .failed {
+      color: $danger-color;
+    }
+
+    .uploader {
+      .fileActions {
+        margin-top: 10px;
+      }
+
+      margin: 10px;
+
+      button {
+        margin: 10px;
+      }
+    }
+  }
+
+  .flush-height, .full-height {
+    &.has-loader {
+      position: relative;
+    }
+  }
+
+  .continue-buttons {
+    padding: 32px;
+
+    button {
+      margin-left: 15px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .app-name {
+    margin-top: 0;
+  }
+
+  .navs {
+    @include justify-content(space-between);
+
+    width         : 400px;
+    margin        : 0 auto;
+    text-transform: uppercase;
+
+    li {
+      width: 133.33px;
+      text-align: center;
+
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    a {
+      color: $grey;
+      text-transform: uppercase;
+    }
+
+    .active {
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  > header {
+    background-color: $black;
+    padding         : 20px;
+
+    progress {
+      display   : block;
+      width     : 400px;
+      margin    : 0 auto;
+      margin-top: 10px;
+    }
+
+    a {
+      color: $white;
+    }
+
+    > * {
+      max-width: 600px;
+      color: $white;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    img {
+      height: 60px;
+      margin-top: 30px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-weight: 200;
+    }
+  }
+
+  ul.or-choices {
+    margin-top: 30px;
+
+    li {
+      min-width: 340px;
+      max-width: 340px;
+
+      > button.clean {
+        p {
+          margin-top: 10px;
+        }
+      }
+
+      > p {
+        margin-top: 10px;
+      }
+
+      hr {
+        margin-top: 10px;
+        background-color: $grey;
+      }
+
+      button.big {
+        width: 280px;
+        height: 100px;
+        font-size: 18px;
+
+        .icon-container {
+          margin-right: 10px;
+
+          .icon.checkmark-white {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      &.or {
+        margin          : 30px;
+        background-color: $grey;
+        font-size       : 15px;
+        color           : $white;
+        min-width       : 40px;
+        max-width       : 40px;
+        height          : 40px;
+        line-height     : 40px;
+        border-radius   : 50%;
+      }
+    }
+  }
+
+  modal.full {
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
+
+    background-color: $white;
+  }
+
+  ul.selectable-choices {
+    > li {
+      margin: 0 30px;
+      width: 400px;
+
+      button {
+        margin-top: 15px;
+      }
+
+      .icon {
+        display: inline-block;
+      }
+
+      button {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h4 {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .upload-documents, .enter-url {
+    background-color: $white;
+
+    .upload-icon {
+      height: 100px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 892px;
+
+      > p, > button {
+        margin-top: 15px;
+      }
+    }
+
+    file-uploader {
+      display: block;
+      margin-top: 30px;
+
+      .UploadedFiles {
+        overflow        : auto;
+        max-height      : 398px;
+        background-color: $grey-lightest;
+      }
+    }
+
+    .close {
+      background-color: transparent;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+  }
+}
+
+submit-work-visuals,
+submit-work-development {
+  modal > footer {
+    button {
+      margin: 30px;
+      width: 120px;
+    }
+  }
+}

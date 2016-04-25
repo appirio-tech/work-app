@@ -1,0 +1,70 @@
+loader(ng-if="vm.loading")
+
+header
+  include parts/nav
+
+  img(src=require("./../images/design-white-thin.svg"))
+
+  h1 Let's design your app!
+
+  p Help define the visual style for your app
+
+.flush-height.flex.column(flush-height="lock")
+  ul.dark-bg.flex.center.flex-grow.middle.selectable-choices(ng-class="{active: vm.showPaths}")
+    li
+      button.clean(ng-click="vm.showChooseStyles()")
+        img.icon.big.biggest(ng-if="!vm.specsDefined" src=require("./../images/brand-reqs.svg"))
+
+        img.icon.big.biggest(ng-if="vm.specsDefined" src=require("./../images/brand-reqs-selected.svg"))
+
+      h4 define my designs
+
+      p Choose fonts, colors, and icons.
+
+      button.action(ng-click="vm.showChooseStyles()") select
+
+    li
+      button.clean(ng-click="vm.scrollTo('secondary')")
+        img.icon.big.biggest(src=require("./../images/upload.svg"))
+
+      h4 use brand guidelines
+
+      p Link to your brand style guide or upload any design guidelines.
+
+      button.action(ng-click="vm.scrollTo('secondary')") select
+
+  include parts/visual-continue-buttons
+
+.flush-height.flex.column(id="secondary" full-height="lock")
+  ul.dark-bg.flex.center.flex-grow.middle.selectable-choices(ng-class="{active: vm.showPaths}")
+    li
+      button.clean(ng-click="vm.showUploadStyles()")
+        img.icon.big.biggest(ng-if="!vm.uploaderHasFiles || vm.uploaderHasErrors || vm.uploaderUploading" src=require("./../images/upload.svg"))
+
+        img.icon.big.biggest(ng-if="vm.uploaderHasFiles && !vm.uploaderHasErrors && !vm.uploaderUploading" src=require("./../images/upload-selected.svg"))
+
+      h4 upload brand guidelines
+
+      p Upload any guidelines, style guides, or prior designs.
+
+      button.action(ng-click="vm.showUploadStyles()") select
+
+    li
+      button.clean(ng-click="vm.showUrlStyles()")
+        img.icon.big.biggest(ng-if="!vm.urlAdded || urlForm.addressInput.$error.pattern" src=require("./../images/url-styles.svg"))
+
+        img.icon.big.biggest(ng-if="vm.urlAdded && !urlForm.addressInput.$error.pattern" src=require("./../images/url-styles-selected.svg"))
+
+      h4 Get style from url
+
+      p Link to your brand website.
+
+      button.action(ng-click="vm.showUrlStyles()") select
+
+  include parts/visual-continue-buttons
+
+include parts/visual-upload
+
+include parts/get-style
+
+include parts/choose-styles

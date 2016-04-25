@@ -1,0 +1,138 @@
+@import "work/work-includes";
+
+submit-work-development {
+  display: block;
+  text-align: center;
+
+  .security img {
+    height: 80px;
+  }
+
+  input[type="number"] {
+    margin: 0 auto;
+    margin-top: 15px;
+    max-width: 400px;
+  }
+
+  .build-method {
+
+    .selectable-choices {
+      max-width: 800px;
+      margin-top: 50px;
+
+      li {
+        width: 200px;
+        button.method {
+          width: 100%;
+
+          .icon-container {
+            background: #fff;
+            height: 230px;
+            width: 100%;
+            max-width: 200px;
+
+            img.html5 {
+              height: 230px;
+              width: 74.983px;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .security {
+    > ul {
+      margin-top: 30px;
+    }
+
+    label {
+      display    : block;
+      margin-top : 15px;
+      font-weight: normal;
+      font-size  : 15px;
+    }
+  }
+
+  .third-party-integrations {
+    > p {
+      margin-top: 15px;
+    }
+
+    .api-input {
+      width: 100%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      input {
+        max-width: 220px;
+        height: 40px;
+        margin-right: 20px;
+      }
+
+      button {
+        &.action {
+          width: 100px;
+        }
+      }
+
+      .api-list {
+        width: 100%;
+        margin-top: 40px;
+
+
+        .api-name {
+          width: 100%;
+          max-width: 330px;
+          margin-bottom: 30px;
+
+          p {
+            font-size: 18px;
+          }
+
+          button {
+            p {
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .define-development {
+    .nav {
+      @include vertical-align-middle;
+
+      text-align    : center;
+      width         : 100%;
+      padding       : 32px;
+      text-transform: uppercase;
+
+      > li {
+        margin: 0 15px;
+      }
+
+      button {
+        &.clean {
+          color: $primary-color;
+
+          &.active {
+            color: $grey-darkest;
+          }
+        }
+      }
+    }
+
+
+    > main {
+      width     : 100%;
+      border-top: 1px solid $grey;
+
+      h6 {
+        margin-top: 15px;
+      }
+    }
+  }
+}
