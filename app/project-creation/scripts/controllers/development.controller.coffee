@@ -1,6 +1,6 @@
 'use strict'
 
-{ setFileUploader } = require '../../../store'
+{ setFileUploader } = require '../../../store/actions/setFileUploader.js'
 
 SubmitWorkDevelopmentController = ($scope, $rootScope, $state, SubmitWorkService) ->
   if $scope.workId
