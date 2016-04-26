@@ -1,6 +1,6 @@
 'use strict'
 
-SubmissionsService = ($rootScope, SubmissionsAPIService, SubmissionsMessagesAPIService, UserV3Service, MessageUpdateAPIService, ThreadsAPIService) ->
+SubmissionsService = ($rootScope, SubmissionsAPIService, SubmissionsMessagesAPIService, UserV3Service, MessageUpdateAPIService, InboxesAPIService) ->
   data = {}
   pending = false
   error = false
@@ -117,10 +117,10 @@ SubmissionsService = ($rootScope, SubmissionsAPIService, SubmissionsMessagesAPIS
     thread     = file.threads[0]
 
     params =
-      id          : thread.id
-      subscriberId: user.id
+      threadId     : thread.id
+      filter       : "projectId=#{ projectId }"
 
-    promise = ThreadsAPIService.get(params).$promise
+    promise = InboxesAPIService.get(params).$promise
 
     promise.then (res) ->
       file.threads[0] = res
@@ -173,7 +173,7 @@ SubmissionsService = ($rootScope, SubmissionsAPIService, SubmissionsMessagesAPIS
   markMessagesAsRead : markMessagesAsRead
   sendMessage        : sendMessage
 
-SubmissionsService.$inject = ['$rootScope', 'SubmissionsAPIService', 'SubmissionsMessagesAPIService', 'UserV3Service', 'MessageUpdateAPIService', 'ThreadsAPIService']
+SubmissionsService.$inject = ['$rootScope', 'SubmissionsAPIService', 'SubmissionsMessagesAPIService', 'UserV3Service', 'MessageUpdateAPIService', 'InboxesAPIService']
 
 angular.module('appirio-tech-submissions').factory 'SubmissionsService', SubmissionsService
 
