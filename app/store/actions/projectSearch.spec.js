@@ -3,6 +3,7 @@ import find from 'lodash/find'
 import thunk from 'redux-thunk'
 import nock from 'nock'
 import { defaults } from '../reducers/projectSearch.js'
+import { API_URL } from '../../constants.js'
 
 import {
   clearProjectSearch,
@@ -20,7 +21,6 @@ import {
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
-const API_ROOT = process.env.API_URL || 'https://api.topcoder.com'
 
 describe('projectSearch Actions:', () => {
   afterEach(() => {
@@ -82,7 +82,7 @@ describe('projectSearch Actions:', () => {
     it('should include metadata(filters, limit) in the action bodies', () => {
       const store = mockStore({ projectSearch: defaults })
 
-      nock(API_ROOT)
+      nock(API_URL)
         .get(/\/v3\/projects.*/)
         .reply(200, 'success, yay!')
 
@@ -106,7 +106,7 @@ describe('projectSearch Actions:', () => {
     it(`should dispatch ${PROJECT_SEARCH_SUCCESS} when the request succeeds`, () => {
       const store = mockStore({ projectSearch: defaults })
 
-      nock(API_ROOT)
+      nock(API_URL)
         .get(/\/v3\/projects.*/)
         .reply(200, 'success, yay!')
 
@@ -122,7 +122,7 @@ describe('projectSearch Actions:', () => {
     it(`should dispatch ${PROJECT_SEARCH_FAILURE} when the request fails`, () => {
       const store = mockStore({ projectSearch: defaults })
 
-      nock(API_ROOT)
+      nock(API_URL)
         .get(/\/v3\/projects.*/)
         .reply(404, 'failure, boo!')
 

@@ -1,4 +1,5 @@
 { getCurrentUser, loadUser } = require './auth/user-v3.service.js'
+{ ACCOUNTS_URL } = require './constants'
 
 run = ($rootScope, $state, $urlRouter, UserV3Service) ->
   checkPermission = (event, toState, toParams, fromState, fromParams) ->
@@ -22,7 +23,7 @@ run = ($rootScope, $state, $urlRouter, UserV3Service) ->
 
       loadUserFailure = ->
         returnUrl   = $state.href toState.name, toParams, { absolute: true }
-        accountsUrl = process.env.ACCOUNTS_URL + '?retUrl=' + encodeURIComponent(returnUrl) 
+        accountsUrl = ACCOUNTS_URL + '?retUrl=' + encodeURIComponent(returnUrl) 
 
         # Redirect to Topcoder's unified login site
         window.location = accountsUrl

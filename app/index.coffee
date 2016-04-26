@@ -28,10 +28,7 @@ require 'appirio-tech-ng-status-report'
 require 'appirio-tech-ng-submissions'
 require 'appirio-tech-ng-timeline'
 
-constants =
-  'API_URL'                 : process.env.API_URL || 'https://api.topcoder.com'
-  'WORK_API_URL'            : process.env.WORK_API_URL || 'https://api-work.topcoder.com'
-  'AVATAR_URL'              : process.env.AVATAR_URL || 'https://www.topcoder.com'
+constants = require './constants.js'
 
 module = angular.module 'app.constants', []
 
