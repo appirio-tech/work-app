@@ -1,0 +1,11 @@
+ul.header.flex.center.middle
+  li.previous
+    a(ng-class='{ invisible: !vm.prev }', ui-sref='step({projectId: vm.projectId, stepId: vm.prev})')
+      .icon.arrow
+
+  li
+    h1 {{ vm.title }}
+
+  li.next
+    a(ng-class='{ invisible: !vm.next }', ui-sref='step({projectId: vm.projectId, stepId: vm.next})')
+      .icon.arrow.right

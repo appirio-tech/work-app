@@ -1,0 +1,8 @@
+dropdown(
+  ng-if='!vm.locked'
+  options="vm.ranks"
+  on-change="vm.handleRankSelect"
+  value="vm.rank.value"
+  clearable="false"
+  disabled="!vm.canUpdate"
+)

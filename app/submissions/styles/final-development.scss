@@ -1,0 +1,57 @@
+@import "work/work-includes";
+@import "mixins";
+
+final-development {
+  display: block;
+  text-align: center;
+
+  > * {
+    @include exclude-first(margin-top, 40px);
+  }
+
+  > hr {
+    margin-top: 20px;
+  }
+
+  > main {
+    padding: 30px 0 40px 0;
+  }
+
+  .message {
+    max-width   : 523px;
+    margin-bottom: 30px;
+    margin-left : auto;
+    margin-right: auto;
+
+    p {
+      font-size    : 16px;
+      color        : $text-color;
+      margin-bottom: 5px;
+      white-space: pre-wrap;
+    }
+  }
+
+  .links {
+    > p {
+      font-weight: 400;
+      color: $text-color-light;
+    }
+
+    li {
+      margin-top: 5px;
+    }
+  }
+
+  file-row {
+    display: inline-block;
+    margin-top: 20px;
+
+    li {
+      max-width: 215px;
+
+      .view-all-bg div, > a  {
+        height: 184px;
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+@import "work/work-includes";
+@import "variables";
+
+submissions, final-fixes, submission-detail {
+  display         : block;
+  position        : relative;
+  text-align      : center;
+  width           : 100%;
+
+  > hr {
+    height: 2px;
+    margin-top: $vertical-big;
+  }
+
+  countdown.block {
+    display: block;
+    margin-top: 20px;
+
+    li {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .unit {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 30px;
+      color: $primary-color;
+    }
+  }
+}
+
+submissions, final-fixes {
+  p.total-count {
+    text-transform: uppercase;
+    color         : $text-color-lighter;
+    text-align    : left;
+    margin-top    : 10px;
+  }
+
+  hr.total-count {
+    margin-top: 15px;
+    background-color: $grey-light
+  }
+
+  .header {
+    h1 {
+      padding: 0;
+    }
+
+    .next, .previous {
+      a {
+        font-size: 30px;
+        text-decoration: none;
+        color: $black;
+      }
+    }
+
+    .next {
+      margin-left: $horizontal-big;
+    }
+
+    .previous {
+      margin-right: $horizontal-big;
+    }
+  }
+
+  .subheader {
+    text-align: center;
+    margin-top: 10px;
+
+    hr {
+      margin-bottom: 0px;
+      background-color: $grey-light;
+    }
+
+    .icon {
+      margin: 0 auto;
+    }
+
+    &.clock {
+      margin-top: 10px;
+
+      > * {
+        margin-top: 20px;
+      }
+    }
+
+    .winners {
+      > li {
+        @include vertical-align-middle();
+
+        display: inline-block;
+        margin: 30px;
+
+        > * {
+          margin-left: 10px;
+        }
+
+        .rank {
+          color: $primary-color;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  h1, h3, h4  {
+    text-align: center;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    color: $primary-color;
+  }
+
+  h4 {
+    color: $grey-light;
+  }
+
+  countdown {
+    display: inline;
+
+    * {
+      display: inline;
+    }
+
+    li::before {
+      content: ' ';
+    }
+  }
+}
+
+final-fixes, submission-detail {
+  .previews {
+    $tile-width: 160px;
+
+    margin: 0 auto;
+
+    .preview {
+      position: relative;
+      margin  : 10px;
+      width   : $tile-width;
+
+      .img {
+        width           : $tile-width;
+        height          : 130px;
+        background-color: orange;
+      }
+
+      > p {
+        @include ellipsis();
+
+        position        : absolute;
+        display         : none;
+        top             : 0;
+        width           : $tile-width;
+        left            : 0;
+        background-color: rgba(61, 61, 61, .5);
+        margin          : 0;
+        padding         : 10px;
+        color           : $white;
+      }
+
+      &:hover {
+        > p {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+div(ng-if="vm.userType == 'member' && vm.statusValue < 4")
+  p Once you submit your designs, they will show up here.
+
+div(ng-if="vm.userType == 'member' && (vm.status == 'REVIEWING' || vm.status == 'REVIEWING_LATE')")
+  p Browse other members' submissions and respond to comments from the customer or copilot on your submissions.
+
+  p(ng-if="vm.isPastDate") The next phase begins in <strong>countdown(end='{{ vm.nextStepStartsAt }}')</strong>.
+
+div(ng-if="vm.userType == 'member' && vm.status == 'CLOSED'")
+  p(ng-if='vm.userRank') Congratulations, you came in <strong>{{ vm.userRank }}</strong>! Please incorporate the customer feedback and submit in the final round.
+
+  p(ng-if='!vm.userRank') Unfortunately you did not win in this round, but you can still submit and win in the final round. Review the winning designs and the customer feedback and give it another shot!

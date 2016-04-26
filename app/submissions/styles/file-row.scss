@@ -1,0 +1,143 @@
+@import "work/work-includes";
+@import "variables";
+
+$thumbnail-height: 150px;
+
+file-row {
+  display: block;
+
+  li {
+    position    : relative;
+    display     : inline-block;
+    padding-left: 16px;
+    max-width   : 230px + 16px;
+
+    > a {
+      display : block;
+      width   : 100%;
+      height  : $thumbnail-height;
+      overflow: hidden;
+    }
+
+    &:hover {
+      .tooltip {
+        display: block;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+
+    &:first-child {
+      padding-left: 0;
+
+      .view-all-bg, .view-more {
+        padding-left: 0;
+      }
+    }
+
+    &:last-child {
+      position: relative;
+    }
+
+    .view-all-bg, .view-more {
+      position : absolute;
+      top: 0;
+      left: 0;
+      padding-left: 16px;
+    }
+
+    .view-all-bg {
+      opacity         : .75;
+      z-index         : 1;
+      width           : 100%;
+
+      div {
+        height          : $thumbnail-height;
+        background-color: $primary-color;
+      }
+    }
+
+    .view-more {
+      z-index: 2;
+
+      p {
+        border     : 1px solid $primary-color;
+        height     : 100%;
+        text-align : center;
+        color      : $white;
+        font-size  : 18px;
+        font-weight: 700;
+
+        span {
+          width: 40px;
+        }
+      }
+    }
+
+    &:hover {
+      .pop-over {
+        display: block;
+      }
+    }
+
+    .pop-over {
+      background-color: $white;
+      position        : absolute;
+      top             : -60px;
+      left            : 100%;
+      z-index         : 3;
+      display         : none;
+      text-align      : center;
+      padding         : 30px;
+      margin          : 10px;
+
+      > * {
+        display: inline-block;
+        margin: 20px;
+        margin-bottom: 0;
+      }
+
+      .icon {
+        width: 25px;
+        height: 25px;
+      }
+
+      .preview {
+        margin: 0;
+
+        img {
+          display: inline-block;
+          width : 215px;
+          height: 389px;
+          box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.1);
+        }
+      }
+
+      &:before {
+        content     : "";
+        position    : absolute;
+        width       : 0;
+        height      : 0;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent $white transparent transparent;
+        top         : 105px;
+        left        : -20px;
+      }
+
+      &.left {
+        right: 100%;
+        left: inherit;
+        margin-right: -5px;
+
+        &:before {
+          border-color: transparent transparent transparent $white;
+          right: -20px;
+          left: inherit;
+        }
+      }
+    }
+  }
+}

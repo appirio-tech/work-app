@@ -1,0 +1,20 @@
+@import "work/work-includes";
+@import "variables";
+
+submission-winners {
+  display: block;
+  text-align: center;
+
+  > button {
+    margin-top: 30px;
+  }
+
+  .submission-winner-cards {
+    margin-left: auto;
+    margin-right: auto;
+
+    li {
+      margin: 10px;
+    }
+  }
+}

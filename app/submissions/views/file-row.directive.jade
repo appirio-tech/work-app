@@ -1,0 +1,25 @@
+ul.files.flex
+  li.flex-one(ng-repeat="file in vm.files track by $index")
+
+    a(href="{{ file.detailUrl }}")
+      img(ng-src="{{ file.url }}")
+
+    .view-all-bg(ng-if="file.isLast")
+      div
+
+    a.view-more(ng-if="file.isLast" href="{{ viewAllUrl }}")
+      p.flex.middle.center
+        span(ng-if="vm.viewAll") View All
+        span(ng-if="vm.viewMore") +{{ vm.more }} More
+
+    thumbnail-notification(unread-messages="file.unreadMessages" total-messages="file.totalMessages")
+
+    .pop-over.elevated(ng-class="{left: file.isLast && vm.files.length > 3}")
+      a.preview.elevated(ui-sref="file-detail({projectId: vm.projectId, stepId: vm.stepId, submissionId: submission.id, fileId: file.id})")
+        img.previewImage(ng-src="{{ file.url }}")
+
+      a(href="{{ file.detailUrl }}" )
+        .icon.bubble
+
+      a(href="{{ file.url }}", target="_blank")
+        .clean.icon.download

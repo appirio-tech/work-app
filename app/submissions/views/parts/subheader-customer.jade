@@ -1,0 +1,41 @@
+div(ng-if="vm.userType == 'customer' && vm.status == 'PLACEHOLDER'")
+  p Work on your project hasn’t started yet. Once the initial designs are ready, you will see them here.
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'SCHEDULED'")
+  p(ng-if="vm.stepType != 'finalFixes' ") Work on this phase will start in approximately <strong><countdown end='{{ vm.startsAt }}'></strong>. Once the initial designs are ready, you will see them here.
+
+  p(ng-if="vm.stepType == 'finalFixes'") Your final deliverables with the changes that you requested will be appear here in approximately <strong><countdown end='{{ vm.submissionsDueBy }}'></strong>. Please contact your copilot if you have any questions.
+
+  submission-countdown(end='{{ vm.startsAt }}', text='Work starts on {{ vm.title }} submissions')
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'OPEN'")
+  p No submissions yet, but the countdown has started. {{ vm.title }} submissions will arrive in roughly <strong><countdown end='{{ vm.submissionsDueBy }}'></strong>.
+  p Once the submissions arrive, you will be notified by email and on your timeline. You will have 7 days to provide feedback and choose the winners for this phase.
+  submission-countdown(end='{{ vm.submissionsDueBy }}', text='Receive {{ vm.title }} submissions')
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'OPEN_LATE'")
+  p There has been a delay in receiving the submissions. Your co-pilot will reach out to you to provide more details.
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'REVIEWING' && (vm.stepType != 'finalFixes' && vm.stepType != 'code' && vm.stepType != 'codeFinalFixes' ) ")
+  p Please provide feedback and select the top {{ vm.numberOfRanks }} submissions within <strong><countdown end='{{vm.endsAt}}'></strong>. Your feedback will be visible to the copilot and all members who have submitted to help them improve their initial concepts.
+
+  p(ng-show="vm.showConfirm") Please provide feedback and select the top 3 submissions within the next X days. Your feedback will be visible to the copilot as well as all members to help them improve their initial concepts.
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'REVIEWING' && (vm.stepType == 'finalFixes' || vm.stepType == 'code' || vm.stepType == 'codeFinalFixes' ) ")
+  p Here is your final deliverable, available for you to download. Please contact the copilot if you have any further questions.
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'REVIEWING_LATE'")
+  p There has been a delay in your schedule as we need your feedback to move to the next phase of the progress. Please select the winners and provide feedback as soon as possible.
+
+  p(ng-show="vm.showConfirm") We need your feedback to move to the next phase. Please select winners and confirm. You will not be able to change this once you confirm.
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'CLOSED' && (vm.stepType != 'completeDesigns' || vm.commentsConfirmed)")
+  p These are your winners. You can still review submissions, but can no longer provide feedback. If you have any more comments, please message your copilot.
+
+  p(ng-if="vm.isPastDate") The next phase begins in <strong><countdown end='{{ vm.nextStepStartsAt }}'></strong>.
+
+
+div(ng-if="vm.userType == 'customer' && vm.status == 'CLOSED' && (vm.stepType == 'completeDesigns' && !vm.commentsConfirmed)")
+  p These are your winners. If you would like any final changes to the winning design submission, please add comments to the submission soon. Once you confirm the comments, the copilot will contact you and get the work started.
+
+  p(ng-if="vm.isPastDate") The next phase begins in <strong><countdown end='{{ vm.nextStepStartsAt }}'></strong>.

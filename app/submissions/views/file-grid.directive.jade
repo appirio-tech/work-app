@@ -1,0 +1,8 @@
+ul.files
+  li(ng-repeat="file in files track by $index")
+    .spacer
+      a.elevated(href="{{ file.detailUrl }}" style="background-image: url({{ file.url }})" ng-if="vm.isImage(file)")
+        thumbnail-notification(unread-messages="file.unreadMessages" total-messages="file.totalMessages")
+
+      a.file-thumbnail.flex.center.middle(href="{{file.detailUrl}}" ng-if="!vm.isImage(file)")
+        img(ng-src=require('../images/file-icon.svg'))

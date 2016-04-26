@@ -1,0 +1,5 @@
+.thumbnail-notification.elevated.flex.center.middle(ng-if="unreadMessages > 0 && totalMessages == unreadMessages ") {{unreadMessages}}
+
+.thumbnail-notification.wider.elevated.flex.center.middle(ng-if="unreadMessages > 0 && totalMessages != unreadMessages ") {{unreadMessages}} / {{totalMessages}}
+
+.thumbnail-notification.faded.elevated.flex.center.middle(ng-if="unreadMessages == 0 && totalMessages > 0 ") {{totalMessages}}

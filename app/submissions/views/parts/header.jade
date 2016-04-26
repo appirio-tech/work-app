@@ -1,0 +1,11 @@
+ul.header.flex.center
+  li.previous
+    a(ng-class="{ invisible: !vm.prevStepRef }" href="{{ vm.prevStepRef }}")
+      .icon.arrow
+
+  li
+    h1 {{ vm.stepName }}
+
+  li.next
+    a(ng-class="{ invisible: !vm.nextStepRef }" href="{{ vm.nextStepRef }}")
+      .icon.arrow.right

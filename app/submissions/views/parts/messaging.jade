@@ -1,0 +1,57 @@
+.image-slide-viewer-messaging.flex.column(ng-class='{active: vm.showMessages}', flush-height='flush-height')
+  loader(ng-show="vm.messagesLoading")
+  .title
+    h4 Feedback
+    hr
+
+  .messages.flex-grow.flex-shrink
+    ul
+      li.instructions(ng-if="vm.userType == 'customer'")
+        p(ng-if="vm.messages.length == 0 && vm.canComment") Please provide feedback here to the community member and the copilot about this image.
+
+        p(ng-if="vm.messages.length == 0 && vm.canComment") Your feedback will be visible to all members who have submitted, but only the copilot and the submitter of this image will be allowed to respond.
+
+        p(ng-if="!vm.canComment") You can no longer add feedback here. If you have additional feedback, please 
+          a message your copilot directly.
+
+      li.instructions(ng-if="vm.userType == 'copilot'")
+        p(ng-if="vm.messages.length == 0 && vm.canComment") Please provide feedback here to the community member and the copilot about this image. Your feedback will be visible to all members who have submitted, but only the copilot and the submitter of this image will be allowed to respond.
+
+        p(ng-if="!vm.canComment") You can no longer add feedback here. If you have additional feedback, please 
+          a message your copilot directly.
+
+      li.instructions(ng-if="vm.userType == 'member'")
+        p(ng-if="vm.messages.length == 0 && vm.canComment") Use this space to respond to customer feedback and provide context for your designs. Only you, the copilot, and the customer can add comments, but these comments will be visible to everyone who has submitted.
+
+        p(ng-if="!vm.canComment") You can no longer add comments here. If you have any questions or comments for your customer, please contact your copilot via the forum.
+
+      li(ng-repeat='message in vm.messages track by $index' ng-class='{first: $index == 0}')
+        header.flex.middle(ng-if="!vm.ranksConfirmed")
+          avatar(avatar-url='{{ message.publisher.avatar }}' ng-if="message.publisher.role != 'submitter'")
+
+          .submission-number.flex.center.middle(ng-if="message.publisher.role == 'submitter'")
+            | {{vm.submissionNumber}}
+
+          .name-link(ng-if="message.publisher.handle && message.publisher.role != 'submitter'")
+            strong.name {{ message.publisher.handle }}
+
+          .name-link(ng-if="message.publisher.role == 'submitter'")
+            strong.name Submitter
+
+          time {{ message.createdAt | timeLapse }}
+
+        header.flex.middle(ng-if="vm.ranksConfirmed")
+          a(href="{{vm.generateProfileUrl(message.publisher.handle)}}" target="_blank")
+            avatar(avatar-url='{{ message.publisher.avatar }}')
+
+          a.name-link(href="{{vm.generateProfileUrl(message.publisher.handle)}}" target="_blank" ng-if="message.publisher.handle")
+            .name {{ message.publisher.handle }}
+
+          time {{ message.createdAt | timeLapse }}
+
+        p.message {{ message.body }}
+
+  .send
+    form(ng-submit='vm.sendMessage()' ng-if="vm.canComment")
+      textarea(placeholder='Send a message…' ng-model='vm.newMessage')
+      button.enter(type='submit' ng-disabled="!vm.canComment") Enter

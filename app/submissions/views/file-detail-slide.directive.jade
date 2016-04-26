@@ -1,0 +1,20 @@
+image-viewer-header.flex.column(
+  ng-if="vm.file"
+  title ="{{vm.title}}"
+  handle="{{vm.submissionNumber}}"
+  avatar="{{vm.submitterAvatar}}"
+  toggle-comments="vm.toggleComments()"
+  download-url="vm.file.url"
+  download-allowed="true"
+  comments-allowed="true"
+  hide-user-info="!vm.ranksConfirmed"
+)
+
+image-slide-viewer.flex.flex-grow(
+  on-file-change="vm.onFileChange(file)"
+  files="vm.files"
+  starting-file="vm.startingFile"
+  show-notifications="true"
+)
+
+include parts/messaging

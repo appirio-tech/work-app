@@ -1,0 +1,14 @@
+main
+  .message
+    h5 Copilot Message
+
+    p {{vm.text}}
+
+  file-grid(files="vm.files")
+
+.links
+  h5 Links
+
+  ul
+    li(ng-repeat="link in vm.links")
+      a(href="{{link}}") {{link.url}}

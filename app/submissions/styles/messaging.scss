@@ -1,0 +1,98 @@
+@import "work/work-includes";
+
+.image-slide-viewer-messaging {
+  @include transition (all 0.3s ease-in-out);
+
+  position        : absolute;
+  width           : 300px;
+  top             : 84px;
+  right           : -300px;
+  padding         : 10px;
+  overflow        : hidden;
+  background-color: $grey-lightest;
+  border-left     : 1px solid $grey;
+
+  &.active {
+    right: 0;
+  }
+
+  .title {
+    hr {
+      background-color: $grey-light;
+      margin: 15px 0;
+      width: 100%;
+    }
+
+    .name {
+      @include ellipsis(120px);
+
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  }
+
+  .messages {
+    overflow: auto;
+
+    time {
+      margin-left: 10px;
+      font-size: 12px;
+    }
+
+    ul {
+      > li {
+        border-top: 1px solid $grey-light;
+        padding: 5px;
+
+        .name-link {
+          margin-left: 10px;
+        }
+
+        &:first-child {
+          border-top: none;
+        }
+
+        &.instructions {
+          padding-bottom: 0px;
+        }
+
+        &.first {
+          border-top: none;
+          padding-top: 0px;
+        }
+
+        .submission-number {
+            width           : 35px;
+            height          : 35px;
+            border-radius   : 50%;
+            background-color: $gray;
+            overflow        : hidden;
+        }
+      }
+
+      .message {
+        margin: 0 0 0 42px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .send {
+    form {
+      margin-top: 15px;
+
+      textarea {
+        resize: none;
+        width  : 100%;
+        border : 0;
+      }
+
+      button.enter {
+        margin-top: 15px;
+        width: 100%;
+      }
+    }
+  }
+
+}

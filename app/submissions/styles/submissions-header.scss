@@ -1,0 +1,30 @@
+@import "work/work-includes";
+@import "variables";
+
+submissions-header {
+  display: block;
+
+  h1 {
+    padding: 0;
+  }
+
+  .next, .previous {
+    a {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .icon {
+      width: 14px;
+      height: 31px;
+    }
+  }
+
+  .next {
+    margin-left: $horizontal-big;
+  }
+
+  .previous {
+    margin-right: $horizontal-big;
+  }
+}

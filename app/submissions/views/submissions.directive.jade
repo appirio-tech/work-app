@@ -1,0 +1,21 @@
+loader(ng-hide='vm.loaded')
+
+submissions-header(project-id='{{ vm.projectId }}' step-id='{{ vm.stepId }}')
+
+.byline
+  include parts/subheader-customer
+  include parts/subheader-copilot
+  include parts/subheader-member
+
+confirm-button(ng-if="vm.statusValue > 3 && (vm.stepType == 'designConcepts' || vm.stepType == 'completeDesigns')" project-id='{{ vm.projectId }}' step-id='{{ vm.stepId }}' user-type='{{ vm.userType }}' permissions="vm.permissions")
+
+submission-list(ng-if="vm.statusValue > 3 && (vm.stepType == 'designConcepts' || vm.stepType == 'completeDesigns')" project-id='{{ vm.projectId }}' step-id='{{ vm.stepId }}' user-type='{{ vm.userType }}' permissions="vm.permissions")
+
+file-grid(ng-if="vm.statusValue > 3 && vm.stepType == 'finalFixes'" files='vm.submissions[0].files')
+
+final-development(
+  ng-if="vm.statusValue > 3 && (vm.stepType == 'code' || vm.stepType == 'codeFinalFixes')" 
+  text="vm.submissions[vm.submissions.length - 1].statusReportText" 
+  links="vm.submissions[vm.submissions.length - 1].statusReportLinks" 
+  files="vm.submissions[vm.submissions.length - 1].files"
+)

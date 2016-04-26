@@ -1,0 +1,25 @@
+div(ng-if="vm.userType == 'copilot' && vm.status == 'PLACEHOLDER'")
+  p There are no submissions because the project work hasn’t started. Once the initial designs are ready, you will see them here.
+  p (If the project work has started, you shouldn’t be seeing this message. Please contact an administrator to report the issue.)
+
+div(ng-if="vm.userType == 'copilot' && vm.status == 'SCHEDULED'")
+  p Work on this phase will start in approximately <strong><countdown end='{{ vm.startsAt }}'></strong>. Once the initial designs are ready, you will see them here.
+  p (If the project work has started, you shouldn't be seeing this message. Please contact an administrator to report the issue.)
+  submission-countdown(end="{{ vm.startsAt }}" text="Work starts on {{ vm.title }} submissions")
+
+div(ng-if="vm.userType == 'copilot' && vm.status == 'OPEN'")
+  p No submissions yet. {{ vm.title }} submissions will arrive in roughly <strong><countdown end="{{vm.submissionsDueBy}}"></strong>.
+  p If the time estimate above is incorrect or there has been a delay, please update it using the "Work Steps" page.
+  submission-countdown(end="{{ vm.submissionsDueBy }}" text="Receive {{ vm.title }} submissions")
+
+div(ng-if="vm.userType == 'copilot' && vm.status == 'OPEN_LATE'")
+  p There has been a delay in receiving the submissions. Please inform an administrator immediately.
+
+div(ng-if="vm.userType == 'copilot' && vm.status == 'REVIEWING'")
+  p Please help facilitate collaboration between customers and community members by providing clarifications and answering questions.
+
+div(ng-if="vm.userType == 'copilot' && vm.status == 'REVIEWING_LATE'")
+  p Please inform an administrator and reach out to the customer to remind them to provide feedback. 
+
+div(ng-if="vm.userType == 'copilot' && vm.status == 'CLOSED'")
+  p(ng-if="vm.nextStepStartsAt && vm.isPastDate") The next phase begins in <strong><countdown end="{{ vm.nextStepStartsAt }}"></strong>.

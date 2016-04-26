@@ -1,0 +1,52 @@
+@import "work/work-includes";
+
+submission-detail {
+  display: block;
+
+  avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .all-submissions {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .submitter {
+    @include vertical-align-middle();
+
+    text-align: left;
+    float: left;
+
+    a {
+      text-decoration: none;
+    }
+
+    .arrow {
+      font-size: 16px;
+      color: $grey-dark;
+    }
+  }
+
+  .download {
+    margin-left: 10px;
+  }
+
+  hr {
+    background-color: $grey;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .preview {
+    a {
+      display: block;
+    }
+  }
+}

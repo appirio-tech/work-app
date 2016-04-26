@@ -1,0 +1,18 @@
+header.flex.column.middle
+  a(href="{{ 'https://www.topcoder.com/members/' + nameText}}" target="_blank")
+    avatar(avatar-url="{{ avatarUrl }}")
+
+  a(href="{{'https://www.topcoder.com/members/' + nameText}}" target="_blank")
+    h6.name {{ nameText }}
+      span(ng-if='belongsToUser') (Me)
+
+  p.secondary Project Contributor
+
+hr
+
+footer.flex.column.middle.center
+  .rank(ng-if="rank") {{ rank }}
+
+  .place(ng-if="rank") place
+
+  .winner(ng-if="!rank") winner!

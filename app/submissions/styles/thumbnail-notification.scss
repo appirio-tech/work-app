@@ -1,0 +1,23 @@
+@import "work/work-includes";
+
+thumbnail-notification {
+  .thumbnail-notification {
+    min-width: 30px;
+    max-width: 60px;
+    padding: 2px;
+    height: 20px;
+    background-color: $danger-color-light;
+    color: $white;
+    position: absolute;
+    right: 8%;
+    top: 7%;
+
+    &.wider {
+      min-width: 40px;
+    }
+
+    &.faded {
+      opacity: 0.6;
+    }
+  }
+}
