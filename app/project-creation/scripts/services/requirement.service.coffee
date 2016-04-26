@@ -23,6 +23,14 @@ srv = ->
       name: 'Android'
       id: 'ANDROID'
       selected: false
+    ,
+      name: 'Web App'
+      id: 'WEB_APP'
+      selected: false
+    ,
+      name: 'Other'
+      id: 'OTHER'
+      selected: false
   ]
 
   service.devices = [
@@ -36,6 +44,10 @@ srv = ->
   ,
     name: 'Phone'
     id: 'PHONE'
+    selected: false
+  ,
+    name: 'Desktop'
+    id: 'DESKTOP'
     selected: false
   ]
 
@@ -330,4 +342,4 @@ srv = ->
 
 srv.$inject = []
 
-angular.module('project-creation').factory 'RequirementService', srv
+angular.module('appirio-tech-ng-submit-work').factory 'RequirementService', srv

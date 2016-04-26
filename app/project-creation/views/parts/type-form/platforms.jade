@@ -4,11 +4,18 @@
 
     ul.target-platforms
       li
-        p iOS, Android, or both.
+        p Choose at least one platform for your app.
 
         ul.flex.space-between
           li.flex.center.column.middle(ng-repeat="platform in vm.platforms")
-            button.clean(type="button" ng-click="vm.toggleSelection(platform, platform.selected, 'orientation-details', ['platforms'])" ng-disabled="vm.readOnly")
+            button.clean(type="button" ng-if="platform.name != 'Other'" ng-click="vm.toggleSelection(platform, platform.selected, 'orientation-details', ['platforms'])" ng-disabled="vm.readOnly || vm.otherPlatformSelected")
+              .platform-icon-container.flex.center.middle
+                  img(ng-if="!platform.selected" ng-src="{{vm.getIconPath(platform.name)}}")
+
+                  img(ng-if="platform.selected" ng-src="{{vm.getIconPath(platform.name, true)}}")
+
+            //- temporary work-around for other option
+            button.clean(type="button" ng-if="platform.name == 'Other'" ng-click="vm.toggleOtherPlatform()" ng-disabled="vm.readOnly")
               .platform-icon-container.flex.center.middle
                   img(ng-if="!platform.selected" ng-src="{{vm.getIconPath(platform.name)}}")
 
@@ -21,7 +28,18 @@
               selectable="true"
               ng-model="platform.selected"
               ng-click="vm.validateSection('device-details', ['platforms'] )"
+              ng-disabled="vm.readOnly || vm.otherPlatformSelected"
+              ng-if="platform.name != 'Other' "
+            )
+
+            //- temporary work-around for other option
+            button.action(
+              type="button"
+              selectable="true"
+              ng-model="platform.selected"
+              ng-click="vm.toggleOtherPlatform()"
               ng-disabled="vm.readOnly"
+              ng-if="platform.name == 'Other' "
             )
 
     p.error.transition(ng-class="{ show: vm.platformsError }") Please choose a platform.
@@ -29,5 +47,12 @@
   .continue-buttons
     button(
       type="button"
+      ng-if="!vm.otherPlatformSelected"
       ng-click="vm.validateSection('device-details', ['platforms'], true)"
+    ) continue
+
+    button(
+      type="button"
+      ng-if="vm.otherPlatformSelected"
+      ng-click="vm.validateSection('brief-details', ['platforms'], true)"
     ) continue
