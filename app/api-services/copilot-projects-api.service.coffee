@@ -2,8 +2,8 @@
 
 transform = require './transform.js'
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/work/:workId'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/work/:workId'
 
   params =
     workId: '@workId'
@@ -20,6 +20,6 @@ srv = ($resource, API_URL) ->
 
   $resource url, {}, methods
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'CopilotProjectsAPIService', srv

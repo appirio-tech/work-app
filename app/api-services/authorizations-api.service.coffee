@@ -1,11 +1,11 @@
 'use strict'
 
-srv = ($resource, API_URL) ->
-  url     = API_URL + '/v3/authorizations/:id'
+srv = ($resource, WORK_API_URL) ->
+  url     = WORK_API_URL + '/authorizations/:id'
   params  = id: '@id'
 
   $resource url, params
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'AuthorizationsAPIService', srv

@@ -2,8 +2,8 @@
 
 transform = require './transform.js'
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/projects/:workId/timeline'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/projects/:workId/timeline'
 
   params =
     workId: '@workId'
@@ -21,6 +21,6 @@ srv = ($resource, API_URL) ->
 
   $resource url, params, methods
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'TimelineAPIService', srv

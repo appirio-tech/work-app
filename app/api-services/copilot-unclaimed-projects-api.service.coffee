@@ -7,8 +7,8 @@ transformIdOnlyResponse = (response) ->
 
   id: parsed
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/projects/copilot/unclaimed'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/projects/copilot/unclaimed'
 
   params = {}
 
@@ -30,6 +30,6 @@ srv = ($resource, API_URL) ->
 
   $resource url, params, methods
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'CopilotUnclaimedProjectsAPIService', srv

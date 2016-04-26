@@ -34,8 +34,8 @@ acceptFixes = (data) ->
 
   JSON.stringify transformedData
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/projects/:projectId/steps/:stepId'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/projects/:projectId/steps/:stepId'
 
   params =
     projectId: '@projectId'
@@ -54,6 +54,6 @@ srv = ($resource, API_URL) ->
 
   $resource url, params, methods
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'StepsAPIService', srv

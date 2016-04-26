@@ -1,7 +1,7 @@
 'use strict'
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/inboxes/:threadId/messages/:messageId'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/inboxes/:threadId/messages/:messageId'
 
   params =
     threadId:    '@threadId'
@@ -19,6 +19,6 @@ srv = ($resource, API_URL) ->
 
   $resource url, {}, methods
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'MessageUpdateAPIService', srv

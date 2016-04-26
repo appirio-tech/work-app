@@ -2,8 +2,8 @@
 
 transform = require './transform.js'
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/inboxes/project'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/inboxes/project'
 
   methods =
     get:
@@ -18,6 +18,6 @@ srv = ($resource, API_URL) ->
 
   $resource url, {}, methods
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'InboxesProjectAPIService', srv

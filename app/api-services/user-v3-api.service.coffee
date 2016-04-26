@@ -2,8 +2,8 @@
 
 transform = require './transform.js'
 
-srv = ($resource, API_URL) ->
-  url = API_URL + '/v3/users/:id'
+srv = ($resource, WORK_API_URL) ->
+  url = WORK_API_URL + '/users/:id'
 
   params =
     id: '@id'
@@ -19,6 +19,6 @@ srv = ($resource, API_URL) ->
 
    $resource url, params, actions
 
-srv.$inject = ['$resource', 'API_URL']
+srv.$inject = ['$resource', 'WORK_API_URL']
 
 angular.module('appirio-tech-ng-api-services').factory 'UserV3APIService', srv
