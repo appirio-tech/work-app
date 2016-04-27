@@ -17,13 +17,14 @@ SubmitWorkDevelopmentController = ($scope, $rootScope, $state, SubmitWorkService
   vm.uploaderHasErrors      = false
   vm.uploaderHasFiles       = false
   vm.specsDefined           = false
+  vm.isWebAppOnly           = false
   vm.activeDevelopmentModal = null
   vm.projectType            = null
   vm.currentApiIntegration  = null
   permissions               = $scope.permissions || ['ALL']
   vm.readOnly               = permissions.indexOf('UPDATE') == -1 && permissions.indexOf('ALL') == -1
   vm.dragAndDrop            = true
-  vm.developmentModals      = ['buildMethod', 'offlineAccess', 'personalInformation', 'security', 'thirdPartyIntegrations']
+  vm.developmentModals      = []
 
   vm.securityLevels =
     none    : 'none'
@@ -44,7 +45,10 @@ SubmitWorkDevelopmentController = ($scope, $rootScope, $state, SubmitWorkService
 
   vm.showDefineSpecs = ->
     vm.showDefineSpecsModal = true
-    vm.activateModal('buildMethod')
+    if vm.isWebAppOnly
+      vm.activateModal('personalInformation')
+    else
+     vm.activateModal('buildMethod')
 
   vm.hideDefineSpecs = ->
     vm.showDefineSpecsModal = false
@@ -164,6 +168,14 @@ SubmitWorkDevelopmentController = ($scope, $rootScope, $state, SubmitWorkService
 
     vm.specsDefined = someSpecsSelected(vm.work)
     vm.projectType = work.projectType
+    platforms = work.platformIds
+    vm.isWebAppOnly = (platforms?.length == 1) && (platforms?[0] == 'WEB_APP')
+
+    if vm.isWebAppOnly
+      vm.developmentModals = ['personalInformation', 'security', 'thirdPartyIntegrations']
+    else
+      vm.developmentModals = ['buildMethod', 'offlineAccess', 'personalInformation', 'security', 'thirdPartyIntegrations']
+
     vm.section = 3
     vm.numberOfSections = 3
 
