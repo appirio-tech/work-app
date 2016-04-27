@@ -172,10 +172,10 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
 
     vm.validateSection('device-details', ['platforms'] )
 
-  vm.create = ->
+  vm.create = (done=false) ->
     vm.createError = false
     updates = getUpdates()
-    updates.status = if vm.otherPlatformSelected then 'SUBMITTED' else 'INCOMPLETE'
+    updates.status = 'INCOMPLETE'
 
     if isValid(updates)
       vm.loading = true
@@ -184,7 +184,7 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
         work = SubmitWorkService.get()
 
         if vm.otherPlatformSelected
-          $state.go 'submit-work-complete', { id: work.id }
+          $state.go 'submit-work-upload-requirements', { id: work.id }
         else
           $state.go 'submit-work-features', { id: work.id }
 

@@ -1,0 +1,11 @@
+modal.full(show="vm.show")
+  main
+    img.upload-icon(src=require("./../images/upload.svg"))
+
+    h2 Upload requirements
+
+    p Upload any requirements, style guides, or designs.
+
+    file-uploader(store="vm.store" disable-click="vm.readOnly" drag-and-drop="vm.dragAndDrop")
+
+    button(ng-click="vm.hideUploadStyles()") Done
