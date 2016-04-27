@@ -1,11 +1,13 @@
-modal.full(show="vm.show")
+modal.full.upload-documents(show="vm.show")
   main
     img.upload-icon(src=require("./../images/upload.svg"))
 
-    h2 Upload requirements
+    h2 Upload <strong>Requirements</strong>
 
     p Upload any requirements, style guides, or designs.
 
     file-uploader(store="vm.store" disable-click="vm.readOnly" drag-and-drop="vm.dragAndDrop")
 
-    button(ng-click="vm.hideUploadStyles()") Done
+    button(ng-click="vm.show = false") Save
+
+    button.action(ng-click="vm.kickOffProject()") Kick Off Project

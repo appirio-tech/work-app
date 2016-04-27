@@ -12,6 +12,7 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
   vm.briefError            = false
   vm.createError           = false
   vm.otherPlatformSelected = false
+  vm.isOtherPlatform       = false
   userProjectNames         = null
   permissions              = $scope.permissions || ['ALL']
   vm.readOnly              = permissions.indexOf('UPDATE') == -1 && permissions.indexOf('ALL') == -1
@@ -19,7 +20,11 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
   # TODO: move route directing out of here
   if $scope.workId
     localStorageKey = "recentSubmitWorkSection-#{$scope.workId}"
-    recent = localStorage[localStorageKey] || 'features'
+
+    if vm.isOtherPlatform
+      recent = 'upload-requirements'
+    else
+      recent = localStorage[localStorageKey] || 'features'
 
     $state.go "submit-work-#{recent}", { id: $scope.workId }
 
@@ -243,6 +248,11 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
     resource = ProjectsAPIService.query()
 
     resource.$promise.then (response) ->
+      response?.forEach (project) ->
+        if project.id == $scope.workId
+          if (project.platformIds.length == 1) && (project.platformIds[0] == 'OTHER')
+            vm.isOtherPlatform = true
+
       projectNames = response?.map (project) ->
         project.name.toLowerCase()
 
