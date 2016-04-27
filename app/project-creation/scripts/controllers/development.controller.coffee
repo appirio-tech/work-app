@@ -104,10 +104,6 @@ SubmitWorkDevelopmentController = ($scope, $rootScope, $state, SubmitWorkService
       else
         vm.hideDefineSpecs()
 
-  # vm.isWebAppOnly = ->
-  #   platforms = vm.work?.platformIds
-  #   (platforms?.length == 1) && (platforms?[0] == 'WEB_APP')
-
   updateButtons = ->
     currentIndex = vm.developmentModals.indexOf vm.activeDevelopmentModal
     isFirst = currentIndex == 0

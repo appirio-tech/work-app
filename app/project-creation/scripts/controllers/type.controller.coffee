@@ -177,7 +177,7 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
 
     vm.validateSection('device-details', ['platforms'] )
 
-  vm.create = (done=false) ->
+  vm.create = ->
     vm.createError = false
     updates = getUpdates()
     updates.status = 'INCOMPLETE'
