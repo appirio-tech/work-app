@@ -9,30 +9,57 @@ import { setUser } from '../store/actions/user.js'
 
 let currentUser = null
 
-export function loadUser() {
-  function loadUserSuccess(token) {
-    const decodedToken = decodeToken( token )
+// export function loadUser() {
+//   function loadUserSuccess(token) {
+//     const profile = decodeToken( token )
 
-    if (decodedToken.userId) {
-      currentUser = decodedToken
+//     if (profile.userId) {
+//       currentUser = profile
+//       currentUser.id = currentUser.userId
+//       currentUser.role = 'customer'
+
+//       if (includes(decodedToken.roles, 'Connect Copilot')) {
+//         currentUser.role = 'copilot'
+//       }
+
+//       if (includes(decodedToken.roles, 'Connect Support')) {
+//         currentUser.role = 'admin'
+//       }
+
+//       store.dispatch(setUser(currentUser))
+//     }
+
+//     return currentUser
+//   }
+
+//   return getFreshToken().then(loadUserSuccess)
+// }
+
+export function loadUser(profilesAPIService) {
+  function getTokenSuccess(token) {
+    const profile = decodeToken(token)
+    const resource = profilesAPIService.get({
+      id: profile.userId
+    })
+
+    return resource.$promise.then( (response) => {
+      currentUser = response
       currentUser.id = currentUser.userId
       currentUser.role = 'customer'
 
-      if (includes(decodedToken.roles, 'Connect Copilot')) {
+      if (currentUser.isCopilot) {
         currentUser.role = 'copilot'
       }
 
-      if (includes(decodedToken.roles, 'Connect Support')) {
+      if (includes(profile.roles, 'Connect Support')) {
         currentUser.role = 'admin'
       }
 
-      store.dispatch(setUser(currentUser))
-    }
-
-    return currentUser
+      return currentUser
+    })
   }
 
-  return getFreshToken().then(loadUserSuccess)
+  return getFreshToken().then(getTokenSuccess)
 }
 
 export function getCurrentUser() {
@@ -43,11 +70,15 @@ export function logout() {
   return doLogout().then( () => currentUser = null )
 }
 
-const UserV3Service = function() {
+const UserV3Service = function(profilesAPIService) {
+  const angularLoadUser = () => loadUser(profilesAPIService)
+
   return {
     getCurrentUser,
-    loadUser
+    loadUser: angularLoadUser
   }
 }
+
+UserV3Service.$inject = ['profilesAPIService']
 
 angular.module('appirio-tech-ng-auth').factory('UserV3Service', UserV3Service)

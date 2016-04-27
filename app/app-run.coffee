@@ -28,7 +28,7 @@ run = ($rootScope, $state, $urlRouter, UserV3Service) ->
         # Redirect to Topcoder's unified login site
         window.location = accountsUrl
 
-      loadUser().then(loadUserSuccess, loadUserFailure)
+      UserV3Service.loadUser().then(loadUserSuccess, loadUserFailure)
 
       return false
     else
