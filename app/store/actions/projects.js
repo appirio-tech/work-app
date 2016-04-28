@@ -18,7 +18,7 @@ export function loadProject(id) {
 
     const config = {
       method: 'GET',
-      endpoint: '/v3/projects/' + id + '/steps',
+      endpoint: '/projects/' + id + '/steps',
       schema: Schemas.PROJECT
     }
 

@@ -17,7 +17,7 @@ export function loadProfile(id) {
 
     const config = {
       method: 'GET',
-      endpoint: `/v3/profiles/${id}`,
+      endpoint: `/profiles/${id}`,
       schema: Schemas.PROFILE
     }
 
@@ -55,7 +55,7 @@ export function updateProfile(id) {
 
     const config = {
       method: 'PUT',
-      endpoint: `/v3/profiles/${id}`,
+      endpoint: `/profiles/${id}`,
       schema: Schemas.PROFILE
     }
 

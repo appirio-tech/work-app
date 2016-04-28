@@ -14,7 +14,7 @@ export function loadStepsByProject(projectId) {
 
     const config = {
       method: 'GET',
-      endpoint: '/v3/projects/' + projectId + '/steps',
+      endpoint: '/projects/' + projectId + '/steps',
       schema: Schemas.STEP_ARRAY
     }
 

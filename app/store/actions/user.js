@@ -21,7 +21,7 @@ export function loadUser(id) {
     dispatch({ type: USER_REQUEST })
 
     const config = {
-      endpoint: `/v3/profiles/${id}`,
+      endpoint: `/profiles/${id}`,
       schema: Schemas.USER
     }
 
@@ -63,7 +63,7 @@ export function updatePassword({ currentPassword, password }) {
     dispatch({ type: USER_REQUEST })
 
     const config = {
-      endpoint: `/v3/users/${id}/`,
+      endpoint: `/users/${id}/`,
       method: 'PATCH',
       ignoreResult: true,
       data

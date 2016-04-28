@@ -14,7 +14,7 @@ export function getAttachments({ id, assetType, category }) {
     const encoded = encodeURIComponent(`id=${id}&assetType=${assetType}&category=${category}`)
 
     const options = {
-      endpoint: `/v3/attachments?filter=${encoded}`,
+      endpoint: `/attachments?filter=${encoded}`,
       method  : 'GET',
       schema  : Schemas.ATTACHMENT_ARRAY,
     }
