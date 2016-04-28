@@ -51,6 +51,11 @@ export function loadUser(profilesAPIService) {
         currentUser.role = 'copilot'
       }
 
+      if (includes(profile.roles, 'Connect Copilot')) {
+        currentUser.role = 'copilot'
+      }
+
+
       if (includes(profile.roles, 'Connect Support')) {
         currentUser.role = 'admin'
       }
