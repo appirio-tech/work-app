@@ -16,7 +16,7 @@ export function deleteAttachment(attachment) {
       const encoded = encodeURIComponent(`category=${category}`)
 
       const options = {
-        endpoint    : `/v3/attachments/${fileId}?filter=${encoded}`,
+        endpoint    : `/attachments/${fileId}?filter=${encoded}`,
         method      : 'DELETE',
         ignoreResult: true
       }

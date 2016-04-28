@@ -15,7 +15,7 @@ export function loadStep(projectId, stepId) {
     dispatch({type: STEP_FETCH_REQUEST })
 
     const config = {
-      endpoint: '/v3/work/' + projectId + '/steps',
+      endpoint: '/work/' + projectId + '/steps',
       schema: Schemas.STEP
     }
 
@@ -58,7 +58,7 @@ export function createStep(projectId, values) {
 
     const config = {
       method: 'POST',
-      endpoint: '/v3/work/' + projectId + '/steps',
+      endpoint: '/work/' + projectId + '/steps',
       schema: Schemas.STEP,
       data: {
         param: step
@@ -97,7 +97,7 @@ export function updateStep(projectId, stepId, values) {
 
     const config = {
       method: 'PUT',
-      endpoint: '/v3/work/' + projectId + '/steps/' + stepId,
+      endpoint: '/work/' + projectId + '/steps/' + stepId,
       schema: Schemas.STEP,
       data: {
         param: stepAfterUpdate

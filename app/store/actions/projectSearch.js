@@ -42,7 +42,7 @@ export function loadProjectSearch() {
 
     const config = {
       method: 'GET',
-      endpoint: '/v3/projects/',
+      endpoint: '/projects/',
       schema: Schemas.PROJECT_ARRAY
     }
 

@@ -83,7 +83,7 @@ describe('projectSearch Actions:', () => {
       const store = mockStore({ projectSearch: defaults })
 
       nock(API_URL)
-        .get(/\/v3\/projects.*/)
+        .get(/\\/projects.*/)
         .reply(200, 'success, yay!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
@@ -107,7 +107,7 @@ describe('projectSearch Actions:', () => {
       const store = mockStore({ projectSearch: defaults })
 
       nock(API_URL)
-        .get(/\/v3\/projects.*/)
+        .get(/\\/projects.*/)
         .reply(200, 'success, yay!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
@@ -123,7 +123,7 @@ describe('projectSearch Actions:', () => {
       const store = mockStore({ projectSearch: defaults })
 
       nock(API_URL)
-        .get(/\/v3\/projects.*/)
+        .get(/\\/projects.*/)
         .reply(404, 'failure, boo!')
 
       return store.dispatch(loadProjectSearch()).then( () => {
