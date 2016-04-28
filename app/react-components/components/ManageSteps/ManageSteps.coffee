@@ -3,7 +3,7 @@
 React                  = require 'react'
 ManageStepsView        = require './ManageStepsView'
 { connect }            = require 'react-redux'
-{ loadStepsByProject } = require '../../../store.coffee'
+{ loadStepsByProject } = require '../../../store/actions/stepsByProject.js'
 
 ManageSteps = React.createClass
   propTypes:

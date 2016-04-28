@@ -6,7 +6,8 @@ StepRowView            = require './StepRowView'
 { reduxForm }          = require 'redux-form'
 { loadStep,
   createStep,
-  updateStep }         = require '../../../store.coffee'
+  updateStep }         = require '../../../store/actions/steps.js'
+
 
 fields = [
   'name'
