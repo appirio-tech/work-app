@@ -1,18 +1,14 @@
 import { normalize } from 'normalizr'
 import axios from 'axios'
 import { getFreshToken } from 'tc-accounts'
-import { API_URL } from '../../constants.js'
-
-const trim = (token) => token.substring(1, token.length - 1)
+import { WORK_API_URL } from '../../constants.js'
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 export default function callApi({ schema, endpoint, ignoreResult, method, data }) {
-  const executeRequest = () => {
-    const token = typeof window !== 'undefined' ? trim(localStorage.userJWTToken) : ''
-
+  const executeRequest = (token) => {
     const config = {
-      url: API_URL + endpoint,
+      url: WORK_API_URL + endpoint,
       method: method || 'GET',
       headers: {
         Authorization: 'Bearer ' + token,

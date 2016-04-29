@@ -44,10 +44,10 @@ modal.slide.full.define-development(show="vm.showDefineSpecsModal" background-cl
       button.clean(ng-click="vm.viewPrevious()")
         .icon.arrow.smallest
 
-    li
+    li(ng-if="!vm.isWebAppOnly")
       button.clean(ng-click="vm.activateModal('buildMethod')" ng-class="{active: vm.activeDevelopmentModal == 'buildMethod'}") build method
 
-    li
+    li(ng-if="!vm.isWebAppOnly")
       button.clean(ng-click="vm.activateModal('offlineAccess')" ng-class="{active: vm.activeDevelopmentModal == 'offlineAccess'}") offline access
 
     li

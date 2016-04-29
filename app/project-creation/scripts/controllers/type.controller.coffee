@@ -1,24 +1,30 @@
 'use strict'
 
 SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkService, ProjectsAPIService, RequirementService) ->
-  vm                  = this
-  vm.loading          = false
-  vm.showSuccessModal = false
-  vm.nameError        = false
-  vm.platformsError   = false
-  vm.devicesError     = false
-  vm.orientationError = false
-  vm.projectTypeError = false
-  vm.briefError       = false
-  vm.createError      = false
-  userProjectNames    = null
-  permissions         = $scope.permissions || ['ALL']
-  vm.readOnly         = permissions.indexOf('UPDATE') == -1 && permissions.indexOf('ALL') == -1
+  vm                       = this
+  vm.loading               = false
+  vm.showSuccessModal      = false
+  vm.nameError             = false
+  vm.platformsError        = false
+  vm.devicesError          = false
+  vm.orientationError      = false
+  vm.projectTypeError      = false
+  vm.briefError            = false
+  vm.createError           = false
+  vm.otherPlatformSelected = false
+  vm.isOtherPlatform       = false
+  userProjectNames         = null
+  permissions              = $scope.permissions || ['ALL']
+  vm.readOnly              = permissions.indexOf('UPDATE') == -1 && permissions.indexOf('ALL') == -1
 
   # TODO: move route directing out of here
   if $scope.workId
     localStorageKey = "recentSubmitWorkSection-#{$scope.workId}"
-    recent = localStorage[localStorageKey] || 'features'
+
+    if vm.isOtherPlatform
+      recent = 'upload-requirements'
+    else
+      recent = localStorage[localStorageKey] || 'features'
 
     $state.go "submit-work-#{recent}", { id: $scope.workId }
 
@@ -48,13 +54,18 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
 
   vm.showOrientation = ->
     showOrientation = true
+    selectedDevices = {}
 
     selected = vm.devices.filter (device) ->
       device.selected
 
-    selectedName = selected[0]?.name
+    selected.forEach (device) ->
+      if device.name == 'Watch'
+        selectedDevices['Watch'] = true
+      else if device.name == 'Desktop'
+        selectedDevices['Desktop'] = true
 
-    if selected.length == 0 || (selected.length == 1 && selectedName == 'Watch')
+    if selected.length == 0 || (selected.length == 1 && (selectedDevices.Watch || selectedDevices.Desktop )) || (selected.length == 2 && (selectedDevices.Watch && selectedDevices.Desktop ))
       showOrientation = false
 
     showOrientation
@@ -111,11 +122,16 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
         $document.scrollToElementAnimated nextSection
 
   vm.validateAllSections = ->
-    vm.validateSection('platform-details', 'name')
-    vm.validateSection('device-details', ['platforms'])
-    vm.validateSection('type-details', ['devices', 'orientations'])
-    vm.validateSection('brief-details', 'projectType')
-    vm.validateSection('brief-details', 'brief')
+    if !vm.otherPlatformSelected
+      vm.validateSection('platform-details', 'name')
+      vm.validateSection('device-details', ['platforms'])
+      vm.validateSection('type-details', ['devices', 'orientations'])
+      vm.validateSection('brief-details', 'projectType')
+      vm.validateSection('brief-details', 'brief')
+    else
+      vm.validateSection('platform-details', 'name')
+      vm.validateSection('brief-details', ['platforms'])
+      vm.validateSection('brief-details', 'brief')
 
     foundErrors = false
     errorElement = null
@@ -150,6 +166,22 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
     unless foundErrors
       vm.create()
 
+  vm.toggleOtherPlatform = ->
+    vm.otherPlatformSelected = !vm.otherPlatformSelected
+
+    if vm.otherPlatformSelected
+      vm.platforms.forEach (platform) ->
+        if platform.name != 'Other'
+          platform.selected = false
+        else
+          platform.selected = true
+    else
+      vm.platforms.forEach (platform) ->
+        if platform.name == 'Other'
+          platform.selected = false
+
+    vm.validateSection('device-details', ['platforms'] )
+
   vm.create = ->
     vm.createError = false
     updates = getUpdates()
@@ -161,7 +193,10 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
       success = (res) ->
         work = SubmitWorkService.get()
 
-        $state.go 'submit-work-features', { id: work.id }
+        if vm.otherPlatformSelected
+          $state.go 'submit-work-upload-requirements', { id: work.id }
+        else
+          $state.go 'submit-work-features', { id: work.id }
 
       failure = (err) ->
         vm.loading = false
@@ -184,11 +219,12 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
     unless updates.platformIds.length > 0
       valid = false
 
-    unless updates.deviceIds.length > 0
-      valid = false
+    unless vm.otherPlatformSelected
+      unless updates.deviceIds.length > 0
+        valid = false
 
-    unless updates.orientationIds.length > 0
-      valid = false
+      unless updates.orientationIds.length > 0
+        valid = false
 
     valid
 
@@ -198,6 +234,12 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
 
     getId = (item) ->
       item.id
+
+    # TODO: Remove this work-around for 'other' platform option
+    if vm.platforms.filter(isSelected).map(getId)[0] == 'OTHER'
+      vm.projectType = 'DESIGN_AND_CODE'
+      vm.orientations = []
+      vm.deviceIds = []
 
     updates =
       projectType   : vm.projectType.trim()
@@ -211,6 +253,11 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
     resource = ProjectsAPIService.query()
 
     resource.$promise.then (response) ->
+      response?.forEach (project) ->
+        if project.id == $scope.workId
+          if (project.platformIds.length == 1) && (project.platformIds[0] == 'OTHER')
+            vm.isOtherPlatform = true
+
       projectNames = response?.map (project) ->
         project.name.toLowerCase()
 

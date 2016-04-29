@@ -14,10 +14,10 @@ export default function postAttachment({
     })
 
     const options = {
-      endpoint: '/v3/attachments',
+      endpoint: '/attachments',
       method  : 'POST',
       schema  : Schemas.ATTACHMENT,
-      body: {
+      data: {
         param: {
           id       : id,
           fileName : fileName,

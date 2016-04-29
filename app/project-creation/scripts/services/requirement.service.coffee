@@ -23,6 +23,14 @@ srv = ->
       name: 'Android'
       id: 'ANDROID'
       selected: false
+    ,
+      name: 'Web App'
+      id: 'WEB_APP'
+      selected: false
+    ,
+      name: 'Other'
+      id: 'OTHER'
+      selected: false
   ]
 
   service.devices = [
@@ -36,6 +44,10 @@ srv = ->
   ,
     name: 'Phone'
     id: 'PHONE'
+    selected: false
+  ,
+    name: 'Desktop'
+    id: 'DESKTOP'
     selected: false
   ]
 
@@ -125,7 +137,7 @@ srv = ->
     category: 'General Building Blocks'
     id: 'FILE UPLOAD'
     title: 'File Upload'
-    description: 'Allow users to upload photos or other files from their phone. Please specify your desired usage below.'
+    description: 'Allow users to upload photos or other files. Please specify your desired usage below.'
     notes: null
     custom: null
     icon: require './../../images/audio.svg'
@@ -134,7 +146,7 @@ srv = ->
     category: 'General Building Blocks'
     id: 'NOTIFICATIONS'
     title: 'Notifications'
-    description: 'Take advantage of mobile notifications; for example, remind users to do certain tasks or update them on new content. Please specify your desired functionality below.'
+    description: 'Take advantage of notifications; for example, remind users to do certain tasks or update them on new content. Please specify your desired functionality below.'
     notes: null
     custom: null
     icon: require './../../images/audio.svg'

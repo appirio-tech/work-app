@@ -53,6 +53,12 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'BasicController as vm'
     template    : require('./views/submit-work-development')()
 
+  states['submit-work-upload-requirements'] =
+    url         : '/submit-work/upload-requirements/:id'
+    title       : 'Submit Work'
+    controller  : 'BasicController as vm'
+    template    : require('./views/submit-work-upload-requirements')()
+
   states['submit-work-complete'] =
     url         : '/submit-work/complete/:id'
     title       : 'Submit Work'
