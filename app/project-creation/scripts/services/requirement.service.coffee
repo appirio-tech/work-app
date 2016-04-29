@@ -24,7 +24,7 @@ srv = ->
       id: 'ANDROID'
       selected: false
     ,
-      name: 'Web App'
+      name: 'Web'
       id: 'WEB_APP'
       selected: false
     ,
