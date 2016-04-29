@@ -2,7 +2,7 @@
 
 React          = require 'react'
 { connect }    = require 'react-redux'
-{ uploadFile } = require '../../../store.coffee'
+{ uploadFile } = require '../../../store/actions/uploadFile.js'
 classnames     = require 'classnames'
 FileUploader   = require './FileUploader'
 
