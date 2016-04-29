@@ -54,13 +54,18 @@ SubmitWorkTypeController = ($scope, $rootScope, $state, $document, SubmitWorkSer
 
   vm.showOrientation = ->
     showOrientation = true
+    selectedDevices = {}
 
     selected = vm.devices.filter (device) ->
       device.selected
 
-    selectedName = selected[0]?.name
+    selected.forEach (device) ->
+      if device.name == 'Watch'
+        selectedDevices['Watch'] = true
+      else if device.name == 'Desktop'
+        selectedDevices['Desktop'] = true
 
-    if selected.length == 0 || (selected.length == 1 && (selectedName == 'Watch' || selectedName == 'Desktop' ))
+    if selected.length == 0 || (selected.length == 1 && (selectedDevices.Watch || selectedDevices.Desktop )) || (selected.length == 2 && (selectedDevices.Watch && selectedDevices.Desktop ))
       showOrientation = false
 
     showOrientation
