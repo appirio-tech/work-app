@@ -17,7 +17,7 @@ export default function postAttachment({
       endpoint: '/attachments',
       method  : 'POST',
       schema  : Schemas.ATTACHMENT,
-      body: {
+      data: {
         param: {
           id       : id,
           fileName : fileName,

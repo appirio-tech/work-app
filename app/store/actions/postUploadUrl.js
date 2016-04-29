@@ -15,7 +15,7 @@ export default function postUploadUrl({ id, assetType, category, name, type }) {
       endpoint: '/attachments/uploadurl',
       method  : 'POST',
       schema  : Schemas.UPLOAD_URL_ARRAY,
-      body: {
+      data: {
         param: {
           id       : id,
           fileName : name,
