@@ -7,7 +7,7 @@
         p Choose at least one platform for your app.
 
         ul.flex.space-between
-          li.flex.center.column.middle(ng-repeat="platform in vm.platforms")
+          li.flex.center.column.middle.center(ng-repeat="platform in vm.platforms")
             button.clean(type="button" ng-if="platform.name != 'Other'" ng-click="vm.toggleSelection(platform, platform.selected, 'orientation-details', ['platforms'])" ng-disabled="vm.readOnly || vm.otherPlatformSelected")
               .platform-icon-container.flex.center.middle
                   img(ng-if="!platform.selected" ng-src="{{vm.getIconPath(platform.name)}}")
@@ -21,7 +21,10 @@
 
                   img(ng-if="platform.selected" ng-src="{{vm.getIconPath(platform.name, true)}}")
 
-            span.platform-name {{platform.name}}
+            .platform-name.flex.column.middle(ng-class="{'other-platform': platform.name == 'Other'}")
+              span {{platform.name}}
+
+              span(ng-if="platform.name == 'Other' ") (Incl. non-app work)
 
             button.action(
               type="button"

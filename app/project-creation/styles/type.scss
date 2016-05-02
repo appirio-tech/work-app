@@ -143,6 +143,10 @@ submit-work-type {
           .platform-name {
             font-size: 18px;
             margin: 25px 0;
+
+            &.other-platform {
+              margin: 15px 0;
+            }
           }
         }
       }
