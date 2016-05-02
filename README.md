@@ -1,68 +1,46 @@
-# ap-work-client
+# Topcoder Connect
+
 [![GitHub version](https://badge.fury.io/gh/appirio-tech%2Fwork-app.svg)](http://badge.fury.io/gh/appirio-tech%2Fwork-app)
-
 [![Build Status](https://travis-ci.org/appirio-tech/work-app.svg?branch=dev)](https://travis-ci.org/appirio-tech/work-app)
+[![Dependency Status](https://www.versioneye.com/user/projects/5727ab42a0ca35004baf7538/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5727ab42a0ca35004baf7538)
 
-[![Coverage Status](https://coveralls.io/repos/appirio-tech/ap-work-client/badge.svg?branch=dev&t=s1nAzI)](https://coveralls.io/r/appirio-tech/ap-work-client?branch=dev)
+## What is this?
 
-[![Dependency Status](https://www.versioneye.com/user/projects/55d4acfb265ff60022000e13/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55d4acfb265ff60022000e13)
+The primary app repo for [Topcoder Connect](https://connect.topcoder.com).
 
-## setup work space
-Run the following commands to create a work space in your home directory.  The commands will clone repos that are important for this app.  There are also commands that will create sym links to ease development between multiple repos.
+### Getting Started
 
-```shell
-mkdir ~/tc-workspace
-cd ~/tc-workspace/
+- Ensure that you have an alias for ``local.topcoder-dev.com`` to ``127.0.0.1`` in your hosts file
+- ``npm install``
+- ``npm run dev``
+- Open ``local.topcoder-dev.com:8080`` in your browser.
 
-git clone https://github.com/appirio-tech/styles.git
-git clone https://github.com/appirio-tech/webpack-config.git
-git clone https://github.com/appirio-tech/work-app.git
-git clone https://github.com/appirio-tech/ng-work-layout.git
-git clone https://github.com/appirio-tech/ng-file-upload.git
-git clone https://github.com/appirio-tech/ng-timeline.git
-git clone https://github.com/appirio-tech/ng-auth.git
-git clone https://github.com/appirio-tech/ng-ui-components.git
-git clone https://github.com/appirio-tech/ng-messaging.git
-git clone https://github.com/appirio-tech/ng-login-reg.git
-git clone https://github.com/appirio-tech/ng-projects.git
-git clone https://github.com/appirio-tech/ng-submit-work.git
-git clone https://github.com/appirio-tech/ng-api-services.git
-git clone https://github.com/appirio-tech/ng-optimist.git
-git clone https://github.com/appirio-tech/ng-submissions.git
-git clone https://github.com/appirio-tech/ng-status-report.git
-git clone https://github.com/appirio-tech/ng-manage-steps.git
+### Requirements
 
-cd ~/tc-workspace/work-app
-npm install
-npm run dev
-```
+This app has been developed using ``Node > 5.0.0`` and ``NPM > 3.0.0``, all other requirements will be installed by ``NPM``. We recommend using at least those versions.
 
-## sym link to work with multiple repos
-First go into the folder where the node modules are installed, then run any of the following commands
+### Stack
 
-```shell
-mv node_modules/appirio-tech-api-schemas/swagger node_modules/appirio-tech-api-schemas/swagger-backup
-ln -s ~/tc-workspace/api-schemas/swagger/ ./node_modules/appirio-tech-api-schemas/swagger
+- [Webpack](https://github.com/webpack/webpack) - Build tool, bundler, dev server, all around great guy.
+- Javascript / ES6 - We are using [Babel](https://babeljs.io/) (via Webpack) to transpile ES6 code to fully browser compatible ES5 code.
+- [React](https://facebook.github.io/react/) - View layer.
+- [Redux](https://github.com/reactjs/redux) - Model layer.
+- [UI Router](https://github.com/angular-ui/ui-router) - Router. Probably sticking around until we can fully deprecate Angular.
 
-mv node_modules/appirio-tech-api-schemas/apiary node_modules/appirio-tech-api-schemas/apiary-backup
-ln -s ~/tc-workspace/api-schemas/apiary/ ./node_modules/appirio-tech-api-schemas/apiary
+**Deprecated**
 
-mv node_modules/appirio-tech-api-schemas/main.coffee node_modules/appirio-tech-api-schemas/main.coffee-backup
-ln -s ~/tc-workspace/api-schemas/main.coffee ./node_modules/appirio-tech-api-schemas/main.coffee
+- [Angular](https://angularjs.org) - Our legacy view layer. Deprecated in favor of React.
+- Coffeescript - Mostly used in our Angular code. Served us well, but has been phased out in favor of ES6.
 
-mv node_modules/appirio-tech-client-app-layer/src node_modules/appirio-tech-client-app-layer/src-backup
-ln -s ~/tc-workspace/client-app-layer/src/ ./node_modules/appirio-tech-client-app-layer/src
+### Internal dependencies
 
-mv node_modules/appirio-tech-file-uploader/components/ node_modules/appirio-tech-file-uploader/components-backup/
+- [Webpack Config](https://github.com/appirio-tech/webpack-config) - Standard build config for all Topcoder apps. Includes constants common to all apps.
+- [UI Components](https://github.com/appirio-tech/ng-ui-components) - Shared library of Angular components used across Topcoder apps. **Has been deprecated in favor of TC-UI**.
+- [Appirio Styles](https://github.com/appirio-tech/styles) - CSS companion to UI Components. **Also deprecated**.
+- [TC-UI](https://github.com/appirio-tech/tc-ui) - Topcoder UI Kit. Used for SASS exports (vars, mixins) and React components.
+- [Accounts](https://github.com/appirio-tech/accounts-app) - We import a small library from here that handles token fetching/refreshing. Additionally, all login/registration/password/account/auth UI is hosted from this app at [https://accounts.topcoder.com](accounts.topcoder.com)
 
-ln -s ~/tc-workspace/file-uploader/components/ ./node_modules/appirio-tech-file-uploader/components
 
-mv node_modules/appirio-tech-ng-ui-components/components/ node_modules/appirio-tech-ng-ui-components/components-backup/
 
-ln -s ~/tc-workspace/ng-ui-components/components/ ./node_modules/appirio-tech-ng-ui-components/components
-```
-
-## Build
-checkout the .travis.yml file
 
 
