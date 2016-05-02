@@ -1,0 +1,39 @@
+@import "work/work-includes";
+
+#project-details-setup {
+  .project-type {
+    img {
+      height: 68px;
+    }
+
+    p {
+      margin-left: 15px;
+      text-transform: uppercase;
+    }
+  }
+
+  .project-description {
+    p {
+      white-space: pre-wrap;
+    }
+  }
+
+  .platform {
+    max-width: 400px;
+
+    ul > li {
+      margin-top: 15px;
+    }
+  }
+
+  .plus {
+    width: 24px;
+    height: 24px;
+  }
+
+  label {
+    font-weight: 400;
+    margin-left: 10px;
+    font-size  : 16px;
+  }
+}

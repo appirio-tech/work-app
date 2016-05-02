@@ -1,0 +1,33 @@
+header
+  h5 Development
+
+  hr.biggest
+
+main
+  h4(ng-if="vm.project.files.development.length") Uploaded development documents
+
+  ul.files
+    li(ng-repeat="file in vm.project.files.development")
+      a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}" target="_blank") {{file.filename}}
+
+  h4 What level of security is needed?
+
+  p Security level needed: {{ vm.project.securityLevel }}
+
+  h4 Access to data offline?
+
+  p(ng-if="vm.project.offlineAccess") Yes, access to offline data is needed.
+
+  p(ng-if="!vm.project.offlineAccess") No, access to offline data is not needed.
+
+  h4 Is there any level of personal information? (stored or transmitted)?
+
+  p(ng-if="vm.project.usesPersonalInformation") Yes, storing and/or transmitting personal information is needed.
+
+  p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
+
+  h4 List of 3rd party integrations
+
+  ul.third-party-integrations.flex.column
+    li(ng-repeat="apiIntegration in vm.project.apiIntegrations track by $index")
+      p {{apiIntegration}}

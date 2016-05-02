@@ -1,0 +1,10 @@
+main.flex.column.middle.center.flex-grow
+  .house
+    avatar.icon.biggest(avatar-url="{{project.activeWorkStep.winners[0].avatar}}")
+
+  p.name {{project.activeWorkStep.winners[0].handle}}
+
+  p.winner-text winner chosen
+
+footer.flex-grow.flex.column.end
+  p You have {{project.activeWorkStep.nextPhase.submissionDueBy | timeLapse:project.activeWorkStep.nextPhase.submissionDueBy:true}} to ask for final changes

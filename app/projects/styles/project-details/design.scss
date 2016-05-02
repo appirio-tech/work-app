@@ -1,0 +1,32 @@
+@import "work/work-includes";
+
+#project-details-design {
+  .color-swatches {
+    li {
+      display: inline-block;
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    img {
+      height: 68px;
+    }
+  }
+
+  label {
+    font-weight: 400;
+    margin-left: 20px;
+  }
+
+  .big-a {
+    background-color: $primary-color;
+    color           : $white;
+    font-size       : 65px;
+    width           : 42px;
+    height          : 78px;
+    text-align      : center;
+  }
+}

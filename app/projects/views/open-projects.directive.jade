@@ -1,0 +1,26 @@
+loader(ng-show="vm.loading")
+
+ul.flex.wrap
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    project-card.elevated-bottom
+      card-header
+        a(ui-sref="copilot-project-details({ id: project.id })")
+          h5 {{ project.name || 'Unnamed Project' }}
+
+        p.type {{ project.createdAt | date:'MM/dd/yyyy' }}
+
+      card-main.flex.column
+        main.solid.flex.column.middle.center
+          img(ng-src=require("../images/design-colored.svg") ng-if="project.projectType == 'DESIGN'")
+
+          img(ng-src=require("../images/design-development-colored.svg") ng-if="project.projectType == 'DESIGN_AND_CODE'")
+
+          label {{ vm.typeMap[project.projectType] }}
+
+        footer.flex.bottom.center
+          a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
+
+.no-projects(ng-hide="vm.loading || vm.projects.length > 0")
+  p There are no open projects.
+
+

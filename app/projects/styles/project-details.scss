@@ -1,0 +1,76 @@
+@import "work/work-includes";
+
+project-details {
+  display: block;
+  overflow: hidden;
+
+  estimate-project {
+
+    max-height: 0px;
+    overflow  : hidden;
+    padding   : 0;
+
+    &.active {
+      max-height   : 300px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .confirm {
+    background-color: $primary-color;
+    color           : $white;
+    max-height      : 0px;
+    overflow        : hidden;
+
+    h5 {
+      margin-left: 10px;
+      padding    : 0;
+      color      : $white;
+    }
+
+    .loader-house {
+      position: relative;
+
+      .loader {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &.active {
+      max-height: 100px;
+      margin-bottom: 30px;
+    }
+
+    > * {
+      margin: 15px;
+    }
+  }
+
+  .nav {
+    width: 200px;
+    margin-top: 10px;
+
+    .claim, .launch, .complete {
+      margin-bottom: 30px;
+    }
+
+    ul {
+      border-right: 2px solid $grey-lightest;
+
+      button {
+        text-align    : left;
+        text-transform: uppercase;
+        font-weight   : 400;
+      }
+
+      li {
+        margin-top: 30px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

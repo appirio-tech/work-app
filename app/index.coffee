@@ -22,9 +22,9 @@ require './submissions/src.coffee'
 require './optimist/src.coffee'
 require './file-upload/src.coffee'
 require './messaging/src.coffee'
+require './projects/src.coffee'
 
 require 'appirio-tech-ng-ui-components'
-require 'appirio-tech-ng-projects'
 require 'appirio-tech-ng-status-report'
 require 'appirio-tech-ng-timeline'
 

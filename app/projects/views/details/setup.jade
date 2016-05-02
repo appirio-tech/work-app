@@ -1,0 +1,52 @@
+header
+  h5 Project Setup
+
+  hr.biggest
+
+main
+  h4 platform details
+
+  ul.platform.flex.space-between
+    li.platform
+      h6 Platform
+
+      ul
+        li.flex.middle(ng-repeat="platform in vm.project.platformIds")
+          .icon.plus
+
+          label {{ vm.textMap[platform] || platform }}
+
+    li.device
+      h6 Device
+
+      ul
+        li.flex.middle(ng-repeat="device in vm.project.deviceIds")
+          .icon.plus
+
+          label {{ vm.textMap[device] || device }}
+
+    li.orientation
+      h6 Orientation
+
+      ul
+        li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
+          .icon.plus
+
+          label {{ vm.textMap[orientation] || orientation }}
+
+  h4 Project type
+
+  .project-type.flex.middle(ng-if="vm.project.projectType == 'DESIGN'")
+    img.biggest(ng-src=require("../../images/design-colored.svg"))
+
+    p Design
+
+  .project-type.flex.middle(ng-if="vm.project.projectType != 'DESIGN'")
+    img.biggest(ng-src=require("../../images/design-development-colored.svg"))
+
+    p Design &amp; Development
+
+  h4 Project Description
+
+  .project-description
+    p {{vm.project.brief}}

@@ -1,0 +1,9 @@
+main.solid.flex.column.middle.center
+  img.icon.biggest(src=require("../../images/icon-download.svg"))
+
+  label final fixes received
+
+footer.flex-grow.flex.column.space-between.middle
+  a.button.action(ui-sref="step({projectId: project.id, stepId: project.activeWorkStep.id})") view submissions
+
+  p.secondary You have {{ project.activeWorkStep.endsAt | timeLapse:project.activeWorkStep.endsAt:true }}

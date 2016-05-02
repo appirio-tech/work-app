@@ -1,0 +1,36 @@
+@import "work/work-includes";
+
+#project-details-features {
+  .features-descriptions {
+    li {
+      border-top: 1px solid $grey-light;
+      padding: 30px 0;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      p {
+        margin-top: 5px;
+        white-space: pre-wrap;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      label {
+        font-size: 18px;
+      }
+      .notes {
+        margin-top: 30px;
+
+        label {
+          font-size: 15px;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+}

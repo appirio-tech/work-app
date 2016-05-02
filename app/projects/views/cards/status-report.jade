@@ -1,0 +1,7 @@
+main.solid.flex.column.middle.center
+  img.icon.biggest(src=require("../../images/icon-download.svg"))
+
+  label status update for {{project.activeWorkStep.statusReportDate | date:'MMMM d, yyyy'}}
+
+footer.flex-grow.flex.column.end.middle
+  a.button.action(ui-sref="timeline({workId: project.id})") view update

@@ -1,0 +1,8 @@
+main.flex.column.middle.center.flex-grow
+  img.icon.biggest(src=require("../../images/project-complete.svg"))
+
+  label project complete
+
+  a.button.hollow(ng-if="project.projectType == 'DESIGN'" ui-sref="step({projectId: project.id, stepId: project.activeWorkStep.id})") View final design
+
+  a.button.hollow(ng-if="project.projectType == 'DESIGN_AND_CODE'" ui-sref="step({projectId: project.id, stepId: project.activeWorkStep.id})") View final code

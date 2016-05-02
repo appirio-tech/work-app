@@ -1,0 +1,19 @@
+main.solid.flex.column.middle.center
+  img.icon.biggest(src=require("../../images/project-submitted.svg"))
+
+  label(ng-if="project.activeWorkStep.name == 'Design Concepts'") Design work has begun
+
+  label(ng-if="project.activeWorkStep.name == 'Final Designs'") Awaiting {{project.activeWorkStep.name}}
+
+  label(ng-if="project.activeWorkStep.name == 'Final Fixes'") Final fixes underway
+
+  label(ng-if="project.activeWorkStep.name == 'Code'") Development work has begun
+
+footer.flex-grow.flex.column.end
+  p(ng-if="project.activeWorkStep.name == 'Design Concepts'") You'll receive concepts in {{project.activeWorkStep.submissionDueBy | timeLapse:project.activeWorkStep.submissionDueBy:true}}
+
+  p(ng-if="project.activeWorkStep.name == 'Final Designs'") You'll receive submissions in {{project.activeWorkStep.submissionDueBy | timeLapse:project.activeWorkStep.submissionDueBy:true}}
+
+  p(ng-if="project.activeWorkStep.name == 'Final Fixes'") You'll receive final deliverables in {{project.activeWorkStep.submissionDueBy | timeLapse:project.activeWorkStep.submissionDueBy:true}}
+
+  p(ng-if="project.activeWorkStep.name == 'Code'") You'll receive final deliverables in {{project.activeWorkStep.submissionDueBy | timeLapse:project.activeWorkStep.submissionDueBy:true}}

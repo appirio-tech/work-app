@@ -1,0 +1,31 @@
+@import "work/work-includes";
+
+ng-projects, open-projects, claimed-projects {
+  h6 {
+    margin-top: 15px;
+  }
+
+  h5 {
+    font-weight: 500;
+  }
+
+  .no-projects {
+    text-align : center;
+    font-size  : 18px;
+    font-weight: 400;
+    color      : $grey-dark;
+  }
+
+  hr {
+    margin: 15px 0 0 0;
+    width: 100%;
+  }
+
+  .content-end {
+    @include align-content(flex-end);
+  }
+
+  > ul {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,14 @@
+main.solid.flex.column.middle.center
+  img.icon.biggest(src=require("../images/icon-download.svg"))
+
+  label(ng-if="vm.phase == 'Design Concepts'") {{vm.phase}} are in
+
+  label(ng-if="vm.phase == 'Final Designs'") Designs Completed!
+
+
+footer.flex-grow.flex.column.end.middle.space-between
+  a.button.action(ng-if="vm.phase == 'Design Concepts'" ui-sref="step({projectId: vm.id, stepId: vm.stepId})") review concepts
+
+  a.button.action(ng-if="vm.phase == 'Final Designs'" ui-sref="step({projectId: vm.id, stepId: vm.stepId})") choose winners
+
+  p You have {{ vm.end | timeLapse:vm.end:true }} left to choose winners

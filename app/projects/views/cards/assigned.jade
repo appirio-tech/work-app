@@ -1,0 +1,11 @@
+main.solid.flex.column.middle.center
+  avatar(avatar-url="{{ project.copilot.avatar }}")
+
+  p {{ project.copilot.handle || 'n/a' }}
+
+  label meet your co-pilot
+
+footer.flex-grow.flex.column.end.middle
+  a.button.action(ui-sref="messaging({ id: project.id, threadId: project.threadId })") send a message
+
+  p Awaiting time and cost estimate

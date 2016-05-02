@@ -1,0 +1,57 @@
+loader(ng-show="vm.loading")
+
+ul.flex.wrap
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    project-card.elevated-bottom
+      card-header
+        a(ui-sref="copilot-project-details({ id: project.id })")
+          h5 {{ project.name || 'Unnamed Project' }}
+
+        p.type {{ vm.typeMap[project.projectType] }} - {{project.createdAt | date:'MM/dd/yyyy'}}
+
+      card-main.flex.column(ng-if="project.status == 'ASSIGNED'")
+        main.solid.flex.column.middle.center.flex-grow
+          img.icon.biggest(src=require("../images/project-claimed.svg"))
+
+          label Project Claimed
+
+        footer.flex.bottom.center
+          a.action.button(ui-sref="copilot-project-details({ id: project.id })") estimate
+
+      card-main.flex.column(ng-if="project.status == 'ESTIMATED'")
+        main.solid.flex.column.middle.center.flex-grow
+          img.icon.biggest(src=require("../images/quote-generated.svg"))
+
+          label Project Estimated
+
+        footer.flex.bottom.center
+          p Client is reviewing estimate
+
+      card-main.flex.column(ng-if="project.status == 'APPROVED'")
+        main.solid.flex.column.middle.center.flex-grow
+
+          img.icon.biggest(src=require("../images/project-approved.svg"))
+
+          label Project Approved
+
+        footer.flex.bottom.center
+          a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
+
+      card-main.flex.column(ng-if="project.status == 'LAUNCHED'")
+        main.solid.flex.column.middle.center.flex-grow
+          img.icon.biggest(src=require("../images/project-launched.svg"))
+
+          label Project launched
+
+        footer.flex.bottom.center
+          p Check back later for updates
+
+      card-main.complete.flex.column.middle.center(ng-if="project.status == 'COMPLETE'")
+        img.icon.biggest(src=require("../images/project-complete.svg"))
+
+        label Project complete
+
+.no-projects(ng-hide="vm.loading || vm.projects.length > 0")
+  p You have not claimed any projects yet.
+
+

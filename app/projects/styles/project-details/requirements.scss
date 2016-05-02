@@ -1,0 +1,55 @@
+@import "work/work-includes";
+
+project-details .requirements {
+  max-width: 920px;
+  margin-left: 30px;
+
+  hr {
+    height: 10px;
+  }
+
+  h5 {
+    font-weight: 500;
+  }
+
+  h6 {
+    color: $black;
+  }
+
+  hr {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: $grey-lightest;
+  }
+
+  > li {
+    margin-top: 100px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h4 {
+    margin-bottom: 20px;
+    margin-top   : 50px;
+    font-size    : 22px;
+
+    color: $grey-dark;
+
+    &:first-child {
+      margin-top: 30px;
+    }
+  }
+
+  .files, .icons {
+    li {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+

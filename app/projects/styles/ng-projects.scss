@@ -1,0 +1,71 @@
+@import "work/work-includes";
+
+ng-projects {
+  display: block;
+
+  .assigned {
+    avatar {
+      margin-top: 15px;
+      width     : 64px;
+      height    : 64px;
+    }
+
+    p {
+      margin-top: 5px;
+    }
+  }
+
+  avatar {
+    margin: 0 auto;
+  }
+
+  .winners {
+    ul {
+      width: 100%;
+    }
+
+    .winner {
+      text-align: left;
+
+      avatar {
+        min-width: 35px;
+      }
+
+      > * {
+        margin: 10px;
+      }
+
+      .rank {
+        color         : $primary-color;
+        text-align    : center;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .winner {
+    h5 {
+      margin-top: 15px;
+      color: $primary-color;
+    }
+
+    .name {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .winner-text {
+      color         : $primary-color;
+      text-transform: uppercase;
+      margin-top    : 15px;
+      font-size     : 24px;
+      font-weight   : 500;
+    }
+
+    .house {
+      border-radius: 50%;
+      border       : 1px solid $success-color;
+      padding      : 10px;
+    }
+  }
+}

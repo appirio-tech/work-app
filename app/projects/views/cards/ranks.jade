@@ -1,0 +1,14 @@
+main
+  ul.flex.column
+    li.winner.flex.middle(ng-repeat= "winner in project.activeWorkStep.winners")
+        avatar.icon.big(avatar-url="{{winner.avatar}}")
+
+        p.name.flex-grow {{ winner.handle }}
+
+        .rank
+          .value {{ winner.rank | ordinalNumber}}
+
+          .unit place
+
+footer.flex-grow.flex.column.end
+  p You'll receive complete designs in {{project.activeWorkStep.nextPhase.submissionDueBy | timeLapse:project.activeWorkStep.nextPhase.submissionDueBy:true }}

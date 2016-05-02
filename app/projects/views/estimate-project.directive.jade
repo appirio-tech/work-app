@@ -1,0 +1,51 @@
+main(ng-hide="vm.costEstimate")
+  h5 Create Project Estimates
+
+  hr.biggest
+
+  form(ng-submit="vm.submit()")
+    .cost-estimate.flex.space-between.wrap
+      .description
+        p.secondary Enter a range for your proposed cost and duration for this project.
+
+      .cost
+        label Project Cost
+
+        .fields.flex.middle
+          input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+          p to
+
+          input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+      .duration
+        label Project Duration
+
+        .fields.flex.middle
+          input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+          p to
+
+          input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+          p weeks
+
+    button.action.wider(ng-disabled="!vm.canUpdate") save estimates
+
+.success-message(ng-show="vm.costEstimate")
+  h5 Project Estimates
+
+  hr.biggest
+
+  .estimates.flex.space-between
+    .costs
+      h6 Costs
+
+      p ${{ vm.costEstimate.price.min }} - ${{ vm.costEstimate.price.max }}
+
+    .duration
+      h6 Duration
+
+      p {{ vm.costEstimate.duration.min }} - {{ vm.costEstimate.duration.max }} {{ vm.costEstimate.duration.unit }}s
+
+loader(ng-show="vm.loading")

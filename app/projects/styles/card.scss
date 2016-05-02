@@ -1,0 +1,133 @@
+@import "work/work-includes";
+
+$card-width: 300px;
+
+project-card {
+  display         : block;
+  width           : $card-width;
+  margin          : 10px;
+  background-color: $white;
+  overflow        : hidden;
+  padding         : 15px 10px;
+
+  .incomplete {
+    background-color: $danger-color-light;
+  }
+
+  .complete {
+    background-color: $success-color;
+  }
+
+  .complete, .incomplete {
+    color: $white;
+
+    label {
+      color: $white;
+    }
+
+    main {
+      height: auto;
+      border: none;
+    }
+  }
+
+  card-header {
+    display : block;
+    height  : 78px;
+    overflow: hidden;
+
+    .project-name {
+      float: left;
+      max-width: 225px;
+
+      a {
+        display: block;
+      }
+    }
+
+    p {
+      margin-top: 5px;
+    }
+
+    h5 {
+      line-height: 25px;
+      max-height : 52px;
+      overflow   : hidden;
+    }
+
+    .message-notification {
+      position: relative;
+      float   : right;
+      width   : 35px;
+      margin  : 12px 8px 0;
+
+      .notification {
+        $diameter: 20px;
+
+        font-size    : 12px;
+        min-width    : $diameter;
+        min-height   : $diameter;
+        line-height  : $diameter;
+        border-radius: $diameter;
+        padding      : 0;
+        right        : -4px;
+      }
+    }
+  }
+
+  card-main {
+    display   : block;
+    margin-top: 15px;
+    text-align: center;
+    height    : 256px;
+    overflow  : hidden;
+
+    label {
+      text-transform: uppercase;
+      margin-top    : 15px;
+      color         : $primary-color;
+      width         : 100%; /* ie */
+    }
+
+    main {
+      width      : 100%;
+      height     : 180px;
+      border-top : 1px solid $grey-light;
+      padding    : 10px 0;
+
+      button, .button {
+        margin-top: 30px;
+      }
+
+      &.solid {
+        background-color: $primary-color-light;
+        height          : 170px;
+        border-top      : none;
+        padding         : 10px;
+
+        label {
+          color: $primary-color;
+        }
+      }
+    }
+
+    &.assigned main.solid {
+      background-color: $white;
+    }
+
+    footer {
+      background-color: $white;
+      text-align      : center;
+      width           : 100%;
+      margin-top      : 20px;
+
+      p {
+        font-weight: 400;
+
+        &.secondary {
+          font-weight: 400-light;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+loader(ng-show="vm.loading")
+
+ul.flex.wrap
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    project-card.elevated-bottom
+      card-header
+        .project-name
+          a(ng-if="project.status != 'INCOMPLETE' " ui-sref="timeline({ workId: project.id })")
+            h5 {{ project.name || 'unnamed project' }}
+
+          a(ng-if="project.status == 'INCOMPLETE' " ui-sref="submit-work({ id: project.id })")
+            h5 {{ project.name || 'unnamed project' }}
+
+          p.type(ng-if="!project.activeWorkStep.name") {{ vm.typeMap[project.projectType] }} - {{ vm.statusMap[project.status] }}
+
+          p.type(ng-if="project.activeWorkStep.name") {{ vm.typeMap[project.projectType] }} - {{ project.activeWorkStep.name }} Phase
+
+        button.clean.message-notification(ng-if="project.copilot != null")
+          a(ui-sref="messaging({id: project.id, threadId: project.projectThread.id})")
+            avatar.icon(avatar-url="{{project.copilot.avatar}}")
+
+            .notification.absolute(ng-if="project.projectThread.unreadCount > 0") {{project.projectThread.unreadCount}}
+
+      card-main.flex.center.middle.incomplete(ng-if="project.status == 'INCOMPLETE' && project.workStepStatus == null")
+        include cards/incomplete
+
+      card-main.flex.column.submitted(ng-if="project.status == 'SUBMITTED' && project.workStepStatus == null")
+        include cards/submitted
+
+      card-main.flex.column.assigned(ng-if="project.status == 'ASSIGNED' && project.workStepStatus == null")
+        include cards/assigned
+
+      card-main(ng-if="project.status == 'ESTIMATED' && project.workStepStatus == null")
+        include cards/estimated
+
+      card-main.flex.column.approved(ng-if="project.status == 'APPROVED' && project.workStepStatus == null")
+        include cards/approved
+
+      card-main.flex.column.launched(
+        ng-if="project.status == 'LAUNCHED' && project.workStepStatus == null "
+      )
+        include cards/launched
+
+      card-main.complete.flex.center.middle(ng-if="project.status == 'COMPLETE'")
+        include cards/completed
+
+      card-main.flex.column(
+        ng-if="project.workStepStatus == 'CHOOSE_WINNERS' && (project.activeWorkStep.name == 'Design Concepts' || project.activeWorkStep.name == 'Final Designs') "
+      )
+        submission-card.flex.flex-grow.column(phase="{{project.activeWorkStep.name}}" end="{{project.activeWorkStep.endsAt}}" id="{{project.id}}" step-id="{{project.activeWorkStep.id}}")
+
+      card-main.flex.column.middle.center(
+        ng-if="project.workStepStatus == 'CHOOSE_WINNERS' && project.activeWorkStep.name == 'Final Fixes' "
+      )
+        include cards/final-fixes
+
+      card-main.flex.column.winner(
+        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Final Designs' "
+      )
+        include cards/winner
+
+      card-main.flex.column.middle.center(
+        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && (project.activeWorkStep.name == 'Final Fixes' || project.activeWorkStep.name == 'Code' || project.activeWorkStep.name == 'Code Final Fixes')"
+      )
+        include cards/final-fixes-approved
+
+      card-main.flex.column.middle.center(
+        ng-if="project.workStepStatus == 'STATUS_REPORT_RECEIVED' && (project.activeWorkStep.name == 'Code' || project.activeWorkStep.name == 'Code Final Fixes')"
+      )
+        include cards/status-report
+
+      card-main.flex.column.winners(
+        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Design Concepts'"
+      )
+        include cards/ranks
+
+      card-main.flex.column(
+        ng-if="project.workStepStatus == 'STEP_OPEN'"
+      )
+        include cards/awaiting-submissions
+
+
+p.no-projects(ng-hide="vm.loading || vm.projects.length > 0") You have successfully activated your account. Let’s continue and create a new project.
+
+

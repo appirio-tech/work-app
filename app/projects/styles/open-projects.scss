@@ -1,0 +1,21 @@
+@import "work/work-includes";
+
+open-projects {
+  display: block;
+
+  > ul > li {
+    position: relative;
+  }
+
+  img {
+    height: 68px;
+  }
+
+  footer {
+    height: 52px;
+  }
+
+  .button {
+    margin-top: 0;
+  }
+}
