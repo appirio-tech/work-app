@@ -1,0 +1,14 @@
+@import "work/work-includes";
+@import "variables";
+
+event-card.copilot {
+  avatar {
+    margin-bottom: 15px;
+  }
+
+  event-card-main {
+    max-width   : 560px;
+    margin-right: auto;
+    margin-left : auto;
+  }
+}

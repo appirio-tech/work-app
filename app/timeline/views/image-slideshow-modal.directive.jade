@@ -1,0 +1,5 @@
+modal(show="vm.showModal")
+  .image-viewer-container.flex.column
+    image-viewer-header.flex(ng-if="vm.file" avatar="{{vm.avatar}}" handle="{{vm.handle}}" title="{{vm.title}}" download-allowed="true" download-url="vm.downloadUrl")
+
+    image-slide-viewer.flex.flex-grow(files="vm.files" starting-file="vm.startingFile" show-notifications="vm.showNotifications" on-file-change="vm.onFileChange(file)")

@@ -1,0 +1,243 @@
+@import "work/work-includes";
+@import "variables";
+
+timeline {
+  display : block;
+  position: relative;
+
+  .transition {
+    overflow: hidden;
+  }
+
+  a {
+    &.thumbnail {
+      height: 147px;
+      width: 197px;
+      overflow: hidden;
+      display: block;
+      background-position: top;
+      background-size: cover;
+    }
+  }
+
+  button.action, button.wider {
+    margin-top: $vertical-spacing;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  hr.biggest {
+    height: 10px;
+  }
+
+  h1 {
+    line-height: 36px;
+  }
+
+  h4 {
+    &.inactive {
+      color: $grey-light;
+    }
+  }
+
+  h5 {
+    font-weight: 700;
+    color: $text-color-light;
+  }
+
+  .timeline {
+    width           : 2px;
+    background-color: $grey-light;
+    margin          : 40px $horizontal-spacing $vertical-spacing-big 0;
+  }
+
+  .event-groups {
+    width: 100%;
+
+    > .splitter {
+      height: 10px;
+    }
+  }
+
+  > main {
+    position: relative;
+  }
+
+  avatar {
+    width         : 48px;
+    height        : 48px;
+    min-width     : 48px;
+    border-radius : 50%;
+  }
+
+  .avatar-box {
+    avatar {
+      margin-right: 15px;
+    }
+
+    .co-pilot {
+      margin-top: 0;
+    }
+  }
+
+  .point {
+    width           : 24px;
+    height          : 24px;
+    position        : absolute;
+    left            : -(24px/2) + 1px;
+    border-radius   : 50%;
+    background-color: $grey-lighter;
+
+    .icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    .plus {
+      display: block;
+    }
+
+    .minus {
+      display: none;
+    }
+
+    &.expanded {
+      .plus {
+        display: none;
+      }
+
+      .minus {
+        display: block;
+      }
+    }
+  }
+
+  .disabled {
+    .point {
+      background-color: $grey-lighter;
+      border: 1px solid $grey;
+      border-radius: 50%;
+
+      .icon.plus, .icon.minus {
+        display: none;
+      }
+    }
+
+    > header {
+      > h5 {
+        color: $grey;
+      }
+    }
+
+    &.complete {
+      height: 50px; /* need static height due to timeline line */
+
+      .point {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .event-group {
+    background-color: $white;
+
+    > header { /* simulate white padding */
+      border             : $horizontal-spacing solid $white;
+      border-top-width   : $vertical-spacing-big;
+      border-bottom-width: $vertical-spacing-small;
+      background-color   : $white;
+    }
+
+    .events {
+      > * { /* simulate white padding */
+        border: $horizontal-spacing-small solid $white;
+        border-bottom-width: 0;
+        border-top-width: 0;
+
+        &:last-child {
+          border-bottom-width: $vertical-spacing-big;
+        }
+
+        &.hr {
+          border-top: 0;
+        }
+
+        background-color: $white;
+      }
+
+      .point {
+        background-color: $grey-lighter;
+        display         : block;
+      }
+
+      &.no-height {
+        .point {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .complete {
+    margin-top: 65px;
+
+    .date {
+      color: $primary-color;
+    }
+
+    .pending {
+      display: none;
+    }
+
+    &.disabled {
+      .pending {
+        display: block;
+      }
+
+      .date {
+        display: none;
+      }
+    }
+
+    .point {
+      width           : 24px;
+      height          : 24px;
+      border          : 1px solid $grey;
+      border-radius   : 50%;
+      margin-top      : 10px;
+      background-color: $grey-lighter;
+    }
+  }
+
+  .event {
+    &.finish {
+      background-color: $primary-color;
+      padding         : 15px;
+      color           : $white;
+      text-align      : center;
+      border          : 0; /* remove simulated padding */
+
+      * {
+        color: $white;
+      }
+    }
+
+    .avatars {
+      li {
+        margin-left: 10px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .image-viewer-container {
+    height: 100%;
+  }
+}

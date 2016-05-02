@@ -1,0 +1,31 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  h1 {{ event.eventTime | date : 'MMMM d' }} status report
+
+time {{ event.eventTime | timeLapse }}
+
+event-card-main.transition(
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+  p {{ event.text || 'no subject' }}
+
+  ul.links
+    li(ng-repeat="link in event.links track by $index")
+
+      a(href="{{link.url}}") {{link.url}}
+
+  ul.thumbnails.flex.center
+    li(ng-repeat="image in event.images track by $index" ng-if="vm.isImage(image)")
+      .image-thumbnail.elevated(ng-click="vm.activateImageSlideViewer(vm.workId, event.id, event.eventTime, image.fileId )" style="background-image: url({{ image.url }})")
+
+    li(ng-repeat="image in event.images track by $index" ng-if="!vm.isImage(image)")
+      a.file-thumbnail.flex.center.middle(href="{{image.url}}" target="_blank")
+        img(ng-src=require('../../images/file-icon.svg'))

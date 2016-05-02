@@ -1,0 +1,36 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  ul.header.flex.center.middle
+    li
+      .icon.envelope.smallest
+
+    li
+      a(href="{{ vm.generateProfileUrl(event.lastMessageInfo.publisherInfo.handle) }}" target="_blank")
+        avatar(avatar-url="{{event.lastMessageInfo.publisherInfo.avatar}}")
+
+    li.name.flex-grow
+      p
+        a(href="{{ vm.generateProfileUrl(event.lastMessageInfo.publisherInfo.handle) }}" target="_blank") {{event.lastMessageInfo.publisherInfo.handle}}
+
+
+      p.role {{event.lastMessageInfo.publisherInfo.role}}
+
+    li
+      time {{event.eventTime | timeLapse}}
+
+event-card-main.transition(
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+  p.message-content {{event.lastMessageInfo.content}}
+
+  button.wider.action(ui-sref="messaging({ id: vm.workId, threadId: event.lastMessageInfo.threadId })") view entire thread
+
+

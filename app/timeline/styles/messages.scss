@@ -1,0 +1,45 @@
+@import "work/work-includes";
+
+event-card.messaging {
+  display: block;
+  padding-top: 20px;
+
+  main {
+    padding-top: 30px;
+
+    hr {
+      margin-top: 20px;
+    }
+  }
+
+  .header {
+    width: 100%;
+
+    avatar {
+      margin-left: 15px;
+    }
+
+    .name {
+      text-align: left;
+      margin-left: 15px;
+
+      p {
+        margin-top: 0;
+      }
+
+      .role {
+        color: $grey;
+      }
+    }
+  }
+
+  p {
+    &.message-content {
+      white-space: pre-wrap;
+    }
+  }
+
+  > button, > button.action {
+    margin: 15px 10px 0 10px;
+  }
+}

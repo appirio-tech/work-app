@@ -1,0 +1,53 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  ul.header.flex.center.middle
+    li
+      .icon.bubble.smallest
+
+    li
+      a(href="{{ vm.generateProfileUrl(event.submitter.handle) }}" target="_blank")
+        avatar(avatar-url="{{event.submitter.avatar}}")
+
+    li.name.flex-grow
+      p
+        a(href="{{ vm.generateProfileUrl(event.submitter.handle) }}" target="_blank") {{event.submitter.handle}}
+
+      p.role {{event.submitter.role}}
+
+    li
+      time {{event.submissionThreads[event.submissionThreads.length - 1].lastMessageDate | timeLapse}}
+
+event-card-main.transition(
+  ng-if="event.submissionThreads.length > 0"
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+
+  p(ng-if="event.publishers.length == 1 && !vm.allMessagesRead(event.submissionThreads)") {{event.publishers[0].handle}} has commented on {{event.submissionThreads.length}} submission image(s).
+
+  p(ng-if="event.publishers.length == 2 && !vm.allMessagesRead(event.submissionThreads)") {{event.publishers[0].handle}} and {{event.publishers[1].handle}} have commented on {{event.submissionThreads.length}} submission image(s).
+
+  p(ng-if="event.publishers.length == 1 && vm.allMessagesRead(event.submissionThreads)") {{event.publishers[0].handle}} commented on {{event.submissionThreads.length}} submission image(s).
+
+  p(ng-if="event.publishers.length == 2 && vm.allMessagesRead(event.submissionThreads)") {{event.publishers[0].handle}} and {{event.publishers[1].handle}} commented on {{event.submissionThreads.length}} submission image(s).
+
+  ul.submissions.flex.center(ng-if="vm.allMessagesRead(event.submissionThreads)")
+    li(ng-repeat="submission in event.submissionThreads track by $index")
+      .notification.absolute(ng-if="submission.unreadMessageCount > 0") {{submission.unreadMessageCount}}
+
+      a.thumbnail.elevated(ui-sref="file-detail({projectId: vm.workId, stepId: eventGroup.workStepId, submissionId: event.submissionId, fileId: submission.submissionFileId})" style="background-image: url({{ submission.thumbnailUrl }})")
+
+  ul.submissions.flex.center(ng-if="!vm.allMessagesRead(event.submissionThreads)")
+    li(ng-repeat="submission in event.submissionThreads.filter(vm.messageUnread) track by $index")
+      .notification.absolute(ng-if="submission.unreadMessageCount > 0") {{submission.unreadMessageCount}}
+
+      a.thumbnail.elevated(ui-sref="file-detail({projectId: vm.workId, stepId: eventGroup.workStepId, submissionId: event.submissionId, fileId: submission.submissionFileId})" style="background-image: url({{ submission.thumbnailUrl }})")
+
+  button.wider.view-all(ui-sref="submission-detail({projectId: vm.workId, stepId: eventGroup.workStepId, submissionId: event.submissionId})") view all comments

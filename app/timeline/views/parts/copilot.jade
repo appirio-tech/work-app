@@ -1,0 +1,22 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  h1 Meet your copilot
+
+time {{ event.eventTime | timeLapse}}
+
+event-card-main.transition.flex.column.middle(
+  ng-show="event.copilot.handle"
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+  a(href="{{ vm.generateProfileUrl(event.copilot.handle) }}" target="_blank")
+    avatar(avatar-url="{{ event.copilot.avatar }}")
+
+  p.co-pilot Hi! I'm <a href="{{ vm.generateProfileUrl(event.copilot.handle) }}" target="_blank"> {{ event.copilot.handle }} </a> and I’ll be your copilot. I will work with you to ensure your project is successful. Please message me if you have any questions or concerns. I will shortly send you a cost and time estimate to review. Looking forward to working with you.

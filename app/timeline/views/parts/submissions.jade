@@ -1,0 +1,25 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  h1(ng-if="!(event.userProfiles.length > 1)") {{event.userProfiles.length || 0}} person has submitted Designs
+
+  h1(ng-if="event.userProfiles.length > 1") {{event.userProfiles.length || 0}} people have submitted Designs
+
+time {{event.eventTime | timeLapse}}
+
+event-card-main.transition(
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+  ul.avatars.flex.center
+    li(ng-repeat="user in event.userProfiles track by $index")
+      a(href="{{ vm.generateProfileUrl(user.handle) }}" target="_blank")
+        avatar(avatar-url="{{user.avatar}}")
+
+  button.wider(ui-sref="step({projectId: vm.workId, stepId: eventGroup.workStepId})") view submissions

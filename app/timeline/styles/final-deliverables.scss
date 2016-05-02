@@ -1,0 +1,15 @@
+@import "work/work-includes";
+@import "variables";
+
+event-card.final-deliverables {
+  event-card-main {
+    > p {
+      margin-top: $vertical-spacing;
+    }
+  }
+
+  .submissions {
+    margin-top: $vertical-spacing;
+  }
+}
+

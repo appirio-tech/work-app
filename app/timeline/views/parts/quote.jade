@@ -1,0 +1,40 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  h1 Quote received
+
+time {{event.eventTime | timeLapse}}
+
+event-card-main.transition(
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+  p Please review the quote below. If you have any questions or concerns, please message your copilot. Once you approve the quote, your copilot will launch the project in the community.
+
+  .estimate(ng-class="{active: event.status != 'Accepted'}")
+    h6 quote
+
+    ul.flex.middle.space-between.stretch
+      li.cost
+        .range
+          | ${{ event.price.min }} - ${{ event.price.max }}
+
+        h6 Cost estimate
+
+      li.splitter
+
+      li.duration
+        .range
+          | {{ event.duration.min }} - {{ event.duration.max }} {{ event.duration.unit }}s
+
+        h6 Time estimate
+
+  button.action(ng-click="vm.acceptQuote()" ng-if="vm.showAcceptQuoteButton" ng-disabled="vm.permissions.indexOf('UPDATE') == -1") approve quote
+
+  a.decline.button(ui-sref="messaging({ id: vm.workId, threadId: vm.threadId })" ng-if="vm.showAcceptQuoteButton") message copilot

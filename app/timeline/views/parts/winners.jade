@@ -1,0 +1,11 @@
+h1 Congratulations!
+
+//- time {{event.eventTime}}
+
+event-card-main
+  p You have chosen {{event.userProfiles.length}} winner(s)
+
+  ul.avatars.flex.center
+    li(ng-repeat="user in event.userProfiles track by $index")
+      a(href="{{ vm.generateProfileUrl(user.handle) }}" target="_blank")
+        avatar(avatar-url="{{user.avatar}}")

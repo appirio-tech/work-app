@@ -1,0 +1,43 @@
+@import "work/work-includes";
+@import "variables";
+
+event-card.comments {
+  display: block;
+  padding-top: 20px;
+
+  .header {
+    width: 100%;
+
+    avatar {
+      margin-left: $horizontal-spacing-small;
+    }
+
+    .name {
+      text-align : left;
+      margin-left: 10px;
+
+      p {
+        margin-top: 0;
+      }
+
+      .role {
+        color: $grey;
+      }
+    }
+  }
+
+  .submissions {
+    margin-top: $vertical-spacing;
+
+    li {
+      margin: 0 $horizontal-spacing-smallest;
+      position: relative;
+    }
+  }
+
+  > button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+}

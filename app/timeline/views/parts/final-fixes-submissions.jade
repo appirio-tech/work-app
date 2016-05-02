@@ -1,0 +1,36 @@
+.flex.middle.center
+  button.clean.point(
+    ng-class="{ expanded: vm.expanded[$parent.$parent.$index].events[$index]}"
+    ng-click="vm.expanded[$parent.$parent.$index].events[$index] = !vm.expanded[$parent.$parent.$index].events[$index]"
+  )
+    .icon.plus.hollow
+
+    .icon.minus.hollow
+
+  h1 Final Deliverables
+
+time {{event.eventTime | timeLapse}}
+
+event-card-main.transition(
+  ng-class="{ 'no-height': !vm.expanded[$parent.$parent.$index].events[$index] }"
+  lock-height="no-height"
+)
+  p {{event.body}}
+
+  ul.user-detail.flex.center.middle
+    li
+      a(href="{{ vm.generateProfileUrl(event.submitter.handle) }}" target="_blank")
+        avatar(avatar-url="{{event.submitter.avatar}}")
+
+    li.user-name
+      a(href="{{ vm.generateProfileUrl(event.submitter.handle) }}" target="_blank") {{event.submitter.handle}}
+
+      p.secondary Project WINNER
+
+  ul.submissions.flex.center
+    li(ng-repeat="file in event.files track by $index")
+      a.thumbnail.elevated(ui-sref="file-detail({projectId: vm.workId, stepId: eventGroup.workStepId, submissionId: event.submissionId, fileId: file.id})" style="background-image: url({{ file.url }})")
+
+  button.wider(ng-if="event.completed == false" ui-sref="step({projectId: vm.workId, stepId: eventGroup.workStepId})") view final deliverable
+
+  simple-countdown(ng-if="event.completed == false" end="{{eventGroup.endsAt}}")

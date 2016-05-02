@@ -1,0 +1,158 @@
+- dateFilter = '| date : "h:mma MMMM d, y"'
+
+loader(ng-show="vm.loading")
+
+main.flex.center.stretch(ng-hide="vm.loading")
+  .timeline
+
+  ul.event-groups
+    li.event-group.light-bg.elevated-bottom(ng-repeat-start="eventGroup in vm.eventGroups track by $index" ng-if="eventGroup.text != 'Project Complete' " ng-class="{ expanded: vm.expanded[$index].expanded, disabled: eventGroup.events.length == 0 }" id="{{vm.expanded[$index].id}}")
+      header.flex
+        button.clean.point(
+          ng-disabled="{{eventGroup.events.length == 0}}"
+          ng-class="{ expanded: vm.expanded[$index].expanded, disabled: !vm.expanded[$index].expanded}"
+          ng-click="vm.expanded[$index].expanded = !vm.expanded[$index].expanded"
+        )
+          .icon.plus
+
+          .icon.minus
+
+        h5.flex-grow {{eventGroup.text}}
+
+        p.secondary {{eventGroup.createdTime | date}}
+
+      ul.expand-big.events.transition(
+        lock-height="no-height"
+        refresh="{{vm.refresh}}"
+        retain-class="{{ !vm.expanded[$index].expanded }}"
+        ng-class="{ 'no-height': !vm.expanded[$index].expanded }"
+      )
+        li.hr
+          hr.smallest
+
+        li.event(
+          ng-repeat-start="event in eventGroup.events track by $index"
+        )
+          //- SUBMITTED
+          event-card.status-update(
+            ng-if="event.type == 'STATUS_UPDATE' && event.header != 'Final fixes completed' "
+          )
+            include parts/status-update.jade
+
+          event-card.copilot(
+            ng-if="event.type == 'COPILOT_ASSIGNED'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/copilot
+
+          event-card.quote(
+            ng-if="event.type == 'QUOTE_INFO' "
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/quote
+
+          event-card.payment(
+            ng-if="event.type == 'PAYMENT_ADDED' && !event.eventTime"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/payment
+
+          event-card.payment-added(ng-if="event.type == 'PAYMENT_ACCEPTED' ")
+            include parts/payment-added
+
+          //- LAUNCHED
+          event-card.members(
+            ng-if="event.type == 'MEMBER_REGISTRATION'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/members
+
+          event-card.messaging(
+            ng-if="event.type == 'THREAD_INFO'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/messages
+
+          //- DESIGN CONCEPTS, FINAL DESIGNS
+          event-card.submissions(
+            ng-if="event.type == 'WORKSTEP_SUBMITTERS'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/submissions
+
+          event-card.comments(
+            ng-if="event.type == 'SUBMISSION_THREAD_INFO'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/comments
+
+          event-card.final-fixes-submissions(
+            ng-if="event.type == 'FINALFIXES_SUBMISSION'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/final-fixes-submissions
+
+          event-card.status-report(
+            ng-if="event.type == 'STATUS_REPORT'"
+            ng-class="{ expanded: vm.expanded[$parent.$index].events[$index] }"
+          )
+            include parts/status-report
+
+          event-card.development-complete(ng-if="eventGroup.text == 'Development Begins' && eventGroup.createdTime ")
+            include parts/development-complete
+
+          //- event-card.final-deliverables(ng-if="eventGroup.text == 'Final Fixes' && event.type == 'SUBMISSION_THREAD_INFO' ")
+          //-   include parts/final-deliverables
+
+        li.event.finish(
+          ng-if="(event.type == 'QUOTE_INFO' && event.status == 'Accepted') && ($index == eventGroup.events.length - 1)"
+        )
+          event-card.quote-accepted
+            include parts/quote-accepted
+
+        li.event.finish(
+          ng-if="(eventGroup.text == 'Design Concepts' || eventGroup.text == 'Final Designs') && ($index == eventGroup.events.length - 1) && !vm.isSubmissionCompleted(eventGroup)"
+        )
+          event-card.select-winners
+            include parts/select-winners
+
+        li.event.finish(
+          ng-if="(eventGroup.text == 'Design Concepts' || eventGroup.text == 'Final Designs') && ($index == eventGroup.events.length - 1) && vm.isSubmissionCompleted(eventGroup)"
+        )
+          event-card.winners
+            include parts/winners
+
+        li.event.finish(
+          ng-if="eventGroup.text == 'Final Fixes' &&  ($index == eventGroup.events.length - 1) && vm.FinalFixesCompleted(eventGroup)"
+        )
+          event-card.status-update
+            include parts/status-update
+
+        li(
+          ng-repeat-end=true
+          ng-if="($index != eventGroup.events.length - 1) && (eventGroup.events[$index + 1].type != 'WORKSTEP_WINNERS' ) && (eventGroup.events[$index + 1].header != 'Final fixes completed')"
+        )
+          hr.biggest
+
+    li.splitter(ng-repeat-end ng-if="eventGroup.text != 'Project Complete'")
+
+    li.complete(ng-class="{ disabled: !vm.projectCompleted }")
+      header
+        button.clean.point
+
+        h5(ng-class="{inactive: !vm.projectCompleted}") project complete
+
+        p.date {{ vm.projectCompletionDate | date }}
+
+        p.pending date pending
+
+image-slide-container(
+  ng-if="vm.showImageSlideViewer"
+  project-id="{{vm.workId}}"
+  report-id="{{vm.currentStatusReportId}}"
+  report-date="{{vm.currentStatusReportDate}}"
+  starting-file-id="{{vm.currentStatusReportFileId}}"
+  handle-close="vm.hideImageSlideViewer"
+  handle="{{vm.copilot.handle}}"
+  avatar="{{vm.copilot.avatar}}"
+)

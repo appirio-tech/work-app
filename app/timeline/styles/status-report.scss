@@ -1,0 +1,45 @@
+@import "work/work-includes";
+@import "variables";
+
+event-card.status-report {
+  ul {
+    margin-top: $vertical-spacing;
+  }
+
+  li {
+    margin-top: $vertical-spacing-smallest;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .thumbnails {
+    li {
+      margin: 0 $horizontal-spacing-smallest;
+      height: 148px;
+      width: 198px;
+
+      .image-thumbnail {
+        width: 100%;
+        height: 98%;
+        background-position: top;
+        background-size: cover;
+        cursor: pointer;
+      }
+
+      a {
+        &.file-thumbnail {
+          background-color: $gray;
+          height: 100%;
+          width: 100%;
+
+          img {
+            height: 35px;
+            width: 35px;
+          }
+        }
+      }
+    }
+  }
+}

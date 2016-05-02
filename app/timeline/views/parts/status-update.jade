@@ -1,0 +1,8 @@
+h1 {{ event.header }}
+
+time {{ event.eventTime | timeLapse }}
+
+event-card-main
+  p {{ event.text }}
+
+  button.wider(ng-if="event.header == 'Request Changes' && !event.completed" ui-sref="step({projectId: vm.workId, stepId: vm.completeDesignsStepId})") Add Comments

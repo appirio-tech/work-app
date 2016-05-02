@@ -1,0 +1,40 @@
+@import "work/work-includes";
+@import "variables";
+
+event-card {
+  display   : block;
+  text-align: center;
+  padding   : $vertical-spacing-big $horizontal-spacing-small;
+
+  > time {
+    margin-top: 10px;
+    color     : $grey;
+    display   : block;
+  }
+
+  .point {
+    margin-top: -12px;
+  }
+
+  > p, > simple-countdown {
+    margin-top: 10px;
+  }
+
+  event-card-main {
+    display: block;
+    padding-top: $vertical-spacing;
+
+    > p {
+      @include font-line(18px);
+
+      max-width: 500px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &.no-height {
+      padding: 0;
+    }
+  }
+}
+

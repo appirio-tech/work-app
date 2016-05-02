@@ -1,0 +1,42 @@
+@import "work/work-includes";
+@import "variables";
+
+event-card.final-fixes-submissions {
+
+  .user-detail {
+    .user-name {
+      margin-left: $horizontal-spacing-small;
+      text-align: left;
+    }
+  }
+
+  .submissions {
+    margin-top: $vertical-spacing;
+
+    img {
+      max-width: 197px;
+    }
+
+    li {
+      margin: 0 10px;
+    }
+
+    a {
+      height    : 147px;
+      overflow  : hidden;
+      display   : block;
+    }
+  }
+
+  event-card-main {
+    > p {
+      margin-top: $vertical-spacing;
+    }
+  }
+
+  simple-countdown {
+    display: block;
+    margin-top: $vertical-spacing;
+  }
+}
+
