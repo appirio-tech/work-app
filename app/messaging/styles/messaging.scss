@@ -1,0 +1,207 @@
+@import "work/work-includes";
+@import "variables";
+
+$user-width: 150px;
+
+messaging {
+  display   : block;
+  text-align: center;
+
+  .name {
+    @include ellipsis;
+    font-weight: 400;
+    font-size  : 16px;
+  }
+
+  .user-name {
+    min-width: 150px;
+    max-width: 150px;
+    text-align: right;
+
+    time {
+      display: block;
+    }
+  }
+
+  a.avatar {
+    margin-left: 10px;
+  }
+
+  .messages {
+    max-width    : 700px;
+    margin-bottom: 110px;
+    width        : 100%;
+  }
+
+  .new-messages {
+    overflow: hidden;
+    margin  : 20px 0;
+
+    p {
+      color      : $primary-color;
+      font-weight: 400;
+      position   : absolute;
+    }
+
+    hr {
+      margin-top      : 12px;
+      margin-left     : 100px;
+      background-color: $primary-color;
+      height          : 1px;
+    }
+  }
+
+  > ul {
+    > li {
+      &:first-child {
+        margin-top: 0;
+
+        .message {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &.dark-bg {
+    .message {
+      background-color: $grey-lightest;
+
+      &::before {
+        border-right-color: $white;
+      }
+    }
+  }
+
+  .message {
+    text-align      : left;
+    max-width       : 560px;
+    background-color: $grey-lightest;
+    margin-top      : 10px;
+    margin-left     : 15px;
+    padding         : 10px 20px;
+    padding-top     : $vertical-smallest;
+    position        : relative;
+    border-right    : 1px solid $grey-light;
+
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+
+    .title {
+      font-size: 12px;
+    }
+
+    > p {
+      margin-top: 0;
+      color: $grey-dark;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .title {
+      margin-top: 10px/2;
+    }
+
+    > .download {
+      @include vertical-align-middle();
+
+      margin-top: 10px;
+      display: block;
+
+      p {
+        margin: 0 0 0 10px;
+      }
+    }
+
+    .attachments {
+      overflow: auto;
+      margin-bottom: 10px;
+
+      > li {
+        overflow : hidden;
+        height   : 130px;
+        min-width: 150px;
+        width    : 150px;
+        margin: 0 5px;
+        background-position: center top;
+        background-size: cover;
+        cursor: pointer;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &.file {
+          background-color    : $grey-light;
+
+          a {
+            height: 100%;
+            width: 100%;
+
+            .file-icon {
+              height: 35px;
+              width: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .respond {
+    position        : fixed;
+    bottom          : 0;
+    left            : 0;
+    width           : 100%;
+    background-color: $grey-lightest;
+    padding         : 25px;
+    text-align      : left;
+    border-top      : 1px solid $grey-light;
+
+    ap-uploader {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+
+      uploaded-files {
+        height: 184px;
+        overflow: auto;
+      }
+
+      ap-file {
+        width: 180px;
+
+        main {
+          border-right: 1px solid #d6d6d6;
+          border-bottom: 1px solid #d6d6d6;
+        }
+      }
+    }
+
+    .icon {
+      float: left;
+    }
+
+    form {
+      margin-top: 15px;
+
+      textarea {
+        width    : 100%;
+        max-width: 500px;
+        height   : 60px;
+
+        &.resizeDisabled {
+          resize: none;
+        }
+      }
+
+      button {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .image-viewer-container {
+    height: 100%;
+  }
+}

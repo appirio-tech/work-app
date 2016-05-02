@@ -1,0 +1,54 @@
+ul.messages(id="messaging-message-list")
+  li.flex.center.middle(ng-repeat-start="message in vm.thread.messages track by $index" id="{{$index}}")
+    .user-name
+      .name(href="{{vm.generateProfileUrl(message.publisher.handle)}}" target="_blank") {{message.publisher.handle}}
+
+      time {{ message.createdAt | timeLapse }}
+
+    a.avatar(href="{{vm.generateProfileUrl(message.publisher.handle)}}" target="_blank")
+      avatar(avatar-url="{{ message.publisher.avatar }}")
+
+    .message.elevated-bottom.flex-grow
+      ul.attachments.flex(ng-if="message.attachments.length > 0")
+        li.image(
+          ng-repeat-start="attachment in message.attachments track by $index"
+          ng-if="vm.isImage(attachment)"
+          ng-click="vm.activateImageSlideViewer(attachment, message.attachments, message.publisher.handle, message.publisher.avatar, message.createdAt)"
+          style="background-image: url({{ attachment.thumbnailUrl }})"
+        )
+
+        li.file(
+          ng-repeat-end
+          ng-if="!vm.isImage(attachment)"
+        )
+          a.flex.center.middle(href="{{attachment.thumbnailUrl}}")
+            img.file-icon(ng-src=require('../images/file-icon.svg'))
+
+      p.title(ng-if="message.publisher.role != null") {{message.publisher.role}}
+
+      p {{ message.body }}
+
+  li.new-messages(ng-repeat-end ng-if="message.showNewMessage")
+    p new messages
+
+    hr
+
+  a(id="messaging-bottom-{{ vm.threadId }}")
+
+.respond
+  ap-uploader(
+    config="vm.uploaderConfig"
+    uploading="vm.uploaderUploading"
+    has-errors="vm.uploaderHasErrors"
+    has-files="vm.uploaderHasFiles"
+  )
+
+  form.flex.middle.center(ng-submit="vm.sendMessage()")
+    textarea(ng-if="vm.permissions.indexOf('CREATE') > -1" placeholder="Send a message..." ng-model="vm.newMessage" ng-class="{resizeDisabled: vm.showImageSlideViewer}")
+
+    textarea(ng-if="vm.permissions.indexOf('CREATE') == -1" placeholder="Messages Disabled" ng-class="{resizeDisabled: vm.showImageSlideViewer}" disabled)
+
+    button.action(type="submit" ng-disabled="vm.disableSend || vm.permissions.indexOf('CREATE') == -1") reply
+
+attachment-viewer(ng-if="vm.showImageSlideViewer")
+  include attachments-viewer
