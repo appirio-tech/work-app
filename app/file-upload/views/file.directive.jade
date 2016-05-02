@@ -1,0 +1,31 @@
+.uploader(ng-class="{'failed': vm.file.hasErrors}")
+  main.flex.column.middle.center(ng-class="{ end: vm.file.uploading}")
+    .fitted(
+      ng-if="!vm.file.hasErrors"
+      style="background-image: url({{ vm.src }})"
+      ng-class="{ img: vm.hasImage, icon: !vm.hasImage }"
+    )
+
+    .progress-house(ng-show="vm.file.uploading")
+      //- button(ng-show="vm.file.uploading" ng-click="vm.file.cancel()" type="button") Cancel
+
+      progress(value="{{vm.progress}}" max="100") {{ vm.progress }}%
+
+    .failed(ng-show="vm.file.hasErrors").flex.column.center
+      img.icon(ng-src=require("../images/icon-alert-red.svg"))
+
+      button.clean(ng-click="vm.file.retry()" type="button") retry
+
+
+  footer.flex.space-between
+    p.file-name {{ vm.file.data.name }}
+
+    button.clean(ng-show="!vm.file.uploading" ng-click="vm.file.remove()" type="button" ng-disabled="vm.disabled")
+      .icon.cross
+
+  textarea(
+    ng-if="vm.allowCaptions"
+    ng-model="vm.caption"
+    ng-blur="vm.setCaption()"
+    placeholder="enter a caption"
+  )

@@ -1,0 +1,19 @@
+@import "work/work-includes";
+
+
+ap-uploader {
+  display: block;
+
+  input {
+    max-width: 85px;
+
+    &.choose-files-multiple {
+      color: transparent;
+    }
+  }
+
+
+  uploaded-files {
+    margin-bottom: 20px;
+  }
+}
