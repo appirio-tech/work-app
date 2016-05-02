@@ -1,0 +1,29 @@
+@import "work/work-includes";
+
+past-status-reports {
+  display   : block;
+  position  : relative;
+
+  .links {
+    .bullet {
+      width           : 10px;
+      height          : 10px;
+      background-color: $success-color;
+    }
+
+    li {
+      margin-top: 34px;
+
+      a {
+        font-size     : 16px;
+        color         : $black;
+        margin-left   : 15px;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

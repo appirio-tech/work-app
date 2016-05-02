@@ -1,0 +1,43 @@
+@import "work/work-includes";
+
+detail-status-report {
+  display   : block;
+  position  : relative;
+  text-align: center;
+
+  .message, .files {
+    margin-top: 45px;
+  }
+
+  .links {
+    margin-top: 20px;
+  }
+
+  time {
+    margin-top: 10px;
+    display: block;
+  }
+
+  .links {
+    li {
+      margin-top: 10px;
+    }
+  }
+
+  .files {
+    li {
+      margin: 0 15px 15px 0;
+    }
+
+    a {
+      display : inline-block;
+      width   : 200px;
+      height  : 150px;
+      overflow: hidden;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+}

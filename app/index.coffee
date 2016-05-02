@@ -23,9 +23,9 @@ require './optimist/src.coffee'
 require './file-upload/src.coffee'
 require './messaging/src.coffee'
 require './projects/src.coffee'
+require './status-report/src.coffee'
 
 require 'appirio-tech-ng-ui-components'
-require 'appirio-tech-ng-status-report'
 require 'appirio-tech-ng-timeline'
 
 constants = require './constants.js'

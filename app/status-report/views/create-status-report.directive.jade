@@ -1,0 +1,48 @@
+loader(ng-show="false")
+
+form
+  ul.create-report
+    li
+      label status update
+
+    li
+      textarea.widest(ng-if="vm.permissions.indexOf('CREATE') > -1" placeholder="Please provide a short status update to the customer. Be sure to describe  the progress, mention issues, and respond to any prior customer questions." ng-model="vm.statusReport.text")
+
+      textarea.widest(ng-if="vm.permissions.indexOf('CREATE') == -1" placeholder="Status updates disabled" disabled)
+
+    li
+      label Links to demos and code
+
+    li.project-links
+      .flex.middle
+        input.wider(ng-if="vm.permissions.indexOf('CREATE') > -1" type="url" placeholder="http://www.example.com" ng-model="vm.currentLink")
+
+        input.wider(ng-if="vm.permissions.indexOf('CREATE') == -1" type="url" placeholder="Links disabled" disabled)
+
+        button.clean.plus(ng-click="vm.addLink()" ng-disabled="vm.permissions.indexOf('CREATE') == -1")
+          .icon.plus.hollow
+
+      ul
+        li.flex.middle.space-between(ng-repeat="link in vm.statusReport.links track by $index")
+          p.link {{link.url}}
+
+          button.clean(ng-click="vm.removeLink(link)" ng-disabled="vm.permissions.indexOf('CREATE') == -1") remove
+
+    li
+      label Screenshots and documents
+
+    li.upload-files
+      ap-uploader(
+        config="vm.uploaderConfig"
+        uploading="vm.uploaderUploading"
+        has-errors="vm.uploaderHasErrors"
+        has-files="vm.uploaderHasFiles"
+      )
+
+    li.is-final.flex.middle
+      label This is the final deliverable
+
+      checkbox(ng-model="vm.statusReport.isFinal" ng-disabled="vm.permissions.indexOf('CREATE') == -1")
+
+    li
+      button.action(ng-click="vm.create()" ng-disabled="vm.permissions.indexOf('CREATE') == -1") send to customer

@@ -1,0 +1,12 @@
+.flex.rows
+  nav
+    h6 previous status reports
+
+    past-status-reports(work-id="{{vm.workId}}")
+
+  main
+    h3 create a new status report
+
+    hr.biggest
+
+    create-status-report(work-id="{{vm.workId}}" step-id="{{vm.stepId}}" permissions="vm.permissions")

@@ -1,0 +1,78 @@
+@import "work/work-includes";
+
+create-status-report {
+  display: block;
+  position: relative;
+
+  label {
+    font-weight: 400;
+  }
+
+  ul {
+    li {
+      margin-top: 15px;
+
+      &:nth-child(odd) {
+        margin-top: 30px;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  button {
+    &.plus {
+      margin-left: 20px;
+    }
+  }
+
+  textarea {
+    max-width: 400px;
+  }
+
+  .project-links {
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+
+    ul {
+      margin-top: 10px;
+    }
+
+    li {
+      margin-top: 10px;
+
+      &:nth-child(odd) {
+        margin-top: 10px;
+      }
+    }
+
+    button {
+      text-transform: lowercase;
+    }
+  }
+
+  .upload-files {
+    ul {
+      li {
+        margin-top: inherit;
+
+        &:nth-child(odd) {
+          margin-top: inherit;
+        }
+
+        &:first-child {
+          margin-top: inherit;
+        }
+      }
+    }
+  }
+
+  .is-final {
+    checkbox {
+      margin: 10px;
+    }
+  }
+}

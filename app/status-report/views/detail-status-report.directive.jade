@@ -1,0 +1,16 @@
+loader(ng-show="false")
+
+h1   {{vm.report.createdAt | date:'MMMM d, yyyy'}} status report
+
+time {{vm.report.createdAt | timeLapse }}
+
+p.message {{vm.report.text}}
+
+ul.links
+  li(ng-repeat="link in vm.report.links")
+    a(href="{{link.url}}" target="_blank") {{link.url}}
+
+ul.files.flex.wrap.center
+  li(ng-repeat="image in vm.report.images")
+    a(href="{{image.preSignedURL}}" target="_blank")
+      img(src="{{image.preSignedURL}}")
