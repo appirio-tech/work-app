@@ -10,23 +10,23 @@ require 'angular'
 require 'angular-ui-router'
 require 'angular-resource'
 
+require 'appirio-tech-ng-ui-components'
 require './app.module'
 require './app-config'
 require './app-run'
 
 require './auth/auth.module.js'
 require './api-services/api-services.module.js'
-require './layout/src.coffee'
-require './project-creation/src.coffee'
-require './submissions/src.coffee'
-require './optimist/src.coffee'
 require './file-upload/src.coffee'
+require './layout/src.coffee'
 require './messaging/src.coffee'
+require './optimist/src.coffee'
+require './project-creation/src.coffee'
 require './projects/src.coffee'
 require './status-report/src.coffee'
+require './submissions/src.coffee'
 require './timeline/src.coffee'
 
-require 'appirio-tech-ng-ui-components'
 
 constants = require './constants.js'
 
