@@ -21,7 +21,7 @@
 
                   img(ng-if="platform.selected" ng-src="{{vm.getIconPath(platform.name, true)}}")
 
-            .platform-name.flex.column.middle(ng-class={'other-platform': platform.name == 'Other'})
+            .platform-name.flex.column.middle(ng-class="{'other-platform': platform.name == 'Other'}")
               span {{platform.name}}
 
               span(ng-if="platform.name == 'Other' ") (Incl. non-app work)
