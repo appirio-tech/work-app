@@ -3,7 +3,7 @@ const dependencies = [
   'app.constants'
 ]
 
-angular.module('appirio-tech-ng-api-services', dependencies)
+angular.module('api-services', dependencies)
 
 require('./authorizations-api.service.coffee')
 require('./copilot-approval-api.service.coffee')

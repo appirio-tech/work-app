@@ -87,4 +87,4 @@ srv = ($rootScope, $state, StepsService, SubmissionsService, DataService) ->
 
 srv.$inject = ['$rootScope', '$state', 'StepsService', 'SubmissionsService', 'DataService']
 
-angular.module('appirio-tech-submissions').factory 'StepSubmissionsService', srv
+angular.module('submissions').factory 'StepSubmissionsService', srv

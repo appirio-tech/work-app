@@ -8,4 +8,4 @@ directive = ->
     element.bind 'drop', (event) ->
       scope.onDrop {event: event}
 
-angular.module('appirio-tech-submissions').directive 'onDrop', directive
+angular.module('submissions').directive 'onDrop', directive

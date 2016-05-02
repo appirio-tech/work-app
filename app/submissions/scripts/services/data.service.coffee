@@ -50,4 +50,4 @@ srv = ($injector, $rootScope) ->
 
 srv.$inject = ['$injector', '$rootScope']
 
-angular.module('appirio-tech-submissions').factory 'DataService', srv
+angular.module('submissions').factory 'DataService', srv

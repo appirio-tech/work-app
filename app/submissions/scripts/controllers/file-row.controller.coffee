@@ -22,4 +22,4 @@ FileRowController = ($scope) ->
 
 FileRowController.$inject = ['$scope']
 
-angular.module('appirio-tech-submissions').controller 'FileRowController', FileRowController
+angular.module('submissions').controller 'FileRowController', FileRowController

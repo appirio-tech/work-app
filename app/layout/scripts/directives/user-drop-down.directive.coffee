@@ -8,4 +8,4 @@ dir = ->
 
 dir.$inject = []
 
-angular.module('appirio-tech-ng-work-layout').directive 'userDropDown', dir
+angular.module('work-layout').directive 'userDropDown', dir

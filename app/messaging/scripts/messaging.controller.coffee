@@ -203,4 +203,4 @@ MessagingController = ($scope, $document, $filter, API_URL, MessagesAPIService, 
 
 MessagingController.$inject = ['$scope', '$document', '$filter', 'API_URL', 'MessagesAPIService', 'ThreadsAPIService', 'InboxesAPIService', 'MessageUpdateAPIService']
 
-angular.module('appirio-tech-ng-messaging').controller 'MessagingController', MessagingController
+angular.module('messaging').controller 'MessagingController', MessagingController

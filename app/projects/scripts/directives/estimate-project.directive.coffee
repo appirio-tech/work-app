@@ -8,4 +8,4 @@ directive = ->
     projectId : '@'
     permissions: '='
 
-angular.module('appirio-tech-ng-projects').directive 'estimateProject', directive
+angular.module('projects').directive 'estimateProject', directive

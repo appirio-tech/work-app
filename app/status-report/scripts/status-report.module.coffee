@@ -6,7 +6,7 @@ dependencies = [
   'app.constants'
   'ap-file-upload'
   'appirio-tech-ng-ui-components'
-  'appirio-tech-ng-api-services'
+  'api-services'
 ]
 
-angular.module 'appirio-tech-ng-status-report', dependencies
+angular.module 'status-report', dependencies

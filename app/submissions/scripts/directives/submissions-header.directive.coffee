@@ -8,4 +8,4 @@ directive = ->
     projectId : '@'
     stepId    : '@'
 
-angular.module('appirio-tech-submissions').directive 'submissionsHeader', directive
+angular.module('submissions').directive 'submissionsHeader', directive

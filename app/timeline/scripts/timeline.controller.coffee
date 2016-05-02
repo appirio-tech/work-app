@@ -169,5 +169,5 @@ TimelineController.$inject = [
   'CopilotApprovalAPIService'
 ]
 
-angular.module('appirio-tech-ng-timeline').controller 'TimelineController', TimelineController
+angular.module('timeline').controller 'TimelineController', TimelineController
 

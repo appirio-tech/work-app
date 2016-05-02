@@ -10,10 +10,10 @@ require 'angular'
 require 'angular-ui-router'
 require 'angular-resource'
 
-require 'appirio-tech-ng-ui-components'
 require './app.module'
 require './app-config'
 require './app-run'
+require 'appirio-tech-ng-ui-components'
 
 require './auth/auth.module.js'
 require './api-services/api-services.module.js'

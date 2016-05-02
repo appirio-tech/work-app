@@ -24,7 +24,7 @@ const config = function($httpProvider, jwtInterceptorProvider) {
 
 config.$inject = ['$httpProvider', 'jwtInterceptorProvider']
 
-angular.module('appirio-tech-ng-auth', dependencies).config(config)
+angular.module('auth', dependencies).config(config)
 
 // These must come after the module definition
 require('./user-v3.service.js')

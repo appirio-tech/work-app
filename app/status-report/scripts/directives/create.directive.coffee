@@ -9,4 +9,4 @@ directive = ->
     stepId:      '@'
     permissions: '='
 
-angular.module('appirio-tech-ng-status-report').directive 'createStatusReport', directive
+angular.module('status-report').directive 'createStatusReport', directive

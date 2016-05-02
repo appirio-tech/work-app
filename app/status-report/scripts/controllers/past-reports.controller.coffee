@@ -21,4 +21,4 @@ PastReportsController = ($scope, StatusReportCollectionAPIService) ->
 
 PastReportsController.$inject = ['$scope', 'StatusReportCollectionAPIService']
 
-angular.module('appirio-tech-ng-status-report').controller 'PastReportsController', PastReportsController
+angular.module('status-report').controller 'PastReportsController', PastReportsController

@@ -5,5 +5,5 @@ directive = ->
 
 directive.$inject = []
 
-angular.module('appirio-tech-ng-work-layout').directive 'layoutMain', directive
+angular.module('work-layout').directive 'layoutMain', directive
 

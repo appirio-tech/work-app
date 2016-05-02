@@ -31,4 +31,4 @@ directive = ->
     el.addEventListener 'dragstart', dragstart, false
     el.addEventListener 'dragend', dragend, false
 
-angular.module('appirio-tech-submissions').directive 'draggable', directive
+angular.module('submissions').directive 'draggable', directive

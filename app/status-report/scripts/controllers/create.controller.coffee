@@ -118,4 +118,4 @@ CreateController = ($scope, $state, API_URL, StatusReportAPIService) ->
 
 CreateController.$inject = ['$scope', '$state', 'API_URL', 'StatusReportAPIService']
 
-angular.module('appirio-tech-ng-status-report').controller 'CreateController', CreateController
+angular.module('status-report').controller 'CreateController', CreateController

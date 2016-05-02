@@ -7,4 +7,4 @@ directive = ->
     end : '@'
     text: '@'
 
-angular.module('appirio-tech-submissions').directive 'submissionCountdown', directive
+angular.module('submissions').directive 'submissionCountdown', directive

@@ -15,4 +15,4 @@ SubmissionCardController = ($scope) ->
 
 SubmissionCardController.$inject = ['$scope']
 
-angular.module('appirio-tech-ng-projects').controller 'SubmissionCardController', SubmissionCardController
+angular.module('projects').controller 'SubmissionCardController', SubmissionCardController

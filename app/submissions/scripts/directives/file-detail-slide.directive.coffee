@@ -24,4 +24,4 @@ directive = ->
     ranksConfirmed:  '='
     messagesLoading: '='
 
-angular.module('appirio-tech-submissions').directive 'fileDetailSlide', directive
+angular.module('submissions').directive 'fileDetailSlide', directive

@@ -5,7 +5,7 @@ dependencies = [
   'ngResource'
   'app.constants'
   'appirio-tech-ng-ui-components'
-  'appirio-tech-ng-api-services'
+  'api-services'
 ]
 
-angular.module 'appirio-tech-ng-projects', dependencies
+angular.module 'projects', dependencies

@@ -13,4 +13,4 @@ directive = ->
     startingFile: '='
     handleClose:  '='
 
-angular.module('appirio-tech-ng-timeline').directive 'imageSlideshowModal', directive
+angular.module('timeline').directive 'imageSlideshowModal', directive

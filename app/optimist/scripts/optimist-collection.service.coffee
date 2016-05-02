@@ -79,4 +79,4 @@ OptimistCollection = (OptimistHelpers, OptimistModel) ->
 
 OptimistCollection.$inject = ['OptimistHelpers', 'OptimistModel']
 
-angular.module('appirio-tech-ng-optimist').factory 'OptimistCollection', OptimistCollection
+angular.module('optimist').factory 'OptimistCollection', OptimistCollection

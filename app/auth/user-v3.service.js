@@ -86,4 +86,4 @@ const UserV3Service = function(profilesAPIService) {
 
 UserV3Service.$inject = ['profilesAPIService']
 
-angular.module('appirio-tech-ng-auth').factory('UserV3Service', UserV3Service)
+angular.module('auth').factory('UserV3Service', UserV3Service)

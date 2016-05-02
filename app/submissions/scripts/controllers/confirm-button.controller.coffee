@@ -31,4 +31,4 @@ ConfirmButtonController = ($scope, StepsService, StepSubmissionsService, RankLis
 
 ConfirmButtonController.$inject = ['$scope', 'StepsService', 'StepSubmissionsService', 'RankListService', 'DataService']
 
-angular.module('appirio-tech-submissions').controller 'ConfirmButtonController', ConfirmButtonController
+angular.module('submissions').controller 'ConfirmButtonController', ConfirmButtonController

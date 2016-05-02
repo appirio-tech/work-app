@@ -249,4 +249,4 @@ srv = ($rootScope, StepsAPIService, OptimistCollection) ->
 
 srv.$inject = ['$rootScope', 'StepsAPIService', 'OptimistCollection']
 
-angular.module('appirio-tech-submissions').factory 'StepsService', srv
+angular.module('submissions').factory 'StepsService', srv

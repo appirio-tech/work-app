@@ -31,4 +31,4 @@ UserDropDownController.$inject = [
   'UserV3Service'
 ]
 
-angular.module('appirio-tech-ng-work-layout').controller 'UserDropDownController', UserDropDownController
+angular.module('work-layout').controller 'UserDropDownController', UserDropDownController

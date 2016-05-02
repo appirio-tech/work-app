@@ -1,17 +1,17 @@
 angular = require('angular');
 
 dependencies = [
-  'appirio-tech-ng-auth'
+  'auth'
   'ap-file-upload'
-  'appirio-tech-ng-work-layout'
-  'appirio-tech-ng-timeline'
-  'appirio-tech-ng-messaging'
+  'work-layout'
+  'timeline'
+  'messaging'
   'appirio-tech-ng-ui-components'
-  'appirio-tech-ng-projects'
+  'projects'
   'project-creation'
-  'appirio-tech-submissions'
-  'appirio-tech-ng-api-services'
-  'appirio-tech-ng-status-report'
+  'submissions'
+  'api-services'
+  'status-report'
 ]
 
 angular.module 'app', dependencies

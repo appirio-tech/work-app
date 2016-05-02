@@ -48,4 +48,4 @@ MessageDropDownController = ($scope, $state, InboxesProjectAPIService) ->
 
 MessageDropDownController.$inject = ['$scope', '$state', 'InboxesProjectAPIService']
 
-angular.module('appirio-tech-ng-work-layout').controller 'MessageDropDownController', MessageDropDownController
+angular.module('work-layout').controller 'MessageDropDownController', MessageDropDownController

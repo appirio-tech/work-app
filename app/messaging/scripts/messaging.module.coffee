@@ -7,7 +7,7 @@ dependencies = [
   'duScroll'
   'appirio-tech-ng-ui-components'
   'ap-file-upload'
-  'appirio-tech-ng-api-services'
+  'api-services'
 ]
 
-angular.module 'appirio-tech-ng-messaging', dependencies
+angular.module 'messaging', dependencies

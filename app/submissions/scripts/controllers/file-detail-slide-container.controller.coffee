@@ -96,4 +96,4 @@ FileDetailSlideContainerController = ($scope, $state, $filter, DataService, Step
 
 FileDetailSlideContainerController.$inject = ['$scope', '$state', '$filter', 'DataService', 'StepSubmissionsService', 'SubmissionsService']
 
-angular.module('appirio-tech-submissions').controller 'FileDetailSlideContainerController', FileDetailSlideContainerController
+angular.module('submissions').controller 'FileDetailSlideContainerController', FileDetailSlideContainerController

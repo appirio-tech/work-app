@@ -13,4 +13,4 @@ directive = ->
     projectId:      '@'
     handleClose:    '='
 
-angular.module('appirio-tech-ng-timeline').directive 'imageSlideContainer', directive
+angular.module('timeline').directive 'imageSlideContainer', directive

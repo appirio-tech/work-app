@@ -1,10 +1,10 @@
 'use strict'
 
 dependencies = [
-  'appirio-tech-ng-api-services'
-  'appirio-tech-ng-auth'
+  'api-services'
+  'auth'
   'appirio-tech-ng-ui-components'
   'duScroll'
 ]
 
-angular.module 'appirio-tech-ng-work-layout', dependencies
+angular.module 'work-layout', dependencies

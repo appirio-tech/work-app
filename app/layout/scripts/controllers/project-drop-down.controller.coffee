@@ -44,4 +44,4 @@ ProjectDropDownController.$inject = [
   'ProjectsAPIService'
 ]
 
-angular.module('appirio-tech-ng-work-layout').controller 'ProjectDropDownController', ProjectDropDownController
+angular.module('work-layout').controller 'ProjectDropDownController', ProjectDropDownController

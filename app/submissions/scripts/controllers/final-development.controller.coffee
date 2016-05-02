@@ -10,4 +10,4 @@ FinalDevelopmentController = ($scope) ->
 
 FinalDevelopmentController.$inject = ['$scope']
 
-angular.module('appirio-tech-submissions').controller 'FinalDevelopmentController', FinalDevelopmentController
+angular.module('submissions').controller 'FinalDevelopmentController', FinalDevelopmentController

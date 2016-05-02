@@ -9,4 +9,4 @@ FileGridController = ->
 
   vm
 
-angular.module('appirio-tech-submissions').controller 'FileGridController', FileGridController
+angular.module('submissions').controller 'FileGridController', FileGridController

@@ -7,4 +7,4 @@ directive = ->
   scope      :
     files: '='
 
-angular.module('appirio-tech-submissions').directive 'fileGrid', directive
+angular.module('submissions').directive 'fileGrid', directive

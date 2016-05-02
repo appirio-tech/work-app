@@ -10,4 +10,4 @@ directive = ->
     id: '@id'
     stepId: '@stepId'
 
-angular.module('appirio-tech-ng-projects').directive 'submissionCard', directive
+angular.module('projects').directive 'submissionCard', directive

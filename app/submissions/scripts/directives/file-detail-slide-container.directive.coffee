@@ -11,4 +11,4 @@ directive = ->
     fileId       : '@'
     userType     : '@'
 
-angular.module('appirio-tech-submissions').directive 'fileDetailSlideContainer', directive
+angular.module('submissions').directive 'fileDetailSlideContainer', directive

@@ -77,4 +77,4 @@ OptimistHelpers = (options = {}) ->
 
 OptimistHelpers.$inject = ['$rootScope']
 
-angular.module('appirio-tech-ng-optimist').factory 'OptimistHelpers', OptimistHelpers
+angular.module('optimist').factory 'OptimistHelpers', OptimistHelpers

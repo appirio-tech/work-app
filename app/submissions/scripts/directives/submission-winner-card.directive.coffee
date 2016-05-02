@@ -9,4 +9,4 @@ directive = ->
     rank          : '@'
     belongsToUser : '@'
 
-angular.module('appirio-tech-submissions').directive 'submissionWinnerCard', directive
+angular.module('submissions').directive 'submissionWinnerCard', directive

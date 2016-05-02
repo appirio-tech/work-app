@@ -36,4 +36,4 @@ OpenProjectsController = ($scope, CopilotUnclaimedProjectsAPIService) ->
 
 OpenProjectsController.$inject = ['$scope', 'CopilotUnclaimedProjectsAPIService']
 
-angular.module('appirio-tech-ng-projects').controller 'OpenProjectsController', OpenProjectsController
+angular.module('projects').controller 'OpenProjectsController', OpenProjectsController

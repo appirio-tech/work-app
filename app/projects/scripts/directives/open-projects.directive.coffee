@@ -6,4 +6,4 @@ directive = ->
   controller  : 'OpenProjectsController as vm'
   scope       : true
 
-angular.module('appirio-tech-ng-projects').directive 'openProjects', directive
+angular.module('projects').directive 'openProjects', directive

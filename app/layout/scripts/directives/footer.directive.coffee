@@ -5,4 +5,4 @@ directive = ->
   template   : require('../../views/layout-footer.directive.jade')()
   scope      : true
 
-angular.module('appirio-tech-ng-work-layout').directive 'layoutFooter', directive
+angular.module('work-layout').directive 'layoutFooter', directive

@@ -22,4 +22,4 @@ DetailController = ($scope, StatusReportDetailAPIService) ->
 
 DetailController.$inject = ['$scope', 'StatusReportDetailAPIService']
 
-angular.module('appirio-tech-ng-status-report').controller 'DetailController', DetailController
+angular.module('status-report').controller 'DetailController', DetailController

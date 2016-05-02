@@ -7,4 +7,4 @@ directive = ->
     unreadMessages: '='
     totalMessages: '='
 
-angular.module('appirio-tech-submissions').directive 'thumbnailNotification', directive
+angular.module('submissions').directive 'thumbnailNotification', directive

@@ -9,4 +9,4 @@ directive = ->
     copilotId:   '@copilotId'
     permissions: '='
 
-angular.module('appirio-tech-ng-projects').directive 'projectDetails', directive
+angular.module('projects').directive 'projectDetails', directive

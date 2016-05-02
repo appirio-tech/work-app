@@ -43,4 +43,4 @@ EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIServ
 
 EstimateProjectController.$inject = ['$scope', 'ProjectsAPIService', 'ProjectEstimatesAPIService']
 
-angular.module('appirio-tech-ng-projects').controller 'EstimateProjectController', EstimateProjectController
+angular.module('projects').controller 'EstimateProjectController', EstimateProjectController

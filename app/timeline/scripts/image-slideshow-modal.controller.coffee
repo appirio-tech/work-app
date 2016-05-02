@@ -29,4 +29,4 @@ ImageSlideShowModalController = ($scope, $filter) ->
 
 ImageSlideShowModalController.$inject = ['$scope', '$filter']
 
-angular.module('appirio-tech-ng-timeline').controller 'ImageSlideShowModalController', ImageSlideShowModalController
+angular.module('timeline').controller 'ImageSlideShowModalController', ImageSlideShowModalController

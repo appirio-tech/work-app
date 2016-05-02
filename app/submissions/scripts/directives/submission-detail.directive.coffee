@@ -11,4 +11,4 @@ directive = ->
     userType     : '@'
     permissions  : '='
 
-angular.module('appirio-tech-submissions').directive 'submissionDetail', directive
+angular.module('submissions').directive 'submissionDetail', directive

@@ -10,4 +10,4 @@ dir = ->
 
 dir.$inject = []
 
-angular.module('appirio-tech-ng-work-layout').directive 'layoutProjectNav', dir
+angular.module('work-layout').directive 'layoutProjectNav', dir

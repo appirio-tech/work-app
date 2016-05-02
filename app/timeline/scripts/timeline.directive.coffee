@@ -8,4 +8,4 @@ directive = ->
     workId    : '@workId'
     permissions: '='
 
-angular.module('appirio-tech-ng-timeline').directive 'timeline', directive
+angular.module('timeline').directive 'timeline', directive

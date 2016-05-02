@@ -8,4 +8,4 @@ directive = ->
     workId: '@workId'
     reportId: '@reportId'
 
-angular.module('appirio-tech-ng-status-report').directive 'detailStatusReport', directive
+angular.module('status-report').directive 'detailStatusReport', directive

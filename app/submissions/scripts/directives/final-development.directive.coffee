@@ -10,4 +10,4 @@ directive = ->
     links: '='
 
 
-angular.module('appirio-tech-submissions').directive 'finalDevelopment', directive
+angular.module('submissions').directive 'finalDevelopment', directive

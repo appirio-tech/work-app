@@ -30,4 +30,4 @@ RankDropdownController = ($scope, StepsService, RankListService, DataService) ->
 
 RankDropdownController.$inject = ['$scope', 'StepsService', 'RankListService', 'DataService']
 
-angular.module('appirio-tech-submissions').controller 'RankDropdownController', RankDropdownController
+angular.module('submissions').controller 'RankDropdownController', RankDropdownController

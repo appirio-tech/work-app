@@ -10,4 +10,4 @@ directive = ->
     userType : '@'
     store    : '='
 
-angular.module('appirio-tech-ng-work-layout').directive 'layoutHeader', directive
+angular.module('work-layout').directive 'layoutHeader', directive

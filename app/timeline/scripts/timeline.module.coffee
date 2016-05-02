@@ -5,8 +5,8 @@ dependencies = [
   'ngResource'
   'app.constants'
   'duScroll'
-  'appirio-tech-ng-api-services'
+  'api-services'
   'appirio-tech-ng-ui-components'
 ]
 
-angular.module 'appirio-tech-ng-timeline', dependencies
+angular.module 'timeline', dependencies

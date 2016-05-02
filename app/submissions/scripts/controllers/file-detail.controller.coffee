@@ -12,4 +12,4 @@ FileDetailController = ($scope, $state, DataService, StepSubmissionsService, Sub
 
 FileDetailController.$inject = ['$scope', '$state', 'DataService', 'StepSubmissionsService', 'SubmissionsService']
 
-angular.module('appirio-tech-submissions').controller 'FileDetailController', FileDetailController
+angular.module('submissions').controller 'FileDetailController', FileDetailController

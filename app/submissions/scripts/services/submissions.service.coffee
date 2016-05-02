@@ -175,7 +175,7 @@ SubmissionsService = ($rootScope, SubmissionsAPIService, SubmissionsMessagesAPIS
 
 SubmissionsService.$inject = ['$rootScope', 'SubmissionsAPIService', 'SubmissionsMessagesAPIService', 'UserV3Service', 'MessageUpdateAPIService', 'InboxesAPIService']
 
-angular.module('appirio-tech-submissions').factory 'SubmissionsService', SubmissionsService
+angular.module('submissions').factory 'SubmissionsService', SubmissionsService
 
 withMessageCounts = (submission) ->
   withFileMessageCounts = angular.extend {}, submission,

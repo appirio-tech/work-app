@@ -130,4 +130,4 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
 
 ProjectDetailsController.$inject = ['$scope', 'ProjectsAPIService', 'SubmitWorkAPIService', 'CopilotProjectDetailsAPIService']
 
-angular.module('appirio-tech-ng-projects').controller 'ProjectDetailsController', ProjectDetailsController
+angular.module('projects').controller 'ProjectDetailsController', ProjectDetailsController

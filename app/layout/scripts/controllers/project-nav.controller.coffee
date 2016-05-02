@@ -53,4 +53,4 @@ ProjectNavController.$inject = [
   '$rootScope'
 ]
 
-angular.module('appirio-tech-ng-work-layout').controller 'ProjectNavController', ProjectNavController
+angular.module('work-layout').controller 'ProjectNavController', ProjectNavController

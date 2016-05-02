@@ -10,4 +10,4 @@ directive = ->
 
 directive.$inject = []
 
-angular.module('appirio-tech-ng-work-layout').directive 'messageDropDown', directive
+angular.module('work-layout').directive 'messageDropDown', directive

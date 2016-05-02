@@ -3,11 +3,11 @@
 dependencies = [
   'ui.router'
   'ngResource'
-  'appirio-tech-ng-api-services'
-  'appirio-tech-ng-auth'
+  'api-services'
+  'auth'
   'app.constants'
   'appirio-tech-ng-ui-components'
-  'appirio-tech-ng-optimist'
+  'optimist'
 ]
 
-angular.module 'appirio-tech-submissions', dependencies
+angular.module 'submissions', dependencies

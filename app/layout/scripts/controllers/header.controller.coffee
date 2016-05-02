@@ -69,4 +69,4 @@ LayoutHeaderController.$inject = [
   'InboxesProjectAPIService'
 ]
 
-angular.module('appirio-tech-ng-work-layout').controller 'LayoutHeaderController', LayoutHeaderController
+angular.module('work-layout').controller 'LayoutHeaderController', LayoutHeaderController

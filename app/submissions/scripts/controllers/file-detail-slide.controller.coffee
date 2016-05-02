@@ -15,4 +15,4 @@ FileDetailSlideController = ($scope) ->
 
 FileDetailSlideController.$inject = ['$scope']
 
-angular.module('appirio-tech-submissions').controller 'FileDetailSlideController', FileDetailSlideController
+angular.module('submissions').controller 'FileDetailSlideController', FileDetailSlideController

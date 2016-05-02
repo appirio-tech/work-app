@@ -37,4 +37,4 @@ SubmissionDetailController = ($scope, DataService, StepSubmissionsService) ->
 
 SubmissionDetailController.$inject = ['$scope', 'DataService', 'StepSubmissionsService']
 
-angular.module('appirio-tech-submissions').controller 'SubmissionDetailController', SubmissionDetailController
+angular.module('submissions').controller 'SubmissionDetailController', SubmissionDetailController

@@ -7,4 +7,4 @@ directive = ->
   scope       :
     copilotId : '@copilotId'
 
-angular.module('appirio-tech-ng-projects').directive 'claimedProjects', directive
+angular.module('projects').directive 'claimedProjects', directive

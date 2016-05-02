@@ -9,4 +9,4 @@ directive = ->
     limit      : '@'
     viewAllUrl : '@'
 
-angular.module('appirio-tech-submissions').directive 'fileRow', directive
+angular.module('submissions').directive 'fileRow', directive

@@ -10,4 +10,4 @@ directive = ->
     userType:    '@'
     permissions: '='
 
-angular.module('appirio-tech-submissions').directive 'confirmButton', directive
+angular.module('submissions').directive 'confirmButton', directive

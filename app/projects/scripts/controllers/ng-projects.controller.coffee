@@ -43,4 +43,4 @@ NgProjectsController = ($scope, WorkAPIService, ProjectsAPIService) ->
 
 NgProjectsController.$inject = ['$scope', 'WorkAPIService', 'ProjectsAPIService']
 
-angular.module('appirio-tech-ng-projects').controller 'NgProjectsController', NgProjectsController
+angular.module('projects').controller 'NgProjectsController', NgProjectsController

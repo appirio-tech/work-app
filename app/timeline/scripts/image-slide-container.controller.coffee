@@ -50,4 +50,4 @@ ImageSlideContainerController = ($scope, StatusReportDetailAPIService) ->
 
 ImageSlideContainerController.$inject = ['$scope', 'StatusReportDetailAPIService']
 
-angular.module('appirio-tech-ng-timeline').controller 'ImageSlideContainerController', ImageSlideContainerController
+angular.module('timeline').controller 'ImageSlideContainerController', ImageSlideContainerController

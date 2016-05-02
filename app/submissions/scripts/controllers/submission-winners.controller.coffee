@@ -17,4 +17,4 @@ SubmissionWinnersController = ($scope, StepsService, RankListService, DataServic
 
 SubmissionWinnersController.$inject = ['$scope', 'StepsService', 'RankListService', 'DataService']
 
-angular.module('appirio-tech-submissions').controller('SubmissionWinnersController', SubmissionWinnersController)
+angular.module('submissions').controller('SubmissionWinnersController', SubmissionWinnersController)
