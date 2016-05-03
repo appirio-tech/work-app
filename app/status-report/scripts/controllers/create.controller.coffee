@@ -1,6 +1,6 @@
 'use strict'
 
-CreateController = ($scope, $state, API_URL, StatusReportAPIService) ->
+CreateController = ($scope, $state, WORK_API_URL, StatusReportAPIService) ->
   vm                   = this
   vm.workId            = $scope.workId
   vm.stepId            = $scope.stepId
@@ -69,7 +69,7 @@ CreateController = ($scope, $state, API_URL, StatusReportAPIService) ->
       resource.$promise.finally ->
 
   configureUploader = (workId, assetType) ->
-    domain = API_URL
+    domain = WORK_API_URL
     category = 'work'
 
     uploaderConfig =
@@ -116,6 +116,6 @@ CreateController = ($scope, $state, API_URL, StatusReportAPIService) ->
 
   activate()
 
-CreateController.$inject = ['$scope', '$state', 'API_URL', 'StatusReportAPIService']
+CreateController.$inject = ['$scope', '$state', 'WORK_API_URL', 'StatusReportAPIService']
 
 angular.module('status-report').controller 'CreateController', CreateController

@@ -3,7 +3,7 @@ import find from 'lodash/find'
 import thunk from 'redux-thunk'
 import nock from 'nock'
 import { defaults } from '../reducers/projectSearch.js'
-import { API_URL } from '../../constants.js'
+import { WORK_API_URL } from '../../constants.js'
 
 import {
   clearProjectSearch,
@@ -82,7 +82,7 @@ describe('projectSearch Actions:', () => {
     it('should include metadata(filters, limit) in the action bodies', () => {
       const store = mockStore({ projectSearch: defaults })
 
-      nock(API_URL)
+      nock(WORK_API_URL)
         .get(/\/projects.*/)
         .reply(200, 'success, yay!')
 
@@ -106,7 +106,7 @@ describe('projectSearch Actions:', () => {
     it(`should dispatch ${PROJECT_SEARCH_SUCCESS} when the request succeeds`, () => {
       const store = mockStore({ projectSearch: defaults })
 
-      nock(API_URL)
+      nock(WORK_API_URL)
         .get(/\/projects.*/)
         .reply(200, 'success, yay!')
 
@@ -122,7 +122,7 @@ describe('projectSearch Actions:', () => {
     it(`should dispatch ${PROJECT_SEARCH_FAILURE} when the request fails`, () => {
       const store = mockStore({ projectSearch: defaults })
 
-      nock(API_URL)
+      nock(WORK_API_URL)
         .get(/\/projects.*/)
         .reply(404, 'failure, boo!')
 

@@ -1,6 +1,6 @@
 'use strict'
 
-StatusReportsController = ($scope, API_URL, StatusReportAPIService) ->
+StatusReportsController = ($scope, StatusReportAPIService) ->
   vm             = this
   vm.workId      = $scope.workId
   vm.stepId      = $scope.stepId
@@ -11,6 +11,6 @@ StatusReportsController = ($scope, API_URL, StatusReportAPIService) ->
 
   activate()
 
-StatusReportsController.$inject = ['$scope', 'API_URL', 'StatusReportAPIService']
+StatusReportsController.$inject = ['$scope', 'StatusReportAPIService']
 
 angular.module('status-report').controller 'StatusReportsController', StatusReportsController
