@@ -27,7 +27,6 @@ require './status-report/src.coffee'
 require './submissions/src.coffee'
 require './timeline/src.coffee'
 
-
 constants = require './constants.js'
 
 module = angular.module 'app.constants', []
@@ -42,6 +41,3 @@ requireContextFiles = (files) ->
     files path
 
 requireContextFiles require.context './', true, /^(.*\.(scss$))[^.]*$/igm
-requireContextFiles require.context './', true, /^(?:(?!\.spec\.js$).)*\.js$/igm
-requireContextFiles require.context './', true, /^(.*\.(jsx$))[^.]*$/igm
-requireContextFiles require.context './', true, /^(.*\.(coffee$))[^.]*$/igm

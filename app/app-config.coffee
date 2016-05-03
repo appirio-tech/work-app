@@ -1,3 +1,7 @@
+require './scripts/basic.controller.coffee'
+require './scripts/messaging.controller.coffee'
+require './scripts/submissions-pages.controller.coffee'
+
 config = ($locationProvider, $stateProvider) ->
   states = {}
 
