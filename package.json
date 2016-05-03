@@ -49,7 +49,7 @@
     "build": "webpack -p --bail --progress --build",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint --ext .js,.jsx .",
-    "test": "cross-env NODE_ENV=test mocha --reporter nyan --compilers js:babel-core/register --require ignore-styles --recursive -t 10 \"./app/**/*.spec.js\"",
+    "test": "cross-env NODE_ENV=test mocha --reporter nyan --compilers js:babel-core/register --require ignore-styles --require test-helper.js --recursive -t 10 \"./app/**/*.spec.js\"",
     "analyze": "webpack --json --silent | webpack-bundle-size-analyzer"
   },
   "dependencies": {
