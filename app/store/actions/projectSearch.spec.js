@@ -83,11 +83,16 @@ describe('projectSearch Actions:', () => {
       const store = mockStore({ projectSearch: defaults })
 
       nock(WORK_API_URL)
-        .get(/\/projects.*/)
-        .reply(200, 'success, yay!')
+        .get('/projects')
+        .reply(200, {
+          result: {
+            content: [
+              { id: 1 }
+            ]
+          }
+        })
 
       return store.dispatch(loadProjectSearch()).then( () => {
-        console.log(store.getActions())
         const successAction = find(store.getActions(), (a) => a.type === PROJECT_SEARCH_SUCCESS)
 
         successAction.limit.should.equal(store.getState().projectSearch.limit)
@@ -107,14 +112,22 @@ describe('projectSearch Actions:', () => {
       const store = mockStore({ projectSearch: defaults })
 
       nock(WORK_API_URL)
-        .get(/\/projects.*/)
-        .reply(200, 'success, yay!')
+        .get('/projects')
+        .reply(200, {
+          result: {
+            content: []
+          }
+        })
 
       return store.dispatch(loadProjectSearch()).then( () => {
         store.getActions()[2].should.deep.equal({
           type: PROJECT_SEARCH_SUCCESS,
           filters: {},
-          limit: 20
+          limit: 20,
+          response: {
+            entities: {},
+            result: []
+          }
         })
       })
     })

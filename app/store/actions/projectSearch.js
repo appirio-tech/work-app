@@ -42,7 +42,7 @@ export function loadProjectSearch() {
 
     const config = {
       method: 'GET',
-      endpoint: '/projects/',
+      endpoint: '/projects',
       schema: Schemas.PROJECT_ARRAY
     }
 
@@ -59,6 +59,6 @@ export function loadProjectSearch() {
       dispatch({ type: PROJECT_SEARCH_FAILURE })
     }
 
-    return callApi(config).then(success).catch(failure)
+    return callApi(config).then(success, failure)
   }
 }
