@@ -23,7 +23,7 @@ event-card-main.transition(
     ul.flex.middle.space-between.stretch
       li.cost
         .range
-          | ${{ event.price.min }} - ${{ event.price.max }}
+          | ${{ event.estimate.price.min }} - ${{ event.estimate.price.max }}
 
         h6 Cost estimate
 
@@ -31,7 +31,7 @@ event-card-main.transition(
 
       li.duration
         .range
-          | {{ event.duration.min }} - {{ event.duration.max }} {{ event.duration.unit }}s
+          | {{ event.estimate.duration.min }} - {{ event.estimate.duration.max }} {{ event.estimate.duration.unit }}s
 
         h6 Time estimate
 

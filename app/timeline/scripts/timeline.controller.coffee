@@ -1,6 +1,6 @@
 'use strict'
 
-TimelineController = ($scope, $stateParams, $document, TimelineAPIService, CopilotApprovalAPIService) ->
+TimelineController = ($scope, $stateParams, $document, TimelineAPIService, QuoteApprovalAPIService) ->
   vm                        = this
   vm.eventGroups            = []
   vm.permissions            = $scope.permissions || ['CREATE', 'UPDATE', 'DELETE']
@@ -19,15 +19,10 @@ TimelineController = ($scope, $stateParams, $document, TimelineAPIService, Copil
     extension == "png" || extension == "jpg" || extension == 'tif' || extension == 'gif' || extension == "svg"
 
   vm.acceptQuote = (event) ->
-    if vm.copilot?.userId
-      params =
-        userId: vm.copilot.userId
-        projectId: vm.workId
+    params =
+      id: vm.workId
 
-      body =
-        "status": "APPROVED"
-
-    resource = CopilotApprovalAPIService.post params, body
+    resource = QuoteApprovalAPIService.post params
 
     resource.$promise.then (response) ->
       vm.showAcceptQuoteButton = false
@@ -166,7 +161,7 @@ TimelineController.$inject = [
   '$stateParams'
   '$document'
   'TimelineAPIService'
-  'CopilotApprovalAPIService'
+  'QuoteApprovalAPIService'
 ]
 
 angular.module('timeline').controller 'TimelineController', TimelineController
