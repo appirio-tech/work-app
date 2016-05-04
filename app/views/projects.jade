@@ -7,7 +7,7 @@ main.layout-main.manage(ng-if="vm.userRole == 'customer'" "role"="main" layout-m
 
   hr
 
-  ng-projects(permissions="vm.permissions")
+  project-search(permissions="vm.permissions" store="vm.store")
 
 main.layout-main.copilot-projects(ng-if="vm.userRole == 'copilot'" "role"="main" layout-main=true flush-height=true)
   h1 My Projects

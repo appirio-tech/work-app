@@ -12,7 +12,7 @@ export const defaults = {
   lastUpdated: (new Date()).toISOString(),
   error: '',
   moreResultsAvailable: true,
-  limit: 20,
+  limit: 2,
   filters: {},
   previousFilters: {}
 }
@@ -20,11 +20,7 @@ export const defaults = {
 export default function projectSearch(state = defaults, action) {
   switch(action.type) {
     case CLEAR_PROJECT_SEARCH:
-      return Object.assign({}, state, {
-        items: [],
-        error: '',
-        moreResultsAvailable: true
-      })
+      return Object.assign({}, state, defaults)
 
     case PROJECT_SEARCH_REQUEST:
       return Object.assign({}, state, {

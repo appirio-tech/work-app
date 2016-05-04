@@ -42,7 +42,8 @@ export function loadProjectSearch() {
 
     const config = {
       method: 'GET',
-      endpoint: '/projects',
+      endpoint: '/work',
+      params: getparamsFromState(state),
       schema: Schemas.PROJECT_ARRAY
     }
 
@@ -61,4 +62,17 @@ export function loadProjectSearch() {
 
     return callApi(config).then(success, failure)
   }
+}
+
+function getparamsFromState(state) {
+  const params = {
+    limit: state.limit,
+    offsetId: '1461797736608-50e9c212-f79f-4bc5-89af-cd69919b9b27',
+    orderBy: 'modifiedAt',
+    // filter: {
+    //   name: 'match(Beta)'
+    // }
+  }
+  
+  return params
 }
