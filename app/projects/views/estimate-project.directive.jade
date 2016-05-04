@@ -1,51 +1,87 @@
-main(ng-hide="vm.costEstimate")
+main(ng-if="vm.estimatesMissing()")
   h5 Create Project Estimates
 
   hr.biggest
 
   form(ng-submit="vm.submit()")
-    .cost-estimate.flex.space-between.wrap
+    .cost-estimate
       .description
         p.secondary Enter a range for your proposed cost and duration for this project.
 
-      .cost
-        label Project Cost
+      .cost-duration.flex.space-between
+        .cost(ng-if="!vm.submittedDesignEstimate")
+          label Design Cost
 
-        .fields.flex.middle
-          input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+          .fields.flex.middle
+            input(ng-model="vm.designEstimate.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
-          p to
+            p to
 
-          input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+            input(ng-model="vm.designEstimate.price.max" type="number" placeholder="$" required="true" min="1" ng-disabled="!vm.canUpdate")
 
-      .duration
-        label Project Duration
 
-        .fields.flex.middle
-          input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+        .duration(ng-if="!vm.submittedDesignEstimate")
+          label Design Duration
 
-          p to
+          .fields.flex.middle
+            input(ng-model="vm.designEstimate.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
-          input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+            p to
 
-          p weeks
+            input(ng-model="vm.designEstimate.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+            p weeks
+
+      .cost-duration.flex.space-between
+        .cost(ng-if="vm.projectType == 'DESIGN_AND_CODE' && !vm.submittedCodeEstimate")
+          label Code Cost
+
+          .fields.flex.middle
+            input(ng-model="vm.codeEstimate.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+            p to
+
+            input(ng-model="vm.codeEstimate.price.max" type="number" placeholder="$" required="true" min="1" ng-disabled="!vm.canUpdate")
+
+        .duration(ng-if="vm.projectType == 'DESIGN_AND_CODE' && !vm.submittedCodeEstimate")
+          label Code Duration
+
+          .fields.flex.middle
+            input(ng-model="vm.codeEstimate.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+            p to
+
+            input(ng-model="vm.codeEstimate.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+
+            p weeks
 
     button.action.wider(ng-disabled="!vm.canUpdate") save estimates
 
-.success-message(ng-show="vm.costEstimate")
+.success-message(ng-show="!vm.estimatesMissing()")
   h5 Project Estimates
 
   hr.biggest
 
-  .estimates.flex.space-between
+  .estimates.flex.space-between(ng-if="vm.submittedDesignEstimate")
     .costs
-      h6 Costs
+      h6 Design Costs
 
-      p ${{ vm.costEstimate.price.min }} - ${{ vm.costEstimate.price.max }}
+      p ${{ vm.submittedDesignEstimate.price.min }} - ${{ vm.submittedDesignEstimate.price.max }}
 
     .duration
-      h6 Duration
+      h6 Design Duration
 
-      p {{ vm.costEstimate.duration.min }} - {{ vm.costEstimate.duration.max }} {{ vm.costEstimate.duration.unit }}s
+      p {{ vm.submittedDesignEstimate.duration.min }} - {{ vm.submittedDesignEstimate.duration.max }} {{ vm.submittedDesignEstimate.duration.unit }}s
+
+  .estimates.code-estimates.flex.space-between(ng-if="vm.submittedCodeEstimate")
+    .costs
+      h6 Code Costs
+
+      p ${{ vm.submittedCodeEstimate.price.min }} - ${{ vm.submittedCodeEstimate.price.max }}
+
+    .duration
+      h6 Code Duration
+
+      p {{ vm.submittedCodeEstimate.duration.min }} - {{ vm.submittedCodeEstimate.duration.max }} {{ vm.submittedCodeEstimate.duration.unit }}s
 
 loader(ng-show="vm.loading")

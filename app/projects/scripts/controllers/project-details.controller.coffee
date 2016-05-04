@@ -1,6 +1,6 @@
 'use strict'
 
-ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, CopilotProjectDetailsAPIService) ->
+ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, CopilotProjectDetailsAPIService, LaunchProjectAPIService) ->
   vm                   = this
   vm.projects          = []
   vm.loading           = false
@@ -45,9 +45,10 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
 
   #TODO: Combine code with launch
   vm.claim = ->
-    payload     = id: $scope.id
-    params      = userId: $scope.copilotId
-    resource    = CopilotProjectDetailsAPIService.post params, payload
+    params      =
+      id:        $scope.id
+      copilotId: $scope.copilotId
+    resource    = CopilotProjectDetailsAPIService.post params
     vm.claiming = true
 
     resource.$promise.then (response) ->
@@ -61,11 +62,9 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
 
   vm.launch = ->
     params       =
-      projectId: $scope.id
-      userId   : $scope.copilotId
+      id: $scope.id
 
-    payload      = status: 'LAUNCHED'
-    resource     = CopilotProjectDetailsAPIService.put params, payload
+    resource     = LaunchProjectAPIService.post params
     vm.launching = true
 
     resource.$promise.then (response) ->
@@ -128,6 +127,6 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
 
   activate()
 
-ProjectDetailsController.$inject = ['$scope', 'ProjectsAPIService', 'SubmitWorkAPIService', 'CopilotProjectDetailsAPIService']
+ProjectDetailsController.$inject = ['$scope', 'ProjectsAPIService', 'SubmitWorkAPIService', 'CopilotProjectDetailsAPIService', 'LaunchProjectAPIService']
 
 angular.module('projects').controller 'ProjectDetailsController', ProjectDetailsController

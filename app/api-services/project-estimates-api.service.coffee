@@ -8,7 +8,7 @@ transformIdOnlyResponse = (response) ->
   id: parsed
 
 srv = ($resource, WORK_API_URL) ->
-  url = WORK_API_URL + '/projects/:id/estimates'
+  url = WORK_API_URL + '/work/:id/estimates'
 
   params =
     id: '@id'

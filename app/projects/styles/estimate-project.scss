@@ -21,6 +21,10 @@ estimate-project {
       max-width: 300px;
       margin-top: 15px;
 
+      &.code-estimates {
+        max-width: 285px;
+      }
+
       p {
         font-weight: 500;
       }

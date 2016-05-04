@@ -3,11 +3,11 @@
 transform = require './transform.js'
 
 srv = ($resource, WORK_API_URL) ->
-  url = WORK_API_URL + '/copilots/:userId/projects/:projectId'
+  url = WORK_API_URL + '/work/:id/copilot'
 
   params =
-    userId: '@userId'
-    projectId: '@projectId'
+    id: '@id'
+    copilotId: '@copilotId'
 
   methods =
     query:
@@ -23,7 +23,7 @@ srv = ($resource, WORK_API_URL) ->
       isArray          : false
       transformResponse: transform
 
-  $resource url, {}, methods
+  $resource url, params, methods
 
 srv.$inject = ['$resource', 'WORK_API_URL']
 

@@ -29,3 +29,5 @@ require('./timeline-api.service.coffee')
 require('./upsell-api.service.coffee')
 require('./user-v3-api.service.coffee')
 require('./work-api.service.coffee')
+require('./launch-project-api.service.coffee')
+
