@@ -13,120 +13,109 @@ config = ($locationProvider, $stateProvider) ->
     url         : '/'
     title       : 'View Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/projects')()
+    template    : require('./views/projects.jade')()
 
   states['timeline'] =
     url         : '/projects/:workId/timeline'
     title       : 'Timeline'
     controller  : 'BasicController as vm'
-    template    : require('./views/timeline')()
+    template    : require('./views/timeline.jade')()
 
   states['messaging'] =
     url         : '/projects/:id/messaging/thread/:threadId'
     title       : 'Messaging'
     controller  : 'MessagingPageController as vm'
-    template    : require('./views/messaging')()
+    template    : require('./views/messaging.jade')()
 
   states['project-search'] =
     url         : '/projects'
     title       : 'View Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/projects')()
+    template    : require('./views/projects.jade')()
 
   states['submit-work'] =
     url         : '/submit-work/:id'
     title       : 'Submit Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/submit-work')()
+    template    : require('./views/submit-work.jade')()
 
   states['submit-work-features'] =
     url         : '/submit-work/features/:id'
     title       : 'Submit Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/submit-work-features')()
+    template    : require('./views/submit-work-features.jade')()
 
   states['submit-work-visuals'] =
     url         : '/submit-work/visuals/:id'
     title       : 'Submit Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/submit-work-visuals')()
+    template    : require('./views/submit-work-visuals.jade')()
 
   states['submit-work-development'] =
     url         : '/submit-work/development/:id'
     title       : 'Submit Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/submit-work-development')()
+    template    : require('./views/submit-work-development.jade')()
 
   states['submit-work-upload-requirements'] =
     url         : '/submit-work/upload-requirements/:id'
     title       : 'Submit Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/submit-work-upload-requirements')()
+    template    : require('./views/submit-work-upload-requirements.jade')()
 
   states['submit-work-complete'] =
     url         : '/submit-work/complete/:id'
     title       : 'Submit Work'
     controller  : 'BasicController as vm'
-    template    : require('./views/submit-work-complete')()
-
-  states['verified-email-address'] =
-    url        : '/verified-email-address'
-    template   : require('./views/verified-email-address')()
+    template    : require('./views/submit-work-complete.jade')()
 
   states['project-details'] =
     url         : '/projects/:id/details'
     title       : 'Project Details'
     controller  : 'BasicController as vm'
-    template    : require('./views/project-details')()
+    template    : require('./views/project-details.jade')()
 
   # copilot routes
   states['copilot-projects'] =
     url         : '/copilot/projects'
     title       : 'My Projects'
     controller  : 'BasicController as vm'
-    template    : require('./views/projects')()
-    rolesAllowed: [ 'copilot' ]
-
-  states['copilot-open-projects'] =
-    url         : '/open-projects'
-    title       : 'Available Projects'
-    controller  : 'BasicController as vm'
-    template    : require('./views/open-projects')()
+    template    : require('./views/projects.jade')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-messaging'] =
     url         : '/copilot/projects/:id/messaging/thread/:threadId'
     title       : 'Copilot Messaging'
     controller  : 'MessagingPageController as vm'
-    template    : require('./views/messaging')()
+    template    : require('./views/messaging.jade')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-project-details'] =
     url         : '/copilot/projects/:id/details'
     title       : 'Project Details'
     controller  : 'BasicController as vm'
-    template    : require('./views/project-details')()
+    template    : require('./views/project-details.jade')()
     rolesAllowed: [ 'copilot' ]
 
   states['copilot-status-reports'] =
     url         : '/status-reports/:id/steps/:stepId'
     title       : 'Status Reports'
     controller  : 'BasicController as vm'
-    template    : require('./views/status-reports')()
+    template    : require('./views/status-reports.jade')()
     rolesAllowed: [ 'copilot', 'admin' ]
 
   states['copilot-status-report-details'] =
     url         : '/status-reports/:id/report/:reportId'
     title       : 'Status Report Details'
     controller  : 'BasicController as vm'
-    template    : require('./views/status-report-detail')()
+    template    : require('./views/status-report-detail.jade')()
     rolesAllowed: [ 'copilot', 'admin' ]
 
   states['copilot-manage-steps'] =
     url         : '/manage-steps/:projectId'
     title       : 'Status Report Details'
     controller  : 'BasicController as vm'
-    template    : require('./views/manage-steps')()
+    template    : require('./views/manage-steps.jade')()
     rolesAllowed: [ 'copilot', 'admin' ]
 
   # Shared routes
@@ -138,7 +127,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['step'] =
     url        : '/projects/:projectId/steps/:stepId'
-    template   : require('./views/step')()
+    template   : require('./views/step.jade')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
@@ -146,7 +135,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['current-step'] =
     url        : '/projects/:projectId/current-step'
-    template   : require('./views/step')()
+    template   : require('./views/step.jade')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
@@ -154,7 +143,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['submission-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId'
-    template   : require('./views/submission-detail')()
+    template   : require('./views/submission-detail.jade')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
@@ -162,7 +151,7 @@ config = ($locationProvider, $stateProvider) ->
 
   states['file-detail'] =
     url        : '/projects/:projectId/steps/:stepId/submissions/:submissionId/files/:fileId?modal'
-    template   : require('./views/file-detail')()
+    template   : require('./views/file-detail.jade')()
     controller : 'SubmissionsPagesController as vm'
     rolesAllowed: [ 'customer', 'copilot', 'member', 'admin' ]
     resolve:
@@ -172,14 +161,14 @@ config = ($locationProvider, $stateProvider) ->
 
   states['forbidden'] =
     url: '/403',
-    template   : require('./views/403')()
+    template   : require('./views/403.jade')()
     controller: 'BasicController as vm'
     public: true
 
   # This must be the last one in the list
   states['otherwise'] =
     url: '*path',
-    template   : require('./views/404')()
+    template   : require('./views/404.jade')()
     public: true
 
   for key, state of states
