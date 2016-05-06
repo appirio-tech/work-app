@@ -53,6 +53,7 @@ TimelineController = ($scope, $stateParams, $document, TimelineAPIService, Quote
       if eventGroup.text == 'Project Complete'
         vm.projectCompleted      = true
         vm.projectCompletionDate = eventGroup.createdTime
+        vm.canUpsell             = eventGroup.completed
 
       else if eventGroup.text == 'Final Fixes'
         eventGroup.events.forEach (event) ->

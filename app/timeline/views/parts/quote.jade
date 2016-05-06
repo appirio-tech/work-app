@@ -20,7 +20,7 @@ event-card-main.transition(
   .estimate(ng-class="{active: event.status != 'Accepted'}")
     h6 quote
 
-    ul.flex.middle.space-between.stretch
+    ul.flex.middle.space-between.stretch(ng-repeat="estimate in event.estimates track by $index")
       li.cost
         .range
           | ${{ event.estimate.price.min }} - ${{ event.estimate.price.max }}
