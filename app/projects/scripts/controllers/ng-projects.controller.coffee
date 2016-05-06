@@ -1,4 +1,5 @@
-'use strict'
+store = require '../../../store.coffee'
+projectSearchActions = require '../../../store/actions/projectSearch.js'
 
 NgProjectsController = ($scope, WorkAPIService, ProjectsAPIService) ->
   vm          = this
@@ -20,26 +21,24 @@ NgProjectsController = ($scope, WorkAPIService, ProjectsAPIService) ->
     'CODE'         : 'Code'
     'DESIGN_AND_CODE': 'Design/Code'
 
-  activate = ->
-    getProjects()
+  projectIds = []
 
-    vm
+  store.subscribe ->
+    items = store.getState().projectSearch.items
+    projects = store.getState().entities.projects
 
-  getProjects = (params) ->
-    vm.loading = true
+    unless projectIds == items
+      projectIds = items
 
-    resource = ProjectsAPIService.query()
+      vm.projects = items.map (id) ->
+        projects[id]
 
-    resource.$promise.then (response) ->
-      vm.projects = response
+      unless $scope.$$phase
+        $scope.$digest()
 
-    resource.$promise.catch (response) ->
-      # TODO: handle error
+  store.dispatch(projectSearchActions.loadProjectSearch())
 
-    resource.$promise.finally ->
-      vm.loading = false
-
-  activate()
+  vm
 
 NgProjectsController.$inject = ['$scope', 'WorkAPIService', 'ProjectsAPIService']
 

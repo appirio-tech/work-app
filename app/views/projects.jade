@@ -7,6 +7,10 @@ main.layout-main.manage(role="main" layout-main=true flush-height=true)
 
   hr
 
-  project-search(permissions="vm.permissions" store="vm.store")
+  project-search-controls(store="vm.store")
+  
+  ng-projects(permissions="vm.permissions")
+
+  project-search-footer(store="vm.store")
 
 layout-footer
