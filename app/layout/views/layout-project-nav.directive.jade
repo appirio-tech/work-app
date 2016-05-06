@@ -11,8 +11,8 @@ ul
   li(ng-if="!vm.member" ng-class="{active: vm.activeLink == 'project-details'}")
     a(ui-sref="project-details({ id: vm.workId })") Project details
 
-  li(ng-if="vm.copilot || vm.admin" ng-class="{active: vm.activeLink == 'copilot-manage-steps'}")
-    a(ui-sref="copilot-manage-steps({ projectId: vm.workId })") Manage Steps
+  li(ng-if="vm.copilot || vm.admin" ng-class="{active: vm.activeLink == 'manage-steps'}")
+    a(ui-sref="manage-steps({ projectId: vm.workId })") Manage Steps
 
-  li(ng-if="vm.copilot || vm.admin" ng-class="{active: vm.activeLink == 'copilot-status-reports'}")
-    a(ui-sref="copilot-status-reports({ id: vm.workId, stepId: vm.currentStepId})") Status Reports
+  li(ng-if="vm.copilot || vm.admin" ng-class="{active: vm.activeLink == 'status-reports'}")
+    a(ui-sref="status-reports({ id: vm.workId, stepId: vm.currentStepId})") Status Reports

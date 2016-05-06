@@ -4,7 +4,7 @@ ul.flex.wrap
   li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     project-card.elevated-bottom
       card-header
-        a(ui-sref="copilot-project-details({ id: project.id })")
+        a(ui-sref="project-details({ id: project.id })")
           h5 {{ project.name || 'Unnamed Project' }}
 
         p.type {{ vm.typeMap[project.projectType] }} - {{project.createdAt | date:'MM/dd/yyyy'}}
@@ -16,7 +16,7 @@ ul.flex.wrap
           label Project Claimed
 
         footer.flex.bottom.center
-          a.action.button(ui-sref="copilot-project-details({ id: project.id })") estimate
+          a.action.button(ui-sref="project-details({ id: project.id })") estimate
 
       card-main.flex.column(ng-if="project.status == 'ESTIMATED'")
         main.solid.flex.column.middle.center.flex-grow
@@ -35,7 +35,7 @@ ul.flex.wrap
           label Project Approved
 
         footer.flex.bottom.center
-          a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
+          a.action.button(ui-sref="project-details({ id: project.id })") view project
 
       card-main.flex.column(ng-if="project.status == 'LAUNCHED'")
         main.solid.flex.column.middle.center.flex-grow

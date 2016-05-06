@@ -5,10 +5,7 @@ MessageDropDownController = ($scope, $state, InboxesProjectAPIService) ->
   vm.loadingThreads = false
   vm.userType = $scope.userType || 'customer'
 
-  if vm.userType == 'customer'
-    vm.threadHref = 'messaging'
-  else
-    vm.threadHref = 'copilot-messaging'
+  vm.threadHref = 'messaging'
 
   removeBlanksAndOrder = (threads) ->
     noBlanks = []

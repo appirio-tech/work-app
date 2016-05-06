@@ -4,7 +4,7 @@ ul.flex.wrap
   li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     project-card.elevated-bottom
       card-header
-        a(ui-sref="copilot-project-details({ id: project.id })")
+        a(ui-sref="project-details({ id: project.id })")
           h5 {{ project.name || 'Unnamed Project' }}
 
         p.type {{ project.createdAt | date:'MM/dd/yyyy' }}
@@ -18,7 +18,7 @@ ul.flex.wrap
           label {{ vm.typeMap[project.projectType] }}
 
         footer.flex.bottom.center
-          a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
+          a.action.button(ui-sref="project-details({ id: project.id })") view project
 
 .no-projects(ng-hide="vm.loading || vm.projects.length > 0")
   p There are no open projects.

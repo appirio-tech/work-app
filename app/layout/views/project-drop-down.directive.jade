@@ -10,4 +10,4 @@ ul
     a(ng-if="project.status == 'INCOMPLETE'" ui-sref="submit-work({ id: project.id })") {{ project.name }}
 
   li(ng-if="vm.userType != 'customer' " ng-repeat="project in vm.copilotProjects")
-    a(ui-sref="copilot-project-details({ id: project.id })") {{ project.name }}
+    a(ui-sref="project-details({ id: project.id })") {{ project.name }}

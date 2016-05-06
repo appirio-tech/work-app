@@ -7,8 +7,6 @@ config = ($locationProvider, $stateProvider) ->
 
   $locationProvider.html5Mode true
 
-  # customer routes
-
   states['home'] =
     url         : '/'
     title       : 'View Work'
@@ -75,50 +73,26 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'BasicController as vm'
     template    : require('./views/project-details.jade')()
 
-  # copilot routes
-  states['copilot-projects'] =
-    url         : '/copilot/projects'
-    title       : 'My Projects'
-    controller  : 'BasicController as vm'
-    template    : require('./views/projects.jade')()
-    rolesAllowed: [ 'copilot' ]
-
-  states['copilot-messaging'] =
-    url         : '/copilot/projects/:id/messaging/thread/:threadId'
-    title       : 'Copilot Messaging'
-    controller  : 'MessagingPageController as vm'
-    template    : require('./views/messaging.jade')()
-    rolesAllowed: [ 'copilot' ]
-
-  states['copilot-project-details'] =
-    url         : '/copilot/projects/:id/details'
-    title       : 'Project Details'
-    controller  : 'BasicController as vm'
-    template    : require('./views/project-details.jade')()
-    rolesAllowed: [ 'copilot' ]
-
-  states['copilot-status-reports'] =
+  states['status-reports'] =
     url         : '/status-reports/:id/steps/:stepId'
     title       : 'Status Reports'
     controller  : 'BasicController as vm'
     template    : require('./views/status-reports.jade')()
     rolesAllowed: [ 'copilot', 'admin' ]
 
-  states['copilot-status-report-details'] =
+  states['status-report-details'] =
     url         : '/status-reports/:id/report/:reportId'
     title       : 'Status Report Details'
     controller  : 'BasicController as vm'
     template    : require('./views/status-report-detail.jade')()
     rolesAllowed: [ 'copilot', 'admin' ]
 
-  states['copilot-manage-steps'] =
+  states['manage-steps'] =
     url         : '/manage-steps/:projectId'
     title       : 'Status Report Details'
     controller  : 'BasicController as vm'
     template    : require('./views/manage-steps.jade')()
     rolesAllowed: [ 'copilot', 'admin' ]
-
-  # Shared routes
 
   resolveProject = (ProjectsAPIService, $stateParams) ->
     ProjectsAPIService.get({id: $stateParams.projectId}).$promise

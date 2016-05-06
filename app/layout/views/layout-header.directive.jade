@@ -11,7 +11,7 @@ ul.flex.center.middle
     a(ng-if="vm.showAppName && (vm.customer || vm.admin)" ui-sref="timeline({workId: vm.workId})")
       h4 {{vm.appName}}
 
-    a(ng-if="vm.showAppName && vm.copilot" ui-sref="copilot-project-details({ id: vm.workId })")
+    a(ng-if="vm.showAppName && vm.copilot" ui-sref="project-details({ id: vm.workId })")
       h4 {{vm.appName}}
 
     a(ng-if="vm.showAppName && vm.member")
