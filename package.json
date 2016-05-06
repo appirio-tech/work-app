@@ -66,6 +66,7 @@
     "normalizr": "^2.0.1",
     "react-datetime": "^2.0.2",
     "react-dropzone": "^3.3.2",
+    "react-select": "^1.0.0-beta13",
     "redux-form": "^5.2.3",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",

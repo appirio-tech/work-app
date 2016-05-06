@@ -60,6 +60,8 @@ export function loadUser(profilesAPIService) {
         currentUser.role = 'admin'
       }
 
+      store.dispatch(setUser(currentUser))
+
       return currentUser
     })
   }

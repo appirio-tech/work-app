@@ -12,15 +12,24 @@ export const defaults = {
   lastUpdated: (new Date()).toISOString(),
   error: '',
   moreResultsAvailable: true,
-  limit: 2,
-  filters: {},
+  filters: {
+    searchType: 'OWN',
+    limit: 3,
+    query: '',
+    projectType: [],
+    status: []
+  },
   previousFilters: {}
 }
 
 export default function projectSearch(state = defaults, action) {
   switch(action.type) {
     case CLEAR_PROJECT_SEARCH:
-      return Object.assign({}, state, defaults)
+      return Object.assign({}, state, {
+        items: [],
+        error: '',
+        moreResultsAvailable: true
+      })
 
     case PROJECT_SEARCH_REQUEST:
       return Object.assign({}, state, {
@@ -34,7 +43,7 @@ export default function projectSearch(state = defaults, action) {
         fetching: false,
         lastUpdated: (new Date()).toISOString(),
         previousFilters: Object.assign({}, action.filters),
-        moreResultsAvailable: action.response.result.length >= action.limit
+        moreResultsAvailable: action.response.result.length >= action.filters.limit
       })
 
     case PROJECT_SEARCH_FAILURE:
@@ -45,7 +54,7 @@ export default function projectSearch(state = defaults, action) {
 
     case SET_PROJECT_SEARCH_FILTERS:
       return Object.assign({}, state, {
-        filters: action.filters
+        filters: Object.assign( {}, state.filters, action.filters )
       })
 
     default:
