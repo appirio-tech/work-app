@@ -9,7 +9,6 @@ TimelineController = ($scope, $stateParams, $document, TimelineAPIService, Quote
   vm.finalFixesSubmissionId = null
   vm.completeDesignsStepId  = null
   vm.projectCompleted       = false
-  vm.showAcceptQuoteButton  = true
   vm.showImageSlideViewer   = false
 
   vm.expanded = {}
@@ -25,8 +24,6 @@ TimelineController = ($scope, $stateParams, $document, TimelineAPIService, Quote
     resource = QuoteApprovalAPIService.post params
 
     resource.$promise.then (response) ->
-      vm.showAcceptQuoteButton = false
-
       activate()
 
     resource.$promise.finally ->
@@ -53,6 +50,7 @@ TimelineController = ($scope, $stateParams, $document, TimelineAPIService, Quote
       if eventGroup.text == 'Project Complete'
         vm.projectCompleted      = true
         vm.projectCompletionDate = eventGroup.createdTime
+        vm.canUpsell             = eventGroup.completed
 
       else if eventGroup.text == 'Final Fixes'
         eventGroup.events.forEach (event) ->
@@ -67,9 +65,6 @@ TimelineController = ($scope, $stateParams, $document, TimelineAPIService, Quote
           if event.type == 'COPILOT_ASSIGNED'
             vm.copilot = event.copilot
             vm.threadId = event.threadId
-
-          if event.type == 'QUOTE_INFO' && event.status == 'Accepted'
-            vm.showAcceptQuoteButton = false
 
   findLastActiveIndex = (eventGroups) ->
     activeGroups = eventGroups.filter (eventGroup) ->

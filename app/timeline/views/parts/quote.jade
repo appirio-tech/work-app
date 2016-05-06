@@ -17,13 +17,13 @@ event-card-main.transition(
 )
   p Please review the quote below. If you have any questions or concerns, please message your copilot. Once you approve the quote, your copilot will launch the project in the community.
 
-  .estimate(ng-class="{active: event.status != 'Accepted'}")
-    h6 quote
+  .estimate(ng-class="{active: event.status != 'Accepted'}" ng-repeat="estimate in event.estimate track by $index")
+    h6 {{estimate.type}} quote
 
     ul.flex.middle.space-between.stretch
       li.cost
         .range
-          | ${{ event.estimate.price.min }} - ${{ event.estimate.price.max }}
+          | ${{ estimate.price.min }} - ${{ estimate.price.max }}
 
         h6 Cost estimate
 
@@ -31,10 +31,10 @@ event-card-main.transition(
 
       li.duration
         .range
-          | {{ event.estimate.duration.min }} - {{ event.estimate.duration.max }} {{ event.estimate.duration.unit }}s
+          | {{ estimate.duration.min }} - {{ estimate.duration.max }} {{ estimate.duration.unit }}s
 
         h6 Time estimate
 
-  button.action(ng-click="vm.acceptQuote()" ng-if="vm.showAcceptQuoteButton" ng-disabled="vm.permissions.indexOf('UPDATE') == -1") approve quote
+  button.action(ng-click="vm.acceptQuote()" ng-if="event.status != 'Accepted' " ng-disabled="vm.permissions.indexOf('UPDATE') == -1") approve quote
 
-  a.decline.button(ui-sref="messaging({ id: vm.workId, threadId: vm.threadId })" ng-if="vm.showAcceptQuoteButton") message copilot
+  a.decline.button(ui-sref="messaging({ id: vm.workId, threadId: vm.threadId })" ng-if="event.status != 'Accepted' ") message copilot
