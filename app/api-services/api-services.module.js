@@ -5,7 +5,6 @@ const dependencies = [
 
 angular.module('api-services', dependencies)
 
-require('./authorizations-api.service.coffee')
 require('./copilot-approval-api.service.coffee')
 require('./copilot-project-details-api.service.coffee')
 require('./copilot-projects-api.service.coffee')
@@ -26,5 +25,4 @@ require('./submit-work-api.service.coffee')
 require('./threads-api.service.coffee')
 require('./timeline-api.service.coffee')
 require('./upsell-api.service.coffee')
-require('./user-v3-api.service.coffee')
 require('./work-api.service.coffee')
