@@ -1,6 +1,6 @@
 ul.flex.center.middle
   li.logo
-    a.clean(ng-if="!vm.member" "ng-home-link"=true, ui-sref="view-work-multiple")
+    a.clean(ng-if="!vm.member" "ng-home-link"=true, ui-sref="project-search")
       img(ng-src=require("./../images/tc-connect-logo.svg"))
 
     img(ng-if="vm.member" ng-src=require("./../images/tc-connect-logo.svg"))
@@ -20,7 +20,7 @@ ul.flex.center.middle
   li
     ul.links(ng-show="vm.loggedIn")
       li.dashboard(ng-if="!vm.member")
-        a(ui-sref="view-work-multiple") Dashboard
+        a(ui-sref="project-search") Dashboard
 
       li.projects(ng-if="vm.customer || vm.copilot")
         button.clean(focus-on-click=true) Projects <span class="caret">&dtrif;</span>

@@ -7,7 +7,7 @@ SubmitWorkCompleteController = ($scope, $rootScope, $state) ->
 
   activate = ->
     $scope.$watch 'vm.show', (newValue) ->
-      $state.go 'view-work-multiple' if newValue == false
+      $state.go 'project-search' if newValue == false
 
     vm
 

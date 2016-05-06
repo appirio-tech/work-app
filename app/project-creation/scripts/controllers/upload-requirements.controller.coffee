@@ -43,7 +43,7 @@ SubmitWorkUploadRequirementsController = ($scope, $rootScope, $state, SubmitWork
         if vm.uploaderUploading
           vm.showUploadModal = true
         else
-          $state.go 'view-work-multiple'
+          $state.go 'project-search'
 
     destroyWorkListener = $rootScope.$on "SubmitWorkService.work:changed", ->
       onChange()

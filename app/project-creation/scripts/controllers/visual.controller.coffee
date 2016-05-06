@@ -96,7 +96,7 @@ SubmitWorkVisualController = ($scope, $rootScope, $state, $document, SubmitWorkS
       if done && kickoff
         $state.go 'submit-work-complete', { id: vm.workId }
       else if done
-        $state.go 'view-work-multiple'
+        $state.go 'project-search'
       else if vm.showChooseStylesModal
         vm.hideChooseStyles()
       else if vm.showUrlStylesModal

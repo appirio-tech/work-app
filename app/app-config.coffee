@@ -27,7 +27,7 @@ config = ($locationProvider, $stateProvider) ->
     controller  : 'MessagingPageController as vm'
     template    : require('./views/messaging')()
 
-  states['view-work-multiple'] =
+  states['project-search'] =
     url         : '/projects'
     title       : 'View Work'
     controller  : 'BasicController as vm'

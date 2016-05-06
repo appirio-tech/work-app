@@ -40,9 +40,7 @@ LayoutHeaderController = (
 
   setAppName = (stateName) ->
     hiddenAppNameStates =
-      'view-work-multiple': true
-      'copilot-projects': true
-      'copilot-open-projects': true
+      'project-search': true
 
     vm.showAppName = true unless hiddenAppNameStates[stateName]
 
