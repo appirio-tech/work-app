@@ -1,3 +1,5 @@
+import './Controls.scss'
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadProjectSearch } from '../store/actions/projectSearch.js'
@@ -14,7 +16,7 @@ class Controls extends React.Component {
     const handleSubmit = this.handleSubmit.bind(this)
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="project-search-controls" onSubmit={handleSubmit}>
         <QueryInput />
         <StatusSelect />
       </form>
