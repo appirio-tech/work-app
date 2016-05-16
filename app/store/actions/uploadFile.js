@@ -23,7 +23,7 @@ export function uploadFile({ id, assetType, category, file }) {
       isImage  : type.match('image.*'),
       id       : id,
       progress : 0,
-      data     : data
+      data     : file
     }
 
     let tempId = getTempId(temporaryAttachment)
