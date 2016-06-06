@@ -1,5 +1,9 @@
-@import "work/work-styles";
+// TODO: This doesn't exist anymore? Remove?
+@import "work/work-styles"; 
 @import "variables";
+// Temporary Terms styling to not mess the rest of the app.
+// TODO: Remove and use TC UI Kit once redesigned.
+@import "terms";
 
 ui-view {
   display: block;
