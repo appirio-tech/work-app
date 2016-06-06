@@ -69,6 +69,12 @@ config = ($locationProvider, $stateProvider) ->
     url        : '/verified-email-address'
     template   : require('./views/verified-email-address')()
 
+  states['terms'] =
+    url         : '/terms'
+    title       : 'Terms'
+    template    : require('./views/terms')()
+    public      : true
+
   states['project-details'] =
     url         : '/projects/:id/details'
     title       : 'Project Details'
