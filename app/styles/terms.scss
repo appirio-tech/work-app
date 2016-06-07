@@ -1,0 +1,84 @@
+// Terms SCSS file to collect the 'views/terms.jade' style
+// v. 1 by Victor George
+
+.terms-page {
+	display: block;
+	max-width: 960px;
+	padding: 70px 100px;
+	margin: 20px auto;
+
+	text-align: left;
+
+	background: #FFFFFF;
+	box-shadow: 0px 1px 3px 0px #C3C3C8;
+	
+	& h1 {
+		font-size: 28px;
+		line-height: 35px;
+		font-weight: 300;
+		padding-bottom: 15px;
+
+	}
+	& h2 {
+		font-size: 20px;
+		line-height: 30px;
+		padding-bottom: 15px;
+		padding-top: 10px;
+		font-weight: 500;
+
+	}
+
+	& h3 {
+		font-size: 16px;
+		line-height: 25px;
+		padding-bottom: 0;
+		padding-top: 10px;
+		font-weight: bold;
+
+	}
+
+	& p {
+		font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
+		font-size: 16px;
+		line-height: 25px;
+		color: #47474F; //$tc-gray-70;
+		font-weight: regular;
+		padding-bottom: 1em;
+
+	}
+
+	& a {
+		color: #0B71E6; //$tc-dark-blue
+		&:hover {
+			text-decoration: underline;		
+		}
+	}
+
+	& ol,
+	& ul {
+		list-style: outside;
+		padding-left: 1em;
+		padding-bottom: 1em;
+		padding-top: 1em;
+		font-weight: bold;
+		li {
+			font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
+			font-size: 16px;
+			line-height: 25px;
+			color: #47474F; //$tc-gray-70;
+			font-weight: regular;
+			padding-bottom: 1em;
+			padding-left: 1em;
+			font-weight: 300;
+		}
+	}
+
+	& ol {
+		list-style-type: decimal;
+	}
+
+	& ul {
+		list-style-type: disc;
+	}
+}
+
