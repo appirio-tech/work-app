@@ -10,9 +10,9 @@ ul.submissions.new(ng-if='vm.statusValue > 3')
           .rank.flex.center.middle(ng-if="submission.rank")
             label {{submission.rank | ordinalNumber}} Place
 
-          label.submission-number # {{vm.submissionIdMap[submission.id]}}
+          label.submission-number # {{vm.submissionIdMap[submission.id]}}&nbsp;
 
-          p.secondary {{ submission.files.length }} Images
+          p.secondary ({{submission.sourceId}}) {{ submission.files.length }} Images
 
         .handle-avatar.flex.middle.space-between(ng-if="vm.customerConfirmedRanks")
           a(href="{{vm.generateProfileUrl(submission.submitter.handle)}}" target="_blank")

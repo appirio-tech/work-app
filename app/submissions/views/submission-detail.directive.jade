@@ -7,6 +7,8 @@ ul.header.flex.middle
   li.flex-grow.submitter
     label(ng-if="!vm.customerConfirmedRanks") {{ vm.submissionNumber }}
 
+    p.secondary &nbsp;({{vm.submission.sourceId}})
+
     avatar(ng-if="vm.customerConfirmedRanks" avatar-url='{{ vm.submission.submitter.avatar }}')
 
     .name(ng-if="vm.customerConfirmedRanks") {{ vm.submission.submitter.handle }}
