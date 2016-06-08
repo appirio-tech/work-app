@@ -50,7 +50,7 @@ FileDetailSlideContainerController = ($scope, $state, $filter, DataService, Step
         ordered.forEach (submission, index) ->
           vm.submissionIdMap[submission.id] = index + 1
 
-        vm.submissionNumber = "# #{vm.submissionIdMap[vm.submission.id]}"
+        vm.submissionNumber = "# #{vm.submissionIdMap[vm.submission.id]} (#{vm.submission.sourceId})"
 
       vm.submissionDate         = $filter('timeLapse')(vm.submission.createdAt)
       submitter                 = vm.submission.submitter
